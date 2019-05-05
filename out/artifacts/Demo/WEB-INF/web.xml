@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <servlet>
+        <servlet-name>common_data_action</servlet-name>
+        <servlet-class>common.data_action</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>common_data_action</servlet-name>
+        <url-pattern>/common_data_action</url-pattern>
+    </servlet-mapping>
+    <!-- ================  project begin =================           -->
+    <servlet>
+        <servlet-name>project_file_servlet_action</servlet-name>
+        <servlet-class>project.file.ServletAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>project_file_servlet_action</servlet-name>
+        <url-pattern>/project_file_servlet_action</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>project_investigation_servlet_action</servlet-name>
+        <servlet-class>project.investigation.ServletAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>project_investigation_servlet_action</servlet-name>
+        <url-pattern>/project_investigation_servlet_action</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>project_vote_servlet_action</servlet-name>
+        <servlet-class>project.vote.ServletAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>project_vote_servlet_action</servlet-name>
+        <url-pattern>/project_vote_servlet_action</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>project_document_servlet_action</servlet-name>
+        <servlet-class>project.document.ServletAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>project_document_servlet_action</servlet-name>
+        <url-pattern>/project_document_servlet_action</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>statistic_servlet_action</servlet-name>
+        <servlet-class>statisticBean.ServletAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>statistic_servlet_action</servlet-name>
+        <url-pattern>/statistic_servlet_action</url-pattern>
+    </servlet-mapping>
+    <!-- ================  project end =================           -->
+    <!-- ================  forum begin =================           -->
+    <servlet>
+        <servlet-name>forum_file_servlet_action</servlet-name>
+        <servlet-class>forum.file.ServletAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>forum_file_servlet_action</servlet-name>
+        <url-pattern>/forum_file_servlet_action</url-pattern>
+    </servlet-mapping>
+    <!-- ================  forum end =================           -->
+    <!-- ================  clinic begin =================           -->
+    <servlet>
+        <servlet-name>clinic_pay_servlet_action</servlet-name>
+        <servlet-class>clinic.pay.ServletAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>clinic_pay_servlet_action</servlet-name>
+        <url-pattern>/clinic_pay_servlet_action</url-pattern>
+    </servlet-mapping>
+    <!-- ================  clinic end =================           -->
+
+</web-app>

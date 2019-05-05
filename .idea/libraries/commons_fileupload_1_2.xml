@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="commons-fileupload-1.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-fileupload-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/activation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/json.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jcommon-0.9.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/ant.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jfreechart-0.9.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jxl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jdom.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
