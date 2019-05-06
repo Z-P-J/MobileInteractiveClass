@@ -9,50 +9,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="update">
+    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/investigation/investigation_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/investigation/investigation_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/project/vote/vote_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/project/vote/vote_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/vote/file/vote_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/vote/file/vote_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/print.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/statistic.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/colorschememapping.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/filelist.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/item0001.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/props0002.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/themedata.thmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/colorschememapping.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/filelist.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/item0001.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/props0002.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/themedata.thmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_statistic.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/BaseHttpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/BaseHttpServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/investigation/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/investigation/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/file/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/file/ServletAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utility/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/DBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/ServletUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/ServletUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/project/vote/vote_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/project/vote/vote_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/print.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/statistic.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/colorschememapping.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/filelist.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/item0001.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/props0002.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/themedata.thmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/colorschememapping.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/filelist.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/item0001.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/props0002.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/themedata.thmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_statistic.jsp" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -136,20 +95,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="380">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/utility/DBHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            <state relative-caret-position="380">
+              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -306,7 +265,6 @@
         <option value="$PROJECT_DIR$/web/user/info/info_print.jsp" />
         <option value="$PROJECT_DIR$/web/investigation/core/print.jsp" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/utility/DBHelper.java" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/user/info/info_list.js" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" />
@@ -317,6 +275,7 @@
         <option value="$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java" />
         <option value="$PROJECT_DIR$/src/utility/ServletUtil.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/utility/DBHelper.java" />
       </list>
     </option>
   </component>
@@ -725,7 +684,7 @@
       <workItem from="1557030312237" duration="13136000" />
       <workItem from="1557111974531" duration="2268000" />
       <workItem from="1557115479428" duration="178000" />
-      <workItem from="1557116337630" duration="15185000" />
+      <workItem from="1557116337630" duration="15549000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -734,11 +693,25 @@
       <option name="project" value="LOCAL" />
       <updated>1557142026161</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update">
+      <created>1557146338224</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1557146338224</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update">
+      <created>1557146473602</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1557146473602</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117962000" />
+    <option name="totallyTimeSpent" value="118326000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -751,7 +724,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.26876676" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1178,17 +1150,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/DBHelper.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="380">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/utility/DBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="380">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
         </state>
       </provider>
     </entry>
