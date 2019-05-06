@@ -4,7 +4,7 @@
  */
 
 /**
- * This file was added automatically by CKEditor builder.
+ * This servlet was added automatically by CKEditor builder.
  * You may re-use it at any time to build CKEditor again.
  *
  * If you would like to build CKEditor online again
@@ -20,8 +20,8 @@
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
- *    This file is not used by CKEditor, you may remove it.
- *    Changing this file will not change your CKEditor configuration.
+ *    This servlet is not used by CKEditor, you may remove it.
+ *    Changing this servlet will not change your CKEditor configuration.
  */
 
 var CKBUILDER_CONFIG = {

@@ -5,6 +5,8 @@ package investigation;
  */
 
 import base.BaseHttpServlet;
+import investigation.bean.InvestigationBean;
+import investigation.dao.InvestigationDao;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utility.*;
@@ -26,7 +28,8 @@ public class ServletAction extends BaseHttpServlet {
 //    private static final String PRE_FIX = MODULE + "_" + SUB;
     private static final String RESULT_PATH = MODULE + "/" + SUB;
     private static final String RESULT_PAGE = "result.jsp";
-    private static final String RESULT_URL = RESULT_PATH + "/" + RESULT_PAGE;
+//    private static final String RESULT_URL = RESULT_PATH + "/" + RESULT_PAGE;
+//    private static final String RESULT_URL = "base/export/export_result.jsp";
     private static final String REDIRECT_PATH = MODULE + "/" + SUB;
     private static final String REDIRECT_PAGE = "record_list.jsp";
 //    private static final String DATABASE_NAME = "my_test";
@@ -82,7 +85,6 @@ public class ServletAction extends BaseHttpServlet {
                             break;
                         case "export_record":
                             JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
-                            jsonObj.put("result_url", RESULT_URL);
                             onEnd(request, response, jsonObj);
                             break;
                         default:
@@ -208,7 +210,7 @@ public class ServletAction extends BaseHttpServlet {
                 session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
             }
         }
-        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
+        onNormalEnd(request, response, jsonObj);
     }
 
     private void addRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -232,7 +234,7 @@ public class ServletAction extends BaseHttpServlet {
         bean.setCreateTime(createTime);
         JSONObject jsonObj = dao.addRecord(bean);
         ylxLog.log("用户 " + creator + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
-        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
+        onNormalEnd(request, response, jsonObj);
     }
 
     /*
@@ -260,8 +262,7 @@ public class ServletAction extends BaseHttpServlet {
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 修改了 [" + MODULE + "][" + SUB + "] 记录", "修改记录", MODULE);
         }
 
-
-        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
+        onNormalEnd(request, response, jsonObj);
     }
 
     private void deleteRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -281,7 +282,7 @@ public class ServletAction extends BaseHttpServlet {
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
 
-        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
+        onNormalEnd(request, response, jsonObj);
     }
 
 }

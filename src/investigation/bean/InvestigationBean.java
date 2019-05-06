@@ -1,4 +1,4 @@
-package investigation;
+package investigation.bean;
 
 public class InvestigationBean {
     //数据库字段

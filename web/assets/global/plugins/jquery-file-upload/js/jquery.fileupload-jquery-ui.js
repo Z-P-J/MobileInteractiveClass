@@ -114,7 +114,7 @@
             this.element
                 .find('.fileupload-buttonbar')
                 .find('.fileinput-button').each(function () {
-                    var input = $(this).find('input:file').detach();
+                    var input = $(this).find('input:servlet').detach();
                     $(this)
                         .button({icons: {primary: 'ui-icon-plusthick'}})
                         .append(input);
@@ -132,7 +132,7 @@
             this.element
                 .find('.fileupload-buttonbar')
                 .find('.fileinput-button').each(function () {
-                    var input = $(this).find('input:file').detach();
+                    var input = $(this).find('input:servlet').detach();
                     $(this)
                         .button('destroy')
                         .append(input);

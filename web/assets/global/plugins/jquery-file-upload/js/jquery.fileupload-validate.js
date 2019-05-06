@@ -45,18 +45,18 @@
     );
 
     // The File Upload Validation plugin extends the fileupload widget
-    // with file validation functionality:
+    // with servlet validation functionality:
     $.widget('blueimp.fileupload', $.blueimp.fileupload, {
 
         options: {
             /*
-            // The regular expression for allowed file types, matches
-            // against either file type or file name:
+            // The regular expression for allowed servlet types, matches
+            // against either servlet type or servlet name:
             acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-            // The maximum allowed file size in bytes:
+            // The maximum allowed servlet size in bytes:
             maxFileSize: 10000000, // 10 MB
-            // The minimum allowed file size in bytes:
-            minFileSize: undefined, // No minimal file size
+            // The minimum allowed servlet size in bytes:
+            minFileSize: undefined, // No minimal servlet size
             // The limit of files to be uploaded:
             maxNumberOfFiles: 10,
             */

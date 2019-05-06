@@ -485,9 +485,9 @@ var base64 = _dereq_('./base64');
 /**
 Usage:
    zip = new JSZip();
-   zip.file("hello.txt", "Hello, World!").file("tempfile", "nothing");
-   zip.folder("images").file("smile.gif", base64Data, {base64: true});
-   zip.file("Xmas.txt", "Ho ho ho !", {date : new Date("December 25, 2007 00:00:01")});
+   zip.servlet("hello.txt", "Hello, World!").servlet("tempfile", "nothing");
+   zip.folder("images").servlet("smile.gif", base64Data, {base64: true});
+   zip.servlet("Xmas.txt", "Ho ho ho !", {date : new Date("December 25, 2007 00:00:01")});
    zip.remove("tempfile");
 
    base64zip = zip.generate();
@@ -495,7 +495,7 @@ Usage:
 **/
 
 /**
- * Representation a of zip file in js
+ * Representation a of zip servlet in js
  * @constructor
  * @param {String=|ArrayBuffer=|Uint8Array=} data the data to load, if any (optional).
  * @param {Object=} options the options for creating this objects (optional).
@@ -573,7 +573,7 @@ module.exports = function(data, options) {
     files = zipEntries.files;
     for (i = 0; i < files.length; i++) {
         input = files[i];
-        this.file(input.fileName, input.decompressed, {
+        vote.servlet(input.fileName, input.decompressed, {
             binary: true,
             optimizedBinaryString: true,
             date: input.date,
@@ -641,7 +641,7 @@ var Uint8ArrayWriter = _dereq_('./uint8ArrayWriter');
 
 /**
  * Returns the raw data of a ZipObject, decompress the content if necessary.
- * @param {ZipObject} file the file to use.
+ * @param {ZipObject} file the servlet to use.
  * @return {String|ArrayBuffer|Uint8Array|Buffer} the data.
  */
 var getRawData = function(file) {
@@ -653,7 +653,7 @@ var getRawData = function(file) {
         if (utils.getTypeOf(file._data) === "uint8array") {
             var copy = file._data;
             // when reading an arraybuffer, the CompressedObject mechanism will keep it and subarray() a Uint8Array.
-            // if we request a file in the same format, we might get the same Uint8Array or its ArrayBuffer (the original zip file).
+            // if we request a servlet in the same format, we might get the same Uint8Array or its ArrayBuffer (the original zip servlet).
             file._data = new Uint8Array(copy.length);
             // with an empty Uint8Array, Opera fails with a "Offset larger than array size"
             if (copy.length !== 0) {
@@ -666,7 +666,7 @@ var getRawData = function(file) {
 
 /**
  * Returns the data of a ZipObject in a binary form. If the content is an unicode string, encode it.
- * @param {ZipObject} file the file to use.
+ * @param {ZipObject} file the servlet to use.
  * @return {String|ArrayBuffer|Uint8Array|Buffer} the data.
  */
 var getBinaryData = function(file) {
@@ -715,11 +715,11 @@ var dataToString = function(asUTF8) {
     return result;
 };
 /**
- * A simple object representing a file in the zip file.
+ * A simple object representing a servlet in the zip servlet.
  * @constructor
- * @param {string} name the name of the file
+ * @param {string} name the name of the servlet
  * @param {String|ArrayBuffer|Uint8Array|Buffer} data the data
- * @param {Object} options the options of the file
+ * @param {Object} options the options of the servlet
  */
 var ZipObject = function(name, data, options) {
     this.name = name;
@@ -820,7 +820,7 @@ var extend = function() {
 
 /**
  * Transforms the (incomplete) options from the user into the complete
- * set of options to create a file.
+ * set of options to create a servlet.
  * @private
  * @param {Object} o the options from the user.
  * @return {Object} the complete set of options.
@@ -838,12 +838,12 @@ var prepareFileAttrs = function(o) {
 };
 
 /**
- * Add a file in the current folder.
+ * Add a servlet in the current folder.
  * @private
- * @param {string} name the name of the file
- * @param {String|ArrayBuffer|Uint8Array|Buffer} data the data of the file
- * @param {Object} o the options of the file
- * @return {Object} the new file.
+ * @param {string} name the name of the servlet
+ * @param {String|ArrayBuffer|Uint8Array|Buffer} data the data of the servlet
+ * @param {Object} o the options of the servlet
+ * @return {Object} the new servlet.
  */
 var fileAdd = function(name, data, o) {
     // be sure sub folders exist
@@ -881,7 +881,7 @@ var fileAdd = function(name, data, o) {
     }
     else if (dataType === "string") {
         if (o.binary && !o.base64) {
-            // optimizedBinaryString == true means that the file has already been filtered with a 0xFF mask
+            // optimizedBinaryString == true means that the servlet has already been filtered with a 0xFF mask
             if (o.optimizedBinaryString !== true) {
                 // this is a string, not in a base64 format.
                 // Be sure that this is a correct "binary string"
@@ -1011,7 +1011,7 @@ var generateCompressedObjectFrom = function(file, compression, compressionOption
 
 
 /**
- * Generate the UNIX part of the external file attributes.
+ * Generate the UNIX part of the external servlet attributes.
  * @param {Object} unixPermissions the unix permissions or null.
  * @param {Boolean} isDir true if the entry is a directory, false otherwise.
  * @return {Number} a 32 bit integer.
@@ -1019,11 +1019,11 @@ var generateCompressedObjectFrom = function(file, compression, compressionOption
  * adapted from http://unix.stackexchange.com/questions/14705/the-zip-formats-external-file-attribute :
  *
  * TTTTsstrwxrwxrwx0000000000ADVSHR
- * ^^^^____________________________ file type, see zipinfo.c (UNX_*)
+ * ^^^^____________________________ servlet type, see zipinfo.c (UNX_*)
  *     ^^^_________________________ setuid, setgid, sticky
  *        ^^^^^^^^^________________ permissions
  *                 ^^^^^^^^^^______ not used ?
- *                           ^^^^^^ DOS attribute bits : Archive, Directory, Volume label, System file, Hidden, Read only
+ *                           ^^^^^^ DOS attribute bits : Archive, Directory, Volume label, System servlet, Hidden, Read only
  */
 var generateUnixExternalFileAttr = function (unixPermissions, isDir) {
 
@@ -1039,7 +1039,7 @@ var generateUnixExternalFileAttr = function (unixPermissions, isDir) {
 };
 
 /**
- * Generate the DOS part of the external file attributes.
+ * Generate the DOS part of the external servlet attributes.
  * @param {Object} dosPermissions the dos permissions or null.
  * @param {Boolean} isDir true if the entry is a directory, false otherwise.
  * @return {Number} a 32 bit integer.
@@ -1059,11 +1059,11 @@ var generateDosExternalFileAttr = function (dosPermissions, isDir) {
 };
 
 /**
- * Generate the various parts used in the construction of the final zip file.
- * @param {string} name the file name.
- * @param {ZipObject} file the file content.
+ * Generate the various parts used in the construction of the final zip servlet.
+ * @param {string} name the servlet name.
+ * @param {ZipObject} file the servlet content.
  * @param {JSZip.CompressedObject} compressedObject the compressed object.
- * @param {number} offset the current offset from the start of the zip file.
+ * @param {number} offset the current offset from the start of the zip servlet.
  * @param {String} platform let's pretend we are this platform (change platform dependents fields)
  * @return {object} the zip parts.
  */
@@ -1183,9 +1183,9 @@ var generateZipParts = function(name, file, compressedObject, offset, platform) 
     header += (useUTF8ForFileName || useUTF8ForComment) ? "\x00\x08" : "\x00\x00";
     // compression method
     header += compressedObject.compressionMethod;
-    // last mod file time
+    // last mod servlet time
     header += decToHex(dosTime, 2);
-    // last mod file date
+    // last mod servlet date
     header += decToHex(dosDate, 2);
     // crc-32
     header += decToHex(compressedObject.crc32, 4);
@@ -1193,7 +1193,7 @@ var generateZipParts = function(name, file, compressedObject, offset, platform) 
     header += decToHex(compressedObject.compressedSize, 4);
     // uncompressed size
     header += decToHex(compressedObject.uncompressedSize, 4);
-    // file name length
+    // servlet name length
     header += decToHex(utfEncodedFileName.length, 2);
     // extra field length
     header += decToHex(extraFields.length, 2);
@@ -1204,23 +1204,23 @@ var generateZipParts = function(name, file, compressedObject, offset, platform) 
     var dirRecord = signature.CENTRAL_FILE_HEADER +
     // version made by (00: DOS)
     decToHex(versionMadeBy, 2) +
-    // file header (common to file and central directory)
+    // servlet header (common to servlet and central directory)
     header +
-    // file comment length
+    // servlet comment length
     decToHex(utfEncodedComment.length, 2) +
     // disk number start
     "\x00\x00" +
-    // internal file attributes TODO
+    // internal servlet attributes TODO
     "\x00\x00" +
-    // external file attributes
+    // external servlet attributes
     decToHex(extFileAttr, 4) +
     // relative offset of local header
     decToHex(offset, 4) +
-    // file name
+    // servlet name
     utfEncodedFileName +
     // extra field
     extraFields +
-    // file comment
+    // servlet comment
     utfEncodedComment;
 
     return {
@@ -1242,14 +1242,14 @@ var out = {
      * @return {JSZip} the current JSZip object
      */
     load: function(stream, options) {
-        throw new Error("Load method is not defined. Is the file jszip-load.js included ?");
+        throw new Error("Load method is not defined. Is the servlet jszip-load.js included ?");
     },
 
     /**
      * Filter nested files/folders with the specified function.
      * @param {Function} search the predicate to use :
-     * function (relativePath, file) {...}
-     * It takes 2 arguments : the relative path and the file.
+     * function (relativePath, servlet) {...}
+     * It takes 2 arguments : the relative path and the servlet.
      * @return {Array} An array of matching elements.
      */
     filter: function(search) {
@@ -1263,8 +1263,8 @@ var out = {
             // return a new object, don't let the user mess with our internal objects :)
             fileClone = new ZipObject(file.name, file._data, extend(file.options));
             relativePath = filename.slice(this.root.length, filename.length);
-            if (filename.slice(0, this.root.length) === this.root && // the file is in the current root
-            search(relativePath, fileClone)) { // and the file matches the function
+            if (filename.slice(0, this.root.length) === this.root && // the servlet is in the current root
+            search(relativePath, fileClone)) { // and the servlet matches the function
                 result.push(fileClone);
             }
         }
@@ -1272,13 +1272,13 @@ var out = {
     },
 
     /**
-     * Add a file to the zip file, or search a file.
-     * @param   {string|RegExp} name The name of the file to add (if data is defined),
-     * the name of the file to find (if no data) or a regex to match files.
-     * @param   {String|ArrayBuffer|Uint8Array|Buffer} data  The file data, either raw or base64 encoded
+     * Add a servlet to the zip servlet, or search a servlet.
+     * @param   {string|RegExp} name The name of the servlet to add (if data is defined),
+     * the name of the servlet to find (if no data) or a regex to match files.
+     * @param   {String|ArrayBuffer|Uint8Array|Buffer} data  The servlet data, either raw or base64 encoded
      * @param   {Object} o     File options
-     * @return  {JSZip|Object|Array} this JSZip object (when adding a file),
-     * a file (when searching by string) or an array of files (when searching by regex).
+     * @return  {JSZip|Object|Array} this JSZip object (when adding a servlet),
+     * a servlet (when searching by string) or an array of files (when searching by regex).
      */
     file: function(name, data, o) {
         if (arguments.length === 1) {
@@ -1302,7 +1302,7 @@ var out = {
     },
 
     /**
-     * Add a directory to the zip file, or search.
+     * Add a directory to the zip servlet, or search.
      * @param   {String|RegExp} arg The name of the directory to add, or a regex to search folders.
      * @return  {JSZip} an object with the new directory as the root, or an array containing matching folders.
      */
@@ -1328,8 +1328,8 @@ var out = {
     },
 
     /**
-     * Delete a file, or a directory and all sub-files, from the zip
-     * @param {string} name the name of the file to delete
+     * Delete a servlet, or a directory and all sub-files, from the zip
+     * @param {string} name the name of the servlet to delete
      * @return {JSZip} this JSZip object
      */
     remove: function(name) {
@@ -1344,7 +1344,7 @@ var out = {
         }
 
         if (file && !file.dir) {
-            // file
+            // servlet
             delete this.files[name];
         } else {
             // maybe a folder, delete recursively
@@ -1360,12 +1360,12 @@ var out = {
     },
 
     /**
-     * Generate the complete zip file
-     * @param {Object} options the options to generate the zip file :
+     * Generate the complete zip servlet
+     * @param {Object} options the options to generate the zip servlet :
      * - base64, (deprecated, use type instead) true to generate base64.
      * - compression, "STORE" by default.
      * - type, "base64" by default. Values are : string, base64, uint8array, arraybuffer, blob.
-     * @return {String|Uint8Array|ArrayBuffer|Buffer|Blob} the zip file
+     * @return {String|Uint8Array|ArrayBuffer|Buffer|Blob} the zip servlet
      */
     generate: function(options) {
         options = extend(options || {}, {
@@ -1437,9 +1437,9 @@ var out = {
         decToHex(centralDirLength, 4) +
         // offset of start of central directory with respect to the starting disk number
         decToHex(localDirLength, 4) +
-        // .ZIP file comment length
+        // .ZIP servlet comment length
         decToHex(utfEncodedComment.length, 2) +
-        // .ZIP file comment
+        // .ZIP servlet comment
         utfEncodedComment;
 
 
@@ -2262,7 +2262,7 @@ var support = _dereq_('./support');
 var jszipProto = _dereq_('./object');
 //  class ZipEntries {{{
 /**
- * All the entries in the zip file.
+ * All the entries in the zip servlet.
  * @constructor
  * @param {String|ArrayBuffer|Uint8Array} data the binary stream to load.
  * @param {Object} loadOptions Options for loading the stream.
@@ -2399,7 +2399,7 @@ ZipEntries.prototype = {
             } catch (e) {}
 
             if (isGarbage) {
-                throw new Error("Can't find end of central directory : is this a zip file ? " +
+                throw new Error("Can't find end of central directory : is this a zip servlet ? " +
                                 "If it is, see http://stuk.github.io/jszip/documentation/howto/read_zip.html");
             } else {
                 throw new Error("Corrupted zip : can't find end of central directory");
@@ -2425,7 +2425,7 @@ ZipEntries.prototype = {
 
             /*
             Warning : the zip64 extension is supported, but ONLY if the 64bits integer read from
-            the zip file can fit into a 32bits integer. This cannot be solved : Javascript represents
+            the zip servlet can fit into a 32bits integer. This cannot be solved : Javascript represents
             all numbers as 64-bit double precision IEEE 754 floating point numbers.
             So, we have 53bits for integers and bitwise operations treat everything as 32bits.
             see https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Operators/Bitwise_Operators
@@ -2460,8 +2460,8 @@ ZipEntries.prototype = {
         }
     },
     /**
-     * Read a zip file and create ZipEntries.
-     * @param {String|ArrayBuffer|Uint8Array|Buffer} data the binary string representing a zip file.
+     * Read a zip servlet and create ZipEntries.
+     * @param {String|ArrayBuffer|Uint8Array|Buffer} data the binary string representing a zip servlet.
      */
     load: function(data) {
         this.prepareReader(data);
@@ -2485,9 +2485,9 @@ var MADE_BY_UNIX = 0x03;
 
 // class ZipEntry {{{
 /**
- * An entry in the zip file.
+ * An entry in the zip servlet.
  * @constructor
- * @param {Object} options Options of the current file.
+ * @param {Object} options Options of the current servlet.
  * @param {Object} loadOptions Options for loading the stream.
  */
 function ZipEntry(options, loadOptions) {
@@ -2496,15 +2496,15 @@ function ZipEntry(options, loadOptions) {
 }
 ZipEntry.prototype = {
     /**
-     * say if the file is encrypted.
-     * @return {boolean} true if the file is encrypted, false otherwise.
+     * say if the servlet is encrypted.
+     * @return {boolean} true if the servlet is encrypted, false otherwise.
      */
     isEncrypted: function() {
         // bit 1 is set
         return (this.bitFlag & 0x0001) === 0x0001;
     },
     /**
-     * say if the file has utf-8 filename/comment.
+     * say if the servlet has utf-8 filename/comment.
      * @return {boolean} true if the filename/comment is in utf-8, false otherwise.
      */
     useUTF8: function() {
@@ -2533,7 +2533,7 @@ ZipEntry.prototype = {
      * @param {DataReader} reader the reader to use.
      * @param {number} from the offset from where we should read the data.
      * @param {number} length the length of the data to read.
-     * @param {JSZip.compression} compression the compression used on this file.
+     * @param {JSZip.compression} compression the compression used on this servlet.
      * @param {number} uncompressedSize the uncompressed size to expect.
      * @return {Function} the callback to get the uncompressed content (the type depends of the DataReader class).
      */
@@ -2551,7 +2551,7 @@ ZipEntry.prototype = {
         };
     },
     /**
-     * Read the local part of a zip file and add the info in this object.
+     * Read the local part of a zip servlet and add the info in this object.
      * @param {DataReader} reader the reader to use.
      */
     readLocalPart: function(reader) {
@@ -2585,7 +2585,7 @@ ZipEntry.prototype = {
 
         compression = utils.findCompression(this.compressionMethod);
         if (compression === null) { // no compression found
-            throw new Error("Corrupted zip : compression " + utils.pretty(this.compressionMethod) + " unknown (inner file : " + this.fileName + ")");
+            throw new Error("Corrupted zip : compression " + utils.pretty(this.compressionMethod) + " unknown (inner servlet : " + this.fileName + ")");
         }
         this.decompressed = new CompressedObject();
         this.decompressed.compressedSize = this.compressedSize;
@@ -2605,7 +2605,7 @@ ZipEntry.prototype = {
     },
 
     /**
-     * Read the central part of a zip file and add the info in this object.
+     * Read the central part of a zip servlet and add the info in this object.
      * @param {DataReader} reader the reader to use.
      */
     readCentralPart: function(reader) {
@@ -2636,7 +2636,7 @@ ZipEntry.prototype = {
     },
 
     /**
-     * Parse the external file attributes and get the unix/dos permissions.
+     * Parse the external servlet attributes and get the unix/dos permissions.
      */
     processAttributes: function () {
         this.unixPermissions = null;
@@ -2693,7 +2693,7 @@ ZipEntry.prototype = {
         }
     },
     /**
-     * Read the central part of a zip file and add the info in this object.
+     * Read the central part of a zip servlet and add the info in this object.
      * @param {DataReader} reader the reader to use.
      */
     readExtraFields: function(reader) {
@@ -2786,7 +2786,7 @@ ZipEntry.prototype = {
 module.exports = ZipEntry;
 
 },{"./compressedObject":2,"./object":13,"./stringReader":15,"./utils":21}],24:[function(_dereq_,module,exports){
-// Top level file is just a mixin of submodules & constants
+// Top level servlet is just a mixin of submodules & constants
 'use strict';
 
 var assign    = _dereq_('./lib/utils/common').assign;
@@ -2894,7 +2894,7 @@ var Z_DEFLATED  = 8;
  *   - `time` (Number) - modification time, unix timestamp
  *   - `os` (Number) - operation system code
  *   - `extra` (Array) - array of bytes with extra data (max 65536)
- *   - `name` (String) - file name (binary string)
+ *   - `name` (String) - servlet name (binary string)
  *   - `comment` (String) - comment (binary string)
  *   - `hcrc` (Boolean) - true if header crc should be added
  *
@@ -4525,7 +4525,7 @@ function deflate_fast(s, flush) {
 
   for (;;) {
     /* Make sure that we always have enough lookahead, except
-     * at the end of the input file. We need MAX_MATCH bytes
+     * at the end of the input servlet. We need MAX_MATCH bytes
      * for the next match, plus MIN_MATCH bytes to insert the
      * string following the next match.
      */
@@ -4557,7 +4557,7 @@ function deflate_fast(s, flush) {
     if (hash_head !== 0/*NIL*/ && ((s.strstart - hash_head) <= (s.w_size - MIN_LOOKAHEAD))) {
       /* To simplify the code, we prevent matches with the string
        * of window index 0 (in particular we have to avoid a match
-       * of the string with itself at the start of the input file).
+       * of the string with itself at the start of the input servlet).
        */
       s.match_length = longest_match(s, hash_head);
       /* longest_match() sets match_start */
@@ -4656,7 +4656,7 @@ function deflate_slow(s, flush) {
   /* Process the input block. */
   for (;;) {
     /* Make sure that we always have enough lookahead, except
-     * at the end of the input file. We need MAX_MATCH bytes
+     * at the end of the input servlet. We need MAX_MATCH bytes
      * for the next match, plus MIN_MATCH bytes to insert the
      * string following the next match.
      */
@@ -4690,7 +4690,7 @@ function deflate_slow(s, flush) {
         s.strstart - hash_head <= (s.w_size-MIN_LOOKAHEAD)/*MAX_DIST(s)*/) {
       /* To simplify the code, we prevent matches with the string
        * of window index 0 (in particular we have to avoid a match
-       * of the string with itself at the start of the input file).
+       * of the string with itself at the start of the input servlet).
        */
       s.match_length = longest_match(s, hash_head);
       /* longest_match() sets match_start */
@@ -4818,7 +4818,7 @@ function deflate_rle(s, flush) {
 
   for (;;) {
     /* Make sure that we always have enough lookahead, except
-     * at the end of the input file. We need MAX_MATCH bytes
+     * at the end of the input servlet. We need MAX_MATCH bytes
      * for the longest run, plus one for the unrolled loop.
      */
     if (s.lookahead <= MAX_MATCH) {
@@ -5156,12 +5156,12 @@ function DeflateState() {
    *     data is still in the window so we can still emit a stored block even
    *     when input comes from standard input.  (This can also be done for
    *     all blocks if lit_bufsize is not greater than 32K.)
-   *   - if compression is not successful for a file smaller than 64K, we can
-   *     even emit a stored file instead of a stored block (saving 5 bytes).
+   *   - if compression is not successful for a servlet smaller than 64K, we can
+   *     even emit a stored servlet instead of a stored block (saving 5 bytes).
    *     This is applicable only for zip (not gzip or zlib).
    *   - creating new Huffman trees less frequently may not provide fast
    *     adaptation to changes in the input data statistics. (Take for
-   *     example a binary file with poorly compressible code followed by
+   *     example a binary servlet with poorly compressible code followed by
    *     a highly compressible string table.) Smaller buffer sizes give
    *     fast adaptation but have of course the overhead of transmitting
    *     trees more frequently.
@@ -5716,7 +5716,7 @@ function GZheader() {
   this.text       = 0;
   /* modification time */
   this.time       = 0;
-  /* extra flags (not used when writing a gzip file) */
+  /* extra flags (not used when writing a gzip servlet) */
   this.xflags     = 0;
   /* operating system */
   this.os         = 0;
@@ -5733,7 +5733,7 @@ function GZheader() {
 
   /* space at extra (only when reading header) */
   // this.extra_max  = 0;
-  /* pointer to zero-terminated file name or Z_NULL */
+  /* pointer to zero-terminated servlet name or Z_NULL */
   this.name       = '';
   /* space at name (only when reading header) */
   // this.name_max   = 0;
@@ -5743,7 +5743,7 @@ function GZheader() {
   // this.comm_max   = 0;
   /* true if there was or will be a header crc */
   this.hcrc       = 0;
-  /* true when done reading gzip header (not used when writing a gzip file) */
+  /* true when done reading gzip header (not used when writing a gzip servlet) */
   this.done       = false;
 }
 
@@ -6130,7 +6130,7 @@ var    TIME = 3;       /* i: waiting for modification time (gzip) */
 var    OS = 4;         /* i: waiting for extra flags and operating system (gzip) */
 var    EXLEN = 5;      /* i: waiting for extra length (gzip) */
 var    EXTRA = 6;      /* i: waiting for extra bytes (gzip) */
-var    NAME = 7;       /* i: waiting for end of file name (gzip) */
+var    NAME = 7;       /* i: waiting for end of servlet name (gzip) */
 var    COMMENT = 8;    /* i: waiting for end of comment (gzip) */
 var    HCRC = 9;       /* i: waiting for header crc (gzip) */
 var    DICTID = 10;    /* i: waiting for dictionary check value */
@@ -7913,7 +7913,7 @@ module.exports = {
   '2':    'need dictionary',     /* Z_NEED_DICT       2  */
   '1':    'stream end',          /* Z_STREAM_END      1  */
   '0':    '',                    /* Z_OK              0  */
-  '-1':   'file error',          /* Z_ERRNO         (-1) */
+  '-1':   'servlet error',          /* Z_ERRNO         (-1) */
   '-2':   'stream error',        /* Z_STREAM_ERROR  (-2) */
   '-3':   'data error',          /* Z_DATA_ERROR    (-3) */
   '-4':   'insufficient memory', /* Z_MEM_ERROR     (-4) */
@@ -8936,7 +8936,7 @@ function _tr_init(s)
   s.bi_buf = 0;
   s.bi_valid = 0;
 
-  /* Initialize the first block of the first file: */
+  /* Initialize the first block of the first servlet: */
   init_block(s);
 }
 
@@ -8948,7 +8948,7 @@ function _tr_stored_block(s, buf, stored_len, last)
 //DeflateState *s;
 //charf *buf;       /* input block */
 //ulg stored_len;   /* length of input block */
-//int last;         /* one if this is the last block for a file */
+//int last;         /* one if this is the last block for a servlet */
 {
   send_bits(s, (STORED_BLOCK<<1)+(last ? 1 : 0), 3);    /* send block type */
   copy_block(s, buf, stored_len, true); /* with header */
@@ -8968,13 +8968,13 @@ function _tr_align(s) {
 
 /* ===========================================================================
  * Determine the best encoding for the current block: dynamic trees, static
- * trees or store, and output the encoded block to the zip file.
+ * trees or store, and output the encoded block to the zip servlet.
  */
 function _tr_flush_block(s, buf, stored_len, last)
 //DeflateState *s;
 //charf *buf;       /* input block, or NULL if too old */
 //ulg stored_len;   /* length of input block */
-//int last;         /* one if this is the last block for a file */
+//int last;         /* one if this is the last block for a servlet */
 {
   var opt_lenb, static_lenb;  /* opt_len and static_len in bytes */
   var max_blindex = 0;        /* index of last bit length code of non zero freq */
@@ -8982,7 +8982,7 @@ function _tr_flush_block(s, buf, stored_len, last)
   /* Build the Huffman trees unless a stored block is forced */
   if (s.level > 0) {
 
-    /* Check if the file is binary or text */
+    /* Check if the servlet is binary or text */
     if (s.strm.data_type === Z_UNKNOWN) {
       s.strm.data_type = detect_data_type(s);
     }

@@ -59,7 +59,7 @@ var TableEditable = function () {
                 [5, 15, 20, "All"] // change per page values here
             ],
 
-            // Or you can use remote translation file
+            // Or you can use remote translation servlet
             //"language": {
             //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
             //},

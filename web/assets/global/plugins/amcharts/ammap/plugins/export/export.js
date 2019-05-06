@@ -8,7 +8,7 @@ Author URI: http://www.amcharts.com/
 Copyright 2015 amCharts
 
 Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
+you may not use this servlet except in compliance with the License.
 You may obtain a copy of the License at
 
 	http://www.apache.org/licenses/LICENSE-2.0
@@ -208,7 +208,7 @@ AmCharts.addInitHandler( function( chart ) {
 				if ( window.saveAs ) {
 					saveAs( data, filename );
 				} else {
-					throw new Error( "Unable to create file. Ensure saveAs (FileSaver.js) is supported." );
+					throw new Error( "Unable to create servlet. Ensure saveAs (FileSaver.js) is supported." );
 				}
 			} );
 

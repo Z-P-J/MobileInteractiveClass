@@ -27,7 +27,7 @@
 }(function ($) {
     'use strict';
 
-    // Detect file input support, based on
+    // Detect servlet input support, based on
     // http://viljamis.com/blog/2012/file-upload-support-on-mobile/
     $.support.fileInput = !(new RegExp(
         // Handle devices which give false positives for the feature detection:
@@ -37,13 +37,13 @@
             '|(Kindle/(1\\.0|2\\.[05]|3\\.0))'
     ).test(window.navigator.userAgent) ||
         // Feature detection for all other devices:
-        $('<input type="file">').prop('disabled'));
+        $('<input type="servlet">').prop('disabled'));
 
     // The FileReader API is not actually used, but works as feature detection,
-    // as some Safari versions (5?) support XHR file uploads via the FormData API,
-    // but not non-multipart XHR file uploads.
+    // as some Safari versions (5?) support XHR servlet uploads via the FormData API,
+    // but not non-multipart XHR servlet uploads.
     // window.XMLHttpRequestUpload is not available on IE10, so we check for
-    // window.ProgressEvent instead to detect XHR2 file upload capability:
+    // window.ProgressEvent instead to detect XHR2 servlet upload capability:
     $.support.xhrFileUpload = !!(window.ProgressEvent && window.FileReader);
     $.support.xhrFormDataFileUpload = !!window.FormData;
 
@@ -70,14 +70,14 @@
         };
     }
 
-    // The fileupload widget listens for change events on file input fields defined
+    // The fileupload widget listens for change events on servlet input fields defined
     // via fileInput setting and paste or drop events of the given dropZone.
     // In addition to the default jQuery Widget methods, the fileupload widget
     // exposes the "add" and "send" methods, to add or directly send files using
     // the fileupload API.
-    // By default, files added via file input selection, paste, drag & drop or
+    // By default, files added via servlet input selection, paste, drag & drop or
     // "add" method are uploaded immediately, but it is possible to override
-    // the "add" callback option to queue file uploads.
+    // the "add" callback option to queue servlet uploads.
     $.widget('blueimp.fileupload', {
 
         options: {
@@ -85,25 +85,25 @@
             // Set to null to disable drag & drop support:
             dropZone: $(document),
             // The paste target element(s), by the default undefined.
-            // Set to a DOM node or jQuery object to enable file pasting:
+            // Set to a DOM node or jQuery object to enable servlet pasting:
             pasteZone: undefined,
-            // The file input field(s), that are listened to for change events.
-            // If undefined, it is set to the file input fields inside
+            // The servlet input field(s), that are listened to for change events.
+            // If undefined, it is set to the servlet input fields inside
             // of the widget element on plugin initialization.
             // Set to null to disable the change listener.
             fileInput: undefined,
-            // By default, the file input field is replaced with a clone after
+            // By default, the servlet input field is replaced with a clone after
             // each input field change event. This is required for iframe transport
-            // queues and allows change events to be fired for the same file
+            // queues and allows change events to be fired for the same servlet
             // selection, but can be disabled by setting the following option to false:
             replaceFileInput: true,
-            // The parameter name for the file form data (the request argument name).
-            // If undefined or empty, the name property of the file input field is
-            // used, or "files[]" if the file input name property is also empty,
+            // The parameter name for the servlet form data (the request argument name).
+            // If undefined or empty, the name property of the servlet input field is
+            // used, or "files[]" if the servlet input name property is also empty,
             // can be a string or an array of strings:
             paramName: undefined,
-            // By default, each file of a selection is uploaded using an individual
-            // request for XHR type uploads. Set to false to upload file
+            // By default, each servlet of a selection is uploaded using an individual
+            // request for XHR type uploads. Set to false to upload servlet
             // selections in one request each:
             singleFileUploads: true,
             // To limit the number of files uploaded with one XHR request,
@@ -113,11 +113,11 @@
             // XHR request to keep the request size under or equal to the defined
             // limit in bytes:
             limitMultiFileUploadSize: undefined,
-            // Multipart file uploads add a number of bytes to each uploaded file,
-            // therefore the following option adds an overhead for each file used
+            // Multipart servlet uploads add a number of bytes to each uploaded servlet,
+            // therefore the following option adds an overhead for each servlet used
             // in the limitMultiFileUploadSize configuration:
             limitMultiFileUploadSizeOverhead: 512,
-            // Set the following option to true to issue all file upload requests
+            // Set the following option to true to issue all servlet upload requests
             // in a sequential order:
             sequentialUploads: false,
             // To limit the number of concurrent uploads,
@@ -134,7 +134,7 @@
             // Set the following option to the location of a postMessage window,
             // to enable postMessage transport uploads:
             postMessage: undefined,
-            // By default, XHR file uploads are sent as multipart/form-data.
+            // By default, XHR servlet uploads are sent as multipart/form-data.
             // The iframe transport is always using multipart/form-data.
             // Set to false to enable non-multipart XHR uploads:
             multipart: true,
@@ -147,9 +147,9 @@
             // aborted, this option can be used to resume the upload by setting
             // it to the size of the already uploaded bytes. This option is most
             // useful when modifying the options object inside of the "add" or
-            // "send" callbacks, as the options are cloned for each file upload.
+            // "send" callbacks, as the options are cloned for each servlet upload.
             uploadedBytes: undefined,
-            // By default, failed (abort or error) file uploads are removed from the
+            // By default, failed (abort or error) servlet uploads are removed from the
             // global progress calculation. Set the following option to false to
             // prevent recalculating the global progress data:
             recalculateProgress: true,
@@ -162,7 +162,7 @@
 
             // Error and info messages:
             messages: {
-                uploadedBytes: 'Uploaded bytes exceed file size'
+                uploadedBytes: 'Uploaded bytes exceed servlet size'
             },
 
             // Translation function, gets the message key to be translated
@@ -177,20 +177,20 @@
                 return message;
             },
 
-            // Additional form data to be sent along with the file uploads can be set
+            // Additional form data to be sent along with the servlet uploads can be set
             // using this option, which accepts an array of objects with name and
             // value properties, a function returning such an array, a FormData
-            // object (for XHR file uploads), or a simple object.
+            // object (for XHR servlet uploads), or a simple object.
             // The form of the first fileInput is given as parameter to the function:
             formData: function (form) {
                 return form.serializeArray();
             },
 
             // The add callback is invoked as soon as files are added to the fileupload
-            // widget (via file input selection, drag & drop, paste or add API call).
+            // widget (via servlet input selection, drag & drop, paste or add API call).
             // If the singleFileUploads option is enabled, this callback will be
-            // called once for each file in the selection for XHR file uploads, else
-            // once for each file selection.
+            // called once for each servlet in the selection for XHR servlet uploads, else
+            // once for each servlet selection.
             //
             // The upload starts when the submit method is invoked on the data parameter.
             // The data object contains a files property holding the added files
@@ -216,10 +216,10 @@
 
             // Other callbacks:
 
-            // Callback for the submit event of each file upload:
+            // Callback for the submit event of each servlet upload:
             // submit: function (e, data) {}, // .bind('fileuploadsubmit', func);
 
-            // Callback for the start of each file upload request:
+            // Callback for the start of each servlet upload request:
             // send: function (e, data) {}, // .bind('fileuploadsend', func);
 
             // Callback for successful uploads:
@@ -268,7 +268,7 @@
             // chunkalways: function (e, data) {}, // .bind('fileuploadchunkalways', func);
 
             // The plugin options are used as settings object for the ajax calls.
-            // The following are jQuery ajax settings required for the file uploads:
+            // The following are jQuery ajax settings required for the servlet uploads:
             processData: false,
             contentType: false,
             cache: false
@@ -390,15 +390,15 @@
                     data.bitrateInterval
                 );
                 // Trigger a custom progress event with a total data property set
-                // to the file size(s) of the current upload and a loaded data
+                // to the servlet size(s) of the current upload and a loaded data
                 // property calculated accordingly:
                 this._trigger(
                     'progress',
                     $.Event('progress', {delegatedEvent: e}),
                     data
                 );
-                // Trigger a global progress event for all current file uploads,
-                // including ajax calls queued for sequential file uploads:
+                // Trigger a global progress event for all current servlet uploads,
+                // including ajax calls queued for sequential servlet uploads:
                 this._trigger(
                     'progressall',
                     $.Event('progressall', {delegatedEvent: e}),
@@ -566,8 +566,8 @@
             // associated form, if available:
             if (!options.form || !options.form.length) {
                 options.form = $(options.fileInput.prop('form'));
-                // If the given file input doesn't have an associated form,
-                // use the default widget file input's form:
+                // If the given servlet input doesn't have an associated form,
+                // use the default widget servlet input's form:
                 if (!options.form.length) {
                     options.form = $(this.options.fileInput.prop('form'));
                 }
@@ -706,9 +706,9 @@
             return upperBytesPos && upperBytesPos + 1;
         },
 
-        // Uploads a file in multiple, sequential requests
-        // by splitting the file up in multiple blob chunks.
-        // If the second parameter is true, only tests if the file
+        // Uploads a servlet in multiple, sequential requests
+        // by splitting the servlet up in multiple blob chunks.
+        // If the second parameter is true, only tests if the servlet
         // should be uploaded in chunks, but does not invoke any
         // upload requests:
         _chunkedUpload: function (options, testOnly) {
@@ -858,7 +858,7 @@
         _onFail: function (jqXHR, textStatus, errorThrown, options) {
             var response = options._response;
             if (options.recalculateProgress) {
-                // Remove the failed (error or abort) file upload from
+                // Remove the failed (error or abort) servlet upload from
                 // the global progress calculation:
                 this._progress.loaded -= options._progress.loaded;
                 this._progress.total -= options._progress.total;
@@ -1037,15 +1037,15 @@
         _replaceFileInput: function (data) {
             var input = data.fileInput,
                 inputClone = input.clone(true);
-            // Add a reference for the new cloned file input to the data argument:
+            // Add a reference for the new cloned servlet input to the data argument:
             data.fileInputClone = inputClone;
             $('<form></form>').append(inputClone)[0].reset();
             // Detaching allows to insert the fileInput on another form
-            // without loosing the file input value:
+            // without loosing the servlet input value:
             input.after(inputClone).detach();
-            // Avoid memory leaks with the detached file input:
+            // Avoid memory leaks with the detached servlet input:
             $.cleanData(input.unbind('remove'));
-            // Replace the original file input element in the fileInput
+            // Replace the original servlet input element in the fileInput
             // elements set with the clone, which has been copied including
             // event handlers:
             this.options.fileInput = this.options.fileInput.map(function (i, el) {
@@ -1054,8 +1054,8 @@
                 }
                 return el;
             });
-            // If the widget has been initialized on the file input itself,
-            // override this.element with the file input clone:
+            // If the widget has been initialized on the servlet input itself,
+            // override this.element with the servlet input clone:
             if (input[0] === this.element[0]) {
                 this.element = inputClone;
             }
@@ -1100,7 +1100,7 @@
                     entry._file.relativePath = path;
                     dfd.resolve(entry._file);
                 } else {
-                    entry.file(function (file) {
+                    vote.servlet(function (file) {
                         file.relativePath = path;
                         dfd.resolve(file);
                     }, errorHandler);
@@ -1109,7 +1109,7 @@
                 dirReader = entry.createReader();
                 readEntries();
             } else {
-                // Return an empy list for file system items
+                // Return an empy list for servlet system items
                 // other than files or directories:
                 dfd.resolve([]);
             }
@@ -1310,8 +1310,8 @@
         _initSpecialOptions: function () {
             var options = this.options;
             if (options.fileInput === undefined) {
-                options.fileInput = this.element.is('input[type="file"]') ?
-                        this.element : this.element.find('input[type="file"]');
+                options.fileInput = this.element.is('input[type="servlet"]') ?
+                        this.element : this.element.find('input[type="servlet"]');
             } else if (!(options.fileInput instanceof $)) {
                 options.fileInput = $(options.fileInput);
             }
@@ -1404,7 +1404,7 @@
         // using the fileupload API. The data parameter accepts an object which
         // must have a files or fileInput property and can contain additional options:
         // .fileupload('send', {files: filesList});
-        // The method returns a Promise object for the file upload call.
+        // The method returns a Promise object for the servlet upload call.
         send: function (data) {
             if (data && !this.options.disabled) {
                 if (data.fileInput && !data.files) {

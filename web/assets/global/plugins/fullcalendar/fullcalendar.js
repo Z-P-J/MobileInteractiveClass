@@ -260,7 +260,7 @@ fc.langs = langOptionHash; // expose
 
 // Initialize jQuery UI Datepicker translations while using some of the translations
 // for our own purposes. Will set this as the default language for datepicker.
-// Called from a translation file.
+// Called from a translation servlet.
 fc.datepickerLang = function(langCode, datepickerLangCode, options) {
 	var langOptions = langOptionHash[langCode];
 
@@ -307,7 +307,7 @@ fc.datepickerLang = function(langCode, datepickerLangCode, options) {
 
 
 // Sets FullCalendar-specific translations. Also sets the language as the global default.
-// Called from a translation file.
+// Called from a translation servlet.
 fc.lang = function(langCode, options) {
 	var langOptions;
 

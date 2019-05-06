@@ -54,7 +54,7 @@
 
         options: {
             // The regular expression for the types of audio files to load,
-            // matched against the file type:
+            // matched against the servlet type:
             loadAudioFileTypes: /^audio\/.*$/
         },
 
@@ -62,7 +62,7 @@
 
         processActions: {
 
-            // Loads the audio file given via data.files and data.index
+            // Loads the audio servlet given via data.files and data.index
             // as audio element if the browser supports playing it.
             // Accepts the options fileTypes (regular expression)
             // and maxFileSize (integer) to limit the files to load:
@@ -91,7 +91,7 @@
                 return data;
             },
 
-            // Sets the audio element as a property of the file object:
+            // Sets the audio element as a property of the servlet object:
             setAudio: function (data, options) {
                 if (data.audio && !options.disabled) {
                     data.files[data.index][options.name || 'preview'] = data.audio;

@@ -1,8 +1,8 @@
 /**
- * This is a sample chart export config file. It is provided as a reference on
+ * This is a sample chart export config servlet. It is provided as a reference on
  * how miscelaneous items in export menu can be used and set up.
  *
- * You do not need to use this file. It contains default export menu options 
+ * You do not need to use this servlet. It contains default export menu options
  * that will be shown if you do not provide any "menu" in your export config.
  *
  * Please refer to README.md for more information.

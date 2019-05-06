@@ -96,5 +96,5 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE SCRIPTS -->
-<script type="text/javascript" src="../../assets/module/scripts/project/export/export_result.js"></script>
+<script type="text/javascript" src="../../assets/module/scripts/project/exportBean/export_result.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

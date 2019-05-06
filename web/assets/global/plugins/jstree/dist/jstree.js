@@ -381,7 +381,7 @@
 			 */
 			name			: false,
 			/**
-			 * the URL of the theme's CSS file, leave this as `false` if you have manually included the theme CSS (recommended). You can set this to `true` too which will try to autoload the theme.
+			 * the URL of the theme's CSS servlet, leave this as `false` if you have manually included the theme CSS (recommended). You can set this to `true` too which will try to autoload the theme.
 			 * @name $.jstree.defaults.core.themes.url
 			 */
 			url				: false,
@@ -3890,7 +3890,7 @@
 		 * changes the theme
 		 * @name set_theme(theme_name [, theme_url])
 		 * @param {String} theme_name the name of the new theme to apply
-		 * @param {mixed} theme_url  the location of the CSS file for this theme. Omit or set to `false` if you manually included the file. Set to `true` to autoload from the `investigation.themes.dir` directory.
+		 * @param {mixed} theme_url  the location of the CSS servlet for this theme. Omit or set to `false` if you manually included the servlet. Set to `true` to autoload from the `investigation.themes.dir` directory.
 		 * @trigger set_theme.jstree
 		 */
 		set_theme : function (theme_name, theme_url) {

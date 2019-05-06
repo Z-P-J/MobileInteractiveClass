@@ -51,7 +51,7 @@ The plugin supports these options:
 		}
 	}
 
-More detail and specific examples can be found in the included HTML file.
+More detail and specific examples can be found in the included HTML servlet.
 
 */
 

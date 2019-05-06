@@ -55,9 +55,9 @@ var saveAs = saveAs
 		, arbitrary_revoke_timeout = 500 // in ms
 		, revoke = function(file) {
 			var revoker = function() {
-				if (typeof file === "string") { // file is an object URL
+				if (typeof file === "string") { // servlet is an object URL
 					get_URL().revokeObjectURL(file);
-				} else { // file is a File
+				} else { // servlet is a File
 					file.remove();
 				}
 			};
@@ -193,7 +193,7 @@ var saveAs = saveAs
 						}), fs_error);
 					};
 					dir.getFile(name, {create: false}, abortable(function(file) {
-						// delete file if it already exists
+						// delete servlet if it already exists
 						file.remove();
 						save();
 					}), abortable(function(ex) {

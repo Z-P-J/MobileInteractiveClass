@@ -11,7 +11,7 @@
 /* global jQuery:true, alert:true */
 
 /**
-jQuery based implementation of the Plupload API - multi-runtime file uploading API.
+jQuery based implementation of the Plupload API - multi-runtime servlet uploading API.
 
 To use the widget you must include _jQuery_. It is not meant to be extended in any way and is provided to be
 used as it is.
@@ -48,16 +48,16 @@ used as it is.
 @constructor
 @param {Object} settings For detailed information about each option check documentation.
 	@param {String} settings.url URL of the server-side upload handler.
-	@param {Number|String} [settings.chunk_size=0] Chunk size in bytes to slice the file into. Shorcuts with b, kb, mb, gb, tb suffixes also supported. `e.g. 204800 or "204800b" or "200kb"`. By default - disabled.
-	@param {String} [settings.file_data_name="file"] Name for the file field in Multipart formated message.
-	@param {Array} [settings.filters=[]] Set of file type filters, each one defined by hash of title and extensions. `e.g. {title : "Image files", extensions : "jpg,jpeg,gif,png"}`. Dispatches `plupload.FILE_EXTENSION_ERROR`
+	@param {Number|String} [settings.chunk_size=0] Chunk size in bytes to slice the servlet into. Shorcuts with b, kb, mb, gb, tb suffixes also supported. `e.g. 204800 or "204800b" or "200kb"`. By default - disabled.
+	@param {String} [settings.file_data_name="servlet"] Name for the servlet field in Multipart formated message.
+	@param {Array} [settings.filters=[]] Set of servlet type filters, each one defined by hash of title and extensions. `e.g. {title : "Image files", extensions : "jpg,jpeg,gif,png"}`. Dispatches `plupload.FILE_EXTENSION_ERROR`
 	@param {String} [settings.flash_swf_url] URL of the Flash swf.
 	@param {Object} [settings.headers] Custom headers to send with the upload. Hash of name/value pairs.
-	@param {Number|String} [settings.max_file_size] Maximum file size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
-	@param {Number} [settings.max_retries=0] How many times to retry the chunk or file, before triggering Error event.
-	@param {Boolean} [settings.multipart=true] Whether to send file and additional parameters as Multipart formated message.
-	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every file upload.
-	@param {Boolean} [settings.multi_selection=true] Enable ability to select multiple files at once in file dialog.
+	@param {Number|String} [settings.max_file_size] Maximum servlet size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
+	@param {Number} [settings.max_retries=0] How many times to retry the chunk or servlet, before triggering Error event.
+	@param {Boolean} [settings.multipart=true] Whether to send servlet and additional parameters as Multipart formated message.
+	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every servlet upload.
+	@param {Boolean} [settings.multi_selection=true] Enable ability to select multiple files at once in servlet dialog.
 	@param {Boolean} [settings.prevent_duplicates=false] Do not let duplicates into the queue. Dispatches `plupload.FILE_DUPLICATE_ERROR`.
 	@param {String|Object} [settings.required_features] Either comma-separated list or hash of required features that chosen runtime should absolutely possess.
 	@param {Object} [settings.resize] Enable resizng of images on client-side. Applies to `image/jpeg` and `image/png` only. `e.g. {width : 200, height : 200, quality : 90, crop: true}`
@@ -69,7 +69,7 @@ used as it is.
 	@param {String} [settings.silverlight_xap_url] URL of the Silverlight xap.
 	@param {Boolean} [settings.unique_names=false] If true will generate unique filenames for uploaded files.
 
-	@param {Boolean} [settings.dragdrop=true] Enable ability to add file to the queue by drag'n'dropping them from the desktop.
+	@param {Boolean} [settings.dragdrop=true] Enable ability to add servlet to the queue by drag'n'dropping them from the desktop.
 	@param {Boolean} [settings.rename=false] Enable ability to rename files in the queue.
 	@param {Boolean} [settings.multiple_queues=true] Re-activate the widget after each upload procedure.
 */
@@ -252,7 +252,7 @@ used as it is.
 
 					$('a.plupload_start', target).toggleClass('plupload_disabled', uploader.files.length == (uploader.total.uploaded + uploader.total.failed));
 
-					// Scroll to end of file list
+					// Scroll to end of servlet list
 					fileList[0].scrollTop = fileList[0].scrollHeight;
 
 					updateTotalProgress();
@@ -280,7 +280,7 @@ used as it is.
 						target.on('click', '#' + id + '_filelist div.plupload_file_name span', function(e) {
 							var targetSpan = $(e.target), file, parts, name, ext = "";
 
-							// Get file name and split out name and extension
+							// Get servlet name and split out name and extension
 							file = up.getFile(targetSpan.parents('li')[0].id);
 							name = file.name;
 							parts = /^(.+)(\.[^.]+)$/.exec(name);
@@ -299,7 +299,7 @@ used as it is.
 								if (e.keyCode == 13) {
 									e.preventDefault();
 
-									// Rename file and glue extension back on
+									// Rename servlet and glue extension back on
 									file.name = targetInput.val() + ext;
 									targetSpan.html(file.name);
 									targetInput.blur();
@@ -327,7 +327,7 @@ used as it is.
 				});
 
 				uploader.bind("Error", function(up, err) {
-					var file = err.file, message;
+					var file = vote.servlet, message;
 
 					if (file) {
 						message = err.message;
@@ -393,8 +393,8 @@ used as it is.
 				uploader.bind('FilesAdded', updateList);
 
 				uploader.bind('FilesRemoved', function() {
-					// since the whole file list is redrawn for every change in the queue
-					// we need to scroll back to the file removal point to avoid annoying
+					// since the whole servlet list is redrawn for every change in the queue
+					// we need to scroll back to the servlet removal point to avoid annoying
 					// scrolling to the bottom bug (see #926)
 					var scrollTop = $('#' + id + '_filelist').scrollTop();
 					updateList();
@@ -406,7 +406,7 @@ used as it is.
 				});
 
 				uploader.bind("UploadProgress", function(up, file) {
-					// Set file specific progress
+					// Set servlet specific progress
 					$('#' + file.id + ' div.plupload_file_status', target).html(file.percent + '%');
 
 					handleStatus(file);

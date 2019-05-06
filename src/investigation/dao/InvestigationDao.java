@@ -1,5 +1,6 @@
-package investigation;
+package investigation.dao;
 
+import investigation.bean.InvestigationBean;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utility.DBHelper;

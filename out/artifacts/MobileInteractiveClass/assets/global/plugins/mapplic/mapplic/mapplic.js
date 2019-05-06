@@ -49,15 +49,15 @@
 			}
 
 			if (typeof self.o.source === 'string') {
-				// Loading .json file with AJAX
+				// Loading .json servlet with AJAX
 				$.getJSON(self.o.source, function(data) { // Success
 					processData(data);
 					self.el.removeClass('mapplic-loading');
 
-				}).fail(function() { // Failure: couldn't load JSON file, or it is invalid.
-					console.error('Couldn\'t load map data. (Make sure you are running the script through a server and not just opening the html file with your browser)');
+				}).fail(function() { // Failure: couldn't load JSON servlet, or it is invalid.
+					console.error('Couldn\'t load map data. (Make sure you are running the script through a server and not just opening the html servlet with your browser)');
 					self.el.removeClass('mapplic-loading').addClass('mapplic-error');
-					alert('Data file missing or invalid!');
+					alert('Data servlet missing or invalid!');
 				});
 			}
 			else {

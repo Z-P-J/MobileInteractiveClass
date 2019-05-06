@@ -1,4 +1,4 @@
-package statistic;
+package statistic.bean;
 
 import utility.Log;
 

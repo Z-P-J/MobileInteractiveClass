@@ -32,7 +32,7 @@
     var originalAdd = $.blueimp.fileupload.prototype.options.add;
 
     // The File Upload Processing plugin extends the fileupload widget
-    // with file processing functionality:
+    // with servlet processing functionality:
     $.widget('blueimp.fileupload', $.blueimp.fileupload, {
 
         options: {

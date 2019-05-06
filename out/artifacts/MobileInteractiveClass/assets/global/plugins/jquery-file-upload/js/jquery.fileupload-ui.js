@@ -40,7 +40,7 @@
         'downloadTemplateId'
     );
 
-    // The UI version extends the file upload widget
+    // The UI version extends the servlet upload widget
     // and adds complete user interface interaction:
     $.widget('blueimp.fileupload', $.blueimp.fileupload, {
 
@@ -84,8 +84,8 @@
             },
 
             // The add callback is invoked as soon as files are added to the fileupload
-            // widget (via file input selection, drag & drop or add API call).
-            // See the basic file upload widget for more information:
+            // widget (via servlet input selection, drag & drop or add API call).
+            // See the basic servlet upload widget for more information:
             add: function (e, data) {
                 if (e.isDefaultPrevented()) {
                     return false;
@@ -129,7 +129,7 @@
                     }
                 });
             },
-            // Callback for the start of each file upload request:
+            // Callback for the start of each servlet upload request:
             send: function (e, data) {
                 if (e.isDefaultPrevented()) {
                     return false;
@@ -168,7 +168,7 @@
                 if (data.context) {
                     data.context.each(function (index) {
                         var file = files[index] ||
-                                {error: 'Empty file upload result'};
+                                {error: 'Empty servlet upload result'};
                         deferred = that._addFinishedDeferreds();
                         that._transition($(this)).done(
                             function () {
@@ -357,7 +357,7 @@
                 }
                 $(this).removeClass('fileupload-processing');
             },
-            // Callback for file deletion:
+            // Callback for servlet deletion:
             destroy: function (e, data) {
                 if (e.isDefaultPrevented()) {
                     return false;

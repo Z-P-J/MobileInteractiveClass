@@ -8,9 +8,13 @@ import utility.excel.ExcelWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author 25714
+ */
 public class ExportUtil {
 
     private ExportUtil() {
@@ -29,7 +33,12 @@ public class ExportUtil {
     }
 
     public static JSONObject exportRecord(HttpServletRequest request, HttpServletResponse response, String module, String sub, String tableNick) throws Exception {
-        String exportFilePathName = "C:\\upload\\" + module + "\\" + sub + "\\export\\export_" + (new SimpleDateFormat("yyyyMMddHHmmss")).format(new Date()) + ".xls";
+        File folder = new File("C:\\upload\\" + module + "\\export");
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+        String exportFilePathName = folder.getPath() + "\\" + module + "_" + sub + "_" + "export_" + TimeUtil.currentDate("yyyyMMddHHmmss") + ".xls";
+        Log.d("exportRecord", "exportFilePathName=" + exportFilePathName);
 
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
@@ -73,6 +82,7 @@ public class ExportUtil {
         jsonObj.put("result_code", 0);
         //"../export/export_result.jsp?exist_resultset=1"
         jsonObj.put("redirect_url", "../investigation/list.jsp?exist_resultset=1");
+        jsonObj.put("result_url", "base/export/export_result.jsp");
         /*--------------------数据查询完毕，根据交互方式返回数据--------------------*/
         return jsonObj;
 

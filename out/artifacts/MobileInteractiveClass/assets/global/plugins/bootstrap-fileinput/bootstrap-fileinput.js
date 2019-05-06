@@ -5,7 +5,7 @@
  * Copyright 2012-2014 Arnold Daniels
  *
  * Licensed under the Apache License, Version 2.0 (the "License")
- * you may not use this file except in compliance with the License.
+ * you may not use this servlet except in compliance with the License.
  * You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -27,7 +27,7 @@
   var Fileinput = function (element, options) {
     this.$element = $(element)
     
-    this.$input = this.$element.find(':file')
+    this.$input = this.$element.find(':servlet')
     if (this.$input.length === 0) return
 
     this.name = this.$input.attr('name') || options.name
@@ -115,7 +115,7 @@
     this.$hidden.attr('name', this.name)
     this.$input.attr('name', '')
 
-    //ie8+ doesn't support changing the value of input with type=file so clone instead
+    //ie8+ doesn't support changing the value of input with type=servlet so clone instead
     if (isIE) { 
       var inputClone = this.$input.clone(true);
       this.$input.after(inputClone);

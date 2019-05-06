@@ -875,7 +875,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
 /**
 Attaches stand-alone container with editable-form to HTML element. Element is used only for positioning, value is not stored anywhere.<br>
 This method applied internally in <code>$().editable()</code>. You should subscribe on it's events (save / cancel) to get profit of it.<br>
-Final realization can be different: bootstrap-popover, jqueryui-tooltip, poshytip, inline-div. It depends on which js file you include.<br>
+Final realization can be different: bootstrap-popover, jqueryui-tooltip, poshytip, inline-div. It depends on which js servlet you include.<br>
 Applied as jQuery method.
 
 @class editableContainer
@@ -972,7 +972,7 @@ Applied as jQuery method.
             this.formOptions = {};
             
             if(!$.fn[this.containerName]) {
-                throw new Error(this.containerName + ' not found. Have you included corresponding js file?');   
+                throw new Error(this.containerName + ' not found. Have you included corresponding js servlet?');
             }
             
             var cDef = $.fn[this.containerName].defaults;
@@ -3829,7 +3829,7 @@ $(function(){
 * Dropdown date and time picker.
 * Converts text input into dropdowns to pick day, month, year, hour, minute and second.
 * Uses momentjs as datetime library http://momentjs.com.
-* For internalization include corresponding file from https://github.com/timrwood/moment/tree/master/lang 
+* For internalization include corresponding servlet from https://github.com/timrwood/moment/tree/master/lang
 *
 * Confusion at noon and midnight - see http://en.wikipedia.org/wiki/12-hour_clock#Confusion_at_noon_and_midnight
 * In combodate: 
@@ -4681,7 +4681,7 @@ Editableform based on Twitter Bootstrap
  * Improvements by Andrew Rowls
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * you may not use this servlet except in compliance with the License.
  * You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -5931,7 +5931,7 @@ Editableform based on Twitter Bootstrap
 /**
 Bootstrap-datepicker.  
 Description and examples: https://github.com/eternicode/bootstrap-datepicker.  
-For **i18n** you should include js file from here: https://github.com/eternicode/bootstrap-datepicker/tree/master/js/locales
+For **i18n** you should include js servlet from here: https://github.com/eternicode/bootstrap-datepicker/tree/master/js/locales
 and set `language` option.  
 Since 1.4.0 date has different appearance in **popup** and **inline** modes. 
 
@@ -6247,7 +6247,7 @@ Before usage you should manually include dependent js and css:
     <link href="css/datetimepicker.css" rel="stylesheet" type="text/css"></link> 
     <script src="js/bootstrap-datetimepicker.js"></script>
 
-For **i18n** you should include js file from here: https://github.com/smalot/bootstrap-datetimepicker/tree/master/js/locales
+For **i18n** you should include js servlet from here: https://github.com/smalot/bootstrap-datetimepicker/tree/master/js/locales
 and set `language` option.  
 
 @class datetime

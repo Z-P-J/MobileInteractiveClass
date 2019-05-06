@@ -441,7 +441,7 @@
                 }
 
                 .MsoChpDefault {
-                    mso-style-type: export-only;
+                    mso-style-type: exportBean-only;
                     mso-default-props: yes;
                     mso-bidi-font-family: "Times New Roman";
                     mso-bidi-theme-font: minor-bidi;

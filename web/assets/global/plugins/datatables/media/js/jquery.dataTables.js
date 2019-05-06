@@ -6,15 +6,15 @@
  * @summary     DataTables
  * @description Paginate, search and order HTML tables
  * @version     1.10.2
- * @file        jquery.dataTables.js
+ * @servlet        jquery.dataTables.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
  * @copyright   Copyright 2008-2014 SpryMedia Ltd.
  *
- * This source file is free software, available under the following license:
+ * This source servlet is free software, available under the following license:
  *   MIT license - http://datatables.net/license
  *
- * This source file is distributed in the hope that it will be useful, but
+ * This source servlet is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
  *
@@ -6178,7 +6178,7 @@
 			/* Language definitions */
 			if ( oInit.oLanguage.sUrl !== "" )
 			{
-				/* Get the language definitions from a file - because this Ajax call makes the language
+				/* Get the language definitions from a servlet - because this Ajax call makes the language
 				 * get async to the remainder of this function we use bInitHandedOff to indicate that
 				 * _fnInitialise will be fired by the returned Ajax handler, rather than the constructor
 				 */
@@ -9508,14 +9508,14 @@
 		 *  @since 1.10.0
 		 *
 		 * @example
-		 *   // Get JSON data from a file via Ajax.
+		 *   // Get JSON data from a servlet via Ajax.
 		 *   // Note DataTables expects data in the form `{ data: [ ...data... ] }` by default).
 		 *   $('#example').dataTable( {
 		 *     "ajax": "data.json"
 		 *   } );
 		 *
 		 * @example
-		 *   // Get JSON data from a file via Ajax, using `dataSrc` to change
+		 *   // Get JSON data from a servlet via Ajax, using `dataSrc` to change
 		 *   // `data` to `tableData` (i.e. `{ tableData: [ ...data... ] }`)
 		 *   $('#example').dataTable( {
 		 *     "ajax": {
@@ -9525,7 +9525,7 @@
 		 *   } );
 		 *
 		 * @example
-		 *   // Get JSON data from a file via Ajax, using `dataSrc` to read data
+		 *   // Get JSON data from a servlet via Ajax, using `dataSrc` to read data
 		 *   // from a plain array rather than an array in an object
 		 *   $('#example').dataTable( {
 		 *     "ajax": {
@@ -11166,9 +11166,9 @@
 	
 	
 			/**
-			 * All of the language information can be stored in a file on the
+			 * All of the language information can be stored in a servlet on the
 			 * server-side, which DataTables will look up if this parameter is passed.
-			 * It must store the URL of the language file, which is in a JSON format,
+			 * It must store the URL of the language servlet, which is in a JSON format,
 			 * and the object has the same properties as the oLanguage object in the
 			 * initialiser object (i.e. the above parameters). Please refer to one of
 			 * the example language files to see how this works in action.

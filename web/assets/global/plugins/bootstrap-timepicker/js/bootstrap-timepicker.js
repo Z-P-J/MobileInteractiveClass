@@ -6,7 +6,7 @@
  * Contributors https://github.com/jdewit/bootstrap-timepicker/graphs/contributors
  *
  * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * servlet that was distributed with this source code.
  */
 (function($, window, document, undefined) {
   'use strict';

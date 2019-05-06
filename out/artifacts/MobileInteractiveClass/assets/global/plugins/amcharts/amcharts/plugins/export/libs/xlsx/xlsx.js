@@ -945,7 +945,7 @@ for(var q, j = 0; j < 109; ++j) { /* 109 = (512 - blob.l)>>>2; */
 	fat_addrs[j] = q;
 }
 
-/** Break the file up into sectors */
+/** Break the servlet up into sectors */
 var sectors = sectorify(file, ssz);
 
 sleuth_fat(difat_start, ndfs, sectors, ssz, fat_addrs);
@@ -1013,7 +1013,7 @@ function check_shifts(blob, mver) {
 	blob.chk('000000000000', 'Reserved: ');
 }
 
-/** Break the file up into sectors */
+/** Break the servlet up into sectors */
 function sectorify(file, ssz) {
 	var nsectors = Math.ceil(file.length/ssz)-1;
 	var sectors = new Array(nsectors);
@@ -1207,7 +1207,7 @@ function readFileSync(filename, options) {
 
 function readSync(blob, options) {
 	switch(options !== undefined && options.type !== undefined ? options.type : "base64") {
-		case "file": return readFileSync(blob, options);
+		case "servlet": return readFileSync(blob, options);
 		case "base64": return parse(s2a(Base64.decode(blob)), options);
 		case "binary": return parse(s2a(blob), options);
 	}
@@ -1321,7 +1321,7 @@ function safegetzipfile(zip, file) {
 
 function getzipfile(zip, file) {
 	var o = safegetzipfile(zip, file);
-	if(o == null) throw new Error("Cannot find file " + file + " in zip");
+	if(o == null) throw new Error("Cannot find servlet " + file + " in zip");
 	return o;
 }
 
@@ -1372,7 +1372,7 @@ var encodings = {
 var rencoding = evert(encodings);
 var rencstr = "&<>'\"".split("");
 
-// TODO: CP remap (need to read file version to determine OS)
+// TODO: CP remap (need to read servlet version to determine OS)
 var unescapexml = (function() {
 	var encregex = /&[a-z]*;/g, coderegex = /_x([\da-fA-F]+)_/g;
 	return function unescapexml(text){
@@ -5048,7 +5048,7 @@ function parse_theme_xml(data, opts) {
 }
 
 function write_theme() { return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Office Theme"><a:themeElements><a:clrScheme name="Office"><a:dk1><a:sysClr val="windowText" lastClr="000000"/></a:dk1><a:lt1><a:sysClr val="window" lastClr="FFFFFF"/></a:lt1><a:dk2><a:srgbClr val="1F497D"/></a:dk2><a:lt2><a:srgbClr val="EEECE1"/></a:lt2><a:accent1><a:srgbClr val="4F81BD"/></a:accent1><a:accent2><a:srgbClr val="C0504D"/></a:accent2><a:accent3><a:srgbClr val="9BBB59"/></a:accent3><a:accent4><a:srgbClr val="8064A2"/></a:accent4><a:accent5><a:srgbClr val="4BACC6"/></a:accent5><a:accent6><a:srgbClr val="F79646"/></a:accent6><a:hlink><a:srgbClr val="0000FF"/></a:hlink><a:folHlink><a:srgbClr val="800080"/></a:folHlink></a:clrScheme><a:fontScheme name="Office"><a:majorFont><a:latin typeface="Cambria"/><a:ea typeface=""/><a:cs typeface=""/><a:font script="Jpan" typeface="ＭＳ Ｐゴシック"/><a:font script="Hang" typeface="맑은 고딕"/><a:font script="Hans" typeface="宋体"/><a:font script="Hant" typeface="新細明體"/><a:font script="Arab" typeface="Times New Roman"/><a:font script="Hebr" typeface="Times New Roman"/><a:font script="Thai" typeface="Tahoma"/><a:font script="Ethi" typeface="Nyala"/><a:font script="Beng" typeface="Vrinda"/><a:font script="Gujr" typeface="Shruti"/><a:font script="Khmr" typeface="MoolBoran"/><a:font script="Knda" typeface="Tunga"/><a:font script="Guru" typeface="Raavi"/><a:font script="Cans" typeface="Euphemia"/><a:font script="Cher" typeface="Plantagenet Cherokee"/><a:font script="Yiii" typeface="Microsoft Yi Baiti"/><a:font script="Tibt" typeface="Microsoft Himalaya"/><a:font script="Thaa" typeface="MV Boli"/><a:font script="Deva" typeface="Mangal"/><a:font script="Telu" typeface="Gautami"/><a:font script="Taml" typeface="Latha"/><a:font script="Syrc" typeface="Estrangelo Edessa"/><a:font script="Orya" typeface="Kalinga"/><a:font script="Mlym" typeface="Kartika"/><a:font script="Laoo" typeface="DokChampa"/><a:font script="Sinh" typeface="Iskoola Pota"/><a:font script="Mong" typeface="Mongolian Baiti"/><a:font script="Viet" typeface="Times New Roman"/><a:font script="Uigh" typeface="Microsoft Uighur"/><a:font script="Geor" typeface="Sylfaen"/></a:majorFont><a:minorFont><a:latin typeface="Calibri"/><a:ea typeface=""/><a:cs typeface=""/><a:font script="Jpan" typeface="ＭＳ Ｐゴシック"/><a:font script="Hang" typeface="맑은 고딕"/><a:font script="Hans" typeface="宋体"/><a:font script="Hant" typeface="新細明體"/><a:font script="Arab" typeface="Arial"/><a:font script="Hebr" typeface="Arial"/><a:font script="Thai" typeface="Tahoma"/><a:font script="Ethi" typeface="Nyala"/><a:font script="Beng" typeface="Vrinda"/><a:font script="Gujr" typeface="Shruti"/><a:font script="Khmr" typeface="DaunPenh"/><a:font script="Knda" typeface="Tunga"/><a:font script="Guru" typeface="Raavi"/><a:font script="Cans" typeface="Euphemia"/><a:font script="Cher" typeface="Plantagenet Cherokee"/><a:font script="Yiii" typeface="Microsoft Yi Baiti"/><a:font script="Tibt" typeface="Microsoft Himalaya"/><a:font script="Thaa" typeface="MV Boli"/><a:font script="Deva" typeface="Mangal"/><a:font script="Telu" typeface="Gautami"/><a:font script="Taml" typeface="Latha"/><a:font script="Syrc" typeface="Estrangelo Edessa"/><a:font script="Orya" typeface="Kalinga"/><a:font script="Mlym" typeface="Kartika"/><a:font script="Laoo" typeface="DokChampa"/><a:font script="Sinh" typeface="Iskoola Pota"/><a:font script="Mong" typeface="Mongolian Baiti"/><a:font script="Viet" typeface="Arial"/><a:font script="Uigh" typeface="Microsoft Uighur"/><a:font script="Geor" typeface="Sylfaen"/></a:minorFont></a:fontScheme><a:fmtScheme name="Office"><a:fillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:tint val="50000"/><a:satMod val="300000"/></a:schemeClr></a:gs><a:gs pos="35000"><a:schemeClr val="phClr"><a:tint val="37000"/><a:satMod val="300000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:tint val="15000"/><a:satMod val="350000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="16200000" scaled="1"/></a:gradFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:tint val="100000"/><a:shade val="100000"/><a:satMod val="130000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:tint val="50000"/><a:shade val="100000"/><a:satMod val="350000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="16200000" scaled="0"/></a:gradFill></a:fillStyleLst><a:lnStyleLst><a:ln w="9525" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"><a:shade val="95000"/><a:satMod val="105000"/></a:schemeClr></a:solidFill><a:prstDash val="solid"/></a:ln><a:ln w="25400" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/></a:ln><a:ln w="38100" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/></a:ln></a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst><a:outerShdw blurRad="40000" dist="20000" dir="5400000" rotWithShape="0"><a:srgbClr val="000000"><a:alpha val="38000"/></a:srgbClr></a:outerShdw></a:effectLst></a:effectStyle><a:effectStyle><a:effectLst><a:outerShdw blurRad="40000" dist="23000" dir="5400000" rotWithShape="0"><a:srgbClr val="000000"><a:alpha val="35000"/></a:srgbClr></a:outerShdw></a:effectLst></a:effectStyle><a:effectStyle><a:effectLst><a:outerShdw blurRad="40000" dist="23000" dir="5400000" rotWithShape="0"><a:srgbClr val="000000"><a:alpha val="35000"/></a:srgbClr></a:outerShdw></a:effectLst><a:scene3d><a:camera prst="orthographicFront"><a:rot lat="0" lon="0" rev="0"/></a:camera><a:lightRig rig="threePt" dir="t"><a:rot lat="0" lon="0" rev="1200000"/></a:lightRig></a:scene3d><a:sp3d><a:bevelT w="63500" h="25400"/></a:sp3d></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:tint val="40000"/><a:satMod val="350000"/></a:schemeClr></a:gs><a:gs pos="40000"><a:schemeClr val="phClr"><a:tint val="45000"/><a:shade val="99000"/><a:satMod val="350000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:shade val="20000"/><a:satMod val="255000"/></a:schemeClr></a:gs></a:gsLst><a:path path="circle"><a:fillToRect l="50000" t="-80000" r="50000" b="180000"/></a:path></a:gradFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:tint val="80000"/><a:satMod val="300000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:shade val="30000"/><a:satMod val="200000"/></a:schemeClr></a:gs></a:gsLst><a:path path="circle"><a:fillToRect l="50000" t="50000" r="50000" b="50000"/></a:path></a:gradFill></a:bgFillStyleLst></a:fmtScheme></a:themeElements><a:objectDefaults><a:spDef><a:spPr/><a:bodyPr/><a:lstStyle/><a:style><a:lnRef idx="1"><a:schemeClr val="accent1"/></a:lnRef><a:fillRef idx="3"><a:schemeClr val="accent1"/></a:fillRef><a:effectRef idx="2"><a:schemeClr val="accent1"/></a:effectRef><a:fontRef idx="minor"><a:schemeClr val="lt1"/></a:fontRef></a:style></a:spDef><a:lnDef><a:spPr/><a:bodyPr/><a:lstStyle/><a:style><a:lnRef idx="2"><a:schemeClr val="accent1"/></a:lnRef><a:fillRef idx="0"><a:schemeClr val="accent1"/></a:fillRef><a:effectRef idx="1"><a:schemeClr val="accent1"/></a:effectRef><a:fontRef idx="minor"><a:schemeClr val="tx1"/></a:fontRef></a:style></a:lnDef></a:objectDefaults><a:extraClrSchemeLst/></a:theme>'; }
-/* [MS-XLS] 2.4.326 TODO: payload is a zip file */
+/* [MS-XLS] 2.4.326 TODO: payload is a zip servlet */
 function parse_Theme(blob, length) {
 	var dwThemeVersion = blob.read_shift(4);
 	if(dwThemeVersion === 124226) return;
@@ -9168,7 +9168,7 @@ function parse_xlml(data, opts) {
 	fix_read_opts(opts=opts||{});
 	switch(opts.type||"base64") {
 		case "base64": return parse_xlml_xml(Base64.decode(data), opts);
-		case "binary": case "buffer": case "file": return parse_xlml_xml(data, opts);
+		case "binary": case "buffer": case "servlet": return parse_xlml_xml(data, opts);
 		case "array": return parse_xlml_xml(data.map(_chr).join(""), opts);
 	}
 }
@@ -11109,7 +11109,7 @@ var fix_read_opts = fix_opts_func([
 	['bookDeps', false], /* parse calculation chains */
 	['bookSheets', false], /* only try to get sheet names (no Sheets) */
 	['bookProps', false], /* only try to get properties (no Sheets) */
-	['bookFiles', false], /* include raw file structure (keys, files, cfb) */
+	['bookFiles', false], /* include raw servlet structure (keys, files, cfb) */
 	['bookVBA', false], /* include vba raw data (vbaraw) */
 
 	['password',''], /* password */
@@ -11299,7 +11299,7 @@ function write_zip(wb, opts) {
 	get_cell_style(opts.cellXfs, {}, {revssf:{"General":0}});
 
 	f = "docProps/investigation.xml";
-	zip.file(f, write_core_props(wb.Props, opts));
+	vote.servlet(f, write_core_props(wb.Props, opts));
 	ct.coreprops.push(f);
 	add_rels(opts.rels, 2, f, RELS.CORE_PROPS);
 
@@ -11307,32 +11307,32 @@ function write_zip(wb, opts) {
 	if(!wb.Props) wb.Props = {};
 	wb.Props.SheetNames = wb.SheetNames;
 	wb.Props.Worksheets = wb.SheetNames.length;
-	zip.file(f, write_ext_props(wb.Props, opts));
+	vote.servlet(f, write_ext_props(wb.Props, opts));
 	ct.extprops.push(f);
 	add_rels(opts.rels, 3, f, RELS.EXT_PROPS);
 
 	if(wb.Custprops !== wb.Props && keys(wb.Custprops||{}).length > 0) {
 		f = "docProps/custom.xml";
-		zip.file(f, write_cust_props(wb.Custprops, opts));
+		vote.servlet(f, write_cust_props(wb.Custprops, opts));
 		ct.custprops.push(f);
 		add_rels(opts.rels, 4, f, RELS.CUST_PROPS);
 	}
 
 	f = "xl/workbook." + wbext;
-	zip.file(f, write_wb(wb, f, opts));
+	vote.servlet(f, write_wb(wb, f, opts));
 	ct.workbooks.push(f);
 	add_rels(opts.rels, 1, f, RELS.WB);
 
 	for(rId=1;rId <= wb.SheetNames.length; ++rId) {
 		f = "xl/worksheets/sheet" + rId + "." + wbext;
-		zip.file(f, write_ws(rId-1, f, opts, wb));
+		vote.servlet(f, write_ws(rId-1, f, opts, wb));
 		ct.sheets.push(f);
 		add_rels(opts.wbrels, rId, "worksheets/sheet" + rId + "." + wbext, RELS.WS);
 	}
 
 	if(opts.Strings != null && opts.Strings.length > 0) {
 		f = "xl/sharedStrings." + wbext;
-		zip.file(f, write_sst(opts.Strings, f, opts));
+		vote.servlet(f, write_sst(opts.Strings, f, opts));
 		ct.strs.push(f);
 		add_rels(opts.wbrels, ++rId, "sharedStrings." + wbext, RELS.SST);
 	}
@@ -11340,20 +11340,20 @@ function write_zip(wb, opts) {
 	/* TODO: something more intelligent with themes */
 
 	f = "xl/theme/theme1.xml";
-	zip.file(f, write_theme());
+	vote.servlet(f, write_theme());
 	ct.themes.push(f);
 	add_rels(opts.wbrels, ++rId, "theme/theme1.xml", RELS.THEME);
 
 	/* TODO: something more intelligent with styles */
 
 	f = "xl/styles." + wbext;
-	zip.file(f, write_sty(wb, f, opts));
+	vote.servlet(f, write_sty(wb, f, opts));
 	ct.styles.push(f);
 	add_rels(opts.wbrels, ++rId, "styles." + wbext, RELS.STY);
 
-	zip.file("[Content_Types].xml", write_ct(ct, opts));
-	zip.file('_rels/.rels', write_rels(opts.rels));
-	zip.file('xl/_rels/workbook.' + wbext + '.rels', write_rels(opts.wbrels));
+	vote.servlet("[Content_Types].xml", write_ct(ct, opts));
+	vote.servlet('_rels/.rels', write_rels(opts.rels));
+	vote.servlet('xl/_rels/workbook.' + wbext + '.rels', write_rels(opts.wbrels));
 	return zip;
 }
 function firstbyte(f,o) {
@@ -11374,7 +11374,7 @@ function read_zip(data, opts) {
 		case "base64": zip = new jszip(d, { base64:true }); break;
 		case "binary": case "array": zip = new jszip(d, { base64:false }); break;
 		case "buffer": zip = new jszip(d); break;
-		case "file": zip=new jszip(d=_fs.readFileSync(data)); break;
+		case "servlet": zip=new jszip(d=_fs.readFileSync(data)); break;
 		default: throw new Error("Unrecognized type " + o.type);
 	}
 	return parse_zip(zip, o);
@@ -11384,22 +11384,22 @@ function readSync(data, opts) {
 	var zip, d = data, isfile = false, n;
 	var o = opts||{};
 	if(!o.type) o.type = (has_buf && Buffer.isBuffer(data)) ? "buffer" : "base64";
-	if(o.type == "file") { isfile = true; o.type = "buffer"; d = _fs.readFileSync(data); }
+	if(o.type == "servlet") { isfile = true; o.type = "buffer"; d = _fs.readFileSync(data); }
 	switch((n = firstbyte(d, o))) {
 		case 0xD0:
-			if(isfile) o.type = "file";
+			if(isfile) o.type = "servlet";
 			return parse_xlscfb(CFB.read(data, o), o);
 		case 0x09: return parse_xlscfb(s2a(o.type === 'base64' ? Base64.decode(data) : data), o);
 		case 0x3C: return parse_xlml(d, o);
 		case 0x50:
-			if(isfile) o.type = "file";
+			if(isfile) o.type = "servlet";
 			return read_zip(data, opts);
-		default: throw new Error("Unsupported file " + n);
+		default: throw new Error("Unsupported servlet " + n);
 	}
 }
 
 function readFileSync(data, opts) {
-	var o = opts||{}; o.type = 'file';
+	var o = opts||{}; o.type = 'servlet';
 	return readSync(data, o);
 }
 function write_zip_type(wb, opts) {
@@ -11409,7 +11409,7 @@ function write_zip_type(wb, opts) {
 		case "base64": return z.generate({type:"base64"});
 		case "binary": return z.generate({type:"string"});
 		case "buffer": return z.generate({type:"nodebuffer"});
-		case "file": return _fs.writeFileSync(o.file, z.generate({type:"nodebuffer"}));
+		case "servlet": return _fs.writeFileSync(vote.servlet, z.generate({type:"nodebuffer"}));
 		default: throw new Error("Unrecognized type " + o.type);
 	}
 }
@@ -11423,7 +11423,7 @@ function writeSync(wb, opts) {
 }
 
 function writeFileSync(wb, filename, opts) {
-	var o = opts||{}; o.type = 'file';
+	var o = opts||{}; o.type = 'servlet';
 	o.file = filename;
 	switch(o.file.substr(-5).toLowerCase()) {
 		case '.xlsx': o.bookType = 'xlsx'; break;

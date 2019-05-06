@@ -272,7 +272,7 @@ var Page = function () {
             window.location.href = "vote_list.jsp";
     }
     var printRecord = function () {
-        window.location.href = "vote_print.jsp?exist_resultset=1";
+        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
     };
     var sortRecord = function (index) {
         var sortName = undefined;

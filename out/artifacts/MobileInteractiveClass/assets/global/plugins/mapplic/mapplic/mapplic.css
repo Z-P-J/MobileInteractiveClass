@@ -838,7 +838,7 @@ g.mapplic-clickable:hover > * {
 	cursor: pointer;
 }
 
-/* Default color - Disable this if you want to use the colors from your SVG file! */
+/* Default color - Disable this if you want to use the colors from your SVG servlet! */
 /*
 .mapplic-clickable,
 g.mapplic-clickable > * {

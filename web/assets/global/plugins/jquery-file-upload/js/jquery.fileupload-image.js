@@ -109,9 +109,9 @@
 
         options: {
             // The regular expression for the types of images to load:
-            // matched against the file type:
+            // matched against the servlet type:
             loadImageFileTypes: /^image\/(gif|jpeg|png|svg\+xml)$/,
-            // The maximum file size of images to load:
+            // The maximum servlet size of images to load:
             loadImageMaxFileSize: 10000000, // 10MB
             // The maximum width of resized images:
             imageMaxWidth: 1920,
@@ -246,7 +246,7 @@
                                 delete data.imageHead;
                             }
                             // Store the created blob at the position
-                            // of the original file in the files list:
+                            // of the original servlet in the files list:
                             data.files[data.index] = blob;
                             dfd.resolveWith(that, [data]);
                         },
@@ -290,7 +290,7 @@
             },
 
             // Sets the resized version of the image as a property of the
-            // file object, must be called after "saveImage":
+            // servlet object, must be called after "saveImage":
             setImage: function (data, options) {
                 if (data.preview && !options.disabled) {
                     data.files[data.index][options.name || 'preview'] = data.preview;

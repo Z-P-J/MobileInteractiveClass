@@ -5,15 +5,14 @@ package statistic;
  */
 
 import base.BaseHttpServlet;
-import org.jfree.data.DefaultCategoryDataset;
-import org.jfree.data.DefaultPieDataset;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import statistic.bean.StatisticBean;
+import statistic.dao.StatisticDao;
 import utility.Log;
 import utility.LogEvent;
 import utility.TimeUtil;
-import utility.export.Export;
+import utility.export.ExportBean;
 import utility.export.ExportDao;
 import utility.export.ExportUtil;
 
@@ -24,7 +23,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * @author 25714
@@ -342,9 +340,9 @@ public class ServletAction extends BaseHttpServlet {
         String dateTime = TimeUtil.currentDate();
         sessionId = session.getId();
         fileName = "zakk_statistic_export_" + sessionId + "_" + dateTime + ".xls";
-        filePath = "C:\\upload\\project\\export\\temp";
+        filePath = "C:\\upload\\project\\exportBean\\temp";
         filePathName = filePath + "\\" + fileName;
-        fileUrl = "/upload/project/export/temp/" + fileName;
+        fileUrl = "/upload/project/exportBean/temp/" + fileName;
         /*--------------------赋值完毕--------------------*/
         String dbName = (String) session.getAttribute("unit_db_name");
         String action = request.getParameter("action");
@@ -364,23 +362,23 @@ public class ServletAction extends BaseHttpServlet {
         //如果是新的下载，就执行，否则检查有没有线程在运行，如果有就进入，如果没有就新下载
         /*----------------------------------------构造返回数值*/
         ExportDao exportDao = new ExportDao();
-        Export export = new Export();
-        export.setSessionId(session.getId());
-        export.setCreateTime(createTime);
-        export.setCreator(creator);
-        export.setUserId(userId);
-        export.setUserName(userName);
-        export.setDbName(dbName);
-        export.setExportStatus("1");
-        export.setFileName(fileName);
-        export.setFilePath(filePath.replaceAll("\\\\", "/"));
-        export.setFileUrl(fileUrl);
-        export.setFileSize(fileSize);
-        export.setLimitTime(createTime);
-        export.setDownloadCount("0");
-        export.setExportPercent("0");
-        export.setExportType("1");
-        processExportThread(request, response, export);
+        ExportBean exportBean = new ExportBean();
+        exportBean.setSessionId(session.getId());
+        exportBean.setCreateTime(createTime);
+        exportBean.setCreator(creator);
+        exportBean.setUserId(userId);
+        exportBean.setUserName(userName);
+        exportBean.setDbName(dbName);
+        exportBean.setExportStatus("1");
+        exportBean.setFileName(fileName);
+        exportBean.setFilePath(filePath.replaceAll("\\\\", "/"));
+        exportBean.setFileUrl(fileUrl);
+        exportBean.setFileSize(fileSize);
+        exportBean.setLimitTime(createTime);
+        exportBean.setDownloadCount("0");
+        exportBean.setExportPercent("0");
+        exportBean.setExportType("1");
+        processExportThread(request, response, exportBean);
 
         boolean isAjax = true;
         if (request.getHeader("x-requested-with") == null) {
@@ -410,7 +408,7 @@ public class ServletAction extends BaseHttpServlet {
     /*
      * 功能：开启线程，进行导出
      */
-    private void processExportThread(HttpServletRequest request, HttpServletResponse response, Export export) throws SQLException, IOException, ServletException, JSONException {
+    private void processExportThread(HttpServletRequest request, HttpServletResponse response, ExportBean exportBean) throws SQLException, IOException, ServletException, JSONException {
         HttpSession session = request.getSession();
         String tempDir = filePath + "/" + session.getId() + "_" + TimeUtil.currentDate();
         java.io.File f = new java.io.File(tempDir);
@@ -438,7 +436,7 @@ public class ServletAction extends BaseHttpServlet {
         } else {
             exportThread = new ExportThread();
             exportThread.setResultset(jsonObj);
-            exportThread.setExport(export);
+            exportThread.setExportBean(exportBean);
             exportThread.setTempDir(tempDir);
             exportThread.setZipFilename(zipFilename);
             exportThread.start();
@@ -447,7 +445,7 @@ public class ServletAction extends BaseHttpServlet {
 
     class ExportThread extends Thread {
         private JSONObject jsonObj = null;
-        private Export export = null;
+        private ExportBean exportBean = null;
         String tempPath = null;
         String zipFilename = null;
         String module = null;
@@ -456,7 +454,7 @@ public class ServletAction extends BaseHttpServlet {
         public void run() {
             if (!this.isInterrupted()) {// 线程未中断执行循环
                 try {
-                    threadExecute(module, jsonObj, export, tempPath, zipFilename);
+                    threadExecute(module, jsonObj, exportBean, tempPath, zipFilename);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -467,8 +465,8 @@ public class ServletAction extends BaseHttpServlet {
             this.jsonObj = jsonObj;
         }
 
-        public void setExport(Export export) {
-            this.export = export;
+        public void setExportBean(ExportBean exportBean) {
+            this.exportBean = exportBean;
         }
 
         void setTempDir(String tempDir) {
@@ -488,17 +486,17 @@ public class ServletAction extends BaseHttpServlet {
         }
     }
 
-    private void threadExecute(String module, JSONObject jsonObj, Export export, String tempPath, String zipFilename) throws Exception {
+    private void threadExecute(String module, JSONObject jsonObj, ExportBean exportBean, String tempPath, String zipFilename) throws Exception {
         ExportDao exportDao = new ExportDao();
         threadRunning = true;
-        exportDao.setExportBegin(export);
+        exportDao.setExportBegin(exportBean);
         showDebug("threadExecute的线程开始了！");
         ExportUtil.exportData(jsonObj, "数据统计", filePathName);
-        export.setExportPercent("20");
-        exportDao.setExportPercent(export);
+        exportBean.setExportPercent("20");
+        exportDao.setExportPercent(exportBean);
         threadRunning = false;
         showDebug("threadExecute的线程退出了！");
         //导出完毕后，就写数据库
-        exportDao.setExportEnd(export);
+        exportDao.setExportEnd(exportBean);
     }
 }

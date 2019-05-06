@@ -1547,7 +1547,7 @@
    */
   var async = (function () {
     /**
-     * read contents of file as representing URL
+     * read contents of servlet as representing URL
      *
      * @param {File} file
      * @return {Promise} - then: sDataUrl
@@ -3721,7 +3721,7 @@
     };
 
     /**
-     * insert Images from file array.
+     * insert Images from servlet array.
      *
      * @param {jQuery} $editable
      * @param {File[]} files
@@ -3968,7 +3968,7 @@
           $editable = layoutInfo.editable();
 
       var item = list.head(clipboardData.items);
-      var isClipboardImage = item.kind === 'file' && item.type.indexOf('image/') !== -1;
+      var isClipboardImage = item.kind === 'servlet' && item.type.indexOf('image/') !== -1;
 
       if (isClipboardImage) {
         insertImages($editable, [item.getAsFile()]);
@@ -4944,7 +4944,7 @@
         var body =
                    '<div class="note-group-select-from-files">' +
                    '<h5>' + lang.image.selectFromFiles + '</h5>' +
-                   '<input class="note-image-input" type="file" name="files" accept="image/*" />' +
+                   '<input class="note-image-input" type="servlet" name="files" accept="image/*" />' +
                    '</div>' +
                    '<h5>' + lang.image.url + '</h5>' +
                    '<input class="note-image-url form-control span12" type="text" />';

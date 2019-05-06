@@ -633,7 +633,7 @@ Enjoy!
 			{
 				// File selection / uploads
 				match: function ($el) {
-					return $el.is(":file");
+					return $el.is(":servlet");
 				},
 				apply: function ($el, options) {
 					var ds, $div, $filename, $button;
@@ -669,7 +669,7 @@ Enjoy!
 					// IE7 doesn't fire onChange until blur or second fire.
 					if (isMsie()) {
 						// IE considers browser chrome blocking I/O, so it
-						// suspends tiemouts until after the file has
+						// suspends tiemouts until after the servlet has
 						// been selected.
 						bindMany($el, options, {
 							click: function () {
@@ -943,7 +943,7 @@ Enjoy!
 			fileButtonClass: "action",
 			fileButtonHtml: "Choose File",
 			fileClass: "uploader",
-			fileDefaultHtml: "No file selected",
+			fileDefaultHtml: "No servlet selected",
 			filenameClass: "filename",
 			focusClass: "focus",
 			hoverClass: "hover",

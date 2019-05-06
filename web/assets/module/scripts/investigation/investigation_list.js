@@ -274,7 +274,8 @@ var Page = function () {
             window.location.href = "list.jsp";
     }
     var printRecord = function () {
-        window.location.href = "print.jsp?exist_resultset=1";
+        // window.location.href = "print.jsp?exist_resultset=1";
+        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
     };
     var sortRecord = function (index) {
         var sortName = $("#sort_01").val();

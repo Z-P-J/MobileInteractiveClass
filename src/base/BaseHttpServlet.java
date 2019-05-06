@@ -106,6 +106,10 @@ public class BaseHttpServlet extends HttpServlet {
         }
     }
 
+    protected void onNormalEnd(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObj) {
+        onEnd(request, response, jsonObj, "base/export/export_result.jsp", "操作已经执行，请按返回按钮返回列表页面！", 0, "record_list.jsp");
+    }
+
     protected void initUserInfo(HttpSession session) {
         userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");

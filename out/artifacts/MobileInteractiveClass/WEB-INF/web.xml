@@ -97,11 +97,20 @@
 <!--    </servlet-mapping>-->
     <servlet>
         <servlet-name>vote_file_servlet_action</servlet-name>
-        <servlet-class>vote.file.ServletAction</servlet-class>
+        <servlet-class>vote.ServletAction</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>vote_file_servlet_action</servlet-name>
         <url-pattern>/vote_file_servlet_action</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>user_info_servlet_action</servlet-name>
+        <servlet-class>user.ServletAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user_info_servlet_action</servlet-name>
+        <url-pattern>/user_info_servlet_action</url-pattern>
     </servlet-mapping>
 
 

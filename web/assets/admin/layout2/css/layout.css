@@ -1439,7 +1439,7 @@ Page sidebar
 .page-sidebar .page-sidebar-menu > li.active > a > .selected,
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {
   background-image: none;
-  /* will be set in a theme css file*/
+  /* will be set in a theme css servlet*/
   float: right;
   position: absolute;
   right: -1px;

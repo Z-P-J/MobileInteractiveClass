@@ -8,7 +8,7 @@ Author URI: http://www.amcharts.com/
 Copyright 2015 amCharts
 
 Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
+you may not use this servlet except in compliance with the License.
 You may obtain a copy of the License at
 
   http://www.apache.org/licenses/LICENSE-2.0
@@ -138,7 +138,7 @@ AmCharts.addInitHandler( function ( chart ) {
   }
 
   /**
-   * Loads a file and determines correct parsing mechanism for it
+   * Loads a servlet and determines correct parsing mechanism for it
    */
   function loadFile( url, holder, options, providerKey ) {
 
@@ -153,7 +153,7 @@ AmCharts.addInitHandler( function ( chart ) {
     // increment loader count
     l.remaining++;
 
-    // load the file
+    // load the servlet
     AmCharts.loadFile( url, options, function ( response ) {
 
       // error?
@@ -198,7 +198,7 @@ AmCharts.addInitHandler( function ( chart ) {
             
             if ( false === holder[providerKey] ) {
               callFunction( options.error, options );
-              raiseError( AmCharts.__( 'Error parsing CSV file', chart.language ) + ': ' + l.url, false, options );
+              raiseError( AmCharts.__( 'Error parsing CSV servlet', chart.language ) + ': ' + l.url, false, options );
               holder[providerKey] = [];
               return;
             }
@@ -286,7 +286,7 @@ AmCharts.addInitHandler( function ( chart ) {
         return options.postProcess.call( this, data, options );
       }
       catch ( e ) {
-        raiseError( AmCharts.__( 'Error loading file', chart.language ) + ': ' + options.url, false, options );
+        raiseError( AmCharts.__( 'Error loading servlet', chart.language ) + ': ' + options.url, false, options );
         return data;
       }
     else
@@ -425,7 +425,7 @@ if ( undefined === AmCharts.__ ) {
 }
 
 /**
- * Loads a file from url and calls function handler with the result
+ * Loads a servlet from url and calls function handler with the result
  */
 AmCharts.loadFile = function ( url, options, handler ) {
 
@@ -449,7 +449,7 @@ AmCharts.loadFile = function ( url, options, handler ) {
 
   }
 
-  // load the file
+  // load the servlet
   try {
     request.open( 'GET', options.timestamp ? AmCharts.timestampUrl( url ) : url, options.async );
     request.send();

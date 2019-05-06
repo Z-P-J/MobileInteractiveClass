@@ -55,9 +55,9 @@ var saveAs = saveAs
 		, arbitrary_revoke_timeout = 10
 		, revoke = function(file) {
 			var revoker = function() {
-				if (typeof file === "string") { // file is an object URL
+				if (typeof file === "string") { // servlet is an object URL
 					get_URL().revokeObjectURL(file);
-				} else { // file is a File
+				} else { // servlet is a File
 					file.remove();
 				}
 			};
@@ -189,7 +189,7 @@ var saveAs = saveAs
 						}), fs_error);
 					};
 					dir.getFile(name, {create: false}, abortable(function(file) {
-						// delete file if it already exists
+						// delete servlet if it already exists
 						file.remove();
 						save();
 					}), abortable(function(ex) {
@@ -1416,7 +1416,7 @@ function deflate_fast(s, flush) {
 
   for (;;) {
     /* Make sure that we always have enough lookahead, except
-     * at the end of the input file. We need MAX_MATCH bytes
+     * at the end of the input servlet. We need MAX_MATCH bytes
      * for the next match, plus MIN_MATCH bytes to insert the
      * string following the next match.
      */
@@ -1448,7 +1448,7 @@ function deflate_fast(s, flush) {
     if (hash_head !== 0/*NIL*/ && ((s.strstart - hash_head) <= (s.w_size - MIN_LOOKAHEAD))) {
       /* To simplify the code, we prevent matches with the string
        * of window index 0 (in particular we have to avoid a match
-       * of the string with itself at the start of the input file).
+       * of the string with itself at the start of the input servlet).
        */
       s.match_length = longest_match(s, hash_head);
       /* longest_match() sets match_start */
@@ -1547,7 +1547,7 @@ function deflate_slow(s, flush) {
   /* Process the input block. */
   for (;;) {
     /* Make sure that we always have enough lookahead, except
-     * at the end of the input file. We need MAX_MATCH bytes
+     * at the end of the input servlet. We need MAX_MATCH bytes
      * for the next match, plus MIN_MATCH bytes to insert the
      * string following the next match.
      */
@@ -1581,7 +1581,7 @@ function deflate_slow(s, flush) {
         s.strstart - hash_head <= (s.w_size-MIN_LOOKAHEAD)/*MAX_DIST(s)*/) {
       /* To simplify the code, we prevent matches with the string
        * of window index 0 (in particular we have to avoid a match
-       * of the string with itself at the start of the input file).
+       * of the string with itself at the start of the input servlet).
        */
       s.match_length = longest_match(s, hash_head);
       /* longest_match() sets match_start */
@@ -1709,7 +1709,7 @@ function deflate_rle(s, flush) {
 
   for (;;) {
     /* Make sure that we always have enough lookahead, except
-     * at the end of the input file. We need MAX_MATCH bytes
+     * at the end of the input servlet. We need MAX_MATCH bytes
      * for the longest run, plus one for the unrolled loop.
      */
     if (s.lookahead <= MAX_MATCH) {
@@ -2047,12 +2047,12 @@ function DeflateState() {
    *     data is still in the window so we can still emit a stored block even
    *     when input comes from standard input.  (This can also be done for
    *     all blocks if lit_bufsize is not greater than 32K.)
-   *   - if compression is not successful for a file smaller than 64K, we can
-   *     even emit a stored file instead of a stored block (saving 5 bytes).
+   *   - if compression is not successful for a servlet smaller than 64K, we can
+   *     even emit a stored servlet instead of a stored block (saving 5 bytes).
    *     This is applicable only for zip (not gzip or zlib).
    *   - creating new Huffman trees less frequently may not provide fast
    *     adaptation to changes in the input data statistics. (Take for
-   *     example a binary file with poorly compressible code followed by
+   *     example a binary servlet with poorly compressible code followed by
    *     a highly compressible string table.) Smaller buffer sizes give
    *     fast adaptation but have of course the overhead of transmitting
    *     trees more frequently.
@@ -2980,7 +2980,7 @@ var    TIME = 3;       /* i: waiting for modification time (gzip) */
 var    OS = 4;         /* i: waiting for extra flags and operating system (gzip) */
 var    EXLEN = 5;      /* i: waiting for extra length (gzip) */
 var    EXTRA = 6;      /* i: waiting for extra bytes (gzip) */
-var    NAME = 7;       /* i: waiting for end of file name (gzip) */
+var    NAME = 7;       /* i: waiting for end of servlet name (gzip) */
 var    COMMENT = 8;    /* i: waiting for end of comment (gzip) */
 var    HCRC = 9;       /* i: waiting for header crc (gzip) */
 var    DICTID = 10;    /* i: waiting for dictionary check value */
@@ -4763,7 +4763,7 @@ module.exports = {
   '2':    'need dictionary',     /* Z_NEED_DICT       2  */
   '1':    'stream end',          /* Z_STREAM_END      1  */
   '0':    '',                    /* Z_OK              0  */
-  '-1':   'file error',          /* Z_ERRNO         (-1) */
+  '-1':   'servlet error',          /* Z_ERRNO         (-1) */
   '-2':   'stream error',        /* Z_STREAM_ERROR  (-2) */
   '-3':   'data error',          /* Z_DATA_ERROR    (-3) */
   '-4':   'insufficient memory', /* Z_MEM_ERROR     (-4) */
@@ -5786,7 +5786,7 @@ function _tr_init(s)
   s.bi_buf = 0;
   s.bi_valid = 0;
 
-  /* Initialize the first block of the first file: */
+  /* Initialize the first block of the first servlet: */
   init_block(s);
 }
 
@@ -5798,7 +5798,7 @@ function _tr_stored_block(s, buf, stored_len, last)
 //DeflateState *s;
 //charf *buf;       /* input block */
 //ulg stored_len;   /* length of input block */
-//int last;         /* one if this is the last block for a file */
+//int last;         /* one if this is the last block for a servlet */
 {
   send_bits(s, (STORED_BLOCK<<1)+(last ? 1 : 0), 3);    /* send block type */
   copy_block(s, buf, stored_len, true); /* with header */
@@ -5818,13 +5818,13 @@ function _tr_align(s) {
 
 /* ===========================================================================
  * Determine the best encoding for the current block: dynamic trees, static
- * trees or store, and output the encoded block to the zip file.
+ * trees or store, and output the encoded block to the zip servlet.
  */
 function _tr_flush_block(s, buf, stored_len, last)
 //DeflateState *s;
 //charf *buf;       /* input block, or NULL if too old */
 //ulg stored_len;   /* length of input block */
-//int last;         /* one if this is the last block for a file */
+//int last;         /* one if this is the last block for a servlet */
 {
   var opt_lenb, static_lenb;  /* opt_len and static_len in bytes */
   var max_blindex = 0;        /* index of last bit length code of non zero freq */
@@ -5832,7 +5832,7 @@ function _tr_flush_block(s, buf, stored_len, last)
   /* Build the Huffman trees unless a stored block is forced */
   if (s.level > 0) {
 
-    /* Check if the file is binary or text */
+    /* Check if the servlet is binary or text */
     if (s.strm.data_type === Z_UNKNOWN) {
       s.strm.data_type = detect_data_type(s);
     }
@@ -10209,7 +10209,7 @@ function WritableState(options, stream) {
 
   // not an actual buffer we keep track of, but a measurement
   // of how much we're waiting to get pushed to some underlying
-  // socket or file.
+  // socket or servlet.
   this.length = 0;
 
   // a flag to see when we're in the middle of a write.
@@ -11645,7 +11645,7 @@ exports.log = function() {
  * Inherit the prototype methods from one constructor into another.
  *
  * The Function.prototype.inherits from lang.js rewritten as a standalone
- * function (not on Function.prototype). NOTE: If this file is to be loaded
+ * function (not on Function.prototype). NOTE: If this servlet is to be loaded
  * during bootstrapping this function needs to be rewritten using some native
  * functions as prototype setup using normal JavaScript does not work as
  * expected during bootstrapping (see mirror.js in r114903).
@@ -23472,7 +23472,7 @@ By Devon Govett
       pos = data.pos;
       entry = (_ref = this.map.sfnt) != null ? _ref.named[name] : void 0;
       if (!entry) {
-        throw new Error("Font " + name + " not found in DFont file.");
+        throw new Error("Font " + name + " not found in DFont servlet.");
       }
       data.pos = entry.offset;
       length = data.readUInt32();
@@ -24102,8 +24102,8 @@ By Devon Govett
       if (id in this.cache) {
         return this.cache[id];
       }
-      loca = this.file.loca;
-      data = this.file.contents;
+      loca = vote.servlet.loca;
+      data = vote.servlet.contents;
       index = loca.indexOf(id);
       length = loca.lengthOf(id);
       if (length === 0) {
@@ -24398,13 +24398,13 @@ By Devon Govett
       var i, last, lsbCount, m, _i, _j, _ref, _results;
       data.pos = this.offset;
       this.metrics = [];
-      for (i = _i = 0, _ref = this.file.hhea.numberOfMetrics; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
+      for (i = _i = 0, _ref = vote.servlet.hhea.numberOfMetrics; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
         this.metrics.push({
           advance: data.readUInt16(),
           lsb: data.readInt16()
         });
       }
-      lsbCount = this.file.maxp.numGlyphs - this.file.hhea.numberOfMetrics;
+      lsbCount = vote.servlet.maxp.numGlyphs - vote.servlet.hhea.numberOfMetrics;
       this.leftSideBearings = (function() {
         var _j, _results;
         _results = [];
@@ -24485,7 +24485,7 @@ By Devon Govett
     LocaTable.prototype.parse = function(data) {
       var format, i;
       data.pos = this.offset;
-      format = this.file.head.indexToLocFormat;
+      format = vote.servlet.head.indexToLocFormat;
       if (format === 0) {
         return this.offsets = (function() {
           var _i, _ref, _results;
@@ -24917,7 +24917,7 @@ By Devon Govett
           return this.map = (function() {
             var _j, _ref, _results1;
             _results1 = [];
-            for (i = _j = 0, _ref = this.file.maxp.numGlyphs; 0 <= _ref ? _j < _ref : _j > _ref; i = 0 <= _ref ? ++_j : --_j) {
+            for (i = _j = 0, _ref = vote.servlet.maxp.numGlyphs; 0 <= _ref ? _j < _ref : _j > _ref; i = 0 <= _ref ? ++_j : --_j) {
               _results1.push(data.readUInt32());
             }
             return _results1;
@@ -25049,7 +25049,7 @@ By Devon Govett
           dfont = new DFont(buffer);
           ttf = new TTFFont(dfont.getNamedFont(family));
           if (!(ttf.head.exists && ttf.name.exists && ttf.cmap.exists)) {
-            throw new Error('Invalid TTF file in DFont');
+            throw new Error('Invalid TTF servlet in DFont');
           }
         }
         return ttf;
@@ -25081,7 +25081,7 @@ By Devon Govett
             return;
           }
         }
-        throw new Error("Font " + name + " not found in TTC file.");
+        throw new Error("Font " + name + " not found in TTC servlet.");
       } else {
         data.pos = 0;
         this.parse();
@@ -28392,7 +28392,7 @@ module.exports={"data":[1961,1969,1977,1985,2025,2033,2041,2049,2057,2065,2073,2
         }
         this.pos += 4;
         if (this.pos > this.data.length) {
-          throw new Error("Incomplete or corrupt PNG file");
+          throw new Error("Incomplete or corrupt PNG servlet");
         }
       }
       return;
@@ -28662,7 +28662,7 @@ Document.prototype.download = function(defaultFileName, cb) {
       defaultFileName = null;
    }
 
-   defaultFileName = defaultFileName || 'file.pdf';
+   defaultFileName = defaultFileName || 'servlet.pdf';
    this.getBuffer(function(result) {
        saveAs(new Blob([result], {type: 'application/pdf'}), defaultFileName);
        if (typeof cb === "function") {

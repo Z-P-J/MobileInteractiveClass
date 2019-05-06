@@ -1,15 +1,9 @@
 package utility.export;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,30 +57,30 @@ public class ExportDao{
 	/*
 	 * 功能：
 	 */
-	public void setExportBegin(Export export){
-		ylx_db query_db = new ylx_db(export.getDbName());
+	public void setExportBegin(ExportBean exportBean){
+		ylx_db query_db = new ylx_db(exportBean.getDbName());
 		String sql="insert into user_export(module,user_id,user_name,file_path,file_name,file_url,file_size,export_percent,export_type,export_status,current_query_setup,download_count,limit_time,creator,create_time)";
-		sql=sql+" values('zakk','"+export.getUserId()+"','"+export.getUserName()+"','"+export.getFilePath()+"','"+export.getFileName()+"','"+export.getFileUrl()+"',"+export.getFileSize();
-		sql=sql+","+export.getExportPercent()+","+export.getExportType()+","+export.getExportStatus()+",'"+export.getCurrentQuerySetup()+"'";
-		sql=sql+","+export.getDownloadCount()+",'"+export.getLimitTime()+"','"+export.getCreator()+"','"+export.getCreateTime()+"')";
+		sql=sql+" values('zakk','"+ exportBean.getUserId()+"','"+ exportBean.getUserName()+"','"+ exportBean.getFilePath()+"','"+ exportBean.getFileName()+"','"+ exportBean.getFileUrl()+"',"+ exportBean.getFileSize();
+		sql=sql+","+ exportBean.getExportPercent()+","+ exportBean.getExportType()+","+ exportBean.getExportStatus()+",'"+ exportBean.getCurrentQuerySetup()+"'";
+		sql=sql+","+ exportBean.getDownloadCount()+",'"+ exportBean.getLimitTime()+"','"+ exportBean.getCreator()+"','"+ exportBean.getCreateTime()+"')";
 		query_db.executeUpdate(sql);
 		query_db.close();
 	}
 	/*
 	 * 功能：
 	 */
-	public void setExportEnd(Export export){
-		ylx_db query_db = new ylx_db(export.getDbName());
-		String sql="update user_export set export_percent=100,export_status=3 where user_id='"+export.getUserId()+"' and file_name='"+export.getFileName()+"'";
+	public void setExportEnd(ExportBean exportBean){
+		ylx_db query_db = new ylx_db(exportBean.getDbName());
+		String sql="update user_export set export_percent=100,export_status=3 where user_id='"+ exportBean.getUserId()+"' and file_name='"+ exportBean.getFileName()+"'";
 		query_db.executeUpdate(sql);
 		query_db.close();
 	}
 	/*
 	 * 功能：
 	 */
-	public void setExportPercent(Export export){
-		ylx_db query_db = new ylx_db(export.getDbName());
-		String sql="update user_export set export_percent="+export.getExportPercent()+" where user_id='"+export.getUserId()+"' and file_name='"+export.getFileName()+"'";
+	public void setExportPercent(ExportBean exportBean){
+		ylx_db query_db = new ylx_db(exportBean.getDbName());
+		String sql="update user_export set export_percent="+ exportBean.getExportPercent()+" where user_id='"+ exportBean.getUserId()+"' and file_name='"+ exportBean.getFileName()+"'";
 		query_db.executeUpdate(sql);
 		query_db.close();
 	}

@@ -27,9 +27,9 @@
     var counter = 0;
 
     // The iframe transport accepts four additional options:
-    // options.fileInput: a jQuery collection of file input fields
-    // options.paramName: the parameter name for the file form data,
-    //  overrides the name property of the file input field(s),
+    // options.fileInput: a jQuery collection of servlet input fields
+    // options.paramName: the parameter name for the servlet form data,
+    //  overrides the name property of the servlet input field(s),
     //  can be a string or an array of strings.
     // options.formData: an array of objects with name and value properties,
     //  equivalent to the return data of .serializeArray(), e.g.:
@@ -123,7 +123,7 @@
                         if (options.fileInput && options.fileInput.length &&
                                 options.type === 'POST') {
                             fileInputClones = options.fileInput.clone();
-                            // Insert a clone for each file input field:
+                            // Insert a clone for each servlet input field:
                             options.fileInput.after(function (index) {
                                 return fileInputClones[index];
                             });
@@ -135,7 +135,7 @@
                                     );
                                 });
                             }
-                            // Appending the file input fields to the hidden form
+                            // Appending the servlet input fields to the hidden form
                             // removes them from their original location:
                             form
                                 .append(options.fileInput)
@@ -146,7 +146,7 @@
                             options.fileInput.removeAttr('form');
                         }
                         form.submit();
-                        // Insert the file input fields at their original location
+                        // Insert the servlet input fields at their original location
                         // by replacing the clones with the originals:
                         if (fileInputClones && fileInputClones.length) {
                             options.fileInput.each(function (index, input) {

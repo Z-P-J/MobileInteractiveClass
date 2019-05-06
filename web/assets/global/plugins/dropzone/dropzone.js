@@ -294,7 +294,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       parallelUploads: 2,
       uploadMultiple: false,
       maxFilesize: 256,
-      paramName: "file",
+      paramName: "servlet",
       createImageThumbnails: true,
       maxThumbnailFilesize: 10,
       thumbnailWidth: 100,
@@ -310,14 +310,14 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       addRemoveLinks: false,
       previewsContainer: null,
       dictDefaultMessage: "Drop files here to upload",
-      dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
+      dictFallbackMessage: "Your browser does not support drag'n'drop servlet uploads.",
       dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
       dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
       dictInvalidFileType: "You can't upload files of this type.",
       dictResponseError: "Server responded with {{statusCode}} code.",
       dictCancelUpload: "Cancel upload",
       dictCancelUploadConfirmation: "Are you sure you want to cancel this upload?",
-      dictRemoveFile: "Remove file",
+      dictRemoveFile: "Remove servlet",
       dictRemoveFileConfirmation: null,
       dictMaxFilesExceeded: "You can not upload any more files.",
       accept: function(file, done) {
@@ -477,7 +477,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       thumbnail: function(file, dataUrl) {
         var thumbnailElement, _i, _len, _ref, _results;
         if (file.previewElement) {
-          file.previewElement.classList.remove("dz-file-preview");
+          file.previewElement.classList.remove("dz-servlet-preview");
           file.previewElement.classList.add("dz-image-preview");
           _ref = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
           _results = [];
@@ -548,7 +548,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       completemultiple: noop,
       maxfilesexceeded: noop,
       maxfilesreached: noop,
-      previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+      previewTemplate: "<div class=\"dz-preview dz-servlet-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
     };
 
     extend = function() {
@@ -697,7 +697,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
               document.body.removeChild(_this.hiddenFileInput);
             }
             _this.hiddenFileInput = document.createElement("input");
-            _this.hiddenFileInput.setAttribute("type", "file");
+            _this.hiddenFileInput.setAttribute("type", "servlet");
             if ((_this.options.maxFiles == null) || _this.options.maxFiles > 1) {
               _this.hiddenFileInput.setAttribute("multiple", "multiple");
             }
@@ -876,7 +876,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       if (this.options.dictFallbackText) {
         fieldsString += "<p>" + this.options.dictFallbackText + "</p>";
       }
-      fieldsString += "<input type=\"file\" name=\"" + (this._getParamName(0)) + "\" " + (this.options.uploadMultiple ? 'multiple="multiple"' : void 0) + " /><input type=\"submit\" value=\"Upload!\"></div>";
+      fieldsString += "<input type=\"servlet\" name=\"" + (this._getParamName(0)) + "\" " + (this.options.uploadMultiple ? 'multiple="multiple"' : void 0) + " /><input type=\"submit\" value=\"Upload!\"></div>";
       fields = Dropzone.createElement(fieldsString);
       if (this.element.tagName !== "FORM") {
         form = Dropzone.createElement("<form action=\"" + this.options.url + "\" enctype=\"multipart/form-data\" method=\"" + this.options.method + "\"></form>");
@@ -1055,7 +1055,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
             _results.push(void 0);
           }
         } else if (item.getAsFile != null) {
-          if ((item.kind == null) || item.kind === "file") {
+          if ((item.kind == null) || item.kind === "servlet") {
             _results.push(this.addFile(item.getAsFile()));
           } else {
             _results.push(void 0);
@@ -1076,7 +1076,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
           for (_i = 0, _len = entries.length; _i < _len; _i++) {
             entry = entries[_i];
             if (entry.isFile) {
-              entry.file(function(file) {
+              vote.servlet(function(file) {
                 if (_this.options.ignoreHiddenFiles && file.name.substring(0, 1) === '.') {
                   return;
                 }
@@ -1153,7 +1153,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
           })(this)), 0);
         }
       } else {
-        throw new Error("This file can't be queued because it has already been processed or was rejected.");
+        throw new Error("This servlet can't be queued because it has already been processed or was rejected.");
       }
     };
 

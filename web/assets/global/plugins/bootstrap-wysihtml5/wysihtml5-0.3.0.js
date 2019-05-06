@@ -3586,7 +3586,7 @@ wysihtml5.browser = (function() {
 
     /**
      * IE: URLs starting with:
-     *    www., http://, https://, ftp://, gopher://, mailto:, new:, snews:, telnet:, wasis:, file://,
+     *    www., http://, https://, ftp://, gopher://, mailto:, new:, snews:, telnet:, wasis:, servlet://,
      *    nntp://, newsrc:, ldap://, ldaps://, outlook:, mic:// and url:
      * will automatically be auto-linked when either the user inserts them via copy&paste or presses the
      * space bar when the caret is directly after such an url.

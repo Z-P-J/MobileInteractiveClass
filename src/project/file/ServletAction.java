@@ -439,8 +439,9 @@ public class ServletAction extends BaseHttpServlet {
         onEnd(request, response, jsonObj, url);
     }
 
-    private void onNormalEnd(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObj) {
-        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
-    }
+//    @Override
+//    private void onNormalEnd(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObj) {
+//        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
+//    }
 
 }

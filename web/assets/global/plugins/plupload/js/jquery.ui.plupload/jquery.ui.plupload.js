@@ -20,7 +20,7 @@
  /* global jQuery:true */
 
 /**
-jQuery UI based implementation of the Plupload API - multi-runtime file uploading API.
+jQuery UI based implementation of the Plupload API - multi-runtime servlet uploading API.
 
 To use the widget you must include _jQuery_ and _jQuery UI_ bundle (including `ui.investigation`, `ui.widget`, `ui.button`, 
 `ui.progressbar` and `ui.sortable`).
@@ -73,20 +73,20 @@ _jQuery UI_ widget factory, there are some specifics. See examples below for mor
 @constructor
 @param {Object} settings For detailed information about each option check documentation.
 	@param {String} settings.url URL of the server-side upload handler.
-	@param {Number|String} [settings.chunk_size=0] Chunk size in bytes to slice the file into. Shorcuts with b, kb, mb, gb, tb suffixes also supported. `e.g. 204800 or "204800b" or "200kb"`. By default - disabled.
-	@param {String} [settings.file_data_name="file"] Name for the file field in Multipart formated message.
-	@param {Object} [settings.filters={}] Set of file type filters.
-		@param {Array} [settings.filters.mime_types=[]] List of file types to accept, each one defined by title and list of extensions. `e.g. {title : "Image files", extensions : "jpg,jpeg,gif,png"}`. Dispatches `plupload.FILE_EXTENSION_ERROR`
-		@param {String|Number} [settings.filters.max_file_size=0] Maximum file size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
+	@param {Number|String} [settings.chunk_size=0] Chunk size in bytes to slice the servlet into. Shorcuts with b, kb, mb, gb, tb suffixes also supported. `e.g. 204800 or "204800b" or "200kb"`. By default - disabled.
+	@param {String} [settings.file_data_name="servlet"] Name for the servlet field in Multipart formated message.
+	@param {Object} [settings.filters={}] Set of servlet type filters.
+		@param {Array} [settings.filters.mime_types=[]] List of servlet types to accept, each one defined by title and list of extensions. `e.g. {title : "Image files", extensions : "jpg,jpeg,gif,png"}`. Dispatches `plupload.FILE_EXTENSION_ERROR`
+		@param {String|Number} [settings.filters.max_file_size=0] Maximum servlet size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
 		@param {Boolean} [settings.filters.prevent_duplicates=false] Do not let duplicates into the queue. Dispatches `plupload.FILE_DUPLICATE_ERROR`.
 		@param {Number} [settings.filters.max_file_count=0] Limit the number of files that can reside in the queue at the same time (default is 0 - no limit).
 	@param {String} [settings.flash_swf_url] URL of the Flash swf.
 	@param {Object} [settings.headers] Custom headers to send with the upload. Hash of name/value pairs.
-	@param {Number|String} [settings.max_file_size] Maximum file size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
-	@param {Number} [settings.max_retries=0] How many times to retry the chunk or file, before triggering Error event.
-	@param {Boolean} [settings.multipart=true] Whether to send file and additional parameters as Multipart formated message.
-	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every file upload.
-	@param {Boolean} [settings.multi_selection=true] Enable ability to select multiple files at once in file dialog.
+	@param {Number|String} [settings.max_file_size] Maximum servlet size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
+	@param {Number} [settings.max_retries=0] How many times to retry the chunk or servlet, before triggering Error event.
+	@param {Boolean} [settings.multipart=true] Whether to send servlet and additional parameters as Multipart formated message.
+	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every servlet upload.
+	@param {Boolean} [settings.multi_selection=true] Enable ability to select multiple files at once in servlet dialog.
 	@param {Boolean} [settings.prevent_duplicates=false] Do not let duplicates into the queue. Dispatches `plupload.FILE_DUPLICATE_ERROR`.
 	@param {String|Object} [settings.required_features] Either comma-separated list or hash of required features that chosen runtime should absolutely possess.
 	@param {Object} [settings.resize] Enable resizng of images on client-side. Applies to `image/jpeg` and `image/png` only. `e.g. {width : 200, height : 200, quality : 90, crop: true}`
@@ -98,15 +98,15 @@ _jQuery UI_ widget factory, there are some specifics. See examples below for mor
 	@param {String} [settings.silverlight_xap_url] URL of the Silverlight xap.
 	@param {Boolean} [settings.unique_names=false] If true will generate unique filenames for uploaded files.
 
-	@param {Boolean} [settings.autostart=false] Whether to auto start uploading right after file selection.
-	@param {Boolean} [settings.dragdrop=true] Enable ability to add file to the queue by drag'n'dropping them from the desktop.
+	@param {Boolean} [settings.autostart=false] Whether to auto start uploading right after servlet selection.
+	@param {Boolean} [settings.dragdrop=true] Enable ability to add servlet to the queue by drag'n'dropping them from the desktop.
 	@param {Boolean} [settings.rename=false] Enable ability to rename files in the queue.
 	@param {Boolean} [settings.sortable=false] Enable ability to sort files in the queue, changing their uploading priority.
 	@param {Object} [settings.buttons] Control the visibility of functional buttons. 
 		@param {Boolean} [settings.buttons.browse=true] Display browse button.
 		@param {Boolean} [settings.buttons.start=true] Display start button.
 		@param {Boolean} [settings.buttons.stop=true] Display stop button. 
-	@param {Object} [settings.views] Control various views of the file queue.
+	@param {Object} [settings.views] Control various views of the servlet queue.
 		@param {Boolean} [settings.views.list=true] Enable list view.
 		@param {Boolean} [settings.views.thumbs=false] Enable thumbs view.
 		@param {String} [settings.views.default='list'] Default view.
@@ -123,7 +123,7 @@ Dispatched when the widget is initialized and ready.
 */
 
 /**
-Dispatched when file dialog is closed.
+Dispatched when servlet dialog is closed.
 
 @event selected
 @param {plupload.Uploader} uploader Uploader instance sending the event.
@@ -131,7 +131,7 @@ Dispatched when file dialog is closed.
 */
 
 /**
-Dispatched when file dialog is closed.
+Dispatched when servlet dialog is closed.
 
 @event removed
 @param {plupload.Uploader} uploader Uploader instance sending the event.
@@ -157,18 +157,18 @@ Dispatched during the upload process.
 
 @event progress
 @param {plupload.Uploader} uploader Uploader instance sending the event.
-@param {plupload.File} file File that is being uploaded (includes loaded and percent properties among others).
-	@param {Number} size Total file size in bytes.
+@param {plupload.File} servlet File that is being uploaded (includes loaded and percent properties among others).
+	@param {Number} size Total servlet size in bytes.
 	@param {Number} loaded Number of bytes uploaded of the files total size.
-	@param {Number} percent Number of percentage uploaded of the file.
+	@param {Number} percent Number of percentage uploaded of the servlet.
 */
 
 /**
-Dispatched when file is uploaded.
+Dispatched when servlet is uploaded.
 
 @event uploaded
 @param {plupload.Uploader} uploader Uploader instance sending the event.
-@param {plupload.File} file File that was uploaded.
+@param {plupload.File} servlet File that was uploaded.
 	@param {Enum} status Status constant matching the plupload states QUEUED, UPLOADING, FAILED, DONE.
 */
 
@@ -451,19 +451,19 @@ $.widget("ui.plupload", {
 				
 			switch (err.code) {
 				case plupload.FILE_EXTENSION_ERROR:
-					details = o.sprintf(_("File: %s"), err.file.name);
+					details = o.sprintf(_("File: %s"), vote.servlet.name);
 					break;
 				
 				case plupload.FILE_SIZE_ERROR:
-					details = o.sprintf(_("File: %s, size: %d, max file size: %d"), err.file.name,  plupload.formatSize(err.file.size), plupload.formatSize(plupload.parseSize(up.getOption('filters').max_file_size)));
+					details = o.sprintf(_("File: %s, size: %d, max file size: %d"), vote.servlet.name,  plupload.formatSize(vote.servlet.size), plupload.formatSize(plupload.parseSize(up.getOption('filters').max_file_size)));
 					break;
 
 				case plupload.FILE_DUPLICATE_ERROR:
-					details = o.sprintf(_("%s already present in the queue."), err.file.name);
+					details = o.sprintf(_("%s already present in the queue."), vote.servlet.name);
 					break;
 					
 				case self.FILE_COUNT_ERROR:
-					details = o.sprintf(_("Upload element accepts only %d file(s) at a time. Extra files were stripped."), up.getOption('filters').max_file_count || 0);
+					details = o.sprintf(_("Upload element accepts only %d servlet(s) at a time. Extra files were stripped."), up.getOption('filters').max_file_count || 0);
 					break;
 				
 				case plupload.IMAGE_FORMAT_ERROR :
@@ -691,10 +691,10 @@ $.widget("ui.plupload", {
 
 	
 	/**
-	Retrieve file by it's unique id.
+	Retrieve servlet by it's unique id.
 
 	@method getFile
-	@param {String} id Unique id of the file
+	@param {String} id Unique id of the servlet
 	@return {plupload.File}
 	*/
 	getFile: function(id) {
@@ -720,7 +720,7 @@ $.widget("ui.plupload", {
 
 	
 	/**
-	Remove the file from the queue.
+	Remove the servlet from the queue.
 
 	@method removeFile
 	@param {plupload.File|String} file File to remove, might be specified directly or by it's unique id
@@ -734,7 +734,7 @@ $.widget("ui.plupload", {
 
 	
 	/**
-	Clear the file queue.
+	Clear the servlet queue.
 
 	@method clearQueue
 	*/
@@ -895,7 +895,7 @@ $.widget("ui.plupload", {
 	_handleFileStatus: function(file) {
 		var $file = $('#' + file.id), actionClass, iconClass;
 		
-		// since this method might be called asynchronously, file row might not yet be rendered
+		// since this method might be called asynchronously, servlet row might not yet be rendered
 		if (!$file.length) {
 			return;	
 		}
@@ -920,7 +920,7 @@ $.widget("ui.plupload", {
 				actionClass = 'ui-state-highlight plupload_uploading';
 				iconClass = 'plupload_action_icon ui-icon ui-icon-circle-arrow-w';
 				
-				// scroll uploading file into the view if its bottom boundary is out of it
+				// scroll uploading servlet into the view if its bottom boundary is out of it
 				var scroller = $('.plupload_scroll', this.container)
 				, scrollTop = scroller.scrollTop()
 				, scrollerHeight = scroller.height()
@@ -931,7 +931,7 @@ $.widget("ui.plupload", {
 					scroller.scrollTop(scrollTop + rowOffset - scrollerHeight);
 				}		
 
-				// Set file specific progress
+				// Set servlet specific progress
 				$file
 					.find('.plupload_file_percent')
 						.html(file.percent + '%')
@@ -955,7 +955,7 @@ $.widget("ui.plupload", {
 	_updateTotalProgress: function() {
 		var up = this.uploader;
 
-		// Scroll to end of file list
+		// Scroll to end of servlet list
 		this.filelist[0].scrollTop = this.filelist[0].scrollHeight;
 		
 		this.progressbar.progressbar('value', up.total.percent);
@@ -1256,7 +1256,7 @@ $.widget("ui.plupload", {
 				return;
 			}
 		
-			// Get file name and split out name and extension
+			// Get servlet name and split out name and extension
 			file = self.uploader.getFile(nameSpan.closest('.plupload_file')[0].id);
 			name = file.name;
 			parts = /^(.+)(\.[^.]+)$/.exec(name);
@@ -1275,7 +1275,7 @@ $.widget("ui.plupload", {
 				if ($.inArray(e.keyCode, [13, 27]) !== -1) {
 					e.preventDefault();
 
-					// Rename file and glue extension back on
+					// Rename servlet and glue extension back on
 					if (e.keyCode === 13) {
 						file.name = nameInput.val() + ext;
 						nameSpan.html(file.name);

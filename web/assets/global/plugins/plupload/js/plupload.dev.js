@@ -171,7 +171,7 @@ var plupload = {
 	HTTP_ERROR : -200,
 
 	/**
-	 * Generic I/O error. For example if it wasn't possible to open the file stream on local machine.
+	 * Generic I/O error. For example if it wasn't possible to open the servlet stream on local machine.
 	 *
 	 * @property IO_ERROR
 	 * @static
@@ -196,7 +196,7 @@ var plupload = {
 	INIT_ERROR : -500,
 
 	/**
-	 * File size error. If the user selects a file that is too large it will be blocked and an error of this type will be triggered.
+	 * File size error. If the user selects a servlet that is too large it will be blocked and an error of this type will be triggered.
 	 *
 	 * @property FILE_SIZE_ERROR
 	 * @static
@@ -205,7 +205,7 @@ var plupload = {
 	FILE_SIZE_ERROR : -600,
 
 	/**
-	 * File extension error. If the user selects a file that isn't valid according to the filters setting.
+	 * File extension error. If the user selects a servlet that isn't valid according to the filters setting.
 	 *
 	 * @property FILE_EXTENSION_ERROR
 	 * @static
@@ -214,7 +214,7 @@ var plupload = {
 	FILE_EXTENSION_ERROR : -601,
 
 	/**
-	 * Duplicate file error. If prevent_duplicates is set to true and user selects the same file again.
+	 * Duplicate servlet error. If prevent_duplicates is set to true and user selects the same servlet again.
 	 *
 	 * @property FILE_DUPLICATE_ERROR
 	 * @static
@@ -632,16 +632,16 @@ var plupload = {
 	},
 
 	/**
-	 * Registers a filter that will be executed for each file added to the queue.
-	 * If callback returns false, file will not be added.
+	 * Registers a filter that will be executed for each servlet added to the queue.
+	 * If callback returns false, servlet will not be added.
 	 *
 	 * Callback receives two arguments: a value for the filter as it was specified in settings.filters
-	 * and a file to be filtered. Callback is executed in the context of uploader instance.
+	 * and a servlet to be filtered. Callback is executed in the context of uploader instance.
 	 *
 	 * @method addFileFilter
 	 * @static
 	 * @param {String} name Name of the filter by which it can be referenced in settings.filters
-	 * @param {String} cb Callback - the actual routine that every added file must pass
+	 * @param {String} cb Callback - the actual routine that every added servlet must pass
 	 */
 	addFileFilter: function(name, cb) {
 		fileFilters[name] = cb;
@@ -668,7 +668,7 @@ plupload.addFileFilter('max_file_size', function(maxSize, file, cb) {
 
 	maxSize = plupload.parseSize(maxSize);
 
-	// Invalid file size
+	// Invalid servlet size
 	if (file.size !== undef && maxSize && file.size > maxSize) {
 		this.trigger('Error', {
 			code : plupload.FILE_SIZE_ERROR,
@@ -690,7 +690,7 @@ plupload.addFileFilter('prevent_duplicates', function(value, file, cb) {
 			if (file.name === this.files[ii].name && file.size === this.files[ii].size) {
 				this.trigger('Error', {
 					code : plupload.FILE_DUPLICATE_ERROR,
-					message : plupload.translate('Duplicate file error.'),
+					message : plupload.translate('Duplicate servlet error.'),
 					file : file
 				});
 				cb(false);
@@ -707,23 +707,23 @@ plupload.addFileFilter('prevent_duplicates', function(value, file, cb) {
 @constructor
 
 @param {Object} settings For detailed information about each option check documentation.
-	@param {String|DOMElement} settings.browse_button id of the DOM element or DOM element itself to use as file dialog trigger.
+	@param {String|DOMElement} settings.browse_button id of the DOM element or DOM element itself to use as servlet dialog trigger.
 	@param {String} settings.url URL of the server-side upload handler.
-	@param {Number|String} [settings.chunk_size=0] Chunk size in bytes to slice the file into. Shorcuts with b, kb, mb, gb, tb suffixes also supported. `e.g. 204800 or "204800b" or "200kb"`. By default - disabled.
+	@param {Number|String} [settings.chunk_size=0] Chunk size in bytes to slice the servlet into. Shorcuts with b, kb, mb, gb, tb suffixes also supported. `e.g. 204800 or "204800b" or "200kb"`. By default - disabled.
 	@param {Boolean} [settings.send_chunk_number=true] Whether to send chunks and chunk numbers, or total and offset bytes.
 	@param {String} [settings.container] id of the DOM element to use as a container for uploader structures. Defaults to document.body.
 	@param {String|DOMElement} [settings.drop_element] id of the DOM element or DOM element itself to use as a drop zone for Drag-n-Drop.
-	@param {String} [settings.file_data_name="file"] Name for the file field in Multipart formated message.
-	@param {Object} [settings.filters={}] Set of file type filters.
-		@param {Array} [settings.filters.mime_types=[]] List of file types to accept, each one defined by title and list of extensions. `e.g. {title : "Image files", extensions : "jpg,jpeg,gif,png"}`. Dispatches `plupload.FILE_EXTENSION_ERROR`
-		@param {String|Number} [settings.filters.max_file_size=0] Maximum file size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
+	@param {String} [settings.file_data_name="servlet"] Name for the servlet field in Multipart formated message.
+	@param {Object} [settings.filters={}] Set of servlet type filters.
+		@param {Array} [settings.filters.mime_types=[]] List of servlet types to accept, each one defined by title and list of extensions. `e.g. {title : "Image files", extensions : "jpg,jpeg,gif,png"}`. Dispatches `plupload.FILE_EXTENSION_ERROR`
+		@param {String|Number} [settings.filters.max_file_size=0] Maximum servlet size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
 		@param {Boolean} [settings.filters.prevent_duplicates=false] Do not let duplicates into the queue. Dispatches `plupload.FILE_DUPLICATE_ERROR`.
 	@param {String} [settings.flash_swf_url] URL of the Flash swf.
 	@param {Object} [settings.headers] Custom headers to send with the upload. Hash of name/value pairs.
-	@param {Number} [settings.max_retries=0] How many times to retry the chunk or file, before triggering Error event.
-	@param {Boolean} [settings.multipart=true] Whether to send file and additional parameters as Multipart formated message.
-	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every file upload.
-	@param {Boolean} [settings.multi_selection=true] Enable ability to select multiple files at once in file dialog.
+	@param {Number} [settings.max_retries=0] How many times to retry the chunk or servlet, before triggering Error event.
+	@param {Boolean} [settings.multipart=true] Whether to send servlet and additional parameters as Multipart formated message.
+	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every servlet upload.
+	@param {Boolean} [settings.multi_selection=true] Enable ability to select multiple files at once in servlet dialog.
 	@param {String|Object} [settings.required_features] Either comma-separated list or hash of required features that chosen runtime should absolutely possess.
 	@param {Object} [settings.resize] Enable resizng of images on client-side. Applies to `image/jpeg` and `image/png` only. `e.g. {width : 200, height : 200, quality : 90, crop: true}`
 		@param {Number} [settings.resize.width] If image is bigger, it will be resized.
@@ -733,7 +733,7 @@ plupload.addFileFilter('prevent_duplicates', function(value, file, cb) {
 	@param {String} [settings.runtimes="html5,flash,silverlight,html4"] Comma separated list of runtimes, that Plupload will try in turn, moving to the next if previous fails.
 	@param {String} [settings.silverlight_xap_url] URL of the Silverlight xap.
 	@param {Boolean} [settings.unique_names=false] If true will generate unique filenames for uploaded files.
-	@param {Boolean} [settings.send_file_name=true] Whether to send file name as additional argument - 'name' (required for chunked uploads and some other cases where file name cannot be sent via normal ways).
+	@param {Boolean} [settings.send_file_name=true] Whether to send servlet name as additional argument - 'name' (required for chunked uploads and some other cases where servlet name cannot be sent via normal ways).
 */
 plupload.Uploader = function(options) {
 	/**
@@ -784,16 +784,16 @@ plupload.Uploader = function(options) {
 	 */	
 
 	/**
-	 * Fires for every filtered file before it is added to the queue.
+	 * Fires for every filtered servlet before it is added to the queue.
 	 * 
 	 * @event FileFiltered
 	 * @since 2.1
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {plupload.File} file Another file that has to be added to the queue.
+	 * @param {plupload.File} servlet Another servlet that has to be added to the queue.
 	 */
 
 	/**
-	 * Fires when the file queue is changed. In other words when files are added/removed to the files array of the uploader instance.
+	 * Fires when the servlet queue is changed. In other words when files are added/removed to the files array of the uploader instance.
 	 *
 	 * @event QueueChanged
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
@@ -804,11 +804,11 @@ plupload.Uploader = function(options) {
 	 *
 	 * @event FilesAdded
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {Array} files Array of file objects that were added to queue by the user.
+	 * @param {Array} files Array of servlet objects that were added to queue by the user.
 	 */
 
 	/**
-	 * Fires when file is removed from the queue.
+	 * Fires when servlet is removed from the queue.
 	 *
 	 * @event FilesRemoved
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
@@ -816,45 +816,45 @@ plupload.Uploader = function(options) {
 	 */
 
 	/**
-	 * Fires when just before a file is uploaded. This event enables you to override settings
-	 * on the uploader instance before the file is uploaded.
+	 * Fires when just before a servlet is uploaded. This event enables you to override settings
+	 * on the uploader instance before the servlet is uploaded.
 	 *
 	 * @event BeforeUpload
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {plupload.File} file File to be uploaded.
+	 * @param {plupload.File} servlet File to be uploaded.
 	 */
 
 	/**
-	 * Fires when a file is to be uploaded by the runtime.
+	 * Fires when a servlet is to be uploaded by the runtime.
 	 *
 	 * @event UploadFile
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {plupload.File} file File to be uploaded.
+	 * @param {plupload.File} servlet File to be uploaded.
 	 */
 
 	/**
-	 * Fires while a file is being uploaded. Use this event to update the current file upload progress.
+	 * Fires while a servlet is being uploaded. Use this event to update the current servlet upload progress.
 	 *
 	 * @event UploadProgress
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {plupload.File} file File that is currently being uploaded.
+	 * @param {plupload.File} servlet File that is currently being uploaded.
 	 */	
 
 	/**
-	 * Fires when file chunk is uploaded.
+	 * Fires when servlet chunk is uploaded.
 	 *
 	 * @event ChunkUploaded
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {plupload.File} file File that the chunk was uploaded for.
+	 * @param {plupload.File} servlet File that the chunk was uploaded for.
 	 * @param {Object} response Object with response properties.
 	 */
 
 	/**
-	 * Fires when a file is successfully uploaded.
+	 * Fires when a servlet is successfully uploaded.
 	 *
 	 * @event FileUploaded
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {plupload.File} file File that was uploaded.
+	 * @param {plupload.File} servlet File that was uploaded.
 	 * @param {Object} response Object with response properties.
 	 */
 
@@ -863,7 +863,7 @@ plupload.Uploader = function(options) {
 	 *
 	 * @event UploadComplete
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {Array} files Array of file objects that was added to queue/selected by the user.
+	 * @param {Array} files Array of servlet objects that was added to queue/selected by the user.
 	 */
 
 	/**
@@ -871,7 +871,7 @@ plupload.Uploader = function(options) {
 	 *
 	 * @event Error
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {Object} error Contains code, message and sometimes file and other details.
+	 * @param {Object} error Contains code, message and sometimes servlet and other details.
 	 */
 
 	/**
@@ -898,7 +898,7 @@ plupload.Uploader = function(options) {
 		var file, count = 0, i;
 
 		if (this.state == plupload.STARTED) {
-			// Find first QUEUED file
+			// Find first QUEUED servlet
 			for (i = 0; i < files.length; i++) {
 				if (!file && files[i].status == plupload.QUEUED) {
 					file = files[i];
@@ -940,10 +940,10 @@ plupload.Uploader = function(options) {
 			file = files[i];
 
 			if (file.size !== undef) {
-				// We calculate totals based on original file size
+				// We calculate totals based on original servlet size
 				total.size += file.origSize;
 
-				// Since we cannot predict file size after resize, we do opposite and
+				// Since we cannot predict servlet size after resize, we do opposite and
 				// interpolate loaded amount to match magnitude of total
 				total.loaded += file.loaded * file.origSize / file.size;
 			} else {
@@ -959,7 +959,7 @@ plupload.Uploader = function(options) {
 			}
 		}
 
-		// If we couldn't calculate a total file size then use the number of files to calc percent
+		// If we couldn't calculate a total servlet size then use the number of files to calc percent
 		if (total.size === undef) {
 			total.percent = files.length > 0 ? Math.ceil(total.uploaded / files.length * 100) : 0;
 		} else {
@@ -1034,7 +1034,7 @@ plupload.Uploader = function(options) {
 			}
 		});
 
-		// initialize file pickers - there can be many
+		// initialize servlet pickers - there can be many
 		if (settings.browse_button) {
 			plupload.each(settings.browse_button, function(el) {
 				queue.push(function(cb) {
@@ -1223,7 +1223,7 @@ plupload.Uploader = function(options) {
 						settings.filters = value;
 					}
 
-					// if file format filters are being updated, regenerate the matching expressions
+					// if servlet format filters are being updated, regenerate the matching expressions
 					if (value.mime_types) {
 						settings.filters.mime_types.regexp = (function(filters) {
 							var extensionsRegExp = [];
@@ -1363,7 +1363,7 @@ plupload.Uploader = function(options) {
 		function uploadNextChunk() {
 			var chunkBlob, formData, args = {}, curChunkSize;
 
-			// make sure that file wasn't cancelled and upload is not stopped in general
+			// make sure that servlet wasn't cancelled and upload is not stopped in general
 			if (file.status !== plupload.UPLOADING || up.state === plupload.STOPPED) {
 				return;
 			}
@@ -1381,7 +1381,7 @@ plupload.Uploader = function(options) {
 				chunkBlob = blob;
 			}
 
-			// If chunking is enabled add corresponding args, no matter if file is bigger than chunk or smaller
+			// If chunking is enabled add corresponding args, no matter if servlet is bigger than chunk or smaller
 			if (chunkSize && features.chunks) {
 				// Setup query string arguments
 				if (up.settings.send_chunk_number) {
@@ -1438,9 +1438,9 @@ plupload.Uploader = function(options) {
 
 				chunkBlob = formData = null; // Free memory
 
-				// Check if file is uploaded
+				// Check if servlet is uploaded
 				if (!offset || offset >= blob.size) {
-					// If file was modified, destory the copy
+					// If servlet was modified, destory the copy
 					if (file.size != file.origSize) {
 						blob.destroy();
 						blob = null;
@@ -1486,7 +1486,7 @@ plupload.Uploader = function(options) {
 					formData.append(name, value);
 				});
 
-				// Add file and send it
+				// Add servlet and send it
 				formData.append(up.settings.file_data_name, chunkBlob);
 				xhr.send(formData, {
 					runtime_order: up.settings.runtimes,
@@ -1565,7 +1565,7 @@ plupload.Uploader = function(options) {
 	function onFileUploaded(up) {
 		calc();
 
-		// Upload next file but detach it from the error event
+		// Upload next servlet but detach it from the error event
 		// since other custom listeners might want to stop the queue
 		delay(function() {
 			uploadNext.call(up);
@@ -1577,12 +1577,12 @@ plupload.Uploader = function(options) {
 		if (err.code === plupload.INIT_ERROR) {
 			up.destroy();
 		}
-		// Set failed status if an error occured on a file
-		else if (err.file) {
-			err.file.status = plupload.FAILED;
-			calcFile(err.file);
+		// Set failed status if an error occured on a servlet
+		else if (vote.servlet) {
+			vote.servlet.status = plupload.FAILED;
+			calcFile(vote.servlet);
 
-			// Upload next file but detach it from the error event
+			// Upload next servlet but detach it from the error event
 			// since other custom listeners might want to stop the queue
 			if (up.state == plupload.STARTED) { // upload in progress
 				up.trigger('CancelUpload');
@@ -1631,7 +1631,7 @@ plupload.Uploader = function(options) {
 		chunk_size: 0,
 		multipart: true,
 		multi_selection: true,
-		file_data_name: 'file',
+		file_data_name: 'servlet',
 		flash_swf_url: 'js/Moxie.swf',
 		silverlight_xap_url: 'js/Moxie.xap',
 		filters: {
@@ -1857,7 +1857,7 @@ plupload.Uploader = function(options) {
 		},
 
 		/**
-		 * Returns the specified file object by id.
+		 * Returns the specified servlet object by id.
 		 *
 		 * @method getFile
 		 * @param {String} id File id to look for.
@@ -1873,14 +1873,14 @@ plupload.Uploader = function(options) {
 		},
 
 		/**
-		 * Adds file to the queue programmatically. Can be native file, instance of Plupload.File,
-		 * instance of mOxie.File, input[type="file"] element, or array of these. Fires FilesAdded, 
+		 * Adds servlet to the queue programmatically. Can be native servlet, instance of Plupload.File,
+		 * instance of mOxie.File, input[type="servlet"] element, or array of these. Fires FilesAdded,
 		 * if any files were added to the queue. Otherwise nothing happens.
 		 *
 		 * @method addFile
 		 * @since 2.0
 		 * @param {plupload.File|mOxie.File|File|Node|Array} file File or files to add to the queue.
-		 * @param {String} [fileName] If specified, will be used as a name for the file
+		 * @param {String} [fileName] If specified, will be used as a name for the servlet
 		 */
 		addFile : function(file, fileName) {
 			var self = this
@@ -1906,7 +1906,7 @@ plupload.Uploader = function(options) {
 			/**
 			 * @method resolveFile
 			 * @private
-			 * @param {o.File|o.Blob|plupload.File|File|Blob|input[type="file"]} file
+			 * @param {o.File|o.Blob|plupload.File|File|Blob|input[type="servlet"]} file
 			 */
 			function resolveFile(file) {
 				var type = o.typeOf(file);
@@ -1949,12 +1949,12 @@ plupload.Uploader = function(options) {
 					});
 				} 
 				// native File or blob
-				else if (o.inArray(type, ['file', 'blob']) !== -1) {
+				else if (o.inArray(type, ['servlet', 'blob']) !== -1) {
 					resolveFile(new o.File(null, file));
 				} 
-				// input[type="file"]
+				// input[type="servlet"]
 				else if (type === 'node' && o.typeOf(file.files) === 'filelist') {
-					// if we are dealing with input[type="file"]
+					// if we are dealing with input[type="servlet"]
 					o.each(file.files, resolveFile);
 				} 
 				// mixed array of any supported types (see above)
@@ -1979,7 +1979,7 @@ plupload.Uploader = function(options) {
 		},
 
 		/**
-		 * Removes a specific file.
+		 * Removes a specific servlet.
 		 *
 		 * @method removeFile
 		 * @param {plupload.File|String} file File to remove from queue.
@@ -2011,7 +2011,7 @@ plupload.Uploader = function(options) {
 			if (this.state == plupload.STARTED) { // upload in progress
 				plupload.each(removed, function(file) {
 					if (file.status === plupload.UPLOADING) {
-						restartRequired = true; // do not restart, unless file that is being removed is uploading
+						restartRequired = true; // do not restart, unless servlet that is being removed is uploading
 						return false;
 					}
 				});
@@ -2101,14 +2101,14 @@ plupload.Uploader = function(options) {
 plupload.Uploader.prototype = o.EventTarget.instance;
 
 /**
- * Constructs a new file instance.
+ * Constructs a new servlet instance.
  *
  * @class File
  * @constructor
  * 
- * @param {Object} file Object containing file properties
- * @param {String} file.name Name of the file.
- * @param {Number} file.size File size.
+ * @param {Object} servlet Object containing servlet properties
+ * @param {String} servlet.name Name of the servlet.
+ * @param {Number} servlet.size File size.
  */
 plupload.File = (function() {
 	var filepool = {};
@@ -2118,7 +2118,7 @@ plupload.File = (function() {
 		plupload.extend(this, {
 
 			/**
-			 * File id this is a globally unique id for the specific file.
+			 * File id this is a globally unique id for the specific servlet.
 			 *
 			 * @property id
 			 * @type String
@@ -2150,7 +2150,7 @@ plupload.File = (function() {
 			size: file.size || file.fileSize,
 
 			/**
-			 * Original file size in bytes.
+			 * Original servlet size in bytes.
 			 *
 			 * @property origSize
 			 * @type Number
@@ -2166,7 +2166,7 @@ plupload.File = (function() {
 			loaded: 0,
 
 			/**
-			 * Number of percentage uploaded of the file.
+			 * Number of percentage uploaded of the servlet.
 			 *
 			 * @property percent
 			 * @type Number
@@ -2198,7 +2198,7 @@ plupload.File = (function() {
 			 */
 			getNative: function() {
 				var file = this.getSource().getSource();
-				return o.inArray(o.typeOf(file), ['blob', 'file']) !== -1 ? file : null;
+				return o.inArray(o.typeOf(file), ['blob', 'servlet']) !== -1 ? file : null;
 			},
 
 			/**
@@ -2245,7 +2245,7 @@ plupload.File = (function() {
 	var self = this; // Setup alias for self to reduce code size when it's compressed
 
 	/**
-	 * Total queue file size.
+	 * Total queue servlet size.
 	 *
 	 * @property size
 	 * @type Number

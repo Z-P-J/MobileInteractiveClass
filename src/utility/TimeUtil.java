@@ -16,6 +16,12 @@ public final class TimeUtil {
         }
     }
 
+    public static String currentDate(String pattern) {
+        synchronized (FORMATTER) {
+            return new SimpleDateFormat(pattern).format(new Date());
+        }
+    }
+
     private TimeUtil() {
 
     }

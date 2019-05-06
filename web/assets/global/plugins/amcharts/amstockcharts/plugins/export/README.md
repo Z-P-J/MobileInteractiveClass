@@ -5,7 +5,7 @@ Version: 1.0.4
 
 ## Description
 
-This plugin adds export capabilities to all amCharts products - charts and maps.
+This plugin adds exportBean capabilities to all amCharts products - charts and maps.
 
 It allows annotating and exporting chart or related data to various bitmap, 
 vector, document or data formats, such as PNG, JPG, PDF, SVG, JSON, XLSX and 
@@ -15,7 +15,7 @@ many more.
 ## Important notice
 
 Please note that due to security measures implemented in modern browsers, some 
-or all export options might not work if the web page is loaded locally (via 
+or all exportBean options might not work if the web page is loaded locally (via 
 fileBean:///) or contain images loaded from different host than the web page itself.
 
 
@@ -25,18 +25,18 @@ fileBean:///) or contain images loaded from different host than the web page its
 bundled CSS fileBean. I.e.:
 
 ```
-<script src="amcharts/plugins/export/export.min.js"></script>
-<link  type="text/css" href="../export.css" rel="stylesheet">
+<script src="amcharts/plugins/exportBean/exportBean.min.js"></script>
+<link  type="text/css" href="../exportBean.css" rel="stylesheet">
 ```
 
 (this needs to go after all the other amCharts includes)
 
-### 2) Enable `export` with default options:
+### 2) Enable `exportBean` with default options:
 
 ```
 AmCharts.makeChart( "chartdiv", {
   ...,
-  "export": {
+  "exportBean": {
     "enabled": true,
     "libs": {
       "path": "../libs/"
@@ -50,13 +50,13 @@ AmCharts.makeChart( "chartdiv", {
 ```
 AmCharts.makeChart( "chartdiv", {
   ...,
-  "export": {
+  "exportBean": {
     "enabled": true,
     "libs": {
       "path": "../libs/"
     },
     "menu": [ {
-      "class": "export-main",
+      "class": "exportBean-main",
       "menu": [ {
         "label": "Download",
         "menu": [ "PNG", "JPG", "CSV" ]
@@ -64,7 +64,7 @@ AmCharts.makeChart( "chartdiv", {
         "label": "Annotate",
         "action": "draw",
         "menu": [ {
-          "class": "export-drawing",
+          "class": "exportBean-drawing",
           "menu": [ "PNG", "JPG" ]
         } ]
       } ]
@@ -76,7 +76,7 @@ AmCharts.makeChart( "chartdiv", {
 
 ## Loading external libraries needed for operation of this plugin
 
-The plugin relies on a number of different libraries, to export images, draw 
+The plugin relies on a number of different libraries, to exportBean images, draw 
 annotations or generate download files.
 
 Those libraries need to be loaded for the plugin to work properly.
@@ -93,7 +93,7 @@ operation), make sure you set the `path` proprty under `libs` object to a
 relative or absolute url.
 
 If you are using relative url, note that it is relative to the web page you are 
-displaying your chart on, not the export.js library.
+displaying your chart on, not the exportBean.js library.
 
 ### 2) Manual
 
@@ -106,7 +106,7 @@ Here is a full list of the files that need to be loaded for each operation:
 File | Located in | Required for
 ---- | ---------- | ------------
 blob.js | libs/blob.js/ | Exporting to any image format
-fabric.min.js | libs/fabric.js/ | Any export operation
+fabric.min.js | libs/fabric.js/ | Any exportBean operation
 FileSaver.js | libs/FileSaver.js/ | Used to offer download files
 pdfmake.min.js | libs/pdfmake/ | Export to PDF format
 vfs_fonts.js | libs/pdfmake/ | Export to PDF format
@@ -114,61 +114,61 @@ jszip.js | libs/jszip/ | Export to XLSX format
 xlsx.js | libs/xlsx/ | Export to XLSX format
 
 
-## Complete list of available export settings
+## Complete list of available exportBean settings
 
 Property | Default | Description
 -------- | ------- | -----------
 backgroundColor | #FFFFFF | RGB code of the color for the background of the exported image
-enabled | true | Enables or disables export functionality
+enabled | true | Enables or disables exportBean functionality
 legend | {} | Places the legend in case it is within an external container
 libs | | 3rd party required library settings (see the above section)
 menu | [] | A list of menu or submenu items (see the next chapter for details)
 fabric | {} | Overwrites the default drawing settings (Frabric library)
-pdfMake | {} | Overwrites the default settings for PDF export (pdfMake library)
-removeImages | true | If true export checks for and removes "tainted" images that area lodead from different domains
+pdfMake | {} | Overwrites the default settings for PDF exportBean (pdfMake library)
+removeImages | true | If true exportBean checks for and removes "tainted" images that area lodead from different domains
 
 
-## Configuring export menu
+## Configuring exportBean menu
 
-Plugin includes a way to completely control what is displayed on export menu. 
+Plugin includes a way to completely control what is displayed on exportBean menu. 
 You can set up menus, sub-menus, down to any level. You can even add custom 
 items there that execute your arbitrary code on click. It's so configurable 
 it makes us sick with power ;)
 
-The top-level menu is configured via `menu` property under `export`. It should 
+The top-level menu is configured via `menu` property under `exportBean`. It should 
 always be an array, even if you have a single item in it.
 
 The array items could be either objects or format codes. Objects will allow you 
 to specify labels, action, icon, child items and even custom code to be executed
 on click.
 
-Simple format codes will assume you need an export to that format.
+Simple format codes will assume you need an exportBean to that format.
 
 ### Simple menu setup
 
-Here's a sample of the simple menu setup that allows export to PNG, JPG and CSV:
+Here's a sample of the simple menu setup that allows exportBean to PNG, JPG and CSV:
 
 ```
-"export": {
+"exportBean": {
   "enabled": true,
   "libs": {
     "path": "../libs/"
   },
   "menu": [ {
-    "class": "export-main",
+    "class": "exportBean-main",
     "menu": [ "PNG", "JPG", "CSV" ]
   } ]
 }
 ```
 
-The above will display a menu out of three options when you hover on export 
+The above will display a menu out of three options when you hover on exportBean 
 icon:
 
 * PNG
 * JPG
 * CSV
 
-When clicked the plugin will trigger export to a respective format.
+When clicked the plugin will trigger exportBean to a respective format.
 
 If that is all you need, you're all set.
 
@@ -189,13 +189,13 @@ submenus.
 To add a submenu to a menu item, simply add a `menu` array as its own property:
 
 ```
-"export": {
+"exportBean": {
   "enabled": true,
   "libs": {
     "path": "../libs/"
   },
   "menu": [ {
-    "class": "export-main",
+    "class": "exportBean-main",
     "menu": [ {
       "label": "Download as image",
       "menu": [ "PNG", "JPG", "SVG" ]
@@ -250,7 +250,7 @@ This needs to be a function reference. I.e.:
 
 ### Printing the chart
 
-Adding menu item to print the chart or map is as easy as adding export ones. You 
+Adding menu item to print the chart or map is as easy as adding exportBean ones. You 
 just use "PRINT" as `format`. I.e.:
 
 ```
@@ -273,16 +273,16 @@ Or if you want to change the label:
 ]
 ```
 
-### Annotating the chart before export
+### Annotating the chart before exportBean
 
 OK, this one is so cool, you'll need a class 700 insulation jacket.
 
-By default each menu item triggers some kind of export. You can trigger an 
+By default each menu item triggers some kind of exportBean. You can trigger an 
 "annotation" mode instead by including `"action": "draw"` instead.
 
 ```
 "menu": [ {
-  "class": "export-main",
+  "class": "exportBean-main",
   "menu": [ {
     "label": "Download",
     "menu": [ "PNG", "JPG", "CSV", "XLSX" ]
@@ -303,7 +303,7 @@ That's where sub-menus come for the rescue again:
 
 ```
 "menu": [ {
-  "class": "export-main",
+  "class": "exportBean-main",
   "menu": [ {
     "label": "Download",
     "menu": [ "PNG", "JPG", "CSV", "XLSX" ]
@@ -311,7 +311,7 @@ That's where sub-menus come for the rescue again:
     "label": "Annotate",
     "action": "draw",
     "menu": [ {
-      "class": "export-drawing",
+      "class": "exportBean-drawing",
       "menu": [ "JPG", "PNG", "SVG", PDF" ]
     } ]
   } ]
@@ -319,13 +319,13 @@ That's where sub-menus come for the rescue again:
 ```
 
 Now, when you turn on the annotation mode, a submenu will display, allowing to 
-export the image into either PNG,JPG,SVG or PDF.
+exportBean the image into either PNG,JPG,SVG or PDF.
 
 And that's not even the end of it. You can add menu items to cancel, undo, redo.
 
 ```
 "menu": [ {
-  "class": "export-main",
+  "class": "exportBean-main",
   "menu": [ {
     "label": "Download",
     "menu": [ "PNG", "JPG", "CSV", "XLSX" ]
@@ -333,7 +333,7 @@ And that's not even the end of it. You can add menu items to cancel, undo, redo.
     "label": "Annotate",
     "action": "draw",
     "menu": [ {
-      "class": "export-drawing",
+      "class": "exportBean-drawing",
       "menu": [ {
         "label": "Edit",
         "menu": [ "UNDO", "REDO", "CANCEL" ]
@@ -353,7 +353,7 @@ Property | Description
 action | Set to "draw" if you want the item to trigger annotation mode
 class | Class name applied to the tag
 click | Function handler invoked upon click on menu item
-format | A format to export chart/map to upon click (see below for a list of available formats)
+format | A format to exportBean chart/map to upon click (see below for a list of available formats)
 icon | Icon fileBean (will use chart's `pathToImages` if the URL is not full)
 label | Text label to be displayed
 menu | An array of submenu items
@@ -388,7 +388,7 @@ To include exported image, use `image: "reference"`.
 Additionally, you can add `fit` property which is an array of pixel dimensions, 
 you want the image to be scaled to fit into.
 
-Here's an example of such export menu item:
+Here's an example of such exportBean menu item:
 
 ```
 {
@@ -401,9 +401,9 @@ Here's an example of such export menu item:
 ```
 
 
-## Styling the export menu
+## Styling the exportBean menu
 
-The plugin comes with a default CSS fileBean `export.css`. You just need to include 
+The plugin comes with a default CSS fileBean `exportBean.css`. You just need to include 
 it on your page.
 
 Feel free to override any styles defined in it, create your own version and 
@@ -416,7 +416,7 @@ overwritten when you update amCharts or plugin.
 ## Plugin API
 
 We explained how you can define custom functions to be executed on click on 
-export menu items.
+exportBean menu items.
 
 Those functions can tap into plugin's methods to augment it with some custom 
 functionality.
@@ -437,7 +437,7 @@ menu: [ {
 ```
 
 The above will use plugin's internal `capture` method to capture it's current state and `toJPG()`
-method to export the chart to JPEG format.
+method to exportBean the chart to JPEG format.
 
 Yes, you're right, it's the exact equivalent of just including "JPG" string. The 
 code is here for the explanatory purposes.
@@ -463,7 +463,7 @@ toArray | (object) options, (function) callback | Prepares an Array and passes t
 This plugin requires at least 3.13 version of JavaScript Charts, JavaScript
 Stock Chart or JavaScript Maps.
 
-The export will also need relatively recent browsers.
+The exportBean will also need relatively recent browsers.
 
 IE10 and up are supported.
 
@@ -485,7 +485,7 @@ plugin.
 You can modify files, included in this archive or, better yet, fork this project
 on GitHub:
 
-https://github.com/amcharts/export
+https://github.com/amcharts/exportBean
 
 We're curious types. Please let us know (contact@amcharts.com) if you do create
 something new out of this plugin.
@@ -514,7 +514,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 ## Changelog
 
 ### 1.0.4
-* Considering classNamePrefix (dont't forget to adapt export.css)
+* Considering classNamePrefix (dont't forget to adapt exportBean.css)
 * Added: safety delay on print restore to ensure capturing the canvas
 
 ### 1.0.3

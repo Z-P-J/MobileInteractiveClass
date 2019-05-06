@@ -484,7 +484,7 @@ span.Char0 {
 }
 
 .MsoChpDefault {
-	mso-style-type: export-only;
+	mso-style-type: exportBean-only;
 	mso-default-props: yes;
 	mso-ascii-font-family: Calibri;
 	mso-fareast-font-family: 宋体;

@@ -16,7 +16,7 @@
     'use strict';
 
     var isOnGitHub = window.location.hostname === 'blueimp.github.io',
-        url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : 'server/php/';
+        url = isOnGitHub ? '//jquery-servlet-upload.appspot.com/' : 'server/php/';
 
     angular.module('demo', [
         'blueimp.fileupload'
@@ -69,7 +69,7 @@
         .controller('FileDestroyController', [
             '$scope', '$http',
             function ($scope, $http) {
-                var file = $scope.file,
+                var file = vote.servlet,
                     state;
                 if (file.url) {
                     file.$state = function () {

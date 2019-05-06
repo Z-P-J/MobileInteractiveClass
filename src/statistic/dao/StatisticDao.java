@@ -1,7 +1,8 @@
-package statistic;
+package statistic.dao;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import statistic.bean.StatisticBean;
 import utility.DBHelper;
 import utility.Log;
 

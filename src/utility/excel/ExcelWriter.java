@@ -84,39 +84,39 @@ public class ExcelWriter {
 
     }
 
-    public static void main(String[] args) {
-
-        // 输出的excel文件名
-        String targetfile = "c:/out.xls";
-        // 输出的excel文件工作表名
-        String worksheet = "List";
-        // excel工作表的标题
-        String[] title = {"ID", "NAME", "DESCRIB"};
-
-        WritableWorkbook workbook;
-        try {
-            // 创建可写入的Excel工作薄,运行生成的文件在tomcat/bin下
-            // workbook = Workbook.createWorkbook(new FileBean("output.xls"));
-            OutputStream os = new FileOutputStream(targetfile);
-            workbook = Workbook.createWorkbook(os);
-
-            WritableSheet sheet = workbook.createSheet(worksheet, 0);
-
-            jxl.write.Label label;
-            for (int i = 0; i < title.length; i++) {
-                for (int j = 0; j < 50; j++) {
-                    // Label(列号,行号 ,内容 )
-                    label = new jxl.write.Label(i, j, title[i]);
-                    // title in
-                    // row1
-                    sheet.addCell(label);
-                }
-            }
-            workbook.write();
-            workbook.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+//    public static void main(String[] args) {
+//
+//        // 输出的excel文件名
+//        String targetfile = "c:/out.xls";
+//        // 输出的excel文件工作表名
+//        String worksheet = "List";
+//        // excel工作表的标题
+//        String[] title = {"ID", "NAME", "DESCRIB"};
+//
+//        WritableWorkbook workbook;
+//        try {
+//            // 创建可写入的Excel工作薄,运行生成的文件在tomcat/bin下
+//            // workbook = Workbook.createWorkbook(new FileBean("output.xls"));
+//            OutputStream os = new FileOutputStream(targetfile);
+//            workbook = Workbook.createWorkbook(os);
+//
+//            WritableSheet sheet = workbook.createSheet(worksheet, 0);
+//
+//            jxl.write.Label label;
+//            for (int i = 0; i < title.length; i++) {
+//                for (int j = 0; j < 50; j++) {
+//                    // Label(列号,行号 ,内容 )
+//                    label = new jxl.write.Label(i, j, title[i]);
+//                    // title in
+//                    // row1
+//                    sheet.addCell(label);
+//                }
+//            }
+//            workbook.write();
+//            workbook.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 }

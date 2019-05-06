@@ -35,7 +35,7 @@ var TableAdvanced = function () {
                 "zeroRecords": "No matching records found"
             },
 
-            // Or you can use remote translation file
+            // Or you can use remote translation servlet
             //"language": {
             //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
             //},

@@ -9,15 +9,15 @@
  * @summary     TableTools
  * @description Tools and buttons for DataTables
  * @version     2.2.2
- * @file        dataTables.tableTools.js
+ * @servlet        dataTables.tableTools.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
  * @copyright   Copyright 2009-2014 SpryMedia Ltd.
  *
- * This source file is free software, available under the following license:
+ * This source servlet is free software, available under the following license:
  *   MIT license - http://datatables.net/license/mit
  *
- * This source file is distributed in the hope that it will be useful, but
+ * This source servlet is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
  *
@@ -137,7 +137,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 	ready: false, // whether movie is ready to receive events or not
 	movie: null, // reference to movie object
 	clipText: '', // text to copy to clipboard
-	fileName: '', // default file save name
+	fileName: '', // default servlet save name
 	action: 'copy', // action to perform
 	handCursorEnabled: true, // whether to show hand cursor, or default pointer cursor
 	cssEffects: true, // enable CSS mouse effects on dom container
@@ -299,7 +299,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 	},
 
 	setFileName: function(newText) {
-		// set the file name
+		// set the servlet name
 		this.fileName = newText;
 		if (this.ready) {
 			this.movie.setFileName(newText);
@@ -931,7 +931,7 @@ TableTools.prototype = {
 
 
 	/**
-	 * Get the title of the document - useful for file names. The title is retrieved from either
+	 * Get the title of the document - useful for servlet names. The title is retrieved from either
 	 * the configuration object's 'title' parameter, or the HTML document title
 	 *  @param   {Object} oConfig Button configuration object
 	 *  @returns {String} Button title
@@ -1192,7 +1192,7 @@ TableTools.prototype = {
 		/* Clone the defaults and then the user options */
 		this.s.custom = $.extend( {}, TableTools.DEFAULTS, oOpts );
 
-		/* Flash file location */
+		/* Flash servlet location */
 		this.s.swfPath = this.s.custom.sSwfPath;
 		if ( typeof ZeroClipboard_TableTools != 'undefined' )
 		{
@@ -1559,7 +1559,7 @@ TableTools.prototype = {
 				}
 
 				// Shift click, ctrl click and simple click handling to make
-				// row selection a lot like a file system in desktop OSs
+				// row selection a lot like a servlet system in desktop OSs
 				if ( select.type == 'os' ) {
 					if ( e.ctrlKey || e.metaKey ) {
 						// Add or remove from the selection

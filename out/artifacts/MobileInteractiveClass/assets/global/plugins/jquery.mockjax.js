@@ -185,7 +185,7 @@
 		})(this);
 
 		if ( mockHandler.proxy ) {
-			// We're proxying this request and loading in an external file instead
+			// We're proxying this request and loading in an external servlet instead
 			_ajax({
 				global: false,
 				url: mockHandler.proxy,

@@ -1334,7 +1334,7 @@ define("moxie/core/utils/Env", [
 
 				use_fileinput: function() {
 					var el = document.createElement('input');
-					el.setAttribute('type', 'file');
+					el.setAttribute('type', 'servlet');
 					return !el.disabled;
 				}
 			};
@@ -2248,7 +2248,7 @@ define('moxie/runtime/Runtime', [
 		*/
 		caps = Basic.extend({
 			// Runtime can: 
-			// provide access to raw binary data of the file
+			// provide access to raw binary data of the servlet
 			access_binary: false,
 			// provide access to raw binary data of the image (image extension is optional) 
 			access_image_binary: false,
@@ -2260,9 +2260,9 @@ define('moxie/runtime/Runtime', [
 			drag_and_drop: false,
 			// filter files in selection dialog by their extensions
 			filter_by_extension: true,
-			// resize image (and manipulate it raw data of any file in general)
+			// resize image (and manipulate it raw data of any servlet in general)
 			resize_image: false,
-			// periodically report how many bytes of total in the file were uploaded (loaded)
+			// periodically report how many bytes of total in the servlet were uploaded (loaded)
 			report_upload_progress: false,
 			// provide access to the headers of http response 
 			return_response_headers: false,
@@ -2275,9 +2275,9 @@ define('moxie/runtime/Runtime', [
 			send_custom_headers: false,
 			// pick up the files from a dialog
 			select_file: false,
-			// select whole folder in file browse dialog
+			// select whole folder in servlet browse dialog
 			select_folder: false,
-			// select multiple files at once in file browse dialog
+			// select multiple files at once in servlet browse dialog
 			select_multiple: true,
 			// send raw binary data, that is generated after image resizing or manipulation of other kind
 			send_binary_string: false,
@@ -2285,13 +2285,13 @@ define('moxie/runtime/Runtime', [
 			send_browser_cookies: true,
 			// send data formatted as multipart/form-data
 			send_multipart: true,
-			// slice the file or blob to smaller parts
+			// slice the servlet or blob to smaller parts
 			slice_blob: false,
-			// upload file without preloading it to memory, stream it out directly from disk
+			// upload servlet without preloading it to memory, stream it out directly from disk
 			stream_upload: false,
-			// programmatically trigger file browse dialog
+			// programmatically trigger servlet browse dialog
 			summon_file_dialog: false,
-			// upload file of specific size, size should be passed as argument
+			// upload servlet of specific size, size should be passed as argument
 			// e.g. runtime.can('upload_filesize', '500mb')
 			upload_filesize: true,
 			// initiate http request with specific http method, method should be passed as argument
@@ -2910,7 +2910,7 @@ define('moxie/runtime/RuntimeClient', [
 
 });
 
-// Included from: src/javascript/file/Blob.js
+// Included from: src/javascript/servlet/Blob.js
 
 /**
  * Blob.js
@@ -3088,7 +3088,7 @@ define('moxie/file/Blob', [
 	return Blob;
 });
 
-// Included from: src/javascript/file/File.js
+// Included from: src/javascript/servlet/File.js
 
 /**
  * File.js
@@ -3103,14 +3103,14 @@ define('moxie/file/Blob', [
 define('moxie/file/File', [
 	'moxie/investigation/utils/Basic',
 	'moxie/investigation/utils/Mime',
-	'moxie/file/Blob'
+	'moxie/servlet/Blob'
 ], function(Basic, Mime, Blob) {
 	/**
 	@class File
 	@extends Blob
 	@constructor
 	@param {String} ruid Unique id of the runtime, to which this blob belongs to
-	@param {Object} file Object "Native" file object, as it is represented in the runtime
+	@param {Object} file Object "Native" servlet object, as it is represented in the runtime
 	*/
 	function File(ruid, file) {
 		var name, type;
@@ -3126,13 +3126,13 @@ define('moxie/file/File', [
 			type = Mime.getFileMime(file.name);
 		}
 
-		// sanitize file name or generate new one
+		// sanitize servlet name or generate new one
 		if (file.name) {
 			name = file.name.replace(/\\/g, '/');
 			name = name.substr(name.lastIndexOf('/') + 1);
 		} else {
 			var prefix = type.split('/')[0];
-			name = Basic.guid((prefix !== '' ? prefix : 'file') + '_');
+			name = Basic.guid((prefix !== '' ? prefix : 'servlet') + '_');
 			
 			if (Mime.extensions[type]) {
 				name += '.' + Mime.extensions[type][0]; // append proper extension if possible
@@ -3176,7 +3176,7 @@ define('moxie/file/File', [
 	return File;
 });
 
-// Included from: src/javascript/file/FileInput.js
+// Included from: src/javascript/servlet/FileInput.js
 
 /**
  * FileInput.js
@@ -3195,12 +3195,12 @@ define('moxie/file/FileInput', [
 	'moxie/investigation/Exceptions',
 	'moxie/investigation/EventTarget',
 	'moxie/investigation/I18n',
-	'moxie/file/File',
+	'moxie/servlet/File',
 	'moxie/runtime/Runtime',
 	'moxie/runtime/RuntimeClient'
 ], function(Basic, Mime, Dom, x, EventTarget, I18n, File, Runtime, RuntimeClient) {
 	/**
-	Provides a convenient way to create cross-browser file-picker. Generates file selection dialog on click,
+	Provides a convenient way to create cross-browser servlet-picker. Generates servlet selection dialog on click,
 	converts selected files to _File_ objects, to be used in conjunction with _Image_, preloaded in memory
 	with _FileReader_ or uploaded to a server through _XMLHttpRequest_.
 
@@ -3209,28 +3209,28 @@ define('moxie/file/FileInput', [
 	@extends EventTarget
 	@uses RuntimeClient
 	@param {Object|String|DOMElement} options If options is string or node, argument is considered as _browse\_button_.
-		@param {String|DOMElement} options.browse_button DOM Element to turn into file picker.
+		@param {String|DOMElement} options.browse_button DOM Element to turn into servlet picker.
 		@param {Array} [options.accept] Array of mime types to accept. By default accepts all.
-		@param {String} [options.file='file'] Name of the file field (not the filename).
+		@param {String} [options.servlet='servlet'] Name of the servlet field (not the filename).
 		@param {Boolean} [options.multiple=false] Enable selection of multiple files.
-		@param {Boolean} [options.directory=false] Turn file input into the folder input (cannot be both at the same time).
-		@param {String|DOMElement} [options.container] DOM Element to use as a container for file-picker. Defaults to parentNode 
+		@param {Boolean} [options.directory=false] Turn servlet input into the folder input (cannot be both at the same time).
+		@param {String|DOMElement} [options.container] DOM Element to use as a container for servlet-picker. Defaults to parentNode
 		for _browse\_button_.
 		@param {Object|String} [options.required_caps] Set of required capabilities, that chosen runtime must support.
 
 	@example
 		<div id="container">
-			<a id="file-picker" href="javascript:;">Browse...</a>
+			<a id="servlet-picker" href="javascript:;">Browse...</a>
 		</div>
 
 		<script>
 			var fileInput = new mOxie.FileInput({
-				browse_button: 'file-picker', // or document.getElementById('file-picker')
+				browse_button: 'servlet-picker', // or document.getElementById('servlet-picker')
 				container: 'container',
 				accept: [
 					{title: "Image files", extensions: "jpg,gif,png"} // accept only images
 				],
-				multiple: true // allow multiple file selection
+				multiple: true // allow multiple servlet selection
 			});
 
 			fileInput.onchange = function(e) {
@@ -3243,7 +3243,7 @@ define('moxie/file/FileInput', [
 	*/
 	var dispatches = [
 		/**
-		Dispatched when runtime is connected and file-picker is ready to be used.
+		Dispatched when runtime is connected and servlet-picker is ready to be used.
 
 		@event ready
 		@param {Object} event
@@ -3269,7 +3269,7 @@ define('moxie/file/FileInput', [
 		'cancel', // TODO: might be useful
 
 		/**
-		Dispatched when mouse cursor enters file-picker area. Can be used to style element
+		Dispatched when mouse cursor enters servlet-picker area. Can be used to style element
 		accordingly.
 
 		@event mouseenter
@@ -3278,7 +3278,7 @@ define('moxie/file/FileInput', [
 		'mouseenter',
 
 		/**
-		Dispatched when mouse cursor leaves file-picker area. Can be used to style element
+		Dispatched when mouse cursor leaves servlet-picker area. Can be used to style element
 		accordingly.
 
 		@event mouseleave
@@ -3287,7 +3287,7 @@ define('moxie/file/FileInput', [
 		'mouseleave',
 
 		/**
-		Dispatched when functional mouse button is pressed on top of file-picker area.
+		Dispatched when functional mouse button is pressed on top of servlet-picker area.
 
 		@event mousedown
 		@param {Object} event
@@ -3295,7 +3295,7 @@ define('moxie/file/FileInput', [
 		'mousedown',
 
 		/**
-		Dispatched when functional mouse button is released on top of file-picker area.
+		Dispatched when functional mouse button is released on top of servlet-picker area.
 
 		@event mouseup
 		@param {Object} event
@@ -3325,7 +3325,7 @@ define('moxie/file/FileInput', [
 				title: I18n.translate('All Files'),
 				extensions: '*'
 			}],
-			name: 'file',
+			name: 'servlet',
 			multiple: false,
 			required_caps: false,
 			container: browseButton.parentNode || document.body
@@ -3398,7 +3398,7 @@ define('moxie/file/FileInput', [
 			files: null,
 
 			/**
-			Initializes the file-picker, connects it to runtime and dispatches event ready when done.
+			Initializes the servlet-picker, connects it to runtime and dispatches event ready when done.
 
 			@method init
 			*/
@@ -3462,7 +3462,7 @@ define('moxie/file/FileInput', [
 			},
 
 			/**
-			Disables file-picker element, so that it doesn't react to mouse clicks.
+			Disables servlet-picker element, so that it doesn't react to mouse clicks.
 
 			@method disable
 			@param {Boolean} [state=true] Disable component if - true, enable if - false
@@ -3513,7 +3513,7 @@ define('moxie/file/FileInput', [
 	return FileInput;
 });
 
-// Included from: src/javascript/file/FileDrop.js
+// Included from: src/javascript/servlet/FileDrop.js
 
 /**
  * FileDrop.js
@@ -3530,7 +3530,7 @@ define('moxie/file/FileDrop', [
 	'moxie/investigation/utils/Dom',
 	'moxie/investigation/Exceptions',
 	'moxie/investigation/utils/Basic',
-	'moxie/file/File',
+	'moxie/servlet/File',
 	'moxie/runtime/RuntimeClient',
 	'moxie/investigation/EventTarget',
 	'moxie/investigation/utils/Mime'
@@ -3551,8 +3551,8 @@ define('moxie/file/FileDrop', [
 			var fileDrop = new mOxie.FileDrop('drop_zone'), fileList = mOxie.get('filelist');
 
 			fileDrop.ondrop = function() {
-				mOxie.each(this.files, function(file) {
-					fileList.innerHTML += '<div>' + file.name + '</div>';
+				mOxie.each(this.files, function(servlet) {
+					fileList.innerHTML += '<div>' + servlet.name + '</div>';
 				});
 			};
 
@@ -3594,7 +3594,7 @@ define('moxie/file/FileDrop', [
 		'dragleave', 
 
 		/**
-		Dispatched when file is dropped onto the drop zone.
+		Dispatched when servlet is dropped onto the drop zone.
 
 		@event drop
 		@param {Object} event
@@ -3737,7 +3737,7 @@ define('moxie/runtime/RuntimeTarget', [
 	return RuntimeTarget;
 });
 
-// Included from: src/javascript/file/FileReader.js
+// Included from: src/javascript/servlet/FileReader.js
 
 /**
  * FileReader.js
@@ -3754,8 +3754,8 @@ define('moxie/file/FileReader', [
 	'moxie/investigation/utils/Encode',
 	'moxie/investigation/Exceptions',
 	'moxie/investigation/EventTarget',
-	'moxie/file/Blob',
-	'moxie/file/File',
+	'moxie/servlet/Blob',
+	'moxie/servlet/File',
 	'moxie/runtime/RuntimeTarget'
 ], function(Basic, Encode, x, EventTarget, Blob, File, RuntimeTarget) {
 	/**
@@ -4058,7 +4058,7 @@ define('moxie/core/utils/Url', [], function() {
 	@return {Object} Hash containing extracted uri components
 	*/
 	var parseUrl = function(url, currentUrl) {
-		var key = ['source', 'scheme', 'authority', 'userInfo', 'user', 'pass', 'host', 'port', 'relative', 'path', 'directory', 'file', 'query', 'fragment']
+		var key = ['source', 'scheme', 'authority', 'userInfo', 'user', 'pass', 'host', 'port', 'relative', 'path', 'directory', 'servlet', 'query', 'fragment']
 		, i = key.length
 		, ports = {
 			http: 80,
@@ -4160,7 +4160,7 @@ define('moxie/core/utils/Url', [], function() {
 	};
 });
 
-// Included from: src/javascript/file/FileReaderSync.js
+// Included from: src/javascript/servlet/FileReaderSync.js
 
 /**
  * FileReaderSync.js
@@ -4248,7 +4248,7 @@ define('moxie/file/FileReaderSync', [
 define("moxie/xhr/FormData", [
 	"moxie/investigation/Exceptions",
 	"moxie/investigation/utils/Basic",
-	"moxie/file/Blob"
+	"moxie/servlet/Blob"
 ], function(x, Basic, Blob) {
 	/**
 	FormData
@@ -4372,8 +4372,8 @@ define("moxie/xhr/XMLHttpRequest", [
 	"moxie/investigation/utils/Url",
 	"moxie/runtime/Runtime",
 	"moxie/runtime/RuntimeTarget",
-	"moxie/file/Blob",
-	"moxie/file/FileReaderSync",
+	"moxie/servlet/Blob",
+	"moxie/servlet/FileReaderSync",
 	"moxie/xhr/FormData",
 	"moxie/investigation/utils/Env",
 	"moxie/investigation/utils/Mime"
@@ -5457,15 +5457,15 @@ define("moxie/image/Image", [
 	"moxie/investigation/utils/Basic",
 	"moxie/investigation/utils/Dom",
 	"moxie/investigation/Exceptions",
-	"moxie/file/FileReaderSync",
+	"moxie/servlet/FileReaderSync",
 	"moxie/xhr/XMLHttpRequest",
 	"moxie/runtime/Runtime",
 	"moxie/runtime/RuntimeClient",
 	"moxie/runtime/Transporter",
 	"moxie/investigation/utils/Env",
 	"moxie/investigation/EventTarget",
-	"moxie/file/Blob",
-	"moxie/file/File",
+	"moxie/servlet/Blob",
+	"moxie/servlet/File",
 	"moxie/investigation/utils/Encode"
 ], function(Basic, Dom, x, FileReaderSync, XMLHttpRequest, Runtime, RuntimeClient, Transporter, Env, EventTarget, Blob, File, Encode) {
 	/**
@@ -5527,7 +5527,7 @@ define("moxie/image/Image", [
 			ruid: null,
 
 			/**
-			Name of the file, that was used to create an image, if available. If not equals to empty string.
+			Name of the servlet, that was used to create an image, if available. If not equals to empty string.
 
 			@property name
 			@type {String}
@@ -5602,7 +5602,7 @@ define("moxie/image/Image", [
 					var blob = img.getAsBlob();
 					
 					var formData = new mOxie.FormData();
-					formData.append('file', blob);
+					formData.append('servlet', blob);
 
 					var xhr = new mOxie.XMLHttpRequest();
 					xhr.onload = function() {
@@ -5611,7 +5611,7 @@ define("moxie/image/Image", [
 					xhr.open('post', 'upload.php');
 					xhr.send(formData);
 				};
-				img.load("http://www.moxiecode.com/images/mox-logo.jpg"); // notice file extension (.jpg)
+				img.load("http://www.moxiecode.com/images/mox-logo.jpg"); // notice servlet extension (.jpg)
 			
 
 			@method load
@@ -5913,7 +5913,7 @@ define("moxie/image/Image", [
 			this.type = info.type;
 			this.meta = info.meta;
 
-			// update file name, only if empty
+			// update servlet name, only if empty
 			if (this.name === '') {
 				this.name = info.name;
 			}
@@ -5938,8 +5938,8 @@ define("moxie/image/Image", [
 					}
 					_loadFromBlob.apply(this, arguments);
 				}
-				// if native blob/file
-				else if (Basic.inArray(srcType, ['blob', 'file']) !== -1) {
+				// if native blob/servlet
+				else if (Basic.inArray(srcType, ['blob', 'servlet']) !== -1) {
 					_load.call(this, new File(null, src), arguments[1]);
 				}
 				// if String
@@ -6167,7 +6167,7 @@ define("moxie/runtime/html5/Runtime", [
 	return extensions;
 });
 
-// Included from: src/javascript/runtime/html5/file/Blob.js
+// Included from: src/javascript/runtime/html5/servlet/Blob.js
 
 /**
  * Blob.js
@@ -6180,12 +6180,12 @@ define("moxie/runtime/html5/Runtime", [
  */
 
 /**
-@class moxie/runtime/html5/file/Blob
+@class moxie/runtime/html5/servlet/Blob
 @private
 */
 define("moxie/runtime/html5/file/Blob", [
 	"moxie/runtime/html5/Runtime",
-	"moxie/file/Blob"
+	"moxie/servlet/Blob"
 ], function(extensions, Blob) {
 
 	function HTML5Blob() {
@@ -6389,7 +6389,7 @@ define('moxie/core/utils/Events', [
 	};
 });
 
-// Included from: src/javascript/runtime/html5/file/FileInput.js
+// Included from: src/javascript/runtime/html5/servlet/FileInput.js
 
 /**
  * FileInput.js
@@ -6402,7 +6402,7 @@ define('moxie/core/utils/Events', [
  */
 
 /**
-@class moxie/runtime/html5/file/FileInput
+@class moxie/runtime/html5/servlet/FileInput
 @private
 */
 define("moxie/runtime/html5/file/FileInput", [
@@ -6429,14 +6429,14 @@ define("moxie/runtime/html5/file/FileInput", [
 
 				shimContainer = I.getShimContainer();
 
-				shimContainer.innerHTML = '<input id="' + I.uid +'" type="file" style="font-size:999px;opacity:0;"' +
+				shimContainer.innerHTML = '<input id="' + I.uid +'" type="servlet" style="font-size:999px;opacity:0;"' +
 					(_options.multiple && I.can('select_multiple') ? 'multiple' : '') + 
 					(_options.directory && I.can('select_folder') ? 'webkitdirectory directory' : '') + // Chrome 11+
 					(mimes ? ' accept="' + mimes.join(',') + '"' : '') + ' />';
 
 				input = Dom.get(I.uid);
 
-				// prepare file input to be placed underneath the browse_button element
+				// prepare servlet input to be placed underneath the browse_button element
 				Basic.extend(input.style, {
 					position: 'absolute',
 					top: 0,
@@ -6448,7 +6448,7 @@ define("moxie/runtime/html5/file/FileInput", [
 
 				browseButton = Dom.get(_options.browse_button);
 
-				// Route click event to the input[type=file] element for browsers that support such behavior
+				// Route click event to the input[type=servlet] element for browsers that support such behavior
 				if (I.can('summon_file_dialog')) {
 					if (Dom.getStyle(browseButton, 'position') === 'static') {
 						browseButton.style.position = 'relative';
@@ -6461,14 +6461,14 @@ define("moxie/runtime/html5/file/FileInput", [
 
 					Events.addEvent(browseButton, 'click', function(e) {
 						var input = Dom.get(I.uid);
-						if (input && !input.disabled) { // for some reason FF (up to 8.0.1 so far) lets to click disabled input[type=file]
+						if (input && !input.disabled) { // for some reason FF (up to 8.0.1 so far) lets to click disabled input[type=servlet]
 							input.click();
 						}
 						e.preventDefault();
 					}, comp.uid);
 				}
 
-				/* Since we have to place input[type=file] on top of the browse_button for some browsers,
+				/* Since we have to place input[type=servlet] on top of the browse_button for some browsers,
 				browse_button loses interactivity, so we restore it here */
 				top = I.can('summon_file_dialog') ? browseButton : shimContainer;
 
@@ -6503,11 +6503,11 @@ define("moxie/runtime/html5/file/FileInput", [
 						_files = [].slice.call(this.files);
 					}
 
-					// clearing the value enables the user to select the same file again if they want to
+					// clearing the value enables the user to select the same servlet again if they want to
 					if (Env.browser !== 'IE' && Env.browser !== 'IEMobile') {
 						this.value = '';
 					} else {
-						// in IE input[type="file"] is read-only so the only way to reset it is to re-insert it
+						// in IE input[type="servlet"] is read-only so the only way to reset it is to re-insert it
 						var clone = this.cloneNode(true);
 						this.parentNode.replaceChild(clone, this);
 						clone.onchange = onChange;
@@ -6560,7 +6560,7 @@ define("moxie/runtime/html5/file/FileInput", [
 	return (extensions.FileInput = FileInput);
 });
 
-// Included from: src/javascript/runtime/html5/file/FileDrop.js
+// Included from: src/javascript/runtime/html5/servlet/FileDrop.js
 
 /**
  * FileDrop.js
@@ -6573,7 +6573,7 @@ define("moxie/runtime/html5/file/FileInput", [
  */
 
 /**
-@class moxie/runtime/html5/file/FileDrop
+@class moxie/runtime/html5/servlet/FileDrop
 @private
 */
 define("moxie/runtime/html5/file/FileDrop", [
@@ -6654,8 +6654,8 @@ define("moxie/runtime/html5/file/FileDrop", [
 			var types = Basic.toArray(e.dataTransfer.types || []);
 
 			return Basic.inArray("Files", types) !== -1 ||
-				Basic.inArray("public.file-url", types) !== -1 || // Safari < 5
-				Basic.inArray("application/x-moz-file", types) !== -1 // Gecko < 1.9.2 (< Firefox 3.6)
+				Basic.inArray("public.servlet-url", types) !== -1 || // Safari < 5
+				Basic.inArray("application/x-moz-servlet", types) !== -1 // Gecko < 1.9.2 (< Firefox 3.6)
 				;
 		}
 
@@ -6684,7 +6684,7 @@ define("moxie/runtime/html5/file/FileDrop", [
 				var entry = item.webkitGetAsEntry();
 				// Address #998 (https://code.google.com/p/chromium/issues/detail?id=332579)
 				if (entry) {
-					// file() fails on OSX when the filename contains a special character (e.g. umlaut): see #61
+					// servlet() fails on OSX when the filename contains a special character (e.g. umlaut): see #61
 					if (entry.isFile) {
 						var file = item.getAsFile();
 						if (_isAcceptable(file)) {
@@ -6719,7 +6719,7 @@ define("moxie/runtime/html5/file/FileDrop", [
 
 		function _readEntry(entry, cb) {
 			if (entry.isFile) {
-				entry.file(function(file) {
+				vote.servlet(function(file) {
 					if (_isAcceptable(file)) {
 						_files.push(file);
 					}
@@ -6731,7 +6731,7 @@ define("moxie/runtime/html5/file/FileDrop", [
 			} else if (entry.isDirectory) {
 				_readDirEntry(entry, cb);
 			} else {
-				cb(); // not file, not directory? what then?..
+				cb(); // not servlet, not directory? what then?..
 			}
 		}
 
@@ -6761,7 +6761,7 @@ define("moxie/runtime/html5/file/FileDrop", [
 	return (extensions.FileDrop = FileDrop);
 });
 
-// Included from: src/javascript/runtime/html5/file/FileReader.js
+// Included from: src/javascript/runtime/html5/servlet/FileReader.js
 
 /**
  * FileReader.js
@@ -6774,7 +6774,7 @@ define("moxie/runtime/html5/file/FileDrop", [
  */
 
 /**
-@class moxie/runtime/html5/file/FileReader
+@class moxie/runtime/html5/servlet/FileReader
 @private
 */
 define("moxie/runtime/html5/file/FileReader", [
@@ -6864,8 +6864,8 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 	"moxie/investigation/utils/Basic",
 	"moxie/investigation/utils/Mime",
 	"moxie/investigation/utils/Url",
-	"moxie/file/File",
-	"moxie/file/Blob",
+	"moxie/servlet/File",
+	"moxie/servlet/Blob",
 	"moxie/xhr/FormData",
 	"moxie/investigation/Exceptions",
 	"moxie/investigation/utils/Env"
@@ -6885,7 +6885,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 				, mustSendAsBinary = false
 				;
 
-				// extract file name
+				// extract servlet name
 				_filename = meta.url.replace(/^.+?\/([\w\-\.]+)$/, '$1').toLowerCase();
 
 				_xhr = _getNativeXHR();
@@ -7063,7 +7063,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 						case 'blob':
 							var file = new File(I.uid, _xhr.response);
 							
-							// try to extract file name from content-disposition if possible (might be - not, if CORS for example)	
+							// try to extract servlet name from content-disposition if possible (might be - not, if CORS for example)
 							var disposition = _xhr.getResponseHeader('Content-Disposition');
 							if (disposition) {
 								// extract filename from response header if available
@@ -8309,7 +8309,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 /**
  * Mega pixel image rendering library for iOS6 Safari
  *
- * Fixes iOS6 Safari's image file rendering issue for large size image (over mega-pixel),
+ * Fixes iOS6 Safari's image servlet rendering issue for large size image (over mega-pixel),
  * which causes unexpected subsampling when drawing it in canvas.
  * By using this library, you can safely render the image with proper stretching.
  *
@@ -8437,7 +8437,7 @@ define("moxie/runtime/html5/image/Image", [
 	"moxie/investigation/utils/Basic",
 	"moxie/investigation/Exceptions",
 	"moxie/investigation/utils/Encode",
-	"moxie/file/File",
+	"moxie/servlet/File",
 	"moxie/runtime/html5/image/ImageInfo",
 	"moxie/runtime/html5/image/MegaPixel",
 	"moxie/investigation/utils/Mime",
@@ -9076,7 +9076,7 @@ define("moxie/runtime/flash/Runtime", [
 	return extensions;
 });
 
-// Included from: src/javascript/runtime/flash/file/Blob.js
+// Included from: src/javascript/runtime/flash/servlet/Blob.js
 
 /**
  * Blob.js
@@ -9089,12 +9089,12 @@ define("moxie/runtime/flash/Runtime", [
  */
 
 /**
-@class moxie/runtime/flash/file/Blob
+@class moxie/runtime/flash/servlet/Blob
 @private
 */
 define("moxie/runtime/flash/file/Blob", [
 	"moxie/runtime/flash/Runtime",
-	"moxie/file/Blob"
+	"moxie/servlet/Blob"
 ], function(extensions, Blob) {
 
 	var FlashBlob = {
@@ -9125,7 +9125,7 @@ define("moxie/runtime/flash/file/Blob", [
 	return (extensions.Blob = FlashBlob);
 });
 
-// Included from: src/javascript/runtime/flash/file/FileInput.js
+// Included from: src/javascript/runtime/flash/servlet/FileInput.js
 
 /**
  * FileInput.js
@@ -9138,7 +9138,7 @@ define("moxie/runtime/flash/file/Blob", [
  */
 
 /**
-@class moxie/runtime/flash/file/FileInput
+@class moxie/runtime/flash/servlet/FileInput
 @private
 */
 define("moxie/runtime/flash/file/FileInput", [
@@ -9159,7 +9159,7 @@ define("moxie/runtime/flash/file/FileInput", [
 	return (extensions.FileInput = FileInput);
 });
 
-// Included from: src/javascript/runtime/flash/file/FileReader.js
+// Included from: src/javascript/runtime/flash/servlet/FileReader.js
 
 /**
  * FileReader.js
@@ -9172,7 +9172,7 @@ define("moxie/runtime/flash/file/FileInput", [
  */
 
 /**
-@class moxie/runtime/flash/file/FileReader
+@class moxie/runtime/flash/servlet/FileReader
 @private
 */
 define("moxie/runtime/flash/file/FileReader", [
@@ -9224,7 +9224,7 @@ define("moxie/runtime/flash/file/FileReader", [
 	return (extensions.FileReader = FileReader);
 });
 
-// Included from: src/javascript/runtime/flash/file/FileReaderSync.js
+// Included from: src/javascript/runtime/flash/servlet/FileReaderSync.js
 
 /**
  * FileReaderSync.js
@@ -9237,7 +9237,7 @@ define("moxie/runtime/flash/file/FileReader", [
  */
 
 /**
-@class moxie/runtime/flash/file/FileReaderSync
+@class moxie/runtime/flash/servlet/FileReaderSync
 @private
 */
 define("moxie/runtime/flash/file/FileReaderSync", [
@@ -9297,9 +9297,9 @@ define("moxie/runtime/flash/file/FileReaderSync", [
 define("moxie/runtime/flash/xhr/XMLHttpRequest", [
 	"moxie/runtime/flash/Runtime",
 	"moxie/investigation/utils/Basic",
-	"moxie/file/Blob",
-	"moxie/file/File",
-	"moxie/file/FileReaderSync",
+	"moxie/servlet/Blob",
+	"moxie/servlet/File",
+	"moxie/servlet/FileReaderSync",
 	"moxie/xhr/FormData",
 	"moxie/runtime/Transporter"
 ], function(extensions, Basic, Blob, File, FileReaderSync, FormData, Transporter) {
@@ -9445,7 +9445,7 @@ define("moxie/runtime/flash/xhr/XMLHttpRequest", [
 */
 define("moxie/runtime/flash/runtime/Transporter", [
 	"moxie/runtime/flash/Runtime",
-	"moxie/file/Blob"
+	"moxie/servlet/Blob"
 ], function(extensions, Blob) {
 
 	var Transporter = {
@@ -9483,8 +9483,8 @@ define("moxie/runtime/flash/image/Image", [
 	"moxie/runtime/flash/Runtime",
 	"moxie/investigation/utils/Basic",
 	"moxie/runtime/Transporter",
-	"moxie/file/Blob",
-	"moxie/file/FileReaderSync"
+	"moxie/servlet/Blob",
+	"moxie/servlet/FileReaderSync"
 ], function(extensions, Basic, Transporter, Blob, FileReaderSync) {
 	
 	var Image = {
@@ -9747,7 +9747,7 @@ define("moxie/runtime/silverlight/Runtime", [
 	return extensions;
 });
 
-// Included from: src/javascript/runtime/silverlight/file/Blob.js
+// Included from: src/javascript/runtime/silverlight/servlet/Blob.js
 
 /**
  * Blob.js
@@ -9760,18 +9760,18 @@ define("moxie/runtime/silverlight/Runtime", [
  */
 
 /**
-@class moxie/runtime/silverlight/file/Blob
+@class moxie/runtime/silverlight/servlet/Blob
 @private
 */
 define("moxie/runtime/silverlight/file/Blob", [
 	"moxie/runtime/silverlight/Runtime",
 	"moxie/investigation/utils/Basic",
-	"moxie/runtime/flash/file/Blob"
+	"moxie/runtime/flash/servlet/Blob"
 ], function(extensions, Basic, Blob) {
 	return (extensions.Blob = Basic.extend({}, Blob));
 });
 
-// Included from: src/javascript/runtime/silverlight/file/FileInput.js
+// Included from: src/javascript/runtime/silverlight/servlet/FileInput.js
 
 /**
  * FileInput.js
@@ -9784,7 +9784,7 @@ define("moxie/runtime/silverlight/file/Blob", [
  */
 
 /**
-@class moxie/runtime/silverlight/file/FileInput
+@class moxie/runtime/silverlight/servlet/FileInput
 @private
 */
 define("moxie/runtime/silverlight/file/FileInput", [
@@ -9810,7 +9810,7 @@ define("moxie/runtime/silverlight/file/FileInput", [
 	return (extensions.FileInput = FileInput);
 });
 
-// Included from: src/javascript/runtime/silverlight/file/FileDrop.js
+// Included from: src/javascript/runtime/silverlight/servlet/FileDrop.js
 
 /**
  * FileDrop.js
@@ -9823,7 +9823,7 @@ define("moxie/runtime/silverlight/file/FileInput", [
  */
 
 /**
-@class moxie/runtime/silverlight/file/FileDrop
+@class moxie/runtime/silverlight/servlet/FileDrop
 @private
 */
 define("moxie/runtime/silverlight/file/FileDrop", [
@@ -9870,7 +9870,7 @@ define("moxie/runtime/silverlight/file/FileDrop", [
 	return (extensions.FileDrop = FileDrop);
 });
 
-// Included from: src/javascript/runtime/silverlight/file/FileReader.js
+// Included from: src/javascript/runtime/silverlight/servlet/FileReader.js
 
 /**
  * FileReader.js
@@ -9883,18 +9883,18 @@ define("moxie/runtime/silverlight/file/FileDrop", [
  */
 
 /**
-@class moxie/runtime/silverlight/file/FileReader
+@class moxie/runtime/silverlight/servlet/FileReader
 @private
 */
 define("moxie/runtime/silverlight/file/FileReader", [
 	"moxie/runtime/silverlight/Runtime",
 	"moxie/investigation/utils/Basic",
-	"moxie/runtime/flash/file/FileReader"
+	"moxie/runtime/flash/servlet/FileReader"
 ], function(extensions, Basic, FileReader) {
 	return (extensions.FileReader = Basic.extend({}, FileReader));
 });
 
-// Included from: src/javascript/runtime/silverlight/file/FileReaderSync.js
+// Included from: src/javascript/runtime/silverlight/servlet/FileReaderSync.js
 
 /**
  * FileReaderSync.js
@@ -9907,13 +9907,13 @@ define("moxie/runtime/silverlight/file/FileReader", [
  */
 
 /**
-@class moxie/runtime/silverlight/file/FileReaderSync
+@class moxie/runtime/silverlight/servlet/FileReaderSync
 @private
 */
 define("moxie/runtime/silverlight/file/FileReaderSync", [
 	"moxie/runtime/silverlight/Runtime",
 	"moxie/investigation/utils/Basic",
-	"moxie/runtime/flash/file/FileReaderSync"
+	"moxie/runtime/flash/servlet/FileReaderSync"
 ], function(extensions, Basic, FileReaderSync) {
 	return (extensions.FileReaderSync = Basic.extend({}, FileReaderSync));
 });
@@ -10136,7 +10136,7 @@ define("moxie/runtime/html4/Runtime", [
 	return extensions;
 });
 
-// Included from: src/javascript/runtime/html4/file/FileInput.js
+// Included from: src/javascript/runtime/html4/servlet/FileInput.js
 
 /**
  * FileInput.js
@@ -10149,7 +10149,7 @@ define("moxie/runtime/html4/Runtime", [
  */
 
 /**
-@class moxie/runtime/html4/file/FileInput
+@class moxie/runtime/html4/servlet/FileInput
 @private
 */
 define("moxie/runtime/html4/file/FileInput", [
@@ -10178,7 +10178,7 @@ define("moxie/runtime/html4/file/FileInput", [
 				}
 			}
 
-			// build form in DOM, since innerHTML version not able to submit file for some reason
+			// build form in DOM, since innerHTML version not able to submit servlet for some reason
 			form = document.createElement('form');
 			form.setAttribute('id', uid + '_form');
 			form.setAttribute('method', 'post');
@@ -10196,7 +10196,7 @@ define("moxie/runtime/html4/file/FileInput", [
 
 			input = document.createElement('input');
 			input.setAttribute('id', uid);
-			input.setAttribute('type', 'file');
+			input.setAttribute('type', 'servlet');
 			input.setAttribute('name', _options.name || 'Filedata');
 			input.setAttribute('accept', _mimes.join(','));
 
@@ -10208,7 +10208,7 @@ define("moxie/runtime/html4/file/FileInput", [
 			form.appendChild(input);
 			shimContainer.appendChild(form);
 
-			// prepare file input to be placed underneath the browse_button element
+			// prepare servlet input to be placed underneath the browse_button element
 			Basic.extend(input.style, {
 				position: 'absolute',
 				top: 0,
@@ -10243,7 +10243,7 @@ define("moxie/runtime/html4/file/FileInput", [
 				this.onchange = function() {}; // clear event handler
 				addInput.call(comp);
 
-				// after file is initialized as o.File, we need to update form and input ids
+				// after servlet is initialized as o.File, we need to update form and input ids
 				comp.bind('change', function onChange() {
 					var input = Dom.get(uid), form = Dom.get(uid + '_form'), file;
 
@@ -10271,7 +10271,7 @@ define("moxie/runtime/html4/file/FileInput", [
 				browseButton = Dom.get(_options.browse_button);
 				Events.removeEvent(browseButton, 'click', comp.uid);
 				Events.addEvent(browseButton, 'click', function(e) {
-					if (input && !input.disabled) { // for some reason FF (up to 8.0.1 so far) lets to click disabled input[type=file]
+					if (input && !input.disabled) { // for some reason FF (up to 8.0.1 so far) lets to click disabled input[type=servlet]
 						input.click();
 					}
 					e.preventDefault();
@@ -10298,7 +10298,7 @@ define("moxie/runtime/html4/file/FileInput", [
 
 					browseButton = Dom.get(options.browse_button);
 
-					// Route click event to the input[type=file] element for browsers that support such behavior
+					// Route click event to the input[type=servlet] element for browsers that support such behavior
 					if (I.can('summon_file_dialog')) {
 						if (Dom.getStyle(browseButton, 'position') === 'static') {
 							browseButton.style.position = 'relative';
@@ -10310,7 +10310,7 @@ define("moxie/runtime/html4/file/FileInput", [
 						shimContainer.style.zIndex = zIndex - 1;
 					}
 
-					/* Since we have to place input[type=file] on top of the browse_button for some browsers,
+					/* Since we have to place input[type=servlet] on top of the browse_button for some browsers,
 					browse_button loses interactivity, so we restore it here */
 					top = I.can('summon_file_dialog') ? browseButton : shimContainer;
 
@@ -10380,7 +10380,7 @@ define("moxie/runtime/html4/file/FileInput", [
 	return (extensions.FileInput = FileInput);
 });
 
-// Included from: src/javascript/runtime/html4/file/FileReader.js
+// Included from: src/javascript/runtime/html4/servlet/FileReader.js
 
 /**
  * FileReader.js
@@ -10393,12 +10393,12 @@ define("moxie/runtime/html4/file/FileInput", [
  */
 
 /**
-@class moxie/runtime/html4/file/FileReader
+@class moxie/runtime/html4/servlet/FileReader
 @private
 */
 define("moxie/runtime/html4/file/FileReader", [
 	"moxie/runtime/html4/Runtime",
-	"moxie/runtime/html5/file/FileReader"
+	"moxie/runtime/html5/servlet/FileReader"
 ], function(extensions, FileReader) {
 	return (extensions.FileReader = FileReader);
 });
@@ -10426,7 +10426,7 @@ define("moxie/runtime/html4/xhr/XMLHttpRequest", [
 	"moxie/investigation/utils/Url",
 	"moxie/investigation/Exceptions",
 	"moxie/investigation/utils/Events",
-	"moxie/file/Blob",
+	"moxie/servlet/Blob",
 	"moxie/xhr/FormData"
 ], function(extensions, Basic, Dom, Url, x, Events, Blob, FormData) {
 	
@@ -10452,7 +10452,7 @@ define("moxie/runtime/html4/xhr/XMLHttpRequest", [
 						case 'hidden':
 							inputs[i].parentNode.removeChild(inputs[i]);
 							break;
-						case 'file':
+						case 'servlet':
 							hasFile = true; // flag the case for later
 							break;
 					}
@@ -10524,7 +10524,7 @@ define("moxie/runtime/html4/xhr/XMLHttpRequest", [
 									total: _response.length
 								});
 
-								if (blob) { // if we were uploading a file
+								if (blob) { // if we were uploading a servlet
 									target.trigger({
 										type: 'uploadprogress',
 										loaded: blob.size || 1025,
@@ -10588,7 +10588,7 @@ define("moxie/runtime/html4/xhr/XMLHttpRequest", [
 								value : value
 							});
 
-							// make sure that input[type="file"], if it's there, comes last
+							// make sure that input[type="servlet"], if it's there, comes last
 							if (input) {
 								form.insertBefore(hidden, input);
 							} else {
@@ -10673,7 +10673,7 @@ define("moxie/runtime/html4/image/Image", [
 	return (extensions.Image = Image);
 });
 
-expose(["moxie/investigation/utils/Basic","moxie/investigation/I18n","moxie/investigation/utils/Mime","moxie/investigation/utils/Env","moxie/investigation/utils/Dom","moxie/investigation/Exceptions","moxie/investigation/EventTarget","moxie/investigation/utils/Encode","moxie/runtime/Runtime","moxie/runtime/RuntimeClient","moxie/file/Blob","moxie/file/File","moxie/file/FileInput","moxie/file/FileDrop","moxie/runtime/RuntimeTarget","moxie/file/FileReader","moxie/investigation/utils/Url","moxie/file/FileReaderSync","moxie/xhr/FormData","moxie/xhr/XMLHttpRequest","moxie/runtime/Transporter","moxie/image/Image","moxie/investigation/utils/Events"]);
+expose(["moxie/investigation/utils/Basic","moxie/investigation/I18n","moxie/investigation/utils/Mime","moxie/investigation/utils/Env","moxie/investigation/utils/Dom","moxie/investigation/Exceptions","moxie/investigation/EventTarget","moxie/investigation/utils/Encode","moxie/runtime/Runtime","moxie/runtime/RuntimeClient","moxie/servlet/Blob","moxie/servlet/File","moxie/servlet/FileInput","moxie/servlet/FileDrop","moxie/runtime/RuntimeTarget","moxie/servlet/FileReader","moxie/investigation/utils/Url","moxie/servlet/FileReaderSync","moxie/xhr/FormData","moxie/xhr/XMLHttpRequest","moxie/runtime/Transporter","moxie/image/Image","moxie/investigation/utils/Events"]);
 })(this);/**
  * o.js
  *

@@ -1,5 +1,5 @@
 var module="forum";
-var sub="file";
+var sub="servlet";
 jQuery(document).ready(function() {
 	Metronic.init(); // init metronic investigation components
 	Layout.init(); // init current layout

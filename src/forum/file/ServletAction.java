@@ -225,7 +225,7 @@ public class ServletAction extends HttpServlet {
         String timeFrom = request.getParameter("time_from");
         String timeTo = request.getParameter("time_to");
         String existResultset = request.getParameter("exist_resultset");
-        if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty()))
+        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty()))
             existResultset = "0";
         String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
@@ -249,7 +249,7 @@ public class ServletAction extends HttpServlet {
         query.setUserId(userId);
         query.setUserRole(userRole);
         JSONObject jsonObj = null;
-        if (existResultset.equals("1")) {
+        if ("1".equals(existResultset)) {
             //要求提取之前查询结果，如果有就取出来，如果没有就重新查询一次，并且保存进session里
             if (session.getAttribute(module + "_" + sub + "_get_record_result") != null) {
                 jsonObj = (JSONObject) session.getAttribute(module + "_" + sub + "_get_record_result");
@@ -304,7 +304,7 @@ public class ServletAction extends HttpServlet {
         String id = request.getParameter("id");
         String index = request.getParameter("index");
         String existResultset = request.getParameter("exist_resultset");
-        if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty()))
+        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty()))
             existResultset = "0";
         String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");

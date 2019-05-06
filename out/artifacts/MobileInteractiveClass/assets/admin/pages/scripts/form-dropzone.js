@@ -9,7 +9,7 @@ var FormDropzone = function () {
                 init: function() {
                     this.on("addedfile", function(file) {
                         // Create the remove button
-                        var removeButton = Dropzone.createElement("<button class='btn btn-sm btn-block'>Remove file</button>");
+                        var removeButton = Dropzone.createElement("<button class='btn btn-sm btn-block'>Remove servlet</button>");
                         
                         // Capture the Dropzone instance as closure.
                         var _this = this;
@@ -20,13 +20,13 @@ var FormDropzone = function () {
                           e.preventDefault();
                           e.stopPropagation();
 
-                          // Remove the file preview.
+                          // Remove the servlet preview.
                           _this.removeFile(file);
-                          // If you want to the delete the file on the server as well,
+                          // If you want to the delete the servlet on the server as well,
                           // you can do the AJAX request here.
                         });
 
-                        // Add the button to the file preview element.
+                        // Add the button to the servlet preview element.
                         file.previewElement.appendChild(removeButton);
                     });
                 }            

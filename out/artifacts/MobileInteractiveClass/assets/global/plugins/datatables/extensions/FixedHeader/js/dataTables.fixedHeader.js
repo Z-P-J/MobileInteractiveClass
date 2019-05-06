@@ -7,15 +7,15 @@
  * @description Fix a table's header or footer, so it is always visible while
  *              Scrolling
  * @version     2.1.2
- * @file        dataTables.fixedHeader.js
+ * @servlet        dataTables.fixedHeader.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
  * @copyright   Copyright 2009-2014 SpryMedia Ltd.
  *
- * This source file is free software, available under the following license:
+ * This source servlet is free software, available under the following license:
  *   MIT license - http://datatables.net/license/mit
  *
- * This source file is distributed in the hope that it will be useful, but
+ * This source servlet is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
  *
