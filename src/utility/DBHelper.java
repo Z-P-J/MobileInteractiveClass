@@ -18,8 +18,6 @@ public class DBHelper {
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "zpj19990509";
 
-    private static String dflj = "";
-
     private Connection a;
     private Statement statement;
 

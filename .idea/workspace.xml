@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utility/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/DBHelper.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -97,8 +98,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="24" column="15" lean-forward="true" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+            <state relative-caret-position="475">
+              <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -107,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/src/utility/DBHelper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="380">
-              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -212,10 +213,10 @@
       <dir>D:\Programming\Java Workplace\Demo\web\project\investigation</dir>
       <dir>D:\Programming\Java Workplace\Demo</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\user</dir>
-      <dir>D:\Programming\MobileInteractiveClass</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\assets\module\scripts\vote\file</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\assets\module\scripts\user</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\assets\module\scripts\user\info</dir>
+      <dir>D:\Programming\MobileInteractiveClass</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -273,8 +274,8 @@
         <option value="$PROJECT_DIR$/src/investigation/ServletAction.java" />
         <option value="$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java" />
         <option value="$PROJECT_DIR$/src/utility/ServletUtil.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/utility/DBHelper.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -683,7 +684,7 @@
       <workItem from="1557030312237" duration="13136000" />
       <workItem from="1557111974531" duration="2268000" />
       <workItem from="1557115479428" duration="178000" />
-      <workItem from="1557116337630" duration="15792000" />
+      <workItem from="1557116337630" duration="16050000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -717,7 +718,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118569000" />
+    <option name="totallyTimeSpent" value="118827000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1160,14 +1161,14 @@
     <entry file="file://$PROJECT_DIR$/src/utility/DBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="15" lean-forward="true" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+        <state relative-caret-position="475">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
         </state>
       </provider>
     </entry>
