@@ -9,497 +9,50 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/25714.xml" afterDir="false" />
+    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout/css/layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout2/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout2/css/layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/ecommerce-products-edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/ecommerce-products-edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/form-dropzone.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/form-dropzone.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/inbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/inbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/table-advanced.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/table-advanced.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/table-editable.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/table-editable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/table-managed.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/table-managed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/ui-tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/ui-tree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/dataloader/dataloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/dataloader/dataloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/dataloader/dataloader.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/dataloader/dataloader.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/export.config.advanced.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/export.config.advanced.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/export.config.default.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/export.config.default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/funnel.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/funnel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/gantt.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/gantt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/gauge.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/gauge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie1.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie2.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie3.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie4.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/radar.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/radar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial1.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial2.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial3.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/stock.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/xy.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/xy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/export.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/export.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/export.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/FileSaver.js/FileSaver.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/FileSaver.js/FileSaver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/blob.js/blob.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/blob.js/blob.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/jszip/jszip.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/jszip/jszip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/jszip/jszip.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/jszip/jszip.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/pdfmake/pdfmake.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/pdfmake/pdfmake.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/pdfmake/pdfmake.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/pdfmake/pdfmake.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/xlsx/xlsx.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/xlsx/xlsx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/xlsx/xlsx.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/xlsx/xlsx.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/responsive/responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/responsive/responsive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/dataloader/dataloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/dataloader/dataloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/dataloader/dataloader.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/dataloader/dataloader.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/export.config.advanced.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/export.config.advanced.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/export.config.default.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/export.config.default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/funnel.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/funnel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/gantt.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/gantt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/gauge.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/gauge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie1.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie2.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie3.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie4.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/radar.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/radar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial1.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial2.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial3.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/stock.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/xy.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/xy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/export.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/export.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/export.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/FileSaver.js/FileSaver.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/FileSaver.js/FileSaver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/blob.js/blob.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/blob.js/blob.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/jszip/jszip.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/jszip/jszip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/jszip/jszip.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/jszip/jszip.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/pdfmake/pdfmake.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/pdfmake/pdfmake.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/pdfmake/pdfmake.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/pdfmake/pdfmake.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/xlsx/xlsx.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/xlsx/xlsx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/xlsx/xlsx.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/xlsx/xlsx.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/responsive/responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/responsive/responsive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/dataloader/dataloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/dataloader/dataloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/dataloader/dataloader.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/dataloader/dataloader.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/export.config.advanced.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/export.config.advanced.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/export.config.default.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/export.config.default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/funnel.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/funnel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/gantt.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/gantt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/gauge.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/gauge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie1.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie2.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie3.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie4.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/radar.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/radar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial1.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial2.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial3.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/stock.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/xy.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/xy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/export.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/export.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/export.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/FileSaver.js/FileSaver.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/FileSaver.js/FileSaver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/blob.js/blob.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/blob.js/blob.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/jszip/jszip.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/jszip/jszip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/jszip/jszip.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/jszip/jszip.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/pdfmake/pdfmake.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/pdfmake/pdfmake.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/pdfmake/pdfmake.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/pdfmake/pdfmake.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/xlsx/xlsx.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/xlsx/xlsx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/xlsx/xlsx.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/xlsx/xlsx.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/responsive/responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/responsive/responsive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/angularjs/angular.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/angularjs/angular.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-summernote/summernote.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-summernote/summernote.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-summernote/summernote.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-summernote/summernote.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-collapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-collapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-tab.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-tab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-transition.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-transition.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/build-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/build-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/ckeditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/flash/dialogs/flash.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/flash/dialogs/flash.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/image/dialogs/image.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/image/dialogs/image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/link/dialogs/link.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/link/dialogs/link.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/wsc/dialogs/wsc.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/wsc/dialogs/wsc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/samples/inlineall.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/samples/inlineall.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/samples/sample.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/samples/sample.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/all.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/all.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/examples/advanced_init/dom_toolbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/examples/advanced_init/dom_toolbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/AutoFill/js/dataTables.autoFill.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/AutoFill/js/dataTables.autoFill.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/ColVis/js/dataTables.colVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/ColVis/js/dataTables.colVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/FixedColumns/js/dataTables.fixedColumns.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/FixedColumns/js/dataTables.fixedColumns.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/FixedHeader/js/dataTables.fixedHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/FixedHeader/js/dataTables.fixedHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/KeyTable/js/dataTables.keyTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/KeyTable/js/dataTables.keyTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/media/js/jquery.dataTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/media/js/jquery.dataTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/dropzone/css/stylus/dropzone.styl" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/dropzone/css/stylus/dropzone.styl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/dropzone/dropzone.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/dropzone/dropzone.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/dropzone/dropzone.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/dropzone/dropzone.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fancybox/lib/jquery-1.8.2.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fancybox/lib/jquery-1.8.2.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/flot/jquery.flot.pie.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/flot/jquery.flot.pie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fullcalendar/fullcalendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fullcalendar/fullcalendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/icheck/demo/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/icheck/demo/js/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-audio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-image.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-jquery-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-jquery-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-process.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-process.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.fileupload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/vendor/load-image.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/js/vendor/load-image.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-notific8/jquery.notific8.scss" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-notific8/jquery.notific8.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/additional-methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/additional-methods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/additional-methods.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/additional-methods.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/jquery.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/jquery.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery.cokie.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery.cokie.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery.mockjax.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery.mockjax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jstree/dist/jstree.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jstree/dist/jstree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/mall/mall-ground.svg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/mall/mall-ground.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/mall/mall-level1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/mall/mall-level1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/mall/mall-underground.svg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/mall/mall-underground.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/world/world.svg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/world/world.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/mapplic/mapplic.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/mapplic/mapplic.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/mapplic/mapplic.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/mapplic/mapplic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/maps/uk.svg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/maps/uk.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/pace/themes/pace-theme-barber-shop.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/pace/themes/pace-theme-barber-shop.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/pace/themes/pace-theme-big-counter.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/pace/themes/pace-theme-big-counter.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/pace/themes/pace-theme-flash.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/pace/themes/pace-theme-flash.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/pace/themes/pace-theme-minimal.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/pace/themes/pace-theme-minimal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/az.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/az.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/en.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/fr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/hr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/id.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/it.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/pl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/ro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/sk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/sr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/jquery.ui.plupload/jquery.ui.plupload.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/jquery.ui.plupload/jquery.ui.plupload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/jquery.ui.plupload/jquery.ui.plupload.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/jquery.ui.plupload/jquery.ui.plupload.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/moxie.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/moxie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/moxie.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/moxie.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/plupload.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/plupload.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/plupload.full.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/plupload.full.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/plupload.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/plupload.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-layer-slider/js/greensock.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-layer-slider/js/greensock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-layer-slider/js/layerslider.kreaturamedia.jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-layer-slider/js/layerslider.kreaturamedia.jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/rs-plugin/font/revicons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/rs-plugin/font/revicons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/tabdrop/js/bootstrap-tabdrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/tabdrop/js/bootstrap-tabdrop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/uniform/jquery.uniform.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/uniform/jquery.uniform.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/uniform/jquery.uniform.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/uniform/jquery.uniform.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/forum/file/forum_add.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/forum/file/forum_add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/forum/file/forum_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/forum/file/forum_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/forum/file/forum_view.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/forum/file/forum_view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/project/file/file_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/project/file/file_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/vote/file/record_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/vote/file/record_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/vote/file/vote_add.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/vote/file/vote_add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/base/statistic/statistic_print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/base/statistic/statistic_print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/file/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/file/main/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/main/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/export/export_result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/export/export_result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/file/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/file/main/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/investigation/print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/investigation/print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/main/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/statistic/statistic_print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/statistic/statistic_print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/statistic/statistic_result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/statistic/statistic_result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/vote/print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/vote/print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_statistic_print.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_statistic_query.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_statistic_result.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/investigation/investigation_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/investigation/investigation_list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/project/vote/vote_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/project/vote/vote_list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/vote/file/vote_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/vote/file/vote_list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/print.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/statistic.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/colorschememapping.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/filelist.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/item0001.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/props0002.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/todo_print.files/themedata.thmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/colorschememapping.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/filelist.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/item0001.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/props0002.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.files/themedata.thmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_print.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/vote/file/vote_statistic.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base/BaseHttpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/BaseHttpServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forum/file/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/forum/file/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/investigation/InvestigationBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/investigation/InvestigationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/investigation/dao/InvestigationDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/investigation/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/investigation/ServletAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/file/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/file/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/statistic/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistic/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/statistic/StatisticBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistic/bean/StatisticBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/statistic/StatisticDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistic/dao/StatisticDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/TimeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/TimeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/excel/ExcelWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/excel/ExcelWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/export/Export.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/export/ExportBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/export/ExportDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/export/ExportDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/export/ExportUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/export/ExportUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vote/dao/FileDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vote/dao/ForumFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vote/dao/Statistic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vote/dao/StatisticDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vote/file/ServletAction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vote/statistic/ServletAction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/admin/layout/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/admin/layout/css/layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/admin/layout2/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/admin/layout2/css/layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/admin/pages/scripts/ecommerce-products-edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/admin/pages/scripts/ecommerce-products-edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/admin/pages/scripts/form-dropzone.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/admin/pages/scripts/form-dropzone.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/admin/pages/scripts/inbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/admin/pages/scripts/inbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/admin/pages/scripts/table-advanced.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/admin/pages/scripts/table-advanced.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/admin/pages/scripts/table-editable.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/admin/pages/scripts/table-editable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/admin/pages/scripts/table-managed.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/admin/pages/scripts/table-managed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/admin/pages/scripts/ui-tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/admin/pages/scripts/ui-tree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/dataloader/dataloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/dataloader/dataloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/dataloader/dataloader.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/dataloader/dataloader.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/export.config.advanced.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/export.config.advanced.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/export.config.default.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/export.config.default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/funnel.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/funnel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/gantt.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/gantt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/gauge.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/gauge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie1.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie2.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie3.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie4.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/pie4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/radar.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/radar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial1.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial2.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial3.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/serial3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/stock.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/xy.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/examples/xy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/export.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/export.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/export.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/FileSaver.js/FileSaver.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/FileSaver.js/FileSaver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/blob.js/blob.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/blob.js/blob.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/jszip/jszip.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/jszip/jszip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/jszip/jszip.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/jszip/jszip.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/pdfmake/pdfmake.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/pdfmake/pdfmake.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/pdfmake/pdfmake.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/pdfmake/pdfmake.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/xlsx/xlsx.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/xlsx/xlsx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/xlsx/xlsx.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/export/libs/xlsx/xlsx.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/responsive/responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/plugins/responsive/responsive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/dataloader/dataloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/dataloader/dataloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/dataloader/dataloader.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/dataloader/dataloader.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/export.config.advanced.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/export.config.advanced.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/export.config.default.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/export.config.default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/funnel.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/funnel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/gantt.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/gantt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/gauge.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/gauge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie1.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie2.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie3.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie4.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/pie4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/radar.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/radar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial1.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial2.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial3.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/serial3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/stock.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/xy.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/examples/xy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/export.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/export.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/export.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/FileSaver.js/FileSaver.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/FileSaver.js/FileSaver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/blob.js/blob.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/blob.js/blob.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/jszip/jszip.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/jszip/jszip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/jszip/jszip.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/jszip/jszip.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/pdfmake/pdfmake.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/pdfmake/pdfmake.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/pdfmake/pdfmake.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/pdfmake/pdfmake.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/xlsx/xlsx.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/xlsx/xlsx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/xlsx/xlsx.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/export/libs/xlsx/xlsx.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/responsive/responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/plugins/responsive/responsive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/dataloader/dataloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/dataloader/dataloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/dataloader/dataloader.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/dataloader/dataloader.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/export.config.advanced.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/export.config.advanced.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/export.config.default.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/export.config.default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/funnel.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/funnel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/gantt.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/gantt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/gauge.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/gauge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie1.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie2.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie3.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie4.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/radar.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/radar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial1.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial2.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial3.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/serial3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/stock.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/xy.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/xy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/export.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/export.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/export.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/FileSaver.js/FileSaver.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/FileSaver.js/FileSaver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/blob.js/blob.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/blob.js/blob.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/jszip/jszip.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/jszip/jszip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/jszip/jszip.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/jszip/jszip.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/pdfmake/pdfmake.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/pdfmake/pdfmake.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/pdfmake/pdfmake.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/pdfmake/pdfmake.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/xlsx/xlsx.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/xlsx/xlsx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/xlsx/xlsx.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/xlsx/xlsx.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/responsive/responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/responsive/responsive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/angularjs/angular.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/angularjs/angular.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-summernote/summernote.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-summernote/summernote.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-summernote/summernote.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-summernote/summernote.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-collapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-collapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-tab.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-tab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-transition.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/carousel-owl-carousel/assets/js/bootstrap-transition.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/build-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/build-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/ckeditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/plugins/flash/dialogs/flash.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/plugins/flash/dialogs/flash.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/plugins/image/dialogs/image.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/plugins/image/dialogs/image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/plugins/link/dialogs/link.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/plugins/link/dialogs/link.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/plugins/wsc/dialogs/wsc.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/plugins/wsc/dialogs/wsc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/samples/inlineall.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/samples/inlineall.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/samples/sample.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/samples/sample.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/all.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/all.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/examples/advanced_init/dom_toolbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/examples/advanced_init/dom_toolbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/AutoFill/js/dataTables.autoFill.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/AutoFill/js/dataTables.autoFill.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/ColVis/js/dataTables.colVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/ColVis/js/dataTables.colVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/FixedColumns/js/dataTables.fixedColumns.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/FixedColumns/js/dataTables.fixedColumns.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/FixedHeader/js/dataTables.fixedHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/FixedHeader/js/dataTables.fixedHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/KeyTable/js/dataTables.keyTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/KeyTable/js/dataTables.keyTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/datatables/media/js/jquery.dataTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/datatables/media/js/jquery.dataTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/dropzone/css/stylus/dropzone.styl" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/dropzone/css/stylus/dropzone.styl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/dropzone/dropzone.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/dropzone/dropzone.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/dropzone/dropzone.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/dropzone/dropzone.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/fancybox/lib/jquery-1.8.2.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/fancybox/lib/jquery-1.8.2.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/flot/jquery.flot.pie.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/flot/jquery.flot.pie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/fullcalendar/fullcalendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/fullcalendar/fullcalendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/icheck/demo/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/icheck/demo/js/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-audio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-image.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-jquery-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-jquery-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-process.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-process.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.fileupload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/vendor/load-image.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-file-upload/js/vendor/load-image.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-notific8/jquery.notific8.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-notific8/jquery.notific8.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-validation/js/additional-methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-validation/js/additional-methods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-validation/js/additional-methods.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-validation/js/additional-methods.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-validation/js/jquery.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-validation/js/jquery.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery.cokie.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery.cokie.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jquery.mockjax.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jquery.mockjax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/jstree/dist/jstree.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/jstree/dist/jstree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/images/mall/mall-ground.svg" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/images/mall/mall-ground.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/images/mall/mall-level1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/images/mall/mall-level1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/images/mall/mall-underground.svg" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/images/mall/mall-underground.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/images/world/world.svg" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/images/world/world.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/mapplic/mapplic.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/mapplic/mapplic.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/mapplic/mapplic.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/mapplic/mapplic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/maps/uk.svg" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/mapplic/maps/uk.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/pace/themes/pace-theme-barber-shop.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/pace/themes/pace-theme-barber-shop.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/pace/themes/pace-theme-big-counter.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/pace/themes/pace-theme-big-counter.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/pace/themes/pace-theme-flash.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/pace/themes/pace-theme-flash.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/pace/themes/pace-theme-minimal.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/pace/themes/pace-theme-minimal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/az.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/az.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/en.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/fr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/hr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/id.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/it.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/pl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/ro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/sk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/i18n/sr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/jquery.ui.plupload/jquery.ui.plupload.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/jquery.ui.plupload/jquery.ui.plupload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/jquery.ui.plupload/jquery.ui.plupload.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/jquery.ui.plupload/jquery.ui.plupload.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/moxie.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/moxie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/moxie.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/moxie.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/plupload.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/plupload.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/plupload.full.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/plupload.full.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/plupload.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/plupload/js/plupload.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/slider-layer-slider/js/greensock.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/slider-layer-slider/js/greensock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/slider-layer-slider/js/layerslider.kreaturamedia.jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/slider-layer-slider/js/layerslider.kreaturamedia.jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/slider-revolution-slider/rs-plugin/font/revicons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/slider-revolution-slider/rs-plugin/font/revicons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/slider-revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/slider-revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/tabdrop/js/bootstrap-tabdrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/tabdrop/js/bootstrap-tabdrop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/uniform/jquery.uniform.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/uniform/jquery.uniform.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/uniform/jquery.uniform.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/uniform/jquery.uniform.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/forum/file/forum_add.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/forum/file/forum_add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/forum/file/forum_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/forum/file/forum_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/forum/file/forum_view.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/forum/file/forum_view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/DBHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/ServletUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/ServletUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/project/file/file_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/project/file/file_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/vote/file/record_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/vote/file/record_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_add.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/project/vote/vote_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/project/vote/vote_list.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/base/statistic/statistic_print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/base/statistic/statistic_print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/file/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/file/main/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/investigation/core/print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/investigation/main/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/project/export/export_result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/project/export/export_result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/project/file/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/project/file/main/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/project/investigation/print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/project/investigation/print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/project/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/project/main/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/project/statistic/statistic_print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/project/statistic/statistic_print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/project/statistic/statistic_result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/project/statistic/statistic_result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/project/vote/print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/project/vote/print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/vote/file/vote_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/vote/file/vote_print.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_statistic_print.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_statistic_query.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_statistic_result.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/investigation/core/print.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/investigation/core/statistic.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/colorschememapping.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/filelist.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/item0001.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/props0002.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/investigation/core/todo_print.files/themedata.thmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/colorschememapping.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/filelist.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/item0001.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/props0002.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.files/themedata.thmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_print.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vote/file/vote_statistic.jsp" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -516,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="274" column="50" lean-forward="true" selection-start-line="274" selection-start-column="50" selection-end-line="274" selection-end-column="50" />
+            <state relative-caret-position="344">
+              <caret line="266" column="8" lean-forward="true" selection-start-line="266" selection-start-column="8" selection-end-line="266" selection-end-column="95" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -529,19 +82,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/user/info/info_list.jsp">
+        <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/project/vote/vote_list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="144" column="79" lean-forward="true" selection-start-line="144" selection-start-column="79" selection-end-line="144" selection-end-column="79" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/user/info/info_list.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="278" column="38" selection-start-line="278" selection-start-column="38" selection-end-line="278" selection-end-column="38" />
+            <state relative-caret-position="103">
+              <caret line="259" column="6" lean-forward="true" selection-start-line="259" selection-start-column="6" selection-end-line="259" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -553,19 +97,71 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/investigation/core/list.jsp">
+        <entry file="file://$PROJECT_DIR$/src/investigation/dao/InvestigationDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="148" column="92" selection-start-line="148" selection-start-column="92" selection-end-line="148" selection-end-column="92" />
+            <state relative-caret-position="133">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/investigation/ServletAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="247" column="27" selection-start-line="247" selection-start-column="27" selection-end-line="247" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+              <folding>
+                <element signature="e#3226#3227#0" expanded="true" />
+                <element signature="e#3256#3257#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utility/ServletUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="23" column="19" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/investigation/core/index.jsp">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+            <state relative-caret-position="456">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utility/DBHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/base/BaseHttpServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -573,54 +169,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="276" column="59" lean-forward="true" selection-start-line="276" selection-start-column="59" selection-end-line="276" selection-end-column="59" />
+            <state relative-caret-position="336">
+              <caret line="268" column="8" lean-forward="true" selection-start-line="268" selection-start-column="8" selection-end-line="268" selection-end-column="107" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/base/print/print.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#p#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/vote/file/vote_print.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="21" column="23" lean-forward="true" selection-end-line="672" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/user/info/info_print.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="29" lean-forward="true" selection-end-line="626" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/investigation/core/print.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="47" lean-forward="true" selection-start-column="4" selection-end-line="669" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -636,7 +192,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>statistic_record&quot;</find>
       <find>_record</find>
       <find>add_button</find>
       <find>addRecord</find>
@@ -666,6 +221,7 @@
       <find>&quot;servlet&quot;</find>
       <find>todo_print</find>
       <find>print</find>
+      <find>statistic</find>
     </findStrings>
     <replaceStrings>
       <replace>databaseName=&quot;my_test&quot;</replace>
@@ -700,6 +256,8 @@
       <dir>D:\Programming\MobileInteractiveClass\web\user</dir>
       <dir>D:\Programming\MobileInteractiveClass</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\assets\module\scripts\vote\file</dir>
+      <dir>D:\Programming\MobileInteractiveClass\web\assets\module\scripts\user</dir>
+      <dir>D:\Programming\MobileInteractiveClass\web\assets\module\scripts\user\info</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -708,13 +266,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/project/investigation/InvestigationBean.java" />
-        <option value="$PROJECT_DIR$/web/project/investigation/add.jsp" />
-        <option value="$PROJECT_DIR$/web/project/investigation/record_add_div.jsp" />
-        <option value="$PROJECT_DIR$/web/project/investigation/record_modify_div.jsp" />
-        <option value="$PROJECT_DIR$/web/project/investigation/view.jsp" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/project/investigation/investigation_view.js" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/project/investigation/investigation_add.js" />
         <option value="$PROJECT_DIR$/src/project/investigation/ServletAction.java" />
         <option value="$PROJECT_DIR$/src/project/investigation/InvestigationDao.java" />
         <option value="$PROJECT_DIR$/src/dao/YlxId.java" />
@@ -740,8 +291,6 @@
         <option value="$PROJECT_DIR$/web/assets/module/scripts/export/export_result.js" />
         <option value="$PROJECT_DIR$/web/base/export/export_result.jsp" />
         <option value="$PROJECT_DIR$/src/utility/export/ExportUtil.java" />
-        <option value="$PROJECT_DIR$/src/base/BaseHttpServlet.java" />
-        <option value="$PROJECT_DIR$/src/investigation/ServletAction.java" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/user/info/record_list.js" />
         <option value="$PROJECT_DIR$/src/user/dao/InfoDao.java" />
         <option value="$PROJECT_DIR$/src/vote/dao/VoteDao.java" />
@@ -753,12 +302,21 @@
         <option value="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_add.js" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/vote/file/record_list.js" />
         <option value="$PROJECT_DIR$/web/base/print/print.jsp" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/user/info/info_list.js" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js" />
         <option value="$PROJECT_DIR$/web/vote/file/vote_print.jsp" />
         <option value="$PROJECT_DIR$/web/user/info/info_print.jsp" />
         <option value="$PROJECT_DIR$/web/investigation/core/print.jsp" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/utility/DBHelper.java" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/user/info/info_list.js" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" />
+        <option value="$PROJECT_DIR$/web/investigation/core/statistic.jsp" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/project/vote/vote_list.js" />
+        <option value="$PROJECT_DIR$/src/base/BaseHttpServlet.java" />
+        <option value="$PROJECT_DIR$/src/investigation/ServletAction.java" />
+        <option value="$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java" />
+        <option value="$PROJECT_DIR$/src/utility/ServletUtil.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -797,6 +355,12 @@
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="investigation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -812,6 +376,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="investigation" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utility" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -858,6 +428,34 @@
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="module" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="investigation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="info" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -889,7 +487,7 @@
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="print" type="462c0819:PsiDirectoryNode" />
+              <item name="export" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -938,6 +536,13 @@
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -950,7 +555,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/base/print" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -967,11 +572,11 @@
       <recent name="project.vote" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programming\MobileInteractiveClass\web\WEB-INF\lib" />
       <recent name="D:\Programming\MobileInteractiveClass\web\base\print" />
       <recent name="D:\Programming\MobileInteractiveClass\web\assets\module\scripts\export" />
       <recent name="D:\Programming\MobileInteractiveClass\web\assets\module\scripts" />
       <recent name="D:\Programming\MobileInteractiveClass\web\base" />
-      <recent name="D:\Programming\MobileInteractiveClass\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1120,12 +725,20 @@
       <workItem from="1557030312237" duration="13136000" />
       <workItem from="1557111974531" duration="2268000" />
       <workItem from="1557115479428" duration="178000" />
-      <workItem from="1557116337630" duration="10703000" />
+      <workItem from="1557116337630" duration="15185000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1557142026161</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1557142026161</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113480000" />
+    <option name="totallyTimeSpent" value="117962000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1138,8 +751,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.26876676" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.26876676" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1161,7 +775,7 @@
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32841823" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.3297587" />
       <window_info anchor="bottom" id="Duplicates" order="15" weight="0.32931727" />
       <window_info anchor="bottom" id="Inspection Results" order="16" weight="0.32931727" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1178,64 +792,11 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/statistic/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="493" column="29" selection-start-line="493" selection-start-column="19" selection-end-line="493" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vote/dao/StatisticDao.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vote/dao/Statistic.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vote/statistic/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vote/bean/VoteBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-          <folding>
-            <element signature="e#4040#4041#0" expanded="true" />
-            <element signature="e#4070#4071#0" expanded="true" />
-            <element signature="e#4116#4117#0" expanded="true" />
-            <element signature="e#4154#4155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/statistic/bean/StatisticBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/statistic/dao/StatisticDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/investigation/dao/InvestigationDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/user/ServletAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -1326,13 +887,6 @@
     <entry file="file://$PROJECT_DIR$/web/user/info/info_view.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/user/info/info_statistic.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="88" selection-start-line="3" selection-start-column="88" selection-end-line="3" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/user/info/record_list.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
@@ -1347,25 +901,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/base/BaseHttpServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/vote/file/record_list.jsp">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/investigation/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="86" column="28" lean-forward="true" selection-start-line="86" selection-start-column="28" selection-end-line="87" selection-end-column="62" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/user/dao/InfoDao.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1432,16 +969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/statistic_print.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/statistic_result.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_add.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1481,45 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="276" column="59" lean-forward="true" selection-start-line="276" selection-start-column="59" selection-end-line="276" selection-end-column="59" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/user/info/info_list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="278" column="38" selection-start-line="278" selection-start-column="38" selection-end-line="278" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="274" column="50" lean-forward="true" selection-start-line="274" selection-start-column="50" selection-end-line="274" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/vote/file/vote_print.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1534,13 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/investigation/core/print.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="47" lean-forward="true" selection-start-column="4" selection-end-line="669" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/investigation/core/list.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
@@ -1550,8 +1031,164 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/investigation/core/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+        <state relative-caret-position="237">
+          <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/investigation/core/print.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="47" lean-forward="true" selection-start-column="4" selection-end-line="669" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="38">
+            <caret line="2" selection-start-line="2" selection-end-line="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/user/info/info_statistic.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="89" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/user/info/info_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="262" column="8" selection-start-line="262" selection-start-column="8" selection-end-line="262" selection-end-column="95" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/statistic_result.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/statistic_print.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="266" column="8" lean-forward="true" selection-start-line="266" selection-start-column="8" selection-end-line="266" selection-end-column="95" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/investigation/core/statistic.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="268" column="8" lean-forward="true" selection-start-line="268" selection-start-column="8" selection-end-line="268" selection-end-column="107" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/vote/file/vote_statistic.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="88" selection-start-line="2" selection-start-column="79" selection-end-line="2" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/project/vote/vote_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="259" column="6" lean-forward="true" selection-start-line="259" selection-start-column="6" selection-end-line="259" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/investigation/dao/InvestigationDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/BaseHttpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/investigation/ServletAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="247" column="27" selection-start-line="247" selection-start-column="27" selection-end-line="247" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/investigation/bean/InvestigationBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding>
+            <element signature="e#3226#3227#0" expanded="true" />
+            <element signature="e#3256#3257#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/ServletUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/DBHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>

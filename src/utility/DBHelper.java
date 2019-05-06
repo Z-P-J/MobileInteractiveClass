@@ -1,40 +1,35 @@
 package utility;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Properties;
 
+/**
+ * @author 25714
+ * 数据库工具类
+ */
 public class DBHelper {
 
     private static DBHelper dbHelper;
 
+    private static final int DEBUG_LEVEL = 1;
+
     public static final String DATEBASE_NAME = "my_test";
+    private static final String URL = "jdbc:mysql://localhost:3306/" + DATEBASE_NAME + "?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
+    private static final String USER_NAME = "root";
+    private static final String PASSWORD = "zpj19990509";
 
     private Connection a;
     private Statement statement;
-    private String drivername;
-    private String database;
-    private String url1;
-    private String url2;
-    private Integer debugLevel = 1;
+
 
     private DBHelper() {
-        System.out.println("ylx_db");
-        getProperty();
-//		String s1 = url1 + s + "?" + url2;
-        database = "my_test";
-        String s1 = "jdbc:mysql://localhost:3306/my_test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true";
         try {
-            System.out.println("drivername=" + drivername);
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(DRIVER_NAME);
         } catch (ClassNotFoundException classnotfoundexception) {
             classnotfoundexception.printStackTrace();
         }
         try {
-            a = DriverManager.getConnection(s1, "root", "zpj19990509");
+            a = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
             statement = a.createStatement();
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
@@ -62,8 +57,8 @@ public class DBHelper {
     public ResultSet executeQuery(String s) {
         ResultSet resultset = null;
         try {
-            if (debugLevel > 0) {
-                Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + "ylx_db executeQuery:" + s);
+            if (DEBUG_LEVEL > 0) {
+                Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeQuery:" + s);
             }
             resultset = statement.executeQuery(s);
         } catch (SQLException sqlexception) {
@@ -74,8 +69,8 @@ public class DBHelper {
 
     public DBHelper executeUpdate(String s) {
         try {
-            if (debugLevel > 0) {
-                System.out.println("[" + (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date()) + "]" + "ylx_db executeUpdate:" + s);
+            if (DEBUG_LEVEL > 0) {
+                Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeUpdate:" + s);
             }
             statement.executeUpdate(s);
         } catch (SQLException sqlexception) {
@@ -84,40 +79,32 @@ public class DBHelper {
         return dbHelper;
     }
 
-    public String getTable() {
-        return database;
-    }
-
-    public void getProperty() {
-        Properties properties = new Properties();
-        Properties properties1 = new Properties();
-        try {
-            InputStream inputstream = getClass().getClassLoader().getResourceAsStream("/conf/db.properties");
-            InputStream inputstream1 = getClass().getClassLoader().getResourceAsStream("/conf/dbip.properties");
-            if (inputstream == null || inputstream1 == null) {
-                throw new NullPointerException("inputstream is null");
-            }
-            properties.load(inputstream);
-            properties1.load(inputstream1);
-            inputstream.close();
-            inputstream1.close();
-        } catch (IOException ex) {
-            System.err.println("Open Propety FileBean Error");
-        }
-        drivername = properties.getProperty("DRIVER");
-        url1 = properties.getProperty("URL1") + properties1.getProperty("IP") + ":3306/";
-        url2 = properties.getProperty("URL2");
-        //调试级别
-        String level = properties.getProperty("debuglevel");
-        if (level != null) {
-            debugLevel = Integer.parseInt(level);
-        } else {
-            debugLevel = 0;
-        }
-    }
-
-    public void setTable(String s) {
-        database = s;
-    }
+//    public void getProperty() {
+//        Properties properties = new Properties();
+//        Properties properties1 = new Properties();
+//        try {
+//            InputStream inputstream = getClass().getClassLoader().getResourceAsStream("/conf/db.properties");
+//            InputStream inputstream1 = getClass().getClassLoader().getResourceAsStream("/conf/dbip.properties");
+//            if (inputstream == null || inputstream1 == null) {
+//                throw new NullPointerException("inputstream is null");
+//            }
+//            properties.load(inputstream);
+//            properties1.load(inputstream1);
+//            inputstream.close();
+//            inputstream1.close();
+//        } catch (IOException ex) {
+//            System.err.println("Open Propety FileBean Error");
+//        }
+//        drivername = properties.getProperty("DRIVER");
+//        url1 = properties.getProperty("URL1") + properties1.getProperty("IP") + ":3306/";
+//        url2 = properties.getProperty("URL2");
+//        //调试级别
+//        String level = properties.getProperty("debuglevel");
+//        if (level != null) {
+//            DEBUG_LEVEL = Integer.parseInt(level);
+//        } else {
+//            DEBUG_LEVEL = 0;
+//        }
+//    }
 
 }

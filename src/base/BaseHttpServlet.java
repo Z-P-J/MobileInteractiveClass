@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * HttpServlet基类
+ * @author 25714
+ */
 public class BaseHttpServlet extends HttpServlet {
 
     protected String userId = null;
@@ -19,12 +23,15 @@ public class BaseHttpServlet extends HttpServlet {
     protected String userRole = null;
     protected String userAvatar = null;
 
+    /**
+     * errorNo=0->没有错误
+     * errorNo=1->action是空值
+     * errorNo=2->没有对应的处理该action的函数
+     * errorNo=3->session超时
+     * */
     protected void processError(HttpServletRequest request, HttpServletResponse response, int errorNo, String errorMsg, String resultPath, String resultPage, String redirectPath, String redirectPage) throws JSONException, IOException {
         String action = request.getParameter("action");
-        //errorNo=0->没有错误
-        //errorNo=1->action是空值
-        //errorNo=2->没有对应的处理该action的函数
-        //errorNo=3->session超时
+
         Log.d(getClass().getName(), "错误信息：" + errorMsg + "，代码：" + errorNo);
 
         JSONObject jsonObj = new JSONObject();
@@ -33,29 +40,17 @@ public class BaseHttpServlet extends HttpServlet {
         jsonObj.put("action", action);
         String url = resultPath + "/" + resultPage + "?action=" + action + "&result_code=" + errorNo + "&redirect_path=" + redirectPath + "&redirect_page=" + redirectPage + "&result_msg=" + errorMsg;
         onEnd(request, response, jsonObj, url);
-
-//        if (request.getHeader("x-requested-with") == null) {
-//            errorMsg = java.net.URLEncoder.encode(errorMsg, "UTF-8");
-//            String url = resultPath + "/" + resultPage + "?action=" + action + "&result_code=" + errorNo + "&redirect_path=" + redirectPath + "&redirect_page=" + redirectPage + "&result_msg=" + errorMsg;
-//            Log.d(getClass().getName(), "url=" + url);
-//            response.sendRedirect(url);
-//        } else {
-//            response.setContentType("application/json; charset=UTF-8");
-//            JSONObject jsonObj = new JSONObject();
-//            jsonObj.put("result_code", errorNo);
-//            jsonObj.put("result_msg", errorMsg);
-//            jsonObj.put("action", action);
-//            try {
-//                PrintWriter out = response.getWriter();
-//                out.print(jsonObj);
-//                out.flush();
-//                out.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
     }
 
+    /**
+     * @param request the HttpServletRequest
+     * @param response the HttpServletResponse
+     * @param jsonObject a JSONObject
+     * @param resultUrl 处理结果显示页面url
+     * @param redirectUrl 重定向链接
+     * @param resultMsg 对处理结果的描述性消息
+     * @param resultCode 结果码
+     **/
     protected void onEnd(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObject, String resultUrl, String resultMsg, int resultCode, String redirectUrl) {
         try {
             resultMsg = java.net.URLEncoder.encode(resultMsg, "UTF-8");
@@ -66,6 +61,11 @@ public class BaseHttpServlet extends HttpServlet {
         onEnd(request, response, jsonObject, url);
     }
 
+    /**
+     * @param request the HttpServletRequest
+     * @param response the HttpServletResponse
+     * @param jsonObject a JSONObject
+     **/
     protected void onEnd(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObject) {
         String resultUrl = null;
         String resultMsg = null;
@@ -85,6 +85,12 @@ public class BaseHttpServlet extends HttpServlet {
         onEnd(request, response, jsonObject, url);
     }
 
+    /**
+     * @param request the HttpServletRequest
+     * @param response the HttpServletResponse
+     * @param jsonObject a JSONObject
+     * @param url 跳转的链接
+     **/
     protected void onEnd(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObject, String url) {
         if (request.getHeader("x-requested-with") == null) {
             Log.d(getClass().getName(), "url=" + url);
@@ -106,10 +112,20 @@ public class BaseHttpServlet extends HttpServlet {
         }
     }
 
-    protected void onNormalEnd(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObj) {
+    /**
+     * 默认处理
+     * @param request the HttpServletRequest
+     * @param response the HttpServletResponse
+     * @param jsonObj a JSONObject
+     **/
+    protected void onEndDefault(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObj) {
         onEnd(request, response, jsonObj, "base/export/export_result.jsp", "操作已经执行，请按返回按钮返回列表页面！", 0, "record_list.jsp");
     }
 
+    /**
+     * 获取userId，userName，userRole，userAvatar
+     * @param session The HttpSession
+     */
     protected void initUserInfo(HttpSession session) {
         userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");

@@ -108,7 +108,6 @@ public class ServletAction extends BaseHttpServlet {
         InvestigationBean bean = new InvestigationBean();
         bean.setId(request.getParameter("id"));
         bean.setAction(request.getParameter("action"));
-        bean.setDbName(DBHelper.DATEBASE_NAME);
         bean.setType(request.getParameter("type"));
         bean.setTitle(request.getParameter("title"));
         bean.setContent(request.getParameter("content"));
@@ -188,29 +187,25 @@ public class ServletAction extends BaseHttpServlet {
             } else {
                 //如果没有就重新查询一次
                 Log.d(getClass().getName(), "[getRecordView]没有就重新查询一次。");
-                if (bean.getDbName() != null) {
-                    InvestigationDao dao = new InvestigationDao();
-                    jsonObj = dao.getRecord(bean);
-                    jsonObj.put("user_id", userId);
-                    jsonObj.put("user_name", userName);
-                    jsonObj.put("action", bean.getAction());
-                    jsonObj.put("result_code", 0);
-                    jsonObj.put("result_msg", "ok");
-                    session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-                }
-            }
-        } else {
-            Log.d(getClass().getName(), "[getRecordView]existsResult=0，重新查询");
-            if (bean.getDbName() != null) {
                 InvestigationDao dao = new InvestigationDao();
                 jsonObj = dao.getRecord(bean);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
                 jsonObj.put("action", bean.getAction());
+                jsonObj.put("result_code", 0);
+                jsonObj.put("result_msg", "ok");
                 session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
             }
+        } else {
+            Log.d(getClass().getName(), "[getRecordView]existsResult=0，重新查询");
+            InvestigationDao dao = new InvestigationDao();
+            jsonObj = dao.getRecord(bean);
+            jsonObj.put("user_id", userId);
+            jsonObj.put("user_name", userName);
+            jsonObj.put("action", bean.getAction());
+            session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
         }
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     private void addRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -222,7 +217,6 @@ public class ServletAction extends BaseHttpServlet {
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
         InvestigationDao dao = new InvestigationDao();
         InvestigationBean bean = new InvestigationBean();
-        bean.setDbName(DBHelper.DATEBASE_NAME);
         bean.setAction(request.getParameter("action"));
         bean.setParentId(request.getParameter("project_id"));
         bean.setTitle(request.getParameter("title"));
@@ -234,7 +228,7 @@ public class ServletAction extends BaseHttpServlet {
         bean.setCreateTime(createTime);
         JSONObject jsonObj = dao.addRecord(bean);
         ylxLog.log("用户 " + creator + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     /*
@@ -252,7 +246,6 @@ public class ServletAction extends BaseHttpServlet {
             InvestigationDao dao = new InvestigationDao();
             InvestigationBean bean = new InvestigationBean();
             bean.setId(id);
-            bean.setDbName(DBHelper.DATEBASE_NAME);
             bean.setTitle(request.getParameter("title"));
             bean.setContent(request.getParameter("content"));
             bean.setEndTime(request.getParameter("limit_time"));
@@ -262,7 +255,7 @@ public class ServletAction extends BaseHttpServlet {
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 修改了 [" + MODULE + "][" + SUB + "] 记录", "修改记录", MODULE);
         }
 
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     private void deleteRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -282,7 +275,7 @@ public class ServletAction extends BaseHttpServlet {
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
 
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
 }

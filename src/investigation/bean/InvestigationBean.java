@@ -13,16 +13,12 @@ public class InvestigationBean {
     private String createTime;
     //传递条件查询用
     private String action;
-    private String dbName;
     private String tableName = "";
     private String type = "";
     private String timeFrom = "";
     private String timeTo = "";
-    private String timeSelect = "";
     private String groupId = "";
-    private String groupSelect = "";
     private String timeInterval = "";
-    private String statisticType = "";
     private String sortIndex = "";
     private String orderBy = "";
     private String link = "";
@@ -103,14 +99,6 @@ public class InvestigationBean {
         this.action = action;
     }
 
-    public String getDbName() {
-        return dbName;
-    }
-
-    public void setDbName(String dbName) {
-        this.dbName = dbName;
-    }
-
     public String getEndTime() {
         return endTime;
     }
@@ -151,14 +139,6 @@ public class InvestigationBean {
         this.timeTo = timeTo;
     }
 
-    public String getTimeSelect() {
-        return timeSelect;
-    }
-
-    public void setTimeSelect(String timeSelect) {
-        this.timeSelect = timeSelect;
-    }
-
     public String getGroupId() {
         return groupId;
     }
@@ -167,28 +147,12 @@ public class InvestigationBean {
         this.groupId = groupId;
     }
 
-    public String getGroupSelect() {
-        return groupSelect;
-    }
-
-    public void setGroupSelect(String groupSelect) {
-        this.groupSelect = groupSelect;
-    }
-
     public String getTimeInterval() {
         return timeInterval;
     }
 
     public void setTimeInterval(String timeInterval) {
         this.timeInterval = timeInterval;
-    }
-
-    public String getStatisticType() {
-        return statisticType;
-    }
-
-    public void setStatisticType(String statisticType) {
-        this.statisticType = statisticType;
     }
 
     public String getSortIndex() {
@@ -228,16 +192,12 @@ public class InvestigationBean {
                 ", creator='" + creator + '\'' +
                 ", createTime='" + createTime + '\'' +
                 ", action='" + action + '\'' +
-                ", dbName='" + dbName + '\'' +
                 ", tableName='" + tableName + '\'' +
                 ", type='" + type + '\'' +
                 ", timeFrom='" + timeFrom + '\'' +
                 ", timeTo='" + timeTo + '\'' +
-                ", timeSelect='" + timeSelect + '\'' +
                 ", groupId='" + groupId + '\'' +
-                ", groupSelect='" + groupSelect + '\'' +
                 ", timeInterval='" + timeInterval + '\'' +
-                ", statisticType='" + statisticType + '\'' +
                 ", sortIndex='" + sortIndex + '\'' +
                 ", orderBy='" + orderBy + '\'' +
                 ", link='" + link + '\'' +

@@ -6,6 +6,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * @author 25714
+ * 封装一些该项目中Servlet中常用函数
+ */
 public final class ServletUtil {
 
     private ServletUtil() {

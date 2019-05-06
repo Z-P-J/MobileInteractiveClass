@@ -148,7 +148,7 @@ public class ServletAction extends BaseHttpServlet {
         FileDao fileDao = new FileDao();
         JSONObject jsonObj = fileDao.doAction(action, id, content, creator, createTime);
 
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     /*
@@ -168,7 +168,7 @@ public class ServletAction extends BaseHttpServlet {
         JSONObject jsonObj = fileDao.getRecord(action, type, userId);
 
         session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     /*
@@ -191,7 +191,7 @@ public class ServletAction extends BaseHttpServlet {
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 修改了 " + SUB + " 记录", "修改记录", MODULE);
         }
 
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     public void getRecordById(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -209,7 +209,7 @@ public class ServletAction extends BaseHttpServlet {
         }
 
         session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     public void getRecordByProjectId(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -227,7 +227,7 @@ public class ServletAction extends BaseHttpServlet {
         }
 
         session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     public void addRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -300,7 +300,7 @@ public class ServletAction extends BaseHttpServlet {
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 " + SUB + " 记录", "删除记录", MODULE);
         }
 
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     /*
@@ -338,7 +338,7 @@ public class ServletAction extends BaseHttpServlet {
         jsonObj = memberDao.getRecord(action, type, userId, projectId);
 
         session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     private void addMemberRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -395,7 +395,7 @@ public class ServletAction extends BaseHttpServlet {
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 " + SUB + " 记录", "删除记录", MODULE);
         }
 
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     /*
@@ -411,7 +411,7 @@ public class ServletAction extends BaseHttpServlet {
         jsonObj = memberDao.getRecordById(action, id);
 
         session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     private void getApplyRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -421,7 +421,7 @@ public class ServletAction extends BaseHttpServlet {
         JSONObject jsonObj = fileDao.getApplyRecord(request.getParameter("action"), request.getParameter("id"));
 
         session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        onNormalEnd(request, response, jsonObj);
+        onEndDefault(request, response, jsonObj);
     }
 
     private void processJoinApplyNotice(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -440,7 +440,7 @@ public class ServletAction extends BaseHttpServlet {
     }
 
 //    @Override
-//    private void onNormalEnd(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObj) {
+//    private void onEndDefault(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObj) {
 //        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
 //    }
 
