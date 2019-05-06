@@ -43,7 +43,7 @@ public class ServletAction extends BaseHttpServlet {
     private ExportThread exportThread;
     /*----------------------------------*/
     //这里是需要改的,module和sub
-    private static final String MODULE = "project";
+    private static final String MODULE = "base";
     private static final String SUB = "statistic";
 
 //    public String preFix = MODULE + "_" + SUB;

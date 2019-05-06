@@ -35,6 +35,7 @@ public class data_action extends HttpServlet {
     String refreshCount = "";
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/xml;charset=utf-8");
         response.setCharacterEncoding("utf-8");
@@ -42,7 +43,7 @@ public class data_action extends HttpServlet {
         String action = request.getParameter("action");
         //System.out.println("[common_data_action]收到的action是：" + action);
         boolean actionOk = false;
-        if ((action == null) && !action.equals("get_home_menu")) {
+        if ((action == null) && !"get_home_menu".equals(action)) {
             try {
                 processError(request, response, 1, "传递过来的action是null！");
             } catch (JSONException e) {
@@ -151,7 +152,8 @@ public class data_action extends HttpServlet {
                         ",reason as chain_name,0 as details_tag,picture from " + tableName + where + " and fieldType_tag=1";
                 sql = sql.replace("role_id", "role");
             } else {
-                sql = "select * from " + module + "_tree a," + module + "_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
+//                sql = "select * from " + module + "_tree a," + module + "_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
+                sql = "select * from project_tree a,project_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
             }
             ResultSet rs = query_db.executeQuery(sql);
             while (rs.next()) {

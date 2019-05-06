@@ -2,7 +2,6 @@ package project.investigation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import project.investigation.InvestigationBean;
 import utility.DBHelper;
 import utility.Log;
 import utility.TimeUtil;
@@ -99,7 +98,6 @@ public class InvestigationDao {
         int resultCode = 0;
         List<List<String>> jsonList = new ArrayList<>();
         try {
-//			ylx_db query_db = new ylx_db(bean.getDbName());
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "update " + TABLE_NAME + " set title='" + bean.getTitle() + "',content='" + bean.getContent() + "',end_time='" + bean.getEndTime() + "' where id=" + bean.getId();
             DBHelper.getInstance().executeUpdate(sql);

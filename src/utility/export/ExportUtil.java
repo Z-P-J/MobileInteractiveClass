@@ -8,6 +8,8 @@ import utility.excel.ExcelWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ExportUtil {
 
@@ -27,7 +29,7 @@ public class ExportUtil {
     }
 
     public static JSONObject exportRecord(HttpServletRequest request, HttpServletResponse response, String module, String sub, String tableNick) throws Exception {
-        String exportFilePathName = "C:\\upload\\project\\export\\export_" + TimeUtil.currentDate() + ".xls";
+        String exportFilePathName = "C:\\upload\\" + module + "\\" + sub + "\\export\\export_" + (new SimpleDateFormat("yyyyMMddHHmmss")).format(new Date()) + ".xls";
 
         HttpSession session = request.getSession();
         String action = request.getParameter("action");

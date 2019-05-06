@@ -39,7 +39,7 @@ public class WECHAT {
 	public String tradeKey = "";
 	public String tradeId = "";
 	public String accessToken="";
-	public int    expiresIn=0;
+	public int expiresIn=0;
 	public String databaseName = "my_test";
 	public String createTime="";
 	
@@ -240,9 +240,9 @@ public class WECHAT {
 		StringReader xmlReader = new StringReader(xml);
 		InputSource xmlSource = new InputSource(xmlReader);
 		SAXBuilder builder = new SAXBuilder();
-		org.jdom.Document doc = builder.build(xmlSource);
-		org.jdom.Element elt = doc.getRootElement();
-		org.jdom.Element body = elt.getChild("prepay_id");
+		Document doc = builder.build(xmlSource);
+		Element elt = doc.getRootElement();
+		Element body = elt.getChild("prepay_id");
 		if(body!=null){
 			showDebug(body.getName() + "---------->" + body.getText());
 			str = body.getText();
