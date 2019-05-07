@@ -81,10 +81,10 @@ These options are default:
   // 'checkbox' or 'radio' to style only checkboxes or radio buttons, both by default
   handle: '',
 
-  // base class added to customized checkboxes
+  combaseeractive.classroom.base
   checkboxClass: 'icheckbox',
 
-  // base class added to customized radio buttons
+  com.interactive.cbaseroom.base
   radioClass: 'iradio',
 
   // class added on checked state (input.checked = true)

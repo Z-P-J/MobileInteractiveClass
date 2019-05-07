@@ -3309,7 +3309,7 @@ Base.prototype = {
 				var method = value.valueOf();
 				// override
 				value = function() {
-					var previous = this.base || Base.prototype.base;
+					var previous = this.base || base;
 					this.base = ancestor;
 					var returnValue = method.apply(this, arguments);
 					this.base = previous;
@@ -7931,7 +7931,7 @@ wysihtml5.views.View = Base.extend(
     CARET_HACK: "<br>",
 
     constructor: function(parent, textareaElement, config) {
-      this.base(parent, textareaElement, config);
+      base(parent, textareaElement, config);
       this.textarea = this.parent.textarea;
       this._initSandbox();
     },
@@ -7980,12 +7980,12 @@ wysihtml5.views.View = Base.extend(
 
     disable: function() {
       this.element.removeAttribute("contentEditable");
-      this.base();
+      base();
     },
 
     enable: function() {
       this.element.setAttribute("contentEditable", "true");
-      this.base();
+      base();
     },
 
     focus: function(setToEnd) {
@@ -7996,7 +7996,7 @@ wysihtml5.views.View = Base.extend(
         this.clear();
       }
       
-      this.base();
+      base();
       
       var lastChild = this.element.lastChild;
       if (setToEnd && lastChild) {
@@ -8706,7 +8706,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
   name: "textarea",
   
   constructor: function(parent, textareaElement, config) {
-    this.base(parent, textareaElement, config);
+    base(parent, textareaElement, config);
     
     this._observe();
   },

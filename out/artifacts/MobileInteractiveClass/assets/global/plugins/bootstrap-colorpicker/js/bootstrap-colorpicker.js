@@ -252,7 +252,7 @@
 				this.preview.backgroundColor = this.color.toHex();
 			}
 			//set the color for brightness/saturation slider
-			this.base.backgroundColor = this.color.toHex(this.color.value.h, 1, 1, 1);
+			base.backgroundColor = this.color.toHex(this.color.value.h, 1, 1, 1);
 			//set te color for alpha slider
 			if (this.alpha) {
 				this.alpha.backgroundColor = this.color.toHex();

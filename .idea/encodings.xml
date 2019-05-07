@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/clinic/pay/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/forum/file/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/project/diary/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/project/document/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/project/file/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/project/investigation/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/statistic/ServletAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/clinic/pay/ServletAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/forum/file/ServletAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/diary/ServletAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/document/ServletAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/file/ServletAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/ServletAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/statistic/ServletAction.java" charset="UTF-8" />
   </component>
 </project>

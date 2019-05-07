@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@page import="java.text.*" %>
-<%@ page import="utility.TimeUtil" %>
+<%@ page import="com.interactive.classroom.utils.TimeUtil" %>
 <%
     //做调试用，这里要在正式发布的时候去掉
     System.out.println("[" + TimeUtil.currentDate() + "]=======================调试：" + request.getServletPath() + "开始==============================");
