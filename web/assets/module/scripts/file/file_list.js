@@ -1,7 +1,7 @@
-﻿var module = "user";
-var sub = "info";
+﻿var module = "file";
+var sub = "core";
 jQuery(document).ready(function () {
-    Metronic.init(); // init metronic core components
+    Metronic.init(); // init metronic investigation components
     Layout.init(); // init current layout
     QuickSidebar.init(); // init quick sidebar
     Demo.init(); // init demo features
@@ -20,12 +20,12 @@ var Record = function () {
     };
     var initRecordList = function () {
         getRecord();
-    }
+    };
     var getRecord = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record&type=all&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
@@ -44,10 +44,10 @@ var Record = function () {
         });
     };
     var viewRecord = function (id) {
-        window.location.href = sub + "_view.jsp?id=" + id + "&exist_resultset=1";
+        window.location.href = "view.jsp?id=" + id + "&exist_resultset=1";
     };
     var deleteRecord = function (id) {
-        if (confirm("您确定要删除这条学生信息吗？")) {
+        if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
                 $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
                     if (json.result_code == 0) {
@@ -55,20 +55,20 @@ var Record = function () {
                         var amount = json.amount;
                         initRecordList();
                         initRecordStyle();
-                        alert("已经从数据表删除该学生信息！");
+                        alert("已经从数据表删除该记录！");
                     }
                 })
             }
         }
     };
     var exportRecord = function () {
-        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\upload\\userManage\\export存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
+        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\upload\\project\\export存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
             window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
         }
-    }
-    var sortRecord = function (index, sortName) {
-        var id = $("#id").val();
-        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_record&id=" + id + "&sort_index=" + index + "&order_by=" + sortName, function (json) {
+    };
+    var sortRecord1 = function (index, sortName) {
+        // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
+        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_record&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
@@ -81,11 +81,12 @@ var Record = function () {
                     Page.processError(json);
                 }
             }
+            // Metronic.stopPageLoading();	//停止等待动画
         });
     };
     var search = function () {
         page_form.submit();
-    }
+    };
     return {
         init: function () {
             initRecordList();
@@ -100,8 +101,8 @@ var Record = function () {
         exportRecord: function () {
             exportRecord();
         },
-        sortRecord: function (index, sortName) {
-            sortRecord(index, sortName);
+        sortRecord1: function (index, sortName) {
+            sortRecord1(index, sortName);
         },
         search: function () {
             search();
@@ -109,7 +110,7 @@ var Record = function () {
     };
 }();//Record;
 /* ================================================================================ */
-//关于页面的控件生成等操作都放在Page里，和Record独立，Record主要是和学生信息集交互
+//关于页面的控件生成等操作都放在Page里，和Record独立，Record主要是和记录集交互
 var Page = function () {
     var html = "";
     var layout = 1;
@@ -180,14 +181,14 @@ var Page = function () {
         });
     };
     var addRecord = function () {
-        window.location.href = sub + "_add.jsp";
+        window.location.href = "add.jsp";//sub + "_add.jsp";
     }
     var showResult = function (json) {
-        var title = "学生信息显示";
+        var title = "记录显示";
         if ($("#title_div")) $("#title_div").html(title);
         if (json != null) {
             var list = json.aaData;
-            var tip = "当前查询到了 " + list.length + " 条学生信息";
+            var tip = "当前查询到了 " + list.length + " 条记录";
             if ($("#tip_div")) $("#tip_div").html(tip);
             if ($("#record_list_tip")) $("#record_list_tip").html(tip);
             showRecordList(list);
@@ -204,45 +205,27 @@ var Page = function () {
     var showRecord = function (json) {
         var id = json[0];
         var image = "../../assets/module/img/public/wkbj.jpg";
-        var userName = json[1];
-        var name = json[3];
-        var sex = json[4];
-        var email = json[5];
-        var phone = json[6];
-        var user_type = json[7];
-        if (user_type == "student") {
-            user_type = "学生";
-        } else if (user_type == "teacher") {
-            user_type = "老师";
-        }
-        var wechat = json[8];
-        var nianji = json[12] + " " + json[9] + " " + json[10];
-        var studentNum = json[11];
-        var registerDate = json[13];
-        // var content = json[2];
-        // var createTime = json[4];
-        // var status = json[6];
-        // var me = json[10];
+        var fileId = json[1];
+        var uploaderId = json[2];
+        var fileName = json[3];
+        var fileSize = json[4];
+        var uploadTime = json[5];
+        var downloadLink = json[6];
+        var me = json[7];
+
         html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
-        html = html + "																<span>用户名：" + userName + "</span><p>";
-        html = html + "																<span>姓名：" + name + "</span><p>";
-        html = html + "																<span>学号：" + studentNum + "</span><p>";
-        html = html + "																<span>年级：" + nianji + "</span><p>";
-        html = html + "																<span>注册时间：" + registerDate + "</span><p>";
-        html = html + "																<span>性别：" + sex + "</span><p>";
-        html = html + "																<span>邮箱：" + email + "</span><p>";
-        html = html + "																<span>电话：" + phone + "</span><p>";
-        html = html + "																<span>微信：" + wechat + "</span><p>";
-        html = html + "																<span>用户类型：" + user_type + "</span><p>";
-        //html=html+"																<span>状态："+status+"</span><p>";
-        // if (me == "1") {
+        html = html + "																<span>文件名：" + fileName + "</span><p>";
+        html = html + "																<span>文件大小：" + fileSize + "</span><p>";
+        html = html + "																<span>上传时间：" + uploadTime + "</span><p>";
+        html = html + "																<span>下载链接：<a href='" + downloadLink + "'>点击下载</a></span><p>";
+        if (me == "1") {
             html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
             html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
-        // }
+        }
         html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";
@@ -274,31 +257,32 @@ var Page = function () {
         Record.viewRecord(id);
     };
     var modifyRecord = function (id) {
-        window.location.href = sub + "_view.jsp?id=" + id;
+        window.location.href = "view.jsp?id=" + id;
     };
     var searchRecord = function () {
-        window.location.href = sub + "_query.jsp";
+        window.location.href = "query.jsp";
     };
     var statisticRecord = function () {
-        // window.location.href = sub + "_statistic.jsp";
-        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=user_manage";
+        // window.location.href = "statistic.jsp";
+        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=file_manage";
     }
     var layoutRecord = function () {
         if (layout == 1)
             window.location.href = "record_list.jsp";
         if (layout == 2)
-            window.location.href = sub + "_list.jsp";
+            window.location.href = "list.jsp";
     }
-    var sortRecord = function (index) {
-        var sortName = undefined;
-        if (index == 1) sortName = $("#sort_01").val();
-        if (index == 2) sortName = $("#sort_01").val() + ',' + $("#sort_02").val();
-        if (index == 3) sortName = $("#sort_01").val() + ',' + $("#sort_02").val() + ',' + $("#sort_03").val();
-        Record.sortRecord(index, sortName);
-    };
     var printRecord = function () {
-        // window.location.href = sub + "_print.jsp?exist_resultset=1";
+        // window.location.href = "print.jsp?exist_resultset=1";
         window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
+    };
+    var sortRecord = function (index) {
+        var sortName = $("#sort_01").val();
+        if (index == 1) sortName = $("#sort_01").val();
+        if (index == 2) sortName = $("#sort_01").val() + "," + $("#sort_02").val();
+        if (index == 3) sortName = $("#sort_01").val() + "," + $("#sort_02").val() + "," + $("#sort_03").val();
+        console.log(sortName);
+        Record.sortRecord1(index, sortName);
     };
     var confirmBack = function () {
         DraggableDialog.setId("confirm_back");

@@ -1,21 +1,22 @@
-var module = "vote";
-var sub = "file";
+var module = "file";
+var sub = "core";
 jQuery(document).ready(function () {
-    Metronic.init(); // init metronic core components
+    console.log("js初始化执行开始！");
+    Metronic.init(); // init metronic investigation components
     Layout.init(); // init current layout
     QuickSidebar.init(); // init quick sidebar
     Demo.init(); // init demo features
     ComponentsDropdowns.init();
+    ComponentsPickers.init();	//这个本页面要编写对应的对象
     Frame.init(module, sub);
     Page.init();
     Record.init();
+    console.log("js初始化执行完毕！");
 });
 /*================================================================================*/
 var Record = function () {
     var userId = undefined;
     var userName = undefined;
-    var userRole = undefined;
-    var userAvatar = undefined;
     var initRecordStyle = function () {
     };
     var initRecordList = function () {
@@ -25,14 +26,11 @@ var Record = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        console.log("id=" + id + "   existResultset=" + existResultset);
         var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
                 Record.userName = json.user_name;
-                Record.userRole = json.user_role;
-                Record.userAvatar = json.user_avatar;
                 Page.showResult(json);
             } else {
                 if (Page != null) {
@@ -45,7 +43,7 @@ var Record = function () {
         });
     };
     var viewRecord = function (id) {
-        window.location.href =  "vote_view.jsp?id=" + id + "&exist_resultset=1";
+        window.location.href = "record_view.jsp?id=" + id;
     };
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
@@ -54,37 +52,12 @@ var Record = function () {
                     if (json.result_code == 0) {
                         var count = json.count;
                         var amount = json.amount;
-                        initRecordList();
-                        initRecordStyle();
+                        window.location.reload();
                         alert("已经从数据表删除该记录！");
                     }
                 })
             }
         }
-    };
-    var exportRecord = function () {
-        window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
-    }
-    var sortRecord = function (index, sortName) {
-        var id = $("#id").val();
-        url = "../../" + module + "_" + sub + "_servlet_action?action=get_record&id=" + id + "&sort_index=" + index + "&order_by=" + sortName;
-        console.log("url=" + url);
-        $.post(url, function (json) {
-            console.log("这个是后端返回前端的数据返回的sortrecord:" + JSON.stringify(json));
-            if (json.result_code == 0) {
-                Record.userId = json.user_id;
-                Record.userName = json.user_name;
-                Record.userRole = json.user_role;
-                Record.userAvatar = json.user_avatar;
-                Page.showResult(json);
-            }
-            else {
-                if (Page != null) {
-                    Page.processError(json);
-                }
-            }
-            Metronic.stopPageLoading();
-        });
     };
     var search = function () {
         page_form.submit();
@@ -100,12 +73,6 @@ var Record = function () {
         viewRecord: function (id) {
             viewRecord(id);
         },
-        exportRecord: function () {
-            exportRecord();
-        },
-        sortRecord: function (index, sortName) {
-            sortRecord(index, sortName);
-        },
         search: function () {
             search();
         }
@@ -115,7 +82,6 @@ var Record = function () {
 //关于页面的控件生成等操作都放在Page里，和Record独立，Record主要是和记录集交互
 var Page = function () {
     var html = "";
-    var layout = 1;
     var initPageStyle = function () {
         hideFrameNav();
     };
@@ -131,17 +97,6 @@ var Page = function () {
         $("#page_header_div").hide();
         //隐藏page 底部
         $("#page_footer_div").hide();
-        var displaySidebar = true;
-        if (!displaySidebar) {
-            if ($("body").hasClass("page-container-bg-solid")) {
-                $("body").removeClass("page-sidebar-closed-hide-logo page-container-bg-solid");
-                $("body").addClass("page-full-width");
-            } else {
-            }
-        }
-        //隐藏提醒图标
-        $("#header_inbox_bar").hide();
-        $("#header_calendar_bar").hide();
     };
     var processError = function (json) {
         if (Frame != null)
@@ -169,30 +124,29 @@ var Page = function () {
         $('#help_button').click(function () {
             Page.help();
         });
-        $('#export_button').click(function () {
-            Page.exportRecord();
+        $('#today_button').click(function () {
+            Page.todayTime();
         });
-        $('#statistic_button').click(function () {
-            Page.statisticRecord();
+        $('#yestoday_button').click(function () {
+            Page.yestodayTime();
         });
-        $('#layout_button').click(function () {
-            Page.layoutRecord();
+        $('#before_yestoday_button').click(function () {
+            Page.beforeYestodayTime();
         });
-        $('#print_button').click(function () {
-            Page.printRecord();
+        $('#month_button').click(function () {
+            Page.monthTime();
         });
     };
     var addRecord = function () {
-        window.location.href = "vote_add.jsp";
+        window.location.href = "add.jsp";//sub + "_add.jsp";
     }
     var showResult = function (json) {
-        var title = "记录显示";
+        var title = "管理";
         if ($("#title_div")) $("#title_div").html(title);
         if (json != null) {
             var list = json.aaData;
             var tip = "当前查询到了 " + list.length + " 条记录";
             if ($("#tip_div")) $("#tip_div").html(tip);
-            if ($("#record_list_tip")) $("#record_list_tip").html(tip);
             showRecordList(list);
         }
     };
@@ -205,29 +159,18 @@ var Page = function () {
         $("#record_list_div").html(html);
     };
     var showRecord = function (json) {
-        var id = json[0];
-        var image = "../../assets/module/img/public/wkbj.jpg";
-        var title = json[3];
-        var content = json[4];
-        var createTime = json[6];
-        var deadline = json[7];
-        var status = json[8];
-        var me = json[9];
+        var image = "../../assets/module/img/public/blog.jpg";
         html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
-        html = html + "																<span>标题：" + title + "</span><p>";
-        html = html + "																<span>内容：" + content + "</span><p>";
-        html = html + "																<span>创建时间：" + createTime + "</span><p>";
-        html = html + "																<span>截止时间：" + deadline + "</span><p>";
-        html = html + "																<span>状态：" + status + "</span><p>";
-        if (me == "1") {
-            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
-            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
-        }
-        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">详细信息</button>";
+        html = html + "																<span>标题：" + json[1] + "</span><p>";
+        html = html + "																<span>内容：" + json[2] + "</span><p>";
+        html = html + "																<span>时间：" + json[4] + "</span><p>";
+        html = html + "																<span>状态：" + json[6] + "</span><p>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Record.deleteRecord(" + json[0] + ");\">删除</button>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Record.viewRecord(" + json[0] + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";
     };
@@ -243,46 +186,46 @@ var Page = function () {
     };
     var checkInput = function () {
         var bOk = true;
-        var action = $("#action").val();
-        if (action == null || action == "") {
-            Frame.showMsg("名称不能为空！");
+        var timeFrom = $("#time_from").val();
+        if (timeFrom == null || timeFrom == "") {
+            Frame.showMsg("时间范围不能为空！");
             bOk = false;
         }
         ;
         return bOk;
     };
-    var deleteRecord = function (id) {
-        Record.deleteRecord(id);
-    };
-    var viewRecord = function (id) {
-        Record.viewRecord(id);
-    };
-    var modifyRecord = function (id) {
-        window.location.href = "vote_view.jsp?id=" + id;
-    };
     var searchRecord = function () {
-        window.location.href = "vote_query.jsp";
+        submitRecord();
     };
-    var statisticRecord = function () {
-        // window.location.href = "vote_statistic.jsp";
-        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=vote_manage";
-    }
-    var layoutRecord = function () {
-        if (layout == 1)
-            window.location.href = "record_list.jsp";
-        if (layout == 2)
-            window.location.href = "vote_list.jsp";
-    }
-    var printRecord = function () {
-        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
+    var todayTime = function () {
+        //将两个时间控件范围限定为今天
+        var today = (new Date()).format("yyyy-MM-dd");
+        $("#time_from").val(today + " 00:00:00");
+        $("#time_to").val(today + " 23:59:59");
     };
-    var sortRecord = function (index) {
-        var sortName = undefined;
-        if (index == 1)sortName = $("#sort_01").val();
-        if (index == 2)sortName = $("#sort_02").val() + "，" + $("#sort_02").val();
-        if (index == 3)sortName = $("#sort_02").val() + "，" + $("#sort_02").val() + "," + $("#sort_03").val();
-        if (index == 3)sortName = $("#sort_02").val() + "，" + $("#sort_02").val() + "," + $("#sort_03").val();
-        Record.sortRecord(index, sortName);
+    var yestodayTime = function () {
+        //将两个时间控件范围限定为昨天
+        var yestoday = new Date();
+        yestoday.setDate(yestoday.getDate() - 1);
+        $("#time_from").val(yestoday.format("yyyy-MM-dd") + " 00:00:00");
+        $("#time_to").val(yestoday.format("yyyy-MM-dd") + " 23:59:59");
+    };
+    var beforeYestodayTime = function () {
+        //将两个时间控件范围限定为前天
+        var beforeYestoday = new Date();
+        beforeYestoday.setDate(beforeYestoday.getDate() - 2);
+        $("#time_from").val(beforeYestoday.format("yyyy-MM-dd") + " 00:00:00");
+        $("#time_to").val(beforeYestoday.format("yyyy-MM-dd") + " 23:59:59");
+    };
+    var monthTime = function () {
+        var today = new Date();
+        var thisYear = today.getFullYear();
+        var thisMonth = today.getMonth() + 1;
+        var firstDay = thisYear + '-' + thisMonth + '-01';
+        firstDay = ComponentsPickers.formatDate(ComponentsPickers.parseDate(firstDay), "yyyy-MM-dd") + " 00:00:00";
+        var nowDay = ComponentsPickers.formatDate(today, "yyyy-MM-dd") + " 23:59:59";
+        $("#time_from").val(firstDay);
+        $("#time_to").val(nowDay);
     };
     var confirmBack = function () {
         DraggableDialog.setId("confirm_back");
@@ -297,10 +240,14 @@ var Page = function () {
     var returnBack = function () {
         history.go(-1);
     };
+    var initMonthTime = function () {
+        monthTime();
+    }
     return {
         init: function () {
             initPageStyle();
             handleButtonEvent();
+            initMonthTime();
         },
         processError: function (json) {
             processError(json);
@@ -317,35 +264,23 @@ var Page = function () {
         addRecord: function () {
             addRecord();
         },
-        deleteRecord: function (id) {
-            deleteRecord(id);
-        },
-        viewRecord: function (id) {
-            viewRecord(id);
-        },
         searchRecord: function () {
             searchRecord();
-        },
-        exportRecord: function () {
-            Record.exportRecord();
-        },
-        statisticRecord: function () {
-            statisticRecord();
-        },
-        printRecord: function () {
-            printRecord();
-        },
-        modifyRecord: function (id) {
-            modifyRecord(id);
         },
         reload: function () {
             window.location.reload();
         },
-        layoutRecord: function () {
-            layoutRecord();
+        todayTime: function () {
+            todayTime();
         },
-        sortRecord: function (index) {
-            sortRecord(index);
+        yestodayTime: function () {
+            yestodayTime();
+        },
+        beforeYestodayTime: function () {
+            beforeYestodayTime();
+        },
+        monthTime: function () {
+            monthTime();
         },
         confirmBack: function () {
             confirmBack();
