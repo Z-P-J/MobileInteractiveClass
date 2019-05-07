@@ -26,7 +26,7 @@ var Record = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_file_servlet_action?action=get_record&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;

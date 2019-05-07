@@ -46,16 +46,6 @@
 										<input type="hidden" id="action" name="action" value="add_record"/>
 										<div class="form-body">
 											<div class="form-group">
-												<label class="col-md-3 control-label">
-													项目名称
-												</label>
-												<div class="col-md-9">
-													<select class="table-group-action-input form-control input-medium" id="vote_id" name="vote_id">
-														<option value="1">（无）</option>
-													</select>
-												</div>
-											</div>
-											<div class="form-group">
 												<label class="col-md-3 control-label">标题（必填）<font color="red">*</font></label>
 												<div class="col-md-9">
 													<input type="text" id="title" name="title" class="form-control" placeholder="请填写标题" value=""/>
@@ -67,17 +57,30 @@
 													<input type="text" id="content" name="content" class="form-control" placeholder="请输入内容" value=""/>
 												</div>
 											</div>
+<%--											<div class="form-group">--%>
+<%--												<label class="col-md-3 control-label">状态</label>--%>
+<%--												<div class="col-md-9">--%>
+<%--													<input type="text" id="status" name="status" class="form-control" placeholder="请输入状态" value=""/>--%>
+<%--												</div>--%>
+<%--											</div>--%>
 											<div class="form-group">
-												<label class="col-md-3 control-label">状态</label>
-												<div class="col-md-9">
-													<input type="text" id="status" name="status" class="form-control" placeholder="请输入状态" value=""/>
+												<label class="col-md-3 control-label">发布时间</label>
+												<div class="col-md-4">
+													<div class="input-group date form_datetime">
+														<input type="text" id="publish_time" name="publish_time" class="form-control" size="16" placeholder="请输入期限完成时间" value=""/>
+														<span class="input-group-btn">
+															<button class="btn default date-set" type="button">
+																<i class="fa fa-calendar"></i>
+															</button>
+														</span>
+													</div>
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="col-md-3 control-label">限制时间</label>
+												<label class="col-md-3 control-label">截止时间</label>
 												<div class="col-md-4">
 													<div class="input-group date form_datetime">
-														<input type="text" id="limit_time" name="limit_time" class="form-control" size="16" placeholder="请输入期限完成时间" value=""/>
+														<input type="text" id="end_time" name="end_time" class="form-control" size="16" placeholder="请输入期限完成时间" value=""/>
 														<span class="input-group-btn">
 															<button class="btn default date-set" type="button">
 																<i class="fa fa-calendar"></i>

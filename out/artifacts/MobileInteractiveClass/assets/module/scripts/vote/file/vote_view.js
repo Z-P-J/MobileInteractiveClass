@@ -169,7 +169,7 @@ var Page = function() {
 		if($("#title_div")) $("#title_div").html(title);
 		if(json!=null){
 			var list=json.aaData;
-			var tip="当前查询到了 "+list.length+" 条记录";
+			var tip="当前查询到了 "+Record.totalCount+" 条记录";
 			tip=tip+"，现在是第 "+(parseInt(Record.currentId)+1)+" 条记录。";
 			if($("#tip_div")) $("#tip_div").html(tip);
 			if($("#record_list_tip")) $("#record_list_tip").html(tip);
@@ -187,15 +187,16 @@ var Page = function() {
 	var showRecord = function(json){
 		var id=json[0];
 		var image="../../assets/module/img/public/logo.jpg";
-		var title=json[1];
-		var content=json[2];
-		var limitTime=json[4];
-		var createTime=json[9];
-		var status=json[10];
-		var me=json[11];
+
+		var title = json[3];
+		var content = json[4];
+		var createTime = json[6];
+		var deadline = json[7];
+		var status = json[8];
+
 		$("#title").val(title);
 		$("#content").val(content);
-		$("#limit_time").val(limitTime);
+		$("#limit_time").val(deadline);
 		$("#status").val(status);
 	};
 	var help=function(){

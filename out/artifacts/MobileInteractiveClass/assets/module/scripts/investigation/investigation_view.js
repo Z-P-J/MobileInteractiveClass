@@ -202,7 +202,7 @@ var Page = function () {
         if ($("#title_div")) $("#title_div").html(title);
         if (json != null) {
             var list = json.aaData;
-            var tip = "当前查询到了 " + list.length + " 条记录";
+            var tip = "当前查询到了 " + Record.totalCount + " 条记录";
             tip = tip + "，现在是第 " + (parseInt(Record.currentId) + 1) + " 条记录。";
             if ($("#tip_div")) $("#tip_div").html(tip);
             if ($("#record_list_tip")) $("#record_list_tip").html(tip);
@@ -222,10 +222,8 @@ var Page = function () {
         var image = "../../assets/module/img/public/logo.jpg";
         var title = json[1];
         var content = json[2];
-        var limitTime = json[4];
-        var createTime = json[10];
-        var me = json[11];
-        var link = json[12];
+        var limitTime = json[5];
+        var link = json[3];
         $("#title").val(title);
         $("#link").val(link);
         $("#content").val(content);

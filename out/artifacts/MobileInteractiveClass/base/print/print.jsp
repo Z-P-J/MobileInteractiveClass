@@ -19,6 +19,8 @@
     }
     System.out.println("获得的数据集是：" + jsonObj.toString());
     JSONArray jsonArr = (JSONArray) jsonObj.get("aaData");
+    JSONArray columns = (JSONArray) jsonObj.get("table_column_names");
+    System.out.println(columns.toString());
     System.out.println(jsonArr.toString());
     ArrayList jsonRec = (ArrayList) jsonArr.get(0);
     System.out.println(jsonRec.toString());
@@ -34,6 +36,7 @@
 </style>
 <OBJECT id="WebBrowser" classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" height=0 width=0></OBJECT>
 <div>
+    <input type="hidden" id="action" name="action" value="<%=columns%>" />
     <input type="button" class="no_print" value="打印" onclick="window.print()">
     <input type="button" class="no_print" value="返回" onclick="history.back(-1);">
     <input type="button" style="display:none;" value="页面设置" onclick="WebBrowser.ExecWB(8,1)">
@@ -548,7 +551,7 @@
 
             <p class=MsoNormal align=center style='text-align: center'>
                 <b style='mso-bidi-font-weight: normal'><span
-                        style='font-size: 16.0pt; mso-bidi-font-size: 11.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>待办事项列表</span>
+                        style='font-size: 16.0pt; mso-bidi-font-size: 11.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>列表</span>
                 </b><b style='mso-bidi-font-weight: normal'><span lang=EN-US
                                                                   style='font-size: 16.0pt; mso-bidi-font-size: 11.0pt'><o:p></o:p>
 				</span>
@@ -560,88 +563,120 @@
                 <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
                        style='border-collapse: collapse; border: none; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt'>
                     <tr style='mso-yfti-irow: 0; mso-yfti-firstrow: yes'>
+                        <%
+                            for (int j = 0; j < columns.length(); j++) {
+                                String columnName = columns.getString(j);
+                        %>
                         <td width=95 valign=top
                             style='width: 71.0pt; border: solid black 1.0pt; mso-border-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; background: #BFBFBF; mso-shading: windowtext; mso-pattern: gray-25 auto; padding: 0cm 5.4pt 0cm 5.4pt'>
                             <p class=MsoNormal align=center style='text-align: center'>
                                 <b style='mso-bidi-font-weight: normal'><span
-                                        style='font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>序号</span>
+                                        style='font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'><%=columnName%></span>
                                 </b><b style='mso-bidi-font-weight: normal'><span lang=EN-US
                                                                                   style='font-size: 14.0pt'><o:p></o:p>
 								</span>
                             </b>
                             </p>
                         </td>
-                        <td width=102 valign=top
-                            style='width: 76.15pt; border: solid black 1.0pt; mso-border-themecolor: text1; border-left: none; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; background: #BFBFBF; mso-shading: windowtext; mso-pattern: gray-25 auto; padding: 0cm 5.4pt 0cm 5.4pt'>
-                            <p class=MsoNormal align=center style='text-align: center'>
-                                <b style='mso-bidi-font-weight: normal'><span
-                                        style='font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>项目</span>
-                                </b><b style='mso-bidi-font-weight: normal'><span lang=EN-US style='font-size: 14.0pt'>ID<o:p></o:p>
-								</span>
-                            </b>
-                            </p>
-                        </td>
-                        <td width=227 valign=top
-                            style='width: 6.0cm; border: solid black 1.0pt; mso-border-themecolor: text1; border-left: none; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; background: #BFBFBF; mso-shading: windowtext; mso-pattern: gray-25 auto; padding: 0cm 5.4pt 0cm 5.4pt'>
-                            <p class=MsoNormal align=center style='text-align: center'>
-                                <b style='mso-bidi-font-weight: normal'><span
-                                        style='font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>标题</span>
-                                </b><b style='mso-bidi-font-weight: normal'><span lang=EN-US
-                                                                                  style='font-size: 14.0pt'><o:p></o:p>
-								</span>
-                            </b>
-                            </p>
-                        </td>
-                        <td width=132 valign=top
-                            style='width: 99.25pt; border: solid black 1.0pt; mso-border-themecolor: text1; border-left: none; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; background: #BFBFBF; mso-shading: windowtext; mso-pattern: gray-25 auto; padding: 0cm 5.4pt 0cm 5.4pt'>
-                            <p class=MsoNormal align=center style='text-align: center'>
-                                <b style='mso-bidi-font-weight: normal'><span
-                                        style='font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>限时</span>
-                                </b><b style='mso-bidi-font-weight: normal'><span lang=EN-US
-                                                                                  style='font-size: 14.0pt'><o:p></o:p>
-								</span>
-                            </b>
-                            </p>
-                        </td>
+                        <%
+                            }
+                        %>
+<%--                        <td width=95 valign=top--%>
+<%--                            style='width: 71.0pt; border: solid black 1.0pt; mso-border-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; background: #BFBFBF; mso-shading: windowtext; mso-pattern: gray-25 auto; padding: 0cm 5.4pt 0cm 5.4pt'>--%>
+<%--                            <p class=MsoNormal align=center style='text-align: center'>--%>
+<%--                                <b style='mso-bidi-font-weight: normal'><span--%>
+<%--                                        style='font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>序号</span>--%>
+<%--                                </b><b style='mso-bidi-font-weight: normal'><span lang=EN-US--%>
+<%--                                                                                  style='font-size: 14.0pt'><o:p></o:p>--%>
+<%--								</span>--%>
+<%--                            </b>--%>
+<%--                            </p>--%>
+<%--                        </td>--%>
+<%--                        <td width=102 valign=top--%>
+<%--                            style='width: 76.15pt; border: solid black 1.0pt; mso-border-themecolor: text1; border-left: none; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; background: #BFBFBF; mso-shading: windowtext; mso-pattern: gray-25 auto; padding: 0cm 5.4pt 0cm 5.4pt'>--%>
+<%--                            <p class=MsoNormal align=center style='text-align: center'>--%>
+<%--                                <b style='mso-bidi-font-weight: normal'><span--%>
+<%--                                        style='font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>项目</span>--%>
+<%--                                </b><b style='mso-bidi-font-weight: normal'><span lang=EN-US style='font-size: 14.0pt'>ID<o:p></o:p>--%>
+<%--								</span>--%>
+<%--                            </b>--%>
+<%--                            </p>--%>
+<%--                        </td>--%>
+<%--                        <td width=227 valign=top--%>
+<%--                            style='width: 6.0cm; border: solid black 1.0pt; mso-border-themecolor: text1; border-left: none; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; background: #BFBFBF; mso-shading: windowtext; mso-pattern: gray-25 auto; padding: 0cm 5.4pt 0cm 5.4pt'>--%>
+<%--                            <p class=MsoNormal align=center style='text-align: center'>--%>
+<%--                                <b style='mso-bidi-font-weight: normal'><span--%>
+<%--                                        style='font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>标题</span>--%>
+<%--                                </b><b style='mso-bidi-font-weight: normal'><span lang=EN-US--%>
+<%--                                                                                  style='font-size: 14.0pt'><o:p></o:p>--%>
+<%--								</span>--%>
+<%--                            </b>--%>
+<%--                            </p>--%>
+<%--                        </td>--%>
+<%--                        <td width=132 valign=top--%>
+<%--                            style='width: 99.25pt; border: solid black 1.0pt; mso-border-themecolor: text1; border-left: none; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; background: #BFBFBF; mso-shading: windowtext; mso-pattern: gray-25 auto; padding: 0cm 5.4pt 0cm 5.4pt'>--%>
+<%--                            <p class=MsoNormal align=center style='text-align: center'>--%>
+<%--                                <b style='mso-bidi-font-weight: normal'><span--%>
+<%--                                        style='font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: Calibri; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: 宋体; mso-fareast-theme-font: minor-fareast; mso-hansi-font-family: Calibri; mso-hansi-theme-font: minor-latin'>限时</span>--%>
+<%--                                </b><b style='mso-bidi-font-weight: normal'><span lang=EN-US--%>
+<%--                                                                                  style='font-size: 14.0pt'><o:p></o:p>--%>
+<%--								</span>--%>
+<%--                            </b>--%>
+<%--                            </p>--%>
+<%--                        </td>--%>
                     </tr>
                     <%
                         for (int i = 0; i < jsonArr.length(); i++) {
                             ArrayList list = (ArrayList) jsonArr.get(i);
                             System.out.println(list.toString());
-                            String id = (String) list.get(0);
-                            String projectId = (String) list.get(1);
-                            String title = (String) list.get(2);
-                            String limitTime = (String) list.get(4);
+//                            String id = (String) list.get(0);
+//                            String projectId = (String) list.get(1);
+//                            String title = (String) list.get(2);
+//                            String limitTime = (String) list.get(4);
                     %>
                     <tr style='mso-yfti-irow: 1'>
+                        <%
+                            for (int j = 0; j < columns.length(); j++) {
+                                String str = (String) list.get(j);
+                        %>
                         <td width=95 valign=top
                             style='width: 71.0pt; border: solid black 1.0pt; mso-border-themecolor: text1; border-top: none; mso-border-top-alt: solid black .5pt; mso-border-top-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; padding: 0cm 5.4pt 0cm 5.4pt'>
                             <p class=MsoNormal>
-								<span lang=EN-US style='font-size: 14.0pt'><o:p><%=id %></o:p>
+								<span lang=EN-US style='font-size: 14.0pt'><o:p><%=str %></o:p>
 								</span>
                             </p>
                         </td>
-                        <td width=102 valign=top
-                            style='width: 76.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; mso-border-bottom-themecolor: text1; border-right: solid black 1.0pt; mso-border-right-themecolor: text1; mso-border-top-alt: solid black .5pt; mso-border-top-themecolor: text1; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; padding: 0cm 5.4pt 0cm 5.4pt'>
-                            <p class=MsoNormal>
-								<span lang=EN-US style='font-size: 14.0pt'><o:p><%=projectId %></o:p>
-								</span>
-                            </p>
-                        </td>
-                        <td width=227 valign=top
-                            style='width: 6.0cm; border-top: none; border-left: none; border-bottom: solid black 1.0pt; mso-border-bottom-themecolor: text1; border-right: solid black 1.0pt; mso-border-right-themecolor: text1; mso-border-top-alt: solid black .5pt; mso-border-top-themecolor: text1; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; padding: 0cm 5.4pt 0cm 5.4pt'>
-                            <p class=MsoNormal>
-								<span lang=EN-US style='font-size: 14.0pt'><o:p><%=title %></o:p>
-								</span>
-                            </p>
-                        </td>
-                        <td width=132 valign=top
-                            style='width: 99.25pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; mso-border-bottom-themecolor: text1; border-right: solid black 1.0pt; mso-border-right-themecolor: text1; mso-border-top-alt: solid black .5pt; mso-border-top-themecolor: text1; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; padding: 0cm 5.4pt 0cm 5.4pt'>
-                            <p class=MsoNormal>
-								<span lang=EN-US style='font-size: 14.0pt'><o:p><%=limitTime %></o:p>
-								</span>
-                            </p>
-                        </td>
+                        <%
+                            }
+                        %>
+<%--                        <td width=95 valign=top--%>
+<%--                            style='width: 71.0pt; border: solid black 1.0pt; mso-border-themecolor: text1; border-top: none; mso-border-top-alt: solid black .5pt; mso-border-top-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; padding: 0cm 5.4pt 0cm 5.4pt'>--%>
+<%--                            <p class=MsoNormal>--%>
+<%--								<span lang=EN-US style='font-size: 14.0pt'><o:p><%=id %></o:p>--%>
+<%--								</span>--%>
+<%--                            </p>--%>
+<%--                        </td>--%>
+<%--                        <td width=102 valign=top--%>
+<%--                            style='width: 76.15pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; mso-border-bottom-themecolor: text1; border-right: solid black 1.0pt; mso-border-right-themecolor: text1; mso-border-top-alt: solid black .5pt; mso-border-top-themecolor: text1; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; padding: 0cm 5.4pt 0cm 5.4pt'>--%>
+<%--                            <p class=MsoNormal>--%>
+<%--								<span lang=EN-US style='font-size: 14.0pt'><o:p><%=projectId %></o:p>--%>
+<%--								</span>--%>
+<%--                            </p>--%>
+<%--                        </td>--%>
+<%--                        <td width=227 valign=top--%>
+<%--                            style='width: 6.0cm; border-top: none; border-left: none; border-bottom: solid black 1.0pt; mso-border-bottom-themecolor: text1; border-right: solid black 1.0pt; mso-border-right-themecolor: text1; mso-border-top-alt: solid black .5pt; mso-border-top-themecolor: text1; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; padding: 0cm 5.4pt 0cm 5.4pt'>--%>
+<%--                            <p class=MsoNormal>--%>
+<%--								<span lang=EN-US style='font-size: 14.0pt'><o:p><%=title %></o:p>--%>
+<%--								</span>--%>
+<%--                            </p>--%>
+<%--                        </td>--%>
+<%--                        <td width=132 valign=top--%>
+<%--                            style='width: 99.25pt; border-top: none; border-left: none; border-bottom: solid black 1.0pt; mso-border-bottom-themecolor: text1; border-right: solid black 1.0pt; mso-border-right-themecolor: text1; mso-border-top-alt: solid black .5pt; mso-border-top-themecolor: text1; mso-border-left-alt: solid black .5pt; mso-border-left-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; padding: 0cm 5.4pt 0cm 5.4pt'>--%>
+<%--                            <p class=MsoNormal>--%>
+<%--								<span lang=EN-US style='font-size: 14.0pt'><o:p><%=limitTime %></o:p>--%>
+<%--								</span>--%>
+<%--                            </p>--%>
+<%--                        </td>--%>
                     </tr>
                     <%
                         }
@@ -672,3 +707,4 @@
         </html>
     </div>
 </div>
+<script type="text/javascript" src="../../assets/module/scripts/base/print.js"></script>

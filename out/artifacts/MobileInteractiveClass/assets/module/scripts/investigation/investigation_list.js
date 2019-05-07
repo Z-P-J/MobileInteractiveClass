@@ -210,8 +210,8 @@ var Page = function () {
         var link = json[3];
         var createTime = json[4];
         var endTime = json[5];
-        var status = json[6];
-        var me = json[10];
+        var status = json[8];
+        var me = json[9];
 
         html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
