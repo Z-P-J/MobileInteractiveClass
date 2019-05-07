@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class InvestigationDao {
 
-    private static final String TABLE_NAME = "project_investigation";
+    private static final String TABLE_NAME = "investigation_manage";
 
     /*
      * 功能：返回结果集

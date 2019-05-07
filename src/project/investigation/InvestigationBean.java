@@ -217,7 +217,7 @@ public class InvestigationBean {
 
     @Override
     public String toString() {
-        return "InvestigationBean{" +
+        return "FileBean{" +
                 "id='" + id + '\'' +
                 ", parentId='" + parentId + '\'' +
                 ", title='" + title + '\'' +

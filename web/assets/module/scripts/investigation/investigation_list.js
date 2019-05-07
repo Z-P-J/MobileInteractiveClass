@@ -266,7 +266,7 @@ var Page = function () {
     };
     var statisticRecord = function () {
         // window.location.href = "statistic.jsp";
-        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=project_investigation";
+        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=investigation_manage";
     }
     var layoutRecord = function () {
         if (layout == 1)

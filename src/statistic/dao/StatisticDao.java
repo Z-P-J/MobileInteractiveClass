@@ -105,9 +105,16 @@ public class StatisticDao {
         if ("month".equals(statisticBean.getTimeInterval())) {
             timeInterval = "%Y-%m";
         }
-        sql = "select date_format(create_time,\"" + timeInterval + "\") as time_interval,count(*) as count from " + statisticBean.getTableName() + " a";
-        sql = sql + " where create_time between \"" + statisticBean.getTimeFrom() + "\" and \"" + statisticBean.getTimeTo() + "\"";
-        sql = sql + " and user_id='" + statisticBean.getUserId() + "'";
+        String createTime = "create_time";
+        String userId = "user_id";
+        if ("file_manage".equals(statisticBean.getTableName())) {
+            createTime = "upload_time";
+            userId = "uploader_id";
+        }
+
+        sql = "select date_format("+ createTime +",\"" + timeInterval + "\") as time_interval,count(*) as count from " + statisticBean.getTableName() + " a";
+        sql = sql + " where " + createTime + " between \"" + statisticBean.getTimeFrom() + "\" and \"" + statisticBean.getTimeTo() + "\"";
+        sql = sql + " and " + userId + "='" + statisticBean.getUserId() + "'";
         sql = sql + " group by time_interval order by time_interval";
         Log.d(getClass().getName(), "sql=" + sql);
         return sql;

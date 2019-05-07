@@ -116,7 +116,7 @@ public class ServletAction extends BaseHttpServlet {
         bean.setUserRole(userRole);
         bean.setSortIndex(request.getParameter("sort_index"));
         bean.setOrderBy(request.getParameter("order_by"));
-        Log.d(getClass().getName(), "InvestigationBean=" + bean.toString());
+        Log.d(getClass().getName(), "FileBean=" + bean.toString());
 
         String existResultset = request.getParameter("exist_resultset");
         if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
