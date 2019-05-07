@@ -23,4 +23,5 @@
 hs_err_pid*
 
 /src/utility/DBHelper.java
+com/interactive/classroom/utils/DBHelper.java
 */DBHelper.java
