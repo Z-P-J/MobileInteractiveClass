@@ -16,7 +16,7 @@ import java.util.List;
 
 public class VoteDao {
 
-    private static final String TABLE_NAME = "vote_file";
+    private static final String TABLE_NAME = "vote_manage";
     private static final String[] LABELS = {"id", "vote_id", "user_id", "title", "content", "course_id", "publish_date", "deadline", "status"};
 
     /*

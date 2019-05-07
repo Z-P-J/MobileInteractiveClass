@@ -281,7 +281,7 @@ var Page = function () {
     };
     var statisticRecord = function () {
         // window.location.href = sub + "_statistic.jsp";
-        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=user_info";
+        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=user_manage";
     }
     var layoutRecord = function () {
         if (layout == 1)

@@ -265,7 +265,7 @@ var Page = function () {
     };
     var statisticRecord = function () {
         // window.location.href = "vote_statistic.jsp";
-        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=vote_file";
+        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=vote_manage";
     }
     var layoutRecord = function () {
         if (layout == 1)

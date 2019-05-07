@@ -14,9 +14,10 @@ import java.util.List;
 
 public class InfoDao {
 
-    private static final String TABLE_NAME = "user_info";
+    private static final String TABLE_NAME = "user_manage";
 
     private static final String[] LABELS = {"id", "user_name", "user_id", "name", "sex", "email", "phone", "user_type", "wechat", "grade", "class", "student_num", "faculty", "register_date"};
+    private static final String[] LABELS_CH = {"ID", "用户名", "用户id", "用户名", "性别", "Email", "手机", "用户类别", "微信", "年级", "班级", "学号", "学院", "注册时间"};
 
     /*
      * 功能：返回结果集
@@ -39,16 +40,6 @@ public class InfoDao {
                 for (String label : LABELS) {
                     list.add(rs.getString(label));
                 }
-//                list.add(rs.getString("id"));
-//                list.add(rs.getString("title"));
-//                list.add(rs.getString("content"));
-//                list.add(rs.getString("type"));
-//                list.add(rs.getString("limit_time"));
-//                list.add(rs.getString("end_time"));
-//                list.add(rs.getString("end_tag"));
-//                list.add(rs.getString("user_id"));
-//                list.add(rs.getString("creator"));
-//                list.add(rs.getString("create_time"));
                 if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
                     list.add("1");
                 } else {
@@ -70,7 +61,7 @@ public class InfoDao {
         //下面�?始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
-        DBHelper.getInstance().putTableColumnNames(LABELS, jsonObj);
+        DBHelper.getInstance().putTableColumnNames(LABELS_CH, jsonObj);
         jsonObj.put("result_msg", resultMsg);//如果发生错误就设置成"error"�?
         jsonObj.put("result_code", resultCode);//返回0表示正常，不等于0就表示有错误产生，错误代�?
         return jsonObj;

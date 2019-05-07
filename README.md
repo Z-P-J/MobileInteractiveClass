@@ -1,7 +1,7 @@
-# 移动互动课堂MobileInteractiveClassroom
+# 移动互动课堂MobileInteractiveClass
 
 ----------------------------------
-## 建议使用IDEA进行开发
+## 统一使用IDEA进行开发
 ----------------------------------
 
 # 一、如何将该项目导入IDEA
