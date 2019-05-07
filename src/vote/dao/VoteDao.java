@@ -3,17 +3,21 @@ package vote.dao;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utility.DBHelper;
+import utility.TimeUtil;
 import vote.bean.VoteBean;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VoteDao {
 
     private static final String TABLE_NAME = "vote_file";
+    private static final String[] LABELS = {"id", "vote_id", "user_id", "title", "content", "course_id", "publish_date", "deadline", "status"};
 
     /*
      * 功能：返回结果集
@@ -26,23 +30,44 @@ public class VoteDao {
         try {
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "";
-            int count = 0;
             query.setTableName(TABLE_NAME);
             sql = createGetRecordSql(query);
             ResultSet rs = DBHelper.getInstance().executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
-                list.add(rs.getString("id"));
-                list.add(rs.getString("title"));
-                list.add(rs.getString("content"));
-                list.add(rs.getString("type"));
-                list.add(rs.getString("limit_time"));
-                list.add(rs.getString("end_time"));
-                list.add(rs.getString("end_tag"));
-                list.add(rs.getString("user_id"));
-                list.add(rs.getString("creator"));
-                list.add(rs.getString("create_time"));
-                list.add(rs.getString("status"));
+                int count = 0;
+                for (String label : LABELS) {
+                    count = count + 1;
+                    if (count == LABELS.length) {
+                        Date date = null; //初始化date
+                        try {
+                            date = TimeUtil.FORMATTER.parse(list.get(7)); //Mon Jan 14 00:00:00 CST 2013
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("date == null?" + (date == null));
+                        if (date != null && System.currentTimeMillis() >= date.getTime()) {
+                            list.add("已结束");
+                        } else {
+                            list.add("进行中");
+                        }
+                    } else {
+                        list.add(rs.getString(label));
+                    }
+
+                }
+
+//                list.add(rs.getString("id"));
+//                list.add(rs.getString("title"));
+//                list.add(rs.getString("content"));
+//                list.add(rs.getString("type"));
+//                list.add(rs.getString("limit_time"));
+//                list.add(rs.getString("end_time"));
+//                list.add(rs.getString("end_tag"));
+//                list.add(rs.getString("user_id"));
+//                list.add(rs.getString("creator"));
+//                list.add(rs.getString("create_time"));
+//                list.add(rs.getString("status"));
                 if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
                     list.add("1");
                 } else {
@@ -64,6 +89,7 @@ public class VoteDao {
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
+        DBHelper.getInstance().putTableColumnNames(LABELS, jsonObj);
         jsonObj.put("result_msg", resultMsg);//如果发生错误就设置成"error"等
         jsonObj.put("result_code", resultCode);//返回0表示正常，不等于0就表示有错误产生，错误代码
         return jsonObj;
@@ -137,8 +163,14 @@ public class VoteDao {
         int resultCode = 0;
         List jsonList = new ArrayList();
         //构造sql语句，根据传递过来的查询条件参数
-        String sql = "insert into " + TABLE_NAME + "(parent_id,title,content,limit_time,status,user_id,creator,create_time) values('" + file.getParentId() + "','" + file.getTitle() + "','" + file.getContent() +
-                "','" + file.getLimitTime() + "','" + file.getStatus() + "','" + file.getUserId() + "','" + file.getCreator() + "','" + file.getCreateTime() + "')";
+        String sql = "insert into " + TABLE_NAME + "(vote_id,user_id,title,content,course_id,publish_date,deadline) values("
+                + 1 + ",'"
+                + file.getUserId() + "','"
+                + file.getTitle() + "','"
+                + file.getContent() + "',"
+                + 1 + ",'"
+                + file.getCreateTime() + "','"
+                + file.getLimitTime() + "')";
         DBHelper.getInstance().executeUpdate(sql).close();
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
@@ -209,9 +241,9 @@ public class VoteDao {
         }
         if (query.getTimeFrom() != null && query.getTimeTo() != null && !query.getTimeFrom().isEmpty()) {
             if (!where.isEmpty()) {
-                where = where + " and create_time between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
+                where = where + " and publish_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
             } else {
-                where = "where create_time between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
+                where = "where publish_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
             }
         }
         /*----------------------------构造排序条件--------------------------------*/
@@ -224,7 +256,7 @@ public class VoteDao {
         System.out.println(getClass().getName() + " orderBy=" + orderBy);
 		/*----------------------------构造排序完毕--------------------------------*/
         if (query.getType() != null && query.getType().equals("all") && query.getUserRole().equals("manager")) {
-            sql = "select * from " + query.getTableName() + " order by create_time desc";
+            sql = "select * from " + query.getTableName() + " order by publish_date desc";
         } else {
             if (query.getId() != null && !query.getId().equals("null")) {
                 sql = "select * from " + query.getTableName() + " where id=" + query.getId();
@@ -242,7 +274,7 @@ public class VoteDao {
 
     private String getOrderBy(String orderName) {
         if (orderName.equals("by_datetime")) {
-            orderName = "create_time";
+            orderName = "publish_date";
         }
         if (orderName.equals("by_title")) {
             orderName = "title";

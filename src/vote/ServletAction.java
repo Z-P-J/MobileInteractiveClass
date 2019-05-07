@@ -252,7 +252,7 @@ public class ServletAction extends BaseHttpServlet {
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         String status = request.getParameter("status");
-        String limitTime = request.getParameter("limit_time");
+        String limitTime = request.getParameter("end_time");
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
         //检查输入参数是否正确先
@@ -272,7 +272,8 @@ public class ServletAction extends BaseHttpServlet {
             file.setUserId(userId);
             file.setCreator(creator);
             file.setStatus(status);
-            file.setCreateTime(createTime);
+            file.setCreateTime(request.getParameter("publish_time"));
+
             jsonObj = voteDao.addRecord(file);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 添加了 [" + module + "][" + sub + "] 记录", "添加记录", module);
         }

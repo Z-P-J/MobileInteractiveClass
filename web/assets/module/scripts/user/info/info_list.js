@@ -204,24 +204,45 @@ var Page = function () {
     var showRecord = function (json) {
         var id = json[0];
         var image = "../../assets/module/img/public/wkbj.jpg";
-        var title = json[1];
-        var content = json[2];
-        var createTime = json[4];
-        var status = json[6];
-        var me = json[10];
+        var userName = json[1];
+        var name = json[3];
+        var sex = json[4];
+        var email = json[5];
+        var phone = json[6];
+        var user_type = json[7];
+        if (user_type == "student") {
+            user_type = "学生";
+        } else if (user_type == "teacher") {
+            user_type = "老师";
+        }
+        var wechat = json[8];
+        var nianji = json[12] + " " + json[9] + " " + json[10];
+        var studentNum = json[11];
+        var registerDate = json[13];
+        // var content = json[2];
+        // var createTime = json[4];
+        // var status = json[6];
+        // var me = json[10];
         html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
-        html = html + "																<span>姓名：" + title + "</span><p>";
-        html = html + "																<span>学号：" + content + "</span><p>";
-        html = html + "																<span>注册时间：" + createTime + "</span><p>";
+        html = html + "																<span>用户名：" + userName + "</span><p>";
+        html = html + "																<span>姓名：" + name + "</span><p>";
+        html = html + "																<span>学号：" + studentNum + "</span><p>";
+        html = html + "																<span>年级：" + nianji + "</span><p>";
+        html = html + "																<span>注册时间：" + registerDate + "</span><p>";
+        html = html + "																<span>性别：" + sex + "</span><p>";
+        html = html + "																<span>邮箱：" + email + "</span><p>";
+        html = html + "																<span>电话：" + phone + "</span><p>";
+        html = html + "																<span>微信：" + wechat + "</span><p>";
+        html = html + "																<span>用户类型：" + user_type + "</span><p>";
         //html=html+"																<span>状态："+status+"</span><p>";
-        if (me == "1") {
+        // if (me == "1") {
             html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
             html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
-        }
+        // }
         html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";

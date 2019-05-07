@@ -57,14 +57,11 @@
 										</div>
 										<div class="form-group">
 											<label class="col-md-3 control-label">
-												所在班级
+												用户名（必填）
+												<font color="red">*</font>
 											</label>
 											<div class="col-md-9">
-												<select class="table-group-action-input form-control input-medium" id="userManage_id_select" name="userManage_id_select">
-													<option value="1">
-														（无）
-													</option>
-												</select>
+												<input type="text" id="user_name" name="user_name" class="form-control" placeholder="请填写用户名" value="" />
 											</div>
 										</div>
 										<div class="form-group">
@@ -73,7 +70,15 @@
 												<font color="red">*</font>
 											</label>
 											<div class="col-md-9">
-												<input type="text" id="title" name="title" class="form-control" placeholder="请填写标题" value="" />
+												<input type="text" id="name" name="name" class="form-control" placeholder="请填写标题" value="" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-3 control-label">
+												性别
+											</label>
+											<div class="col-md-9">
+												<input type="text" id="sex" name="sex" class="form-control" placeholder="请输入内容" value="" />
 											</div>
 										</div>
 										<div class="form-group">
@@ -81,23 +86,73 @@
 												学号
 											</label>
 											<div class="col-md-9">
-												<input type="text" id="content" name="content" class="form-control" placeholder="请输入内容" value="" />
+												<input type="text" id="student_num" name="student_num" class="form-control" placeholder="请输入内容" value="" />
 											</div>
 										</div>
-										<!-- <div class="form-group">
+
+										<div class="form-group">
 											<label class="col-md-3 control-label">
-												限制完成时间
+												邮箱
+											</label>
+											<div class="col-md-9">
+												<input type="text" id="email" name="email" class="form-control" placeholder="请输入内容" value="" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-3 control-label">
+												电话
+											</label>
+											<div class="col-md-9">
+												<input type="text" id="phone" name="phone" class="form-control" placeholder="请输入内容" value="" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-3 control-label">
+												微信
+											</label>
+											<div class="col-md-9">
+												<input type="text" id="wechat" name="wechat" class="form-control" placeholder="请输入内容" value="" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-3 control-label">
+												年级
+											</label>
+											<div class="col-md-9">
+												<input type="text" id="grade" name="grade" class="form-control" placeholder="请输入内容" value="" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-3 control-label">
+												班级
+											</label>
+											<div class="col-md-9">
+												<input type="text" id="class" name="class" class="form-control" placeholder="请输入内容" value="" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-3 control-label">
+												学院
+											</label>
+											<div class="col-md-9">
+												<input type="text" id="faculty" name="faculty" class="form-control" placeholder="请输入内容" value="" />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-md-3 control-label">
+												注册时间
 											</label>
 											<div class="col-md-4">
 												<div class="input-group date form_datetime">
-													<input type="text" id="limit_time" name="limit_time" class="form-control" size="16" placeholder="请输入期限完成时间" value="" />
+													<input type="text" id="register_date" name="register_date" class="form-control" size="16" placeholder="请输入期限完成时间" value="" />
 													<span class="input-group-btn">
 														<button class="btn default date-set" type="button">
 															<i class="fa fa-calendar"></i>
 														</button> </span>
 												</div>
 											</div>之前
-										</div>-->
+										</div>
 									</div>
 									<div class="form-actions right1">
 										<button type="button" id="first_button" class="btn green" title="跳到首记录">

@@ -222,7 +222,7 @@ public class ServletAction extends BaseHttpServlet {
         bean.setTitle(request.getParameter("title"));
         bean.setLink(request.getParameter("link"));
         bean.setContent(request.getParameter("content"));
-        bean.setEndTime(request.getParameter("limit_time"));
+        bean.setEndTime(request.getParameter("end_time"));
         bean.setUserId(userId);
         bean.setCreator(creator);
         bean.setCreateTime(createTime);
@@ -246,9 +246,10 @@ public class ServletAction extends BaseHttpServlet {
             InvestigationDao dao = new InvestigationDao();
             InvestigationBean bean = new InvestigationBean();
             bean.setId(id);
+            bean.setLink(request.getParameter("link"));
             bean.setTitle(request.getParameter("title"));
             bean.setContent(request.getParameter("content"));
-            bean.setEndTime(request.getParameter("limit_time"));
+            bean.setEndTime(request.getParameter("end_time"));
             bean.setCreator(creator);
             bean.setCreateTime(createTime);
             jsonObj = dao.modifyRecord(bean);

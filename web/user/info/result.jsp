@@ -66,7 +66,7 @@
 											</div>
 										</div>
 										<div class="form-actions right1">
-											<button type="button" id="return_button" class="btn green">
+											<button type="button" id="return_button" class="btn green" onclick="history.back(-1);">
 												返回
 											</button>
 										</div>

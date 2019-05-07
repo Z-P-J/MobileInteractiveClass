@@ -22,6 +22,8 @@ public class InvestigationDao {
 
     private static final String TABLE_NAME = "investigation_manage";
 
+    private static final String[] LABELS = {"id", "title", "content", "link", "create_time", "end_time", "user_id", "creator", "status"};
+
     /*
      * 功能：返回结果集
      */
@@ -47,6 +49,10 @@ public class InvestigationDao {
                 list.add(rs.getString("create_time"));
                 String endTime = rs.getString("end_time");
                 list.add(endTime);
+
+                list.add(rs.getString("user_id"));
+                list.add(rs.getString("creator"));
+
                 Date date = null; //初始化date
                 try {
                     date = TimeUtil.FORMATTER.parse(endTime); //Mon Jan 14 00:00:00 CST 2013
@@ -59,9 +65,7 @@ public class InvestigationDao {
                 } else {
                     list.add("未完成");
                 }
-                list.add(rs.getString("user_id"));
-                list.add(rs.getString("creator"));
-                list.add(rs.getString("end_time"));
+
 
                 if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
                     list.add("1");
@@ -86,6 +90,7 @@ public class InvestigationDao {
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
+        DBHelper.getInstance().putTableColumnNames(LABELS, jsonObj);
         //如果发生错误就设置成"error"等
         jsonObj.put("result_msg", resultMsg);
         //返回0表示正常，不等于0就表示有错误产生，错误代码
@@ -100,7 +105,7 @@ public class InvestigationDao {
         List<List<String>> jsonList = new ArrayList<>();
         try {
             //构造sql语句，根据传递过来的查询条件参数
-            String sql = "update " + TABLE_NAME + " set title='" + bean.getTitle() + "',content='" + bean.getContent() + "',end_time='" + bean.getEndTime() + "' where id=" + bean.getId();
+            String sql = "update " + TABLE_NAME + " set title='" + bean.getTitle() + "',content='" + bean.getContent() + "',end_time='" + bean.getEndTime() + "',link='" + bean.getLink() + "' where id=" + bean.getId();
             DBHelper.getInstance().executeUpdate(sql);
             sql = "select * from " + TABLE_NAME + " order by create_time desc";
             ResultSet rs = DBHelper.getInstance().executeQuery(sql);

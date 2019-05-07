@@ -114,3 +114,39 @@
 .btn-small:hover{
 	background-color:#E7EcE8;
 }
+.depth-1 {
+    border-bottom: #eee 1px solid;
+}
+.comment {
+    position: relative;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.commentlist {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+.comt-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #FFF;
+    float: left;
+    display: inline;
+    position: relative;
+    margin-top: 19px;
+}
+.comt-main {
+    margin-left: 46px;
+    margin-right: 60px;
+    color: #888;
+    line-height: 22px;
+    position: relative;
+    font-size: 14px;
+    padding: 0 0 15px;
+    word-wrap: break-word;
+    max-height: 300px;
+    overflow: hidden;
+}

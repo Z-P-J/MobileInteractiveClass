@@ -46,16 +46,6 @@
 										<input type="hidden" id="action" name="action" value="add_record"/>
 										<div class="form-body">
 											<div class="form-group">
-												<label class="col-md-3 control-label">
-													项目名称
-												</label>
-												<div class="col-md-9">
-													<select class="table-group-action-input form-control input-medium" id="project_id" name="project_id">
-														<option value="1">（无）</option>
-													</select>
-												</div>
-											</div>
-											<div class="form-group">
 												<label class="col-md-3 control-label">标题（必填）<font color="red">*</font></label>
 												<div class="col-md-9">
 													<input type="text" id="title" name="title" class="form-control" placeholder="请填写标题" value=""/>
@@ -77,7 +67,7 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="col-md-3 control-label">限制时间</label>
+												<label class="col-md-3 control-label">截止日期</label>
 												<div class="col-md-4">
 													<div class="input-group date form_datetime">
 														<input type="text" id="end_time" name="end_time" class="form-control" size="16" placeholder="请输入截止日期" value=""/>

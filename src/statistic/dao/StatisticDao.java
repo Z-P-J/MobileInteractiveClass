@@ -111,6 +111,19 @@ public class StatisticDao {
             createTime = "upload_time";
             userId = "uploader_id";
         }
+        if ("user_info".equals(statisticBean.getTableName())) {
+            createTime = "register_date";
+            userId = "user_id";
+        }
+        if ("vote_file".equals(statisticBean.getTableName())) {
+            createTime = "publish_date";
+            userId = "user_id";
+        }
+
+//        if ("investigation_manage".equals(statisticBean.getTableName())) {
+//            createTime = "register_date";
+//            userId = "user_id";
+//        }
 
         sql = "select date_format("+ createTime +",\"" + timeInterval + "\") as time_interval,count(*) as count from " + statisticBean.getTableName() + " a";
         sql = sql + " where " + createTime + " between \"" + statisticBean.getTimeFrom() + "\" and \"" + statisticBean.getTimeTo() + "\"";

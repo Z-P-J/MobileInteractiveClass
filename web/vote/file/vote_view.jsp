@@ -55,18 +55,18 @@
 											<label class="col-md-3" id="record_list_tip">
 											</label>
 										</div>
-										<div class="form-group">
-											<label class="col-md-3 control-label">
-												项目名称
-											</label>
-											<div class="col-md-9">
-												<select class="table-group-action-input form-control input-medium" id="project_id_select" name="project_id_select">
-													<option value="1">
-														（无）
-													</option>
-												</select>
-											</div>
-										</div>
+<%--										<div class="form-group">--%>
+<%--											<label class="col-md-3 control-label">--%>
+<%--												项目名称--%>
+<%--											</label>--%>
+<%--											<div class="col-md-9">--%>
+<%--												<select class="table-group-action-input form-control input-medium" id="project_id_select" name="project_id_select">--%>
+<%--													<option value="1">--%>
+<%--														（无）--%>
+<%--													</option>--%>
+<%--												</select>--%>
+<%--											</div>--%>
+<%--										</div>--%>
 										<div class="form-group">
 											<label class="col-md-3 control-label">
 												标题（必填）

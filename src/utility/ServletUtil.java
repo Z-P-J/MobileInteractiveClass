@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author 25714
@@ -42,6 +43,7 @@ public final class ServletUtil {
         jsonObj.put("total", count);
         jsonObj.put("current_index", index);
         jsonObj.put("aaData", jsonList);
+        System.out.println("getResultSetNavigateId" + list.toString());
         return jsonObj;
     }
 
@@ -51,11 +53,26 @@ public final class ServletUtil {
         for (int i = 0; i < jsonArr.length(); i++) {
             ArrayList list = (ArrayList) jsonArr.get(i);
             if (id.equals(list.get(0) + "")) {
-                index = list.get(11) + "";
-                break;
+//                index = list.get(11) + "";
+                return i + "";
+//                break;
             }
         }
         return index;
+    }
+
+    public static ArrayList getIndexFromFileId(String fileId, JSONObject json) throws JSONException {
+//        int index = -1;
+        JSONArray jsonArr = json.getJSONArray("aaData");
+        for (int i = 0; i < jsonArr.length(); i++) {
+            ArrayList list = (ArrayList) jsonArr.get(i);
+            if (fileId.equals(list.get(1) + "")) {
+//                index = list.get(11) + "";
+                return list;
+//                break;
+            }
+        }
+        return null;
     }
 
 }

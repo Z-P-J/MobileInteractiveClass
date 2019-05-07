@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import user.bean.InfoBean;
 import utility.DBHelper;
+import utility.TimeUtil;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -15,6 +16,8 @@ public class InfoDao {
 
     private static final String TABLE_NAME = "user_info";
 
+    private static final String[] LABELS = {"id", "user_name", "user_id", "name", "sex", "email", "phone", "user_type", "wechat", "grade", "class", "student_num", "faculty", "register_date"};
+
     /*
      * 功能：返回结果集
      */
@@ -25,7 +28,7 @@ public class InfoDao {
         List jsonList = new ArrayList();
         try {
             //构造sql语句，根据传递过来的查询条件参数
-            String sql = "";
+            String sql = "select * from " + TABLE_NAME;
             int count = 0;
             query.setTableName(TABLE_NAME);
             sql = createGetRecordSql(query);
@@ -33,16 +36,19 @@ public class InfoDao {
             ResultSet rs = DBHelper.getInstance().executeQuery(sql);
             while (rs.next()) {
                 List list = new ArrayList();
-                list.add(rs.getString("id"));
-                list.add(rs.getString("title"));
-                list.add(rs.getString("content"));
-                list.add(rs.getString("type"));
-                list.add(rs.getString("limit_time"));
-                list.add(rs.getString("end_time"));
-                list.add(rs.getString("end_tag"));
-                list.add(rs.getString("user_id"));
-                list.add(rs.getString("creator"));
-                list.add(rs.getString("create_time"));
+                for (String label : LABELS) {
+                    list.add(rs.getString(label));
+                }
+//                list.add(rs.getString("id"));
+//                list.add(rs.getString("title"));
+//                list.add(rs.getString("content"));
+//                list.add(rs.getString("type"));
+//                list.add(rs.getString("limit_time"));
+//                list.add(rs.getString("end_time"));
+//                list.add(rs.getString("end_tag"));
+//                list.add(rs.getString("user_id"));
+//                list.add(rs.getString("creator"));
+//                list.add(rs.getString("create_time"));
                 if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
                     list.add("1");
                 } else {
@@ -64,6 +70,7 @@ public class InfoDao {
         //下面�?始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
+        DBHelper.getInstance().putTableColumnNames(LABELS, jsonObj);
         jsonObj.put("result_msg", resultMsg);//如果发生错误就设置成"error"�?
         jsonObj.put("result_code", resultCode);//返回0表示正常，不等于0就表示有错误产生，错误代�?
         return jsonObj;
@@ -76,7 +83,17 @@ public class InfoDao {
         List jsonList = new ArrayList();
         try {
             //构�?�sql语句，根据传递过来的查询条件参数
-            String sql = "update " + TABLE_NAME + " set title='" + info.getTitle() + "',content='" + info.getContent() + "',limit_time='" + info.getLimitTime() + "' where id=" + info.getId();
+            String sql = "update " + TABLE_NAME
+                    + " set user_name='" + info.getUserName()
+//                    + "',name='" + info.getName()
+                    + "',sex='" + info.getSex()
+                    + "',email='" + info.getEmail()
+                    + "',phone='" + info.getPhone()
+                    + "',wechat='" + info.getWechat()
+                    + "',grade='" + info.getGrade()
+                    + "',student_num='" + info.getStudentNum()
+                    + "',faculty='" + info.getFaculty()
+                    + "' where name='" + info.getName() + "'";
             DBHelper.getInstance().executeUpdate(sql);
             sql = "select * from " + TABLE_NAME + " order by create_time desc";
             ResultSet rs = DBHelper.getInstance().executeQuery(sql);
@@ -137,13 +154,39 @@ public class InfoDao {
         int resultCode = 0;
         List jsonList = new ArrayList();
         //构�?�sql语句，根据传递过来的查询条件参数
-        String sql = "insert into " + TABLE_NAME + "(parent_id,title,content,limit_time,user_id,creator,create_time) values('" + info.getParentId() + "','" + info.getTitle() + "','" + info.getContent() +
-                "','" + info.getLimitTime() + "','" + info.getUserId() + "','" + info.getCreator() + "','" + info.getCreateTime() + "')";
+        String sql = "insert into " + TABLE_NAME + "(user_name,user_id,name,sex,email,wechat,grade,class,student_num,faculty,register_date) values('"
+                + info.getUserName() + "','"
+                + info.getUserId() + "','"
+                + info.getName() + "','"
+                + info.getSex() + "','"
+                + info.getEmail() + "','"
+                + info.getWechat() + "','"
+                + info.getGrade() + "','"
+                + info.getClassStr() + "','"
+                + info.getStudentNum() + "','"
+                + info.getFaculty() + "','"
+                + TimeUtil.currentDate() + "')";
         DBHelper.getInstance().executeUpdate(sql).close();
         //下面�?始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
         jsonObj.put("action", info.getAction());
+        jsonObj.put("result_msg", resultMsg);//如果发生错误就设置成"error"�?
+        jsonObj.put("result_code", resultCode);//返回0表示正常，不等于0就表示有错误产生，错误代�?
+        return jsonObj;
+    }
+
+    public JSONObject deleteRecord(String action, String name, String creator, String createTime) throws JSONException, SQLException {
+        String resultMsg = "ok";
+        int resultCode = 0;
+        List jsonList = new ArrayList();
+        //构�?�sql语句，根据传递过来的查询条件参数
+        String sql = "delete from " + TABLE_NAME + " where id=" + name;
+        DBHelper.getInstance().executeUpdate(sql).close();
+        //下面�?始构建返回的json
+        JSONObject jsonObj = new JSONObject();
+        jsonObj.put("aaData", jsonList);
+        jsonObj.put("action", action);
         jsonObj.put("result_msg", resultMsg);//如果发生错误就设置成"error"�?
         jsonObj.put("result_code", resultCode);//返回0表示正常，不等于0就表示有错误产生，错误代�?
         return jsonObj;
@@ -193,23 +236,23 @@ public class InfoDao {
      * 功能：构造历史记录查询的sql语句,type=all查询�?有，type=id查询某个记录，余下按照条件设置查�?
      */
     private String createGetRecordSql(InfoBean query) {
-        String sql = "";
+        String sql = "select * from " + TABLE_NAME;
         String where = "";
-        if (query.getId() != null && !query.getId().equals("null")) {
-            where = "where id=" + query.getId();
-        }
+//        if (query.getId() != null && !query.getId().equals("null")) {
+//            where = "where id=" + query.getId();
+//        }
         if (query.getTitle() != null && !query.getTitle().equals("null") && !query.getTitle().isEmpty()) {
             if (!where.isEmpty()) {
-                where = where + " and title like '%" + query.getTitle() + "%'";
+                where = where + " and name like '%" + query.getTitle() + "%'";
             } else {
-                where = "where title like '%" + query.getTitle() + "%'";
+                where = "where name like '%" + query.getTitle() + "%'";
             }
         }
         if (query.getTimeFrom() != null && query.getTimeTo() != null && !query.getTimeFrom().isEmpty()) {
             if (!where.isEmpty()) {
-                where = where + " and create_time between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
+                where = where + " and register_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
             } else {
-                where = "where create_time between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
+                where = "where register_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
             }
         }
 
@@ -222,6 +265,13 @@ public class InfoDao {
             }
         }
 
+//        if (where.isEmpty()) {
+//            sql = "select * from " + query.getTableName() + " where user_id='" + query.getUserId() + "'" + orderBy;
+//            System.out.println("---------------------------------orderBy:" + orderBy);
+//        } else {
+//            sql = "select * from " + query.getTableName() + " " + where + " and user_id='" + query.getUserId() + "'" + orderBy;
+//        }
+
 
         if (query.getType() != null && query.getType().equals("all") && query.getUserRole().equals("manager")) {
             sql = "select * from " + query.getTableName() + " order by create_time desc";
@@ -230,10 +280,11 @@ public class InfoDao {
                 sql = "select * from " + query.getTableName() + " where id=" + query.getId();
             } else {
                 if (where.isEmpty()) {
-                    sql = "select * from " + query.getTableName() + " where user_id='" + query.getUserId() + "'" + orderBy;
+                    sql = "select * from " + query.getTableName() + " " + orderBy;
+//                    sql = "select * from " + query.getTableName() + " where user_id='" + query.getUserId() + "'" + orderBy;
                     System.out.println("---------------------------------orderBy:" + orderBy);
                 } else {
-                    sql = "select * from " + query.getTableName() + " " + where + " and user_id='" + query.getUserId() + "'" + orderBy;
+                    sql = "select * from " + query.getTableName() + " " + where + " " + orderBy;
                 }
             }
         }

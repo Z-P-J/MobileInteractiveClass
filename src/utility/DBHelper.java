@@ -1,6 +1,12 @@
 package utility;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author 25714
@@ -77,6 +83,34 @@ public class DBHelper {
             sqlexception.printStackTrace();
         }
         return dbHelper;
+    }
+
+    public void putTableColumnNames(String tableName, JSONObject jsonObj) {
+        ResultSet rs = executeQuery("select * from " + tableName);
+        try {
+            ResultSetMetaData data = rs.getMetaData();
+            List<String> columnList = new ArrayList<>();
+            System.out.println("getColumnCount=" + data.getColumnCount());
+            for (int i = 0; i < data.getColumnCount(); i++) {
+                System.out.println("i=" + i);
+                columnList.add(data.getColumnLabel(i + 1));
+            }
+            jsonObj.put("table_column_names", columnList);
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        close();
+    }
+
+    public void putTableColumnNames(String[] labels, JSONObject jsonObj) {
+        List<String> columnList = new ArrayList<>();
+        Collections.addAll(columnList, labels);
+        try {
+            jsonObj.put("table_column_names", columnList);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 //    public void getProperty() {

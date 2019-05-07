@@ -273,6 +273,19 @@ public class ServletAction extends BaseHttpServlet {
             info.setUserId(userId);
             info.setCreator(creator);
             info.setCreateTime(createTime);
+
+            info.setUserName(request.getParameter("user_name"));
+            info.setName(request.getParameter("password"));
+            info.setName(request.getParameter("name"));
+            info.setSex(request.getParameter("sex"));
+            info.setEmail(request.getParameter("email"));
+            info.setPhone(request.getParameter("phone"));
+            info.setWechat(request.getParameter("wechat"));
+            info.setGrade(request.getParameter("grade"));
+            info.setClassStr(request.getParameter("class"));
+            info.setStudentNum(request.getParameter("student_num"));
+            info.setFaculty(request.getParameter("faculty"));
+
             jsonObj = infoDao.addRecord(info);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
         }
@@ -306,6 +319,18 @@ public class ServletAction extends BaseHttpServlet {
             info.setLimitTime(limitTime);
             info.setCreator(creator);
             info.setCreateTime(createTime);
+
+            info.setUserName(request.getParameter("user_name"));
+            info.setName(request.getParameter("name"));
+            info.setSex(request.getParameter("sex"));
+            info.setEmail(request.getParameter("email"));
+            info.setPhone(request.getParameter("phone"));
+            info.setWechat(request.getParameter("wechat"));
+            info.setGrade(request.getParameter("grade"));
+            info.setClassStr(request.getParameter("class"));
+            info.setStudentNum(request.getParameter("student_num"));
+            info.setFaculty(request.getParameter("faculty"));
+
             jsonObj = infoDao.modifyRecord(info);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 修改了 [" + MODULE + "][" + SUB + "] 记录", "修改记录", MODULE);
         }
@@ -317,17 +342,27 @@ public class ServletAction extends BaseHttpServlet {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
         String dbName = (String) session.getAttribute("unit_db_name");
+        String id = request.getParameter("id");
         String[] ids = request.getParameterValues("id");
 
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
         //检查输入参数是否正确先
-        if (ids != null && dbName != null) {
+        if (ids != null) {
             String creator = (String) session.getAttribute("user_name");
             String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
             InfoDao infoDao = new InfoDao();
             jsonObj = infoDao.deleteRecord(action, dbName, ids, creator, createTime);
+            ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
+        }
+
+        if (id != null) {
+            String creator = (String) session.getAttribute("user_name");
+            String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
+            /*----------------------------------------数据获取完毕，开始和数据库交互*/
+            InfoDao infoDao = new InfoDao();
+            jsonObj = infoDao.deleteRecord(action, id, creator, createTime);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
 
