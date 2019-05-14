@@ -289,9 +289,13 @@ var Page = function () {
             $("#file_size_hidden").val(fileSize);
             $("#file_size").val(size);
 
+            var index1 = fileName.lastIndexOf(".");
+            var index2 = fileName.length;
+            var fileSuffix = fileName.substring(index1, index2);
+
             var studentNum = $("#student_num").val();
             var userName = $("#user_name").val();
-            var renameTo = studentNum + "_" + userName + "_" + $("#homework_detail_title").html();
+            var renameTo = studentNum + "_" + userName + "_" + $("#homework_detail_title").html() + fileSuffix;
             $("#rename_to").val(renameTo);
             var newUrl = $("#page_form").attr('action') + "&rename_to=" + renameTo;
             $("#page_form").attr('action', newUrl);
