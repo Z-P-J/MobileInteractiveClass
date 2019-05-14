@@ -123,7 +123,8 @@ var Page = function () {
             Frame.processError(json);
     };
     var handleButtonEvent = function () {
-        $("#choose_file").change(function (e) {
+        $("#fileinp").change(function (e) {
+            $("#text").html($("#fileinp").val());
             console.log(e);
 
             console.log($(this).val());
@@ -141,7 +142,18 @@ var Page = function () {
             // $("#file_path").val(getFullPath(this));
             $("#file_size").val(fileSize);
             // $("#file_type").val(fileType);
-        })
+        });
+        var btnNode = document.getElementById('btn');
+        var inputNode = document.getElementById('fileinp');
+        btnNode.addEventListener('click', function (e) {
+            // 模拟input点击事件
+            var evt = new MouseEvent("click", {
+                bubbles: false,
+                cancelable: true,
+                view: window
+            });
+            inputNode.dispatchEvent(evt);
+        }, false);
         $('#return_button').click(function () {
             Page.confirmBack();
         });

@@ -161,6 +161,7 @@
                prefix="localhost_access_log" suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
 
+
         <Context debug="0" docBase="D:\Programming\Java Workplace\Demo\.metadata\.me_tcat\temp" path="/chart" reloadable="true"/>
         <Context debug="0" docBase="C:\upload\temp" path="/temp" reloadable="true"/>
         <Context debug="0" docBase="C:\upload" path="/upload" reloadable="true"/>

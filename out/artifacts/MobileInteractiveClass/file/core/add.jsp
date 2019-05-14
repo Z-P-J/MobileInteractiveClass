@@ -13,6 +13,7 @@
 		<%@include file="../../home/frame/frame_style.jsp"%>
 		<!-- BEGIN PAGE LEVEL STYLES -->
 		<link rel="stylesheet" type="text/css" href="../../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../assets/module/css/file/add.css"/>
 		<!-- END PAGE LEVEL SCRIPTS -->
 	</head>
 	<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
@@ -45,22 +46,30 @@
 									<form class="form-horizontal" role="form" id="page_form" name="page_form"  method="post" action="../../UploadServlet" enctype="multipart/form-data">
 										<div class="form-body">
 											<div class="form-group">
-												<div class="form-group">
-													<label class="col-md-3 control-label">文件名</label>
-													<div class="col-md-4">
-														<div class="input-group">
+												<div class="form-group" style="text-align: center">
+<%--													<label class="col-md-3 control-label">文件名</label>--%>
+													<div class="col-md-4" style="text-align: center">
+														<div class="input-group" style="text-align: center;margin:0 auto;">
+															文件名
 															<input type="text" id="file_name" name="file_name" class="form-control" size="16" placeholder="请选择上传文件" value=""/>
 														</div>
 													</div>
 												</div>
-												<div class="form-group">
-													<label class="col-md-3 control-label">文件大小</label>
+												<div class="form-group" style="text-align: center">
+<%--													<label class="col-md-3 control-label">文件大小</label>--%>
 													<div class="col-md-4">
-														<div class="input-group">
+														<div class="input-group" style="text-align: center;margin:0 auto;">
+															文件大小
 															<input type="text" id="file_size" name="file_size" class="form-control" size="16" placeholder="上传文件大小" value=""/>
 														</div>
-														<div class="input-group">
-															<input type="file" name="uploadFile"  id="choose_file" value="选择文件"/>
+														<div class="input-group" style="text-align: center;margin:0 auto;">
+<%--															<input type="file" name="uploadFile"  id="choose_file" value="选择文件" style="text-align: center;margin:0 0;"/>--%>
+															<label for="fileinp">
+																<input type="button" id="btn" value="选择文件">
+																<input type="file" id="fileinp">
+<%--																<span id="text">请选择上传文件</span>--%>
+
+															</label>
 														</div>
 													</div>
 												</div>

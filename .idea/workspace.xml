@@ -9,7 +9,36 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="update" />
+    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="update">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/MobileInteractiveClassroom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_0_4_bin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MobileInteractiveClass.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MobileInteractiveClass.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/server.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/file/file_add.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/file/file_add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/home/mainmenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/home/mainmenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/file/core/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/file/core/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/file_comment.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/file_manage.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/investigation_manage.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/user_manage.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/vote_manage.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/server.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/file/file_add.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/file/file_add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/file/core/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/file/core/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,55 +52,79 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="97" column="19" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/wechat/WxSign.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/vote/bean/VoteBean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/vote/dao/VoteDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/vote/ServletAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="551">
+              <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="323">
+                <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/homework/core/list.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2033">
+              <caret line="107" column="80" selection-start-line="107" selection-start-column="80" selection-end-line="107" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/module/css/base/progress_bar.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/module/css/file/add.css">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
-              <caret line="26" column="4" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+              <caret line="23" column="23" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6878">
+              <caret line="362" column="29" selection-start-line="362" selection-start-column="29" selection-end-line="362" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/ProgressSingleton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,40 +133,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="139" column="49" selection-start-line="139" selection-start-column="49" selection-end-line="139" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="247">
-                <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-              </first_editor>
-              <second_editor />
+            <state relative-caret-position="1539">
+              <caret line="99" column="28" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="28" />
+              <folding>
+                <element signature="method#getRecord#0;class#ServletAction#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/base/print/print.jsp">
+        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="32" column="33" lean-forward="true" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="3762">
+              <caret line="208" column="29" selection-start-line="208" selection-start-column="29" selection-end-line="208" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -124,26 +159,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;servlet&quot;</find>
-      <find>todo_print</find>
-      <find>print</find>
-      <find>statistic</find>
-      <find>investigation</find>
-      <find>_get_record</find>
-      <find>=get_record</find>
-      <find>rs.getString</find>
-      <find>type</find>
-      <find>submit_button</find>
-      <find>tools_menu_reload</find>
-      <find>project_investigation</find>
-      <find>record_list_div</find>
-      <find>prev</find>
       <find>getResultSetNavigateId</find>
       <find>标题</find>
       <find>select *</find>
@@ -160,6 +183,20 @@
       <find>&quot;forum.file&quot;</find>
       <find>forum.file</find>
       <find>&quot;utils.TimeUtil&quot;</find>
+      <find>module = &quot;file&quot;</find>
+      <find>submit_button</find>
+      <find>HomeworkBean</find>
+      <find>HomeworkDao</find>
+      <find>get_record_detail</find>
+      <find>record_list_tip</find>
+      <find>showRecordList</find>
+      <find>document_main</find>
+      <find>json</find>
+      <find>getRecordView</find>
+      <find>ProgressServlet</find>
+      <find>delete_record</find>
+      <find>rename_to</find>
+      <find>showRecord</find>
     </findStrings>
     <replaceStrings>
       <replace>databaseName=&quot;my_test&quot;</replace>
@@ -174,6 +211,8 @@
       <replace>user_info</replace>
       <replace />
       <replace>&quot;file&quot;</replace>
+      <replace>module = &quot;homework&quot;</replace>
+      <replace>HomeworkFileBean</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\Programming\Java Workplace\Demo\web\project\todo</dir>
@@ -198,9 +237,12 @@
       <dir>D:\Programming\MobileInteractiveClass\web\assets\module\scripts\user\info</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\assets\module\scripts\file</dir>
       <dir>D:\Programming\MobileInteractiveClass\src\investigation</dir>
-      <dir>D:\Programming\MobileInteractiveClass</dir>
-      <dir>D:\Programming\MobileInteractiveClass\src</dir>
       <dir>D:\Programming\MobileInteractiveClass\web</dir>
+      <dir>D:\Programming\MobileInteractiveClass\web\assets\module\scripts\homework</dir>
+      <dir>D:\Programming\MobileInteractiveClass\web\homework\core</dir>
+      <dir>D:\Programming\MobileInteractiveClass\src</dir>
+      <dir>D:\Programming\MobileInteractiveClass</dir>
+      <dir>D:\Programming\MobileInteractiveClass\src\com</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -209,34 +251,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/investigation/core/view.jsp" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_view.js" />
-        <option value="$PROJECT_DIR$/src/investigation/dao/InvestigationDao.java" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/user/info/info_view.js" />
-        <option value="$PROJECT_DIR$/web/user/info/info_view.jsp" />
-        <option value="$PROJECT_DIR$/src/user/bean/InfoBean.java" />
-        <option value="$PROJECT_DIR$/web/vote/file/vote_view.jsp" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_view.js" />
-        <option value="$PROJECT_DIR$/web/file/core/query.jsp" />
-        <option value="$PROJECT_DIR$/src/investigation/ServletAction.java" />
-        <option value="$PROJECT_DIR$/web/user/info/info_add.jsp" />
-        <option value="$PROJECT_DIR$/web/user/info/result.jsp" />
-        <option value="$PROJECT_DIR$/web/vote/file/vote_add.jsp" />
-        <option value="$PROJECT_DIR$/src/vote/ServletAction.java" />
-        <option value="$PROJECT_DIR$/src/user/ServletAction.java" />
-        <option value="$PROJECT_DIR$/src/statistic/dao/StatisticDao.java" />
-        <option value="$PROJECT_DIR$/src/user/dao/InfoDao.java" />
-        <option value="$PROJECT_DIR$/src/vote/dao/VoteDao.java" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js" />
-        <option value="$PROJECT_DIR$/web/vote/file/record_list.jsp" />
-        <option value="$PROJECT_DIR$/src/file/dao/FileDao.java" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/ServletAction.java" />
-        <option value="$PROJECT_DIR$/src/statistic/ServletAction.java" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/user/ServletAction.java" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/wechat/WECHAT.java" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/vote/dao/VoteDao.java" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/utils/export/ExportUtil.java" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/base/BaseHttpServlet.java" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/clinic/pay/ServletAction.java" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/export/export_result.js" />
@@ -249,7 +263,6 @@
         <option value="$PROJECT_DIR$/web/assets/module/scripts/file/file_list.js" />
         <option value="$PROJECT_DIR$/web/assets/global/plugins/ckeditor/lang/gl.js" />
         <option value="$PROJECT_DIR$/web/assets/global/plugins/nouislider/jquery.nouislider.js" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/base/print/print.jsp" />
         <option value="$PROJECT_DIR$/web/file/core/result.jsp" />
         <option value="$PROJECT_DIR$/web/project/statistic/statistic_query.jsp" />
@@ -257,8 +270,37 @@
         <option value="$PROJECT_DIR$/web/investigation/core/result.jsp" />
         <option value="$PROJECT_DIR$/web/vote/file/vote_list.jsp" />
         <option value="$PROJECT_DIR$/web/base/statistic/statistic_query.jsp" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/file/file_add.js" />
+        <option value="$PROJECT_DIR$/web/file/core/add.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/server.xml" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/CommentBean.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/FileDao.java" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/homework/file_add.js" />
+        <option value="$PROJECT_DIR$/web/assets/module/css/file/add.css" />
+        <option value="$PROJECT_DIR$/web/homework/core/add.jsp" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/FileBean.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkBean.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/base/BaseDao.java" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/web/homework/main/index.jsp" />
+        <option value="$PROJECT_DIR$/web/homework/core/homework_list.jsp" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkFileBean.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/home/index.js" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/ProgressServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/utils/ProgressSingleton.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkFileDao.java" />
+        <option value="$PROJECT_DIR$/web/homework/core/list.jsp" />
+        <option value="$PROJECT_DIR$/web/assets/module/css/base/progress_bar.css" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -280,6 +322,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -290,6 +334,22 @@
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -312,15 +372,6 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="interactive" type="462c0819:PsiDirectoryNode" />
               <item name="classroom" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="interactive" type="462c0819:PsiDirectoryNode" />
-              <item name="classroom" type="462c0819:PsiDirectoryNode" />
-              <item name="clinic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -340,14 +391,14 @@
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="print" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -357,8 +408,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -366,9 +415,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/sql" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30186608" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
@@ -376,24 +427,24 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Programming\MobileInteractiveClass\sql" />
-      <recent name="D:\Programming\MobileInteractiveClass\web\WEB-INF\lib" />
-      <recent name="D:\Programming\MobileInteractiveClass\out\artifacts\MobileInteractiveClass" />
-      <recent name="D:\Programming\MobileInteractiveClass\web\assets\module\scripts\file" />
-      <recent name="D:\Programming\MobileInteractiveClass\web\file" />
+      <recent name="D:\Programming\MobileInteractiveClass\web\assets\module\scripts\homework" />
+      <recent name="D:\Programming\MobileInteractiveClass\web\homework\core" />
+      <recent name="D:\Programming\MobileInteractiveClass\src\com\interactive\classroom\homework" />
+      <recent name="D:\Programming\MobileInteractiveClass\web\assets\module\scripts" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.interactive.classroom.homework.dao" />
+      <recent name="com.interactive.classroom.homework.bean" />
       <recent name="upload" />
       <recent name="utility" />
       <recent name="base" />
-      <recent name="download" />
-      <recent name="project.dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\MobileInteractiveClass\web\WEB-INF\lib" />
+      <recent name="D:\Programming\MobileInteractiveClass\web\WEB-INF" />
       <recent name="D:\Programming\MobileInteractiveClass\src" />
       <recent name="D:\Programming\MobileInteractiveClass\src\com\interactive\classroom\utils" />
       <recent name="D:\Programming\MobileInteractiveClass\src\com\interactive\classroom\project\dao" />
-      <recent name="D:\Programming\MobileInteractiveClass\src\com\interactive\dao" />
-      <recent name="D:\Programming\MobileInteractiveClass\web\base\print" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -544,6 +595,10 @@
       <workItem from="1557115479428" duration="178000" />
       <workItem from="1557116337630" duration="30225000" />
       <workItem from="1557195373295" duration="39375000" />
+      <workItem from="1557715283656" duration="10500000" />
+      <workItem from="1557759273022" duration="219000" />
+      <workItem from="1557764818195" duration="30939000" />
+      <workItem from="1557840552132" duration="1192000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -626,7 +681,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172377000" />
+    <option name="totallyTimeSpent" value="215227000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -640,7 +695,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.27211797" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.28753352" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -684,291 +739,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/vote/file/vote_view.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="156" column="58" selection-start-line="156" selection-start-column="58" selection-end-line="156" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="171" column="47" selection-start-line="171" selection-start-column="47" selection-end-line="171" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/file/core/query.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="71" column="101" selection-start-line="71" selection-start-column="101" selection-end-line="71" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="168" column="28" selection-start-line="168" selection-start-column="28" selection-end-line="168" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/investigation/core/add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="62" column="44" selection-start-line="62" selection-start-column="44" selection-end-line="67" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/user/info/info_add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="122" column="42" lean-forward="true" selection-start-line="122" selection-start-column="42" selection-end-line="122" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/vote/file/vote_add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="88" column="58" lean-forward="true" selection-start-line="88" selection-start-column="58" selection-end-line="88" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/user/info/result.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="68" column="129" selection-start-line="68" selection-start-column="129" selection-end-line="68" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/vote/file/vote_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="150" column="81" selection-start-line="150" selection-start-column="81" selection-end-line="150" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/user/info/info_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="144" column="77" selection-start-line="144" selection-start-column="77" selection-end-line="144" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/TimeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/ServletUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="67" column="26" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/PrintUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/FileUpload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/EncoderUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/export/ExportUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/file/bean/CommentBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/file/dao/CommentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/file/bean/FileBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-          <folding>
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1135#1136#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/user/info/info_list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="283" column="95" selection-start-line="283" selection-start-column="95" selection-end-line="283" selection-end-column="95" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/vote/file/vote_list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5073">
-          <caret line="267" column="16" selection-start-line="267" selection-start-column="16" selection-end-line="267" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/vote/file/record_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1397">
-          <caret line="17" column="72" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/file/dao/FileDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sql/file_comment.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/download/DownloadServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/file/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/investigation/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/project/document/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/project/file/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/InvestigationDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/InvestigationBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/project/vote/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/statistic/bean/StatisticBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/statistic/dao/StatisticDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/statistic/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/bean/InfoBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/dao/InfoDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/wechat/WECHAT.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -1011,51 +781,335 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java">
+    <entry file="file://$PROJECT_DIR$/web/file/core/add.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="97" column="19" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
+        <state relative-caret-position="1121">
+          <caret line="59" column="74" selection-start-line="59" selection-start-column="74" selection-end-line="59" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/web/home/frame/frame_style.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="139" column="49" selection-start-line="139" selection-start-column="49" selection-end-line="139" selection-end-column="49" />
+        <state relative-caret-position="323">
+          <caret line="17" selection-start-line="17" selection-end-line="17" selection-end-column="86" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/base/print/print.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="32" column="33" lean-forward="true" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+        <state relative-caret-position="608">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/server.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="104">
+          <caret line="147" column="46" selection-start-line="147" selection-start-column="46" selection-end-line="147" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/CommentDao.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/CommentBean.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/homework/core/result.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/homework/core/view.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/file/file_list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="26" column="4" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        <state relative-caret-position="494">
+          <caret line="230" column="84" lean-forward="true" selection-start-line="230" selection-start-column="84" selection-end-line="230" selection-end-column="84" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/file_add.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/homework/core/add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="541">
+          <caret line="114" column="68" selection-start-line="114" selection-start-column="64" selection-end-line="114" selection-end-column="68" />
+          <folding>
+            <element signature="n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#!!top" />
+            <element signature="n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/file/file_add.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="159" column="8" lean-forward="true" selection-start-line="159" selection-start-column="8" selection-end-line="164" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/base/BaseHttpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="129" column="107" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/base/BaseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/homework/main/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/file/core/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2266" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/file_list.js" />
+    <entry file="file://$PROJECT_DIR$/web/homework/core/homework_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="149" column="85" selection-start-line="149" selection-start-column="85" selection-end-line="149" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkFileBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/file/ServletAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-113">
+          <caret line="65" column="36" lean-forward="true" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/file_view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/ServletUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="19" column="61" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="99" selection-start-line="4" selection-start-column="99" selection-end-line="4" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="21" column="95" selection-start-line="21" selection-start-column="95" selection-end-line="21" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="133" column="10" lean-forward="true" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="234" column="88" selection-start-line="234" selection-start-column="88" selection-end-line="234" selection-end-column="88" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/base/BaseServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="161" column="47" lean-forward="true" selection-start-line="161" selection-start-column="47" selection-end-line="161" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-fileupload-1.4.jar!/org/apache/commons/fileupload/FileUploadBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="24" />
+          <folding>
+            <element signature="e#2643#2644#0" expanded="true" />
+            <element signature="e#2681#2682#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/upload/ProgressServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="931">
+          <caret line="73" column="85" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkFileDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3610">
+          <caret line="201" column="31" selection-start-line="201" selection-start-column="31" selection-end-line="201" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/homework/core/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2033">
+          <caret line="107" column="80" selection-start-line="107" selection-start-column="80" selection-end-line="107" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/css/base/progress_bar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/css/file/add.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="23" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6878">
+          <caret line="362" column="29" selection-start-line="362" selection-start-column="29" selection-end-line="362" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/ProgressSingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1539">
+          <caret line="99" column="28" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="28" />
+          <folding>
+            <element signature="method#getRecord#0;class#ServletAction#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3762">
+          <caret line="208" column="29" selection-start-line="208" selection-start-column="29" selection-end-line="208" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/mysql5.0.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1596" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="247">
-            <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <first_editor relative-caret-position="323">
+            <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -1065,11 +1119,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>MobileInteractiveClass</last-edited>
+          <last-edited>MobileInteractiveClassroom</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.30186608" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

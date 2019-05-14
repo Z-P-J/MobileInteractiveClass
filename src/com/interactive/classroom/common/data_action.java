@@ -132,13 +132,15 @@ public class data_action extends HttpServlet {
             String id = request.getParameter("id");
             String tableName = request.getParameter("table_name");
             String order = request.getParameter("order");
-            if (order == null)
+            if (order == null) {
                 order = "";
+            }
             String where = request.getParameter("where");
-            if (where == null)
+            if (where == null) {
                 where = " where role_id='" + role + "'";
-            else
+            } else {
                 where = " where role_id='" + role + "' and " + where;
+            }
             String sql = "";
             if (module.equals("home")) {    //如果是主页菜单，对应document_main
                 sql = "select value as module_name,reason as category_id,0 as parent_category_id" +

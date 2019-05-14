@@ -19,7 +19,7 @@ function delHomeMenu() {
 }
 
 function addHomeMenu() {
-    $.post("../../common_data_action?action=get_home_menu&table_name=document_main&where=fieldType_Tag=1", function (e) {
+    $.post("../../common_data_action?action=get_home_menu&table_name=interactive_classroom_main&where=fieldType_Tag=1", function (e) {
         processHomeMenuResult(e)
     });
 }

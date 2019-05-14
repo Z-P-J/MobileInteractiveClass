@@ -1,0 +1,35 @@
+#wrapper{
+    /*position: relative;*/
+    /*width:200px;*/
+    /*height:100px;*/
+    display: none;
+    margin: 0 auto;
+    /*border:1px solid darkgray;*/
+}
+#progressbar{
+    /*position: absolute;*/
+    /*top:50%;*/
+    /*left:50%;*/
+    /*margin-left:-90px;*/
+    /*margin-top:-10px;*/
+    margin: 0 auto;
+    width:180px;
+    height:20px;
+    border:1px solid darkgray;
+}
+/*在进度条元素上调用动画*/
+#fill{
+    animation: move 60s;
+    text-align: center;
+    background-color: #00b0f0;
+}
+/*实现元素宽度的过渡动画效果*/
+@keyframes move {
+    0%{
+        width:0;
+
+    }
+    100%{
+        width:100%;
+    }
+}

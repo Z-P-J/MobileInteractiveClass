@@ -2,7 +2,7 @@ function initLeftMenu(module){
 	delMenu();
 	document.title="管理系统";
 	if(module=="home"){
-		$.post("../../common_data_action?action=get_main_menu&table_name=document_main&module="+module,function(e){processMenuItemResult(e)});
+		$.post("../../common_data_action?action=get_main_menu&table_name=interactive_classroom_main&module="+module,function(e){processMenuItemResult(e)});
 	}else{
 		$.post("../../common_data_action?action=get_main_menu&table_name="+module+"_tree&module="+module,function(e){processMenuItemResult(e)});
 	}
