@@ -89,25 +89,26 @@
 											<div class="col-md-2">
 												<select class="bs-select form-control" id="sort_01" onchange="Page.sortRecord(1);">
 													<option>（请选择）</option>
-													<option value="create_time">按日期</option>
-													<option value="title">按标题</option>
-													<option value="status">按状态</option>
+
+													<option value="upload_time">按发布日期</option>
+													<option value="deadline">按截止日期</option>
+                                                    <option value="file_name">按标题</option>
 												</select>
 											</div>
 											<div class="col-md-2">
 												<select class="bs-select form-control" id="sort_02" onchange="Page.sortRecord(2);">
 													<option>（请选择）</option>
-													<option value="create_time">按日期</option>
-													<option value="title">按标题</option>
-													<option value="status">按状态</option>
+													<option value="upload_time">按发布日期</option>
+													<option value="deadline">按截止日期</option>
+                                                    <option value="file_name">按标题</option>
 												</select>
 											</div>
 											<div class="col-md-2">
 												<select class="bs-select form-control" id="sort_03" onchange="Page.sortRecord(3);">
 													<option>（请选择）</option>
-													<option value="create_time">按日期</option>
-													<option value="title">按标题</option>
-													<option value="status">按状态</option>
+													<option value="upload_time">按发布日期</option>
+													<option value="deadline">按截止日期</option>
+                                                    <option value="file_name">按标题</option>
 												</select>
 											</div>
 										</div>

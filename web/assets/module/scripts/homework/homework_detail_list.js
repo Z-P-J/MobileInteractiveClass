@@ -180,7 +180,7 @@ var Record = function () {
     };
     var sortRecord1 = function (index, sortName) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
-        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_record&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_record_detail&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code == 0) {
                 Record.userId = json.user_id;

@@ -233,7 +233,7 @@ public class ServletAction extends BaseHttpServlet {
             try {
                 ArrayList list = ServletUtil.getIndexFromFileId(fileId, json);
                 if (list != null) {
-                    list.add(9, HomeworkDao.getComments(fileId));
+                    list.add(9, HomeworkFileDao.getComments(fileId));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

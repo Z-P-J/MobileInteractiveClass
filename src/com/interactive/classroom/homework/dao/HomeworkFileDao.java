@@ -266,13 +266,9 @@ public class HomeworkFileDao {
             sql = "select * from " + query.getTableName() + orderBy; //" order by create_time desc"
         } else {
             if (query.getId() != null && !"null".equals(query.getId())) {
-                sql = "select * from " + query.getTableName() + " where file_id=" + query.getId();
+                sql = "select * from " + query.getTableName() + " where file_id=" + query.getId() + orderBy;
             } else {
-                if (where.isEmpty()) {
-                    sql = "select * from " + query.getTableName() + " where uploader_id='" + query.getUserId() + "'" + orderBy;
-                } else {
-                    sql = "select * from " + query.getTableName() + " " + where + " and uploader_id='" + query.getUserId() + "'" + orderBy;
-                }
+                sql = "select * from " + query.getTableName() + orderBy;
             }
         }
         return sql;

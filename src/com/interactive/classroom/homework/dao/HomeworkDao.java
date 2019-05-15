@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -21,30 +23,6 @@ public class HomeworkDao {
     private static final String[] LABELS = {"id", "file_id", "uploader_id", "file_name", "file_size", "upload_time", "download_link", "deadline", "homework_requirement", "file_format"};
     private static final String[] LABELS_CH = {"ID", "文件ID", "上传用户", "文件名字", "文件大小", "上传时间", "下载地址"};
 
-    public static List<List<String>> getComments(String fileId) throws JSONException {
-        List<List<String>> jsonList = new ArrayList<>();
-        try {
-            //构造sql语句，根据传递过来的查询条件参数
-            String sql = "select * from file_comment where file_id=" + fileId;
-            System.out.println("TodoDao sql=" + sql);
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
-            while (rs.next()) {
-                List<String> list = new ArrayList<>();
-                list.add(rs.getString("id"));
-                list.add(rs.getString("file_id"));
-                list.add(rs.getString("user_id"));
-                list.add(rs.getString("comment_content"));
-                list.add(rs.getString("score"));
-                list.add(rs.getString("publish_date"));
-                jsonList.add(list);
-            }
-//            rs.close();
-        } catch (SQLException sqlexception) {
-            sqlexception.printStackTrace();
-        }
-        return jsonList;
-    }
-
     /*
      * 功能：返回结果集
      */
@@ -52,7 +30,7 @@ public class HomeworkDao {
         //开始查询数据库
         String resultMsg = "ok";
         int resultCode = 0;
-        List jsonList = new ArrayList();
+        List<List<String>> jsonList = new ArrayList<>();
 //        List<List<List<String>>> commentList = new ArrayList<>();
         try {
             //构造sql语句，根据传递过来的查询条件参数
@@ -67,15 +45,6 @@ public class HomeworkDao {
                 for (String label : LABELS) {
                     list.add(rs.getString(label));
                 }
-//                list.add(rs.getString("id"));
-//                String fileId = rs.getString("file_id");
-//                list.add(fileId);
-//                list.add(rs.getString("uploader_id"));
-//                String fileName = rs.getString("file_name");
-//                list.add(fileName);
-//                list.add(rs.getString("file_size"));
-//                list.add(rs.getString("upload_time"));
-//                list.add("../../DownloadServlet?file_name=" +fileName);
 
                 if (query.getUserId() != null && query.getUserId().equals(rs.getString("uploader_id"))) {
                     list.add("1");
@@ -103,10 +72,6 @@ public class HomeworkDao {
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
 
-        for (Object file : jsonList) {
-            List list = (List) file;
-            list.add(getComments((String) list.get(1)));
-        }
         jsonObj.put("aaData", jsonList);
 //        jsonObj.put("table_column_names", "");
         DBHelper.getInstance().putTableColumnNames(LABELS_CH, jsonObj);
@@ -262,11 +227,7 @@ public class HomeworkDao {
             if (query.getId() != null && !"null".equals(query.getId())) {
                 sql = "select * from " + query.getTableName() + " where id=" + query.getId();
             } else {
-                if (where.isEmpty()) {
-                    sql = "select * from " + query.getTableName() + " where uploader_id='" + query.getUserId() + "'" + orderBy;
-                } else {
-                    sql = "select * from " + query.getTableName() + " " + where + " and uploader_id='" + query.getUserId() + "'" + orderBy;
-                }
+                sql = "select * from " + query.getTableName() + orderBy;
             }
         }
         return sql;
