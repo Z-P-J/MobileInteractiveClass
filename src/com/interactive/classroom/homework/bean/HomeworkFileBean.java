@@ -3,7 +3,7 @@ package com.interactive.classroom.homework.bean;
 public class HomeworkFileBean {
     //数据库字段
     private String id;
-    private String fileId;
+    private String homeworkId;
     private String uploaderId = "zhangsan";
     private String fileName;
     private long fileSize;
@@ -33,12 +33,12 @@ public class HomeworkFileBean {
         this.id = id;
     }
 
-    public String getFileId() {
-        return fileId;
+    public String getHomeworkId() {
+        return homeworkId;
     }
 
-    public void setFileId(String fileId) {
-        this.fileId = fileId;
+    public void setHomeworkId(String homeworkId) {
+        this.homeworkId = homeworkId;
     }
 
     public String getUploaderId() {
@@ -165,7 +165,7 @@ public class HomeworkFileBean {
     public String toString() {
         return "FileBean{" +
                 "id='" + id + '\'' +
-                ", fileId='" + fileId + '\'' +
+                ", homeworkId='" + homeworkId + '\'' +
                 ", uploader_id='" + uploaderId + '\'' +
                 ", fileName='" + fileName + '\'' +
                 ", fileSize=" + fileSize +

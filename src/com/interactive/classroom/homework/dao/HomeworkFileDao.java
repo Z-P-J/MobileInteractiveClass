@@ -19,7 +19,7 @@ import java.util.List;
 public class HomeworkFileDao {
 
     private static final String TABLE_NAME = "homework_file_manage";
-    private static final String[] LABELS = {"id", "file_id", "uploader_id", "file_name", "file_size", "upload_time", "download_link"};
+    private static final String[] LABELS = {"id", "homework_id", "uploader_id", "file_name", "file_size", "upload_time", "download_link"};
     private static final String[] LABELS_CH = {"ID", "文件ID", "上传用户", "文件名字", "文件大小", "上传时间", "下载地址"};
 
     public static List<List<String>> getComments(String fileId) throws JSONException {
@@ -60,8 +60,8 @@ public class HomeworkFileDao {
             String sql = "";
             int count = 0;
             query.setTableName(TABLE_NAME);
-//            sql = createGetRecordSql(query);
-            sql = "select * from " + TABLE_NAME + " where file_id=" + query.getId();
+            sql = createGetRecordSql(query);
+//            sql = "select * from " + TABLE_NAME + " where homework_id=" + query.getHomeworkId();
             System.out.println("HomeworkDao sql=" + sql);
             ResultSet rs = DBHelper.getInstance().executeQuery(sql);
             while (rs.next()) {
@@ -185,7 +185,7 @@ public class HomeworkFileDao {
         List jsonList = new ArrayList();
 //		ylx_db query_db = new ylx_db(bean.getDbName());
         //构造sql语句，根据传递过来的查询条件参数
-        String sql = "insert into " + TABLE_NAME + "(file_id,uploader_id,file_name,file_size,upload_time,download_link) values(" + bean.getFileId() + ",'" + bean.getUploaderId() + "','" + bean.getFileName() +
+        String sql = "insert into " + TABLE_NAME + "(homework_id,uploader_id,file_name,file_size,upload_time,download_link) values(" + bean.getHomeworkId() + ",'" + bean.getUploaderId() + "','" + bean.getFileName() +
                 "'," + bean.getFileSize() + ",'" + bean.getUploadTime() + "','" + bean.getDownloadLink() + "')";
         Log.d(getClass().getName(), "sql=" + sql);
 
@@ -238,6 +238,8 @@ public class HomeworkFileDao {
     private String createGetRecordSql(HomeworkFileBean query) {
         String sql = "";
         String where = "";
+
+
         if (query.getId() != null && !"null".equals(query.getId())) {
             where = "where id=" + query.getId();
         }
@@ -265,8 +267,8 @@ public class HomeworkFileDao {
         if (query.getType() != null && "all".equals(query.getType())) {
             sql = "select * from " + query.getTableName() + orderBy; //" order by create_time desc"
         } else {
-            if (query.getId() != null && !"null".equals(query.getId())) {
-                sql = "select * from " + query.getTableName() + " where file_id=" + query.getId() + orderBy;
+            if (query.getHomeworkId() != null && !"null".equals(query.getHomeworkId())) {
+                sql = "select * from " + query.getTableName() + " where homework_id=" + query.getHomeworkId() + orderBy;
             } else {
                 sql = "select * from " + query.getTableName() + orderBy;
             }

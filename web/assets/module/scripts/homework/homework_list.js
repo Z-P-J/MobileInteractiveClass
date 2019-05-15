@@ -22,13 +22,13 @@ var Record = function () {
     var initRecordStyle = function () {
     };
     var initRecordList = function () {
-        getRecord();
+        getHomeworks();
     };
-    var getRecord = function () {
+    var getHomeworks = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record&type=all&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homework_list&type=all&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
@@ -47,7 +47,7 @@ var Record = function () {
         });
     };
     var viewRecord = function (id) {
-        window.location.href = "list.jsp?id=" + id + "&exist_resultset=1";
+        window.location.href = "list.jsp?homework_id=" + id + "&exist_resultset=0";
     };
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
@@ -71,7 +71,7 @@ var Record = function () {
     };
     var sortRecord1 = function (index, sortName) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
-        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_record&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_homework_list&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code == 0) {
                 Record.userId = json.user_id;

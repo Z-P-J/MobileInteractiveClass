@@ -5,7 +5,7 @@
 	System.out.println("[" + (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new java.util.Date()) + "]=======================调试：" + request.getServletPath() + "开始==============================");
 %>
 <%
-	String id = request.getParameter("id");
+	String homeworkId = request.getParameter("homework_id");
 	String existResultset = request.getParameter("exist_resultset");
 	String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
 	String studentNum = session.getAttribute("student_num") == null ? null : (String) session.getAttribute("student_num");
@@ -39,7 +39,6 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="portlet box blue ">
-
 							<div class="portlet-title">
 								<div class="caption">
 									<i class="fa fa-gift"></i><span id="title_div2">作业详情</span>
@@ -53,9 +52,9 @@
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form class="form-horizontal" role="form" method="post" name="page_form" id="page_form"  method="post" action="../../UploadServlet?id=<%=id%>&from=homework" enctype="multipart/form-data">
+								<form class="form-horizontal" role="form" method="post" name="page_form" id="page_form"  method="post" action="../../UploadServlet?homework_id=<%=homeworkId%>&from=homework" enctype="multipart/form-data">
 									<input type="hidden" id="action" name="action" value="get_record" />
-									<input type="hidden" id="id" name="id" value="<%=id%>" />
+									<input type="hidden" id="homework_id" name="homework_id" value="<%=homeworkId%>" />
 									<input type="hidden" id="exist_resultset" name="exist_resultset" value="<%=existResultset%>" />
 									<input type="hidden" id="file_size_hidden" name="file_size_hidden" value=""/>
 									<input type="hidden" id="user_name" name="user_name" value="<%=userName%>"/>

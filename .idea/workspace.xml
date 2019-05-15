@@ -10,13 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkFileBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkFileBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkFileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkFileDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/homework/core/homework_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/homework/core/homework_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/homework/core/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/homework/core/list.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -34,15 +33,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/homework/core/homework_list.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="446">
@@ -54,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="299" column="44" lean-forward="true" selection-start-line="299" selection-start-column="44" selection-end-line="299" selection-end-column="44" />
+            <state relative-caret-position="241">
+              <caret line="49" column="52" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="52" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -69,18 +59,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/homework/core/list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="169" column="57" lean-forward="true" selection-start-line="169" selection-start-column="57" selection-end-line="169" selection-end-column="57" />
+            <state relative-caret-position="380">
+              <caret line="41" column="55" lean-forward="true" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="182" column="72" selection-start-line="182" selection-start-column="72" selection-end-line="182" selection-end-column="72" />
+            <state relative-caret-position="336">
+              <caret line="504" column="42" selection-start-line="504" selection-start-column="34" selection-end-line="504" selection-end-column="42" />
               <folding>
+                <element signature="e#1831#2767#0" />
+                <element signature="e#3329#5951#0" />
+                <element signature="e#6109#6704#0" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
@@ -91,13 +84,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/ProgressSingleton.java">
+        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="356">
+              <caret line="133" column="54" selection-start-line="133" selection-start-column="50" selection-end-line="133" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -105,17 +95,49 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="207" column="47" selection-start-line="207" selection-start-column="47" selection-end-line="207" selection-end-column="47" />
+            <state relative-caret-position="84">
+              <caret line="272" column="23" selection-start-line="272" selection-start-column="13" selection-end-line="272" selection-end-column="23" />
+              <folding>
+                <element signature="method#submitComment#0;class#ServletAction#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/ServletUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkFileDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="257" lean-forward="true" selection-start-line="257" selection-end-line="257" />
+            <state relative-caret-position="576">
+              <caret line="263" column="49" selection-start-line="263" selection-start-column="43" selection-end-line="263" selection-end-column="53" />
+              <folding>
+                <element signature="method#getComments#0;class#HomeworkFileDao#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkFileBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="307">
+              <caret line="151" column="20" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
+              <folding>
+                <element signature="e#718#719#0" expanded="true" />
+                <element signature="e#743#744#0" expanded="true" />
+                <element signature="e#3011#3012#0" expanded="true" />
+                <element signature="e#3041#3042#0" expanded="true" />
+                <element signature="e#3158#3159#0" expanded="true" />
+                <element signature="e#3187#3188#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,19 +147,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
               <caret line="42" selection-start-line="42" selection-end-line="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkBean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="151" column="21" lean-forward="true" selection-start-line="151" selection-start-column="21" selection-end-line="151" selection-end-column="21" />
-              <folding>
-                <element signature="e#3003#3004#0" expanded="true" />
-                <element signature="e#3033#3034#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -156,19 +165,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>select *</find>
-      <find>title</find>
-      <find>setFileName</find>
-      <find>user_info</find>
-      <find>vote_file</find>
-      <find>/base</find>
-      <find>classroom/base</find>
-      <find>/classroom/</find>
-      <find>table_column_names</find>
-      <find>classroom.base</find>
-      <find>com.interactive.classroom.</find>
-      <find>&quot;forum.file&quot;</find>
-      <find>forum.file</find>
       <find>&quot;utils.TimeUtil&quot;</find>
       <find>module = &quot;file&quot;</find>
       <find>submit_button</find>
@@ -184,7 +180,20 @@
       <find>delete_record</find>
       <find>rename_to</find>
       <find>showRecord</find>
+      <find>homework_manage</find>
       <find>uploader_id</find>
+      <find>get_record_de</find>
+      <find>get_record_d</find>
+      <find>request.getParameter(&quot;id&quot;)</find>
+      <find>MODULE + &quot;_file_&quot; + SUB</find>
+      <find>get_record</find>
+      <find>file_id</find>
+      <find>getId()</find>
+      <find>get_record_view</find>
+      <find>get_homework_detail</find>
+      <find>homework_id</find>
+      <find>get_uploaded_files</find>
+      <find>uploaded_homeworks</find>
       <find>sortRecord1</find>
     </findStrings>
     <replaceStrings>
@@ -202,6 +211,7 @@
       <replace>&quot;file&quot;</replace>
       <replace>module = &quot;homework&quot;</replace>
       <replace>HomeworkFileBean</replace>
+      <replace>homework_id</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\Programming\Java Workplace\Demo\web\project\todo</dir>
@@ -272,25 +282,25 @@
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/base/BaseDao.java" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/homework/main/index.jsp" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkFileBean.java" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/home/index.js" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/ProgressServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/utils/ProgressSingleton.java" />
         <option value="$PROJECT_DIR$/web/assets/module/css/base/progress_bar.css" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/web/homework/core/homework_list.jsp" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkFileBean.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js" />
         <option value="$PROJECT_DIR$/web/homework/core/list.jsp" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkFileDao.java" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js" />
       </list>
     </option>
   </component>
@@ -356,6 +366,35 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="interactive" type="462c0819:PsiDirectoryNode" />
               <item name="classroom" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -583,7 +622,7 @@
       <workItem from="1557759273022" duration="219000" />
       <workItem from="1557764818195" duration="30939000" />
       <workItem from="1557840552132" duration="2984000" />
-      <workItem from="1557928243317" duration="4021000" />
+      <workItem from="1557928243317" duration="8538000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -680,7 +719,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221040000" />
+    <option name="totallyTimeSpent" value="225557000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -693,6 +732,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.29155496" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -892,13 +932,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/file_list.js" />
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkFileBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/file/ServletAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-113">
@@ -918,13 +951,6 @@
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/ServletUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="19" column="61" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -981,13 +1007,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="931">
-          <caret line="73" column="85" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="85" />
         </state>
       </provider>
     </entry>
@@ -1058,16 +1077,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js">
+    <entry file="file://$PROJECT_DIR$/web/homework/core/homework_list.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="299" column="44" lean-forward="true" selection-start-line="299" selection-start-column="44" selection-end-line="299" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="446">
+          <caret line="110" column="90" selection-start-line="110" selection-start-column="90" selection-end-line="110" selection-end-column="90" />
         </state>
       </provider>
     </entry>
@@ -1078,10 +1091,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js">
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/ServletUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="182" column="72" selection-start-line="182" selection-start-column="72" selection-end-line="182" selection-end-column="72" />
+        <state relative-caret-position="239">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="133" column="54" selection-start-line="133" selection-start-column="50" selection-end-line="133" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="49" column="52" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="52" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -1091,31 +1118,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/homework/core/homework_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="110" column="90" selection-start-line="110" selection-start-column="90" selection-end-line="110" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/homework/core/list.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="169" column="57" lean-forward="true" selection-start-line="169" selection-start-column="57" selection-end-line="169" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="207" column="47" selection-start-line="207" selection-start-column="47" selection-end-line="207" selection-end-column="47" />
+        <state relative-caret-position="380">
+          <caret line="41" column="55" lean-forward="true" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkFileDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="257" lean-forward="true" selection-start-line="257" selection-end-line="257" />
+        <state relative-caret-position="576">
+          <caret line="263" column="49" selection-start-line="263" selection-start-column="43" selection-end-line="263" selection-end-column="53" />
+          <folding>
+            <element signature="method#getComments#0;class#HomeworkFileDao#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="272" column="23" selection-start-line="272" selection-start-column="13" selection-end-line="272" selection-end-column="23" />
+          <folding>
+            <element signature="method#submitComment#0;class#ServletAction#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/bean/HomeworkFileBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="151" column="20" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
+          <folding>
+            <element signature="e#718#719#0" expanded="true" />
+            <element signature="e#743#744#0" expanded="true" />
+            <element signature="e#3011#3012#0" expanded="true" />
+            <element signature="e#3041#3042#0" expanded="true" />
+            <element signature="e#3158#3159#0" expanded="true" />
+            <element signature="e#3187#3188#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/homework/homework_detail_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="504" column="42" selection-start-line="504" selection-start-column="34" selection-end-line="504" selection-end-column="42" />
+          <folding>
+            <element signature="e#1831#2767#0" />
+            <element signature="e#3329#5951#0" />
+            <element signature="e#6109#6704#0" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

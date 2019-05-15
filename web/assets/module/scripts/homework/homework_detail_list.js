@@ -65,9 +65,9 @@ var Record = function () {
     };
     var getRecord = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
-        var id = $("#id").val();
+        var homeworkId = $("#homework_id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_detail&type=all&id=" + id + "&exist_resultset=0";
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_uploaded_files&type=all&homework_id=" + homeworkId + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
@@ -86,18 +86,12 @@ var Record = function () {
         });
     };
     var getRecord2 = function () {
-        var id = $("#id").val();
-        getRecordViewById(id);
-    }
-    var getRecordViewById = function (id) {
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_view&id=" + id + "&exist_resultset=1";
-        getRecordView(url);
-    }
-    var getRecordViewByIndex = function (index) {
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_view&index=" + index + "&exist_resultset=1";
-        getRecordView(url);
-    }
-    var getRecordView = function (url) {
+        var homeworkId = $("#homework_id").val();
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homework_detail&homework_id=" + homeworkId + "&exist_resultset=1";
+        getHomeworkDetail(url);
+    };
+
+    var getHomeworkDetail = function (url) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         console.log(url);
         $.post(url, function (json) {
@@ -180,7 +174,8 @@ var Record = function () {
     };
     var sortRecord1 = function (index, sortName) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
-        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_record_detail&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        console.log("sortName=" + sortName);
+        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_uploaded_files&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code == 0) {
                 Record.userId = json.user_id;

@@ -50,7 +50,6 @@ public class UploadServlet extends BaseServlet {
         HttpSession session = req.getSession();
         String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         String renameTo = req.getParameter("rename_to");
-        String id = req.getParameter("id");
         Log.d(getClass().getName(), "renameTo=" + renameTo);
 
         System.out.println(req.getMethod());
@@ -134,7 +133,7 @@ public class UploadServlet extends BaseServlet {
 
                             if ("homework".equals(from)) {
                                 HomeworkFileBean bean = new HomeworkFileBean();
-                                bean.setFileId(id);
+                                bean.setHomeworkId(req.getParameter("homework_id"));
                                 bean.setFileName(fileName);
                                 bean.setUploaderId(userId);
                                 bean.setFileSize(fileItem.getSize());

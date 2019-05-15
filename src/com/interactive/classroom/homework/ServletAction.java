@@ -75,17 +75,9 @@ public class ServletAction extends BaseHttpServlet {
                 } else {
                     //这几个常规增删改查功能
                     switch (action) {
-                        case "get_record":
-                            getRecord(request, response);
-                            break;
-                        case "get_record_detail":
-                            getRecordDetail(request, response);
-                            break;
-                        case "submit_comment":
-                            submitComment(request, response);
-                            break;
-                        case "get_record_view":
-                            getRecordView(request, response);
+                        //作业管理
+                        case "get_homework_list":
+                            getHomeworkList(request, response);
                             break;
                         case "add_record":
                             addRecord(request, response);
@@ -103,6 +95,16 @@ public class ServletAction extends BaseHttpServlet {
                             JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
                             onEnd(request, response, jsonObj);
                             break;
+                        //作业详情
+                        case "get_uploaded_files":
+                            getUploadedFiles(request, response);
+                            break;
+                        case "submit_comment":
+                            submitComment(request, response);
+                            break;
+                        case "get_homework_detail":
+                            getHomeworkDetail(request, response);
+                            break;
                         default:
                             processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
                             break;
@@ -118,7 +120,7 @@ public class ServletAction extends BaseHttpServlet {
     /*
      * 功能：查询记录
      */
-    private void getRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    private void getHomeworkList(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         initUserInfo(session);
         HomeworkBean bean = new HomeworkBean();
@@ -165,169 +167,6 @@ public class ServletAction extends BaseHttpServlet {
         /*--------------------数据查询完毕，根据交互方式返回数据--------------------*/
         String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
         onEnd(request, response, jsonObj, url);
-    }
-
-    private void getRecordDetail(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        initUserInfo(session);
-        HomeworkFileBean bean = new HomeworkFileBean();
-        String id = request.getParameter("id");
-        String attr = MODULE + "_file_" + SUB + "_get_record_result_" + id;
-        bean.setId(id);
-        bean.setFileId(request.getParameter("file_id"));
-        bean.setFileName(request.getParameter("file_name"));
-        bean.setUserId(userId);
-        bean.setUploaderId(userId);
-        bean.setAction(request.getParameter("action"));
-        bean.setType(request.getParameter("type"));
-
-        bean.setTimeFrom(request.getParameter("time_from"));
-        bean.setTimeTo(request.getParameter("time_to"));
-        bean.setSortIndex(request.getParameter("sort_index"));
-        bean.setOrderBy(request.getParameter("order_by"));
-        Log.d(getClass().getName(), "FileBean=" + bean.toString());
-
-        String existResultset = request.getParameter("exist_resultset");
-        Log.d(getClass().getName(), "existResultset=" + existResultset);
-        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
-            existResultset = "0";
-        }
-        JSONObject jsonObj;
-        if ("1".equals(existResultset)) {
-            //要求提取之前查询结果，如果有就取出来，如果没有就重新查询一次，并且保存进session里
-            if (session.getAttribute(attr) != null) {
-                jsonObj = (JSONObject) session.getAttribute(attr);
-            } else {
-                //如果没有就报错
-                jsonObj = new JSONObject();
-                jsonObj.put("result_code", 10);
-                jsonObj.put("result_msg", "exist_resultset参数不当，服务器当前没有结果数据！请重新设置！");
-            }
-        } else {
-            //如果是新查询
-            HomeworkFileDao dao = new HomeworkFileDao();
-            jsonObj = dao.getRecord(bean);
-            session.setAttribute(attr, jsonObj);
-        }
-        jsonObj.put("user_id", userId);
-        jsonObj.put("user_name", userName);
-        jsonObj.put("user_role", userRole);
-        jsonObj.put("user_avatar", userAvatar);
-        jsonObj.put("action", bean.getAction());
-        /*--------------------数据查询完毕，根据交互方式返回数据--------------------*/
-        String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
-        onEnd(request, response, jsonObj, url);
-    }
-
-    private void submitComment(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        String fileId = request.getParameter("file_id");
-        String sql = "insert into file_comment (file_id,user_id,comment_content,score,publish_date) values("
-                + fileId + ",'" + session.getAttribute("user_name") + "','" + request.getParameter("comment_text") +
-                "'," + 50 + ",'" + TimeUtil.currentDate() + "')";
-        Log.d("submitComment", "sql=" + sql);
-        DBHelper.getInstance().executeUpdate(sql).close();
-        if (session.getAttribute(MODULE + "_" + SUB + "_get_record_result") != null) {
-            JSONObject json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-            Log.d(getClass().getName(), json.toString());
-            try {
-                ArrayList list = ServletUtil.getIndexFromFileId(fileId, json);
-                if (list != null) {
-                    list.add(9, HomeworkFileDao.getComments(fileId));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            //然后还有导航信息
-            json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-            Log.d(getClass().getName(), "[submitComment]重新取出来的数据是："+json.toString());
-        }
-    }
-
-    private void getRecordView(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        HttpSession session = request.getSession();
-        String id = request.getParameter("id");
-        String index = request.getParameter("index");
-
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
-
-        HomeworkBean bean = new HomeworkBean();
-        bean.setId(id);
-        bean.setAction(request.getParameter("action"));
-        bean.setUserId(userId);
-        Log.d(getClass().getName(), "getRecordView bean=" + bean.toString());
-
-        String existResultset = request.getParameter("exist_resultset");
-        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
-            existResultset = "0";
-        }
-
-        //如果是新查询
-        JSONObject jsonObj;
-        if ("1".equals(existResultset)) {
-            //如果有就取出来，如果没有就重新查询一次，并且保存进session里
-            if (session.getAttribute(MODULE + "_" + SUB + "_get_record_result") != null) {
-                JSONObject json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-                Log.d(getClass().getName(), json.toString());
-                jsonObj = ServletUtil.getResultSetNavigateId(id, index, json);
-                jsonObj.put("user_id", userId);
-                jsonObj.put("user_name", userName);
-                jsonObj.put("action", bean.getAction());
-                jsonObj.put("result_code", 0);
-                jsonObj.put("result_msg", "ok");
-                //然后还有导航信息
-                json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-                Log.d(getClass().getName(), "[getRecordView]重新取出来的数据是："+json.toString());
-            } else {
-                //如果没有就重新查询一次
-                Log.d(getClass().getName(), "[getRecordView]没有就重新查询一次。");
-                HomeworkDao dao = new HomeworkDao();
-                jsonObj = dao.getRecord(bean);
-                jsonObj.put("user_id", userId);
-                jsonObj.put("user_name", userName);
-                jsonObj.put("action", bean.getAction());
-                jsonObj.put("result_code", 0);
-                jsonObj.put("result_msg", "ok");
-                session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-            }
-        } else {
-            Log.d(getClass().getName(), "[getRecordView]existsResult=0，重新查询");
-            HomeworkDao dao = new HomeworkDao();
-            jsonObj = dao.getRecord(bean);
-            jsonObj.put("user_id", userId);
-            jsonObj.put("user_name", userName);
-            jsonObj.put("action", bean.getAction());
-            session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        }
-//        getComments(jsonObj, "1");
-        onEndDefault(request, response, jsonObj);
-    }
-
-    private void getComments(JSONObject jsonObj, String fileId) throws JSONException {
-        List<List<String>> jsonList = new ArrayList<>();
-        try {
-            //构造sql语句，根据传递过来的查询条件参数
-            String sql = "select * from file_comment where file_id=" + fileId;
-            System.out.println("TodoDao sql=" + sql);
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
-            while (rs.next()) {
-                List<String> list = new ArrayList<>();
-                list.add(rs.getString("id"));
-                list.add(rs.getString("file_id"));
-                list.add(rs.getString("user_id"));
-                list.add(rs.getString("comment_content"));
-                list.add(rs.getString("score"));
-                list.add(rs.getString("publish_date"));
-                jsonList.add(list);
-            }
-            rs.close();
-            DBHelper.getInstance().close();
-        } catch (SQLException sqlexception) {
-            sqlexception.printStackTrace();
-        }
-        jsonObj.put("comments", jsonList);
     }
 
     private void addRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -410,6 +249,147 @@ public class ServletAction extends BaseHttpServlet {
         }
 
         onEndDefault(request, response, jsonObj);
+    }
+
+
+    //作业管理文件详细信息
+
+    private void getUploadedFiles(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session = request.getSession();
+        initUserInfo(session);
+        HomeworkFileBean bean = new HomeworkFileBean();
+        String homeworkId = request.getParameter("homework_id");
+        String attr = "uploaded_homework_files_" + homeworkId;
+        bean.setHomeworkId(homeworkId);
+        bean.setFileName(request.getParameter("file_name"));
+        bean.setUserId(userId);
+        bean.setUploaderId(userId);
+        bean.setAction(request.getParameter("action"));
+        bean.setType(request.getParameter("type"));
+
+        bean.setTimeFrom(request.getParameter("time_from"));
+        bean.setTimeTo(request.getParameter("time_to"));
+        bean.setSortIndex(request.getParameter("sort_index"));
+        bean.setOrderBy(request.getParameter("order_by"));
+        Log.d(getClass().getName(), "FileBean=" + bean.toString());
+
+        String existResultset = request.getParameter("exist_resultset");
+        Log.d(getClass().getName(), "existResultset=" + existResultset);
+        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
+            existResultset = "0";
+        }
+        JSONObject jsonObj;
+        if ("1".equals(existResultset)) {
+            //要求提取之前查询结果，如果有就取出来，如果没有就重新查询一次，并且保存进session里
+            if (session.getAttribute(attr) != null) {
+                jsonObj = (JSONObject) session.getAttribute(attr);
+            } else {
+                //如果没有就报错
+                jsonObj = new JSONObject();
+                jsonObj.put("result_code", 10);
+                jsonObj.put("result_msg", "exist_resultset参数不当，服务器当前没有结果数据！请重新设置！");
+            }
+        } else {
+            //如果是新查询
+            HomeworkFileDao dao = new HomeworkFileDao();
+            jsonObj = dao.getRecord(bean);
+            session.setAttribute(attr, jsonObj);
+        }
+        jsonObj.put("user_id", userId);
+        jsonObj.put("user_name", userName);
+        jsonObj.put("user_role", userRole);
+        jsonObj.put("user_avatar", userAvatar);
+        jsonObj.put("action", bean.getAction());
+        /*--------------------数据查询完毕，根据交互方式返回数据--------------------*/
+        String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
+        onEnd(request, response, jsonObj, url);
+    }
+
+    private void getHomeworkDetail(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+        String homeworkId = request.getParameter("homework_id");
+        String attr = MODULE + "_" + SUB + "_get_record_result";
+
+        String index = request.getParameter("index");
+
+        HttpSession session = request.getSession();
+        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
+        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
+
+        HomeworkBean bean = new HomeworkBean();
+        bean.setAction(request.getParameter("action"));
+        bean.setUserId(userId);
+        Log.d(getClass().getName(), "getHomeworkDetail bean=" + bean.toString());
+
+        String existResultset = request.getParameter("exist_resultset");
+        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
+            existResultset = "0";
+        }
+
+        //如果是新查询
+        JSONObject jsonObj;
+        if ("1".equals(existResultset)) {
+            //如果有就取出来，如果没有就重新查询一次，并且保存进session里
+            if (session.getAttribute(attr) != null) {
+                JSONObject json = (JSONObject) session.getAttribute(attr);
+                Log.d(getClass().getName(), json.toString());
+                jsonObj = ServletUtil.getResultSetNavigateId(homeworkId, index, json);
+                jsonObj.put("user_id", userId);
+                jsonObj.put("user_name", userName);
+                jsonObj.put("action", bean.getAction());
+                jsonObj.put("result_code", 0);
+                jsonObj.put("result_msg", "ok");
+                //然后还有导航信息
+                json = (JSONObject) session.getAttribute(attr);
+                Log.d(getClass().getName(), "[getRecordView]重新取出来的数据是："+json.toString());
+            } else {
+                //如果没有就重新查询一次
+                Log.d(getClass().getName(), "[getRecordView]没有就重新查询一次。");
+                HomeworkDao dao = new HomeworkDao();
+                jsonObj = dao.getRecord(bean);
+                jsonObj.put("user_id", userId);
+                jsonObj.put("user_name", userName);
+                jsonObj.put("action", bean.getAction());
+                jsonObj.put("result_code", 0);
+                jsonObj.put("result_msg", "ok");
+                session.setAttribute(attr, jsonObj);
+            }
+        } else {
+            Log.d(getClass().getName(), "[getRecordView]existsResult=0，重新查询");
+            HomeworkDao dao = new HomeworkDao();
+            jsonObj = dao.getRecord(bean);
+            jsonObj.put("user_id", userId);
+            jsonObj.put("user_name", userName);
+            jsonObj.put("action", bean.getAction());
+            session.setAttribute(attr, jsonObj);
+        }
+//        getComments(jsonObj, "1");
+        onEndDefault(request, response, jsonObj);
+    }
+
+    private void submitComment(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String fileId = request.getParameter("file_id");
+        String sql = "insert into file_comment (file_id,user_id,comment_content,score,publish_date) values("
+                + fileId + ",'" + session.getAttribute("user_name") + "','" + request.getParameter("comment_text") +
+                "'," + 50 + ",'" + TimeUtil.currentDate() + "')";
+        Log.d("submitComment", "sql=" + sql);
+        DBHelper.getInstance().executeUpdate(sql).close();
+        if (session.getAttribute(MODULE + "_" + SUB + "_get_record_result") != null) {
+            JSONObject json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
+            Log.d(getClass().getName(), json.toString());
+            try {
+                ArrayList list = ServletUtil.getIndexFromFileId(fileId, json);
+                if (list != null) {
+                    list.add(9, HomeworkFileDao.getComments(fileId));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            //然后还有导航信息
+            json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
+            Log.d(getClass().getName(), "[submitComment]重新取出来的数据是："+json.toString());
+        }
     }
 
 }
