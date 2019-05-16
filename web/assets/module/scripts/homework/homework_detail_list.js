@@ -167,11 +167,6 @@ var Record = function () {
             }
         }
     };
-    var exportRecord = function () {
-        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\upload\\project\\export存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
-            window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
-        }
-    };
     var sortRecord1 = function (index, sortName) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         console.log("sortName=" + sortName);
@@ -204,9 +199,6 @@ var Record = function () {
         },
         viewRecord: function (id) {
             viewRecord(id);
-        },
-        exportRecord: function () {
-            exportRecord();
         },
         sortRecord1: function (index, sortName) {
             sortRecord1(index, sortName);
@@ -386,12 +378,6 @@ var Page = function () {
         $('#help_button').click(function () {
             Page.help();
         });
-        $('#export_button').click(function () {
-            Page.exportRecord();
-        });
-        $('#statistic_button').click(function () {
-            Page.statisticRecord();
-        });
         $('#layout_button').click(function () {
             Page.layoutRecord();
         });
@@ -546,9 +532,6 @@ var Page = function () {
         },
         searchRecord: function () {
             searchRecord();
-        },
-        exportRecord: function () {
-            Record.exportRecord();
         },
         statisticRecord: function () {
             statisticRecord();

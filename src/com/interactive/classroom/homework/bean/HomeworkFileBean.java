@@ -5,6 +5,7 @@ public class HomeworkFileBean {
     private String id;
     private String homeworkId;
     private String uploaderId = "zhangsan";
+    private String uploaderName = "zhangsan";
     private String fileName;
     private long fileSize;
     private String uploadTime;
@@ -47,6 +48,14 @@ public class HomeworkFileBean {
 
     public void setUploaderId(String uploaderId) {
         this.uploaderId = uploaderId;
+    }
+
+    public String getUploaderName() {
+        return uploaderName;
+    }
+
+    public void setUploaderName(String uploaderName) {
+        this.uploaderName = uploaderName;
     }
 
     public String getFileName() {
