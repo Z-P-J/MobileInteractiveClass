@@ -181,7 +181,7 @@ var Page = function () {
         });
     };
     var addRecord = function () {
-        window.location.href = "add.jsp";//sub + "_add.jsp";
+        window.location.href = "../../survey/index.jsp";//sub + "_add.jsp";
     }
     var showResult = function (json) {
         var title = "记录显示";

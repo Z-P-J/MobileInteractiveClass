@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/AdminAction.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/LinkAction.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Question.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/pager/PageControl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/sql/ConnectionFactory.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/sql/SQLCommand.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/clinic/pay/ServletAction.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/forum/file/ServletAction.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/diary/ServletAction.java" charset="UTF-8" />
