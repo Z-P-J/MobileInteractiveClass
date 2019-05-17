@@ -4,7 +4,7 @@
 <%@ page import="com.iWen.survey.util.*" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/survey/";
 %>
 <%
     String Survey_id = request.getParameter("sid");
