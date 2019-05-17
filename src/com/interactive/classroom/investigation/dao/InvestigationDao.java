@@ -1,5 +1,9 @@
 package com.interactive.classroom.investigation.dao;
 
+import com.iWen.survey.dao.DAOFactory;
+import com.iWen.survey.dao.SurveyDAO;
+import com.iWen.survey.dto.Survey;
+import com.iWen.survey.sql.SQLCommand;
 import com.interactive.classroom.investigation.bean.InvestigationBean;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,6 +11,7 @@ import com.interactive.classroom.utils.DBHelper;
 import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.TimeUtil;
 
+import javax.sql.RowSet;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +27,8 @@ public class InvestigationDao {
 
     private static final String TABLE_NAME = "investigation_manage";
 
-    private static final String[] LABELS = {"id", "title", "content", "link", "create_time", "end_time", "user_id", "creator", "status"};
+//    private static final String[] LABELS = {"id", "title", "content", "link", "create_time", "end_time", "user_id", "creator", "status"};
+    private static final String[] LABELS = {"s_id", "s_name", "s_desc", "s_author", "s_img", "s_createdate", "s_password", "s_isopen", "s_expiredate", "s_isaudited", "s_usehits", "status"};
 
     /*
      * 功能：返回结果集
@@ -32,59 +38,102 @@ public class InvestigationDao {
         String resultMsg = "ok";
         int resultCode = 0;
         List<List<String>> jsonList = new ArrayList<>();
+
+        String sql = "select * from survey where  s_isOpen ='1' and s_isAudited=1 and s_expiredate>='"
+                + new java.sql.Date(new java.util.Date().getTime())
+                + "' order by s_createdate desc,s_id desc";
+        SQLCommand cmd = new SQLCommand();
+        RowSet rs = cmd.queryRowSet(sql);
         try {
-            //构造sql语句，根据传递过来的查询条件参数
-            String sql = "";
-            int count = 0;
-            query.setTableName(TABLE_NAME);
-            sql = createGetRecordSql(query);
-            System.out.println("TodoDao sql=" + sql);
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
-                list.add(rs.getString("id"));
-                list.add(rs.getString("title"));
-                list.add(rs.getString("content"));
-                list.add(rs.getString("link"));
-                list.add(rs.getString("create_time"));
-                String endTime = rs.getString("end_time");
-                list.add(endTime);
-
-                list.add(rs.getString("user_id"));
-                list.add(rs.getString("creator"));
-
-                Date date = null; //初始化date
-                try {
-                    date = TimeUtil.FORMATTER.parse(endTime); //Mon Jan 14 00:00:00 CST 2013
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                for (String label : LABELS) {
+                    if ("status".equals(label)) {
+                        break;
+                    }
+                    list.add(rs.getString(label));
                 }
+//                list.add(rs.getString("s_id"));
+//                list.add(rs.getString("s_name"));
+//                list.add(rs.getString("s_desc"));
+//                list.add(rs.getString("s_author"));
+//                list.add(rs.getString("s_img"));
+//                list.add(rs.getString("s_createdate"));
+//                list.add(rs.getString("s_password"));
+//                list.add(rs.getString("s_isopen"));
+//                list.add(rs.getString("s_expiredate"));
+//                list.add(rs.getString("s_isaudited"));
+//                list.add(rs.getString("s_usehits"));
+                Date date = rs.getDate("s_expiredate");
                 System.out.println("date == null?" + (date == null));
                 if (date != null && System.currentTimeMillis() >= date.getTime()) {
                     list.add("已完成");
                 } else {
                     list.add("未完成");
                 }
-
-
-                if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
-                    list.add("1");
-                } else {
-                    list.add("0");
-                }
-                list.add("" + count);
-//                list.add(rs.getString("type"));
-                //做上下记录导航用
-                count = count + 1;
                 jsonList.add(list);
             }
-            rs.close();
-            DBHelper.getInstance().close();
-        } catch (SQLException sqlexception) {
-            sqlexception.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
             resultCode = 10;
-            resultMsg = "查询数据库出现错误！" + sqlexception.getMessage();
+            resultMsg = "查询数据库出现错误！" + e.getMessage();
+        } finally {
+            SQLCommand.close(rs);
         }
+
+//        try {
+//            //构造sql语句，根据传递过来的查询条件参数
+////            String sql = "";
+//            int count = 0;
+////            query.setTableName(TABLE_NAME);
+////            sql = createGetRecordSql(query);
+////            System.out.println("TodoDao sql=" + sql);
+////            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+//
+////            while (rs.next()) {
+////                List<String> list = new ArrayList<>();
+////                list.add(rs.getString("id"));
+////                list.add(rs.getString("title"));
+////                list.add(rs.getString("content"));
+////                list.add(rs.getString("link"));
+////                list.add(rs.getString("create_time"));
+////                String endTime = rs.getString("end_time");
+////                list.add(endTime);
+////
+////                list.add(rs.getString("user_id"));
+////                list.add(rs.getString("creator"));
+////
+////                Date date = null; //初始化date
+////                try {
+////                    date = TimeUtil.FORMATTER.parse(endTime); //Mon Jan 14 00:00:00 CST 2013
+////                } catch (ParseException e) {
+////                    e.printStackTrace();
+////                }
+////                System.out.println("date == null?" + (date == null));
+////                if (date != null && System.currentTimeMillis() >= date.getTime()) {
+////                    list.add("已完成");
+////                } else {
+////                    list.add("未完成");
+////                }
+////
+////                if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
+////                    list.add("1");
+////                } else {
+////                    list.add("0");
+////                }
+////                list.add("" + count);
+//////                list.add(rs.getString("type"));
+////                //做上下记录导航用
+////                count = count + 1;
+////                jsonList.add(list);
+////            }
+////            rs.close();
+////            DBHelper.getInstance().close();
+//        } catch (SQLException sqlexception) {
+//            sqlexception.printStackTrace();
+//            resultCode = 10;
+//            resultMsg = "查询数据库出现错误！" + sqlexception.getMessage();
+//        }
         //////////数据库查询完毕，得到了json数组jsonList//////////
         //jsonList.clear();
         //下面开始构建返回的json

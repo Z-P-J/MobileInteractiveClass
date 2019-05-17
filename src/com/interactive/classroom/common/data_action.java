@@ -19,13 +19,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.interactive.classroom.utils.DBHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.interactive.classroom.utils.Log;
 
 //@WebServlet(name = "data_action", urlPatterns = "/data_action")
 public class data_action extends HttpServlet {
-    ylx_db query_db = null;
     String refreshCount = "";
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -44,7 +44,7 @@ public class data_action extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        if (action.equals("get_main_menu")) {
+        if ("get_main_menu".equals(action)) {
             actionOk = true;
             try {
                 System.out.println("getMainmenu");
@@ -107,6 +107,7 @@ public class data_action extends HttpServlet {
         }
     }
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -119,7 +120,7 @@ public class data_action extends HttpServlet {
         String action = request.getParameter("action");
         String module = request.getParameter("module");
         String role = (String) session.getAttribute("user_role");
-        List jsonList = new ArrayList();
+        List<Map<String, String>> jsonList = new ArrayList<>();
         String resultMsg = "success";
         int resultCode = 0;
         if (session.getAttribute("unit_db_name") == null) {
@@ -128,7 +129,6 @@ public class data_action extends HttpServlet {
         } else {
             String db = (String) session.getAttribute("unit_db_name");
             Log.d(getClass().getName(), "db=" + db);
-            query_db = new ylx_db(db);
             String id = request.getParameter("id");
             String tableName = request.getParameter("table_name");
             String order = request.getParameter("order");
@@ -142,18 +142,22 @@ public class data_action extends HttpServlet {
                 where = " where role_id='" + role + "' and " + where;
             }
             String sql = "";
-            if (module.equals("home")) {    //如果是主页菜单，对应document_main
+            if ("home".equals(module)) {
                 sql = "select value as module_name,reason as category_id,0 as parent_category_id" +
                         ",reason as file_id,value as file_name,value1 as file_path,value as hreflink" +
                         ",reason as chain_name,0 as details_tag,picture from " + tableName + where + " and fieldType_tag=1";
                 sql = sql.replace("role_id", "role");
             } else {
 //                sql = "select * from " + module + "_tree a," + module + "_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
-                sql = "select * from project_tree a,project_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
+                if ("investigation".equals(module)) {
+                    sql = "select * from survey_tree a,survey_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
+                } else {
+                    sql = "select * from project_tree a,project_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
+                }
             }
-            ResultSet rs = query_db.executeQuery(sql);
+            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
             while (rs.next()) {
-                Map map = new HashMap();
+                Map<String, String> map = new HashMap<>();
                 // ////////////////////////////////////////独有部分，要修改的是这里
                 map.put("module_name", rs.getString("module_name"));
                 map.put("category_id", rs.getString("category_id"));
@@ -169,7 +173,7 @@ public class data_action extends HttpServlet {
                 jsonList.add(map);
             }
             rs.close();
-            query_db.close();
+            DBHelper.getInstance().close();
             //System.out.println(jsonList.toString());
         }
         JSONObject jsonObj = new JSONObject();
@@ -210,21 +214,22 @@ public class data_action extends HttpServlet {
                 resultCode = 10;
                 resultMsg = "数据库为空！";
             } else {
-                query_db = new ylx_db((String) session.getAttribute("unit_db_name"));
                 String id = request.getParameter("id");
                 String tableName = request.getParameter("table_name");
                 String order = request.getParameter("order");
-                if (order == null)
+                if (order == null) {
                     order = "";
+                }
                 String where = request.getParameter("where");
                 System.out.println("where=" + where);
                 System.out.println("role=" + role);
-                if (where == null)
+                if (where == null) {
                     where = " where role='" + role + "'";
-                else
+                } else {
                     where = " where role='" + role + "' and " + where;
+                }
                 String sql = "select * from " + tableName + where;
-                ResultSet rs = query_db.executeQuery(sql);
+                ResultSet rs = DBHelper.getInstance().executeQuery(sql);
                 while (rs.next()) {
                     Map map = new HashMap();
                     // ////////////////////////////////////////独有部分，要修改的是这里
@@ -237,7 +242,7 @@ public class data_action extends HttpServlet {
                     jsonList.add(map);
                 }
                 rs.close();
-                query_db.close();
+                DBHelper.getInstance().close();
                 //System.out.println(jsonList.toString());
             }
         } else {

@@ -8,7 +8,7 @@
 <jsp:setProperty property="request" name="pageConfig" value="<%=request %>"/>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/survey/";
 %>
 <%
     QuestionDAO dao = DAOFactory.getQuestionDAO();

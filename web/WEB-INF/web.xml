@@ -33,6 +33,10 @@
         <filter-name>struts</filter-name>
         <url-pattern>/survey/*</url-pattern>
     </filter-mapping>
+<!--    <filter-mapping>-->
+<!--        <filter-name>struts</filter-name>-->
+<!--        <url-pattern>/*.do</url-pattern>-->
+<!--    </filter-mapping>-->
 
     <servlet>
         <servlet-name>common_data_action</servlet-name>
@@ -191,6 +195,15 @@
         <servlet-name>ProgressServlet</servlet-name>
         <url-pattern>/ProgressServlet</url-pattern>
     </servlet-mapping>
+
+<!--    <servlet>-->
+<!--        <servlet-name>ProgressServlet</servlet-name>-->
+<!--        <servlet-class>com.interactive.classroom.upload.ProgressServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>ProgressServlet</servlet-name>-->
+<!--        <url-pattern>/ProgressServlet</url-pattern>-->
+<!--    </servlet-mapping>-->
 
 
 

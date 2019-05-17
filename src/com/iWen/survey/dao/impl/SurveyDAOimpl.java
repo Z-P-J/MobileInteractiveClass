@@ -169,16 +169,18 @@ public class SurveyDAOimpl implements SurveyDAO {
                                  PageConfig pageConfig) {
 		List<Survey> newlist = new ArrayList<Survey>();
 		if (this.list_survey == null) {
-			if ("front_end".equals(pageConfig.getAction()))
+			if ("front_end".equals(pageConfig.getAction())) {
 				list_survey = this.listVisitableSurvey();
-			else
+			} else {
 				list_survey = this.listAllSurvey();
+			}
 		}
 		for (int i = recordStart; i < recordStart + sizePage; i++) {
-			if (i < list_survey.size())
+			if (i < list_survey.size()) {
 				newlist.add(list_survey.get(i));
-			else
+			} else {
 				break;
+			}
 
 		}
 		return newlist;
@@ -186,8 +188,9 @@ public class SurveyDAOimpl implements SurveyDAO {
 
 	@Override
 	public int getCount(PageConfig pageConfig) {
-		if (this.list_survey == null)
+		if (this.list_survey == null) {
 			list_survey = this.listAllSurvey();
+		}
 
 		return list_survey.size();
 	}

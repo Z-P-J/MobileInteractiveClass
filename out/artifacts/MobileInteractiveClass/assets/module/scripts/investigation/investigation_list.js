@@ -44,7 +44,8 @@ var Record = function () {
         });
     };
     var viewRecord = function (id) {
-        window.location.href = "view.jsp?id=" + id + "&exist_resultset=1";
+        // window.location.href = "view.jsp?id=" + id + "&exist_resultset=1";
+        window.location.href = "../../survey/SurveyShow.jsp?sid=" + id;
     };
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
@@ -207,11 +208,11 @@ var Page = function () {
         var image = "../../assets/module/img/public/wkbj.jpg";
         var title = json[1];
         var content = json[2];
-        var link = json[3];
-        var createTime = json[4];
-        var endTime = json[5];
-        var status = json[8];
-        var me = json[9];
+        var author = json[3];
+        var createTime = json[5];
+        var endTime = json[8];
+        var status = json[11];
+        // var me = json[9];
 
         html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
@@ -219,16 +220,17 @@ var Page = function () {
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
         html = html + "																<span>标题：" + title + "</span><p>";
-        html = html + "																<span>调查问卷链接：<a href='" + link + "'>" + link + "</a></span><p>";
         html = html + "																<span>内容：" + content + "</span><p>";
+        html = html + "																<span>发布者：" + author + "</span><p>";
         html = html + "																<span>创建时间：" + createTime + "</span><p>";
         html = html + "																<span>截止时间：" + endTime + "</span><p>";
         html = html + "																<span>状态：" + status + "</span><p>";
-        if (me == "1") {
-            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
-            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
-        }
-        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">详细信息</button>";
+        // if (me == "1") {
+        //
+        // }
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">打开问卷</button>";
         html = html + "															</div>";
         html = html + "														</div>";
     };
