@@ -91,20 +91,20 @@
 
       <package name="showSurvey" extends="base" namespace="/survey/showSurvey">
          <action name="showSurvey" class="com.iWen.survey.ctrl.ShowSurveyAction" method="ShowSurvey">
-            <result name="success" type="redirect">survey/OpResult.jsp?ret=true&amp;op=ShowSurvey</result>
-            <result name="fail" type="redirect">survey/OpResult.jsp?ret=false&amp;op=ShowSurvey</result>
+            <result name="success" type="redirect">/survey/OpResult.jsp?ret=true&amp;op=ShowSurvey</result>
+            <result name="fail" type="redirect">/survey/OpResult.jsp?ret=false&amp;op=ShowSurvey</result>
          </action>
 
       </package>
 
        <package name="user" extends="base" namespace="/survey/user">
          <action name="addUser" class="com.iWen.survey.ctrl.UserManageAction" method="addUser">
-            <result name="success" type="redirect">survey/OpResult.jsp?op=reg&amp;ret=true</result>
-            <result name="fail" type="redirect">survey/OpResult.jsp?op=reg&amp;ret=false</result>
+            <result name="success" type="redirect">/survey/OpResult.jsp?op=reg&amp;ret=true</result>
+            <result name="fail" type="redirect">/survey/OpResult.jsp?op=reg&amp;ret=false</result>
          </action>
           <action name="userLogin" class="com.iWen.survey.ctrl.UserManageAction" method="userLogin">
-            <result name="success" type="redirect" >survey/OpResult.jsp?op=login&amp;ret=true</result>
-            <result name="fail" type="redirect" > survey/OpResult.jsp?op=login&amp;ret=false</result>
+            <result name="success" type="redirect" >/survey/OpResult.jsp?op=login&amp;ret=true</result>
+            <result name="fail" type="redirect" > /survey/OpResult.jsp?op=login&amp;ret=false</result>
          </action>
       </package>
 

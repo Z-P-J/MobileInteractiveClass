@@ -15,7 +15,11 @@
             continue;
         out.println("<li> " + q.getQHead() + " </li>");
         out.println("<ul type='1'>");
-        String[] body = q.getQBody().split("&\\$\\$&");
+        String qBody = q.getQBody();
+        if (qBody == null) {
+            qBody = "";
+        }
+        String[] body = qBody.split("&\\$\\$&");
         String[] sz_jdtz;
         int Jdtz;
         switch (q.getQType().intValue()) {

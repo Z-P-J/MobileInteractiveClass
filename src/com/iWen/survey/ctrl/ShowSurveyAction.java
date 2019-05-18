@@ -39,6 +39,9 @@ public class ShowSurveyAction extends BaseAction {
             for (Long qid : qidSet) {
                 Question q = dao.findQuestion(qid);
                 String result = q.getQResult();
+                if (result == null) {
+                    result = "0";
+                }
                 String[] results = result.split(",");
                 if (q.getQType() == 1) {
                     int answer = Integer.parseInt(request.getParameter("answer" + qid));
@@ -53,7 +56,9 @@ public class ShowSurveyAction extends BaseAction {
                     }
                     as = as.substring(1, as.length());
                     answersheet = answersheet + "&@@&" + qid + ":as=" + as + ";";
-
+                } else if (q.getQType() == 5) {
+                    results[0] = String.valueOf(Integer.valueOf(results[0]) + 1);
+                    answersheet = request.getParameter("answer" + qid);
                 }
 
                 String newresult = "";
@@ -65,7 +70,7 @@ public class ShowSurveyAction extends BaseAction {
                 }
                 q.setQResult(newresult);
                 boolean ret = dao.updateQuestion(q);
-                if (ret == false) {
+                if (!ret) {
                     success = false;
                 }
             }
@@ -73,15 +78,17 @@ public class ShowSurveyAction extends BaseAction {
             Answersheet sheet = new Answersheet();
             sheet.setSurvey(Long.valueOf(sid));
 
-            answersheet = answersheet.substring(4);
+            if (answersheet.contains("&@@&")) {
+                answersheet = answersheet.substring(4);
+            }
             sheet.setAsResult(answersheet);
             sheet.setAsPostdate(new java.util.Date());
             sheet.setAsUserIp(request.getRemoteAddr());
             boolean ret = adao.addAnswersheet(sheet);
-            if (ret == false) {
+            if (!ret) {
                 success = false;
             }
-            if (success == true) {
+            if (success) {
                 SurveyDAO sdao = DAOFactory.getSurveyDAO();
                 Survey survey = sdao.findSurvey(Long.valueOf(sid));
 

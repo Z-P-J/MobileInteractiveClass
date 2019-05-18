@@ -5,10 +5,11 @@
 
 
 <%
+    long sid = Long.valueOf(request.getParameter("sid"));
     SurveyDAO sdao = DAOFactory.getSurveyDAO();
-    Survey survey = sdao.findSurvey(Long.valueOf(request.getParameter("sid")));
+    Survey survey = sdao.findSurvey(sid);
     QuestionDAO qdao = DAOFactory.getQuestionDAO();
-    List<Question> qlist = qdao.listAllQuestion(Long.valueOf(request.getParameter("sid")));
+    List<Question> qlist = qdao.listAllQuestion(sid);
     DecimalFormat df = new DecimalFormat("0.00");
 %>
 <script language="JavaScript" src="../../assets/survey/js/Func.js"></script>
@@ -37,12 +38,17 @@
     <%
         int i = 1;
         for (Question q : qlist) {
-            String[] bodys = q.getQBody().split("&\\$\\$&");
             String[] results = q.getQResult().split(",");
             if (q.getQType() == 5) {
                 out.print("<tr><td colspan=\"4\">" + i++ + "、" + q.getQHead() + "</td></tr>");
-                out.print("<tr><td><td>这是一道问答题<td><td><a href=ShowText.jsp?qid=" + q.getQId() + " target=_blank>查看具体</a>");
+                out.print("<tr><td><td>这是一道简答题<td><td><a href=ShowText.jsp?qid=" + q.getQId() + " target=_blank>查看具体</a>");
+                AnswersheetDAO answersheetDAO = DAOFactory.getAnswersheetDAO();
+                List<Answersheet> answersheetList = answersheetDAO.listAllAnswersheet(sid);
+                for (Answersheet answersheet : answersheetList) {
+                    out.print("<tr><td><td><span>" + answersheet.getAsResult() + "</span><td><td>");
+                }
             } else {
+                String[] bodys = q.getQBody().split("&\\$\\$&");
                 int total = 0;
                 for (String s : results) {
                     total = total + Integer.valueOf(s);

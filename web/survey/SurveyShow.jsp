@@ -17,7 +17,7 @@
         return;
     }
     //问卷开放性校验
-    if (survey.getSIsAudited() == false) {
+    if (!survey.getSIsAudited()) {
         out.println("该问卷未通过审核！");
         return;
     }
@@ -41,7 +41,7 @@
             var request_url = "ajax_SurveyShow.jsp";       // 需要获取内容的url
             if (to == null)
                 to = 0;
-            var request_pars = "to=" + to + "&sid=" + <%=request.getParameter("sid") %>;//请求参数
+            var request_pars = "to=" + to + "&sid=" + <%=sid%>;//请求参数
             var myAjax = new Ajax.Updater(obj, request_url, { // 将request_url返回内容绑定到id为result的HTML TAG中
                 method: 'post', //HTTP请求的方法,get or post
                 parameters: request_pars, //请求参数
@@ -156,6 +156,7 @@
         <form id="form_survey" name="form1"
               action="<%=basePath%>showSurvey/showSurvey.do?sid=<%=request.getParameter("sid") %>" method="post"
               onsubmit="return ChkForm()">
+            <input type="hidden" id="gid" name="gid" value="<%=sid %>">
             <div class="name"><b><%=survey.getSName() %>
             </b><br/>
                 <%

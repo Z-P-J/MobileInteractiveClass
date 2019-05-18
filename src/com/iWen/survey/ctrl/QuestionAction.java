@@ -37,7 +37,7 @@ public class QuestionAction extends BaseAction {
         question.setQJdtz(spliter);
         QuestionDAO dao = DAOFactory.getQuestionDAO();
         boolean ret = dao.addQuestion(question);
-        if (ret == true) {
+        if (ret) {
 //		response.sendRedirect("../admin/OpResult.jsp?op=Question&ret=true&sid="+sid);
             return "success";
         } else {

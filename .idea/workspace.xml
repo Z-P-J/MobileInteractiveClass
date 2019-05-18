@@ -10,350 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/classes/META-INF/MobileInteractiveClass.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/classes/db.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/classes/db_backup.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/classes/dbip.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/classes/dbip_backup.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout/img/arrow-down.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout/img/avatar2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout/img/photo3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout/img/search_icon_light.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout/img/sidebar_toggler_icon_grey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout2/css/custom.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout2/css/layout.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout2/css/themes/blue.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout2/css/themes/grey.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout2/img/sidebar_toggler_icon_light2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout3/img/avatar4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout3/img/logo-red-intense.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout3/scripts/quick-sidebar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout4/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout5/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout6/img/bg_01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/layout7/img/m_toggler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/css/coming-soon.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/css/news.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/css/profile-old.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/css/tasks.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/media/blog/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/media/email/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/media/email/social_twitter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/media/gallery/image2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/media/gallery/image5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/media/search/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/media/works/img5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/components-editors.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/components-form-tools.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/components-knob-dials.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/login-soft.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/maps-vector.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/admin/pages/scripts/ui-nestable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/au.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/bm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/ch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/gb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/gy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/hk.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/jm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/ke.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/ky.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/lb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/lt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/ml.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/ng.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/ph.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/pn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/ru.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/sk.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/sm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/th.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/flags/to.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/portlet-reload-icon-white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/social/behance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/img/social/foursquare.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/images/dragIconRectSmallBlackH.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/lang/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/lang/lt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/patterns/white/pattern11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/dataloader/examples/pie_csv.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/dataloader/examples/serial_json.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/examples/radar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/export/libs/fabric.js/fabric.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/plugins/responsive/responsive.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/images/xIconH.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/lang/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/lang/fo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/lang/hu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/lang/kn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/lang/ml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/lang/pt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/armeniaHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/armeniaLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/austriaLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/belizeHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/canadaLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/chadLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/chinaHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/continentsLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/ecuadorLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/georgiaLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/greeceHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/irelandHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/italyLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/kyrgyzstanLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/latviaHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/macedoniaHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/maliLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/mexicoLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/montenegroLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/pakistanHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/portugalHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/sanMarinoHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/saudiArabiaHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/spainProvincesHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/syriaHigh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/unitedKingdomLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/usaTerritoriesLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/js/worldRussiaSplitLow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/austriaLow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/boliviaHigh.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/burkinaFasoHigh.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/cameroonLow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/congoHigh.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/continentsLow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/cyprusHigh.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/denmarkLow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/faroeIslandsHigh.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/georgiaLow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/lithuaniaLow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/newZealandLow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/portugalRegionsHigh.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/sanMarinoHigh.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/usaMercatorHigh.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/vietnamHigh.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/maps/svg/vietnamLow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/patterns/black/pattern15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/patterns/chalk/pattern5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/dataloader/dataloader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/examples/export.config.default.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/plugins/export/libs/pdfmake/pdfmake.min.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/ammap/themes/dark.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/images/dragIconH.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/images/dragIconRoundSmallBlackH.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/images/exportWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/images/lensWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/lang/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/lang/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/patterns/black/pattern11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/patterns/white/pattern14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/dataloader/examples/pie_json.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/examples/pie4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amstockcharts/plugins/export/libs/xlsx/xlsx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-colorpicker/img/alpha.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.kh.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.rs.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.cs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.hr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-markdown/less/bootstrap-markdown.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-select/i18n/defaults-es_CL.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-select/i18n/defaults-ro_RO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-select/i18n/defaults-zh_CN.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-selectsplitter/bootstrap-selectsplitter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-summernote/lang/summernote-ja-JP.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-summernote/lang/summernote-pt-BR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-summernote/lang/summernote-ru-RU.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-toastr/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.nb-NB.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.ru-RU.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.ua-UA.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/bootstrap/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/assets/ico/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/assets/img/demo-slides/zombie.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/assets/js/jquery-1.9.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/demos/assets/owl7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/carousel-owl-carousel/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/lang/en-ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/lang/fo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/lang/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/sq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/flash/dialogs/flash.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/forms/dialogs/hiddenfield.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/magicline/images/hidpi/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/showblocks/images/block_blockquote.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/smiley/images/envelope.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/smiley/images/lightbulb.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/smiley/images/thumbs_down.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/specialchar/dialogs/lang/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/specialchar/dialogs/lang/sq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/tabletools/dialogs/tableCell.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/plugins/templates/templates/default.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/skins/moono/images/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ckeditor/skins/moono/images/lock-open.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/countdown/jquery.countdown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/countdown/plugin/jquery.countdown-bn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/countdown/plugin/jquery.countdown-fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/countdown/plugin/jquery.countdown-hy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/countdown/plugin/jquery.countdown-ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/countdown/plugin/jquery.countdown-zh-CN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/examples/ajax/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/examples/resources/bootstrap/images/sort_desc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/examples/server_side/pipeline.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/examples/server_side/post.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/examples/server_side/scripts/sqlite.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/examples/server_side/scripts/ssp.class.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/ColVis/js/dataTables.colVis.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/FixedHeader/examples/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/FixedHeader/examples/simple.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/Responsive/Readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/Responsive/examples/display-control/classes.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/TableTools/examples/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/TableTools/images/collection_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/extensions/TableTools/images/pdf_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/datatables/media/css/jquery.dataTables.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/dropzone/css/stylus/dropzone.styl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/dropzone/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/dropzone/upload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/flot/jquery.flot.fillbetween.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/flot/jquery.flot.stack.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/font-awesome/fonts/FontAwesome.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fullcalendar/demos/json/events.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fullcalendar/lang/ar-ma.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fullcalendar/lang/pt-br.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fullcalendar/lang/zh-cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fullcalendar/lib/cupertino/images/ui-bg_glass_100_e4f1fb_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fullcalendar/lib/cupertino/images/ui-bg_highlight-soft_100_deedf7_1x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/fullcalendar/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/icheck/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/icheck/skins/flat/pink@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/icheck/skins/line/purple.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/ion.rangeslider/js/ion-rangeSlider/ion.rangeSlider.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jcrop/demos/demo_files/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-bootpag/jquery.bootpag.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-easypiechart/angular.easypiechart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-file-upload/cors/result.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-idle-timeout/README.markdown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-inputmask/inputmask/jquery.inputmask.phone.extensions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-minicolors/component.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-multi-select/img/switch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-notific8/jquery.notific8.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-notific8/jquery.notific8.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-tags-input/jquery.tagsinput.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/localization/messages_ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/localization/messages_es.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/localization/messages_fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/localization/messages_kk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/localization/messages_ko.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jquery-validation/js/localization/messages_th.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/browser.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/icon-responsive.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/thumbs/hm.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/images/thumbs/kfc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/mapplic/images/minus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/mapplic/images/pin-orange-large.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/mapplic/images/pin-purple.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/mapplic/images/pin-white@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/mapplic/switzerland.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/morris/examples/donut-colors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/morris/morris.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/morris/spec/lib/commas_spec.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/morris/spec/lib/grid/set_data_spec.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/nouislider/jquery.nouislider.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/pace/pace.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/i18n/sv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/plupload/js/jquery.ui.plupload/jquery.ui.plupload.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/select2/select2_locale_it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/select2/select2_locale_nl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/select2/select2_locale_sk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/simple-line-icons/simple-line-icons.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-layer-slider/skins/borderlessdark3d/skin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-layer-slider/skins/lightskin/skin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-layer-slider/skins/noskin/loading.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-layer-slider/skins/noskin/nothumb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/images/hill3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/images/homeslider_thumb4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/images/kenburns3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/images/newslide2014_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/images/parallax_thumb1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/images/sun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/rs-plugin/assets/arrow_left.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/slider-revolution-slider/rs-plugin/assets/large_left.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/tabdrop/less/tabdrop.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/typeahead/typeahead.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/css/teach/weibo/cards.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/font/k3k702ZOKiLJc3WVjuplzBWV49_lSm1NYrwo-zkhivY.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/font/k3k702ZOKiLJc3WVjuplzP8zf_FOSsgRmwsS7Aa9k2w.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/img/home/menu/img24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/plugins/iscroll/iscroll-probe.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/plugins/jquery-qrcode-master/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/plugins/jquery-qrcode-master/src/qrcode.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/file/file_result.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/forum/file/forum_add.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/home/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/home/mainmenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/home/mainmenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/investigation/investigation_add.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/investigation/investigation_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/investigation/investigation_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/project/investigation/investigation_result.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/project/vote/vote_add.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/project/vote/vote_result.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/base/print/print.files/props0002.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/clinic/pay/pay_result.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/file/core/add.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/home/frame/page.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/home/main/modify_password.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/home/main/under_construction.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/investigation/core/view.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/file/member_apply_check.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/investigation/record_modify_div.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/investigation/test.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/project/investigation/todo_print.files/filelist.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/upload/一带一路.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/upload/六级准考证.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/upload/浅谈石油化工安全.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MobileInteractiveClass/META-INF/MobileInteractiveClass.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/struts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/investigation/core/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/QuestionAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/QuestionAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/struts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/survey/SurveyShow.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/SurveyShow.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/AdminAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/AdminAdd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/FriendLinkAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/FriendLinkAdd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/FriendLinkAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/FriendLinkAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/LinkModifg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/LinkModifg.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/ShowSheets.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/ShowSheets.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyAudi.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyAudi.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyEdit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyEdit.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SysConfig.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SysConfig.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/admin_index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/admin_index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/common/succeed.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/common/succeed.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/userLogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/userLogin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/userReg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/userReg.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
@@ -370,22 +37,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/investigation/core/list.jsp">
+        <entry file="file://$PROJECT_DIR$/web/survey/SurveyShow.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="35" column="61" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="61" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="628">
+              <caret line="185" column="63" selection-start-line="185" selection-start-column="56" selection-end-line="185" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/investigation/core/index.jsp">
+        <entry file="file://$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="36" column="53" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="53" />
+            <state relative-caret-position="503">
+              <caret line="70" column="51" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -393,91 +57,84 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/struts.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="71" column="63" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
+            <state relative-caret-position="704">
+              <caret line="106" column="51" selection-start-line="106" selection-start-column="51" selection-end-line="106" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="48" column="89" selection-start-line="48" selection-start-column="89" selection-end-line="48" selection-end-column="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="150" column="89" selection-start-line="150" selection-start-column="89" selection-end-line="150" selection-end-column="89" />
               <folding>
-                <element signature="e#891#896#0" expanded="true" />
-                <element signature="e#905#910#0" expanded="true" />
-                <element signature="e#1482#1487#0" expanded="true" />
-                <element signature="e#1593#1598#0" expanded="true" />
-                <element signature="e#1890#1895#0" expanded="true" />
-                <element signature="e#1904#1909#0" expanded="true" />
-                <element signature="e#2210#2215#0" expanded="true" />
-                <element signature="e#2224#2229#0" expanded="true" />
-                <element signature="e#2531#2536#0" expanded="true" />
-                <element signature="e#2545#2550#0" expanded="true" />
-                <element signature="e#2955#2960#0" expanded="true" />
-                <element signature="e#3069#3074#0" expanded="true" />
-                <element signature="e#3082#3087#0" expanded="true" />
-                <element signature="e#3317#3322#0" expanded="true" />
-                <element signature="e#3640#3645#0" expanded="true" />
-                <element signature="e#3755#3760#0" expanded="true" />
-                <element signature="e#3768#3773#0" expanded="true" />
-                <element signature="e#4196#4201#0" expanded="true" />
-                <element signature="e#4527#4532#0" expanded="true" />
-                <element signature="e#4638#4643#0" expanded="true" />
-                <element signature="e#4950#4955#0" expanded="true" />
-                <element signature="e#5262#5267#0" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/log4j.properties">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/struts.properties">
+        <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+            <state relative-caret-position="84">
+              <caret line="161" column="15" selection-start-line="161" selection-start-column="15" selection-end-line="161" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/investigation/core/all.jsp">
+        <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="134" column="26" selection-start-line="134" selection-start-column="26" selection-end-line="134" selection-end-column="26" />
+            <state relative-caret-position="473">
+              <caret line="81" column="55" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp">
+        <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Question.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="19" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/survey/SurveyShow.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+            <state relative-caret-position="307">
+              <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+              <folding>
+                <element signature="e#1127#1128#0" expanded="true" />
+                <element signature="e#1151#1152#0" expanded="true" />
+                <element signature="e#1361#1362#0" expanded="true" />
+                <element signature="e#1385#1386#0" expanded="true" />
+                <element signature="e#1482#1483#0" expanded="true" />
+                <element signature="e#1508#1509#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+        <entry file="file://$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="38" selection-end-column="25" />
+            <state relative-caret-position="969">
+              <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1605">
+              <caret line="187" column="25" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -496,14 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>showRecord</find>
-      <find>homework_manage</find>
-      <find>uploader_id</find>
-      <find>get_record_de</find>
-      <find>get_record_d</find>
-      <find>request.getParameter(&quot;id&quot;)</find>
-      <find>MODULE + &quot;_file_&quot; + SUB</find>
-      <find>get_record</find>
       <find>file_id</find>
       <find>getId()</find>
       <find>get_record_view</find>
@@ -526,6 +175,14 @@
       <find>basePath</find>
       <find>request.getScheme() + &quot;://&quot; + request.getServerName() + &quot;:&quot; + request.getServerPort() + path + &quot;/&quot;</find>
       <find>basePath = request.getScheme</find>
+      <find>addQuestion</find>
+      <find>MoreAnswer</find>
+      <find>AddQuestion</find>
+      <find>5</find>
+      <find>qtype_fx</find>
+      <find>gid</find>
+      <find>OpResult</find>
+      <find>as_re</find>
     </findStrings>
     <replaceStrings>
       <replace>databaseName=&quot;my_test&quot;</replace>
@@ -546,7 +203,6 @@
       <replace>/survey/admin</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>D:\Programming\Java Workplace\Demo\web\WEB-INF\lib\jfreechart-0.9.16.jar!\org\jfree\chart</dir>
       <dir>D:\Programming\Java Workplace\Demo\web\home</dir>
       <dir>D:\Programming\Java Workplace\Demo\web\forum</dir>
       <dir>D:\Programming\Java Workplace\Demo\web\project</dir>
@@ -576,6 +232,7 @@
       <dir>D:\Programming\MobileInteractiveClass\web\assets</dir>
       <dir>D:\Programming\MobileInteractiveClass</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\survey</dir>
+      <dir>D:\Programming\MobileInteractiveClass\src\com\iWen</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -584,11 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/home/index.js" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/ProgressServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/utils/ProgressSingleton.java" />
-        <option value="$PROJECT_DIR$/web/assets/module/css/base/progress_bar.css" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/web/homework/core/homework_list.jsp" />
@@ -603,9 +255,7 @@
         <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/LinkDAO.java" />
         <option value="$PROJECT_DIR$/web/survey/admin/AdminList.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/OpResult.jsp" />
-        <option value="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/ShowSheet.jsp" />
-        <option value="$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/upload.jsp" />
         <option value="$PROJECT_DIR$/src/com/iWen/survey/sql/SQLCommand.java" />
         <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" />
@@ -620,11 +270,8 @@
         <option value="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" />
-        <option value="$PROJECT_DIR$/src/struts.xml" />
-        <option value="$PROJECT_DIR$/web/survey/SurveyShow.jsp" />
         <option value="$PROJECT_DIR$/web/survey/userReg.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/FriendLinkAdmin.jsp" />
-        <option value="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/FriendLinkAdd.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/SurveyAdmin.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/SurveyEdit.jsp" />
@@ -635,6 +282,16 @@
         <option value="$PROJECT_DIR$/web/survey/admin/AdminAdd.jsp" />
         <option value="$PROJECT_DIR$/web/survey/common/succeed.jsp" />
         <option value="$PROJECT_DIR$/web/survey/userLogin.jsp" />
+        <option value="$PROJECT_DIR$/src/com/iWen/survey/ctrl/QuestionAction.java" />
+        <option value="$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js" />
+        <option value="$PROJECT_DIR$/web/survey/SurveyShow.jsp" />
+        <option value="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" />
+        <option value="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" />
+        <option value="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" />
+        <option value="$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java" />
+        <option value="$PROJECT_DIR$/src/struts.xml" />
+        <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java" />
+        <option value="$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp" />
       </list>
     </option>
   </component>
@@ -655,6 +312,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -670,7 +328,50 @@
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="iWen" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="iWen" type="462c0819:PsiDirectoryNode" />
+              <item name="survey" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="iWen" type="462c0819:PsiDirectoryNode" />
+              <item name="survey" type="462c0819:PsiDirectoryNode" />
+              <item name="ctrl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="investigation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="investigation" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -700,7 +401,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -894,7 +594,8 @@
       <workItem from="1557840552132" duration="2984000" />
       <workItem from="1557928243317" duration="9047000" />
       <workItem from="1557972740613" duration="8230000" />
-      <workItem from="1558066586004" duration="17697000" />
+      <workItem from="1558066586004" duration="17913000" />
+      <workItem from="1558148661986" duration="8817000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -991,7 +692,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251993000" />
+    <option name="totallyTimeSpent" value="261026000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1004,8 +705,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.29959786" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.3036193" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1049,78 +751,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/assets/survey/js/Date.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#64#70#0" expanded="true" />
-            <element signature="e#83#89#0" expanded="true" />
-            <element signature="e#89#95#0" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="e#94#100#0" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="e#98#104#0" expanded="true" />
-            <element signature="e#104#110#0" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#82#88#1" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="e#106#112#1" expanded="true" />
-            <element signature="e#108#114#1" expanded="true" />
-            <element signature="e#108#114#1" expanded="true" />
-            <element signature="e#82#88#1" expanded="true" />
-            <element signature="e#146#152#1" expanded="true" />
-            <element signature="e#211#217#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/AdminList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="63" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/AdminModify.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1701" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/FriendLinkAdd.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/FriendLinkAdmin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-504" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/LinkModifg.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1112" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/survey/admin/OpResult.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="121" column="32" selection-start-line="121" selection-start-column="32" selection-end-line="121" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-798">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1156,13 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1520">
           <caret line="80" column="12" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1216">
-          <caret line="64" column="63" selection-start-line="64" selection-start-column="63" selection-end-line="64" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -1206,13 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="20" column="52" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/survey/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1224,17 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/DAOFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding>
-            <element signature="e#161#162#0" expanded="true" />
-            <element signature="e#194#195#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1363,41 +972,11 @@
     <entry file="file://$PROJECT_DIR$/web/investigation/main/index.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/struts.xml" />
     <entry file="file://$PROJECT_DIR$/web/investigation/core/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
           <caret line="36" column="53" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/investigation/core/list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="35" column="61" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/investigation/core/all.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="134" column="26" selection-start-line="134" selection-start-column="26" selection-end-line="134" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/struts.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="71" column="75" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1406,46 +985,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/struts.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
+        <state relative-caret-position="703">
           <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="38" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/struts.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="71" column="63" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
-          <folding>
-            <element signature="e#891#896#0" expanded="true" />
-            <element signature="e#905#910#0" expanded="true" />
-            <element signature="e#1482#1487#0" expanded="true" />
-            <element signature="e#1593#1598#0" expanded="true" />
-            <element signature="e#1890#1895#0" expanded="true" />
-            <element signature="e#1904#1909#0" expanded="true" />
-            <element signature="e#2210#2215#0" expanded="true" />
-            <element signature="e#2224#2229#0" expanded="true" />
-            <element signature="e#2531#2536#0" expanded="true" />
-            <element signature="e#2545#2550#0" expanded="true" />
-            <element signature="e#2955#2960#0" expanded="true" />
-            <element signature="e#3069#3074#0" expanded="true" />
-            <element signature="e#3082#3087#0" expanded="true" />
-            <element signature="e#3317#3322#0" expanded="true" />
-            <element signature="e#3640#3645#0" expanded="true" />
-            <element signature="e#3755#3760#0" expanded="true" />
-            <element signature="e#3768#3773#0" expanded="true" />
-            <element signature="e#4196#4201#0" expanded="true" />
-            <element signature="e#4527#4532#0" expanded="true" />
-            <element signature="e#4638#4643#0" expanded="true" />
-            <element signature="e#4950#4955#0" expanded="true" />
-            <element signature="e#5262#5267#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1456,10 +997,141 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="38" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/investigation/core/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="35" column="61" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/investigation/core/all.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2147">
+          <caret line="134" column="26" selection-start-line="134" selection-start-column="26" selection-end-line="134" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/QuestionDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/DAOFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding>
+            <element signature="e#161#162#0" expanded="true" />
+            <element signature="e#194#195#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/QuestionAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-152">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="150" column="89" selection-start-line="150" selection-start-column="89" selection-end-line="150" selection-end-column="89" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="161" column="15" selection-start-line="161" selection-start-column="15" selection-end-line="161" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/survey/SurveyShow.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+        <state relative-caret-position="628">
+          <caret line="185" column="63" selection-start-line="185" selection-start-column="56" selection-end-line="185" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="70" column="51" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="81" column="55" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/struts.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="106" column="51" selection-start-line="106" selection-start-column="51" selection-end-line="106" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+          <folding>
+            <element signature="e#1127#1128#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+            <element signature="e#1361#1362#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1482#1483#0" expanded="true" />
+            <element signature="e#1508#1509#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="187" column="25" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="48" column="89" selection-start-line="48" selection-start-column="89" selection-end-line="48" selection-end-column="89" />
         </state>
       </provider>
     </entry>

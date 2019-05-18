@@ -96,6 +96,7 @@
         <td>
             <input name="Question_type" id="qtype_dx" type="radio" value="1" onClick="showType('dx');">单选题
             <input name="Question_type" type="radio" value="2" onClick="showType('fx');">多选题
+            <input name="Question_type" type="radio" value="3" onClick="showType('ax');">简答题
         </td>
         <td></td>
     </tr>
@@ -141,6 +142,26 @@
             <li><input type="checkbox"><input type="text" name="Answer"></li>
             <li><input type="checkbox"><input type="text" name="Answer"></li>
         </ul>
+        <div id="button">
+            <input type="submit" value="添加题目">
+        </div>
+    </form>
+</div>
+<div id=ax style="display: none">
+    <form name="form1" action="<%=basePath%>question/addQuestion.do?op=AddQuestion&type=5" method="post"
+          onSubmit="return SubQuestion();">
+        <input type="hidden" value=<%=request.getParameter("sid") %>  name="sid">
+        <input type="hidden" value="" name="qBody" id="qBody">
+        <input type="hidden" value="" name=qResult id="qResult">
+        问题：<input name="qHead" type="text" size="40">
+        <br/><br/>
+<%--        备选项：--%>
+<%--        <ul type="1" id="ulAnswer">--%>
+<%--            <li><input type="checkbox"><input type="text" name="Answer"></li>--%>
+<%--            <li><input type="checkbox"><input type="text" name="Answer"></li>--%>
+<%--            <li><input type="checkbox"><input type="text" name="Answer"></li>--%>
+<%--            <li><input type="checkbox"><input type="text" name="Answer"></li>--%>
+<%--        </ul>--%>
         <div id="button">
             <input type="submit" value="添加题目">
         </div>

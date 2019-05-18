@@ -53,6 +53,10 @@
         <td>
             <input name="Question_type" id="qtype_dx" type="radio" value="1" onClick="showType('dx');">单选题
             <input name="Question_type" id=qtype_fx type="radio" value="2" onClick="showType('fx');">多选题
+            <input name="Question_type" id=qtype_ax type="radio" value="3" onClick="showType('ax');">简答题
+            <input type="hidden" id="q_type" name="q_type" value="<%=question.getQType()%>">
+            <input type="hidden" id="q_head" name="q_head" value="<%=question.getQHead()%>">
+            <input type="hidden" id="q_body" name="q_body" value="<%=question.getQBody()%>">
         </td>
         <td></td>
     </tr>
@@ -101,35 +105,73 @@
         </div>
     </form>
 </div>
+<div id=ax style="display: none">
+    <form name="form1" action="" method="post">
+        <input type="hidden" value=<%=request.getParameter("sid") %>  name="sid">
+        <input type="hidden" value="" name="qBody" id="qBody">
+        <input type="hidden" value="" name=qResult id="qResult">
+        问题：<input name="qHead" type="text" size="40">
+        <br/><br/>
+<%--        备选项：--%>
+<%--        <ul type="1" id="ulAnswer">--%>
+<%--            <li><input type="checkbox"><input type="text" name="Answer"></li>--%>
+<%--            <li><input type="checkbox"><input type="text" name="Answer"></li>--%>
+<%--            <li><input type="checkbox"><input type="text" name="Answer"></li>--%>
+<%--            <li><input type="checkbox"><input type="text" name="Answer"></li>--%>
+<%--        </ul>--%>
+        <div id="button">
+            <input type="button" onclick="javascript:history.back();" value="返回">
+        </div>
+    </form>
+</div>
 <script type="text/javascript">
-    switch (<%=question.getQType() %>) {
-        case 1:
+    var qType = $("#q_type").val();
+    var qHead = $("#q_head").val();
+    var qBody = $("#q_body").val();
+    console.log("type=" + qType);
+    switch (qType) {
+        case "1":
+            alert(1111111111111111);
             document.getElementById("qtype_dx").click();
-            document.forms[0].qHead.value = "<%=question.getQHead().replace("\'","\\'").replace("\"","\\\"") %>";
-            var qBodys = "<%=question.getQBody().replace("\'","\\'").replace("\"","\\\"") %>";
-            var qBody = qBodys.split("&$$&");
+            document.forms[0].qHead.value = qHead.replace("\'","\\'").replace("\"","\\\"");
+            var qBodys = qBody.replace("\'","\\'").replace("\"","\\\"");
+            var qBodyStr = qBodys.split("&$$&");
             document.getElementById("ulAnswer").innerHTML = "";
-            for (i = 0; i < qBody.length; i++) {
+            for (i = 0; i < qBodyStr.length; i++) {
                 MoreAnswer("DX");
             }
-            for (i = 0; i < qBody.length; i++) {
+            for (i = 0; i < qBodyStr.length; i++) {
                 var answer = document.forms[0].Answer;
-                answer[i].value = qBody[i];
+                answer[i].value = qBodyStr[i];
             }
             break;
-        case 2:
+        case "2":
             document.getElementById("qtype_fx").click();
-            document.forms[0].qHead.value = "<%=question.getQHead().replace("\'","\\'").replace("\"","\\\"") %>";
-            var qBodys = "<%=question.getQBody().replace("\'","\\'").replace("\"","\\\"") %>";
-            var qBody = qBodys.split("&$$&");
+            document.forms[0].qHead.value = qHead.replace("\'","\\'").replace("\"","\\\"");
+            var qBodys = qBody.replace("\'","\\'").replace("\"","\\\"");
+            var qBodyStr = qBodys.split("&$$&");
             document.getElementById("ulAnswer").innerHTML = "";
-            for (i = 0; i < qBody.length; i++) {
+            for (i = 0; i < qBodyStr.length; i++) {
                 MoreAnswer("FX");
             }
-            for (i = 0; i < qBody.length; i++) {
+            for (i = 0; i < qBodyStr.length; i++) {
                 var answer = document.forms[0].Answer;
-                answer[i].value = qBody[i];
+                answer[i].value = qBodyStr[i];
             }
+            break;
+        case "5":
+            document.getElementById("qtype_ax").click();
+            document.forms[0].qHead.value = qHead.replace("\'","\\'").replace("\"","\\\"");
+            <%--var qBodys = "<%=question.getQBody().replace("\'","\\'").replace("\"","\\\"") %>";--%>
+            <%--var qBody = qBodys.split("&$$&");--%>
+            <%--document.getElementById("ulAnswer").innerHTML = "";--%>
+            // for (i = 0; i < qBody.length; i++) {
+            //     MoreAnswer("AX");
+            // }
+            // for (i = 0; i < qBody.length; i++) {
+            //     var answer = document.forms[0].Answer;
+            //     answer[i].value = qBody[i];
+            // }
             break;
         default:
             alert("题目类型错误！");
