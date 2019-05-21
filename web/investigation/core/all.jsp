@@ -7,6 +7,11 @@
 <%
 	String id = request.getParameter("id");
 	String existResultset = request.getParameter("exist_resultset");
+	String type = request.getParameter("type");
+	String title = "调查管理";
+	if ("vote".equals(type)) {
+		title = "投票管理";
+	}
 %>
 <!DOCTYPE html>
 <head>
@@ -33,7 +38,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="portlet box blue ">
-							<div style="text-align: center; color: white;"><h1>调查管理</h1></div>
+							<div style="text-align: center; color: white;"><h1><%=title%></h1></div>
 							<div class="portlet-title">
 								<div class="caption">
 									<i class="fa fa-gift"></i><span id="title_div">记录显示</span>
@@ -47,6 +52,7 @@
 								<form class="form-horizontal" role="form" method="post" id="page_form" name="page_form" action="#">
 									<input type="hidden" id="action" name="action" value="get_record" />
 									<input type="hidden" id="id" name="id" value="<%=id%>" />
+									<input type="hidden" id="type" name="type" value="<%=type%>" />
 									<input type="hidden" id="exist_resultset" name="exist_resultset" value="<%=existResultset%>" />
 									<div class="form-body">
 										<div class="form-group">

@@ -20,7 +20,7 @@ public class SQLCommand {
 
 
     /**
-     * 完成批量添加
+     * 瀹屾垚鎵归噺娣诲姞
      *
      * @param sql
      * @return
@@ -52,7 +52,7 @@ public class SQLCommand {
     }
 
     /**
-     * 完成數據更新
+     * 瀹屾垚鏁告摎鏇存柊
      *
      * @param sql
      * @return

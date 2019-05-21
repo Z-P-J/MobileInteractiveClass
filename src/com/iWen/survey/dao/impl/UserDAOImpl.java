@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO {
 			+ "values (?,?,?)";
 
 	/*
-	 * ����û�
+	 * ??????
 	 */
 	@Override
     public void addUser(User user) throws Exception {
@@ -68,7 +68,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	/*
-	 * ͨ�������ҵ��û�
+	 * ?????????????
 	 */
 	@Override
 	public User findOneUserByEmail(String email) throws Exception {
@@ -90,7 +90,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	/*
-	 * ͨ�������ҵ��û�
+	 * ?????????????
 	 */
 	@Override
 	public User findOneUserByNickName(String nickname) throws Exception {

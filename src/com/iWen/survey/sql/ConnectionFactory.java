@@ -20,7 +20,7 @@ public class ConnectionFactory {
 			return DriverManager.getConnection(URL, USER_NAME, PASSWORD);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.print("Êı¾İ¿âÁ¬½ÓÒì³£");
+			System.out.print("æ•°æ®åº“è¿æ¥å¼‚å¸¸");
 		}
 		return null;
 	}

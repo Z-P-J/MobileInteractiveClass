@@ -5,18 +5,18 @@ import java.util.Date;
 public class Survey implements java.io.Serializable {
 
     private static final long serialVersionUID = -5612405124894422928L;
-    private Long SId; // ÎÊ¾íID
-    private String SName; //ÎÊ¾íÃû³Æ
-    private String SDesc; //ÎÊ¾íÃèÊö
-    private String SAuthor; // ÎÊ¾í·¢ÆğÈË
-    private String SImg; // ÎÊ¾íÍ¼Æ¬
-    private Date SCreateDate;  // ÎÊ¾í´´½¨ÈÕÆÚ
+    private Long SId; // é—®å·ID
+    private String SName; //é—®å·åç§°
+    private String SDesc; //é—®å·æè¿°
+    private String SAuthor; // é—®å·å‘èµ·äºº
+    private String SImg; // é—®å·å›¾ç‰‡
+    private Date SCreateDate;  // é—®å·åˆ›å»ºæ—¥æœŸ
     private String SPassword;
-    private Boolean SIsOpen; // ÊÇ·ñ¹«¿ª´ËÎÊ¾í
-    private Date SExpireDate;  //ÎÊ¾í½áÊøÈÕÆÚ
-    private Boolean SIsAudited; // ÎÊ¾íÊÇ·ñÉóºË 0´ú±íÎ´ÉóºË 1 ´ú±íÉóºËÍ¨¹ı
-    private Long SUsehits; // ÓÃ»§µã»÷Á¿
-    //µ÷²éµÄÀàĞÍ "1"£ºÎÊ¾í "2"£ºÍ¶Æ±
+    private Boolean SIsOpen; // æ˜¯å¦å…¬å¼€æ­¤é—®å·
+    private Date SExpireDate;  //é—®å·ç»“æŸæ—¥æœŸ
+    private Boolean SIsAudited; // é—®å·æ˜¯å¦å®¡æ ¸ 0ä»£è¡¨æœªå®¡æ ¸ 1 ä»£è¡¨å®¡æ ¸é€šè¿‡
+    private Long SUsehits; // ç”¨æˆ·ç‚¹å‡»é‡
+    //è°ƒæŸ¥çš„ç±»å‹ "1"ï¼šé—®å· "2"ï¼šæŠ•ç¥¨
     private String sType;
 
     public Long getSId() {

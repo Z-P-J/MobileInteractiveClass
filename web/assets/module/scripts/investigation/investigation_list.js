@@ -6,7 +6,8 @@ jQuery(document).ready(function () {
     QuickSidebar.init(); // init quick sidebar
     Demo.init(); // init demo features
     ComponentsDropdowns.init();
-    Frame.init(module, sub);
+    var type = $("#type").val();
+    Frame.init(type, sub);
     Page.init();
     Record.init();
 });
@@ -24,8 +25,9 @@ var Record = function () {
     var getRecord = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
+        var type = $("#type").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record&id=" + id + "&exist_resultset=" + existResultset + "&type=" + type;
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
@@ -211,7 +213,8 @@ var Page = function () {
         var author = json[3];
         var createTime = json[5];
         var endTime = json[8];
-        var status = json[11];
+        var type = json[11];
+        var status = json[12];
         // var me = json[9];
 
         html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
@@ -230,7 +233,7 @@ var Page = function () {
         // }
         html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
         html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
-        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">打开问卷</button>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">详细情况</button>";
         html = html + "															</div>";
         html = html + "														</div>";
     };

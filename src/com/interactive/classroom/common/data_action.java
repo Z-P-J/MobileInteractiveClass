@@ -149,7 +149,7 @@ public class data_action extends HttpServlet {
                 sql = sql.replace("role_id", "role");
             } else {
 //                sql = "select * from " + module + "_tree a," + module + "_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
-                if ("investigation".equals(module)) {
+                if ("investigation".equals(module) || "vote".equals(module)) {
                     sql = "select * from survey_tree a,survey_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
                 } else {
                     sql = "select * from project_tree a,project_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
@@ -163,7 +163,13 @@ public class data_action extends HttpServlet {
                 map.put("category_id", rs.getString("category_id"));
                 map.put("parent_item_id", rs.getString("parent_category_id"));
                 map.put("item_id", rs.getString("file_id"));
-                map.put("item_name", rs.getString("file_name"));
+                String fileName = rs.getString("file_name");
+                if ("vote".equals(module)) {
+                    System.out.println("fileName replace=" + fileName);
+                    fileName = fileName.replaceFirst("问卷", "投票");
+                }
+                System.out.println("module= " + module + "   fileName=" + fileName);
+                map.put("item_name", fileName);
                 map.put("file_path", rs.getString("file_path"));
                 map.put("href_link", rs.getString("hreflink"));
                 map.put("chain_name", rs.getString("chain_name"));

@@ -28,18 +28,18 @@ public class InvestigationDao {
     private static final String TABLE_NAME = "investigation_manage";
 
 //    private static final String[] LABELS = {"id", "title", "content", "link", "create_time", "end_time", "user_id", "creator", "status"};
-    private static final String[] LABELS = {"s_id", "s_name", "s_desc", "s_author", "s_img", "s_createdate", "s_password", "s_isopen", "s_expiredate", "s_isaudited", "s_usehits", "status"};
+    private static final String[] LABELS = {"s_id", "s_name", "s_desc", "s_author", "s_img", "s_createdate", "s_password", "s_isopen", "s_expiredate", "s_isaudited", "s_usehits", "s_type", "status"};
 
     /*
      * 功能：返回结果集
      */
-    public JSONObject getRecord(InvestigationBean query) throws SQLException, IOException, JSONException {
+    public JSONObject getRecord(InvestigationBean query, String type) throws SQLException, IOException, JSONException {
         //开始查询数据库
         String resultMsg = "ok";
         int resultCode = 0;
         List<List<String>> jsonList = new ArrayList<>();
 
-        String sql = "select * from survey where  s_isOpen ='1' and s_isAudited=1 and s_expiredate>='"
+        String sql = "select * from survey where  s_isOpen ='1' and s_isAudited=1 and s_type='" + type + "' and s_expiredate>='"
                 + new java.sql.Date(new java.util.Date().getTime())
                 + "' order by s_createdate desc,s_id desc";
         SQLCommand cmd = new SQLCommand();

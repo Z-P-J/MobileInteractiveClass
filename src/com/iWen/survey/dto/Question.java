@@ -4,13 +4,13 @@ public class Question implements java.io.Serializable {
 
 	private static final long serialVersionUID = -4179328348522550986L;
 
-	private Long QId; // ÎÊÌâID
-	private Long survey; // ÎÊ¾í
-	private Long QType; // ÎÊÌâÀàĞÍ µ¥Ñ¡ ¶àÑ¡
-	private String QHead; // ÎÊÌâÄÚÈİ
-	private String QBody; // ÎÊÌâ±¸Ñ¡´ğ°¸
-	private String QResult; // »Ø´ğÎÊÌâµÄ½á¹û
-	private String QImg; // ÎÊÌâÍ¼Æ¬
+	private Long QId; // é—®é¢˜ID
+	private Long survey; // é—®å·
+	private Long QType; // é—®é¢˜ç±»å‹ å•é€‰ å¤šé€‰
+	private String QHead; // é—®é¢˜å†…å®¹
+	private String QBody; // é—®é¢˜å¤‡é€‰ç­”æ¡ˆ
+	private String QResult; // å›ç­”é—®é¢˜çš„ç»“æœ
+	private String QImg; // é—®é¢˜å›¾ç‰‡
 	private String QJdtz;
 	private Long QOrder;
 

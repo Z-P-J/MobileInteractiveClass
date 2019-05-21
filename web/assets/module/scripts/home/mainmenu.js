@@ -60,8 +60,8 @@ function initMenu(json, module) {
                             var subItemId = "menu_" + json[subIndex].item_id;
                             var subItemName = json[subIndex].item_name;
 
-                            if (module == "investigation") {
-                                var href = "../../survey/admin/" + json[subIndex].href_link;
+                            if (module == "investigation" || module == "vote") {
+                                var href = "../../survey/admin/" + json[subIndex].href_link + "?type=" + module;
                                 html = html + "<li id=\"" + subItemId + "\"><a href=\"" + href + "\" target=\"right\"><i class=\"icon-bulb\"></i>" + subItemName + "</a></li>";
                             } else {
                                 var href = "../../" + json[subIndex].file_path + json[subIndex].href_link;

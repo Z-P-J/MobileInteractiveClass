@@ -7,6 +7,7 @@
 <%
     String id = request.getParameter("id");
     String existResultset = request.getParameter("exist_resultset");
+    String type = request.getParameter("type");
 %>
 <!DOCTYPE html>
 <head>
@@ -19,6 +20,7 @@
     <!-- END PAGE LEVEL SCRIPTS -->
 </head>
 <body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
+<input type="hidden" name="type" id="type" value="<%=type%>">
 <%@include file="../../home/frame/frame_top.jsp" %>
 <div class="clearfix"></div>
 <!-- BEGIN CONTAINER -->
@@ -33,7 +35,7 @@
             <!-- BEGIN PAGE CONTENT-->
             <!-- ----------------------------------------页面开始，替换这里即可---------------------------------------- -->
             <div style="margin: 0 auto;  width: 100%; height: 800px">
-                <iframe id="iframe" name="right" src="all.jsp"
+                <iframe id="iframe" name="right" src="all.jsp?type=<%=type%>"
                         allowtransparency="true" marginwidth='0' marginheight='0' width="100%" height="100%"
                         frameborder="0" scrolling="yes"></iframe>
             </div>

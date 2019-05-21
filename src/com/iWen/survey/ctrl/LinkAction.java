@@ -33,8 +33,8 @@ public class LinkAction extends BaseAction {
 //			response.sendRedirect("../admin/FriendLinkAdmin.jsp");
             return "success";
         } else {
-            this.message = URLEncoder.encode("Ôö¼ÓÓÑÇéÁ´½Ó³ö´í£¡ÇëÁªÏµ¹ÜÀíÔ±", "UTF-8");
-            //response.sendRedirect("../admin/OpResult.jsp?op=default&ret=false&words="+URLEncoder.encode("Ôö¼ÓÓÑÇéÁ´½Ó³ö´í£¡ÇëÁªÏµ¹ÜÀíÔ±", "UTF-8"));
+            this.message = URLEncoder.encode("å¢åŠ å‹æƒ…é“¾æ¥å‡ºé”™ï¼è¯·è”ç³»ç®¡ç†å‘˜", "UTF-8");
+            //response.sendRedirect("../admin/OpResult.jsp?op=default&ret=false&words="+URLEncoder.encode("å¢åŠ å‹æƒ…é“¾æ¥å‡ºé”™ï¼è¯·è”ç³»ç®¡ç†å‘˜", "UTF-8"));
             return "fail";
         }
     }
@@ -48,7 +48,7 @@ public class LinkAction extends BaseAction {
 //			response.sendRedirect("../admin/FriendLinkAdmin.jsp");
             return "success";
         } else {
-//			response.sendRedirect("../admin/OpResult.jsp?op=default&ret=false&words="+URLEncoder.encode("É¾³ıÓÑÇéÁ´½Ó³ö´í£¡ÇëÁªÏµ¹ÜÀíÔ±", "UTF-8"));
+//			response.sendRedirect("../admin/OpResult.jsp?op=default&ret=false&words="+URLEncoder.encode("åˆ é™¤å‹æƒ…é“¾æ¥å‡ºé”™ï¼è¯·è”ç³»ç®¡ç†å‘˜", "UTF-8"));
             return "fail";
         }
     }
@@ -71,8 +71,8 @@ public class LinkAction extends BaseAction {
 //			response.sendRedirect("../admin/FriendLinkAdmin.jsp");
             return "success";
         } else {
-            this.message = URLEncoder.encode("±à¼­ÓÑÇéÁ´½Ó³ö´í£¡", "UTF-8");
-//			response.sendRedirect("../admin/OpResult.jsp?op=default&ret=false&words=±à¼­ÓÑÇéÁ´½Ó³ö´í£¡");
+            this.message = URLEncoder.encode("ç¼–è¾‘å‹æƒ…é“¾æ¥å‡ºé”™ï¼", "UTF-8");
+//			response.sendRedirect("../admin/OpResult.jsp?op=default&ret=false&words=ç¼–è¾‘å‹æƒ…é“¾æ¥å‡ºé”™ï¼");
             return "fail";
         }
     }

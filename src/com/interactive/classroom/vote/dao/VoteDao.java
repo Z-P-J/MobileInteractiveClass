@@ -1,11 +1,13 @@
 package com.interactive.classroom.vote.dao;
 
+import com.iWen.survey.sql.SQLCommand;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.interactive.classroom.utils.DBHelper;
 import com.interactive.classroom.utils.TimeUtil;
 import com.interactive.classroom.vote.bean.VoteBean;
 
+import javax.sql.RowSet;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +19,8 @@ import java.util.List;
 public class VoteDao {
 
     private static final String TABLE_NAME = "vote_manage";
-    private static final String[] LABELS = {"id", "vote_id", "user_id", "title", "content", "course_id", "publish_date", "deadline", "status"};
+    //    private static final String[] LABELS = {"id", "vote_id", "user_id", "title", "content", "course_id", "publish_date", "deadline", "status"};
+    private static final String[] LABELS = {"s_id", "s_name", "s_desc", "s_author", "s_img", "s_createdate", "s_password", "s_isopen", "s_expiredate", "s_isaudited", "s_usehits", "s_type", "status"};
 
     /*
      * 功能：返回结果集
@@ -29,56 +32,42 @@ public class VoteDao {
         List<List<String>> jsonList = new ArrayList<>();
         try {
             //构造sql语句，根据传递过来的查询条件参数
-            String sql = "";
-            query.setTableName(TABLE_NAME);
-            sql = createGetRecordSql(query);
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+//            String sql = "";
+//            query.setTableName(TABLE_NAME);
+//            sql = createGetRecordSql(query);
+            String sql = "select * from survey where  s_isOpen ='1' and s_isAudited=1 and s_type=2 and s_expiredate>='"
+                    + new java.sql.Date(new java.util.Date().getTime())
+                    + "' order by s_createdate desc,s_id desc";
+            SQLCommand cmd = new SQLCommand();
+            RowSet rs = cmd.queryRowSet(sql);
+//            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
-                int count = 0;
+//                int count = 0;
                 for (String label : LABELS) {
-                    count = count + 1;
-                    if (count == LABELS.length) {
-                        Date date = null; //初始化date
-                        try {
-                            date = TimeUtil.FORMATTER.parse(list.get(7)); //Mon Jan 14 00:00:00 CST 2013
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        System.out.println("date == null?" + (date == null));
-                        if (date != null && System.currentTimeMillis() >= date.getTime()) {
-                            list.add("已结束");
-                        } else {
-                            list.add("进行中");
-                        }
-                    } else {
-                        list.add(rs.getString(label));
+                    if ("status".equals(label)) {
+                        break;
                     }
-
+                    list.add(rs.getString(label));
                 }
-
-//                list.add(rs.getString("id"));
-//                list.add(rs.getString("title"));
-//                list.add(rs.getString("content"));
-//                list.add(rs.getString("type"));
-//                list.add(rs.getString("limit_time"));
-//                list.add(rs.getString("end_time"));
-//                list.add(rs.getString("end_tag"));
-//                list.add(rs.getString("user_id"));
-//                list.add(rs.getString("creator"));
-//                list.add(rs.getString("create_time"));
-//                list.add(rs.getString("status"));
-                if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
-                    list.add("1");
+                Date date = rs.getDate("s_expiredate");
+                System.out.println("date == null?" + (date == null));
+                if (date != null && System.currentTimeMillis() >= date.getTime()) {
+                    list.add("已完成");
                 } else {
-                    list.add("0");
+                    list.add("未完成");
                 }
-                list.add("" + count);
-                count = count + 1;    //做上下记录导航用
+//                if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
+//                    list.add("1");
+//                } else {
+//                    list.add("0");
+//                }
+//                list.add("" + count);
+//                count = count + 1;    //做上下记录导航用
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+//            DBHelper.getInstance().close();
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -254,7 +243,7 @@ public class VoteDao {
             }
         }
         System.out.println(getClass().getName() + " orderBy=" + orderBy);
-		/*----------------------------构造排序完毕--------------------------------*/
+        /*----------------------------构造排序完毕--------------------------------*/
         if (query.getType() != null && query.getType().equals("all") && query.getUserRole().equals("manager")) {
             sql = "select * from " + query.getTableName() + " order by publish_date desc";
         } else {

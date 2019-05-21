@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/AdminAction.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/LinkAction.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Question.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/pager/PageControl.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/sql/ConnectionFactory.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/sql/SQLCommand.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/AdminAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/LinkAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/UserDAOImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Question.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/pager/PageControl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/sql/ConnectionFactory.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/iWen/survey/sql/SQLCommand.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/clinic/pay/ServletAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/forum/file/ServletAction.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/diary/ServletAction.java" charset="UTF-8" />

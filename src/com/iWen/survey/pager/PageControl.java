@@ -17,14 +17,14 @@ public class PageControl  {
 	String pageForward = null;
 
 	PageConfig pageConfig = null;
-	String pageUp = "<font face=ËÎÌå size=2>ÉÏÒ»Ò³</font>";
-	String pageDown = "<font face=ËÎÌå size=2>ÏÂÒ»Ò³</font>";
-	String firstPage = "<font face=ËÎÌå size=2>Ê×Ò³</font>";
-	String lastPage = "<font face=ËÎÌå size=2>Ä©Ò³</font>";
+	String pageUp = "<font face=å®‹ä½“ size=2>ä¸Šä¸€é¡µ</font>";
+	String pageDown = "<font face=å®‹ä½“ size=2>ä¸‹ä¸€é¡µ</font>";
+	String firstPage = "<font face=å®‹ä½“ size=2>é¦–é¡µ</font>";
+	String lastPage = "<font face=å®‹ä½“ size=2>æœ«é¡µ</font>";
 
 
 	/**
-	 * »ñÈ¡×Ü¼ÇÂ¼Êı
+	 * è·å–æ€»è®°å½•æ•°
 	 * @return
 	 */
 	public int getCountRecord() {
@@ -35,7 +35,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * Éú³É²¢·µ»Ø¡°Ê×Ò³¡±µÄHTML±ê¼Ç
+	 * ç”Ÿæˆå¹¶è¿”å›â€œé¦–é¡µâ€çš„HTMLæ ‡è®°
 	 * @return
 	 */
 	public String getFirstPageHTML() {
@@ -60,7 +60,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ×Ô¶¨Òå¡°Ê×Ò³¡±Á´½ÓµÄÎÄ±¾×ÖÑù
+	 * è‡ªå®šä¹‰â€œé¦–é¡µâ€é“¾æ¥çš„æ–‡æœ¬å­—æ ·
 	 * @param firstPage
 	 */
 	public void setFirstPageHTML(String firstPage) {
@@ -69,7 +69,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * Éú³É²¢·µ»Ø¡°Ä©Ò³¡±µÄHTML±ê¼Ç
+	 * ç”Ÿæˆå¹¶è¿”å›â€œæœ«é¡µâ€çš„HTMLæ ‡è®°
 	 * @return
 	 */
 	public String getLastPageHTML() {
@@ -98,7 +98,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ×Ô¶¨Òå¡°Ä©Ò³¡±Á´½ÓµÄÎÄ±¾×ÖÑù
+	 * è‡ªå®šä¹‰â€œæœ«é¡µâ€é“¾æ¥çš„æ–‡æœ¬å­—æ ·
 	 * @param firstPage
 	 */
 	public void setLastPageHTML(String lastPage) {
@@ -107,7 +107,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * Éú³É²¢·µ»Ø¡°ÏÂÒ»Ò³¡±µÄHTML±ê¼Ç
+	 * ç”Ÿæˆå¹¶è¿”å›â€œä¸‹ä¸€é¡µâ€çš„HTMLæ ‡è®°
 	 * @return
 	 */
 	public String getPageDownHTML() {
@@ -137,7 +137,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ×Ô¶¨Òå¡°ÏÂÒ»Ò³¡±Á´½ÓµÄÎÄ±¾×ÖÑù
+	 * è‡ªå®šä¹‰â€œä¸‹ä¸€é¡µâ€é“¾æ¥çš„æ–‡æœ¬å­—æ ·
 	 * @return
 	 */
 	public void setPageDownHTML(String pageDown) {
@@ -146,7 +146,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * Éú³É²¢·µ»Ø¡°ÉÏÒ»Ò³¡±µÄHTML±ê¼Ç
+	 * ç”Ÿæˆå¹¶è¿”å›â€œä¸Šä¸€é¡µâ€çš„HTMLæ ‡è®°
 	 * @return
 	 */
 	public String getPageUpHTML() {
@@ -169,7 +169,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ×Ô¶¨Òå¡°ÉÏÒ»Ò³¡±Á´½ÓµÄÎÄ±¾×ÖÑù
+	 * è‡ªå®šä¹‰â€œä¸Šä¸€é¡µâ€é“¾æ¥çš„æ–‡æœ¬å­—æ ·
 	 * @return
 	 */
 	public void setPageUpHTML(String pageUp) {
@@ -178,7 +178,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ·µ»ØÃ¿Ò³ĞĞÊı
+	 * è¿”å›æ¯é¡µè¡Œæ•°
 	 * @return
 	 */
 	public int getSizePage() {
@@ -186,7 +186,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ÉèÖÃÃ¿Ò³ÏÔÊ¾ĞĞÊı
+	 * è®¾ç½®æ¯é¡µæ˜¾ç¤ºè¡Œæ•°
 	 * @param sizePage
 	 */
 	public void setSizePage(int sizePage) {
@@ -194,7 +194,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ·µ»Ø"×ÜÒ³Êı"HTML
+	 * è¿”å›"æ€»é¡µæ•°"HTML
 	 * @return
 	 */
 	public String getCountPageHTML() {
@@ -209,11 +209,11 @@ public class PageControl  {
 			this.countPage = (this.countRecord / this.sizePage + 1);
 		}
 
-		return "<font face=ËÎÌå size=2>/¹²" + this.countPage + "Ò³</font>";
+		return "<font face=å®‹ä½“ size=2>/å…±" + this.countPage + "é¡µ</font>";
 	}
 
 	/**
-	 * ·µ»Ø×ÜÒ³Êı 
+	 * è¿”å›æ€»é¡µæ•° 
 	 * @return
 	 */
 	public int getCountPage() {
@@ -232,7 +232,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * »ñÈ¡¼ÇÂ¼Êı¾İ
+	 * è·å–è®°å½•æ•°æ®
 	 * @return
 	 */
 	public List  getRecord() {
@@ -246,7 +246,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ÉèÖÃÒ³Ãæ¼àÌıÆ÷£¬½«ÊµÏÖÁËPageListener½Ó¿ÚµÄÀàµÄ¶ÔÏó´«Èë
+	 * è®¾ç½®é¡µé¢ç›‘å¬å™¨ï¼Œå°†å®ç°äº†PageListeneræ¥å£çš„ç±»çš„å¯¹è±¡ä¼ å…¥
 	 * @param pageListener
 	 */
 	private void setPageListener(PageListener pageListener) {
@@ -254,7 +254,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ÉèÖÃÅäÖÃ²ÎÊı
+	 * è®¾ç½®é…ç½®å‚æ•°
 	 * @param pageListener
 	 * @param pageConfig
 	 * @param url
@@ -265,7 +265,7 @@ public class PageControl  {
 		this.setUrl(url);
 	}
 	/**
-	 * ÉèÖÃ·µ»ØURLµÄÑùÊ½
+	 * è®¾ç½®è¿”å›URLçš„æ ·å¼
 	 * @param url
 	 */
 	private void setUrl(String url) {
@@ -279,7 +279,7 @@ public class PageControl  {
 	}
 
 	/**
-	 * ·µ»Øµ±Ç°Ò³Âë
+	 * è¿”å›å½“å‰é¡µç 
 	 * @return
 	 */
 	public int getCurrentPage() {
@@ -287,16 +287,16 @@ public class PageControl  {
 	}
 
 	/**
-	 * ·µ»Ø"µ±Ç°Ò³Âë"HTML
+	 * è¿”å›"å½“å‰é¡µç "HTML
 	 * @return
-	 * <font face=ËÎÌå size=2>µ±Ç°µÚNÒ³</font>
+	 * <font face=å®‹ä½“ size=2>å½“å‰ç¬¬Né¡µ</font>
 	 */
 	public String getCurrentPageHTML() {
-		return "<font face=ËÎÌå size=2> µ±Ç°µÚ" + this.currentPage + "Ò³</font>";
+		return "<font face=å®‹ä½“ size=2> å½“å‰ç¬¬" + this.currentPage + "é¡µ</font>";
 	}
 
 	/**
-	 * Éú³É²¢·µ»Ø¡°Ìø×ª¡±µÄHTML±êÇ©
+	 * ç”Ÿæˆå¹¶è¿”å›â€œè·³è½¬â€çš„HTMLæ ‡ç­¾
 	 * @return
 	 */
 	public String getPageForwardHTML() {
@@ -304,11 +304,11 @@ public class PageControl  {
 			this.countPage = getCountPage();
 
 		StringBuffer sb = new StringBuffer("");
-		sb.append("<font face='ËÎÌå' size='2'>Ìø×ªµ½</font>");
+		sb.append("<font face='å®‹ä½“' size='2'>è·³è½¬åˆ°</font>");
 		sb
 				.append("<input id='pageto' onkeydown='on_pageKeydown()' name=pageto type=text size='2' style='border:1px solid #EEE6D0; width: 30; height: 16'>");
 		sb
-				.append("<font face='ËÎÌå' size='2'>Ò³&nbsp;<button onclick='on_pageClick()' style='font-size:12px;width: 25; height: 20'>GO</button>");
+				.append("<font face='å®‹ä½“' size='2'>é¡µ&nbsp;<button onclick='on_pageClick()' style='font-size:12px;width: 25; height: 20'>GO</button>");
 		sb.append("</font>");
 		sb.append("\n<script type='text/javascript'>\n");
 		sb.append("function on_pageKeydown()\n");
@@ -316,13 +316,13 @@ public class PageControl  {
 		sb.append("function on_pageClick()");
 		sb.append("{var page = pageto.value;");
 		sb.append("if(page=='')");
-		sb.append("{alert('ÄúÊäÈëÊı¾İ²»ºÏ·¨£¡');}");
+		sb.append("{alert('æ‚¨è¾“å…¥æ•°æ®ä¸åˆæ³•ï¼');}");
 		sb.append("else if(isNaN(page)) {");
-		sb.append("alert('ÄúÊäÈëÊı¾İ²»ºÏ·¨£¡');}");
+		sb.append("alert('æ‚¨è¾“å…¥æ•°æ®ä¸åˆæ³•ï¼');}");
 		sb.append("else if(page>");
 		sb.append(this.countPage);
 		sb.append("||page<=0)");
-		sb.append("{alert('ÄúÊäÈëÊı¾İ²»ºÏ·¨£¡');}");
+		sb.append("{alert('æ‚¨è¾“å…¥æ•°æ®ä¸åˆæ³•ï¼');}");
 		sb.append("else\t{\twindow.location.href='");
 		sb.append(this.url);
 		sb.append(this.connector);
@@ -347,7 +347,7 @@ public class PageControl  {
 		}
 	}
 	/**
-	 * ½«REQUESTÖĞµÄParameter·â×°³ÉURLµÄQueryString
+	 * å°†REQUESTä¸­çš„Parameterå°è£…æˆURLçš„QueryString
 	 * @param request
 	 * @param url
 	 * @return

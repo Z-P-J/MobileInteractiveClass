@@ -25,7 +25,7 @@ public class AdminAction extends BaseAction {
         admin.setA_email(email);
         admin.setA_phone(phone);
         adminDAO.addAdmin(admin);
-        this.setMessage("²Ù×÷³É¹¦");
+        this.setMessage("æ“ä½œæˆåŠŸ");
         this.setPath("adminManage.action");
         return "success";
     }
@@ -39,7 +39,7 @@ public class AdminAction extends BaseAction {
 
     public String adminDel() {
         adminDAO.delAdmin(userId);
-        this.setMessage("É¾³ı³É¹¦");
+        this.setMessage("åˆ é™¤æˆåŠŸ");
         this.setPath("adminManage.action");
         return "success";
     }
@@ -54,7 +54,7 @@ public class AdminAction extends BaseAction {
         String phone = request.getParameter("phone");
         AdminDAO dao = DAOFactory.getAdminDAO();
         if (dao.checkPwd(username, oldpwd) != true) {
-            this.message = URLEncoder.encode("Ô­Ê¼ÃÜÂë´íÎó,ĞŞ¸ÄÊ§°Ü£¡", "UTF-8");
+            this.message = URLEncoder.encode("åŸå§‹å¯†ç é”™è¯¯,ä¿®æ”¹å¤±è´¥ï¼", "UTF-8");
             return "fail";
         }
 
@@ -67,8 +67,8 @@ public class AdminAction extends BaseAction {
             //response.sendRedirect("../admin/AdminList.jsp");
             return "success";
         } else {
-            this.message = URLEncoder.encode("±à¼­¹ÜÀíÔ±³ö´í£¡ÇëÁªÏµ¹ÜÀíÔ±£¡", "UTF-8");
-            //response.sendRedirect("../admin/OpResult.jsp?op=default&ret=false&words="+URLEncoder.encode("±à¼­¹ÜÀíÔ±³ö´í£¡ÇëÁªÏµ¹ÜÀíÔ±", "UTF-8"));
+            this.message = URLEncoder.encode("ç¼–è¾‘ç®¡ç†å‘˜å‡ºé”™ï¼è¯·è”ç³»ç®¡ç†å‘˜ï¼", "UTF-8");
+            //response.sendRedirect("../admin/OpResult.jsp?op=default&ret=false&words="+URLEncoder.encode("ç¼–è¾‘ç®¡ç†å‘˜å‡ºé”™ï¼è¯·è”ç³»ç®¡ç†å‘˜", "UTF-8"));
             return "fail";
         }
 

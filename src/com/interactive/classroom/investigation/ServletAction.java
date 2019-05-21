@@ -140,7 +140,8 @@ public class ServletAction extends BaseHttpServlet {
         } else {
             //如果是新查询
             InvestigationDao dao = new InvestigationDao();
-            jsonObj = dao.getRecord(bean);
+            String type = request.getParameter("type");
+            jsonObj = dao.getRecord(bean, type);
             session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
         }
         jsonObj.put("user_id", userId);
@@ -157,6 +158,7 @@ public class ServletAction extends BaseHttpServlet {
         HttpSession session = request.getSession();
         String id = request.getParameter("id");
         String index = request.getParameter("index");
+        String type = request.getParameter("type");
 
         String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
@@ -191,7 +193,7 @@ public class ServletAction extends BaseHttpServlet {
                 //如果没有就重新查询一次
                 Log.d(getClass().getName(), "[getRecordView]没有就重新查询一次。");
                 InvestigationDao dao = new InvestigationDao();
-                jsonObj = dao.getRecord(bean);
+                jsonObj = dao.getRecord(bean, type);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
                 jsonObj.put("action", bean.getAction());
@@ -202,7 +204,7 @@ public class ServletAction extends BaseHttpServlet {
         } else {
             Log.d(getClass().getName(), "[getRecordView]existsResult=0，重新查询");
             InvestigationDao dao = new InvestigationDao();
-            jsonObj = dao.getRecord(bean);
+            jsonObj = dao.getRecord(bean, type);
             jsonObj.put("user_id", userId);
             jsonObj.put("user_name", userName);
             jsonObj.put("action", bean.getAction());
