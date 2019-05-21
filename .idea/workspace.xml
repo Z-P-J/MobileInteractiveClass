@@ -9,33 +9,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/AdminAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/AdminAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/LinkAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/LinkAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dto/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dto/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/pager/PageControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/pager/PageControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/sql/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/sql/ConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/sql/SQLCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/sql/SQLCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/vote/dao/VoteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/vote/dao/VoteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/server.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/all.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/investigation/core/all.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/investigation/core/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/core/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/investigation/core/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/investigation/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/investigation/main/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/admin_top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/admin_top.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vote/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/vote/main/index.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
     <manually-removed-from-ignored>
@@ -55,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+            <state relative-caret-position="418">
+              <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -751,7 +725,7 @@
       <workItem from="1558363230907" duration="3079000" />
       <workItem from="1558409665844" duration="1494000" />
       <workItem from="1558438147450" duration="588000" />
-      <workItem from="1558451597841" duration="6421000" />
+      <workItem from="1558451597841" duration="6660000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -855,7 +829,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="287118000" />
+    <option name="totallyTimeSpent" value="287357000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -868,7 +842,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.24530831" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1279,8 +1252,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+        <state relative-caret-position="418">
+          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
         </state>
       </provider>
     </entry>
