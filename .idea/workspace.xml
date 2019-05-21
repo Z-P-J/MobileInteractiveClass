@@ -9,18 +9,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/SurveyManageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/SurveyManageAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/survey/css/Admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/survey/css/Admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
     <manually-removed-from-ignored>
@@ -37,24 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3876">
-              <caret line="204" column="51" selection-start-line="204" selection-start-column="51" selection-end-line="204" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/SurveyManageAction.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -73,13 +44,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/investigation/core/list.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="394">
               <caret line="44" column="63" lean-forward="true" selection-start-line="44" selection-start-column="63" selection-end-line="44" selection-end-column="63" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sql/survey.sql">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -238,7 +223,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js" />
         <option value="$PROJECT_DIR$/web/homework/core/list.jsp" />
@@ -289,6 +273,7 @@
         <option value="$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" />
         <option value="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -317,6 +302,11 @@
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -411,7 +401,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sql" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -603,7 +593,7 @@
       <workItem from="1558232136470" duration="10658000" />
       <workItem from="1558319103042" duration="3651000" />
       <workItem from="1558363230907" duration="3079000" />
-      <workItem from="1558409665844" duration="176000" />
+      <workItem from="1558409665844" duration="602000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -696,11 +686,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557842840841</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update the survey">
+      <created>1558410011699</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1558410011699</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278791000" />
+    <option name="totallyTimeSpent" value="279217000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -755,19 +752,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update the survey" />
+    <option name="LAST_COMMIT_MESSAGE" value="update the survey" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyStatis.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1520">
-          <caret line="80" column="12" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/SysConfig.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/survey/admin/upload.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -1135,6 +1123,16 @@
           <caret line="44" column="63" lean-forward="true" selection-start-line="44" selection-start-column="63" selection-end-line="44" selection-end-column="63" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/survey.sql">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
