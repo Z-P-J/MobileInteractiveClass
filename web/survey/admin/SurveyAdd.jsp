@@ -15,8 +15,9 @@
 <div class=nav><a href=admin_main.jsp>桌面</a>»问卷添加
     <hr>
 </div>
-<form name="from1" action="<%=basePath%>surveyManage/addSurvey.do?op=AddSurvey" method="post"
+<form name="from1" action="<%=basePath%>surveyManage/addSurvey.do?op=AddSurvey&Survey_type=1" method="post"
       onSubmit="return CheckForm();">
+<%--    <input name="Survey_type" id="Survey_type" type="hidden" value="1">--%>
     <table width="585" border="0" cellspacing="0" cellpadding="0" class="table">
         <tr>
             <th>问卷添加</th>

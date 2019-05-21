@@ -21,8 +21,8 @@ public class SurveyDAOimpl implements SurveyDAO {
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO survey( s_name, s_desc, s_author,s_img,  s_createDate,"
-				+ "s_password, s_isOpen, s_expireDate, s_isAudited,  s_usehits"
-				+ ") VALUES( ?, ?, ?, ?, ?,?, ?,?, ?, ?)";
+				+ "s_password, s_isOpen, s_expireDate, s_isAudited,  s_usehits, s_type"
+				+ ") VALUES( ?, ?, ?, ?, ?,?, ?,?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, survey.getSName());
@@ -37,6 +37,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 					.getTime()));
 			pstmt.setBoolean(9, survey.getSIsAudited());
 			pstmt.setLong(10, survey.getSUsehits());
+			pstmt.setString(11, survey.getsType());
 
 			return pstmt.executeUpdate() == 1 ? true : false;
 

@@ -1,9 +1,15 @@
-﻿function SubQuestion() {
+﻿/**
+ * @return {boolean}
+ */
+function SubQuestion() {
     if (document.forms[0].qHead.value.length === 0) {
         alert("请输入完整的问题内容");
         document.forms[0].qhead.focus();
         return false;
+    } else if (document.getElementById("selector").style.display === "none") {
+        return true;
     } else {
+
         var Answers = document.getElementsByName("Answer");
         var Answer = Answers[0].value;
         var Answer_2 = document.forms[0].Answer;
@@ -49,7 +55,7 @@ function MoreAnswer(type) {
 
     switch (type) {
         case "AX":
-            alert("AAAAAAAAAAAAAAAAAAAAAAAA");
+            // alert("AAAAAAAAAAAAAAAAAAAAAAAA");
             break;
         case "DX":
         case "FX":

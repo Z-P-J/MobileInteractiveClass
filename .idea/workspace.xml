@@ -9,22 +9,23 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="">
+    <list default="true" id="25218d7c-321a-48e4-8f2b-6da9c013721c" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/QuestionAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/QuestionAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/struts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/SurveyManageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/ctrl/SurveyManageAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/assets/survey/css/Admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/survey/css/Admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/SurveyShow.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/SurveyShow.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
-    <ignored path="web/WEB-INF/lib/" />
+    <manually-removed-from-ignored>
+      <directory path="web/WEB-INF/lib/" />
+    </manually-removed-from-ignored>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,86 +38,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/survey/SurveyShow.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="628">
-              <caret line="185" column="63" selection-start-line="185" selection-start-column="56" selection-end-line="185" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="70" column="51" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/struts.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="106" column="51" selection-start-line="106" selection-start-column="51" selection-end-line="106" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="48" column="89" selection-start-line="48" selection-start-column="89" selection-end-line="48" selection-end-column="89" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="150" column="89" selection-start-line="150" selection-start-column="89" selection-end-line="150" selection-end-column="89" />
-              <folding>
-                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="161" column="15" selection-start-line="161" selection-start-column="15" selection-end-line="161" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="81" column="55" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Question.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
-              <folding>
-                <element signature="e#1127#1128#0" expanded="true" />
-                <element signature="e#1151#1152#0" expanded="true" />
-                <element signature="e#1361#1362#0" expanded="true" />
-                <element signature="e#1385#1386#0" expanded="true" />
-                <element signature="e#1482#1483#0" expanded="true" />
-                <element signature="e#1508#1509#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="3876">
+              <caret line="204" column="51" selection-start-line="204" selection-start-column="51" selection-end-line="204" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -124,8 +49,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+            <state relative-caret-position="171">
+              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/SurveyManageAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="608">
+              <caret line="41" column="19" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/investigation/core/list.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="44" column="63" lean-forward="true" selection-start-line="44" selection-start-column="63" selection-end-line="44" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="361">
+                <caret line="19" column="80" selection-start-line="19" selection-start-column="80" selection-end-line="19" selection-end-column="80" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -133,8 +97,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1605">
-              <caret line="187" column="25" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
+            <state relative-caret-position="95">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/DAOFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <folding>
+                <element signature="e#161#162#0" expanded="true" />
+                <element signature="e#194#195#0" expanded="true" />
+                <element signature="e#241#242#0" expanded="true" />
+                <element signature="e#276#277#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -153,13 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>file_id</find>
-      <find>getId()</find>
-      <find>get_record_view</find>
-      <find>get_homework_detail</find>
-      <find>uploaded_homeworks</find>
-      <find>sortRecord1</find>
-      <find>get_uploaded_files</find>
       <find>sortRecord</find>
       <find>export_button</find>
       <find>exportRecord</find>
@@ -183,6 +173,13 @@
       <find>gid</find>
       <find>OpResult</find>
       <find>as_re</find>
+      <find>jquer</find>
+      <find>flex</find>
+      <find>button</find>
+      <find>ul</find>
+      <find>q_type</find>
+      <find>selector</find>
+      <find>Survey_isPassword</find>
     </findStrings>
     <replaceStrings>
       <replace>databaseName=&quot;my_test&quot;</replace>
@@ -227,12 +224,12 @@
       <dir>D:\Programming\MobileInteractiveClass\src</dir>
       <dir>D:\Programming\MobileInteractiveClass\src\com</dir>
       <dir>D:\Programming\MobileInteractiveClass\src\com\interactive\classroom</dir>
-      <dir>D:\Programming\MobileInteractiveClass\web</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\investigation</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\assets</dir>
       <dir>D:\Programming\MobileInteractiveClass</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\survey</dir>
       <dir>D:\Programming\MobileInteractiveClass\src\com\iWen</dir>
+      <dir>D:\Programming\MobileInteractiveClass\web</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -241,10 +238,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/web/homework/core/homework_list.jsp" />
-        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/homework/homework_list.js" />
@@ -258,7 +251,6 @@
         <option value="$PROJECT_DIR$/web/survey/admin/ShowSheet.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/upload.jsp" />
         <option value="$PROJECT_DIR$/src/com/iWen/survey/sql/SQLCommand.java" />
-        <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java" />
         <option value="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" />
         <option value="$PROJECT_DIR$/web/survey/admin/admin_index.jsp" />
@@ -269,7 +261,6 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/struts.xml" />
         <option value="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" />
         <option value="$PROJECT_DIR$/web/survey/userReg.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/FriendLinkAdmin.jsp" />
         <option value="$PROJECT_DIR$/web/survey/admin/FriendLinkAdd.jsp" />
@@ -283,15 +274,21 @@
         <option value="$PROJECT_DIR$/web/survey/common/succeed.jsp" />
         <option value="$PROJECT_DIR$/web/survey/userLogin.jsp" />
         <option value="$PROJECT_DIR$/src/com/iWen/survey/ctrl/QuestionAction.java" />
-        <option value="$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js" />
         <option value="$PROJECT_DIR$/web/survey/SurveyShow.jsp" />
-        <option value="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" />
-        <option value="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" />
-        <option value="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" />
         <option value="$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java" />
         <option value="$PROJECT_DIR$/src/struts.xml" />
         <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java" />
         <option value="$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp" />
+        <option value="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" />
+        <option value="$PROJECT_DIR$/web/assets/survey/css/Admin.css" />
+        <option value="$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp" />
+        <option value="$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp" />
+        <option value="$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js" />
+        <option value="$PROJECT_DIR$/src/com/iWen/survey/ctrl/SurveyManageAction.java" />
+        <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" />
+        <option value="$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java" />
+        <option value="$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -304,7 +301,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
-    <option name="width" value="980" />
+    <option name="width" value="979" />
     <option name="height" value="1090" />
   </component>
   <component name="ProjectView">
@@ -312,6 +309,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -394,13 +392,19 @@
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -415,7 +419,7 @@
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30186608" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -595,7 +599,11 @@
       <workItem from="1557928243317" duration="9047000" />
       <workItem from="1557972740613" duration="8230000" />
       <workItem from="1558066586004" duration="17913000" />
-      <workItem from="1558148661986" duration="8817000" />
+      <workItem from="1558148661986" duration="9018000" />
+      <workItem from="1558232136470" duration="10658000" />
+      <workItem from="1558319103042" duration="3651000" />
+      <workItem from="1558363230907" duration="3079000" />
+      <workItem from="1558409665844" duration="176000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -692,7 +700,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261026000" />
+    <option name="totallyTimeSpent" value="278791000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -705,9 +713,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.3036193" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865952" visible="true" weight="0.2386059" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -717,7 +724,7 @@
       <window_info id="Web" order="7" sideWeight="0.5013405" side_tool="true" weight="0.2774799" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32841823" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5522788" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.44235924" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -751,41 +758,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/OpResult.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/ShowSheet.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1886">
-          <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/ShowSheets.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="63" column="71" selection-start-line="63" selection-start-column="71" selection-end-line="63" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyAdmin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyEdit.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-694">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyStatis.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1520">
@@ -844,17 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="205" column="64" selection-start-line="205" selection-start-column="35" selection-end-line="205" selection-end-column="64" />
-          <folding>
-            <element signature="e#5594#5595#0" expanded="true" />
-            <element signature="e#5639#5640#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -990,13 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="19" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -1008,13 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
           <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="38" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/investigation/core/list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="35" column="61" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -1032,19 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/DAOFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-          <folding>
-            <element signature="e#161#162#0" expanded="true" />
-            <element signature="e#194#195#0" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#276#277#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/QuestionAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-152">
@@ -1052,64 +986,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="150" column="89" selection-start-line="150" selection-start-column="89" selection-end-line="150" selection-end-column="89" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="161" column="15" selection-start-line="161" selection-start-column="15" selection-end-line="161" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/survey/SurveyShow.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="628">
+        <state relative-caret-position="3515">
           <caret line="185" column="63" selection-start-line="185" selection-start-column="56" selection-end-line="185" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="70" column="51" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="81" column="55" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/struts.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
+        <state relative-caret-position="2014">
           <caret line="106" column="51" selection-start-line="106" selection-start-column="51" selection-end-line="106" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurveyAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1349">
+          <caret line="81" column="55" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Question.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+        <state relative-caret-position="1178">
+          <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
           <folding>
             <element signature="e#1127#1128#0" expanded="true" />
             <element signature="e#1151#1152#0" expanded="true" />
@@ -1121,17 +1022,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java">
+    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="187" column="25" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
+        <state relative-caret-position="891">
+          <caret line="50" column="64" lean-forward="true" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp">
+    <entry file="file://$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="69" column="155" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="155" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyEdit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-523">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3059">
+          <caret line="161" column="50" selection-start-line="161" selection-start-column="43" selection-end-line="161" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/survey/css/Admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1900">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3876">
+          <caret line="204" column="51" selection-start-line="204" selection-start-column="51" selection-end-line="204" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/SurveyManageAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="41" column="19" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyAdd.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
-          <caret line="48" column="89" selection-start-line="48" selection-start-column="89" selection-end-line="48" selection-end-column="89" />
+          <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="361">
+            <caret line="19" column="80" selection-start-line="19" selection-start-column="80" selection-end-line="19" selection-end-column="80" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/DAOFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding>
+            <element signature="e#161#162#0" expanded="true" />
+            <element signature="e#194#195#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dto/Survey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/investigation/core/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="44" column="63" lean-forward="true" selection-start-line="44" selection-start-column="63" selection-end-line="44" selection-end-column="63" />
         </state>
       </provider>
     </entry>

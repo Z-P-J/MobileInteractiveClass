@@ -67,7 +67,6 @@
                 out.println("</ul><br/>");
                 break;
             case 5:
-
                 out.println("<textarea name='answer" + q.getQId() + "' rows=4 cols=40 onpropertychange='this.style.posHeight=this.scrollHeight'></textarea>");
                 out.println("</ul><br/>");
                 break;
