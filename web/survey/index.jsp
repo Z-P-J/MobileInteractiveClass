@@ -4,7 +4,7 @@
 <%
     ConfigDAO cdao = DAOFactory.getConfigDAO();
     Config cfg = cdao.findConfig();
-    SurveyDAO sdao = DAOFactory.getSurveyDAO();
+    SurveyDAO sdao = DAOFactory.getSurveyDAO(request.getParameter("type"));
     List<Survey> slist = sdao.listVisitableSurvey();
     List<Survey> shlist = sdao.listVisitableSurvey(OrderConst.UsehitsDesc);
 %>

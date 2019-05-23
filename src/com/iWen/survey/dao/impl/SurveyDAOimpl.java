@@ -16,6 +16,20 @@ import java.util.List;
 public class SurveyDAOimpl implements SurveyDAO {
 	private List<Survey> list_survey = null;
 
+	private String type;
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public SurveyDAOimpl() {
+		this.type = "";
+	}
+
+	public SurveyDAOimpl(String type) {
+		this.type = type;
+	}
+
 	@Override
 	public boolean addSurvey(Survey survey) {
 		Connection conn = ConnectionFactory.getConnection();
@@ -80,7 +94,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 				survey.setSExpireDate(rs.getDate("s_expiredate"));
 				survey.setSIsAudited(rs.getBoolean("s_isaudited"));
 				survey.setSUsehits(rs.getLong("s_usehits"));
-
+				survey.setsType(rs.getString("s_type"));
 				return survey;
 			} else {
 				return null;
@@ -99,7 +113,11 @@ public class SurveyDAOimpl implements SurveyDAO {
 	@Override
 	public List<Survey> listAllSurvey(String order) {
 		SQLCommand cmd = new SQLCommand();
-		RowSet rs = cmd.queryRowSet("select * from survey order by " + order);
+		String sql = "select * from survey ";
+		if (!type.isEmpty()) {
+			sql +=  "where s_type='" + type + "' ";
+		}
+		RowSet rs = cmd.queryRowSet(sql + "order by " + order);
 		List<Survey> list = new ArrayList<Survey>();
 		Survey survey;
 		try {
@@ -116,6 +134,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 				survey.setSExpireDate(rs.getDate("s_expiredate"));
 				survey.setSIsAudited(rs.getBoolean("s_isaudited"));
 				survey.setSUsehits(rs.getLong("s_usehits"));
+				survey.setsType(rs.getString("s_type"));
 				list.add(survey);
 			}
 
@@ -136,7 +155,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 		String sql = "UPDATE survey "
 				+ "SET s_name=?, s_desc=?, s_author=?, s_img=?,  s_createDate=?,"
 				+ " s_password=?, s_isOpen=?, s_expireDate=?, "
-				+ "s_isAudited=?,s_usehits=? " + "WHERE s_id=?";
+				+ "s_isAudited=?,s_usehits=?,s_type=? " + "WHERE s_id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, survey.getSName());
@@ -152,7 +171,8 @@ public class SurveyDAOimpl implements SurveyDAO {
 			pstmt.setBoolean(9, survey.getSIsAudited());
 			pstmt.setLong(10, survey.getSUsehits());
 			pstmt.setLong(11, survey.getSId());
-			return pstmt.executeUpdate() == 1 ? true : false;
+			pstmt.setString(12, survey.getsType());
+			return pstmt.executeUpdate() == 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -168,7 +188,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 	@Override
     public List<Survey> doSelect(int recordStart, int sizePage,
                                  PageConfig pageConfig) {
-		List<Survey> newlist = new ArrayList<Survey>();
+		List<Survey> newlist = new ArrayList<>();
 		if (this.list_survey == null) {
 			if ("front_end".equals(pageConfig.getAction())) {
 				list_survey = this.listVisitableSurvey();
@@ -209,9 +229,13 @@ public class SurveyDAOimpl implements SurveyDAO {
 
 	@Override
 	public List<Survey> listVisitableSurvey(String order) {
-		String sql = "select * from survey where  s_isOpen ='1' and s_isAudited=1 and s_expiredate>='"
+		String sql = "select * from survey where s_isOpen ='1' and s_isAudited=1 ";
+		if (!type.isEmpty()) {
+			sql += "s_type='" + type + "' ";
+		}
+ 		sql += ("and s_expiredate>='"
 				+ new java.sql.Date(new java.util.Date().getTime())
-				+ "' order by " + order;
+				+ "' order by " + order);
 		SQLCommand cmd = new SQLCommand();
 		RowSet rs = cmd.queryRowSet(sql);
 		List<Survey> list = new ArrayList<Survey>();
@@ -230,6 +254,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 				survey.setSExpireDate(rs.getDate("s_expiredate"));
 				survey.setSIsAudited(rs.getBoolean("s_isaudited"));
 				survey.setSUsehits(rs.getLong("s_usehits"));
+				survey.setsType(rs.getString("s_type"));
 				list.add(survey);
 			}
 			return list;

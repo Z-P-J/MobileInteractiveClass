@@ -3,6 +3,7 @@
 <%@ page import="com.iWen.survey.dto.Survey" %>
 <%@ page import="com.iWen.survey.dao.SurveyDAO" %>
 <%@ page import="com.iWen.survey.pager.*" %>
+<%@ page import="com.iWen.survey.dao.impl.SurveyDAOimpl" %>
 <jsp:useBean id="pageConfig" class="com.iWen.survey.pager.PageConfig"></jsp:useBean>
 <jsp:setProperty property="request" name="pageConfig" value="<%=request %>"/>
 <%
@@ -10,7 +11,8 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/survey/";
 %>
 <%
-    SurveyDAO dao = DAOFactory.getSurveyDAO();
+    SurveyDAOimpl dao = (SurveyDAOimpl)DAOFactory.getSurveyDAO();
+    dao.setType(request.getParameter("type"));
     PageControl pc = new PageControl(dao, pageConfig, "SurveyAudi.jsp");
     pc.setSizePage(20);
     List<Survey> sList = pc.getRecord();

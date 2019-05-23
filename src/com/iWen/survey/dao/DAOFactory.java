@@ -11,6 +11,10 @@ public class DAOFactory {
 		return new SurveyDAOimpl();
 	}
 
+	public static SurveyDAOimpl getSurveyDAO(String type) {
+		return new SurveyDAOimpl(type);
+	}
+
 	public static QuestionDAO getQuestionDAO() {
 		return new QuestionDAOimpl();
 	}

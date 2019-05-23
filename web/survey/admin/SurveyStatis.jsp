@@ -4,12 +4,14 @@
 <%@ page import="com.iWen.survey.dao.SurveyDAO" %>
 <%@ page import="com.iWen.survey.pager.*" %>
 <%@ page import="com.iWen.survey.util.*" %>
+<%@ page import="com.iWen.survey.dao.impl.SurveyDAOimpl" %>
 
 <jsp:useBean id="pageConfig" class="com.iWen.survey.pager.PageConfig"></jsp:useBean>
 <jsp:setProperty property="request" name="pageConfig" value="<%=request %>"/>
 
 <%
-    SurveyDAO dao = DAOFactory.getSurveyDAO();
+    SurveyDAOimpl dao = (SurveyDAOimpl)DAOFactory.getSurveyDAO();
+    dao.setType(request.getParameter("type"));
     PageControl pc = new PageControl(dao, pageConfig, "SurveyStatis.jsp");
     pc.setSizePage(20);
     List<Survey> sList = pc.getRecord();

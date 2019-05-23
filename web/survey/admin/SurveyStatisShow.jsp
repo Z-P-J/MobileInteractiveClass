@@ -2,11 +2,13 @@
 <%@ page import="com.iWen.survey.dao.*" %>
 <%@ page import="com.iWen.survey.dto.*" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="com.iWen.survey.dao.impl.SurveyDAOimpl" %>
 
 
 <%
     long sid = Long.valueOf(request.getParameter("sid"));
-    SurveyDAO sdao = DAOFactory.getSurveyDAO();
+    SurveyDAOimpl sdao = (SurveyDAOimpl)DAOFactory.getSurveyDAO();
+    sdao.setType(request.getParameter("type"));
     Survey survey = sdao.findSurvey(sid);
     QuestionDAO qdao = DAOFactory.getQuestionDAO();
     List<Question> qlist = qdao.listAllQuestion(sid);

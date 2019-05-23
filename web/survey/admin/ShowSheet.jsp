@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@ page import="com.iWen.survey.dao.*" %>
 <%@ page import="com.iWen.survey.dto.*" %>
+<%@ page import="com.iWen.survey.dao.impl.SurveyDAOimpl" %>
 
 <%
     String sid = request.getParameter("sid");
@@ -9,7 +10,8 @@
     ConfigDAO cdao = DAOFactory.getConfigDAO();
     Config cfg = cdao.findConfig();
 
-    SurveyDAO sdao = DAOFactory.getSurveyDAO();
+    SurveyDAOimpl sdao = (SurveyDAOimpl)DAOFactory.getSurveyDAO(request.getParameter("type"));
+    sdao.setType(request.getParameter("type"));
     Survey survey = sdao.findSurvey(Long.valueOf(sid));
 
 

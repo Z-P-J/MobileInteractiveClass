@@ -7,7 +7,7 @@
 <%
     ConfigDAO cdao = DAOFactory.getConfigDAO();
     Config cfg = cdao.findConfig();
-    SurveyDAO dao = DAOFactory.getSurveyDAO();
+    SurveyDAO dao = DAOFactory.getSurveyDAO(request.getParameter("type"));
     pageConfig.setAction("front_end");
     PageControl pc = new PageControl(dao, pageConfig, "Survey_list.jsp");
     pc.setSizePage(20);

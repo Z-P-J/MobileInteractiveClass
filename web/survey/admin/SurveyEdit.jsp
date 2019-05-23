@@ -2,14 +2,16 @@
 <%@ page import="com.iWen.survey.dao.*" %>
 <%@ page import="com.iWen.survey.dto.Survey" %>
 <%@ page import="com.iWen.survey.util.*" %>
+<%@ page import="com.iWen.survey.dao.impl.SurveyDAOimpl" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/survey/";
 %>
 <%
     String Survey_id = request.getParameter("sid");
-    SurveyDAO surveydao = DAOFactory.getSurveyDAO();
-    Survey survey = surveydao.findSurvey(Long.valueOf(Survey_id));
+    SurveyDAOimpl dao = (SurveyDAOimpl) DAOFactory.getSurveyDAO();
+    dao.setType(request.getParameter("type"));
+    Survey survey = dao.findSurvey(Long.valueOf(Survey_id));
 %>
 <html>
 <head>
