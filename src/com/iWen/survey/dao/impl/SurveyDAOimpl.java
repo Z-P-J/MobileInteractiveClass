@@ -162,16 +162,15 @@ public class SurveyDAOimpl implements SurveyDAO {
 			pstmt.setString(2, survey.getSDesc());
 			pstmt.setString(3, survey.getSAuthor());
 			pstmt.setString(4, survey.getSImg());
-			pstmt.setDate(5, new java.sql.Date(survey.getSCreateDate()
-					.getTime()));
+			pstmt.setDate(5, new java.sql.Date(survey.getSCreateDate().getTime()));
 			pstmt.setString(6, survey.getSPassword());
 			pstmt.setBoolean(7, survey.getSIsOpen());
-			pstmt.setDate(8, new java.sql.Date(survey.getSExpireDate()
-					.getTime()));
+			pstmt.setDate(8, new java.sql.Date(survey.getSExpireDate().getTime()));
 			pstmt.setBoolean(9, survey.getSIsAudited());
 			pstmt.setLong(10, survey.getSUsehits());
-			pstmt.setLong(11, survey.getSId());
-			pstmt.setString(12, survey.getsType());
+			pstmt.setString(11, survey.getsType());
+			pstmt.setLong(12, survey.getSId());
+
 			return pstmt.executeUpdate() == 1;
 
 		} catch (SQLException e) {
@@ -180,9 +179,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 		} finally {
 			SQLCommand.close(pstmt);
 			SQLCommand.close(conn);
-
 		}
-
 	}
 
 	@Override

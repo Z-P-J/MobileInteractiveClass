@@ -11,8 +11,8 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/survey/";
 %>
 <%
-    SurveyDAOimpl dao = (SurveyDAOimpl)DAOFactory.getSurveyDAO();
-    dao.setType(request.getParameter("type"));
+    String type = request.getParameter("type");
+    SurveyDAOimpl dao = DAOFactory.getSurveyDAO(type);
     PageControl pc = new PageControl(dao, pageConfig, "SurveyAudi.jsp");
     pc.setSizePage(20);
     List<Survey> sList = pc.getRecord();
@@ -34,26 +34,42 @@
 
     <link rel="stylesheet" type="text/css" href="../../assets/survey/css/Admin.css">
     <script language="JavaScript" src="../../assets/survey/js/Func.js"></script>
+    <script type="text/javascript" src="../../assets/survey/js/jquery-1.7.2.js"></script>
     <script language="javascript">window.onload = tableFix;</script>
     <script language="javascript">
+        function replaceAll(str, oldStr, newStr) {
+            var reg = new RegExp( oldStr , "g" );
+            return str.replace(reg, newStr);
+        }
         function audit(sid) {
-            if (confirm('问卷通过审核之后就不能再被编辑了，问卷即正式生效了，你确定通过审核吗？') == true) {
-                window.location = '<%=basePath%>surveyManage/surveyAudi.do?sid=' + sid + '&op=SurveyAudi&audit=true';
-
+            var type = $("#Survey_type").val();
+            var msg = '问卷通过审核之后就不能再被编辑了，问卷即正式生效了，你确定通过审核吗？';
+            if (type === "vote") {
+                msg = replaceAll(msg, "问卷", "投票");
+            }
+            if (confirm(msg) === true) {
+                window.location = '<%=basePath%>surveyManage/surveyAudi.do?sid=' + sid + '&op=SurveyAudi&audit=true&type=' + type;
             }
         }
 
         function unaudit(sid) {
-            if (confirm('反审核之后就可以编辑该问卷，但是编辑问卷极有可能破坏数据完整性，在没有系统管理员的指导下，我们强烈建议您不要执行此操作。您确定要执行此操作吗？') == true) {
-
-                window.location = '<%=basePath%>surveyManage/surveyAudi.do?sid=' + sid + '&op=SurveyAudi&audit=false';
-                alert('您执行了反审核操作，为了保证系统数据完整性，请立即执行问卷统计模块中的对应问卷的"结果清零"操作！');
+            var type = $("#Survey_type").val();
+            var msg = '反审核之后就可以编辑该问卷，但是编辑问卷极有可能破坏数据完整性，在没有系统管理员的指导下，我们强烈建议您不要执行此操作。您确定要执行此操作吗？';
+            var alertMsg = '您执行了反审核操作，为了保证系统数据完整性，请立即执行问卷统计模块中的对应问卷的"结果清零"操作！';
+            if (type === "vote") {
+                msg = replaceAll(msg, "问卷", "投票");
+                alertMsg = replaceAll(alertMsg, "问卷", "投票");
+            }
+            if (confirm(msg) === true) {
+                window.location = '<%=basePath%>surveyManage/surveyAudi.do?sid=' + sid + '&op=SurveyAudi&audit=false&type=' + type;
+                alert(alertMsg);
             }
         }
     </script>
 </head>
 
-<body>
+<body id="body">
+<input name="Survey_type" id="Survey_type" type="hidden" value="<%=type%>">
 <div class=nav><a href=admin_main.jsp>桌面</a>»问卷审核
     <hr>
 </div>
@@ -96,4 +112,12 @@
     </tbody>
 </table>
 </body>
+<script>
+    if ($("#Survey_type").val() === "vote") {
+        var html = $("#body").html();
+        // var reg = new RegExp( '问卷' , "g" );
+        // html = html.replace(reg, "投票");
+        $("#body").html(replaceAll(html, "问卷", "投票"));
+    }
+</script>
 </html>

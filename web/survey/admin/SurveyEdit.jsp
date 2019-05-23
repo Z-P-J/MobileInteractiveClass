@@ -8,9 +8,9 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/survey/";
 %>
 <%
+    String type = request.getParameter("type");
     String Survey_id = request.getParameter("sid");
-    SurveyDAOimpl dao = (SurveyDAOimpl) DAOFactory.getSurveyDAO();
-    dao.setType(request.getParameter("type"));
+    SurveyDAOimpl dao = DAOFactory.getSurveyDAO(type);
     Survey survey = dao.findSurvey(Long.valueOf(Survey_id));
 %>
 <html>
@@ -18,6 +18,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script language="JavaScript" src="../../assets/survey/js/Func.js"></script>
     <script language="javascript">window.onload = tableFix;</script>
+    <script type="text/javascript" src="../../assets/survey/js/jquery-1.7.2.js"></script>
     <link rel="stylesheet" href="../../assets/survey/css/Admin.css" type="text/css"/>
     <script language="javascript" type="text/javascript" src="../../assets/survey/js/Date.js"></script>
     <script type="text/javascript">
@@ -26,11 +27,11 @@
             alert(words);
     </script>
 </head>
-<body>
+<body id="body">
 <div id="admin_surveyAdd_main">
-    <form name="from1" action="<%=basePath%>surveyManage/editSurvey.do?op=EditSurvey" method="post"
+    <form name="from1" action="<%=basePath%>surveyManage/editSurvey.do?op=EditSurvey&type=<%=type%>" method="post"
           onSubmit="return CheckForm();">
-
+        <input name="Survey_type" id="Survey_type" type="hidden" value="<%=type%>">
         <table width="585" border="0" cellspacing="0" cellpadding="0" class="table">
             <tr>
                 <th>问卷编辑</th>
@@ -90,7 +91,12 @@
 <script>
     document.forms[0].Survey_name.value = "<%=survey.getSName().replace("\"","\\\"") %>";
     document.forms[0].Survey_author.value = "<%=survey.getSAuthor().replace("\"","\\\"") %>";
-
+    if ($("#Survey_type").val() === "vote") {
+        var html = $("#body").html();
+        // var reg = new RegExp( '问卷' , "g" );
+        // html = html.replace(reg, "投票");
+        $("#body").html(replaceAll(html, "问卷", "投票"));
+    }
 </script>
 <%=survey.getSImg() == null || "".equals(survey.getSImg()) ? "" : "<script>document.forms[0].Survey_isImg.click();</script>" %>
 <%=survey.getSPassword() == null || "".equals(survey.getSPassword()) ? "" : "<script>document.forms[0].Survey_isPassword.click();</script>" %>

@@ -15,7 +15,7 @@ import java.util.Date;
 public class SurveyManageAction extends BaseAction {
 
     public String AddSurvey() {
-        SurveyDAO surveydao = DAOFactory.getSurveyDAO();
+        SurveyDAO surveydao = DAOFactory.getSurveyDAO(request.getParameter("type"));
         Survey survey = new Survey();
         survey.setSName(StringUtil.encodeString(request
                 .getParameter("Survey_name")));
@@ -78,7 +78,7 @@ public class SurveyManageAction extends BaseAction {
     public String EditSurvey() {
         SurveyDAO surveydao = DAOFactory.getSurveyDAO();
         String sid = request.getParameter("Survey_id");
-        Survey survey = surveydao.findSurvey(Long.valueOf(request.getParameter("Survey_id")));
+        Survey survey = surveydao.findSurvey(Long.valueOf(sid));
         survey.setSName(StringUtil.encodeString(request.getParameter("Survey_name")));
         survey.setSAuthor(StringUtil.encodeString(request.getParameter("Survey_author")));
         survey.setSDesc(StringUtil.encodeString(request.getParameter("Survey_description")));
