@@ -4,7 +4,7 @@
 <%
     ConfigDAO cdao = DAOFactory.getConfigDAO();
     Config cfg = cdao.findConfig();
-    SurveyDAO sdao = DAOFactory.getSurveyDAO();
+    SurveyDAO sdao = DAOFactory.getSurveyDAO(request.getParameter("type"));
     Survey survey = sdao.findSurvey(Long.valueOf(request.getParameter("sid")));
     QuestionDAO qdao = DAOFactory.getQuestionDAO();
     List<Question> qlist = qdao.listAllQuestion(Long.valueOf(request.getParameter("sid")));
