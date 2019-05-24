@@ -49,11 +49,12 @@ public class UploadServlet extends BaseServlet {
         Log.d(getClass().getName(), "from=" + from);
         HttpSession session = req.getSession();
         String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String renameTo = req.getParameter("rename_to");
-        Log.d(getClass().getName(), "renameTo=" + renameTo);
+        String fileName = req.getParameter("rename_to");
+        Log.d(getClass().getName(), "fileName=" + fileName);
 
         System.out.println(req.getMethod());
         //检查是否为post请求以及是否为多媒体上传
+        ProgressSingleton.put(fileName + "_progress", 0L);
         if ("POST".equalsIgnoreCase(req.getMethod()) && ServletFileUpload.isMultipartContent(req)) {
             System.out.println("--------------------post-------------------------");
             //配置上传参数
@@ -77,6 +78,7 @@ public class UploadServlet extends BaseServlet {
             }
 
             System.out.println("1111111111111111111111111");
+
             try {
                 //解析请求内容提取上传文件数据
                 System.out.println("121221211312212122122121");
@@ -92,13 +94,14 @@ public class UploadServlet extends BaseServlet {
                         //处理不在表单中的字段
                         if (!fileItem.isFormField()) {
                             System.out.println("333333333333333333333333333333333");
-                            String fileName;
-                            if (renameTo != null && !renameTo.isEmpty()) {
-                                fileName = renameTo;
-                            } else {
-                                fileName = new File(fileItem.getName()).getName();
-                            }
-                            ProgressSingleton.put(fileName + "_size", fileItem.getSize());
+
+//                            if (renameTo != null && !renameTo.isEmpty()) {
+//                                fileName = renameTo;
+//                            } else {
+//                                fileName = new File(fileItem.getName()).getName();
+//                            }
+                            long fileSize = fileItem.getSize();
+                            ProgressSingleton.put(fileName + "_size", fileSize);
                             Log.d(getClass().getName(), "key=" + (fileName + "_size"));
                             Log.d(getClass().getName(), "size=" + fileItem.getSize());
                             String filePath = uploadPath + File.separator + fileName;
@@ -126,8 +129,9 @@ public class UploadServlet extends BaseServlet {
                                 out.write(buffer);
                             }
                             //当文件上传完成之后，从单例中移除此次上传的状态信息
-                            ProgressSingleton.remove(fileName + "_size");
-                            ProgressSingleton.remove(fileName + "_progress");
+//                            ProgressSingleton.remove(fileName + "_size");
+//                            ProgressSingleton.remove(fileName + "_progress");
+                            ProgressSingleton.put(fileName + "_progress", fileSize);
                             in.close();
                             out.close();
 
@@ -161,13 +165,14 @@ public class UploadServlet extends BaseServlet {
                         }
                     }
                 }
-                onEnd(req, resp, null, "base/export/export_result.jsp", "上传文件成功！", 0, "record_list.jsp");
+//                onEnd(req, resp, null, "base/export/export_result.jsp", "上传文件成功！", 0, "record_list.jsp");
                 return;
             } catch (Exception e) {
                 e.printStackTrace();
                 req.setAttribute("message", "出错了！" + e.getMessage());
             }
         }
-        onEnd(req, resp, null, "base/export/export_result.jsp", "上传文件失败！", 0, "record_list.jsp");
+        ProgressSingleton.put(fileName + "_progress", -1L);
+//        onEnd(req, resp, null, "base/export/export_result.jsp", "上传文件失败！", 0, "record_list.jsp");
     }
 }

@@ -52,7 +52,8 @@
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form class="form-horizontal" role="form" method="post" name="page_form" id="page_form"  method="post" action="../../UploadServlet?homework_id=<%=homeworkId%>&from=homework" enctype="multipart/form-data">
+								<iframe name="frame1" frameborder="0" height="0" width="0" style="display: none"></iframe>
+								<form class="form-horizontal" target="frame1" role="form" method="post" name="page_form" id="page_form"  method="post" action="../../UploadServlet?homework_id=<%=homeworkId%>&from=homework" enctype="multipart/form-data">
 									<input type="hidden" id="action" name="action" value="get_record" />
 									<input type="hidden" id="homework_id" name="homework_id" value="<%=homeworkId%>" />
 									<input type="hidden" id="exist_resultset" name="exist_resultset" value="<%=existResultset%>" />

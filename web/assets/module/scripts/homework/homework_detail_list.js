@@ -340,32 +340,42 @@ var Page = function () {
             $('#page_form').submit();
             // var fill = document.getElementById('fill');
             document.getElementById('wrapper').style.display = "block";
+            var renameTo = $("#rename_to").val();
             var t = setInterval(function(){
                 $.ajax({
-                    url: '../../ProgressServlet?filename=' + $("#rename_to").val(),
+                    url: '../../ProgressServlet?filename=' + renameTo,
                     type: 'POST',
                     dataType: 'text',
                     data: {
-                        filename: $("#rename_to").val()
+                        filename: renameTo
                     },
                     success: function (responseText) {
                         var data = JSON.parse(responseText);
                         //前台更新进度
                         var progress = parseInt((data.progress / data.size) * 100);
                         console.log("progress=" + progress);
-
-                        // fill.innerHTML = progress + '%';
                         $("#pg").val(progress);
-                        $("#uploading").html("上传中..." + progress + "%");
-                        if (progress >= 99) {
-                            document.getElementById('wrapper').style.display = "none";
+
+                        if (progress >= 0 && progress < 100) {
+                            $("#uploading").html("上传中..." + progress + "%");
+                        } else if (progress === 100) {
+                            $("#uploading").html("上传完成！");
+                            alert("上传完成！");
+                        } else if (progress < 0) {
+                            $("#uploading").html("上传失败！");
+                            alert("上传失败！");
                         }
 
-                        if(progress >= 99) clearInterval(t);
+                        if(progress === 100 || progress < 0) {
+                            document.getElementById('wrapper').style.display = "none";
+                            window.location.reload();
+                            clearInterval(t);
+                        }
 
                     },
                     error: function(){
                         console.log("error");
+                        $("#uploading").html("上传失败！");
                     }
                 });
             }, 500);

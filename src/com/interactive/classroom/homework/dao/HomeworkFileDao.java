@@ -185,7 +185,7 @@ public class HomeworkFileDao {
         List jsonList = new ArrayList();
 //		ylx_db query_db = new ylx_db(bean.getDbName());
         //构造sql语句，根据传递过来的查询条件参数
-        String sql = "insert into " + TABLE_NAME + "(homework_id,uploader_id,uploader_name,file_name,file_size,upload_time,download_link) values(" + bean.getHomeworkId() + ",'" + bean.getUploaderId() + ",'" + bean.getUploaderName() + "','" + bean.getFileName() +
+        String sql = "insert into " + TABLE_NAME + "(homework_id,uploader_id,uploader_name,file_name,file_size,upload_time,download_link) values(" + bean.getHomeworkId() + ",'" + bean.getUploaderId() + "','" + bean.getUploaderName() + "','" + bean.getFileName() +
                 "'," + bean.getFileSize() + ",'" + bean.getUploadTime() + "','" + bean.getDownloadLink() + "')";
         Log.d(getClass().getName(), "sql=" + sql);
 
