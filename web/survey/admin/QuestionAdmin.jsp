@@ -87,7 +87,7 @@
 <%--<div id=qEditor></div>--%>
 <div id="add_question" style="margin: 0 auto; display: flex;">
     <iframe name="frame1" frameborder="0" height="0" width="0" style="display: none"></iframe>
-    <form name="form1" target="frame1" id="form1" action="<%=basePath%>question/addQuestion.do?op=AddQuestion&type=<%=type%>" method="post"
+    <form name="form1" id="form1" action="<%=basePath%>question/addQuestion.do?op=AddQuestion&type=<%=type%>" method="post"
           style="margin: 0 auto">
         <input type="hidden" value=<%=request.getParameter("sid") %>  name="sid">
         <input type="hidden" value="" name="qBody" id="qBody">
@@ -187,14 +187,14 @@
 
     function delQuestion(qid) {
         if (confirm("确定要删除这个题目吗？") == true)
-            window.location = "<%=basePath%>question/delQuestion.do?&qid=" + qid + "&sid=<%=request.getParameter("sid") %>";
+            window.location.replace("<%=basePath%>question/delQuestion.do?type=" + surveyType+ "&qid=" + qid + "&sid=<%=request.getParameter("sid") %>");
     }
 
     function showType(typecode, type) {
         //typecode: dx--单选 ;fx--复选;
         // document.getElementById("qEditor").innerHTML = document.getElementById(typecode).innerHTML;
-        var basePath = $("#base_path").val();
-        document.getElementById("form1").action = basePath + "&type=" + type;
+        // var basePath = $("#base_path").val();
+        document.getElementById("form1").action = $("#form1").attr("action") + "&qType=" + type;
         // alert(document.getElementById("form1").action);
         if (type === 5) {
             // document.getElementById("selector").style.display = "none";
@@ -230,7 +230,7 @@
             var form1 = document.getElementById("form1");
             // form1.action = "";
             form1.submit();
-            parent.document.getElementById('iframe').contentWindow.location.reload();
+            // parent.document.getElementById('iframe').contentWindow.location.reload();
         }
     }
 

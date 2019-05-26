@@ -437,7 +437,7 @@ var Page = function () {
         html = html + "																<span>文件大小：" + fileSize + "</span><p>";
         html = html + "																<span>上传者：" + uploaderId + "</span><p>";
         html = html + "																<span>上传时间：" + uploadTime + "</span><p>";
-        html = html + "																<span>下载链接：<a href='" + downloadLink + "'>点击下载</a></span><p>";
+        html = html + "																<span>下载链接：<a href='" + downloadLink + "' onClick='return confirm(\"确定下载名为“" + fileName + "”的文件?\");'>点击下载</a></span><p>";
         if (me == "1") {
             $("#has_upload").val("1");
             html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";

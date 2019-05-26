@@ -3,7 +3,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/survey/";
     String type = request.getParameter("type");
-    String action = basePath + "surveyManage/addSurvey.do?op=AddSurvey&Survey_type=" + type;
+    String action = basePath + "surveyManage/addSurvey.do?op=AddSurvey&type=" + type;
 %>
 <html>
 <head>
@@ -34,8 +34,9 @@
         </tr>
         <tr>
             <td>问卷发起人(单位)</td>
-            <td><input name="Survey_author" type="text" size="50"></td>
-            <td width="374"><span class="R">*</span> 问卷发起人，此问卷的所有单位</td>
+            <td><input disabled name="Survey_author" id="survey_author" type="text" size="50"
+                       value="<%=session.getAttribute("user_name")%>"></td>
+            <td width="374"><span class="R">*</span> 问卷发起人，此问卷的发布者，不可更改</td>
         </tr>
         <tr>
             <td>问卷描述</td>
@@ -95,7 +96,7 @@
 <script>
     if ($("#Survey_type").val() === "vote") {
         var html = $("#body").html();
-        var reg = new RegExp( '问卷' , "g" );
+        var reg = new RegExp('问卷', "g");
         html = html.replace(reg, "投票");
         $("#body").html(html);
     }

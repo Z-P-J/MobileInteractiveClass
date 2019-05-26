@@ -1,4 +1,16 @@
-﻿/**
+﻿
+
+function contains(arr, obj) {
+    var i = arr.length;
+    while (i--) {
+        if (arr[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
  * @return {boolean}
  */
 function SubQuestion() {
@@ -15,9 +27,9 @@ function SubQuestion() {
         var Answer_2 = document.forms[0].Answer;
         var result = 0;
         //验证
-        for (var i = 0; i < Answers.length; i = i + 1) {
+        for (var i = 0; i < Answers.length; i++) {
 
-            if (Answers[i].value.indexOf('&$$&') != -1) {
+            if (Answers[i].value.indexOf('&$$&') !== -1) {
 
                 alert("选项不能包含系统保留字符串 '&$$&'");
                 return false;
@@ -25,12 +37,17 @@ function SubQuestion() {
 
         }
 
+        var list = [];
+        var flag = false;
         //拼接
         for (var i = 1; i < Answer_2.length; i = i + 1) {
             var Answer_g = document.forms[0].Answer[i].value;
             //alert(Answer);
             //alert(Answer.indexOf('&$$&'));
-
+            if (!flag && contains(list, Answer_g)) {
+                flag = true;
+            }
+            list.push(Answer_g);
             if (Answer === '' || Answer_g === '') {
                 alert("请输入完整所有的问题选项");
                 return false;
@@ -40,6 +57,10 @@ function SubQuestion() {
             result = result + "," + 0;
         }
 
+        if (flag) {
+            alert("请勿有重复的选项");
+            return false;
+        }
         var type = document.forms[0].Answer.type;
         //alert(type);
         if (type !== null && type == "textarea") {

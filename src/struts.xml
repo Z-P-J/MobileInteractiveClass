@@ -49,7 +49,7 @@
       <package name="questionAction" extends="base" namespace="/survey/question">
          <action name="addQuestion" class="com.iWen.survey.ctrl.QuestionAction" method="AddQuestion">
             <result name="fail" type="redirect">/survey/admin/OpResult.jsp?op=Question&amp;ret=false</result>
-            <result name="success" type="redirect"> /survey/admin/OpResult.jsp?op=Question&amp;ret=true&amp;sid=${sid}</result>
+            <result name="success" type="redirect"> /survey/admin/OpResult.jsp?op=Question&amp;ret=true&amp;sid=${sid}&amp;type=${type}</result>
          </action>
 
           <action name="delQuestion" class="com.iWen.survey.ctrl.QuestionAction" method="DelQuestion">
@@ -71,20 +71,20 @@
 
        <package name="surveyManage" extends="base" namespace="/survey/surveyManage">
          <action name="addSurvey" class="com.iWen.survey.ctrl.SurveyManageAction" method="AddSurvey">
-            <result name="success" type="redirect">/survey/admin/OpResult.jsp?op=SurveyAdd&amp;ret=true</result>
+            <result name="success" type="redirect">/survey/admin/OpResult.jsp?op=SurveyAdd&amp;ret=true&amp;type=${type}</result>
             <result name="fail" type="redirect"> /survey/admin/OpResult.jsp?op=SurveyAdd&amp;ret=false</result>
          </action>
           <action name="surveyAudi" class="com.iWen.survey.ctrl.SurveyManageAction" method="SurveyAudi">
-            <result name="success" >/survey/admin/SurveyAudi.jsp</result>
+            <result name="success" >/survey/admin/SurveyAudi.jsp?type=${type}</result>
             <result name="fail" type="redirect" > /survey/admin/OpResult.jsp?op=SurveyAudi&amp;ret=false</result>
          </action>
          <action name="editSurvey" class="com.iWen.survey.ctrl.SurveyManageAction" method="EditSurvey">
-            <result name="success" >/survey/admin/SurveyAdmin.jsp</result>
+            <result name="success" >/survey/admin/SurveyAdmin.jsp?type=${type}</result>
             <result name="fail" type="redirect" > /survey/admin/OpResult.jsp?op=SurveyEdit&amp;ret=false</result>
          </action>
 
            <action name="delSurvey" class="com.iWen.survey.ctrl.SurveyManageAction" method="DelSurvey">
-            <result name="success" >/survey/admin/SurveyAdmin.jsp</result>
+            <result name="success" >/survey/admin/SurveyAdmin.jsp?type=${type}</result>
             <result name="fail" type="redirect"> /survey/admin/OpResult.jsp?op=SurveyDel&amp;ret=false</result>
          </action>
       </package>

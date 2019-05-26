@@ -9,16 +9,19 @@ public class QuestionAction extends BaseAction {
 
     private String sid;
 
+    private String type = "";
+
     public String AddQuestion() {
         sid = request.getParameter("sid");
-        String type = request.getParameter("type");
+        type = request.getParameter("type");
+        String qType = request.getParameter("qType");
         String qhead = StringUtil.encodeString(request.getParameter("qHead"));
         String qbody = StringUtil.encodeString(request.getParameter("qBody"));
         String qresult = StringUtil.encodeString(request.getParameter("qResult"));
         String qimg = request.getParameter("qImg");
         Question question = new Question();
         question.setSurvey(Long.valueOf(sid));
-        question.setQType(Long.valueOf(type));
+        question.setQType(Long.valueOf(qType));
         question.setQHead(qhead);
         question.setQBody(qbody);
         question.setQResult(qresult);
@@ -47,11 +50,12 @@ public class QuestionAction extends BaseAction {
     }
 
     public String DelQuestion() {
+        type = request.getParameter("type");
         String sid = request.getParameter("sid");
         String qid = request.getParameter("qid");
         QuestionDAO dao = DAOFactory.getQuestionDAO();
         boolean ret = dao.delQuestion(Long.valueOf(qid));
-        if (ret == true) {
+        if (ret) {
 //		response.sendRedirect("../admin/QuestionAdmin.jsp?sid="+sid);
             return "success";
         } else {
@@ -61,6 +65,7 @@ public class QuestionAction extends BaseAction {
     }
 
     public String EditQuestion() {
+        type = request.getParameter("type");
         String qhead = StringUtil.encodeString(request.getParameter("qHead"));
         String qbody = StringUtil.encodeString(request.getParameter("qBody"));
         String qresult = StringUtil.encodeString(request.getParameter("qResult"));
@@ -102,4 +107,11 @@ public class QuestionAction extends BaseAction {
         this.sid = sid;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

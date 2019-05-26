@@ -23,7 +23,7 @@
     if ("SurveyAdd".equals(operation)) {
         if ("true".equals(result)) {
             out.print("<script>alert('添加问卷操作已成功！')</script>");
-            out.print("<script>window.location='SurveyAdmin.jsp'</script>");
+            out.print("<script>window.location='../admin/SurveyAdmin.jsp" + request.getParameter("type") + "'</script>");
         } else
             out.print("添加问卷操作失败，请联系管理员！");
 
@@ -53,7 +53,7 @@
     } else if ("Question".equals(operation)) {
         if ("true".equals(result)) {
 
-            out.print("<script>alert('操作已成功！');window.location='../admin/QuestionAdmin.jsp?sid=" + request.getParameter("sid") + "';</script>");
+            out.print("<script>alert('操作已成功！');window.location.replace('../admin/QuestionAdmin.jsp?type=" + request.getParameter("type") + "&sid=" + request.getParameter("sid") + "');</script>");
 
         } else
             out.print("处理“问题”操作失败，请联系管理员！");

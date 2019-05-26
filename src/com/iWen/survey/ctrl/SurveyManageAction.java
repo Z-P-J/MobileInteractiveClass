@@ -14,8 +14,11 @@ import java.util.Date;
 
 public class SurveyManageAction extends BaseAction {
 
+    private String type;
+
     public String AddSurvey() {
-        SurveyDAO surveydao = DAOFactory.getSurveyDAO(request.getParameter("type"));
+        type = request.getParameter("type");
+        SurveyDAO surveydao = DAOFactory.getSurveyDAO(type);
         Survey survey = new Survey();
         survey.setSName(StringUtil.encodeString(request
                 .getParameter("Survey_name")));
@@ -57,6 +60,7 @@ public class SurveyManageAction extends BaseAction {
     }
 
     public String SurveyAudi() {
+        type = request.getParameter("type");
         Boolean audit = Boolean.valueOf(request.getParameter("audit"));
         SurveyDAO surveydao = DAOFactory.getSurveyDAO();
         Survey survey = surveydao.findSurvey(Long.valueOf(request.getParameter("sid")));
@@ -76,6 +80,7 @@ public class SurveyManageAction extends BaseAction {
     }
 
     public String EditSurvey() {
+        type = request.getParameter("type");
         SurveyDAO surveydao = DAOFactory.getSurveyDAO();
         String sid = request.getParameter("Survey_id");
         Survey survey = surveydao.findSurvey(Long.valueOf(sid));
@@ -114,6 +119,7 @@ public class SurveyManageAction extends BaseAction {
     }
 
     public String DelSurvey() {
+        type = request.getParameter("type");
         Long surveyId = Long.valueOf(request.getParameter("sid"));
         SurveyDAO surveydao = DAOFactory.getSurveyDAO();
         boolean ret1 = surveydao.delSurvey(surveyId);
@@ -136,4 +142,11 @@ public class SurveyManageAction extends BaseAction {
         }
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
