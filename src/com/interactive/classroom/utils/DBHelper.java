@@ -37,12 +37,7 @@ public class DBHelper {
 
     private DBHelper() {
         try {
-            Class.forName(DRIVER_NAME);
-        } catch (ClassNotFoundException classnotfoundexception) {
-            classnotfoundexception.printStackTrace();
-        }
-        try {
-            a = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            a = getConnection();
             statement = a.createStatement();
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
@@ -55,6 +50,16 @@ public class DBHelper {
         }
 
         return dbHelper;
+    }
+
+    public static Connection getConnection() {
+        try {
+            Class.forName(DRIVER_NAME);
+            return DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void close() {

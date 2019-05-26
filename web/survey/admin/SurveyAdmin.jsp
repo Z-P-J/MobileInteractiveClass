@@ -10,7 +10,8 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/survey/";
 %>
 <%
-    SurveyDAOimpl dao = DAOFactory.getSurveyDAO(request.getParameter("type"));
+    String type = request.getParameter("type");
+    SurveyDAOimpl dao = DAOFactory.getSurveyDAO(type);
     PageControl pc = new PageControl(dao, pageConfig, "SurveyAdmin.jsp");
     pc.setSizePage(20);
 
@@ -33,15 +34,10 @@
 
     <link rel="stylesheet" type="text/css" href="../../assets/survey/css/Admin.css">
     <script language="JavaScript" src="../../assets/survey/js/Func.js"></script>
-    <script language="javascript">window.onload = tableFix;</script>
-    <script type="text/javascript">
-        function DelSurvey(sid) {
-            if (confirm("确定要删除这个问卷吗？") == true)
-                window.location = "<%=basePath%>surveyManage/delSurvey.do?op=DelSurvey&sid=" + sid;
-        }
-    </script>
+    <script type="text/javascript" src="../../assets/survey/js/jquery-1.7.2.js"></script>
 </head>
-<body>
+<body id="body">
+<input name="Survey_type" id="Survey_type" type="hidden" value="<%=type%>">
 <div class=nav><a href=admin_main.jsp>桌面</a>»问卷列表
     <hr>
 </div>
@@ -85,4 +81,28 @@
     </tbody>
 </table>
 </body>
+<script>
+    window.onload = tableFix;
+
+    function replaceAll(str, oldStr, newStr) {
+        var reg = new RegExp( oldStr , "g" );
+        return str.replace(reg, newStr);
+    }
+
+    var type = $("#Survey_type").val();
+    if (type === "vote") {
+        var html = $("#body").html();
+        $("#body").html(replaceAll(html, "问卷", "投票"));
+    }
+
+    function DelSurvey(sid) {
+        var msg = "确定要删除这个问卷吗？";
+        if (type === "vote") {
+            msg = replaceAll(msg, "问卷", "投票");
+        }
+        if (confirm(msg) === true)
+            window.location = "<%=basePath%>surveyManage/delSurvey.do?op=DelSurvey&sid=" + sid;
+    }
+
+</script>
 </html>

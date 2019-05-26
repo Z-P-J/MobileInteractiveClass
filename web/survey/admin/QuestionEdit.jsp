@@ -3,6 +3,7 @@
 <%@ page import="com.iWen.survey.dto.Question" %>
 <%@ page import="com.iWen.survey.dao.QuestionDAO" %>
 <%
+    String type = request.getParameter("type");
     QuestionDAO dao = DAOFactory.getQuestionDAO();
     Question question = dao.findQuestion(Long.valueOf(request.getParameter("qid")));
     System.out.println("question.getQType()=" + question.getQType());
@@ -16,42 +17,16 @@
     <script type="text/javascript" src="../../assets/survey/js/Func.js"></script>
     <script language="javascript">window.onload = tableFix;</script>
     <script type="text/javascript" src="../../assets/survey/js/QuestAdd.js"></script>
-    <script type="text/javascript">
-        function showType(typecode) {
-            // document.getElementById("qEditor").innerHTML = document.getElementById(typecode).innerHTML;
-            // document.getElementById(typecode).setAttribute()
-        }
-
-        function MoreAnswer(type) {
-            switch (type) {
-                case "DX":
-                case "FX":
-                    var ul = document.getElementById("ulAnswer");
-                    var inputTitle = document.createElement("input");
-                    if (type == "DX") {
-                        inputTitle.setAttribute("type", "radio");
-                    } else {
-                        inputTitle.setAttribute("type", "checkbox");
-                    }
-                    var input = document.createElement("input");
-                    var li = document.createElement("li");
-                    input.setAttribute("id", "Answer");
-                    li.appendChild(inputTitle);
-                    li.appendChild(input);
-                    ul.appendChild(li);
-                    break;
-            }
-        }
-    </script>
 </head>
 <body>
-<table class=table cellspacing="0" cellpadding="0">
+<input name="survey_type" id="survey_type" type="hidden" value="<%=type%>">
+<table class=table cellspacing="0" cellpadding="0" style="margin: 0 auto">
     <tr>
         <th>查看题目</th>
         <th></th>
         <th></th>
     </tr>
-    <tr>
+    <tr id="question_type">
         <td>选择题型：</td>
         <td>
             <input disabled name="Question_type" id="qtype_dx" type="radio" value="1" onClick="showType('dx');">单选题
@@ -70,8 +45,8 @@
     </tr>
 </table>
 <div id=qEditor>
-    <div>
-        <form name="form1" action="" method="post">
+    <div style="display: flex">
+        <form name="form1" action="" method="post" style="margin: 0 auto">
             <input type="hidden" value=<%=request.getParameter("sid") %>  name="sid">
             <input type="hidden" value="" name="qBody" id="qBody">
             <input type="hidden" value="" name=qResult id="qResult">
@@ -100,7 +75,7 @@
                 </div>
 
             </div>
-            <div id="button">
+            <div id="button" style="margin: 0 auto; text-align: center">
                 <input type="button" onclick="javascript:history.back();" value="返回">
             </div>
         </form>
@@ -165,6 +140,39 @@
 <%--</div>--%>
 </body>
 <script type="text/javascript">
+    function showType(typecode) {
+        // document.getElementById("qEditor").innerHTML = document.getElementById(typecode).innerHTML;
+        // document.getElementById(typecode).setAttribute()
+    }
+
+    function MoreAnswer(type) {
+        switch (type) {
+            case "DX":
+            case "FX":
+                var ul = document.getElementById("ulAnswer");
+                var inputTitle = document.createElement("input");
+                if (type == "DX") {
+                    inputTitle.setAttribute("type", "radio");
+                } else {
+                    inputTitle.setAttribute("type", "checkbox");
+                }
+                var input = document.createElement("input");
+                var li = document.createElement("li");
+                input.setAttribute("id", "Answer");
+                li.appendChild(inputTitle);
+                li.appendChild(input);
+                ul.appendChild(li);
+                break;
+        }
+    }
+</script>
+<script type="text/javascript">
+
+    var surveyType = $("#survey_type").val();
+    if (surveyType === "vote") {
+        $("#question_type").hide();
+    }
+
     var qType = $("#q_type").val();
     var qHead = $("#q_head").val();
     var qBody = $("#q_body").val();

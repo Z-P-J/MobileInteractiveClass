@@ -6,7 +6,6 @@
 %>
 <%
     String id = request.getParameter("id");
-    String existResultset = request.getParameter("exist_resultset");
     String type = request.getParameter("type");
 %>
 <!DOCTYPE html>
@@ -59,5 +58,5 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE SCRIPTS -->
-<script type="text/javascript" src="../../assets/module/scripts/investigation/investigation_list.js"></script>
+<script type="text/javascript" src="../../assets/survey/js/survey_index.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

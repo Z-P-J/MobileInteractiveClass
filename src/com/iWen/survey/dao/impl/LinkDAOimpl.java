@@ -15,11 +15,13 @@ import java.util.List;
 
 public class LinkDAOimpl implements LinkDAO {
 
+    private static final String TABLE_NAME = "survey_link";
+
     @Override
     public boolean addLink(Link link) {
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement pstmt = null;
-        String sql = "INSERT INTO Link( l_url, l_name, l_img, l_info, l_isLock, l_addtime)"
+        String sql = "INSERT INTO " + TABLE_NAME + "( l_url, l_name, l_img, l_info, l_isLock, l_addtime)"
                 + "VALUES( ?, ?, ?, ?, ?, ?)";
         try {
             pstmt = conn.prepareStatement(sql);
@@ -48,13 +50,13 @@ public class LinkDAOimpl implements LinkDAO {
     @Override
     public boolean delLink(Long linkId) {
         SQLCommand cmd = new SQLCommand();
-        return -1 != cmd.executeSQL("delete from link where l_id=" + linkId);
+        return -1 != cmd.executeSQL("delete from " + TABLE_NAME + " where l_id=" + linkId);
     }
 
     @Override
     public Link findLink(Long linkId) {
         SQLCommand cmd = new SQLCommand();
-        RowSet rs = cmd.queryRowSet("select * from link where l_id=" + linkId);
+        RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where l_id=" + linkId);
         Link link = new Link();
         try {
             if (rs.next()) {
@@ -80,7 +82,7 @@ public class LinkDAOimpl implements LinkDAO {
     @Override
     public List<Link> listAllLink() {
         SQLCommand cmd = new SQLCommand();
-        RowSet rs = cmd.queryRowSet("select * from link");
+        RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME);
         List<Link> list = new ArrayList<Link>();
         Link link;
         try {
@@ -111,8 +113,8 @@ public class LinkDAOimpl implements LinkDAO {
     public boolean updateLink(Link link) {
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement pstmt = null;
-        String sql = "	UPDATE Link "
-                + "SET l_url=?, l_name=?, l_img=?, l_info=?, l_isLock=? "
+        String sql = "	UPDATE " + TABLE_NAME
+                + " SET l_url=?, l_name=?, l_img=?, l_info=?, l_isLock=? "
                 + "WHERE l_id=?";
         try {
             pstmt = conn.prepareStatement(sql);

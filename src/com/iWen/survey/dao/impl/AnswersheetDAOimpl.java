@@ -15,13 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnswersheetDAOimpl implements AnswersheetDAO {
+
+    private static final String TABLE_NAME = "survey_answersheet";
+
     private List list_answersheet = null;
 
     @Override
     public boolean addAnswersheet(Answersheet answersheet) {
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement pstmt = null;
-        String sql = "INSERT INTO answersheet(s_id, as_result,"
+        String sql = "INSERT INTO " + TABLE_NAME + "(s_id, as_result,"
                 + "as_postdate,as_userIP) VALUES(?, ?, ?,?)";
         try {
             pstmt = conn.prepareStatement(sql);
@@ -47,7 +50,7 @@ public class AnswersheetDAOimpl implements AnswersheetDAO {
     @Override
     public boolean delAnswersheet(Long answersheetId) {
         SQLCommand cmd = new SQLCommand();
-        return -1 != cmd.executeSQL("delete from answersheet where as_id="
+        return -1 != cmd.executeSQL("delete from " + TABLE_NAME + " where as_id="
                 + answersheetId);
     }
 
@@ -55,7 +58,7 @@ public class AnswersheetDAOimpl implements AnswersheetDAO {
     @Override
     public Answersheet findAnswersheet(Long answersheetId) {
         SQLCommand cmd = new SQLCommand();
-        RowSet rs = cmd.queryRowSet("select * from answersheet where as_id="
+        RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where as_id="
                 + answersheetId);
 
         Answersheet answersheet = new Answersheet();
@@ -82,7 +85,7 @@ public class AnswersheetDAOimpl implements AnswersheetDAO {
     @Override
     public List<Answersheet> listAllAnswersheet(Long surveyId) {
         SQLCommand cmd = new SQLCommand();
-        RowSet rs = cmd.queryRowSet("select * from answersheet where s_id=" + surveyId + " order by as_postdate desc");
+        RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where s_id=" + surveyId + " order by as_postdate desc");
         Answersheet answersheet;
         List<Answersheet> list = new ArrayList<Answersheet>();
         try {
@@ -136,7 +139,7 @@ public class AnswersheetDAOimpl implements AnswersheetDAO {
     @Override
     public boolean delAnswersheets(Long sid) {
         SQLCommand cmd = new SQLCommand();
-        return -1 != cmd.executeSQL("delete from answersheet where s_id="
+        return -1 != cmd.executeSQL("delete from " + TABLE_NAME + " where s_id="
                 + sid);
     }
 

@@ -34,8 +34,9 @@
             <%@include file="../../home/frame/frame_page_header.jsp" %>
             <!-- BEGIN PAGE CONTENT-->
             <!-- ----------------------------------------页面开始，替换这里即可---------------------------------------- -->
-            <div style="margin: 0 auto;  width: 100%; height: 800px">
-                <iframe id="iframe" name="right" src="all.jsp?type=<%=type%>"
+            <div id="div-content" style="margin: 0 auto;  width: 100%; height: 800px">
+<%--                all.jsp--%>
+                <iframe id="iframe" name="right" src="../../survey/admin/SurveyAdmin.jsp?type=<%=type%>"
                         allowtransparency="true" marginwidth='0' marginheight='0' width="100%" height="100%"
                         frameborder="0" scrolling="yes"></iframe>
             </div>

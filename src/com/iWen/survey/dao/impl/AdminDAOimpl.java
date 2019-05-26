@@ -12,21 +12,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminDAOimpl implements AdminDAO{
+public final class AdminDAOimpl implements AdminDAO{
 
+	private static final String TABLE_NAME = "survey_admins";
 
 	@Override
     public boolean addAdmin(Admin admin) {
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement pstmt=null;
-		String sql = "insert into admins(a_user,a_pass,a_email,a_phone) values(?,?,?,?)";
+		String sql = "insert into " + TABLE_NAME + "(a_user,a_pass,a_email,a_phone) values(?,?,?,?)";
 		try {
 			 pstmt = conn.prepareStatement(sql);
 			 pstmt.setString(1, admin.getA_user());
 			 pstmt.setString(2, admin.getA_pass());
 			 pstmt.setString(3, admin.getA_email());
 			 pstmt.setString(4, admin.getA_phone());
-			return pstmt.executeUpdate()==1?true:false;
+			return pstmt.executeUpdate() == 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -42,31 +43,23 @@ public class AdminDAOimpl implements AdminDAO{
 	@Override
 	public boolean checkPwd(String username, String pwd) {
 		SQLCommand cmd=new SQLCommand();
-		String realpwd=cmd.queryScalar("select a_pass from admins where a_user='"+username+"'");
-		if(pwd.equals(realpwd))
-			return true;
-		else
-			return false;
+		String realpwd=cmd.queryScalar("select a_pass from " + TABLE_NAME + " where a_user='"+username+"'");
+		return pwd.equals(realpwd);
 	}
 
 
 	@Override
 	public boolean delAdmin(long a_id) {
 		SQLCommand cmd = new SQLCommand();
-		int ret = cmd.executeSQL("delete from admins where a_id="+a_id);
-		if(ret==1)
-			return true;
-		else
-			return false;
-
-		
+		int ret = cmd.executeSQL("delete from " + TABLE_NAME + " where a_id="+a_id);
+		return ret == 1;
 	}
 
 
 	@Override
 	public Admin findAdmin(long a_id) {
 		SQLCommand cmd = new SQLCommand();
-		RowSet rs = cmd.queryRowSet("select * from admins where a_id="+a_id);
+		RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where a_id="+a_id);
 		Admin admin=new Admin();
 		try {
 			if (rs.next()) {
@@ -87,7 +80,7 @@ public class AdminDAOimpl implements AdminDAO{
 	@Override
 	public Admin findAdmin(String username) {
 		SQLCommand cmd = new SQLCommand();
-		RowSet rs = cmd.queryRowSet("select * from admins where a_user='"+username+"'");
+		RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where a_user='"+username+"'");
 		Admin admin=new Admin();
 		try {
 			if (rs.next()) {
@@ -107,7 +100,7 @@ public class AdminDAOimpl implements AdminDAO{
 	@Override
 	public List listAllAdmin() {
 		SQLCommand cmd=new SQLCommand();
-		RowSet rs=cmd.queryRowSet("select * from admins");
+		RowSet rs=cmd.queryRowSet("select * from " + TABLE_NAME);
 		List<Admin> list=new ArrayList<Admin>();
 		Admin admin;
 		try {
@@ -131,7 +124,7 @@ public class AdminDAOimpl implements AdminDAO{
 	public boolean updateAdmin(Admin admin) {
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement pstmt=null;
-		String sql = "UPDATE admins set a_user=?,a_pass=? ,a_email=?,a_phone=? where a_id=?";
+		String sql = "UPDATE " + TABLE_NAME + " set a_user=?,a_pass=? ,a_email=?,a_phone=? where a_id=?";
 		try {
 			 pstmt = conn.prepareStatement(sql);
 			 pstmt.setString(1, admin.getA_user());
@@ -140,10 +133,9 @@ public class AdminDAOimpl implements AdminDAO{
 			 pstmt.setString(4, admin.getA_phone());
 			 pstmt.setLong(5, admin.getA_id());
 
-			return pstmt.executeUpdate()==1?true:false;
+			return pstmt.executeUpdate() == 1;
 
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 			return false;
 		}finally{

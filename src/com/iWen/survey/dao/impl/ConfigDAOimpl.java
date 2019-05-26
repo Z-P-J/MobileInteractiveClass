@@ -12,12 +12,13 @@ import java.sql.SQLException;
 
 public class ConfigDAOimpl implements ConfigDAO {
 
-	
+	private static final String TABLE_NAME = "survey_config";
+
 	@Override
 	public boolean updateConfig(Config config) {
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement pstmt=null;
-		String sql = "UPDATE config SET c_siteName=?, c_siteURL=?, "
+		String sql = "UPDATE " + TABLE_NAME + " SET c_siteName=?, c_siteURL=?, "
 			+"c_isOpen=?, c_closeWord=? ,copyright=? WHERE id=1";
 		try {
 			 pstmt = conn.prepareStatement(sql);
@@ -27,7 +28,7 @@ public class ConfigDAOimpl implements ConfigDAO {
 			 pstmt.setString(4, config.getCCloseWord());
 			 pstmt.setString(5, config.getCopyright());
 
-			return pstmt.executeUpdate()==1?true:false;
+			return pstmt.executeUpdate() == 1;
 
 		} catch (SQLException e) {
 
@@ -44,7 +45,7 @@ public class ConfigDAOimpl implements ConfigDAO {
 	@Override
 	public Config findConfig() {
 		SQLCommand cmd = new SQLCommand();
-		RowSet rs = cmd.queryRowSet("select * from config where id=1");
+		RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where id=1");
 		Config config =new Config();
 		try {
 			if (rs.next()) {

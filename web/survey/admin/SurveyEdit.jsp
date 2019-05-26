@@ -91,6 +91,12 @@
 <script>
     document.forms[0].Survey_name.value = "<%=survey.getSName().replace("\"","\\\"") %>";
     document.forms[0].Survey_author.value = "<%=survey.getSAuthor().replace("\"","\\\"") %>";
+
+    function replaceAll(str, oldStr, newStr) {
+        var reg = new RegExp( oldStr , "g" );
+        return str.replace(reg, newStr);
+    }
+
     if ($("#Survey_type").val() === "vote") {
         var html = $("#body").html();
         // var reg = new RegExp( '问卷' , "g" );

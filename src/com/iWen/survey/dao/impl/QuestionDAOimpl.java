@@ -16,6 +16,8 @@ import java.util.List;
 
 
 public class QuestionDAOimpl implements QuestionDAO {
+    
+    private static final String TABLE_NAME = "survey_question";
 
     private List<Question> list_question = null;
 
@@ -23,7 +25,7 @@ public class QuestionDAOimpl implements QuestionDAO {
     public boolean addQuestion(Question question) {
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement pstmt = null;
-        String sql = "INSERT INTO question(s_id, q_type,"
+        String sql = "INSERT INTO " + TABLE_NAME + "(s_id, q_type,"
                 + "q_head, q_body, q_result, q_img, q_jdtz, q_order) "
                 + "VALUES(?, ?, ?,?, ?,?,?,?)";
         try {
@@ -53,7 +55,7 @@ public class QuestionDAOimpl implements QuestionDAO {
     @Override
     public boolean delQuestion(Long questionId) {
         SQLCommand cmd = new SQLCommand();
-        return -1 != cmd.executeSQL("delete from question where q_id="
+        return -1 != cmd.executeSQL("delete from " + TABLE_NAME + " where q_id="
                 + questionId);
     }
 
@@ -61,7 +63,7 @@ public class QuestionDAOimpl implements QuestionDAO {
     @Override
     public Question findQuestion(Long questionId) {
         SQLCommand cmd = new SQLCommand();
-        RowSet rs = cmd.queryRowSet("select * from question where q_id="
+        RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where q_id="
                 + questionId);
 
         Question question = new Question();
@@ -102,7 +104,7 @@ public class QuestionDAOimpl implements QuestionDAO {
     public boolean updateQuestion(Question question) {
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement pstmt = null;
-        String sql = "UPDATE question SET s_id=?, "
+        String sql = "UPDATE " + TABLE_NAME + " SET s_id=?, "
                 + "q_type=?, q_head=?, q_body=?, q_result=?, "
                 + "q_img=?, q_jdtz=?, q_order=?"
                 + " WHERE q_id=?";
@@ -137,13 +139,15 @@ public class QuestionDAOimpl implements QuestionDAO {
         List<Question> newlist = new ArrayList<Question>();
         HttpServletRequest request = pageConfig.getRequest();
         Long surveyId = Long.valueOf(request.getParameter("sid"));
-        if (this.list_question == null)
+        if (this.list_question == null) {
             list_question = this.listAllQuestion(surveyId, "desc");
+        }
         for (int i = recordStart; i < recordStart + sizePage; i++) {
-            if (i < list_question.size())
+            if (i < list_question.size()) {
                 newlist.add(list_question.get(i));
-            else
+            } else {
                 break;
+            }
         }
         return newlist;
     }
@@ -153,8 +157,9 @@ public class QuestionDAOimpl implements QuestionDAO {
     public int getCount(PageConfig pageConfig) {
         HttpServletRequest request = pageConfig.getRequest();
         Long surveyId = Long.valueOf(request.getParameter("sid"));
-        if (this.list_question == null)
+        if (this.list_question == null) {
             list_question = this.listAllQuestion(surveyId);
+        }
 
         return list_question.size();
     }
@@ -164,7 +169,7 @@ public class QuestionDAOimpl implements QuestionDAO {
     public boolean delQuestions(Long surveyId) {
         SQLCommand cmd = new SQLCommand();
 
-        return -1 != cmd.executeSQL("delete from question where s_id="
+        return -1 != cmd.executeSQL("delete from " + TABLE_NAME + " where s_id="
                 + surveyId);
 
     }
@@ -173,7 +178,7 @@ public class QuestionDAOimpl implements QuestionDAO {
     @Override
     public List<Question> listAllQuestion(Long surveyId, String ascORdesc) {
         SQLCommand cmd = new SQLCommand();
-        RowSet rs = cmd.queryRowSet("select * from question where s_id="
+        RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where s_id="
                 + surveyId + " order by q_id " + ascORdesc);
         Question question;
         List<Question> list = new ArrayList<Question>();
@@ -212,7 +217,7 @@ public class QuestionDAOimpl implements QuestionDAO {
     @Override
     public List<Question> listQuestions(String WhereClause) {
         SQLCommand cmd = new SQLCommand();
-        RowSet rs = cmd.queryRowSet("select * from question where " + WhereClause);
+        RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where " + WhereClause);
         Question question;
         List<Question> list = new ArrayList<Question>();
         try {

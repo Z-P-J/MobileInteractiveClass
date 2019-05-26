@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SurveyDAOimpl implements SurveyDAO {
+
+	private static final String TABLE_NAME = "survey_all";
+
 	private List<Survey> list_survey = null;
 
 	private String type;
@@ -34,7 +37,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 	public boolean addSurvey(Survey survey) {
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO survey( s_name, s_desc, s_author,s_img,  s_createDate,"
+		String sql = "INSERT INTO " + TABLE_NAME + "( s_name, s_desc, s_author,s_img,  s_createDate,"
 				+ "s_password, s_isOpen, s_expireDate, s_isAudited,  s_usehits, s_type"
 				+ ") VALUES( ?, ?, ?, ?, ?,?, ?,?, ?, ?, ?)";
 		try {
@@ -53,7 +56,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 			pstmt.setLong(10, survey.getSUsehits());
 			pstmt.setString(11, survey.getsType());
 
-			return pstmt.executeUpdate() == 1 ? true : false;
+			return pstmt.executeUpdate() == 1;
 
 		} catch (SQLException e) {
 
@@ -71,14 +74,14 @@ public class SurveyDAOimpl implements SurveyDAO {
 	public boolean delSurvey(Long surveyId) {
 		SQLCommand cmd = new SQLCommand();
 		return -1 != cmd
-				.executeSQL("delete from survey where s_id=" + surveyId);
+				.executeSQL("delete from " + TABLE_NAME + " where s_id=" + surveyId);
 
 	}
 
 	@Override
 	public Survey findSurvey(Long surveyId) {
 		SQLCommand cmd = new SQLCommand();
-		RowSet rs = cmd.queryRowSet("select * from survey where s_id="
+		RowSet rs = cmd.queryRowSet("select * from " + TABLE_NAME + " where s_id="
 				+ surveyId);
 		Survey survey = new Survey();
 		try {
@@ -113,7 +116,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 	@Override
 	public List<Survey> listAllSurvey(String order) {
 		SQLCommand cmd = new SQLCommand();
-		String sql = "select * from survey ";
+		String sql = "select * from " + TABLE_NAME + " ";
 		if (!type.isEmpty()) {
 			sql +=  "where s_type='" + type + "' ";
 		}
@@ -152,8 +155,8 @@ public class SurveyDAOimpl implements SurveyDAO {
 	public boolean updateSurvey(Survey survey) {
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE survey "
-				+ "SET s_name=?, s_desc=?, s_author=?, s_img=?,  s_createDate=?,"
+		String sql = "UPDATE " + TABLE_NAME
+				+ " SET s_name=?, s_desc=?, s_author=?, s_img=?,  s_createDate=?,"
 				+ " s_password=?, s_isOpen=?, s_expireDate=?, "
 				+ "s_isAudited=?,s_usehits=?,s_type=? " + "WHERE s_id=?";
 		try {
@@ -226,7 +229,7 @@ public class SurveyDAOimpl implements SurveyDAO {
 
 	@Override
 	public List<Survey> listVisitableSurvey(String order) {
-		String sql = "select * from survey where s_isOpen ='1' and s_isAudited=1 ";
+		String sql = "select * from " + TABLE_NAME + " where s_isOpen ='1' and s_isAudited=1 ";
 		if (!type.isEmpty()) {
 			sql += "s_type='" + type + "' ";
 		}

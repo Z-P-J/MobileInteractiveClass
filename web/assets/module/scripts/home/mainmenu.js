@@ -62,7 +62,7 @@ function initMenu(json, module) {
 
                             if (module == "investigation" || module == "vote") {
                                 var href = "../../survey/admin/" + json[subIndex].href_link + "?type=" + module;
-                                html = html + "<li id=\"" + subItemId + "\"><a href=\"" + href + "\" target=\"right\"><i class=\"icon-bulb\"></i>" + subItemName + "</a></li>";
+                                html = html + "<li id=\"" + subItemId + "\" onclick=\"change('"+ href +"')\"><a><i class=\"icon-bulb\"></i>" + subItemName + "</a></li>";
                             } else {
                                 var href = "../../" + json[subIndex].file_path + json[subIndex].href_link;
                                 if (json[subIndex].href_link == "")
@@ -81,4 +81,15 @@ function initMenu(json, module) {
         var menuDiv = document.getElementById("sidebar_menu_div");
         menuDiv.appendChild(ul);
     }
+}
+
+function change(href) {
+    var src = $("#iframe").attr("src");
+    if (href === src) {
+        return;
+    }
+    var htmlStr = "<iframe id='iframe' name='right' src='" + href + "'\n" +
+        "                        allowtransparency='true' marginwidth='0' marginheight='0' width='100%' height='100%'\n" +
+        "                        frameborder='0' scrolling='yes'></iframe>"
+    $('#div-content').html(htmlStr);
 }
