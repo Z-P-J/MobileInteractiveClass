@@ -10,8 +10,9 @@
 <jsp:setProperty property="request" name="pageConfig" value="<%=request %>"/>
 
 <%
-    SurveyDAOimpl dao = (SurveyDAOimpl)DAOFactory.getSurveyDAO();
-    dao.setType(request.getParameter("type"));
+    String type = request.getParameter("type");
+    SurveyDAOimpl dao = DAOFactory.getSurveyDAO(type);
+//    dao.setType(request.getParameter("type"));
     PageControl pc = new PageControl(dao, pageConfig, "SurveyStatis.jsp");
     pc.setSizePage(20);
     List<Survey> sList = pc.getRecord();
@@ -28,17 +29,12 @@
     <meta http-equiv="description" content="This is my page">
     <link rel="stylesheet" type="text/css" href="../../assets/survey/css/Admin.css">
     <script language="JavaScript" src="../../assets/survey/js/Func.js"></script>
+    <script type="text/javascript" src="../../assets/survey/js/jquery-1.7.2.js"></script>
     <script language="javascript">window.onload = tableFix;</script>
-    <script type="text/javascript">
-        var words = "<%=StringUtil.encodeString(request.getParameter("words")) %>";
-        if (words != 'null' && words != '') {
-            alert(words);
-        }
-    </script>
-
 </head>
 
-<body>
+<body id="body">
+<input name="survey_type" id="survey_type" type="hidden" value="<%=type%>">
 <div class=nav><a href=admin_main.jsp>桌面</a>»问卷统计
     <hr>
 </div>
@@ -70,8 +66,8 @@
         <td><%=survey.getSIsAudited() ? "<img src='images/on.gif'>" : "<img src='images/off.gif'>" %>
         </td>
         <td>
-            <a href=SurveyStatisShow.jsp?sid=<%=survey.getSId() %>>查看统计</a>||
-            <a href=ShowSheets.jsp?sid=<%=survey.getSId() %>>查看答卷</a>
+            <a href=SurveyStatisShow.jsp?type=<%=type%>&sid=<%=survey.getSId() %>>查看统计</a>||
+            <a href=ShowSheets.jsp?type=<%=type%>&sid=<%=survey.getSId() %>>查看答卷</a>
         </td>
     </tr>
     <%} %>
@@ -83,4 +79,22 @@
     </tbody>
 </table>
 </body>
+<script type="text/javascript">
+
+    function replaceAll(str, oldStr, newStr) {
+        var reg = new RegExp( oldStr , "g" );
+        return str.replace(reg, newStr);
+    }
+
+    var type = $("#survey_type").val();
+    if (type === "vote") {
+        var html = $("#body").html();
+        $("#body").html(replaceAll(html, "问卷", "投票"));
+    }
+
+    var words = "<%=StringUtil.encodeString(request.getParameter("words")) %>";
+    if (words !== 'null' && words !== '') {
+        alert(words);
+    }
+</script>
 </html>

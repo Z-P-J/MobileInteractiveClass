@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author 25714
+ * @author Z-P-J
  * 数据库工具类
  */
 public class DBHelper {
@@ -37,8 +37,7 @@ public class DBHelper {
 
     private DBHelper() {
         try {
-            a = getConnection();
-            statement = a.createStatement();
+            getStatement();
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
         }
@@ -50,6 +49,12 @@ public class DBHelper {
         }
 
         return dbHelper;
+    }
+
+    private Statement getStatement() throws SQLException {
+        a = getConnection();
+        statement = a.createStatement();
+        return statement;
     }
 
     public static Connection getConnection() {
@@ -78,7 +83,7 @@ public class DBHelper {
             if (DEBUG_LEVEL > 0) {
                 Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeQuery:" + s);
             }
-            resultset = statement.executeQuery(s);
+            resultset = getStatement().executeQuery(s);
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
         }
@@ -90,7 +95,7 @@ public class DBHelper {
             if (DEBUG_LEVEL > 0) {
                 Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeUpdate:" + s);
             }
-            statement.executeUpdate(s);
+            getStatement().executeUpdate(s);
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             return null;

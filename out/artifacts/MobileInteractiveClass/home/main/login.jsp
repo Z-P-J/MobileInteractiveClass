@@ -64,7 +64,8 @@
 		<!-- BEGIN LOGIN -->
 		<div class="content">
 			<!-- BEGIN LOGIN FORM -->
-			<form class="login-form" action="../../security_user_control_action?action=login" method="post">
+<%--			"../../security_user_control_action?action=login"--%>
+			<form class="login-form" action="../../Login" method="post">
 				<input type="hidden" id="open_id" name="open_id" value="<%=openId %>"/>
 				<h3 class="form-title">
 					登陆

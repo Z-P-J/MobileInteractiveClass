@@ -111,7 +111,7 @@ public class StatisticDao {
             createTime = "upload_time";
             userId = "uploader_id";
         }
-        if ("user_info".equals(statisticBean.getTableName())) {
+        if ("user_manage".equals(statisticBean.getTableName())) {
             createTime = "register_date";
             userId = "user_id";
         }

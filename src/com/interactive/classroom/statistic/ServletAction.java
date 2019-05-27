@@ -25,7 +25,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 
 /**
- * @author 25714
+ * @author Z-P-J
  */
 public class ServletAction extends BaseHttpServlet {
     /*----------线程需要的信息----------*/

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * @author 25714
+ * @author Z-P-J
  * 封装一些该项目中Servlet中常用函数
  */
 public final class ServletUtil {

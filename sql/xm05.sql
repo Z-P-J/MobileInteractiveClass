@@ -8,13 +8,13 @@
  Source Schema         : my_test
 
  Target Server Type    : MySQL
- Target Server Version : 50099
+ Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 21/05/2019 11:45:58
+ Date: 27/05/2019 23:20:08
 */
 
-SET NAMES utf8;
+SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -58,15 +58,15 @@ CREATE TABLE `document_main`  (
   `attachment13` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `attachment14` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `remark` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `lately_change_time` datetime NULL DEFAULT '1800-01-01 00:00:00',
-  `register_time` datetime NULL DEFAULT '1800-01-01 00:00:00',
-  `change_time` datetime NULL DEFAULT '1800-01-01 00:00:00',
+  `lately_change_time` datetime(0) NULL DEFAULT '1800-01-01 00:00:00',
+  `register_time` datetime(0) NULL DEFAULT '1800-01-01 00:00:00',
+  `change_time` datetime(0) NULL DEFAULT '1800-01-01 00:00:00',
   `register` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `changer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `change_amount` int(11) UNSIGNED NULL DEFAULT 0,
   `doc_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `doc_ver` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -86,8 +86,8 @@ CREATE TABLE `file_comment`  (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `comment_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `score` int(10) NULL DEFAULT NULL,
-  `publish_date` datetime NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  `publish_date` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -107,9 +107,9 @@ CREATE TABLE `file_manage`  (
   `uploader_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `file_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `file_size` int(10) NULL DEFAULT NULL,
-  `upload_time` datetime NULL DEFAULT NULL,
+  `upload_time` datetime(0) NULL DEFAULT NULL,
   `download_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -129,17 +129,17 @@ CREATE TABLE `homework_file_manage`  (
   `uploader_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `file_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `file_size` int(10) NULL DEFAULT NULL,
-  `upload_time` datetime NULL DEFAULT NULL,
+  `upload_time` datetime(0) NULL DEFAULT NULL,
   `download_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `uploader_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of homework_file_manage
 -- ----------------------------
 BEGIN;
-INSERT INTO `homework_file_manage` VALUES (20, 23, '李四', 'BBFlashBack.rar', 100, '2019-05-06 22:50:38', NULL, NULL), (21, 23, '王麻子', '张彭俊_第2周作业.rar', 2697647, '2019-05-07 01:14:37', '../../DownloadServlet?file_name=张彭俊_第2周作业.rar', NULL), (22, 23, 'xxx', '六级准考证.pdf', 87816, '2019-05-07 01:15:36', '../../DownloadServlet?file_name=六级准考证.pdf', NULL), (23, 23, '哈哈哈', '一带一路.docx', 16006, '2019-05-07 01:16:16', '../../DownloadServlet?file_name=一带一路.docx', NULL), (24, 22, 'test', '浅谈石油化工安全.doc', 35328, '2019-05-07 19:27:37', '../../DownloadServlet?file_name=浅谈石油化工安全.doc', NULL), (25, 22, 'Maria', '白色谷歌开机动画(卡刷包-乐橙).zip', 1824317, '2019-05-13 11:02:37', '../../DownloadServlet?file_name=白色谷歌开机动画(卡刷包-乐橙).zip', NULL), (26, 22, 'Tom', '实战Java高并发程序设计@www.java1234.com.pdf', 83894684, '2019-05-13 11:10:16', '../../DownloadServlet?file_name=实战Java高并发程序设计@www.java1234.com.pdf', NULL), (27, 23, '张武', 'XM05-移动互动课堂-概要设计.doc', 1441280, '2019-05-14 09:50:58', '../../DownloadServlet?file_name=XM05-移动互动课堂-概要设计.doc', NULL), (29, 22, 'zhangsan', 'ic_widget_preview2.png', 102251, '2019-05-14 10:53:38', '../../DownloadServlet?file_name=ic_widget_preview2.png', NULL), (30, 22, 'zhangsan', 'background_login (1).png', 510968, '2019-05-14 10:57:12', '../../DownloadServlet?file_name=background_login (1).png', NULL), (55, 23, 'zhangsan', '2017141400000_张三_第二次作业', 41212612, '2019-05-14 17:26:15', '../../DownloadServlet?file_name=2017141400000_张三_第二次作业', NULL);
+INSERT INTO `homework_file_manage` VALUES (20, 23, '李四', 'BBFlashBack.rar', 100, '2019-05-06 22:50:38', NULL, NULL), (21, 23, '王麻子', '张彭俊_第2周作业.rar', 2697647, '2019-05-07 01:14:37', '../../DownloadServlet?file_name=张彭俊_第2周作业.rar', NULL), (22, 23, 'xxx', '六级准考证.pdf', 87816, '2019-05-07 01:15:36', '../../DownloadServlet?file_name=六级准考证.pdf', NULL), (23, 23, '哈哈哈', '一带一路.docx', 16006, '2019-05-07 01:16:16', '../../DownloadServlet?file_name=一带一路.docx', NULL), (24, 22, 'test', '浅谈石油化工安全.doc', 35328, '2019-05-07 19:27:37', '../../DownloadServlet?file_name=浅谈石油化工安全.doc', NULL), (25, 22, 'Maria', '白色谷歌开机动画(卡刷包-乐橙).zip', 1824317, '2019-05-13 11:02:37', '../../DownloadServlet?file_name=白色谷歌开机动画(卡刷包-乐橙).zip', NULL), (26, 22, 'Tom', '实战Java高并发程序设计@www.java1234.com.pdf', 83894684, '2019-05-13 11:10:16', '../../DownloadServlet?file_name=实战Java高并发程序设计@www.java1234.com.pdf', NULL), (27, 23, '张武', 'XM05-移动互动课堂-概要设计.doc', 1441280, '2019-05-14 09:50:58', '../../DownloadServlet?file_name=XM05-移动互动课堂-概要设计.doc', NULL), (58, 23, 'zhangsan', '2017141400000_张三_第二次作业.rar', 37334485, '2019-05-24 23:44:36', '../../DownloadServlet?file_name=2017141400000_张三_第二次作业.rar', 'zhangsan');
 COMMIT;
 
 -- ----------------------------
@@ -152,12 +152,12 @@ CREATE TABLE `homework_manage`  (
   `uploader_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `file_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `file_size` int(10) NULL DEFAULT NULL,
-  `upload_time` datetime NULL DEFAULT NULL,
+  `upload_time` datetime(0) NULL DEFAULT NULL,
   `download_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `deadline` datetime NULL DEFAULT NULL,
+  `deadline` datetime(0) NULL DEFAULT NULL,
   `file_format` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `homework_requirement` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -208,16 +208,16 @@ CREATE TABLE `interactive_classroom_main`  (
   `attachment13` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `attachment14` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `remark` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `lately_change_time` datetime NULL DEFAULT '1800-01-01 00:00:00',
-  `register_time` datetime NULL DEFAULT '1800-01-01 00:00:00',
-  `change_time` datetime NULL DEFAULT '1800-01-01 00:00:00',
+  `lately_change_time` datetime(0) NULL DEFAULT '1800-01-01 00:00:00',
+  `register_time` datetime(0) NULL DEFAULT '1800-01-01 00:00:00',
+  `change_time` datetime(0) NULL DEFAULT '1800-01-01 00:00:00',
   `register` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `changer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `change_amount` int(11) UNSIGNED NULL DEFAULT 0,
   `doc_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `doc_ver` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  PRIMARY KEY USING BTREE (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 84 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of interactive_classroom_main
@@ -236,11 +236,11 @@ CREATE TABLE `investigation_manage`  (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `end_time` datetime NULL DEFAULT NULL,
+  `end_time` datetime(0) NULL DEFAULT NULL,
   `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `create_time` datetime NULL DEFAULT NULL,
+  `create_time` datetime(0) NULL DEFAULT NULL,
   `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -261,10 +261,10 @@ CREATE TABLE `project_core`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `type` int(10) NULL DEFAULT NULL,
-  `limit_time` datetime NULL DEFAULT NULL,
+  `limit_time` datetime(0) NULL DEFAULT NULL,
   `end_tag` int(10) NULL DEFAULT 0,
-  `begin_time` datetime NULL DEFAULT NULL,
-  `end_time` datetime NULL DEFAULT NULL,
+  `begin_time` datetime(0) NULL DEFAULT NULL,
+  `end_time` datetime(0) NULL DEFAULT NULL,
   `executor` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `attachment_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -272,14 +272,14 @@ CREATE TABLE `project_core`  (
   `priority` int(10) NULL DEFAULT NULL,
   `check_tag` int(10) NULL DEFAULT 0,
   `checker` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `check_time` datetime NULL DEFAULT NULL,
+  `check_time` datetime(0) NULL DEFAULT NULL,
   `excel_tag` int(10) NULL DEFAULT 0,
   `gar_tag` int(10) NULL DEFAULT 0,
   `used_tag` int(10) NULL DEFAULT 1,
   `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `create_time` datetime NULL DEFAULT NULL,
+  `create_time` datetime(0) NULL DEFAULT NULL,
   `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -306,22 +306,22 @@ CREATE TABLE `project_file`  (
   `apply_money` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `approval_money` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `group_member` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `start_time` datetime NULL DEFAULT NULL,
-  `end_time` datetime NULL DEFAULT NULL,
+  `start_time` datetime(0) NULL DEFAULT NULL,
+  `end_time` datetime(0) NULL DEFAULT NULL,
   `superior_unit` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `superior_manager` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0.00',
   `attachment_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `open_level` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `check_tag` int(10) NULL DEFAULT 0,
   `checker` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `check_time` datetime NULL DEFAULT NULL,
+  `check_time` datetime(0) NULL DEFAULT NULL,
   `price_alarm_tag` int(10) NULL DEFAULT 0,
   `price_change_tag` int(10) NULL DEFAULT 0,
   `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime NULL DEFAULT NULL,
+  `create_time` datetime(0) NULL DEFAULT NULL,
   `modifier` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `modify_time` datetime NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  `modify_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -342,13 +342,13 @@ CREATE TABLE `project_member`  (
   `member_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `member_role` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `start_time` datetime NULL DEFAULT NULL,
-  `end_time` datetime NULL DEFAULT NULL,
+  `start_time` datetime(0) NULL DEFAULT NULL,
+  `end_time` datetime(0) NULL DEFAULT NULL,
   `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime NULL DEFAULT NULL,
+  `create_time` datetime(0) NULL DEFAULT NULL,
   `modifier` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `modify_time` datetime NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  `modify_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -368,7 +368,7 @@ CREATE TABLE `project_statistic`  (
   `colCount` int(10) NULL DEFAULT NULL,
   `colType` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `colTitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -397,9 +397,9 @@ CREATE TABLE `project_tree`  (
   `menu_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`),
-  INDEX `index` USING BTREE(`FILE_ID`)
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `index`(`FILE_ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 86 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -417,7 +417,7 @@ CREATE TABLE `project_view`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `file_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `role_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 312 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -438,10 +438,10 @@ CREATE TABLE `project_vote`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `type` int(10) NULL DEFAULT NULL,
-  `limit_time` datetime NULL DEFAULT NULL,
+  `limit_time` datetime(0) NULL DEFAULT NULL,
   `end_tag` int(10) NULL DEFAULT 0,
-  `begin_time` datetime NULL DEFAULT NULL,
-  `end_time` datetime NULL DEFAULT NULL,
+  `begin_time` datetime(0) NULL DEFAULT NULL,
+  `end_time` datetime(0) NULL DEFAULT NULL,
   `executor` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `attachment_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -449,14 +449,14 @@ CREATE TABLE `project_vote`  (
   `priority` int(10) NULL DEFAULT NULL,
   `check_tag` int(10) NULL DEFAULT 0,
   `checker` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `check_time` datetime NULL DEFAULT NULL,
+  `check_time` datetime(0) NULL DEFAULT NULL,
   `excel_tag` int(10) NULL DEFAULT 0,
   `gar_tag` int(10) NULL DEFAULT 0,
   `used_tag` int(10) NULL DEFAULT 1,
   `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `create_time` datetime NULL DEFAULT NULL,
+  `create_time` datetime(0) NULL DEFAULT NULL,
   `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -472,20 +472,20 @@ COMMIT;
 DROP TABLE IF EXISTS `public_log`;
 CREATE TABLE `public_log`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `colTime` datetime NULL DEFAULT NULL,
+  `colTime` datetime(0) NULL DEFAULT NULL,
   `colType` int(10) NULL DEFAULT NULL,
   `colContent` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `colOperation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `colUserId` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `colModule` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of public_log
 -- ----------------------------
 BEGIN;
-INSERT INTO `public_log` VALUES (1, '2017-05-11 14:34:27', 0, '用户 张三 于 2017-05-11 14:34:27 添加了 [project][todo] 记录', '添加记录', 'zhangsan', 'project'), (2, '2017-05-11 14:48:57', 0, '用户 张三 于 2017-05-11 14:48:56 添加了 [project][todo] 记录', '添加记录', 'zhangsan', 'project'), (3, '2017-05-11 14:52:07', 0, '用户 张三 于 2017-05-11 14:52:06 添加了 [project][todo] 记录', '添加记录', 'zhangsan', 'project'), (4, '2017-05-11 14:52:17', 0, '用户 张三 于 2017-05-11 14:52:17 删除了 [project][todo] 记录', '删除记录', 'zhangsan', 'project'), (5, '2019-04-29 22:01:31', 0, '用户 张三 于 2019-04-29 22:01:30 修改了 [project][todo] 记录', '修改记录', 'zhangsan', 'project'), (6, '2019-04-29 22:21:39', 0, '用户 张三 于 2019-04-29 22:21:39 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (7, '2019-04-29 22:30:02', 0, '用户 张三 于 2019-04-29 22:30:02 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (8, '2019-04-29 22:38:03', 0, '用户 张三 于 2019-04-29 22:38:03 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (9, '2019-04-29 22:38:29', 0, '用户 张三 于 2019-04-29 22:38:29 删除了 [project][core] 记录', '删除记录', 'zhangsan', 'project'), (10, '2019-04-29 22:53:14', 0, '用户 张三 于 2019-04-29 22:53:14 删除了 [project][core] 记录', '删除记录', 'zhangsan', 'project'), (11, '2019-04-29 22:53:20', 0, '用户 张三 于 2019-04-29 22:53:20 删除了 [project][core] 记录', '删除记录', 'zhangsan', 'project'), (12, '2019-04-29 22:59:10', 0, '用户 张三 于 2019-04-29 22:59:10 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (13, '2019-05-07 15:45:44', 0, '用户 张三 于 2019-05-07 15:45:44 添加了 [investigation][core] 记录', '添加记录', 'zhangsan', 'investigation'), (14, '2019-05-07 18:35:54', 0, '用户 张三 于 2019-05-07 18:35:54 添加了 [investigation][core] 记录', '添加记录', 'zhangsan', 'investigation'), (15, '2019-05-07 18:38:11', 0, '用户 张三 于 2019-05-07 18:38:11 添加了 [investigation][core] 记录', '添加记录', 'zhangsan', 'investigation'), (16, '2019-05-07 18:51:32', 0, '用户 张三 于 2019-05-07 18:51:32 添加了 [user][info] 记录', '添加记录', 'zhangsan', 'user'), (17, '2019-05-07 19:00:40', 0, '用户 张三 于 2019-05-07 19:00:40 添加了 [vote][file] 记录', '添加记录', 'zhangsan', 'vote'), (18, '2019-05-07 19:01:14', 0, '用户 张三 于 2019-05-07 19:01:14 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (19, '2019-05-07 19:15:04', 0, '用户 张三 于 2019-05-07 19:15:04 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (20, '2019-05-07 19:15:04', 0, '用户 张三 于 2019-05-07 19:15:04 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (21, '2019-05-07 19:15:25', 0, '用户 张三 于 2019-05-07 19:15:25 删除了 [investigation][core] 记录', '删除记录', 'zhangsan', 'investigation'), (22, '2019-05-07 19:25:44', 0, '用户 张三 于 2019-05-07 19:25:44 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (23, '2019-05-07 19:25:44', 0, '用户 张三 于 2019-05-07 19:25:44 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (24, '2019-05-14 10:53:28', 0, '用户 张三 于 2019-05-14 10:53:28 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (25, '2019-05-14 14:59:33', 0, '用户 张三 于 2019-05-14 14:59:33 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (26, '2019-05-14 15:17:35', 0, '用户 张三 于 2019-05-14 15:17:35 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (27, '2019-05-14 15:18:07', 0, '用户 张三 于 2019-05-14 15:18:07 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (28, '2019-05-14 15:29:28', 0, '用户 张三 于 2019-05-14 15:29:28 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (29, '2019-05-14 15:57:20', 0, '用户 张三 于 2019-05-14 15:57:20 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (30, '2019-05-14 16:00:24', 0, '用户 张三 于 2019-05-14 16:00:24 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (31, '2019-05-14 16:02:04', 0, '用户 张三 于 2019-05-14 16:02:04 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (32, '2019-05-14 16:27:19', 0, '用户 张三 于 2019-05-14 16:27:19 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (33, '2019-05-14 16:58:10', 0, '用户 张三 于 2019-05-14 16:58:10 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (34, '2019-05-14 17:00:14', 0, '用户 张三 于 2019-05-14 17:00:14 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (35, '2019-05-14 17:07:08', 0, '用户 张三 于 2019-05-14 17:07:08 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (36, '2019-05-14 17:09:24', 0, '用户 张三 于 2019-05-14 17:09:24 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (37, '2019-05-14 17:11:43', 0, '用户 张三 于 2019-05-14 17:11:43 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (38, '2019-05-14 17:13:21', 0, '用户 张三 于 2019-05-14 17:13:21 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (39, '2019-05-14 17:14:42', 0, '用户 张三 于 2019-05-14 17:14:42 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (40, '2019-05-14 17:22:50', 0, '用户 张三 于 2019-05-14 17:22:50 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (41, '2019-05-14 17:25:44', 0, '用户 张三 于 2019-05-14 17:25:44 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework');
+INSERT INTO `public_log` VALUES (1, '2017-05-11 14:34:27', 0, '用户 张三 于 2017-05-11 14:34:27 添加了 [project][todo] 记录', '添加记录', 'zhangsan', 'project'), (2, '2017-05-11 14:48:57', 0, '用户 张三 于 2017-05-11 14:48:56 添加了 [project][todo] 记录', '添加记录', 'zhangsan', 'project'), (3, '2017-05-11 14:52:07', 0, '用户 张三 于 2017-05-11 14:52:06 添加了 [project][todo] 记录', '添加记录', 'zhangsan', 'project'), (4, '2017-05-11 14:52:17', 0, '用户 张三 于 2017-05-11 14:52:17 删除了 [project][todo] 记录', '删除记录', 'zhangsan', 'project'), (5, '2019-04-29 22:01:31', 0, '用户 张三 于 2019-04-29 22:01:30 修改了 [project][todo] 记录', '修改记录', 'zhangsan', 'project'), (6, '2019-04-29 22:21:39', 0, '用户 张三 于 2019-04-29 22:21:39 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (7, '2019-04-29 22:30:02', 0, '用户 张三 于 2019-04-29 22:30:02 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (8, '2019-04-29 22:38:03', 0, '用户 张三 于 2019-04-29 22:38:03 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (9, '2019-04-29 22:38:29', 0, '用户 张三 于 2019-04-29 22:38:29 删除了 [project][core] 记录', '删除记录', 'zhangsan', 'project'), (10, '2019-04-29 22:53:14', 0, '用户 张三 于 2019-04-29 22:53:14 删除了 [project][core] 记录', '删除记录', 'zhangsan', 'project'), (11, '2019-04-29 22:53:20', 0, '用户 张三 于 2019-04-29 22:53:20 删除了 [project][core] 记录', '删除记录', 'zhangsan', 'project'), (12, '2019-04-29 22:59:10', 0, '用户 张三 于 2019-04-29 22:59:10 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (13, '2019-05-07 15:45:44', 0, '用户 张三 于 2019-05-07 15:45:44 添加了 [investigation][core] 记录', '添加记录', 'zhangsan', 'investigation'), (14, '2019-05-07 18:35:54', 0, '用户 张三 于 2019-05-07 18:35:54 添加了 [investigation][core] 记录', '添加记录', 'zhangsan', 'investigation'), (15, '2019-05-07 18:38:11', 0, '用户 张三 于 2019-05-07 18:38:11 添加了 [investigation][core] 记录', '添加记录', 'zhangsan', 'investigation'), (16, '2019-05-07 18:51:32', 0, '用户 张三 于 2019-05-07 18:51:32 添加了 [user][info] 记录', '添加记录', 'zhangsan', 'user'), (17, '2019-05-07 19:00:40', 0, '用户 张三 于 2019-05-07 19:00:40 添加了 [vote][file] 记录', '添加记录', 'zhangsan', 'vote'), (18, '2019-05-07 19:01:14', 0, '用户 张三 于 2019-05-07 19:01:14 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (19, '2019-05-07 19:15:04', 0, '用户 张三 于 2019-05-07 19:15:04 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (20, '2019-05-07 19:15:04', 0, '用户 张三 于 2019-05-07 19:15:04 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (21, '2019-05-07 19:15:25', 0, '用户 张三 于 2019-05-07 19:15:25 删除了 [investigation][core] 记录', '删除记录', 'zhangsan', 'investigation'), (22, '2019-05-07 19:25:44', 0, '用户 张三 于 2019-05-07 19:25:44 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (23, '2019-05-07 19:25:44', 0, '用户 张三 于 2019-05-07 19:25:44 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (24, '2019-05-14 10:53:28', 0, '用户 张三 于 2019-05-14 10:53:28 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (25, '2019-05-14 14:59:33', 0, '用户 张三 于 2019-05-14 14:59:33 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (26, '2019-05-14 15:17:35', 0, '用户 张三 于 2019-05-14 15:17:35 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (27, '2019-05-14 15:18:07', 0, '用户 张三 于 2019-05-14 15:18:07 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (28, '2019-05-14 15:29:28', 0, '用户 张三 于 2019-05-14 15:29:28 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (29, '2019-05-14 15:57:20', 0, '用户 张三 于 2019-05-14 15:57:20 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (30, '2019-05-14 16:00:24', 0, '用户 张三 于 2019-05-14 16:00:24 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (31, '2019-05-14 16:02:04', 0, '用户 张三 于 2019-05-14 16:02:04 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (32, '2019-05-14 16:27:19', 0, '用户 张三 于 2019-05-14 16:27:19 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (33, '2019-05-14 16:58:10', 0, '用户 张三 于 2019-05-14 16:58:10 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (34, '2019-05-14 17:00:14', 0, '用户 张三 于 2019-05-14 17:00:14 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (35, '2019-05-14 17:07:08', 0, '用户 张三 于 2019-05-14 17:07:08 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (36, '2019-05-14 17:09:24', 0, '用户 张三 于 2019-05-14 17:09:24 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (37, '2019-05-14 17:11:43', 0, '用户 张三 于 2019-05-14 17:11:43 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (38, '2019-05-14 17:13:21', 0, '用户 张三 于 2019-05-14 17:13:21 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (39, '2019-05-14 17:14:42', 0, '用户 张三 于 2019-05-14 17:14:42 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (40, '2019-05-14 17:22:50', 0, '用户 张三 于 2019-05-14 17:22:50 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (41, '2019-05-14 17:25:44', 0, '用户 张三 于 2019-05-14 17:25:44 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (42, '2019-05-24 23:19:02', 0, '用户 张三 于 2019-05-24 23:19:02 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (43, '2019-05-24 23:19:14', 0, '用户 张三 于 2019-05-24 23:19:14 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (44, '2019-05-24 23:19:18', 0, '用户 张三 于 2019-05-24 23:19:18 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (45, '2019-05-24 23:41:13', 0, '用户 张三 于 2019-05-24 23:41:13 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (46, '2019-05-24 23:44:00', 0, '用户 张三 于 2019-05-24 23:43:59 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (47, '2019-05-27 13:17:05', 0, '用户 张三 于 2019-05-27 13:17:05 添加了 [user][info] 记录', '添加记录', 'zhangsan', 'user');
 COMMIT;
 
 -- ----------------------------
@@ -505,7 +505,7 @@ CREATE TABLE `security_users`  (
   `PASSWD` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `TAGC` int(11) NULL DEFAULT 0,
   `TAG` int(1) NULL DEFAULT 0,
-  `FORBID_TIME` datetime NULL DEFAULT NULL,
+  `FORBID_TIME` datetime(0) NULL DEFAULT NULL,
   `FORBID_TAG` int(1) NULL DEFAULT 0,
   `ORDER_DISCOUNT` double(15, 2) NULL DEFAULT 0.00,
   `RETAIL_DISCOUNT` double(15, 2) NULL DEFAULT 0.00,
@@ -524,12 +524,12 @@ CREATE TABLE `security_users`  (
   `role` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `authority` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `register` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `register_time` datetime NULL DEFAULT NULL,
+  `register_time` datetime(0) NULL DEFAULT NULL,
   `fans_count` int(10) NULL DEFAULT NULL,
   `follow_count` int(10) NULL DEFAULT NULL,
   `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `qq` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 85 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -537,6 +537,133 @@ CREATE TABLE `security_users`  (
 -- ----------------------------
 BEGIN;
 INSERT INTO `security_users` VALUES (85, '0', '', '0', '', '302983098409', '张三', 'zhangsan', '', '', 0, 0, NULL, 0, 0.00, 0.00, 0.00, 0, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'normal', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for survey_admins
+-- ----------------------------
+DROP TABLE IF EXISTS `survey_admins`;
+CREATE TABLE `survey_admins`  (
+  `a_id` int(11) NOT NULL AUTO_INCREMENT,
+  `a_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `a_pass` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `a_email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `a_phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`a_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+-- ----------------------------
+-- Records of survey_admins
+-- ----------------------------
+BEGIN;
+INSERT INTO `survey_admins` VALUES (1, 'root', '1234', 'xxxxx', '110');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for survey_all
+-- ----------------------------
+DROP TABLE IF EXISTS `survey_all`;
+CREATE TABLE `survey_all`  (
+  `s_id` int(255) NOT NULL AUTO_INCREMENT,
+  `s_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `s_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `s_author` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `s_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `s_createdate` datetime(0) NULL DEFAULT NULL,
+  `s_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `s_isopen` tinyint(10) NULL DEFAULT NULL,
+  `s_expiredate` datetime(0) NULL DEFAULT NULL,
+  `s_isaudited` tinyint(10) NULL DEFAULT NULL,
+  `s_usehits` int(255) NULL DEFAULT NULL,
+  `s_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`s_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+-- ----------------------------
+-- Records of survey_all
+-- ----------------------------
+BEGIN;
+INSERT INTO `survey_all` VALUES (1, '作业调查', 'xxxxxxxxxxxx', 'xx', NULL, '2019-05-16 00:00:00', NULL, 1, '2019-06-15 00:00:00', 1, 2, 'investigation'), (3, '哈哈哈哈哈哈哈哈哈哈', '密密麻麻', 'zpj', NULL, '2019-05-18 00:00:00', NULL, 1, '2019-06-17 00:00:00', 0, 3, 'investigation'), (4, '问题1', '问题一描述', 'zpj', NULL, '2019-05-19 00:00:00', NULL, 1, '2019-06-18 00:00:00', 1, 0, 'investigation'), (8, '是的日光和地方', 'hhhhhhhhhhhhh', 'zpj', NULL, '2019-05-22 00:00:00', NULL, 1, '2019-05-31 00:00:00', 1, 0, 'vote'), (10, 'dghf', 'srdfg', '生日歌s', NULL, '2019-05-26 00:00:00', NULL, 1, '2019-06-25 00:00:00', 0, 0, 'investigation');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for survey_answersheet
+-- ----------------------------
+DROP TABLE IF EXISTS `survey_answersheet`;
+CREATE TABLE `survey_answersheet`  (
+  `as_id` int(11) NOT NULL AUTO_INCREMENT,
+  `s_id` int(11) NULL DEFAULT NULL,
+  `as_result` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `as_postdate` datetime(0) NULL DEFAULT NULL,
+  `as_userip` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`as_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+-- ----------------------------
+-- Records of survey_answersheet
+-- ----------------------------
+BEGIN;
+INSERT INTO `survey_answersheet` VALUES (1, 1, '3:as=0;', '2019-05-16 00:00:00', '0:0:0:0:0:0:0:1'), (2, 1, '3:as=3;', '2019-05-16 00:00:00', '0:0:0:0:0:0:0:1'), (3, 3, 'dlchlk4', '2019-05-19 00:00:00', '0:0:0:0:0:0:0:1'), (4, 3, '你的，cblrd.fhkgnj', '2019-05-19 00:00:00', '0:0:0:0:0:0:0:1'), (5, 3, '人生如果对方承诺将', '2019-05-19 00:00:00', '0:0:0:0:0:0:0:1');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for survey_config
+-- ----------------------------
+DROP TABLE IF EXISTS `survey_config`;
+CREATE TABLE `survey_config`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `c_siteName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `c_siteUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `c_isOpen` tinyint(10) NULL DEFAULT NULL,
+  `c_closeWord` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `copyright` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+-- ----------------------------
+-- Records of survey_config
+-- ----------------------------
+BEGIN;
+INSERT INTO `survey_config` VALUES (1, 'xxxxx', 'www.baidu.com', 1, 'closeword', 'copyright');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for survey_link
+-- ----------------------------
+DROP TABLE IF EXISTS `survey_link`;
+CREATE TABLE `survey_link`  (
+  `l_id` int(11) NOT NULL AUTO_INCREMENT,
+  `l_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `l_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `l_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `l_info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `l_islock` tinyint(10) NULL DEFAULT NULL,
+  `l_addtime` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`l_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+-- ----------------------------
+-- Table structure for survey_question
+-- ----------------------------
+DROP TABLE IF EXISTS `survey_question`;
+CREATE TABLE `survey_question`  (
+  `q_id` int(11) NOT NULL AUTO_INCREMENT,
+  `s_id` int(11) NULL DEFAULT NULL,
+  `q_type` int(11) NULL DEFAULT NULL,
+  `q_head` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `q_body` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `q_result` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `q_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `q_jdtz` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `q_order` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`q_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+-- ----------------------------
+-- Records of survey_question
+-- ----------------------------
+BEGIN;
+INSERT INTO `survey_question` VALUES (3, 1, 1, 'xxxx问题', '2222222222&$$&111&$$&2333333&$$&5555', '1,0,0,1', NULL, 'null&null&null&null', 0), (4, 3, 2, '问题', '233333&$$&6778888&$$&ertuyy&$$&80890', '1,1,1,2', NULL, 'null&null&null&null', 0), (5, 3, 5, '简答题题目', NULL, '4', NULL, '', 0), (11, 4, 1, '这是一个测试问题', '答案1&$$&答案2', '0,0', NULL, 'null&null', 0), (12, 4, 2, '这是一个多选题', '1111&$$&2222&$$&33333&$$&4444444&$$&555555555', '0,0,0,0,0', NULL, 'null&null&null&null&null', 0), (13, 4, 5, '这是一个简答题', NULL, NULL, NULL, '', 0), (26, 8, 1, '关于hhhhhhhh的投票', '是&$$&是', '0,0', NULL, 'null&null', 0);
 COMMIT;
 
 -- ----------------------------
@@ -565,16 +692,16 @@ CREATE TABLE `survey_tree`  (
   `menu_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`),
-  INDEX `index` USING BTREE(`FILE_ID`)
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `index`(`FILE_ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 86 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of survey_tree
 -- ----------------------------
 BEGIN;
-INSERT INTO `survey_tree` VALUES (2, '0201 客户化设置', 'config', 1201, 0, 'Y', '', '1201', '客户化设置', 1, 'project/config', '项目管理--客户化设置', 'ylx1.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (3, '0202 项目基本信息管理', 'file', 1202, 0, 'Y', '', '1202', '项目基本信息管理', 1, 'project/file', '项目管理--项目基本信息管理', 'ylx2.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (5, '0203 资金调整管理', 'price_change', 1203, 0, 'Y', '', '1203', '资金调整管理', 1, 'project/price_change', '项目管理--项目资金调整管理', 'ylx3.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (6, '0204 项目通知', 'notice', 1204, 0, 'Y', '', '1204', '项目通知', 1, 'project/notice', '项目管理--产品物料组成设计', 'ylx4.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (7, '0205 数据报表', 'export', 1205, 0, 'Y', '', '1205', '数据报表', 1, 'project/export', '项目管理--标准数据报表', 'ylx5.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (9, '020101 项目基本管理设置', 'file', 120101, 1201, 'Y', '', '120101', '项目基本管理设置', 1, 'project/config/file', '项目管理--客户化设置--项目基本管理设置', 'ylx6.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (10, '020102 项目资金调整管理', 'price_change', 120102, 1201, 'Y', '', '120102', '项目资金调整管理', 1, 'project/config/price_change', '项目管理--客户化设置--项目资金调整管理', 'ylx7.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (11, '020103 关键字设置', 'key', 120103, 1201, 'Y', '', '120103', '关键字设置', 1, 'project/config/key', '项目管理--客户化设置--关键字设置', 'ylx8.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (12, '02010101 项目分类设置', '', 12010101, 120101, 'Y', 'fileKind.jsp', '12010101', '项目分类设置', 0, 'project/config/file/', '项目管理--客户化设置--项目基本管理设置--项目分类设置', 'ylx9.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (16, '02010105 项目级别设置', '', 12010105, 120101, 'Y', 'strategyClass.jsp', '12010105', '项目级别设置', 0, 'project/config/file/', '项目管理--客户化设置--项目基本管理设置--项目级别设置', 'ylx11.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (18, '02010201 项目预警设置', '', 12010201, 120102, 'Y', 'priceAlarm.jsp', '12010201', '项目预警设置', 0, 'project/config/price_change/', '项目管理--客户化设置--项目资金调整管理--项目预警设置', 'ylx13.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (19, '02010301 查询设置', '', 12010301, 120103, 'Y', 'key.jsp', '12010301', '查询设置', 0, 'project/config/key/', '项目管理--客户化设置--关键字设置--查询设置', 'ylx14.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (22, '020201 项目登记', '', 120201, 1202, 'Y', 'project_list.jsp', '120201', '项目档案', 0, 'project/file/', '项目管理--基本管理--项目登记', 'ylx16.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (23, '020202 项目审核', '', 120202, 1202, 'Y', 'check_list.jsp', '120202', '项目审核', 0, 'project/file/', '项目管理--基本管理--项目审核', 'ylx17.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (24, '020203 项目查询', '', 120203, 1202, 'Y', 'query_list.jsp', '120203', '项目查询', 0, 'project/file/', '项目管理--基本管理--项目查询', 'ylx18.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (25, '020204 项目变更', '', 120204, 1202, 'Y', 'change_list.jsp', '120204', '项目变更', 0, 'project/file/', '项目管理--基本管理--项目变更', 'ylx19.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (30, '020301 资金调整登记', '', 120301, 1203, 'Y', 'register_list.jsp', '120301', '资金调整登记', 0, 'project/price_change/', '项目管理--资金调整管理--资金调整登记', 'ylx20.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (31, '020302 资金调整登记审核', '', 120302, 1203, 'Y', 'check_list.jsp', '120302', '资金调整登记审核', 0, 'project/price_change/', '项目管理--资金调整管理--资金调整登记审核', 'ylx21.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (32, '020303 资金调整查询', '', 120303, 1203, 'Y', 'query_list.jsp', '120303', '资金调整查询', 0, 'project/price_change/', '项目管理--资金调整管理--资金调整查询', 'ylx22.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (33, '020401 起草通知', '', 120401, 1204, 'Y', 'register.jsp', '120401', '起草通知', 0, 'project/notice/', '产品设计--产品物料组成设计--制定物料组成设计单', 'ylx23.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (34, '020402 通知审核', '', 120402, 1204, 'Y', 'check_list.jsp', '120402', '通知审核', 0, 'project/notice/', '产品设计--产品物料组成设计--物料组成设计单审核', 'ylx24.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (35, '020403 通知查询', '', 120403, 1204, 'Y', 'query_list.jsp', '120403', '通知查询', 0, 'project/notice/', '产品设计--产品物料组成设计--物料组成设计单查询', 'ylx25.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (36, '020404 通知变更', '', 120404, 1204, 'Y', 'change_list.jsp', '120404', '通知变更', 0, 'project/notice/', '产品设计--产品物料组成设计--物料组成设计单变更', 'ylx26.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (37, '020501 EXCEL标准数据报表', '', 120501, 1205, 'Y', 'excel.jsp', '120501', 'EXCEL标准数据报表', 0, 'project/export/', '产品设计--标准数据报表--EXCEL标准数据报表', 'ylx27.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (38, '020502 pdf标准数据报表', '', 120502, 1205, 'Y', 'pdf.jsp', '120502', 'pdf标准数据报表', 0, 'project/export/', '产品设计--标准数据报表--pdf标准数据报表', 'ylx28.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (39, '020503 xml标准数据报表', '', 120503, 1205, 'Y', 'xml.jsp', '120503', 'xml标准数据报表', 0, 'project/export/', '产品设计--标准数据报表--xml标准数据报表', 'ylx29.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (40, '020104 审核工作流设置', 'workflow', 120104, 1201, 'Y', '', '120104', '审核工作流设置', 1, 'project/config/workflow', '项目管理--客户化设置--审核工作流设置', 'ylx30.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (41, '02010401 项目审核工作流设置', '', 12010401, 120104, 'Y', 'file.jsp', '12010401', '项目信息审核工作流设置', 0, 'project/config/workflow/', '项目管理--客户化设置--审核工作流设置--项目审核工作流设置', 'ylx31.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (43, '02010402 项目资金调整审核工作流设置', '', 12010402, 120104, 'Y', 'price.jsp', '12010402', '项目资金调整审核设置', 0, 'project/config/workflow/', '项目管理--客户化设置--审核工作流设置--项目资金调整审核工作流设置', 'ylx32.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (44, '02010403 项目文档审核工作流设置', '', 12010403, 120104, 'Y', 'document.jsp', '12010403', '项目文档审核工作流设置', 0, 'project/config/workflow/', '项目管理--客户化设置--项目文档审核工作流设置', 'ylx33.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (45, '020205 进度统计', '', 120205, 1202, 'Y', 'tongji.jsp', '120205', '进度统计', 0, 'project/file/', '项目管理--项目管理--进度统计', 'ylx34.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (46, '020206 项目登记', '', 120206, 1202, 'Y', 'project_add.jsp', '120206', '项目登记', 0, 'project/file/', '项目--项目管理--项目进度', 'ylx35.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (47, '0206 项目文档管理', 'file1', 1206, 0, 'Y', '', '1206', '问卷管理', 1, 'project/document', '项目文档管理', 'ylx36.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (48, '020601  项目文档登记', '', 120601, 1206, 'Y', 'SurveyAdd.jsp', '120601', '问卷添加', 0, 'project/document/', '项目文档管理-项目文档登记', 'ylx37.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (49, '020602 项目文档登记审核', '', 120602, 1206, 'Y', 'SurveyAdmin.jsp', '120602', '问卷设计', 0, 'project/document/', '项目文档管理-项目文档登记审核', 'ylx38.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (50, '020603 项目文档查询', '', 120603, 1206, 'Y', 'SurveyAudi.jsp', '120603', '问卷审核', 0, 'project/document/', '项目文档管理-项目文档查询', 'ylx39.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (51, '020605 项目文档变更', '', 120605, 1206, 'Y', 'SurveyStatis.jsp', '120605', '问卷统计', 0, 'project/document/', '项目文档管理-项目文档变更', 'ylx40.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (52, '0207 会议管理', 'meeting', 1207, 0, 'Y', '', '1207', '会议管理', 1, 'project/meeting', '会议管理', 'ylx41.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (53, '020701 议题准备', '', 120701, 1207, 'Y', 'subject_register.jsp', '120701', '议题准备', 0, 'project/meeting/', '会议管理-议题准备', 'ylx42.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (54, '020702 开会通知', '', 120702, 1207, 'Y', 'inform_list.jsp', '120702', '开会通知', 0, 'project/meeting/', '会议管理-开会通知', 'ylx43.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (55, '020703 会议纪要', '', 120703, 1207, 'Y', 'recorder_list.jsp', '120703', '会议纪要', 0, 'project/meeting/', '会议管理-会议纪要', 'ylx44.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (56, '020704 会议纪要处理', '', 120704, 1207, 'Y', 'dealwith_list.jsp', '120704', '会议纪要处理', 0, 'project/meeting/', '会议管理-会议纪要处理', 'ylx45.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (57, '020705 会议查询', '', 120705, 1207, 'Y', 'query_list.jsp', '120705', '会议查询', 0, 'project/meeting/', '会议管理-会议查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (58, '0208 待办事项管理', '', 1208, 0, 'Y', '', '1208', '待办事项管理', 1, 'project/todo', '待办事项管理', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (59, '020801 待办事项添加', '', 120801, 1208, 'Y', 'todo_add.jsp', '120801', '待办事项添加', 0, 'project/todo/', '待办事项管理--待办事项添加', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (60, '020803 待办事项查询', '', 120803, 1208, 'Y', 'todo_query.jsp', '120803', '待办事项查询', 0, 'project/todo/', '待办事项管理--待办事项查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (61, '020804 待办事项更改', '', 120804, 1208, 'Y', 'todo_list.jsp', '120804', '待办事项管理', 0, 'project/todo/', '待办事项管理--待办事项更改', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (62, '020806 统计打印', '', 120806, 1208, 'Y', 'todo_statistic.jsp', '120806', '待办事项统计', 0, 'project/todo/', '待办事项管理--待办事项统计打印', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (64, '0209 统计打印', '', 1209, 0, 'Y', '', '1209', '统计打印', 1, 'project/statistic', '统计打印', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (65, '020901 待办事项统计', '', 120901, 1209, 'Y', 'todo_statistic.jsp', '120901', '统计打印', 0, 'project/statistic/', '统计打印--待办事项统计', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (66, '0210 通知事项管理', '', 1210, 0, 'Y', '', '1210', '通知事项管理', 1, 'project/notice', '通知事项管理', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (67, '021001 通知事项添加', '', 121001, 1210, 'Y', 'register.jsp', '121001', '通知事项添加', 0, 'project/notice/', '通知事项管理--通知事项添加', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (68, '021002 通知事项查询', '', 121002, 1210, 'Y', 'query_list.jsp', '121002', '通知事项查询', 0, 'project/notice/', '通知事项管理--通知事项查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (69, '021003 通知事项更改', '', 121003, 1210, 'Y', 'change_list.jsp', '121003', '通知事项更改', 0, 'project/notice/', '通知事项管理--通知事项更改', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (70, '021004 通知事项统计', '', 121004, 1210, 'Y', 'statistic.jsp', '121004', '通知事项统计', 0, 'project/notice/', '通知事项管理--统计打印', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (72, '02010404 项目待办事项审核工作流设置', '', 12010404, 120104, 'Y', 'todo.jsp', '12010404', '项目待办事项审核工作流设置', 0, 'project/config/workflow/', '项目管理--客户化设置--项目待办事项审核工作流设置', 'ylx33.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (74, '021101 复杂事项添加', '', 121101, 1211, 'Y', 'register_more.jsp', '121101', '复杂事项添加', 0, 'project/todo_more/', '待办事项管理--复杂事项添加', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (75, '021102 复杂事项审核', '', 121102, 1211, 'Y', 'check_list_more.jsp', '121102', '复杂事项审核', 0, 'project/todo_more/', '待办事项管理--复杂事项查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (76, '021103 复杂事项查询', '', 121103, 1211, 'Y', 'query_list_more.jsp', '121103', '复杂事项查询', 0, 'project/todo_more/', '待办事项管理--复杂事项查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (77, '021104 复杂事项更改', '', 121104, 1211, 'Y', 'change_list_more.jsp', '121104', '复杂事项更改', 0, 'project/todo_more/', '待办事项管理--复杂事项更改', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (79, '0211 复杂事项管理', '', 1211, 0, 'Y', '', '1211', '复杂事项管理', 1, 'project/todo_more', '待办事项管理', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (80, '020802 待办事项审核', '', 120802, 1208, 'Y', 'record_list.jsp', '120802', '待办事项列表', 0, 'project/todo/', '待办事项管理--待办事项审核', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (84, '1212', '', 1212, 0, 'Y', '', '1212', '项目日志', 1, 'project/diary', '项目日志', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (85, '121201', '', 121201, 1212, 'Y', 'diary_add.jsp', '121201', '添加日志', 0, 'project/diary/', '添加日志', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (86, '121202', '', 121202, 1212, 'Y', 'diary_list.jsp', '121202', '日志列表', 0, 'project/diary/', '日志列表', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `survey_tree` VALUES (2, '0201 客户化设置', 'config', 1201, 0, 'Y', '', '1201', '客户化设置', 1, 'project/config', '项目管理--客户化设置', 'ylx1.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (3, '0202 项目基本信息管理', 'file', 1202, 0, 'Y', '', '1202', '项目基本信息管理', 1, 'project/file', '项目管理--项目基本信息管理', 'ylx2.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (5, '0203 资金调整管理', 'price_change', 1203, 0, 'Y', '', '1203', '资金调整管理', 1, 'project/price_change', '项目管理--项目资金调整管理', 'ylx3.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (6, '0204 项目通知', 'notice', 1204, 0, 'Y', '', '1204', '项目通知', 1, 'project/notice', '项目管理--产品物料组成设计', 'ylx4.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (7, '0205 数据报表', 'export', 1205, 0, 'Y', '', '1205', '数据报表', 1, 'project/export', '项目管理--标准数据报表', 'ylx5.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (9, '020101 项目基本管理设置', 'file', 120101, 1201, 'Y', '', '120101', '项目基本管理设置', 1, 'project/config/file', '项目管理--客户化设置--项目基本管理设置', 'ylx6.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (10, '020102 项目资金调整管理', 'price_change', 120102, 1201, 'Y', '', '120102', '项目资金调整管理', 1, 'project/config/price_change', '项目管理--客户化设置--项目资金调整管理', 'ylx7.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (11, '020103 关键字设置', 'key', 120103, 1201, 'Y', '', '120103', '关键字设置', 1, 'project/config/key', '项目管理--客户化设置--关键字设置', 'ylx8.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (12, '02010101 项目分类设置', '', 12010101, 120101, 'Y', 'fileKind.jsp', '12010101', '项目分类设置', 0, 'project/config/file/', '项目管理--客户化设置--项目基本管理设置--项目分类设置', 'ylx9.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (16, '02010105 项目级别设置', '', 12010105, 120101, 'Y', 'strategyClass.jsp', '12010105', '项目级别设置', 0, 'project/config/file/', '项目管理--客户化设置--项目基本管理设置--项目级别设置', 'ylx11.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (18, '02010201 项目预警设置', '', 12010201, 120102, 'Y', 'priceAlarm.jsp', '12010201', '项目预警设置', 0, 'project/config/price_change/', '项目管理--客户化设置--项目资金调整管理--项目预警设置', 'ylx13.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (19, '02010301 查询设置', '', 12010301, 120103, 'Y', 'key.jsp', '12010301', '查询设置', 0, 'project/config/key/', '项目管理--客户化设置--关键字设置--查询设置', 'ylx14.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (22, '020201 项目登记', '', 120201, 1202, 'Y', 'project_list.jsp', '120201', '项目档案', 0, 'project/file/', '项目管理--基本管理--项目登记', 'ylx16.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (23, '020202 项目审核', '', 120202, 1202, 'Y', 'check_list.jsp', '120202', '项目审核', 0, 'project/file/', '项目管理--基本管理--项目审核', 'ylx17.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (24, '020203 项目查询', '', 120203, 1202, 'Y', 'query_list.jsp', '120203', '项目查询', 0, 'project/file/', '项目管理--基本管理--项目查询', 'ylx18.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (25, '020204 项目变更', '', 120204, 1202, 'Y', 'change_list.jsp', '120204', '项目变更', 0, 'project/file/', '项目管理--基本管理--项目变更', 'ylx19.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (30, '020301 资金调整登记', '', 120301, 1203, 'Y', 'register_list.jsp', '120301', '资金调整登记', 0, 'project/price_change/', '项目管理--资金调整管理--资金调整登记', 'ylx20.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (31, '020302 资金调整登记审核', '', 120302, 1203, 'Y', 'check_list.jsp', '120302', '资金调整登记审核', 0, 'project/price_change/', '项目管理--资金调整管理--资金调整登记审核', 'ylx21.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (32, '020303 资金调整查询', '', 120303, 1203, 'Y', 'query_list.jsp', '120303', '资金调整查询', 0, 'project/price_change/', '项目管理--资金调整管理--资金调整查询', 'ylx22.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (33, '020401 起草通知', '', 120401, 1204, 'Y', 'register.jsp', '120401', '起草通知', 0, 'project/notice/', '产品设计--产品物料组成设计--制定物料组成设计单', 'ylx23.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (34, '020402 通知审核', '', 120402, 1204, 'Y', 'check_list.jsp', '120402', '通知审核', 0, 'project/notice/', '产品设计--产品物料组成设计--物料组成设计单审核', 'ylx24.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (35, '020403 通知查询', '', 120403, 1204, 'Y', 'query_list.jsp', '120403', '通知查询', 0, 'project/notice/', '产品设计--产品物料组成设计--物料组成设计单查询', 'ylx25.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (36, '020404 通知变更', '', 120404, 1204, 'Y', 'change_list.jsp', '120404', '通知变更', 0, 'project/notice/', '产品设计--产品物料组成设计--物料组成设计单变更', 'ylx26.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (37, '020501 EXCEL标准数据报表', '', 120501, 1205, 'Y', 'excel.jsp', '120501', 'EXCEL标准数据报表', 0, 'project/export/', '产品设计--标准数据报表--EXCEL标准数据报表', 'ylx27.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (38, '020502 pdf标准数据报表', '', 120502, 1205, 'Y', 'pdf.jsp', '120502', 'pdf标准数据报表', 0, 'project/export/', '产品设计--标准数据报表--pdf标准数据报表', 'ylx28.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (39, '020503 xml标准数据报表', '', 120503, 1205, 'Y', 'xml.jsp', '120503', 'xml标准数据报表', 0, 'project/export/', '产品设计--标准数据报表--xml标准数据报表', 'ylx29.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (40, '020104 审核工作流设置', 'workflow', 120104, 1201, 'Y', '', '120104', '审核工作流设置', 1, 'project/config/workflow', '项目管理--客户化设置--审核工作流设置', 'ylx30.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (41, '02010401 项目审核工作流设置', '', 12010401, 120104, 'Y', 'file.jsp', '12010401', '项目信息审核工作流设置', 0, 'project/config/workflow/', '项目管理--客户化设置--审核工作流设置--项目审核工作流设置', 'ylx31.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (43, '02010402 项目资金调整审核工作流设置', '', 12010402, 120104, 'Y', 'price.jsp', '12010402', '项目资金调整审核设置', 0, 'project/config/workflow/', '项目管理--客户化设置--审核工作流设置--项目资金调整审核工作流设置', 'ylx32.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (44, '02010403 项目文档审核工作流设置', '', 12010403, 120104, 'Y', 'document.jsp', '12010403', '项目文档审核工作流设置', 0, 'project/config/workflow/', '项目管理--客户化设置--项目文档审核工作流设置', 'ylx33.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (45, '020205 进度统计', '', 120205, 1202, 'Y', 'tongji.jsp', '120205', '进度统计', 0, 'project/file/', '项目管理--项目管理--进度统计', 'ylx34.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (46, '020206 项目登记', '', 120206, 1202, 'Y', 'project_add.jsp', '120206', '项目登记', 0, 'project/file/', '项目--项目管理--项目进度', 'ylx35.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (47, '0206 项目文档管理', 'file1', 1206, 0, 'Y', '', '1206', '问卷管理', 1, 'project/document', '项目文档管理', 'ylx36.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (48, '020601  项目文档登记', '', 120601, 1206, 'Y', 'SurveyAdmin.jsp', '120601', '问卷设计', 0, 'project/document/', '项目文档管理-项目文档登记', 'ylx37.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (49, '020602 项目文档登记审核', '', 120602, 1206, 'Y', 'SurveyAdd.jsp', '120602', '问卷添加', 0, 'project/document/', '项目文档管理-项目文档登记审核', 'ylx38.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (50, '020603 项目文档查询', '', 120603, 1206, 'Y', 'SurveyAudi.jsp', '120603', '问卷审核', 0, 'project/document/', '项目文档管理-项目文档查询', 'ylx39.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (51, '020605 项目文档变更', '', 120605, 1206, 'Y', 'SurveyStatis.jsp', '120605', '问卷统计', 0, 'project/document/', '项目文档管理-项目文档变更', 'ylx40.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (52, '0207 会议管理', 'meeting', 1207, 0, 'Y', '', '1207', '会议管理', 1, 'project/meeting', '会议管理', 'ylx41.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (53, '020701 议题准备', '', 120701, 1207, 'Y', 'subject_register.jsp', '120701', '议题准备', 0, 'project/meeting/', '会议管理-议题准备', 'ylx42.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (54, '020702 开会通知', '', 120702, 1207, 'Y', 'inform_list.jsp', '120702', '开会通知', 0, 'project/meeting/', '会议管理-开会通知', 'ylx43.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (55, '020703 会议纪要', '', 120703, 1207, 'Y', 'recorder_list.jsp', '120703', '会议纪要', 0, 'project/meeting/', '会议管理-会议纪要', 'ylx44.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (56, '020704 会议纪要处理', '', 120704, 1207, 'Y', 'dealwith_list.jsp', '120704', '会议纪要处理', 0, 'project/meeting/', '会议管理-会议纪要处理', 'ylx45.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (57, '020705 会议查询', '', 120705, 1207, 'Y', 'query_list.jsp', '120705', '会议查询', 0, 'project/meeting/', '会议管理-会议查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (58, '0208 待办事项管理', '', 1208, 0, 'Y', '', '1208', '待办事项管理', 1, 'project/todo', '待办事项管理', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (59, '020801 待办事项添加', '', 120801, 1208, 'Y', 'todo_add.jsp', '120801', '待办事项添加', 0, 'project/todo/', '待办事项管理--待办事项添加', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (60, '020803 待办事项查询', '', 120803, 1208, 'Y', 'todo_query.jsp', '120803', '待办事项查询', 0, 'project/todo/', '待办事项管理--待办事项查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (61, '020804 待办事项更改', '', 120804, 1208, 'Y', 'todo_list.jsp', '120804', '待办事项管理', 0, 'project/todo/', '待办事项管理--待办事项更改', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (62, '020806 统计打印', '', 120806, 1208, 'Y', 'todo_statistic.jsp', '120806', '待办事项统计', 0, 'project/todo/', '待办事项管理--待办事项统计打印', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (64, '0209 统计打印', '', 1209, 0, 'Y', '', '1209', '统计打印', 1, 'project/statistic', '统计打印', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (65, '020901 待办事项统计', '', 120901, 1209, 'Y', 'todo_statistic.jsp', '120901', '统计打印', 0, 'project/statistic/', '统计打印--待办事项统计', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (66, '0210 通知事项管理', '', 1210, 0, 'Y', '', '1210', '通知事项管理', 1, 'project/notice', '通知事项管理', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (67, '021001 通知事项添加', '', 121001, 1210, 'Y', 'register.jsp', '121001', '通知事项添加', 0, 'project/notice/', '通知事项管理--通知事项添加', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (68, '021002 通知事项查询', '', 121002, 1210, 'Y', 'query_list.jsp', '121002', '通知事项查询', 0, 'project/notice/', '通知事项管理--通知事项查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (69, '021003 通知事项更改', '', 121003, 1210, 'Y', 'change_list.jsp', '121003', '通知事项更改', 0, 'project/notice/', '通知事项管理--通知事项更改', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (70, '021004 通知事项统计', '', 121004, 1210, 'Y', 'statistic.jsp', '121004', '通知事项统计', 0, 'project/notice/', '通知事项管理--统计打印', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (72, '02010404 项目待办事项审核工作流设置', '', 12010404, 120104, 'Y', 'todo.jsp', '12010404', '项目待办事项审核工作流设置', 0, 'project/config/workflow/', '项目管理--客户化设置--项目待办事项审核工作流设置', 'ylx33.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (74, '021101 复杂事项添加', '', 121101, 1211, 'Y', 'register_more.jsp', '121101', '复杂事项添加', 0, 'project/todo_more/', '待办事项管理--复杂事项添加', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (75, '021102 复杂事项审核', '', 121102, 1211, 'Y', 'check_list_more.jsp', '121102', '复杂事项审核', 0, 'project/todo_more/', '待办事项管理--复杂事项查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (76, '021103 复杂事项查询', '', 121103, 1211, 'Y', 'query_list_more.jsp', '121103', '复杂事项查询', 0, 'project/todo_more/', '待办事项管理--复杂事项查询', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (77, '021104 复杂事项更改', '', 121104, 1211, 'Y', 'change_list_more.jsp', '121104', '复杂事项更改', 0, 'project/todo_more/', '待办事项管理--复杂事项更改', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (79, '0211 复杂事项管理', '', 1211, 0, 'Y', '', '1211', '复杂事项管理', 1, 'project/todo_more', '待办事项管理', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (80, '020802 待办事项审核', '', 120802, 1208, 'Y', 'record_list.jsp', '120802', '待办事项列表', 0, 'project/todo/', '待办事项管理--待办事项审核', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (84, '1212', '', 1212, 0, 'Y', '', '1212', '项目日志', 1, 'project/diary', '项目日志', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (85, '121201', '', 121201, 1212, 'Y', 'diary_add.jsp', '121201', '添加日志', 0, 'project/diary/', '添加日志', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), (86, '121202', '', 121202, 1212, 'Y', 'diary_list.jsp', '121202', '日志列表', 0, 'project/diary/', '日志列表', 'ylx46.png', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -585,7 +712,7 @@ CREATE TABLE `survey_view`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `file_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `role_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 312 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -609,8 +736,8 @@ CREATE TABLE `user_file`  (
   `role_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `used_tag` bit(1) NULL DEFAULT b'1',
   `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `create_time` datetime NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 87 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
@@ -639,15 +766,15 @@ CREATE TABLE `user_manage`  (
   `class` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `faculty` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
   `student_num` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `register_date` datetime NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+  `register_date` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of user_manage
 -- ----------------------------
 BEGIN;
-INSERT INTO `user_manage` VALUES (2, 'lisi', '呵呵呵', '12345678', '李四', '男', '114651@qq.com', '120', 'student', 'sjdf', '大一', '2班', '计算机', '123456738459', '2019-05-07 16:25:29');
+INSERT INTO `user_manage` VALUES (2, 'lisi', '呵呵呵', '12345678', '李四', '男', '114651@qq.com', '120', 'student', 'sjdf', '大一', '2班', '计算机', '123456738459', '2019-05-07 16:25:29'), (22, 'zhangsan', 'zpj', NULL, '张三', '男', 'redhfdrtf@qq.com', NULL, NULL, 'dfhbgkjfl', '大三', '2班', '计算机', '20171414', '2019-05-27 13:17:05');
 COMMIT;
 
 -- ----------------------------
@@ -659,11 +786,11 @@ CREATE TABLE `vote_manage`  (
   `vote_id` int(255) NULL DEFAULT NULL,
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `course_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `publish_date` datetime NULL DEFAULT NULL,
-  `deadline` datetime NULL DEFAULT NULL,
+  `publish_date` datetime(6) NULL DEFAULT NULL,
+  `deadline` datetime(6) NULL DEFAULT NULL,
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author 25714
+ * @author Z-P-J
  */
 public final class TimeUtil {
 

@@ -14,7 +14,7 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * HttpServlet基类
- * @author 25714
+ * @author Z-P-J
  */
 public class BaseHttpServlet extends HttpServlet {
 

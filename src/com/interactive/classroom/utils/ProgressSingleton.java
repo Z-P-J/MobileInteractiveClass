@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author 25714
+ * @author Z-P-J
  */
 public class ProgressSingleton {
 

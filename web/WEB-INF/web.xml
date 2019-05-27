@@ -206,5 +206,15 @@
 <!--    </servlet-mapping>-->
 
 
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>com.interactive.classroom.user.LoginAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+
 
 </web-app>
