@@ -86,7 +86,7 @@ public class InfoDao {
                     + "',faculty='" + info.getFaculty()
                     + "' where name='" + info.getName() + "'";
             DBHelper.getInstance().executeUpdate(sql);
-            sql = "select * from " + TABLE_NAME + " order by create_time desc";
+            sql = "select * from " + TABLE_NAME + " order by register_date desc";
             ResultSet rs = DBHelper.getInstance().executeQuery(sql);
             while (rs.next()) {
                 List list = new ArrayList();
@@ -116,7 +116,7 @@ public class InfoDao {
         List jsonList = new ArrayList();
         try {
             //构�?�sql语句，根据传递过来的查询条件参数
-            String sql = "select * from " + TABLE_NAME + " where id=" + id + " order by create_time desc";
+            String sql = "select * from " + TABLE_NAME + " where id=" + id + " order by register_date desc";
             ResultSet rs = DBHelper.getInstance().executeQuery(sql);
             while (rs.next()) {
                 List list = new ArrayList();
@@ -265,7 +265,7 @@ public class InfoDao {
 
 
         if (query.getType() != null && query.getType().equals("all") && query.getUserRole().equals("manager")) {
-            sql = "select * from " + query.getTableName() + " order by create_time desc";
+            sql = "select * from " + query.getTableName() + " order by register_date desc";
         } else {
             if (query.getId() != null && !query.getId().equals("null")) {
                 sql = "select * from " + query.getTableName() + " where id=" + query.getId();
@@ -283,14 +283,14 @@ public class InfoDao {
     }
 
     private String getOrderBy(String orderName) {
-        if (orderName.equals("create_time")) {
-            orderName = "create_time";
+        if (orderName.equals("register_date")) {
+            orderName = "register_date";
         }
-        if (orderName.equals("title")) {
-            orderName = "title";
+        if (orderName.equals("name")) {
+            orderName = "name";
         }
-        if (orderName.equals("content")) {
-            orderName = "content";
+        if (orderName.equals("student_num")) {
+            orderName = "student_num";
         }
         return orderName;
     }

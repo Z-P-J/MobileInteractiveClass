@@ -311,11 +311,11 @@ var Page = function () {
     };
     var addRecord = function () {
         window.location.href = sub + "_add.jsp";
-    }
+    };
     var showMsg = function (msg) {
         showMessage(msg);
-    }
-    var data = new Array();
+    };
+    var data = [];
     var showResult = function (json) {
         var list = json.aaData;
         if (list != null) {
@@ -330,7 +330,7 @@ var Page = function () {
         var l = "";
         for (var i = 0; i < list.length; i++) {
             showRecord(list[i]);
-            data[i] = new Array();
+            data[i] = [];
             data[i][0] = i;
             data[i][1] = list[i][1];
         }
@@ -541,7 +541,7 @@ var ChartsFlotcharts = function () {
                 "additional": "(projection)"
             }];
         }
-        var chart = AmCharts.makeChart("result_image", {
+        AmCharts.makeChart("result_image", {
             "type": "serial",
             "theme": "light",
             "pathToImages": Metronic.getGlobalPluginsPath() + "amcharts/amcharts/images/",

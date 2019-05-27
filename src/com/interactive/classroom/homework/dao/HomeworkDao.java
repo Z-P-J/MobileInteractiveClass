@@ -21,7 +21,7 @@ public class HomeworkDao {
 
     private static final String TABLE_NAME = "homework_manage";
     private static final String[] LABELS = {"id", "file_id", "uploader_id", "file_name", "file_size", "upload_time", "download_link", "deadline", "homework_requirement", "file_format"};
-    private static final String[] LABELS_CH = {"ID", "文件ID", "上传用户", "文件名字", "文件大小", "上传时间", "下载地址"};
+    private static final String[] LABELS_CH = {"ID", "文件ID", "上传用户", "文件名字", "文件大小", "上传时间"};
 
     /*
      * 功能：返回结果集

@@ -263,9 +263,9 @@ public class FileDao {
                 sql = "select * from " + query.getTableName() + " where id=" + query.getId();
             } else {
                 if (where.isEmpty()) {
-                    sql = "select * from " + query.getTableName() + " where uploader_id='" + query.getUserId() + "'" + orderBy;
+                    sql = "select * from " + query.getTableName() + orderBy; //" where uploader_id='" + query.getUserId() + "'"
                 } else {
-                    sql = "select * from " + query.getTableName() + " " + where + " and uploader_id='" + query.getUserId() + "'" + orderBy;
+                    sql = "select * from " + query.getTableName() + " " + where + orderBy; //" and uploader_id='" + query.getUserId() + "'"
                 }
             }
         }

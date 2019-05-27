@@ -8,7 +8,7 @@
         if (userId != null) {
             session.setAttribute("user_role", "normal");
             session.setAttribute("user_name", userId);//"张三"
-            String studentNum = "20171414"
+            String studentNum = "20171414";
             for (int i = 0; i < 5; i++) {
                 int num = (int) (Math.random() * 10);
                 studentNum += num;

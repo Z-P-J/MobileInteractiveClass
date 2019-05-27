@@ -107,15 +107,16 @@ public class StatisticDao {
         }
         String createTime = "create_time";
         String userId = "user_id";
-        if ("file_manage".equals(statisticBean.getTableName())) {
+        String tableName = statisticBean.getTableName();
+        if ("file_manage".equals(tableName)) {
             createTime = "upload_time";
             userId = "uploader_id";
         }
-        if ("user_manage".equals(statisticBean.getTableName())) {
+        if ("user_manage".equals(tableName)) {
             createTime = "register_date";
             userId = "user_id";
         }
-        if ("vote_file".equals(statisticBean.getTableName())) {
+        if ("vote_file".equals(tableName)) {
             createTime = "publish_date";
             userId = "user_id";
         }
@@ -125,9 +126,11 @@ public class StatisticDao {
 //            userId = "user_id";
 //        }
 
-        sql = "select date_format("+ createTime +",\"" + timeInterval + "\") as time_interval,count(*) as count from " + statisticBean.getTableName() + " a";
+        sql = "select date_format("+ createTime +",\"" + timeInterval + "\") as time_interval,count(*) as count from " + tableName + " a";
         sql = sql + " where " + createTime + " between \"" + statisticBean.getTimeFrom() + "\" and \"" + statisticBean.getTimeTo() + "\"";
-        sql = sql + " and " + userId + "='" + statisticBean.getUserId() + "'";
+//        if (!"user_manage".equals(tableName)) {
+//            sql = sql + " and " + userId + "='" + statisticBean.getUserId() + "'";
+//        }
         sql = sql + " group by time_interval order by time_interval";
         Log.d(getClass().getName(), "sql=" + sql);
         return sql;

@@ -83,25 +83,25 @@
 											<div class="col-md-2">
 												<select class="bs-select form-control" id= "sort_01" onchange="Page.sortRecord(1);">
 													<option value="">-</option>
-													<option value="create_time">按注册时间</option>
-													<option value="title">按姓名</option>
-													<option value="content">按学号</option>
+													<option value="register_date">按注册时间</option>
+													<option value="name">按姓名</option>
+													<option value="student_num">按学号</option>
 												</select>
 											</div>
 											<div class="col-md-2">
 												<select class="bs-select form-control" id= "sort_02" onchange="Page.sortRecord(2);">
 													<option value="">-</option>
-													<option value="create_time">按注册时间</option>
-													<option value="title">按姓名</option>
-													<option value="content">按学号</option>
+													<option value="register_date">按注册时间</option>
+													<option value="name">按姓名</option>
+													<option value="student_num">按学号</option>
 												</select>
 											</div>
 											<div class="col-md-2">
 												<select class="bs-select form-control" id= "sort_03" onchange="Page.sortRecord(3);">
 													<option value="">-</option>
-													<option value="create_time">按注册时间</option>
-													<option value="title">按姓名</option>
-													<option value="content">按学号</option>
+													<option value="register_date">按注册时间</option>
+													<option value="name">按姓名</option>
+													<option value="student_num">按学号</option>
 												</select>
 											</div>
 										</div>

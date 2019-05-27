@@ -23,12 +23,12 @@ var Record = function () {
         var html = "";
         html = html + "						<tr>";
         html = html + "							<th class=\"table-checkbox\"><input type=\"checkbox\" class=\"group-checkable\" data-set=\"#record_list .checkboxes\" /></th>";
+        html = html + "							<th>用户名</th>";
+        html = html + "							<th>用户id名</th>";
         html = html + "							<th>姓名</th>";
-        html = html + "							<th>学号</th>";
-        html = html + "							<th>班级</th>";
-        html = html + "							<th>注册时间</th>";
-        html = html + "							<th>--</th>";
-        html = html + "							<th>学业状态</th>";
+        html = html + "							<th>性别</th>";
+        html = html + "							<th>邮箱</th>";
+        html = html + "							<th>电话号码</th>";
         html = html + "						</tr>";
         $("#record_list_head").html(html);
     };

@@ -11,37 +11,14 @@
   <component name="ChangeListManager">
     <list default="true" id="3850862d-4054-4ea3-81f2-2efede112afc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/my_test.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/my_test5.0.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/survey.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/survey5.0.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/base/BaseHttpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/base/BaseHttpServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/file/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/file/ServletAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/file/dao/FileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/file/dao/FileDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/homework/ServletAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkFileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkFileDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/project/dao/VoteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/project/dao/VoteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/project/file/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/project/file/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/InvestigationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/InvestigationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/project/vote/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/project/vote/ServletAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/statistic/ServletAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/statistic/ServletAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/statistic/dao/StatisticDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/statistic/dao/StatisticDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/utils/ProgressSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/utils/ProgressSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/utils/ServletUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/utils/ServletUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/utils/TimeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/utils/TimeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/utils/export/ExportUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/utils/export/ExportUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/survey/js/Func.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/survey/js/Func.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/home/main/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/home/main/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/user/dao/InfoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/user/dao/InfoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/statistic/statistic_result.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/statistic/statistic_result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/user/info/record_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/user/info/record_list.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyStatis.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyStatis.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/survey/admin/SurveyStatisShow.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/user/info/info_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/user/info/info_list.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
@@ -74,95 +51,113 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/vote/main/index.jsp">
+        <entry file="file://$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/responsive/examples/serial3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="50" column="24" lean-forward="true" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/home/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="77" column="9" lean-forward="true" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="292" column="42" selection-start-line="292" selection-start-column="25" selection-end-line="292" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/home/main/login.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="67" column="52" selection-start-line="67" selection-start-column="52" selection-end-line="67" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="215" column="22" lean-forward="true" selection-start-line="215" selection-start-column="22" selection-end-line="215" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/ServletAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="45" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/LoginAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
+            <state relative-caret-position="342">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#b#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/base/BaseHttpServlet.java">
+        <entry file="file://$PROJECT_DIR$/web/base/statistic/statistic_result.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-95">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="370">
+              <caret line="69" column="86" lean-forward="true" selection-start-line="69" selection-start-column="86" selection-end-line="69" selection-end-column="86" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/statistic/statistic_result.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="864">
+              <caret line="578" column="52" lean-forward="true" selection-start-line="578" selection-start-column="52" selection-end-line="578" selection-end-column="52" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#18616#19472#0" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/file/dao/FileDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="386">
+              <caret line="267" column="139" selection-start-line="267" selection-start-column="139" selection-end-line="267" selection-end-column="139" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/user/info/record_list.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="546">
+              <caret line="116" column="78" selection-start-line="116" selection-start-column="78" selection-end-line="116" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/user/info/record_list.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="23" column="91" selection-start-line="23" selection-start-column="91" selection-end-line="23" selection-end-column="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/homework/core/record_list.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="116" column="75" lean-forward="true" selection-start-line="116" selection-start-column="75" selection-end-line="116" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/file/record_list.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-57">
+              <folding>
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/base/statistic/statistic_print.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6099" />
           </provider>
         </entry>
       </file>
@@ -181,14 +176,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mainmen</find>
-      <find>jq</find>
-      <find>s_type</find>
-      <find>doSelect</find>
-      <find>findSurvey</find>
-      <find>SurveyDAO</find>
-      <find>$</find>
-      <find>编辑</find>
       <find>editSurvey</find>
       <find>type</find>
       <find>getAttribute</find>
@@ -211,6 +198,14 @@
       <find>@author 25714</find>
       <find>userId=</find>
       <find>security_user_control_action</find>
+      <find>create_time</find>
+      <find>title</find>
+      <find>serial.js</find>
+      <find>serial</find>
+      <find>user_id=</find>
+      <find>base</find>
+      <find>base.</find>
+      <find>uploader_id</find>
     </findStrings>
     <replaceStrings>
       <replace>databaseName=&quot;my_test&quot;</replace>
@@ -232,7 +227,6 @@
       <replace>@author Z-P-J</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>D:\Programming\Java Workplace\Demo\web\project</dir>
       <dir>D:\Programming\Java Workplace\Demo\web\assets\module\scripts</dir>
       <dir>D:\Programming\Java Workplace\Demo\src</dir>
       <dir>D:\Programming\Java Workplace\Demo\web</dir>
@@ -259,9 +253,10 @@
       <dir>D:\Programming\MobileInteractiveClass\src\com\iWen\survey</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\survey</dir>
       <dir>D:\Programming\MobileInteractiveClass\web\assets</dir>
-      <dir>D:\Programming\MobileInteractiveClass\web</dir>
       <dir>D:\Programming\MobileInteractiveClass</dir>
+      <dir>D:\Programming\MobileInteractiveClass\</dir>
       <dir>D:\Programming\MobileInteractiveClass\src</dir>
+      <dir>D:\Programming\MobileInteractiveClass\web</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -270,15 +265,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/investigation/core/all.jsp" />
-        <option value="$PROJECT_DIR$/web/assets/module/scripts/investigation/investigation_list.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/com/iWen/survey/pager/PageControl.java" />
-        <option value="$PROJECT_DIR$/src/com/iWen/survey/ctrl/ShowSurvey.java" />
-        <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/DAOFactory.java" />
-        <option value="$PROJECT_DIR$/web/survey/index.jsp" />
-        <option value="$PROJECT_DIR$/web/survey/admin/ShowSheet.jsp" />
-        <option value="$PROJECT_DIR$/web/survey/Survey_list.jsp" />
         <option value="$PROJECT_DIR$/web/survey/ajax_SurveyShow.jsp" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/upload/UploadServlet.java" />
         <option value="$PROJECT_DIR$/web/homework/core/list.jsp" />
@@ -320,7 +306,16 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/home/main/login.jsp" />
         <option value="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/web/user/info/info_list.jsp" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/user/dao/InfoDao.java" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/statistic/dao/StatisticDao.java" />
+        <option value="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/amcharts.js" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/statistic/statistic_result.js" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/file/dao/FileDao.java" />
+        <option value="$PROJECT_DIR$/web/assets/module/scripts/user/info/record_list.js" />
+        <option value="$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java" />
       </list>
     </option>
   </component>
@@ -397,7 +392,84 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="interactive" type="462c0819:PsiDirectoryNode" />
               <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="file" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="file" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="statistic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="statistic" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="interactive" type="462c0819:PsiDirectoryNode" />
+              <item name="classroom" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -424,6 +496,19 @@
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="statistic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="file" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -463,47 +548,14 @@
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="survey" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="survey" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="survey" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="vote" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="vote" type="462c0819:PsiDirectoryNode" />
-              <item name="file" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="vote" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="info" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -721,7 +773,7 @@
       <workItem from="1558774417227" duration="1973000" />
       <workItem from="1558868975437" duration="19452000" />
       <workItem from="1558927701079" duration="4559000" />
-      <workItem from="1558946930496" duration="22622000" />
+      <workItem from="1558946930496" duration="27194000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -832,7 +884,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347622000" />
+    <option name="totallyTimeSpent" value="352194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -847,17 +899,17 @@
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49731904" visible="true" weight="0.28150135" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49597856" visible="true" weight="0.28150135" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" sideWeight="0.50268096" side_tool="true" weight="0.26675603" />
+      <window_info id="Web" order="7" sideWeight="0.50402147" side_tool="true" weight="0.28150135" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32841823" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34852546" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.7520107" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -893,157 +945,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/Z-P-J/MobileInteractiveClass&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/AdminDAOimpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2508">
-          <caret line="142" column="35" selection-start-line="142" selection-start-column="35" selection-end-line="142" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/investigation/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="143" column="26" selection-start-line="143" selection-start-column="26" selection-end-line="143" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/vote/file/vote_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-295" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/main.jsp" />
-    <entry file="file://$PROJECT_DIR$/web/survey/main/list.jsp" />
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/SurveyAudi.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/dao/DAOFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="34" />
-          <folding>
-            <element signature="e#161#162#0" expanded="true" />
-            <element signature="e#194#195#0" expanded="true" />
-            <element signature="e#336#337#0" expanded="true" />
-            <element signature="e#371#372#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/survey/js/survey_index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/investigation/main/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/home/mainmenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="86" column="39" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/main/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="717">
-          <caret line="60" column="74" selection-start-line="60" selection-start-column="74" selection-end-line="60" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/sql/SQLCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="89" column="22" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/QuestionAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="67" column="44" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
-          <folding>
-            <element signature="e#3770#3771#0" expanded="true" />
-            <element signature="e#3800#3801#0" expanded="true" />
-            <element signature="e#3925#3926#0" expanded="true" />
-            <element signature="e#3952#3953#0" expanded="true" />
-            <element signature="e#3990#3991#0" expanded="true" />
-            <element signature="e#4022#4023#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/AdminAdd.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionEdit.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="170" column="45" selection-start-line="170" selection-start-column="45" selection-end-line="170" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/survey/js/QuestAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/iWen/survey/ctrl/SurveyManageAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2128">
-          <caret line="121" column="44" lean-forward="true" selection-start-line="121" selection-start-column="44" selection-end-line="121" selection-end-column="44" />
-          <folding>
-            <element signature="e#5305#5306#0" expanded="true" />
-            <element signature="e#5332#5333#0" expanded="true" />
-            <element signature="e#5372#5373#0" expanded="true" />
-            <element signature="e#5404#5405#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/survey/admin/OpResult.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/survey/admin/QuestionAdmin.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1995">
@@ -1100,13 +1001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1482">
           <caret line="78" column="118" selection-start-line="78" selection-start-column="118" selection-end-line="78" selection-end-column="118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/statistic/dao/StatisticDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1957">
-          <caret line="113" column="51" selection-start-line="113" selection-start-column="51" selection-end-line="113" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -1183,13 +1077,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/statistic/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="238" column="33" lean-forward="true" selection-start-line="238" selection-start-column="33" selection-end-line="238" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/vote/main/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -1215,13 +1102,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-95">
           <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/ServletAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="45" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1256,10 +1136,184 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="45">
+            <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/user/info/info_view.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2038" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/user/info/info_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="103" column="78" selection-start-line="103" selection-start-column="78" selection-end-line="103" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/bean/InfoBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="136" column="20" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
+          <folding>
+            <element signature="e#2710#2711#0" expanded="true" />
+            <element signature="e#2738#2739#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/ServletAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="176" column="38" lean-forward="true" selection-start-line="176" selection-start-column="38" selection-end-line="176" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/dao/InfoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="259" column="78" selection-start-line="259" selection-start-column="70" selection-end-line="259" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/statistic/ServletAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="238" column="33" lean-forward="true" selection-start-line="238" selection-start-column="33" selection-end-line="238" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/statistic/dao/StatisticDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="130" column="11" selection-start-line="130" selection-start-column="11" selection-end-line="132" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/global/plugins/amcharts/amstockcharts/plugins/responsive/examples/serial3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#b#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/base/statistic/statistic_print.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6099" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/pie.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/serial.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/amcharts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="46" column="352" lean-forward="true" selection-start-line="46" selection-start-column="352" selection-end-line="46" selection-end-column="352" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/ammap.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/funnel.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/base/statistic/statistic_result.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="69" column="86" lean-forward="true" selection-start-line="69" selection-start-column="86" selection-end-line="69" selection-end-column="86" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/file/dao/FileDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="267" column="139" selection-start-line="267" selection-start-column="139" selection-end-line="267" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/user/info/record_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="116" column="78" selection-start-line="116" selection-start-column="78" selection-end-line="116" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/file/record_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/homework/core/record_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="116" column="75" lean-forward="true" selection-start-line="116" selection-start-column="75" selection-end-line="116" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/user/info/record_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/homework/dao/HomeworkDao.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <caret line="23" column="91" selection-start-line="23" selection-start-column="91" selection-end-line="23" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/module/scripts/statistic/statistic_result.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="578" column="52" lean-forward="true" selection-start-line="578" selection-start-column="52" selection-end-line="578" selection-end-column="52" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#18616#19472#0" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
