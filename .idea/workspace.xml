@@ -5,24 +5,20 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="MobileInteractiveClass" />
+      <artifact name="xm05-teach" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3850862d-4054-4ea3-81f2-2efede112afc" name="Default Changelist" comment="">
+    <list default="true" id="3850862d-4054-4ea3-81f2-2efede112afc" name="Default Changelist" comment="Merge branch 'master' of https://github.com/Z-P-J/MobileInteractiveClass&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/MobileInteractiveClass.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/MobileInteractiveClass.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_io_2_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_2_6.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/serial.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/global/plugins/amcharts/amcharts/serial.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/statistic/statistic_result.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/assets/module/scripts/statistic/statistic_result.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/base/statistic/statistic_result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/base/statistic/statistic_result.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/home/frame/frame_javascript.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MobileInteractiveClass/home/frame/frame_javascript.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/interactive/classroom/utils/DBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-8.0.12.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/serial.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/global/plugins/amcharts/amcharts/serial.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/module/scripts/statistic/statistic_result.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/module/scripts/statistic/statistic_result.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/base/statistic/statistic_result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/base/statistic/statistic_result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/home/frame/frame_javascript.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/home/frame/frame_javascript.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
@@ -54,11 +50,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/base/statistic/statistic_result.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
+            <state relative-caret-position="845">
               <caret line="119" column="73" selection-start-line="119" selection-start-column="73" selection-end-line="119" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -123,15 +128,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="380">
               <caret line="44" column="29" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/global/plugins/amcharts/ammap/ammap.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="75" column="114" selection-start-line="75" selection-start-column="114" selection-end-line="75" selection-end-column="114" />
             </state>
           </provider>
         </entry>
@@ -240,7 +236,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/LinkDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/QuestionDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/SurveyDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/com/iWen/survey/dao/impl/ConfigDAOimpl.java" />
@@ -291,6 +286,7 @@
         <option value="$PROJECT_DIR$/web/assets/module/scripts/statistic/statistic_result.js" />
         <option value="$PROJECT_DIR$/web/assets/global/plugins/amcharts4/lib/core.js" />
         <option value="$PROJECT_DIR$/web/base/statistic/statistic_result.jsp" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -323,6 +319,19 @@
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
               <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MobileInteractiveClass" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="xm05_teach" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MobileInteractiveClass" type="b2602c69:ProjectViewProjectNode" />
@@ -647,7 +656,7 @@
       <workItem from="1558868975437" duration="19452000" />
       <workItem from="1558927701079" duration="4559000" />
       <workItem from="1558946930496" duration="27194000" />
-      <workItem from="1559007416146" duration="9677000" />
+      <workItem from="1559007416146" duration="9999000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1557142026161</created>
@@ -754,11 +763,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558627203189</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Merge branch 'master' of https://github.com/Z-P-J/MobileInteractiveClass&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1559025904660</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1559025904660</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="361871000" />
+    <option name="totallyTimeSpent" value="362193000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -819,16 +835,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/Z-P-J/MobileInteractiveClass&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/interactive/classroom/user/LoginAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/home/main/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
@@ -1135,8 +1141,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/base/statistic/statistic_result.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
+        <state relative-caret-position="845">
           <caret line="119" column="73" selection-start-line="119" selection-start-column="73" selection-end-line="119" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
         </state>
       </provider>
     </entry>
