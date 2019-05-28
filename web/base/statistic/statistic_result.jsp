@@ -112,17 +112,24 @@
 <script src="../../assets/global/plugins/flot/jquery.flot.crosshair.min.js"></script>
 <script src="../../assets/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="../../assets/global/plugins/amcharts/amcharts/amcharts.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/amcharts/amcharts/serial.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/amcharts/amcharts/pie.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/amcharts/amcharts/radar.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/amcharts/amcharts/themes/light.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/amcharts/amcharts/themes/patterns.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/amcharts/amcharts/themes/chalk.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/amcharts/ammap/ammap.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/amcharts/ammap/maps/js/worldLow.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/amcharts/amstockcharts/amstock.js" type="text/javascript"></script>
+<%--<script src="../../assets/global/plugins/amcharts/amcharts/amcharts.js" type="text/javascript"></script>--%>
+<%--<script src="../../assets/global/plugins/amcharts/amcharts/serial.js" type="text/javascript"></script>--%>
+<%--<script src="../../assets/global/plugins/amcharts/amcharts/pie.js" type="text/javascript"></script>--%>
+<%--<script src="../../assets/global/plugins/amcharts/amcharts/radar.js" type="text/javascript"></script>--%>
+<%--<script src="../../assets/global/plugins/amcharts/amcharts/themes/light.js" type="text/javascript"></script>--%>
+<%--<script src="../../assets/global/plugins/amcharts/amcharts/themes/patterns.js" type="text/javascript"></script>--%>
+<%--<script src="../../assets/global/plugins/amcharts/amcharts/themes/chalk.js" type="text/javascript"></script>--%>
+<%--<script src="../../assets/global/plugins/amcharts/ammap/ammap.js" type="text/javascript"></script>--%>
+<%--<script src="../../assets/global/plugins/amcharts/ammap/maps/js/worldLow.js" type="text/javascript"></script>--%>
+<%--<script src="../../assets/global/plugins/amcharts/amstockcharts/amstock.js" type="text/javascript"></script>--%>
 <!-- END PAGE LEVEL PLUGINS -->
+
+
+<script src="../../assets/global/plugins/amcharts4/lib/core.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/charts.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/themes/material.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/lang/zh_Hans.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/themes/animated.js"></script>
 
 
 <script src="../../assets/module/scripts/statistic/statistic_result.js" type="text/javascript"></script>

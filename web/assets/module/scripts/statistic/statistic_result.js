@@ -541,61 +541,157 @@ var ChartsFlotcharts = function () {
                 "additional": "(projection)"
             }];
         }
-        AmCharts.makeChart("result_image", {
-            "type": "serial",
-            "theme": "light",
-            "pathToImages": Metronic.getGlobalPluginsPath() + "amcharts/amcharts/images/",
-            "autoMargins": false,
-            "marginLeft": 30,
-            "marginRight": 8,
-            "marginTop": 10,
-            "marginBottom": 26,
 
-            "fontFamily": 'Open Sans',
-            "color": '#888',
+        console.log(data);
 
-            "dataProvider": data,
-            "valueAxes": [{
-                "axisAlpha": 0,
-                "position": "left"
-            }],
-            "startDuration": 1,
-            "graphs": [{
-                "alphaField": "alpha",
-                "balloonText": "<span style='font-size:13px;'>[[title]] in [[category]]:<b>[[value]]</b> [[additional]]</span>",
-                "dashLengthField": "dashLengthColumn",
-                "fillAlphas": 1,
-                "title": "Income",
-                "type": "column",
-                "valueField": "count"
-            }, {
-                "balloonText": "<span style='font-size:13px;'>[[title]] in [[category]]:<b>[[value]]</b> [[additional]]</span>",
-                "bullet": "round",
-                "dashLengthField": "dashLengthLine",
-                "lineThickness": 3,
-                "bulletSize": 7,
-                "bulletBorderAlpha": 1,
-                "bulletColor": "#FFFFFF",
-                "useLineColorForBulletBorder": true,
-                "bulletBorderThickness": 3,
-                "fillAlphas": 0,
-                "lineAlpha": 1,
-                "title": "Expenses",
-                "valueField": "expenses"
-            }],
-            "categoryField": "datetime",
-            "categoryAxis": {
-                "gridPosition": "start",
-                "axisAlpha": 0,
-                "tickLength": 0
-            }
-        });
+        // AmCharts.makeChart("result_image", {
+        //     "type": "serial",
+        //     "theme": "light",
+        //     "pathToImages": Metronic.getGlobalPluginsPath() + "amcharts/amcharts/images/",
+        //     "autoMargins": false,
+        //     "marginLeft": 30,
+        //     "marginRight": 8,
+        //     "marginTop": 10,
+        //     "marginBottom": 26,
+        //
+        //     "fontFamily": 'Open Sans',
+        //     "color": '#888',
+        //
+        //     "dataProvider": data,
+        //     "valueAxes": [{
+        //         "axisAlpha": 0,
+        //         "position": "left"
+        //     }],
+        //     "startDuration": 1,
+        //     "graphs": [{
+        //         "alphaField": "alpha",
+        //         "balloonText": "<span style='font-size:13px;'>[[title]] in [[category]]:<b>[[value]]</b> [[additional]]</span>",
+        //         "dashLengthField": "dashLengthColumn",
+        //         "fillAlphas": 1,
+        //         "title": "Income",
+        //         "type": "column",
+        //         "valueField": "count"
+        //     }, {
+        //         "balloonText": "<span style='font-size:13px;'>[[title]] in [[category]]:<b>[[value]]</b> [[additional]]</span>",
+        //         "bullet": "round",
+        //         "dashLengthField": "dashLengthLine",
+        //         "lineThickness": 3,
+        //         "bulletSize": 7,
+        //         "bulletBorderAlpha": 1,
+        //         "bulletColor": "#FFFFFF",
+        //         "useLineColorForBulletBorder": true,
+        //         "bulletBorderThickness": 3,
+        //         "fillAlphas": 0,
+        //         "lineAlpha": 1,
+        //         "title": "Expenses",
+        //         "valueField": "expenses"
+        //     }],
+        //     "categoryField": "datetime",
+        //     "categoryAxis": {
+        //         "gridPosition": "start",
+        //         "axisAlpha": 0,
+        //         "tickLength": 0
+        //     }
+        // });
+
+        am4core.ready(function() {
+
+            // Themes begin
+            am4core.useTheme(am4themes_animated);
+            // Themes end
+
+            // Create chart instance
+            var chart = am4core.create("result_image", am4charts.XYChart);
+            // chart.scrollbarX = new am4core.Scrollbar();
+
+            // Add data
+            chart.data = data;
+//             chart.data = [{
+//                 "country": "USA",
+//                 "visits": 3025
+//             }, {
+//                 "country": "China",
+//                 "visits": 1882
+//             }, {
+//                 "country": "Japan",
+//                 "visits": 1809
+//             }, {
+//                 "country": "Germany",
+//                 "visits": 1322
+//             }, {
+//                 "country": "UK",
+//                 "visits": 1122
+//             }, {
+//                 "country": "France",
+//                 "visits": 1114
+//             }, {
+//                 "country": "India",
+//                 "visits": 984
+//             }, {
+//                 "country": "Spain",
+//                 "visits": 711
+//             }, {
+//                 "country": "Netherlands",
+//                 "visits": 665
+//             }, {
+//                 "country": "Russia",
+//                 "visits": 580
+//             }, {
+//                 "country": "South Korea",
+//                 "visits": 443
+//             }, {
+//                 "country": "Canada",
+//                 "visits": 441
+//             }];
+
+            // Create axes
+            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+            categoryAxis.dataFields.category = "datetime";
+            categoryAxis.renderer.grid.template.location = 0;
+            categoryAxis.renderer.minGridDistance = 30;
+            categoryAxis.renderer.labels.template.horizontalCenter = "right";
+            categoryAxis.renderer.labels.template.verticalCenter = "middle";
+            categoryAxis.renderer.labels.template.rotation = 270;
+            categoryAxis.tooltip.disabled = true;
+            categoryAxis.renderer.minHeight = 110;
+
+            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+            valueAxis.renderer.minWidth = 50;
+
+            // Create series
+            var series = chart.series.push(new am4charts.ColumnSeries());
+            series.sequencedInterpolation = true;
+            series.dataFields.valueY = "count";
+            series.dataFields.categoryX = "datetime";
+            series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
+            series.columns.template.strokeWidth = 0;
+
+            // series.tooltip.pointerOrientation = "vertical";
+
+            series.columns.template.column.cornerRadiusTopLeft = 10;
+            series.columns.template.column.cornerRadiusTopRight = 10;
+            series.columns.template.column.fillOpacity = 0.8;
+
+            // on hover, make corner radiuses bigger
+            var hoverState = series.columns.template.column.states.create("hover");
+            hoverState.properties.cornerRadiusTopLeft = 0;
+            hoverState.properties.cornerRadiusTopRight = 0;
+            hoverState.properties.fillOpacity = 1;
+
+            series.columns.template.adapter.add("fill", function(fill, target) {
+                return chart.colors.getIndex(target.dataItem.index);
+            });
+
+            // Cursor
+            chart.cursor = new am4charts.XYCursor();
+
+        }); // end am4core.ready()
     }
     return {
         //main function to initiate the module
         init: function () {
             Metronic.addResizeHandler(function () {
-                //Charts.initPieCharts();
+                // Charts.initPieCharts();
             });
         },
         initBarCharts: function () {

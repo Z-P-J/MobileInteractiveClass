@@ -18,16 +18,19 @@ public class DBHelper {
 
     private static final int DEBUG_LEVEL = 1;
 
-//    public static final String DATEBASE_NAME = "my_test";
-//    private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
-//    private static final String USER_NAME = "xm05";
-//    private static final String PASSWORD = "xm05";
-
     public static final String DATEBASE_NAME = "my_test";
-    private static final String URL = "jdbc:mysql://localhost:3306/" + DATEBASE_NAME + "?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true";
     private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "zpj19990509";
+
+
+
+//    public static final String DATEBASE_NAME = "xm05_teach";
+//    private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
+//    private static final String USER_NAME = "xm05";
+//    private static final String PASSWORD = "12345678";
+
+    private static final String URL = "jdbc:mysql://localhost:3306/" + DATEBASE_NAME + "?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true";
 
 
 
