@@ -10,7 +10,7 @@
     ConfigDAO cdao = DAOFactory.getConfigDAO();
     Config cfg = cdao.findConfig();
 
-    SurveyDAOimpl sdao = (SurveyDAOimpl)DAOFactory.getSurveyDAO(request.getParameter("type"));
+    SurveyDAOimpl sdao = DAOFactory.getSurveyDAO(request.getParameter("type"));
     sdao.setType(request.getParameter("type"));
     Survey survey = sdao.findSurvey(Long.valueOf(sid));
 

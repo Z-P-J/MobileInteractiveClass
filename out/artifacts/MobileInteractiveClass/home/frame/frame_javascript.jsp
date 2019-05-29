@@ -6,6 +6,7 @@
 <script type="text/javascript" src="../../assets/global/plugins/respond.min.js"></script>
 <script type="text/javascript" src="../../assets/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
+<%--<script type="text/javascript" src="../../assets/survey/js/jquery-1.7.2.js"></script>--%>
 <script type="text/javascript" src="../../assets/global/plugins/jquery.min.js"></script>
 <script type="text/javascript" src="../../assets/global/plugins/jquery-migrate.min.js"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
