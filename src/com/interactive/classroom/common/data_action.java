@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.interactive.classroom.user.UserType;
 import com.interactive.classroom.utils.DBHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -124,8 +125,6 @@ public class data_action extends HttpServlet {
         int resultCode = 0;
 
 
-        String db = (String) session.getAttribute("unit_db_name");
-        Log.d(getClass().getName(), "db=" + db);
         String id = request.getParameter("id");
         String tableName = request.getParameter("table_name");
         String order = request.getParameter("order");
@@ -213,13 +212,6 @@ public class data_action extends HttpServlet {
         String resultMsg = "success";
         int resultCode = 0;
         if (role != null) {
-//            if (session.getAttribute("unit_db_name") == null) {
-//                resultCode = 10;
-//                resultMsg = "数据库为空！";
-//            } else {
-//
-//                //System.out.println(jsonList.toString());
-//            }
             String id = request.getParameter("id");
             String tableName = request.getParameter("table_name");
             String order = request.getParameter("order");

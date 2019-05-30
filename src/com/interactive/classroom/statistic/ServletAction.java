@@ -44,14 +44,14 @@ public class ServletAction extends BaseHttpServlet {
     private static final String MODULE = "base";
     private static final String SUB = "statistic";
 
-//    public String preFix = MODULE + "_" + SUB;
+    //    public String preFix = MODULE + "_" + SUB;
     private static final String RESULT_PATH = MODULE + "/" + SUB;
     private static final String RESULT_PAGE = "result.jsp";
     private String resultUrl = RESULT_PATH + "/" + RESULT_PAGE;
     private static final String REDIRECT_PATH = MODULE + "/" + SUB;
     private static final String REDIRECT_PAGE = "record_list.jsp";
     private String redirectUrl = REDIRECT_PATH + "/" + REDIRECT_PAGE;
-//    public String databaseName = "my_test";
+    //    public String databaseName = "my_test";
     public LogEvent ylxLog = new LogEvent();
 
     /*
@@ -227,7 +227,6 @@ public class ServletAction extends BaseHttpServlet {
     private void getStatisticRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
-        String dbName = (String) session.getAttribute("unit_db_name");
         String type = request.getParameter("type");
         String timeFrom = request.getParameter("time_from");
         String timeTo = request.getParameter("time_to");
@@ -264,7 +263,6 @@ public class ServletAction extends BaseHttpServlet {
 
     public void getFlowStatisticQuerySetup(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
-        String dbName = (String) session.getAttribute("unit_db_name");
         String id = request.getParameter("id");
         String action = request.getParameter("action");
         String content = request.getParameter("content");
@@ -344,11 +342,11 @@ public class ServletAction extends BaseHttpServlet {
         filePathName = filePath + "\\" + fileName;
         fileUrl = "/upload/project/exportBean/temp/" + fileName;
         /*--------------------赋值完毕--------------------*/
-        String dbName = (String) session.getAttribute("unit_db_name");
         String action = request.getParameter("action");
         String existResultset = request.getParameter("exist_resultset");
-        if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty()))
+        if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty())) {
             existResultset = "0";
+        }
         String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
         int resultCode = 0;
@@ -368,7 +366,6 @@ public class ServletAction extends BaseHttpServlet {
         exportBean.setCreator(creator);
         exportBean.setUserId(userId);
         exportBean.setUserName(userName);
-        exportBean.setDbName(dbName);
         exportBean.setExportStatus("1");
         exportBean.setFileName(fileName);
         exportBean.setFilePath(filePath.replaceAll("\\\\", "/"));

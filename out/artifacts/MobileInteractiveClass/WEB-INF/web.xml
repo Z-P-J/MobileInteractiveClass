@@ -47,40 +47,7 @@
         <url-pattern>/common_data_action</url-pattern>
     </servlet-mapping>
     <!-- ================  project begin =================           -->
-    <servlet>
-        <servlet-name>project_file_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.project.file.ServletAction</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>project_file_servlet_action</servlet-name>
-        <url-pattern>/project_file_servlet_action</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>project_investigation_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.project.investigation.ServletAction</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>project_investigation_servlet_action</servlet-name>
-        <url-pattern>/project_investigation_servlet_action</url-pattern>
-    </servlet-mapping>
 
-    <servlet>
-        <servlet-name>project_vote_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.project.vote.ServletAction</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>project_vote_servlet_action</servlet-name>
-        <url-pattern>/project_vote_servlet_action</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>project_document_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.project.document.ServletAction</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>project_document_servlet_action</servlet-name>
-        <url-pattern>/project_document_servlet_action</url-pattern>
-    </servlet-mapping>
     <servlet>
         <servlet-name>statistic_servlet_action</servlet-name>
         <servlet-class>com.interactive.classroom.statistic.ServletAction</servlet-class>
@@ -91,14 +58,14 @@
     </servlet-mapping>
     <!-- ================  project end =================           -->
     <!-- ================  forum begin =================           -->
-    <servlet>
-        <servlet-name>forum_file_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.forum.file.ServletAction</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>forum_file_servlet_action</servlet-name>
-        <url-pattern>/forum_file_servlet_action</url-pattern>
-    </servlet-mapping>
+<!--    <servlet>-->
+<!--        <servlet-name>forum_file_servlet_action</servlet-name>-->
+<!--        <servlet-class>com.interactive.classroom.forum.file.ServletAction</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>forum_file_servlet_action</servlet-name>-->
+<!--        <url-pattern>/forum_file_servlet_action</url-pattern>-->
+<!--    </servlet-mapping>-->
     <!-- ================  forum end =================           -->
     <!-- ================  clinic begin =================           -->
     <servlet>

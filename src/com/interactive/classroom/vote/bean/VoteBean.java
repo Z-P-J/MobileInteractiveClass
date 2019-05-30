@@ -13,7 +13,6 @@ public class VoteBean {
 	private String createTime;
 	//传递条件查询用
 	private String action;
-	private String dbName;
 	private String tableName="";
 	private String type="";
 	private String timeFrom="";
@@ -97,14 +96,6 @@ public class VoteBean {
 
 	public void setAction(String action) {
 		this.action = action;
-	}
-
-	public String getDbName() {
-		return dbName;
-	}
-
-	public void setDbName(String dbName) {
-		this.dbName = dbName;
 	}
 
 	public String getLimitTime() {

@@ -59,7 +59,7 @@ public class ServletAction extends BaseHttpServlet {
         String action = request.getParameter("action");
         Log.d(getClass().getName(), "processAction收到的action是：" + action);
 
-        if (session.getAttribute("user_role") == null) {
+        if (session.getAttribute("user_name") == null) {
             try {
                 processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
             } catch (JSONException e) {

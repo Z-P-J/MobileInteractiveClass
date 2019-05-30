@@ -63,8 +63,6 @@ public class WECHAT {
 	public void setSession(HttpSession session) throws Exception {
 		try {
 			this.session = session;
-			if (session.getAttribute("unit_db_name") == null)
-				session.setAttribute("unit_db_name", databaseName);
 		} catch (Exception e) {
 			showDebug("初始化Bean出现错误！" + e.getMessage());
 		}

@@ -73,6 +73,7 @@ public class UserDao {
         try {
             if (rs.next()) {
                 UserBean user = new UserBean();
+                user.setId(rs.getString("id"));
                 user.setUserName(rs.getString("user_name"));
                 user.setPassword(rs.getString("password"));
                 user.setName(rs.getString("name"));
@@ -194,6 +195,22 @@ public class UserDao {
         return jsonObj;
     }
 
+    public int registerUser(UserBean user) {
+        String sql = "insert into " + TABLE_NAME + "(user_name,password,name,sex,email,wechat,grade,class,student_num,faculty,register_date) values('"
+                + user.getUserName() + "','"
+                + user.getPassword() + "','"
+                + user.getName() + "','"
+                + user.getSex() + "','"
+                + user.getEmail() + "','"
+                + user.getWechat() + "','"
+                + user.getGrade() + "','"
+                + user.getClassStr() + "','"
+                + user.getStudentNum() + "','"
+                + user.getFaculty() + "','"
+                + TimeUtil.currentDate() + "')";
+        return DBHelper.getInstance().executeUpdateToGetId(sql);
+    }
+
     public JSONObject deleteRecord(String action, String name, String creator, String createTime) throws JSONException, SQLException {
         String resultMsg = "ok";
         int resultCode = 0;
@@ -210,7 +227,7 @@ public class UserDao {
         return jsonObj;
     }
 
-    public JSONObject deleteRecord(String action, String dbName, String[] ids, String creator, String createTime) throws JSONException, SQLException {
+    public JSONObject deleteRecord(String action, String[] ids, String creator, String createTime) throws JSONException, SQLException {
         String resultMsg = "ok";
         int resultCode = 0;
         List jsonList = new ArrayList();
@@ -220,27 +237,6 @@ public class UserDao {
             DBHelper.getInstance().executeUpdate(sql);
         }
         DBHelper.getInstance().close();
-        //下面�?始构建返回的json
-        JSONObject jsonObj = new JSONObject();
-        jsonObj.put("aaData", jsonList);
-        jsonObj.put("action", action);
-        jsonObj.put("result_msg", resultMsg);//如果发生错误就设置成"error"�?
-        jsonObj.put("result_code", resultCode);//返回0表示正常，不等于0就表示有错误产生，错误代�?
-        return jsonObj;
-    }
-
-    public JSONObject setRecordTop(String action, String dbName, String type, String userId, String id) throws JSONException, SQLException {
-        String resultMsg = "ok";
-        int resultCode = 0;
-        List jsonList = new ArrayList();
-        //构�?�sql语句，根据传递过来的查询条件参数
-        String sql = "select max(priority) as priority from " + TABLE_NAME + " where user_id='" + userId + "'";
-        int priority = 0;
-        ResultSet rs = DBHelper.getInstance().executeQuery(sql);
-        if (rs.next()) {
-            priority = rs.getInt("priority");
-        }
-        DBHelper.getInstance().executeUpdate("update " + TABLE_NAME + " set priority=" + (priority + 1) + " where id=" + id).close();
         //下面�?始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);

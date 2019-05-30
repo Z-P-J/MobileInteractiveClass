@@ -106,6 +106,19 @@ public class DBHelper {
         return dbHelper;
     }
 
+    public int executeUpdateToGetId(String s) {
+        try {
+            if (DEBUG_LEVEL > 0) {
+                Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeUpdate:" + s);
+            }
+            return getStatement().executeUpdate(s, Statement.RETURN_GENERATED_KEYS);
+        } catch (SQLException sqlexception) {
+            sqlexception.printStackTrace();
+
+        }
+        return -1;
+    }
+
     public void putTableColumnNames(String tableName, JSONObject jsonObj) {
         ResultSet rs = executeQuery("select * from " + tableName);
         try {

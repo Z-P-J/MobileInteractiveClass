@@ -63,18 +63,7 @@ public class LoginAction extends BaseHttpServlet {
         if (user != null) {
             Log.d(getClass().getName(), "password=" + password + "    saveedPassword=" + user.getPassword());
             if (user.getPassword().trim().equals(password.trim())) {
-                session.setAttribute("user_name", user.getUserName());
-                session.setAttribute("name", user.getName());
-                session.setAttribute("sex", user.getSex());
-                session.setAttribute("email", user.getEmail());
-                session.setAttribute("phone", user.getPhone());
-                session.setAttribute("user_role", user.getUserRole());
-                session.setAttribute("wechat", user.getWechat());
-                session.setAttribute("grade", user.getGrade());
-                session.setAttribute("class", user.getClassStr());
-                session.setAttribute("faculty", user.getFaculty());
-                session.setAttribute("student_num", user.getStudentNum());
-                session.setAttribute("register_date", user.getCreateTime());
+                wrapSession(session, user);
             }
         }
         response.sendRedirect("index.jsp");
@@ -90,20 +79,26 @@ public class LoginAction extends BaseHttpServlet {
         String name = request.getParameter("register_full_name");
         System.out.println("name=" + name);
         String email = request.getParameter("email");
+        String registerDate = TimeUtil.currentDate();
         bean.setUserName(userName);
         bean.setPassword(password);
         bean.setName(name);
         bean.setEmail(email);
+        bean.setCreateTime(registerDate);
 
-        JSONObject jsonObj = null;
         try {
-            jsonObj = userDao.addRecord(bean);
+            int id = userDao.registerUser(bean);
             System.out.println("注册成功");
-            session.setAttribute("user_role", "normal");
-            session.setAttribute("user_name", userName);
-            session.setAttribute("full_name", name);
-            session.setAttribute("email", email);
-            session.setAttribute("user_avatar", "assets/module/img/security/user/avatar.jpg");
+            if (id != -1) {
+                bean.setId("" + id);
+                wrapSession(session, bean);
+//                session.setAttribute("user_role", "normal");
+//                session.setAttribute("user_name", userName);
+//                session.setAttribute("full_name", name);
+//                session.setAttribute("email", email);
+//                session.setAttribute("user_avatar", "assets/module/img/security/user/avatar.jpg");
+//                session.setAttribute("register_date", registerDate);
+            }
             response.sendRedirect("index.jsp");
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,6 +106,23 @@ public class LoginAction extends BaseHttpServlet {
         }
 
 //        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
+    }
+
+    private void wrapSession(HttpSession session, UserBean user) {
+        session.setAttribute("user_id", user.getId());
+        session.setAttribute("user_name", user.getUserName());
+        session.setAttribute("name", user.getName());
+        session.setAttribute("sex", user.getSex());
+        session.setAttribute("email", user.getEmail());
+        session.setAttribute("phone", user.getPhone());
+        session.setAttribute("user_role", user.getUserRole());
+        session.setAttribute("wechat", user.getWechat());
+        session.setAttribute("grade", user.getGrade());
+        session.setAttribute("class", user.getClassStr());
+        session.setAttribute("faculty", user.getFaculty());
+        session.setAttribute("student_num", user.getStudentNum());
+        session.setAttribute("register_date", user.getCreateTime());
+        session.setAttribute("user_avatar", "assets/module/img/security/user/avatar.jpg");
     }
 
 }

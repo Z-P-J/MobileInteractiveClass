@@ -32,11 +32,6 @@ public class FileUpload {
 	public void setSession(HttpSession session) throws Exception {
 		try {
 			this.session = session;
-			if (session.getAttribute("unit_db_name") == null) {
-				session.setAttribute("unit_db_name", databaseName);
-				System.out.println("unit_db_name是空的，进行了缺省");
-			} else {
-			}
 		} catch (Exception e) {
 			System.out.println("初始化Bean出现错误！" + e.getMessage());
 		}

@@ -170,7 +170,7 @@ public class VoteDao {
         return jsonObj;
     }
 
-    public JSONObject deleteRecord(String action, String dbName, String[] ids, String creator, String createTime) throws JSONException, SQLException {
+    public JSONObject deleteRecord(String action, String[] ids, String creator, String createTime) throws JSONException, SQLException {
         String resultMsg = "ok";
         int resultCode = 0;
         List jsonList = new ArrayList();
