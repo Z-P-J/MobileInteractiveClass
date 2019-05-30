@@ -67,6 +67,33 @@ public class UserDao {
         return jsonObj;
     }
 
+    public UserBean getUserByUserName(String username) {
+        String sql = "select * from " + TABLE_NAME + " where user_name='" + username + "'";
+        ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+        try {
+            if (rs.next()) {
+                UserBean user = new UserBean();
+                user.setUserName(rs.getString("user_name"));
+                user.setPassword(rs.getString("password"));
+                user.setName(rs.getString("name"));
+                user.setSex(rs.getString("sex"));
+                user.setEmail(rs.getString("email"));
+                user.setPhone(rs.getString("phone"));
+                user.setUserRole(rs.getString("user_type"));
+                user.setWechat(rs.getString("wechat"));
+                user.setGrade(rs.getString("grade"));
+                user.setClassStr(rs.getString("class"));
+                user.setFaculty(rs.getString("faculty"));
+                user.setStudentNum(rs.getString("student_num"));
+                user.setCreateTime(rs.getString("register_date"));
+                return user;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public JSONObject modifyRecord(UserBean info) throws JSONException {
         //String action,String dbName,String id,String title,String content,String creator,String createTime
         String resultMsg = "ok";

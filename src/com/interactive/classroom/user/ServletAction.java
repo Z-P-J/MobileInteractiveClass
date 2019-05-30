@@ -167,7 +167,7 @@ public class ServletAction extends BaseHttpServlet {
         } else {
             //如果是新查询
             UserDao infoDao = new UserDao();
-            jsonObj = infoDao.getRecord(query);
+            String sql = "select * from ";
             session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
         }
         jsonObj.put("user_id", userId);

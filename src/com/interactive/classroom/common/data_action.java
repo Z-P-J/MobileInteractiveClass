@@ -122,65 +122,63 @@ public class data_action extends HttpServlet {
         List<Map<String, String>> jsonList = new ArrayList<>();
         String resultMsg = "success";
         int resultCode = 0;
-        if (session.getAttribute("unit_db_name") == null) {
-            resultCode = 1;
-            resultMsg = "数据库为空！";
-        } else {
-            String db = (String) session.getAttribute("unit_db_name");
-            Log.d(getClass().getName(), "db=" + db);
-            String id = request.getParameter("id");
-            String tableName = request.getParameter("table_name");
-            String order = request.getParameter("order");
-            if (order == null) {
-                order = "";
-            }
-            String where = request.getParameter("where");
-            if (where == null) {
-                where = " where role_id='" + role + "'";
-            } else {
-                where = " where role_id='" + role + "' and " + where;
-            }
-            String sql = "";
-            if ("home".equals(module)) {
-                sql = "select value as module_name,reason as category_id,0 as parent_category_id" +
-                        ",reason as file_id,value as file_name,value1 as file_path,value as hreflink" +
-                        ",reason as chain_name,0 as details_tag,picture from " + tableName + where + " and fieldType_tag=1";
-                sql = sql.replace("role_id", "role");
-            } else {
-//                sql = "select * from " + module + "_tree a," + module + "_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
-                if ("investigation".equals(module) || "vote".equals(module)) {
-                    sql = "select * from survey_tree a,survey_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
-                } else {
-                    sql = "select * from project_tree a,project_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
-                }
-            }
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
-            while (rs.next()) {
-                Map<String, String> map = new HashMap<>();
-                // ////////////////////////////////////////独有部分，要修改的是这里
-                map.put("module_name", rs.getString("module_name"));
-                map.put("category_id", rs.getString("category_id"));
-                map.put("parent_item_id", rs.getString("parent_category_id"));
-                map.put("item_id", rs.getString("file_id"));
-                String fileName = rs.getString("file_name");
-                if ("vote".equals(module)) {
-                    System.out.println("fileName replace=" + fileName);
-                    fileName = fileName.replaceFirst("问卷", "投票");
-                }
-                System.out.println("module= " + module + "   fileName=" + fileName);
-                map.put("item_name", fileName);
-                map.put("file_path", rs.getString("file_path"));
-                map.put("href_link", rs.getString("hreflink"));
-                map.put("chain_name", rs.getString("chain_name"));
-                map.put("details_tag", rs.getString("details_tag"));
-                map.put("picture", rs.getString("picture"));
-                // ////////////////////////////////////////独有部分修改完毕
-                jsonList.add(map);
-            }
-            rs.close();
-            DBHelper.getInstance().close();
-            //System.out.println(jsonList.toString());
+
+
+        String db = (String) session.getAttribute("unit_db_name");
+        Log.d(getClass().getName(), "db=" + db);
+        String id = request.getParameter("id");
+        String tableName = request.getParameter("table_name");
+        String order = request.getParameter("order");
+        if (order == null) {
+            order = "";
         }
+        String where = request.getParameter("where");
+        if (where == null) {
+            where = " where role_id='" + role + "'";
+        } else {
+            where = " where role_id='" + role + "' and " + where;
+        }
+        String sql = "";
+        if ("home".equals(module)) {
+            sql = "select value as module_name,reason as category_id,0 as parent_category_id" +
+                    ",reason as file_id,value as file_name,value1 as file_path,value as hreflink" +
+                    ",reason as chain_name,0 as details_tag,picture from " + tableName + where + " and fieldType_tag=1";
+            sql = sql.replace("role_id", "role");
+        } else {
+//                sql = "select * from " + module + "_tree a," + module + "_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
+            if ("investigation".equals(module) || "vote".equals(module)) {
+                sql = "select * from survey_tree a,survey_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
+            } else {
+                sql = "select * from project_tree a,project_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
+            }
+        }
+        ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+        while (rs.next()) {
+            Map<String, String> map = new HashMap<>();
+            // ////////////////////////////////////////独有部分，要修改的是这里
+            map.put("module_name", rs.getString("module_name"));
+            map.put("category_id", rs.getString("category_id"));
+            map.put("parent_item_id", rs.getString("parent_category_id"));
+            map.put("item_id", rs.getString("file_id"));
+            String fileName = rs.getString("file_name");
+            if ("vote".equals(module)) {
+                System.out.println("fileName replace=" + fileName);
+                fileName = fileName.replaceFirst("问卷", "投票");
+            }
+            System.out.println("module= " + module + "   fileName=" + fileName);
+            map.put("item_name", fileName);
+            map.put("file_path", rs.getString("file_path"));
+            map.put("href_link", rs.getString("hreflink"));
+            map.put("chain_name", rs.getString("chain_name"));
+            map.put("details_tag", rs.getString("details_tag"));
+            map.put("picture", rs.getString("picture"));
+            // ////////////////////////////////////////独有部分修改完毕
+            jsonList.add(map);
+        }
+        rs.close();
+        DBHelper.getInstance().close();
+
+
         JSONObject jsonObj = new JSONObject();
         // 共同部分
         jsonObj.put("version", "1.0");

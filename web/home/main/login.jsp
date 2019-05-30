@@ -83,7 +83,7 @@
                 用户账号：
             </label>
             <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"
-                   placeholder="请输入账号" id="user_id" name="user_id"/>
+                   placeholder="请输入账号" id="user_name" name="user_name"/>
         </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">

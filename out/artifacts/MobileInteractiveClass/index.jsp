@@ -2,9 +2,9 @@
         import="java.sql.*,java.io.*" %>
 <%
 //    String userId = request.getParameter("user_id");
-    Object userId = session.getAttribute("user_name");
+    Object userName = session.getAttribute("user_name");
 //    System.out.println("userId=" + userId);
-    boolean isLogined = userId != null;
+    boolean isLogined = userName != null;
 //    if (isLogined) {
 //        if (userId != null) {
 //            session.setAttribute("user_role", "normal");
