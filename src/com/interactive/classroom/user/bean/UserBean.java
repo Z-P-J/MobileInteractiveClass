@@ -1,6 +1,6 @@
 package com.interactive.classroom.user.bean;
 
-public class InfoBean {
+public class UserBean {
     //数据库字�?
     private String id;
     private String parentId;
@@ -28,7 +28,7 @@ public class InfoBean {
 
 
     private String userName = "";
-
+    private String password = "";
     private String name = "";
     private String sex = "";
     private String email = "";
@@ -45,6 +45,14 @@ public class InfoBean {
 
     public String getUserName() {
         return userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getName() {
@@ -119,7 +127,7 @@ public class InfoBean {
         this.faculty = faculty;
     }
 
-    public InfoBean() {
+    public UserBean() {
     }
 
     public String getId() {

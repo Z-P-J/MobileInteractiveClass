@@ -1,8 +1,8 @@
 package com.interactive.classroom.user.dao;
 
+import com.interactive.classroom.user.bean.UserBean;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.interactive.classroom.user.bean.InfoBean;
 import com.interactive.classroom.utils.DBHelper;
 import com.interactive.classroom.utils.TimeUtil;
 
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfoDao {
+public class UserDao {
 
     private static final String TABLE_NAME = "user_manage";
 
@@ -22,7 +22,7 @@ public class InfoDao {
     /*
      * 功能：返回结果集
      */
-    public JSONObject getRecord(InfoBean query) throws SQLException, IOException, JSONException {
+    public JSONObject getRecord(UserBean query) throws SQLException, IOException, JSONException {
         //开始查询数据库
         String resultMsg = "ok";
         int resultCode = 0;
@@ -67,7 +67,7 @@ public class InfoDao {
         return jsonObj;
     }
 
-    public JSONObject modifyRecord(InfoBean info) throws JSONException {
+    public JSONObject modifyRecord(UserBean info) throws JSONException {
         //String action,String dbName,String id,String title,String content,String creator,String createTime
         String resultMsg = "ok";
         int resultCode = 0;
@@ -140,14 +140,14 @@ public class InfoDao {
         return jsonObj;
     }
 
-    public JSONObject addRecord(InfoBean info) throws JSONException, SQLException {
+    public JSONObject addRecord(UserBean info) throws JSONException, SQLException {
         String resultMsg = "ok";
         int resultCode = 0;
         List jsonList = new ArrayList();
         //构�?�sql语句，根据传递过来的查询条件参数
-        String sql = "insert into " + TABLE_NAME + "(user_name,user_id,name,sex,email,wechat,grade,class,student_num,faculty,register_date) values('"
+        String sql = "insert into " + TABLE_NAME + "(user_name,password,name,sex,email,wechat,grade,class,student_num,faculty,register_date) values('"
                 + info.getUserName() + "','"
-                + info.getUserId() + "','"
+                + info.getPassword() + "','"
                 + info.getName() + "','"
                 + info.getSex() + "','"
                 + info.getEmail() + "','"
@@ -226,7 +226,7 @@ public class InfoDao {
     /*
      * 功能：构造历史记录查询的sql语句,type=all查询�?有，type=id查询某个记录，余下按照条件设置查�?
      */
-    private String createGetRecordSql(InfoBean query) {
+    private String createGetRecordSql(UserBean query) {
         String sql = "select * from " + TABLE_NAME;
         String where = "";
 //        if (query.getId() != null && !query.getId().equals("null")) {

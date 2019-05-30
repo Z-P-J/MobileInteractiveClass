@@ -5,9 +5,9 @@ package com.interactive.classroom.user;
  */
 
 import com.interactive.classroom.base.BaseHttpServlet;
+import com.interactive.classroom.user.bean.UserBean;
+import com.interactive.classroom.user.dao.UserDao;
 import org.json.JSONObject;
-import com.interactive.classroom.user.bean.InfoBean;
-import com.interactive.classroom.user.dao.InfoDao;
 import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.ServletUtil;
 import com.interactive.classroom.utils.TimeUtil;
@@ -140,7 +140,7 @@ public class ServletAction extends BaseHttpServlet {
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
         String creator = (String) session.getAttribute("user_name");
         String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-        InfoBean query = new InfoBean();
+        UserBean query = new UserBean();
         query.setId(id);
         query.setAction(action);
         query.setDbName(dbName);
@@ -166,7 +166,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             //如果是新查询
-            InfoDao infoDao = new InfoDao();
+            UserDao infoDao = new UserDao();
             jsonObj = infoDao.getRecord(query);
             session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
         }
@@ -195,7 +195,7 @@ public class ServletAction extends BaseHttpServlet {
         showDebug("收到页面传过来的参数是：exist_resultset=" + existResultset + ",action=" + action + ",id=" + id + ",index=" + index);
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
-        InfoBean query = new InfoBean();
+        UserBean query = new UserBean();
         query.setAction(action);
         query.setDbName(dbName);
         query.setUserId(userId);
@@ -219,7 +219,7 @@ public class ServletAction extends BaseHttpServlet {
                 if (dbName != null) {
                     String creator = (String) session.getAttribute("user_name");
                     String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-                    InfoDao infoDao = new InfoDao();
+                    UserDao infoDao = new UserDao();
                     jsonObj = infoDao.getRecord(query);
                     jsonObj.put("user_id", userId);
                     jsonObj.put("user_name", userName);
@@ -234,7 +234,7 @@ public class ServletAction extends BaseHttpServlet {
             if (dbName != null) {
                 String creator = (String) session.getAttribute("user_name");
                 String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-                InfoDao infoDao = new InfoDao();
+                UserDao infoDao = new UserDao();
                 jsonObj = infoDao.getRecord(query);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
@@ -262,8 +262,8 @@ public class ServletAction extends BaseHttpServlet {
             String creator = (String) session.getAttribute("user_name");
             String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            InfoDao infoDao = new InfoDao();
-            InfoBean info = new InfoBean();
+            UserDao infoDao = new UserDao();
+            UserBean info = new UserBean();
             info.setAction(action);
             info.setDbName(dbName);
             info.setParentId(userManageId);
@@ -310,8 +310,8 @@ public class ServletAction extends BaseHttpServlet {
         if (id != null && dbName != null) {
             String creator = (String) session.getAttribute("user_name");
             String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-            InfoDao infoDao = new InfoDao();
-            InfoBean info = new InfoBean();
+            UserDao infoDao = new UserDao();
+            UserBean info = new UserBean();
             info.setId(id);
             info.setDbName(dbName);
             info.setTitle(title);
@@ -352,7 +352,7 @@ public class ServletAction extends BaseHttpServlet {
             String creator = (String) session.getAttribute("user_name");
             String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            InfoDao infoDao = new InfoDao();
+            UserDao infoDao = new UserDao();
             jsonObj = infoDao.deleteRecord(action, dbName, ids, creator, createTime);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
@@ -361,7 +361,7 @@ public class ServletAction extends BaseHttpServlet {
             String creator = (String) session.getAttribute("user_name");
             String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            InfoDao infoDao = new InfoDao();
+            UserDao infoDao = new UserDao();
             jsonObj = infoDao.deleteRecord(action, id, creator, createTime);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
@@ -385,7 +385,7 @@ public class ServletAction extends BaseHttpServlet {
         if (dbName != null) {
             String creator = (String) session.getAttribute("user_name");
             String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-            InfoDao infoDao = new InfoDao();
+            UserDao infoDao = new UserDao();
             jsonObj = infoDao.setRecordTop(action, dbName, type, userId, id);
             jsonObj.put("user_id", userId);
             jsonObj.put("user_name", userName);

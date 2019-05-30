@@ -27,7 +27,6 @@ import com.interactive.classroom.utils.Log;
 //@WebServlet(name = "data_action", urlPatterns = "/data_action")
 public class data_action extends HttpServlet {
     String refreshCount = "";
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -216,41 +215,42 @@ public class data_action extends HttpServlet {
         String resultMsg = "success";
         int resultCode = 0;
         if (role != null) {
-            if (session.getAttribute("unit_db_name") == null) {
-                resultCode = 10;
-                resultMsg = "数据库为空！";
-            } else {
-                String id = request.getParameter("id");
-                String tableName = request.getParameter("table_name");
-                String order = request.getParameter("order");
-                if (order == null) {
-                    order = "";
-                }
-                String where = request.getParameter("where");
-                System.out.println("where=" + where);
-                System.out.println("role=" + role);
-                if (where == null) {
-                    where = " where role='" + role + "'";
-                } else {
-                    where = " where role='" + role + "' and " + where;
-                }
-                String sql = "select * from " + tableName + where;
-                ResultSet rs = DBHelper.getInstance().executeQuery(sql);
-                while (rs.next()) {
-                    Map map = new HashMap();
-                    // ////////////////////////////////////////独有部分，要修改的是这里
-                    map.put("main_code", rs.getString("main_code"));
-                    map.put("kind", rs.getString("kind"));
-                    map.put("reason", rs.getString("reason"));
-                    map.put("value", rs.getString("value"));
-                    map.put("picture", rs.getString("picture"));
-                    // ////////////////////////////////////////独有部分修改完毕
-                    jsonList.add(map);
-                }
-                rs.close();
-                DBHelper.getInstance().close();
-                //System.out.println(jsonList.toString());
+//            if (session.getAttribute("unit_db_name") == null) {
+//                resultCode = 10;
+//                resultMsg = "数据库为空！";
+//            } else {
+//
+//                //System.out.println(jsonList.toString());
+//            }
+            String id = request.getParameter("id");
+            String tableName = request.getParameter("table_name");
+            String order = request.getParameter("order");
+            if (order == null) {
+                order = "";
             }
+            String where = request.getParameter("where");
+            System.out.println("where=" + where);
+            System.out.println("role=" + role);
+            if (where == null) {
+                where = " where role='" + role + "'";
+            } else {
+                where = " where role='" + role + "' and " + where;
+            }
+            String sql = "select * from " + tableName + where;
+            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            while (rs.next()) {
+                Map map = new HashMap();
+                // ////////////////////////////////////////独有部分，要修改的是这里
+                map.put("main_code", rs.getString("main_code"));
+                map.put("kind", rs.getString("kind"));
+                map.put("reason", rs.getString("reason"));
+                map.put("value", rs.getString("value"));
+                map.put("picture", rs.getString("picture"));
+                // ////////////////////////////////////////独有部分修改完毕
+                jsonList.add(map);
+            }
+            rs.close();
+            DBHelper.getInstance().close();
         } else {
             resultCode = 3;
             resultMsg = "session超时，请重新登陆！";
