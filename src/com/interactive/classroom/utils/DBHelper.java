@@ -106,7 +106,7 @@ public class DBHelper {
         return dbHelper;
     }
 
-    public int executeUpdateToGetId(String s) {
+    public int executeUpdateAndGetId(String s) {
         try {
             if (DEBUG_LEVEL > 0) {
                 Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeUpdate:" + s);
@@ -114,7 +114,6 @@ public class DBHelper {
             return getStatement().executeUpdate(s, Statement.RETURN_GENERATED_KEYS);
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
-
         }
         return -1;
     }

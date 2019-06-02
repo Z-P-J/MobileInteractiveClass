@@ -187,7 +187,7 @@
     </form>
     <!-- END EMAIL MODIFY PASSWORD FORM -->
     <!-- BEGIN REGISTRATION FORM -->
-    <form class="register-form" action="../../Login?action=sign_up" method="post">
+    <form class="register-form" id="register-form" action="../../Login?action=sign_up" method="post">
         <h3>
             注册
         </h3>
@@ -200,6 +200,7 @@
             </label>
             <input class="form-control placeholder-no-fix" type="text" placeholder="用户账号，建议字母或者数字"
                    id="register_user_name" name="register_user_name"/>
+            <label id="register_user_name_info" style="color: red; display: none">用户名已被占用</label>
         </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">
@@ -214,6 +215,7 @@
             </label>
             <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="重复输入密码"
                    id="register_password_again" name="register_password_again"/>
+            <label id="register_password_again_info" style="color: red; display: none">输入的密码不一致</label>
         </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">
@@ -221,6 +223,7 @@
             </label>
             <input class="form-control placeholder-no-fix" type="text" placeholder="姓名，请输入汉字的真实名字"
                    id="register_full_name" name="register_full_name"/>
+            <label id="register_full_name_info" style="color: red; display: none">姓名必须为2-4个汉字</label>
         </div>
         <div class="form-group">
             <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
@@ -228,7 +231,13 @@
                 邮箱
             </label>
             <input class="form-control placeholder-no-fix" type="text" placeholder="请输入你的邮箱，忘记密码时系统可凭邮箱恢复密码"
-                   name="email"/>
+                   name="register_email" id="register_email"/>
+            <label id="register_email_info" style="color: red; display: none">请输入正确的邮箱</label>
+        </div>
+        <div class="form-group">
+            用户类型：
+            <input type="radio" name="register_user_type" value="student" id="radio_1" checked/>学生
+            <input type="radio" name="register_user_type" value="teacher" id="radio_2" />老师
         </div>
         <div style="display:none;">
             <p class="hint">
@@ -255,7 +264,7 @@
         </div>
         <div class="form-group margin-top-20 margin-bottom-20">
             <label class="check">
-                <input type="checkbox" name="tnc"/>
+                <input type="checkbox" id="tnc" name="tnc"/>
                 我同意
                 <a href="javascript:Page.serviceRule();"> 服务条款</a> 和
                 <a href="javascript:Page.privateRule();"> 隐私条款</a>
@@ -267,7 +276,7 @@
             <button type="button" id="register-back-btn" class="btn btn-default">
                 返回
             </button>
-            <button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right">
+            <button type="button" id="register-submit-btn" class="btn btn-success uppercase pull-right">
                 提交
             </button>
         </div>
@@ -306,3 +315,81 @@
 <!-- END PAGE LEVEL SCRIPTS -->
 <link href="../../assets/module/css/home/login.css" rel="stylesheet" type="text/css"/>
 <script src="../../assets/module/scripts/home/login.js" type="text/javascript"></script>
+<script>
+    var register_user_name = document.getElementById("register_user_name");
+    register_user_name.onblur = function (ev) {
+        // alert("onblur");
+        $.post(
+            "../../Login?action=check_user_name&user_name=" + register_user_name.value,
+            function (json) {
+                // alert(json["valid_user_name"]);
+                if (json["valid_user_name"] === "false") {
+                    $("#register_user_name_info").show();
+                } else {
+                    $("#register_user_name_info").hide();
+                }
+            }
+        );
+    }
+    var register_password_again = document.getElementById("register_password_again");
+    register_password_again.onblur = function (ev) {
+        if (register_password_again.value !== $("#register_password").val()) {
+            $("#register_password_again_info").show();
+        } else {
+            $("#register_password_again_info").hide();
+        }
+    }
+    
+    var register_full_name = document.getElementById("register_full_name");
+    var nameReg = new RegExp(/^[\u4e00-\u9fa5]{2,4}$/);
+    register_full_name.onblur = function (ev) { 
+        var fullName = register_full_name.value;
+        if (nameReg.test(fullName)) {
+            $("#register_full_name_info").hide();
+        } else {
+            $("#register_full_name_info").show();
+        }
+    };
+
+    var emailReg = new RegExp(/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/);
+    var register_email = document.getElementById("register_email");
+    register_email.onblur = function (ev) {
+        if (emailReg.test(register_email.value)) {
+            $("#register_email_info").hide();
+        } else {
+            $("#register_email_info").show();
+        }
+    };
+    
+    $("#register-submit-btn").click(function () {
+        if (register_user_name.value === ""
+            || document.getElementById("register_password").value === ""
+            || register_password_again.value === ""
+            || register_full_name.value === ""
+            || register_email.value === "") {
+            alert("请输入完整的信息！");
+        } else if ($("#register_user_name_info").is(":visible")
+            || $("#register_full_name_info").is(":visible")
+            || $("#register_password_again_info").is(":visible")
+            || $("#register_email_info").is(":visible")) {
+            alert("请检查输入的信息！");
+        } else if (!$('#tnc').is(':checked')) {
+            alert("请同意服务条款！");
+        } else {
+            $("#register-form").submit();
+        }
+    });
+
+    $('#register-back-btn').click(function() {
+        // alert("register-back-btn");
+        $('.login-form').show();
+        $('.register-form').hide();
+    });
+
+    $('#register-btn').click(function() {
+        // alert("register-btn");
+        $('.login-form').hide();
+        $('.register-form').show();
+    });
+
+</script>

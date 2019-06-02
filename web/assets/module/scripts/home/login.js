@@ -282,11 +282,11 @@ var Login = function() {
         		alert(msg);
         	}
         };
-        $(".register-form").submit(function(e){
-        	if(checkInput()){
-        		return false;
-        	}else{return true;}
-        });
+        // $(".register-form").submit(function(e){
+        // 	if(checkInput()){
+        // 		return false;
+        // 	}else{return true;}
+        // });
         $('.register-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -369,15 +369,7 @@ var Login = function() {
             }
         });
 
-        jQuery('#register-btn').click(function() {
-            jQuery('.login-form').hide();
-            jQuery('.register-form').show();
-        });
 
-        jQuery('#register-back-btn').click(function() {
-            jQuery('.login-form').show();
-            jQuery('.register-form').hide();
-        });
         //二维码扫码登陆部分
         var getStatusTimer;
         $('#scan-qrcode-btn').click(function(){

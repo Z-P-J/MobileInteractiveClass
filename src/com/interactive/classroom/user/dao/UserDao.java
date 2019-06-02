@@ -196,7 +196,7 @@ public class UserDao {
     }
 
     public int registerUser(UserBean user) {
-        String sql = "insert into " + TABLE_NAME + "(user_name,password,name,sex,email,wechat,grade,class,student_num,faculty,register_date) values('"
+        String sql = "insert into " + TABLE_NAME + "(user_name,password,name,sex,email,wechat,grade,class,student_num,faculty,register_date,user_type) values('"
                 + user.getUserName() + "','"
                 + user.getPassword() + "','"
                 + user.getName() + "','"
@@ -207,8 +207,9 @@ public class UserDao {
                 + user.getClassStr() + "','"
                 + user.getStudentNum() + "','"
                 + user.getFaculty() + "','"
-                + TimeUtil.currentDate() + "')";
-        return DBHelper.getInstance().executeUpdateToGetId(sql);
+                + TimeUtil.currentDate() + "','"
+                + user.getUserRole() + "')";
+        return DBHelper.getInstance().executeUpdateAndGetId(sql);
     }
 
     public JSONObject deleteRecord(String action, String name, String creator, String createTime) throws JSONException, SQLException {

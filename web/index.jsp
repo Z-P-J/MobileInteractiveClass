@@ -29,7 +29,7 @@
 <script>
     // var userId = ;
     var value = document.getElementById("user_id").value;
-    alert(value);
+    // alert(value);
     if (value === "true") {
         window.location.href = "home/main/index.jsp";
     } else {

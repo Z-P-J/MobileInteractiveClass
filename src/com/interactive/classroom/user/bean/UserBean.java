@@ -306,4 +306,42 @@ public class UserBean {
         this.orderBy = orderBy;
     }
 
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "id='" + id + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", limitTime='" + limitTime + '\'' +
+                ", userId='" + userId + '\'' +
+                ", userRole='" + userRole + '\'' +
+                ", creator='" + creator + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", action='" + action + '\'' +
+                ", dbName='" + dbName + '\'' +
+                ", tableName='" + tableName + '\'' +
+                ", type='" + type + '\'' +
+                ", timeFrom='" + timeFrom + '\'' +
+                ", timeTo='" + timeTo + '\'' +
+                ", timeSelect='" + timeSelect + '\'' +
+                ", groupId='" + groupId + '\'' +
+                ", groupSelect='" + groupSelect + '\'' +
+                ", timeInterval='" + timeInterval + '\'' +
+                ", statisticType='" + statisticType + '\'' +
+                ", sortIndex='" + sortIndex + '\'' +
+                ", orderBy='" + orderBy + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", wechat='" + wechat + '\'' +
+                ", grade='" + grade + '\'' +
+                ", classStr='" + classStr + '\'' +
+                ", studentNum='" + studentNum + '\'' +
+                ", faculty='" + faculty + '\'' +
+                '}';
+    }
 }
