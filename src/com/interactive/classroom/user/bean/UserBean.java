@@ -37,7 +37,7 @@ public class UserBean {
     private String grade = "";
     private String classStr = "";
     private String studentNum = "";
-    private String faculty;
+    private String faculty = "";
 
     public void setUserName(String userName) {
         this.userName = userName;

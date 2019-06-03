@@ -95,6 +95,7 @@ public class LoginAction extends BaseHttpServlet {
         String password = request.getParameter("register_password");
         String name = request.getParameter("register_full_name");
         System.out.println("name=" + name);
+        String studentNum = request.getParameter("register_student_num");
         String email = request.getParameter("register_email");
         String userType = request.getParameter("register_user_type");
         System.out.println("userType=" + userType);
@@ -102,6 +103,9 @@ public class LoginAction extends BaseHttpServlet {
         bean.setUserName(userName);
         bean.setPassword(password);
         bean.setName(name);
+        if (UserType.STUDENT.getTypeName().equals(userType)) {
+            bean.setStudentNum(studentNum);
+        }
         bean.setEmail(email);
         bean.setCreateTime(registerDate);
         bean.setUserRole(userType);
@@ -113,12 +117,6 @@ public class LoginAction extends BaseHttpServlet {
             if (id != -1) {
                 bean.setId("" + id);
                 wrapSession(session, bean);
-//                session.setAttribute("user_role", "normal");
-//                session.setAttribute("user_name", userName);
-//                session.setAttribute("full_name", name);
-//                session.setAttribute("email", email);
-//                session.setAttribute("user_avatar", "assets/module/img/security/user/avatar.jpg");
-//                session.setAttribute("register_date", registerDate);
             }
             response.sendRedirect("index.jsp");
         } catch (Exception e) {
@@ -143,7 +141,9 @@ public class LoginAction extends BaseHttpServlet {
         session.setAttribute("grade", user.getGrade());
         session.setAttribute("class", user.getClassStr());
         session.setAttribute("faculty", user.getFaculty());
-        session.setAttribute("student_num", user.getStudentNum());
+        if (UserType.STUDENT.getTypeName().equals(user.getUserRole())) {
+            session.setAttribute("student_num", user.getStudentNum());
+        }
         session.setAttribute("register_date", user.getCreateTime());
         session.setAttribute("user_avatar", "assets/module/img/security/user/avatar.jpg");
     }

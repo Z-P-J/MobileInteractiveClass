@@ -226,6 +226,14 @@
             <label id="register_full_name_info" style="color: red; display: none">姓名必须为2-4个汉字</label>
         </div>
         <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">
+                学号
+            </label>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="请输入您的学号"
+                   id="register_student_num" name="register_student_num"/>
+            <label id="register_student_num_info" style="color: red; display: none">学号格式有误，学号必须为13位数字</label>
+        </div>
+        <div class="form-group">
             <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
             <label class="control-label visible-ie8 visible-ie9">
                 邮箱
@@ -350,6 +358,25 @@
             $("#register_full_name_info").show();
         }
     };
+
+    var studentNumReg = new RegExp(/^[0-9]{13}$/);
+    var register_student_num = document.getElementById("register_student_num");
+    register_student_num.onblur = function (ev) {
+        var studentNum = register_student_num.value;
+        if (studentNumReg.test(studentNum)) {
+            $("#register_student_num_info").hide();
+        } else {
+            $("#register_student_num_info").show();
+        }
+    };
+
+    $("#radio_1").click(function () {
+        $("#register_student_num").show();
+    });
+
+    $("#radio_2").click(function () {
+        $("#register_student_num").hide();
+    });
 
     var emailReg = new RegExp(/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/);
     var register_email = document.getElementById("register_email");
