@@ -14,6 +14,7 @@
         <configuration>
           <fileset id="s2fileset" name="My Fileset" removed="false">
             <file>file://$MODULE_DIR$/src/struts.xml</file>
+            <file>jar://$MODULE_DIR$/web/WEB-INF/lib/struts2-core-2.5.20.jar!/struts-default.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>

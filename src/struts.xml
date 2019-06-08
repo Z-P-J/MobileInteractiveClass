@@ -34,7 +34,7 @@
       <package name="link" extends="base" namespace="/survey/link">
          <action name="AddLink" class="com.iWen.survey.ctrl.LinkAction" method="AddLink">
             <result name="fail" type="redirect">/survey/admin/OpResult.jsp?op=default&amp;ret=false&amp;words=${message}</result>
-            <result name="success"> //survey/admin/FriendLinkAdmin.jsp</result>
+            <result name="success"> /survey/admin/FriendLinkAdmin.jsp</result>
          </action>
           <action name="DelLink" class="com.iWen.survey.ctrl.LinkAction" method="DelLink">
             <result name="fail" type="redirect">/survey/admin/OpResult.jsp?op=default&amp;ret=false&amp;words=${message}</result>

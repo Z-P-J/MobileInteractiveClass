@@ -23,7 +23,7 @@
     if ("SurveyAdd".equals(operation)) {
         if ("true".equals(result)) {
             out.print("<script>alert('添加问卷操作已成功！')</script>");
-            out.print("<script>window.location='../admin/SurveyAdmin.jsp" + request.getParameter("type") + "'</script>");
+            out.print("<script>window.location='../admin/SurveyAdmin.jsp?type=" + request.getParameter("type") + "'</script>");
         } else
             out.print("添加问卷操作失败，请联系管理员！");
 
