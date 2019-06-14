@@ -52,39 +52,20 @@ public class ServletAction extends BaseHttpServlet {
     private static final String REDIRECT_PATH = MODULE + "/" + SUB;
     private static final String REDIRECT_PAGE = "record_list.jsp";
     private String redirectUrl = REDIRECT_PATH + "/" + REDIRECT_PAGE;
-    //    public String databaseName = "my_test";
-    public LogEvent ylxLog = new LogEvent();
 
-    /*
-     * 处理顺序：先是service，后根据情况doGet或者doPost
-     */
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processAction(request, response);
-    }
-
-    public void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession();
-        request.setCharacterEncoding("UTF-8");
-        try {
-            ylxLog.setSession(session);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if (session.getAttribute("user_role") == null) {
+    public void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
+        if (userRole == null) {
             try {
                 processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            String action = request.getParameter("action");
-            Log.d(getClass().getName(), "processAction收到的action是：" + action);
             if (action == null) {
                 try {
                     processError(request, response, 1, "传递过来的action是null！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
@@ -113,7 +94,7 @@ public class ServletAction extends BaseHttpServlet {
                     default:
                         try {
                             processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                         break;
@@ -123,23 +104,10 @@ public class ServletAction extends BaseHttpServlet {
     }
 
     /*
-     * 功能：进行一个本类测试，不用启动整个项目，测试所写的Java
-     */
-    public static void main(String[] args) throws Exception {
-        System.out.println("");
-    }
-
-    public void showDebug(String msg) {
-        System.out.println("[" + TimeUtil.currentDate() + "][" + MODULE + "/" + SUB + "/ServletAction]" + msg);
-    }
-
-    /*
      * 功能：根据前台页面的设置，统计对应的记录数据
      */
     public void statisticRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
-        String type = request.getParameter("type");
         String timeFrom = request.getParameter("time_from");
         String timeTo = request.getParameter("time_to");
         String timeInterval = request.getParameter("time_interval");
@@ -148,11 +116,8 @@ public class ServletAction extends BaseHttpServlet {
         if (statisticType == null) {
             statisticType = "no";
         }
-        showDebug("[statisticRecord]收到页面传过来的参数是：" + timeFrom + "," + timeTo + "," + timeInterval + ",statisticType=" + statisticType);
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
+        debug("[statisticRecord]收到页面传过来的参数是：" + timeFrom + "," + timeTo + "," + timeInterval + ",statisticType=" + statisticType);
 
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
         StatisticDao statisticDao = DaoFactory.getStatisticDao();
         StatisticBean bean = new StatisticBean();
         bean.setTimeFrom(timeFrom);
@@ -179,66 +144,23 @@ public class ServletAction extends BaseHttpServlet {
         JSONObject jsonObj = statisticDao.statisticRecord(action, bean);
         jsonObj.put("user_id", userId);
         jsonObj.put("user_name", userName);
-        //获取完毕，开始生成统计图
-        //HttpSession session,String dbName,JSONObject json,String title,String column,int statisticImage,int chartWidth,int chartHeight
-//        String fileName = getStatisticGraph(session, jsonObj, "待办事项统计图", "测试Column", statisticType, 1, 1280, 768);
         jsonObj.put("result_image", fileName);
 
         session.setAttribute(MODULE + "_" + SUB + "_statistic_record_result", jsonObj);
-        showDebug("[statisticRecord]统计完毕，保存进session：" + MODULE + "_" + SUB + "_statistic_record_result");
+        debug("[statisticRecord]统计完毕，保存进session：" + MODULE + "_" + SUB + "_statistic_record_result");
 
         onEnd(request, response, jsonObj, RESULT_PATH + "/statistic_result.jsp", "操作已经执行，请按返回按钮返回列表页面！", 0, "record_list.jsp");
     }
 
-//    private String getStatisticGraph(HttpSession session, JSONObject json, String title, String column, String statisticType, int statisticImage, int chartWidth, int chartHeight) throws SQLException, IOException, JSONException {
-//        //要改动的
-//        String chartTitle = "统计图";
-//        String tmpDir = "/chart";
-//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-//        DefaultPieDataset pieDataSet = new DefaultPieDataset();
-//        showDebug("statisticImage的值是：" + statisticImage + ",column=" + column + ",title=" + title);
-//        JSONArray arr = json.getJSONArray("aaData");
-//        showDebug(arr.toString());
-//        for (int i = 0; i < arr.length(); i++) {
-//            String timeInterval = (String) ((List) (arr.get(i))).get(1);
-//            Integer count = Integer.parseInt((String) ((List) (arr.get(i))).get(2));
-//            String countName = "";
-//            if ("no".equals(statisticType)) {
-//                countName = "所有车辆";
-//            } else {
-//                String colorId = (String) ((List) (arr.get(i))).get(3);
-//                countName = (String) ((List) (arr.get(i))).get(4);
-//            }
-//            dataset.addValue(count, countName, timeInterval);
-//            //pieDataSet.setValue(json.getString("colTime"),json.getInt("colCount"));
-//        }
-////        JFreeChart chart = null;
-////        if (statisticImage == 1) {
-////            chart = ChartFactory.createBarChart3D(chartTitle, title, "数量", dataset, PlotOrientation.VERTICAL, true, false, false);
-////        } else if (statisticImage == 2) {
-////            chart = ChartFactory.createLineChart(chartTitle, title, "数量", dataset, PlotOrientation.VERTICAL, true, false, false);
-////        } else if (statisticImage == 3) {
-////            chart = ChartFactory.createPieChart(chartTitle, pieDataSet, true, false, false);
-////        }
-//        String chartFilename = "";//ServletUtilities.saveChartAsJPEG(chart, chartWidth, chartHeight, null, session);
-//        chartFilename = tmpDir + "/" + chartFilename;
-//        return chartFilename;
-//    }
-
     private void getStatisticRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        String action = request.getParameter("action");
-        String type = request.getParameter("type");
         String timeFrom = request.getParameter("time_from");
         String timeTo = request.getParameter("time_to");
         String timeInterval = request.getParameter("time_interval");
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
         String existResultset = request.getParameter("exist_resultset");
         if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty())) {
             existResultset = "0";
         }
-        showDebug("getStatisticRecord收到页面传过来的参数是：" + existResultset + "," + timeFrom + "," + timeTo + "," + timeInterval);
+        debug("getStatisticRecord收到页面传过来的参数是：" + existResultset + "," + timeFrom + "," + timeTo + "," + timeInterval);
 
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
@@ -247,16 +169,16 @@ public class ServletAction extends BaseHttpServlet {
             //如果有就取出来，如果没有就重新查询一次，并且保存进session里
             if (session.getAttribute(MODULE + "_" + SUB + "_statistic_record_result") != null) {
                 jsonObj = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_statistic_record_result");
-                showDebug("取出了原来的结果");
+                debug("取出了原来的结果");
             } else {
                 jsonObj = new JSONObject();
                 jsonObj.put("result_code", 10);
                 jsonObj.put("result_msg", "session里没有找到之前统计的数据！");
-                showDebug("没有结果：" + MODULE + "_" + SUB + "_statistic_record_result");
+                debug("没有结果：" + MODULE + "_" + SUB + "_statistic_record_result");
             }
         } else {
             //这里无法进行新的统计
-            showDebug("没有结果，而且不进行新的统计");
+            debug("没有结果，而且不进行新的统计");
         }
 
         onEnd(request, response, jsonObj, resultUrl, "操作已经执行，请按返回按钮返回列表页面！", 0, "record_list.jsp");
@@ -275,15 +197,15 @@ public class ServletAction extends BaseHttpServlet {
         String timeTo = request.getParameter("time_to");
         String status = request.getParameter("status_select");
         int statusSelect = -2;
-        if (status != null)
+        if (status != null) {
             statusSelect = Integer.parseInt(status);
-        if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty()))
+        }
+        if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty())) {
             existResultset = "0";
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
+        }
         int resultCode = 0;
         //检查输入参数是否正确先
-        showDebug("收到页面传过来的参数是：" + existResultset + "," + action + "," + type + "," + id + "," + groupSelect + "," + titleSearch + "," + timeFrom + "," + timeTo);
+        debug("收到页面传过来的参数是：" + existResultset + "," + action + "," + type + "," + id + "," + groupSelect + "," + titleSearch + "," + timeFrom + "," + timeTo);
         //0,get_record,null,null,wlw,物联网,2016-12-01 00:00:00,2016-12-31 23:59:59
         JSONObject jsonObj = new JSONObject();
         /*----------------------------------------数据获取完毕，开始返回数值*/
@@ -303,7 +225,7 @@ public class ServletAction extends BaseHttpServlet {
         }
         jsonObj.put("result_code", resultCode);
         jsonObj.put("result_msg", "读取了上一次的查询配置");
-        showDebug(jsonObj.toString());
+        debug(jsonObj.toString());
         boolean isAjax = true;
         if (request.getHeader("x-requested-with") == null) {
             isAjax = false;
@@ -334,8 +256,6 @@ public class ServletAction extends BaseHttpServlet {
      * 功能：导出已存在的结果集的数据
      */
     private void exportStatisticResultset(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        /*--------------------为线程里用的变量赋值--------------------*/
         String dateTime = TimeUtil.currentDate();
         sessionId = session.getId();
         fileName = "zakk_statistic_export_" + sessionId + "_" + dateTime + ".xls";
@@ -352,15 +272,11 @@ public class ServletAction extends BaseHttpServlet {
         String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
         int resultCode = 0;
         //检查输入参数是否正确先
-        showDebug("收到页面传过来的参数是：" + existResultset + "," + action);
+        debug("收到页面传过来的参数是：" + existResultset + "," + action);
         String creator = (String) session.getAttribute("user_name");
         String createTime = TimeUtil.currentDate();
         JSONObject jsonObj = null;
-        String description = "对导出的描述";
-        /*----------------------------------------数据获取完毕，开始返回数值*/
-        //如果是新的下载，就执行，否则检查有没有线程在运行，如果有就进入，如果没有就新下载
-        /*----------------------------------------构造返回数值*/
-        ExportDao exportDao = new ExportDao();
+
         ExportBean exportBean = new ExportBean();
         exportBean.setSessionId(session.getId());
         exportBean.setCreateTime(createTime);
@@ -407,7 +323,6 @@ public class ServletAction extends BaseHttpServlet {
      * 功能：开启线程，进行导出
      */
     private void processExportThread(HttpServletRequest request, HttpServletResponse response, ExportBean exportBean) throws SQLException, IOException, ServletException, JSONException {
-        HttpSession session = request.getSession();
         String tempDir = filePath + "/" + session.getId() + "_" + TimeUtil.currentDate();
         java.io.File f = new java.io.File(tempDir);
         if (!f.exists()) {
@@ -418,19 +333,19 @@ public class ServletAction extends BaseHttpServlet {
         JSONObject jsonObj = null;
         if (session.getAttribute(MODULE + "_" + SUB + "_statistic_record_result") != null) {
             jsonObj = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_statistic_record_result");
-            showDebug("[getExportRecord]取出了原来的结果");
+            debug("[getExportRecord]取出了原来的结果");
             jsonObj.put("result_code", 0);
             jsonObj.put("result_msg", "读取了上一次的查询配置");
         } else {
             jsonObj = new JSONObject();
             jsonObj.put("result_code", 10);
             jsonObj.put("result_msg", "session里没有找到之前统计的数据！");
-            showDebug("[getExportRecord]没有结果");
+            debug("[getExportRecord]没有结果");
         }
         //找到以后，进行开启线程导出
 
         if (exportThread != null) {
-            showDebug("[processExportThread]发现exportThread不为null！");
+            debug("[processExportThread]发现exportThread不为null！");
         } else {
             exportThread = new ExportThread();
             exportThread.setResultset(jsonObj);
@@ -488,12 +403,12 @@ public class ServletAction extends BaseHttpServlet {
         ExportDao exportDao = new ExportDao();
         threadRunning = true;
         exportDao.setExportBegin(exportBean);
-        showDebug("threadExecute的线程开始了！");
+        debug("threadExecute的线程开始了！");
         ExportUtil.exportData(jsonObj, "数据统计", filePathName);
         exportBean.setExportPercent("20");
         exportDao.setExportPercent(exportBean);
         threadRunning = false;
-        showDebug("threadExecute的线程退出了！");
+        debug("threadExecute的线程退出了！");
         //导出完毕后，就写数据库
         exportDao.setExportEnd(exportBean);
     }

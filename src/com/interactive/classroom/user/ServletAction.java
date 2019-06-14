@@ -39,26 +39,11 @@ public class ServletAction extends BaseHttpServlet {
     private static final String RESULT_URL = RESULT_PATH + "/" + RESULT_PAGE;
     private static final String REDIRECT_PATH = MODULE + "/" + SUB;
     private static final String REDIRECT_PAGE = "record_list.jsp";
-//    private static final String REDIRECT_URL = REDIRECT_PATH + "/" + REDIRECT_PAGE;
-//    public String databaseName = "ylxdb";
-//    public SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-
-    /*
-     * 处理顺序：先是service，后根据情况doGet或者doPost
-     */
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processAction(request, response);
-    }
-
-    private void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession();
-        request.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");
-        showDebug("processAction收到的action是：" + action);
+    protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
         try {
-            if (session.getAttribute("user_role") == null) {
+            if (userRole == null) {
                 processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
             } else {
                 if (action == null) {
@@ -100,21 +85,9 @@ public class ServletAction extends BaseHttpServlet {
     }
 
     /*
-     * 功能：进行一个本类测试，不用启动整个项目，测试所写的Java
-     */
-    public static void main(String[] args) throws Exception {
-        System.out.println("");
-    }
-
-    public void showDebug(String msg) {
-        Log.d(TAG, "[" + TimeUtil.currentDate() + "][" + MODULE + "/" + SUB + "/ServletAction]" + msg);
-    }
-
-    /*
      * 功能：查询记录
      */
     public void getRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         String id = request.getParameter("id");
         String title = request.getParameter("title");
@@ -127,16 +100,8 @@ public class ServletAction extends BaseHttpServlet {
         String existResultset = request.getParameter("exist_resultset");
         if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty()))
             existResultset = "0";
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
-        String userRole = session.getAttribute("user_role") == null ? null : (String) session.getAttribute("user_role");
-        String userAvatar = session.getAttribute("user_avatar") == null ? null : (String) session.getAttribute("user_avatar");
-        //这里可以修改成统一一个函数读取变量，下面的session里的attr可以用一个变量代替
-        //检查输入参数是否正确先
-        showDebug("[getRecord]收到页面传过来的参数是：" + existResultset + "," + action + "," + type + "," + id + "," + timeFrom + "," + timeTo);
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        String creator = (String) session.getAttribute("user_name");
-        String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
+        debug("[getRecord]收到页面传过来的参数是：" + existResultset + "," + action + "," + type + "," + id + "," + timeFrom + "," + timeTo);
+
         UserBean query = new UserBean();
         query.setId(id);
         query.setAction(action);
@@ -149,7 +114,7 @@ public class ServletAction extends BaseHttpServlet {
         query.setSortIndex(sortIndex);
         query.setOrderBy(orderBy);
 
-        JSONObject jsonObj = null;
+        JSONObject jsonObj;
         if (existResultset.equals("1")) {
             //要求提取之前查询结果，如果有就取出来，如果没有就重新查询一次，并且保存进session里
             if (session.getAttribute(MODULE + "_" + SUB + "_get_record_result") != null) {
@@ -178,18 +143,15 @@ public class ServletAction extends BaseHttpServlet {
     }
 
     public void getRecordView(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         String id = request.getParameter("id");
         String index = request.getParameter("index");
         String existResultset = request.getParameter("exist_resultset");
         if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty()))
             existResultset = "0";
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
-        //检查输入参数是否正确先
-        showDebug("收到页面传过来的参数是：exist_resultset=" + existResultset + ",action=" + action + ",id=" + id + ",index=" + index);
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
+
+        debug("收到页面传过来的参数是：exist_resultset=" + existResultset + ",action=" + action + ",id=" + id + ",index=" + index);
+
         JSONObject jsonObj = null;
         UserBean query = new UserBean();
         query.setAction(action);
@@ -198,7 +160,7 @@ public class ServletAction extends BaseHttpServlet {
             //如果有就取出来，如果没有就重新查询一次，并且保存进session里
             if (session.getAttribute(MODULE + "_" + SUB + "_get_record_result") != null) {
                 JSONObject json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-                showDebug(json.toString());
+                debug(json.toString());
                 jsonObj = ServletUtil.getResultSetNavigateId(id, index, json);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
@@ -207,12 +169,10 @@ public class ServletAction extends BaseHttpServlet {
                 jsonObj.put("result_msg", "ok");
                 //然后还有导航信息
                 json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-                //showDebug("[getRecordView]重新取出来的数据是："+json.toString());
+                debug("[getRecordView]重新取出来的数据是："+json.toString());
             } else {
                 //如果没有就重新查询一次
-                showDebug("[getRecordView]没有就重新查询一次。");
-                String creator = (String) session.getAttribute("user_name");
-                String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
+                debug("[getRecordView]没有就重新查询一次。");
                 UserDao dao = DaoFactory.getUserDao();
                 jsonObj = dao.getRecord(query);
                 jsonObj.put("user_id", userId);
@@ -223,9 +183,7 @@ public class ServletAction extends BaseHttpServlet {
                 session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
             }
         } else {
-            showDebug("[getRecordView]existsResult=0，重新查询");
-            String creator = (String) session.getAttribute("user_name");
-            String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
+            debug("[getRecordView]existsResult=0，重新查询");
             UserDao infoDao = DaoFactory.getUserDao();
             jsonObj = infoDao.getRecord(query);
             jsonObj.put("user_id", userId);
@@ -237,18 +195,15 @@ public class ServletAction extends BaseHttpServlet {
         onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
     }
 
+    //管理员才调用该方法
     public void addRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         String userManageId = request.getParameter("userManage_id");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         String limitTime = request.getParameter("limit_time");
+        String createTime = TimeUtil.currentDate();
 
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String creator = (String) session.getAttribute("user_name");
-        String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
         UserDao infoDao = DaoFactory.getUserDao();
         UserBean user = new UserBean();
         user.setAction(action);
@@ -257,7 +212,7 @@ public class ServletAction extends BaseHttpServlet {
         user.setContent(content);
         user.setLimitTime(limitTime);
         user.setUserId(userId);
-        user.setCreator(creator);
+        user.setCreator(userName);
         user.setCreateTime(createTime);
 
         user.setUserName(request.getParameter("user_name"));
@@ -278,11 +233,7 @@ public class ServletAction extends BaseHttpServlet {
         jsonObj.put("action", user.getAction());
         jsonObj.put("result_msg", "ok");
         jsonObj.put("result_code", 0);
-        LogEvent.getInstance().log(
-                "用户 " + creator + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录",
-                "添加记录",
-                MODULE
-        );
+        log("用户 " + userName + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
 
         onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
     }
@@ -291,8 +242,6 @@ public class ServletAction extends BaseHttpServlet {
      * 功能：修改记录
      */
     public void modifyRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        String action = request.getParameter("action");
         String id = request.getParameter("id");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
@@ -301,15 +250,14 @@ public class ServletAction extends BaseHttpServlet {
         JSONObject jsonObj = null;
         //检查输入参数是否正确先
         if (id != null) {
-            String creator = (String) session.getAttribute("user_name");
-            String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
+            String createTime = TimeUtil.currentDate();
             UserDao infoDao = DaoFactory.getUserDao();
             UserBean info = new UserBean();
             info.setId(id);
             info.setTitle(title);
             info.setContent(content);
             info.setLimitTime(limitTime);
-            info.setCreator(creator);
+            info.setCreator(userName);
             info.setCreateTime(createTime);
 
             info.setUserName(request.getParameter("user_name"));
@@ -324,18 +272,13 @@ public class ServletAction extends BaseHttpServlet {
             info.setFaculty(request.getParameter("faculty"));
 
             jsonObj = infoDao.modifyRecord(info);
-            LogEvent.getInstance().log(
-                    "用户 " + creator + " 于 " + createTime + " 修改了 [" + MODULE + "][" + SUB + "] 记录",
-                    "修改记录",
-                    MODULE
-            );
+            log("用户 " + userName + " 于 " + createTime + " 修改了 [" + MODULE + "][" + SUB + "] 记录", "修改记录", MODULE);
         }
 
         onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
     }
 
     public void deleteRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
 //        String id = request.getParameter("id");
         String[] ids = request.getParameterValues("id");
@@ -346,15 +289,11 @@ public class ServletAction extends BaseHttpServlet {
         //检查输入参数是否正确先
         if (ids != null) {
             String creator = (String) session.getAttribute("user_name");
-            String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
+            String createTime = TimeUtil.currentDate();
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
             UserDao infoDao = DaoFactory.getUserDao();
             jsonObj = infoDao.deleteRecord(action, ids);
-            LogEvent.getInstance()
-                    .log(
-                            "用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录",
-                            "删除记录",
-                            MODULE);
+            log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
 
 //        if (id != null) {

@@ -20,13 +20,11 @@ public class BaseServlet extends BaseHttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.service(req, resp);
         handleResponse(resp);
+        super.service(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { }
+    protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) { }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { }
 }

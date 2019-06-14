@@ -1,5 +1,7 @@
 package com.interactive.classroom.base;
 
+import com.interactive.classroom.utils.LogEvent;
+import com.interactive.classroom.utils.TimeUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.interactive.classroom.utils.Log;
@@ -19,12 +21,44 @@ import java.io.UnsupportedEncodingException;
  * HttpServlet基类
  * @author Z-P-J
  */
-public class BaseHttpServlet extends HttpServlet {
+public abstract class BaseHttpServlet extends HttpServlet {
+
+    protected HttpSession session;
 
     protected String userId = null;
     protected String userName = null;
     protected String userRole = null;
     protected String userAvatar = null;
+
+    private LogEvent logEvent;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { }
+
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.service(req, resp);
+        req.setCharacterEncoding("UTF-8");
+        session = req.getSession();
+
+//        if (session.getAttribute("user_role") == null) {
+//            //todo 登录失效
+//            resp.sendRedirect("");
+//            return;
+//        }
+
+        logEvent = new LogEvent(session);
+        initUserInfo();
+
+        String action = req.getParameter("action");
+        debug("收到的action是：" + action);
+        handleAction(req, resp, action);
+    }
+
+    protected abstract void handleAction(HttpServletRequest request, HttpServletResponse response, String action);
 
     /**
      * errorNo=0->没有错误
@@ -125,11 +159,20 @@ public class BaseHttpServlet extends HttpServlet {
         onEnd(request, response, jsonObj, "base/export/export_result.jsp", "操作已经执行，请按返回按钮返回列表页面！", 0, "record_list.jsp");
     }
 
+    protected void log(String msg, String operation, String module) {
+        if (logEvent != null) {
+            logEvent.log(msg, operation, module);
+        }
+    }
+
+    protected void debug(String msg) {
+        Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "][" + msg + "]");
+    }
+
     /**
      * 获取userId，userName，userRole，userAvatar
-     * @param session The HttpSession
      */
-    protected void initUserInfo(HttpSession session) {
+    private void initUserInfo() {
         userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
         userRole = session.getAttribute("user_role") == null ? null : (String) session.getAttribute("user_role");

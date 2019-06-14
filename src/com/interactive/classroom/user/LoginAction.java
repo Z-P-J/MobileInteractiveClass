@@ -22,30 +22,9 @@ import java.io.PrintWriter;
  */
 public class LoginAction extends BaseHttpServlet {
 
-    private static final String MODULE = "user";
-    private static final String SUB = "info";
-
-    private static final String RESULT_PATH = MODULE + "/" + SUB;
-    private static final String RESULT_PAGE = "result.jsp";
-    //    private static final String RESULT_URL = RESULT_PATH + "/" + RESULT_PAGE;
-    private static final String RESULT_URL = RESULT_PATH + "/" + RESULT_PAGE;
-    private static final String REDIRECT_PATH = MODULE + "/" + SUB;
-    private static final String REDIRECT_PAGE = "record_list.jsp";
-
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.setCharacterEncoding("UTF-8");
-//        if (session.getAttribute("user_role") == null) {
-//            try {
-//                processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-        String action = request.getParameter("action");
-        if (action == null) {
-//            processError(request, response, );
-        } else if ("log_in".equals(action)) {
+    protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
+        if ("log_in".equals(action)) {
             login(request, response);
         } else if ("sign_up".equals(action)) {
             addRecord(request, response);
@@ -67,23 +46,24 @@ public class LoginAction extends BaseHttpServlet {
         }
     }
 
-    private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
-        String userName = request.getParameter("user_name");
+    private void login(HttpServletRequest request, HttpServletResponse response) {
         String password = request.getParameter("user_password");
         UserDao dao = DaoFactory.getUserDao();
-        UserBean user = dao.getUserByUserName(userName);
+        UserBean user = dao.getUserByUserName(request.getParameter("user_name"));
         if (user != null) {
-            Log.d(getClass().getName(), "password=" + password + "    saveedPassword=" + user.getPassword());
+            debug("password=" + password + "    saveedPassword=" + user.getPassword());
             if (user.getPassword().trim().equals(password.trim())) {
                 wrapSession(session, user);
             }
         }
-        response.sendRedirect("index.jsp");
+        try {
+            response.sendRedirect("index.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addRecord(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
 
         UserDao userDao = DaoFactory.getUserDao();
         UserBean bean = new UserBean();
@@ -108,8 +88,7 @@ public class LoginAction extends BaseHttpServlet {
 
         try {
             int id = userDao.registerUser(bean);
-            System.out.println("注册成功");
-            System.out.println("id=" + id);
+            debug("注册成功   id=" + id);
             if (id != -1) {
                 bean.setId("" + id);
                 wrapSession(session, bean);
@@ -124,8 +103,7 @@ public class LoginAction extends BaseHttpServlet {
     }
 
     private void wrapSession(HttpSession session, UserBean user) {
-        Log.d("wrapSession", "wrapSession");
-        Log.d("wrapSession", user.toString());
+        debug("wrapSession   user=" + user.toString());
         session.setAttribute("user_id", user.getId());
         session.setAttribute("user_name", user.getUserName());
         session.setAttribute("name", user.getName());

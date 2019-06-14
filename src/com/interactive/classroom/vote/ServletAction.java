@@ -35,33 +35,11 @@ public class ServletAction extends BaseHttpServlet {
     public String redirectPath = module + "/" + sub;
     public String redirectPage = "record_list.jsp";
     public String redirectUrl = redirectPath + "/" + redirectPage;
-    public String databaseName = "ylxdb";
-    public SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    public LogEvent ylxLog = new LogEvent();
 
-    /*
-     * 处理顺序：先是service，后根据情况doGet或者doPost
-     */
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println(getClass().getName() + " service");
-        processAction(request, response);
-    }
-
-    public void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession();
-        request.setCharacterEncoding("UTF-8");
+    protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
         try {
-            ylxLog.setSession(session);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String action = request.getParameter("action");
-        boolean actionOk = false;
-        showDebug("processAction收到的action是：" + action);
-
-        try {
-            if (session.getAttribute("user_role") == null) {
+            if (userRole == null) {
                 processError(request, response, 3, "session超时，请重新登录系统！", resultPath, resultPage, redirectPath, redirectPage);
             } else {
                 if (action == null) {
@@ -105,21 +83,9 @@ public class ServletAction extends BaseHttpServlet {
     }
 
     /*
-     * 功能：进行一个本类测试，不用启动整个项目，测试所写的Java
-     */
-    public static void main(String[] args) throws Exception {
-        System.out.println("");
-    }
-
-    public void showDebug(String msg) {
-        System.out.println("[" + TimeUtil.currentDate() + "][" + module + "/" + sub + "/ServletAction]" + msg);
-    }
-
-    /*
      * 功能：查询记录
      */
     public void getRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         String id = request.getParameter("id");
         String title = request.getParameter("title");
@@ -132,26 +98,21 @@ public class ServletAction extends BaseHttpServlet {
         String existResultset = request.getParameter("exist_resultset");
         if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty()))
             existResultset = "0";
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
-        String userRole = session.getAttribute("user_role") == null ? null : (String) session.getAttribute("user_role");
-        String userAvatar = session.getAttribute("user_avatar") == null ? null : (String) session.getAttribute("user_avatar");
-        //这里可以修改成统一一个函数读取变量，下面的session里的attr可以用一个变量代替
-        //检查输入参数是否正确先
-        showDebug("[getRecord]收到页面传过来的参数是：" + existResultset + "," + action + "," + type + "," + id + "," + timeFrom + "," + timeTo);
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        VoteBean query = new VoteBean();
-        query.setId(id);
-        query.setAction(action);
-        query.setType(type);
-        query.setTitle(title);
-        query.setContent(content);
-        query.setTimeFrom(timeFrom);
-        query.setTimeTo(timeTo);
-        query.setUserId(userId);
-        query.setUserRole(userRole);
-        query.setSortIndex(sortIndex);
-        query.setOrderBy(orderBy);
+
+        debug("[getRecord]收到页面传过来的参数是：" + existResultset + "," + action + "," + type + "," + id + "," + timeFrom + "," + timeTo);
+
+        VoteBean vote = new VoteBean();
+        vote.setId(id);
+        vote.setAction(action);
+        vote.setType(type);
+        vote.setTitle(title);
+        vote.setContent(content);
+        vote.setTimeFrom(timeFrom);
+        vote.setTimeTo(timeTo);
+        vote.setUserId(userId);
+        vote.setUserRole(userRole);
+        vote.setSortIndex(sortIndex);
+        vote.setOrderBy(orderBy);
         JSONObject jsonObj = null;
         if (existResultset.equals("1")) {
             //要求提取之前查询结果，如果有就取出来，如果没有就重新查询一次，并且保存进session里
@@ -166,7 +127,7 @@ public class ServletAction extends BaseHttpServlet {
         } else {
             //如果是新查询
             VoteDao voteDao = DaoFactory.getVoteDao();
-            jsonObj = voteDao.getRecord(query);
+            jsonObj = voteDao.getRecord(vote);
             session.setAttribute(module + "_" + sub + "_get_record_result", jsonObj);
         }
         jsonObj.put("user_id", userId);
@@ -182,19 +143,17 @@ public class ServletAction extends BaseHttpServlet {
     }
 
     public void getRecordView(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         String id = request.getParameter("id");
         String index = request.getParameter("index");
         String existResultset = request.getParameter("exist_resultset");
-        if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty()))
+        if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty())) {
             existResultset = "0";
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
-        //检查输入参数是否正确先
-        showDebug("收到页面传过来的参数是：exist_resultset=" + existResultset + ",action=" + action + ",id=" + id + ",index=" + index);
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        JSONObject jsonObj = null;
+        }
+
+        debug("收到页面传过来的参数是：exist_resultset=" + existResultset + ",action=" + action + ",id=" + id + ",index=" + index);
+
+        JSONObject jsonObj;
         VoteBean query = new VoteBean();
         query.setAction(action);
         query.setUserId(userId);
@@ -202,19 +161,18 @@ public class ServletAction extends BaseHttpServlet {
             //如果有就取出来，如果没有就重新查询一次，并且保存进session里
             if (session.getAttribute(module + "_" + sub + "_get_record_result") != null) {
                 JSONObject json = (JSONObject) session.getAttribute(module + "_" + sub + "_get_record_result");
-                showDebug(json.toString());
+                debug(json.toString());
                 jsonObj = ServletUtil.getResultSetNavigateId(id, index, json);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
                 jsonObj.put("action", action);
                 jsonObj.put("result_code", 0);
                 jsonObj.put("result_msg", "ok");
-                //然后还有导航信息
                 json = (JSONObject) session.getAttribute(module + "_" + sub + "_get_record_result");
                 //showDebug("[getRecordView]重新取出来的数据是："+json.toString());
             } else {
                 //如果没有就重新查询一次
-                showDebug("[getRecordView]没有就重新查询一次。");
+                debug("[getRecordView]没有就重新查询一次。");
                 VoteDao voteDao = DaoFactory.getVoteDao();
                 jsonObj = voteDao.getRecord(query);
                 jsonObj.put("user_id", userId);
@@ -225,7 +183,7 @@ public class ServletAction extends BaseHttpServlet {
                 session.setAttribute(module + "_" + sub + "_get_record_result", jsonObj);
             }
         } else {
-            showDebug("[getRecordView]existsResult=0，重新查询");
+            debug("[getRecordView]existsResult=0，重新查询");
             VoteDao voteDao = DaoFactory.getVoteDao();
             jsonObj = voteDao.getRecord(query);
             jsonObj.put("user_id", userId);
@@ -238,20 +196,14 @@ public class ServletAction extends BaseHttpServlet {
     }
 
     public void addRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         String voteId = request.getParameter("vote_id");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         String status = request.getParameter("status");
         String limitTime = request.getParameter("end_time");
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        JSONObject jsonObj = null;
-        //检查输入参数是否正确先
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String creator = (String) session.getAttribute("user_name");
+        JSONObject jsonObj;
         String createTime = TimeUtil.currentDate();
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
         VoteDao voteDao = DaoFactory.getVoteDao();
         VoteBean file = new VoteBean();
         file.setAction(action);
@@ -260,12 +212,12 @@ public class ServletAction extends BaseHttpServlet {
         file.setContent(content);
         file.setLimitTime(limitTime);
         file.setUserId(userId);
-        file.setCreator(creator);
+        file.setCreator(userName);
         file.setStatus(status);
         file.setCreateTime(request.getParameter("publish_time"));
 
         jsonObj = voteDao.addRecord(file);
-        ylxLog.log("用户 " + creator + " 于 " + createTime + " 添加了 [" + module + "][" + sub + "] 记录", "添加记录", module);
+        log("用户 " + userName + " 于 " + createTime + " 添加了 [" + module + "][" + sub + "] 记录", "添加记录", module);
 
         onEndDefault(request, response, jsonObj);
     }
@@ -274,18 +226,13 @@ public class ServletAction extends BaseHttpServlet {
      * 功能：修改记录
      */
     public void modifyRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        String action = request.getParameter("action");
         String id = request.getParameter("id");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         String limitTime = request.getParameter("limit_time");
         String status = request.getParameter("status");
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
-        //检查输入参数是否正确先
         if (id != null) {
-            String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
             VoteDao voteDao = DaoFactory.getVoteDao();
             VoteBean file = new VoteBean();
@@ -293,52 +240,37 @@ public class ServletAction extends BaseHttpServlet {
             file.setTitle(title);
             file.setContent(content);
             file.setLimitTime(limitTime);
-            file.setCreator(creator);
+            file.setCreator(userName);
             file.setCreateTime(createTime);
             file.setStatus(status);
             jsonObj = voteDao.modifyRecord(file);
-            ylxLog.log("用户 " + creator + " 于 " + createTime + " 修改了 [" + module + "][" + sub + "] 记录", "修改记录", module);
+            log("用户 " + userName + " 于 " + createTime + " 修改了 [" + module + "][" + sub + "] 记录", "修改记录", module);
         }
 
         onEndDefault(request, response, jsonObj);
     }
 
     public void deleteRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         String[] ids = request.getParameterValues("id");
-
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
-        //检查输入参数是否正确先
         if (ids != null) {
-            String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
-            /*----------------------------------------数据获取完毕，开始和数据库交互*/
             VoteDao voteDao = DaoFactory.getVoteDao();
-            jsonObj = voteDao.deleteRecord(action, ids, creator, createTime);
-            ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + module + "][" + sub + "] 记录", "删除记录", module);
+            jsonObj = voteDao.deleteRecord(action, ids, userName, createTime);
+            log("用户 " + userName + " 于 " + createTime + " 删除了 [" + module + "][" + sub + "] 记录", "删除记录", module);
         }
-
         onEndDefault(request, response, jsonObj);
     }
 
-    public void setRecordTop(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
+    private void setRecordTop(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String action = request.getParameter("action");
         String id = request.getParameter("id");
         String type = request.getParameter("type");
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
-
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        JSONObject jsonObj = null;
-        //检查输入参数是否正确先
         VoteDao voteDao = DaoFactory.getVoteDao();
-        jsonObj = voteDao.setRecordTop(action, type, userId, id);
+        JSONObject jsonObj = voteDao.setRecordTop(action, type, userId, id);
         jsonObj.put("user_id", userId);
         jsonObj.put("user_name", userName);
-
         session.setAttribute(module + "_" + sub + "_get_record_result", jsonObj);
         onEndDefault(request, response, jsonObj);
     }

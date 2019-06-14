@@ -9,17 +9,13 @@ import com.interactive.classroom.bean.InvestigationBean;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.InvestigationDao;
 import com.interactive.classroom.utils.Log;
-import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.ServletUtil;
 import com.interactive.classroom.utils.TimeUtil;
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.interactive.classroom.utils.export.ExportUtil;
+import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 /**
  * @author Z-P-J
@@ -29,40 +25,20 @@ public class ServletAction extends BaseHttpServlet {
     private static final String MODULE = "investigation";
     private static final String SUB = "core";
 
-//    private static final String PRE_FIX = MODULE + "_" + SUB;
+    //    private static final String PRE_FIX = MODULE + "_" + SUB;
     private static final String RESULT_PATH = MODULE + "/" + SUB;
     private static final String RESULT_PAGE = "result.jsp";
-//    private static final String RESULT_URL = RESULT_PATH + "/" + RESULT_PAGE;
+    //    private static final String RESULT_URL = RESULT_PATH + "/" + RESULT_PAGE;
 //    private static final String RESULT_URL = "base/export/export_result.jsp";
     private static final String REDIRECT_PATH = MODULE + "/" + SUB;
     private static final String REDIRECT_PAGE = "record_list.jsp";
-//    private static final String DATABASE_NAME = "my_test";
 
-    private LogEvent ylxLog = new LogEvent();
-
-    /*
-     * 处理顺序：先是service，后根据情况doGet或者doPost
-     */
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        processAction(request, response);
-    }
-
-    private void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
-        request.setCharacterEncoding("UTF-8");
-        try {
-            ylxLog.setSession(session);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String action = request.getParameter("action");
-        Log.d(getClass().getName(), "processAction收到的action是：" + action);
-
-        if (session.getAttribute("user_role") == null) {
+    protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
+        if (userRole == null) {
             try {
                 processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
@@ -107,8 +83,6 @@ public class ServletAction extends BaseHttpServlet {
      * 功能：查询记录
      */
     private void getRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        initUserInfo(session);
         InvestigationBean bean = new InvestigationBean();
         bean.setId(request.getParameter("id"));
         bean.setAction(request.getParameter("action"));
@@ -150,21 +124,16 @@ public class ServletAction extends BaseHttpServlet {
         jsonObj.put("user_role", userRole);
         jsonObj.put("user_avatar", userAvatar);
         jsonObj.put("action", bean.getAction());
-        /*--------------------数据查询完毕，根据交互方式返回数据--------------------*/
         String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
         onEnd(request, response, jsonObj, url);
     }
 
     private void getRecordView(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        HttpSession session = request.getSession();
         String id = request.getParameter("id");
         String index = request.getParameter("index");
         String type = request.getParameter("type");
 
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
-
-        JSONObject jsonObj = null;
+        JSONObject jsonObj;
         InvestigationBean bean = new InvestigationBean();
         bean.setAction(request.getParameter("action"));
         bean.setUserId(userId);
@@ -189,7 +158,7 @@ public class ServletAction extends BaseHttpServlet {
                 jsonObj.put("result_msg", "ok");
                 //然后还有导航信息
                 json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-                Log.d(getClass().getName(), "[getRecordView]重新取出来的数据是："+json.toString());
+                Log.d(getClass().getName(), "[getRecordView]重新取出来的数据是：" + json.toString());
             } else {
                 //如果没有就重新查询一次
                 Log.d(getClass().getName(), "[getRecordView]没有就重新查询一次。");
@@ -215,12 +184,7 @@ public class ServletAction extends BaseHttpServlet {
     }
 
     private void addRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String creator = (String) session.getAttribute("user_name");
         String createTime = TimeUtil.currentDate();
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
         InvestigationDao dao = DaoFactory.getInvestigationDao();
         InvestigationBean bean = new InvestigationBean();
         bean.setAction(request.getParameter("action"));
@@ -230,10 +194,10 @@ public class ServletAction extends BaseHttpServlet {
         bean.setContent(request.getParameter("content"));
         bean.setEndTime(request.getParameter("end_time"));
         bean.setUserId(userId);
-        bean.setCreator(creator);
+        bean.setCreator(userName);
         bean.setCreateTime(createTime);
         JSONObject jsonObj = dao.addRecord(bean);
-        ylxLog.log("用户 " + creator + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
+        log("用户 " + userName + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
         onEndDefault(request, response, jsonObj);
     }
 
@@ -241,13 +205,10 @@ public class ServletAction extends BaseHttpServlet {
      * 功能：修改记录
      */
     private void modifyRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
         String id = request.getParameter("id");
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
         //检查输入参数是否正确先
         if (id != null) {
-            String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
             InvestigationDao dao = DaoFactory.getInvestigationDao();
             InvestigationBean bean = new InvestigationBean();
@@ -256,32 +217,25 @@ public class ServletAction extends BaseHttpServlet {
             bean.setTitle(request.getParameter("title"));
             bean.setContent(request.getParameter("content"));
             bean.setEndTime(request.getParameter("end_time"));
-            bean.setCreator(creator);
+            bean.setCreator(userName);
             bean.setCreateTime(createTime);
             jsonObj = dao.modifyRecord(bean);
-            ylxLog.log("用户 " + creator + " 于 " + createTime + " 修改了 [" + MODULE + "][" + SUB + "] 记录", "修改记录", MODULE);
+            log("用户 " + userName + " 于 " + createTime + " 修改了 [" + MODULE + "][" + SUB + "] 记录", "修改记录", MODULE);
         }
 
         onEndDefault(request, response, jsonObj);
     }
 
     private void deleteRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         String[] ids = request.getParameterValues("id");
-
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
-        //检查输入参数是否正确先
         if (ids != null) {
-            String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
-            /*----------------------------------------数据获取完毕，开始和数据库交互*/
             InvestigationDao dao = DaoFactory.getInvestigationDao();
-            jsonObj = dao.deleteRecord(action, ids, creator, createTime);
-            ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
+            jsonObj = dao.deleteRecord(action, ids, userName, createTime);
+            log("用户 " + userName + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
-
         onEndDefault(request, response, jsonObj);
     }
 

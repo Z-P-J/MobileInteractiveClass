@@ -15,10 +15,6 @@ jQuery(document).ready(function () {
 });
 /*================================================================================*/
 var Record = function () {
-    var userId = undefined;
-    var userName = undefined;
-    var userRole = undefined;
-    var userAvatar = undefined;
     var initRecordStyle = function () {
     };
     var initRecordList = function () {
