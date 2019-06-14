@@ -1,29 +1,23 @@
 package com.interactive.classroom.common;
 
 
-import com.interactive.classroom.dao.ylx_db;
-
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.io.PrintWriter;
+import com.interactive.classroom.utils.DBHelper;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.interactive.classroom.user.UserType;
-import com.interactive.classroom.utils.DBHelper;
-import org.json.JSONException;
-import org.json.JSONObject;
-import com.interactive.classroom.utils.Log;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 //@WebServlet(name = "data_action", urlPatterns = "/data_action")
 public class data_action extends HttpServlet {

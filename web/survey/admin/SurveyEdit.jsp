@@ -12,6 +12,7 @@
     String Survey_id = request.getParameter("sid");
     SurveyDAOimpl dao = DAOFactory.getSurveyDAO(type);
     Survey survey = dao.findSurvey(Long.valueOf(Survey_id));
+    System.out.println(survey.toString());
 %>
 <html>
 <head>
@@ -45,12 +46,15 @@
             </tr>
             <tr>
                 <td>问卷名称</td>
-                <td><input id="Survey_name" name="Survey_name" type="text" size="50"></td>
+                <td><input id="Survey_name" name="Survey_name" type="text" size="50" value="<%=survey.getSName().replace("\"","\\\"") %>"></td>
                 <td width="374"><span class="R">*</span> 问卷的名称，既问卷的总标题</td>
             </tr>
             <tr>
                 <td>问卷发起人(单位)</td>
-                <td><input id="Survey_author" name="Survey_author" type="text" size="50"></td>
+                <td>
+                    <input disabled id="Survey_author" type="text" size="50" value="<%=survey.getSAuthor().replace("\"","\\\"") %>">
+                    <input id="Survey_author_hidden" name="Survey_author" type="hidden" value="<%=survey.getSAuthor().replace("\"","\\\"") %>">
+                </td>
                 <td width="374"><span class="R">*</span> 问卷发起人，此问卷的所有单位</td>
             </tr>
             <tr>
@@ -89,8 +93,6 @@
 </div>
 </body>
 <script>
-    document.forms[0].Survey_name.value = "<%=survey.getSName().replace("\"","\\\"") %>";
-    document.forms[0].Survey_author.value = "<%=survey.getSAuthor().replace("\"","\\\"") %>";
 
     function replaceAll(str, oldStr, newStr) {
         var reg = new RegExp( oldStr , "g" );

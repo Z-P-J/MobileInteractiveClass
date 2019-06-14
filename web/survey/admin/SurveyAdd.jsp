@@ -34,8 +34,9 @@
         </tr>
         <tr>
             <td>问卷发起人(单位)</td>
-            <td><input disabled name="Survey_author" id="survey_author" type="text" size="50"
-                       value="<%=session.getAttribute("user_name")%>"></td>
+            <td><input disabled id="survey_author" type="text" size="50"
+                       value="<%=session.getAttribute("user_name")%>">
+                <input name="Survey_author" type="hidden" value="<%=session.getAttribute("user_name")%>"></td>
             <td width="374"><span class="R">*</span> 问卷发起人，此问卷的发布者，不可更改</td>
         </tr>
         <tr>

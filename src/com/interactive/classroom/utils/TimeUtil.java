@@ -11,15 +11,15 @@ public final class TimeUtil {
     public static final SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static String currentDate() {
-        synchronized (FORMATTER) {
-            return FORMATTER.format(new Date());
-        }
+        return getFormatter().format(new Date());
     }
 
     public static String currentDate(String pattern) {
-        synchronized (FORMATTER) {
-            return new SimpleDateFormat(pattern).format(new Date());
-        }
+        return new SimpleDateFormat(pattern).format(new Date());
+    }
+
+    private static SimpleDateFormat getFormatter() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
 
     private TimeUtil() {

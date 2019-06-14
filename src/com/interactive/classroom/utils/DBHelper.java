@@ -34,14 +34,14 @@ public class DBHelper {
 
 
 
-    private Connection a;
+    private Connection connection;
     private Statement statement;
 
 
     private DBHelper() {
         try {
             getStatement();
-        } catch (SQLException sqlexception) {
+        } catch (Exception sqlexception) {
             sqlexception.printStackTrace();
         }
     }
@@ -55,53 +55,45 @@ public class DBHelper {
     }
 
     private Statement getStatement() throws SQLException {
-        a = getConnection();
-        statement = a.createStatement();
+        connection = getConnection();
+        statement = connection.createStatement();
         return statement;
     }
 
-    public static Connection getConnection() {
+    public static Connection getConnection() throws SQLException {
         try {
             Class.forName(DRIVER_NAME);
-            return DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-        } catch (Exception e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return null;
+        return DriverManager.getConnection(URL, USER_NAME, PASSWORD);
     }
 
     public void close() {
         try {
             statement.close();
-            a.close();
-            dbHelper = null;
-        } catch (SQLException sqlexception) {
-            sqlexception.printStackTrace();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        dbHelper = null;
     }
 
-    public ResultSet executeQuery(String s) {
+    public ResultSet executeQuery(String s) throws SQLException {
         ResultSet resultset = null;
-        try {
-            if (DEBUG_LEVEL > 0) {
-                Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeQuery:" + s);
-            }
-            resultset = getStatement().executeQuery(s);
-        } catch (SQLException sqlexception) {
-            sqlexception.printStackTrace();
+        if (DEBUG_LEVEL > 0) {
+            Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeQuery:" + s);
         }
+        resultset = getStatement().executeQuery(s);
         return resultset;
     }
 
-    public DBHelper executeUpdate(String s) {
+    public DBHelper executeUpdate(String s){
+        Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeUpdate:" + s);
         try {
-            if (DEBUG_LEVEL > 0) {
-                Log.d(getClass().getName(), "[" + TimeUtil.currentDate() + "]" + " executeUpdate:" + s);
-            }
             getStatement().executeUpdate(s);
-        } catch (SQLException sqlexception) {
-            sqlexception.printStackTrace();
-            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return dbHelper;
     }
@@ -118,32 +110,24 @@ public class DBHelper {
         return -1;
     }
 
-    public void putTableColumnNames(String tableName, JSONObject jsonObj) {
+    public void putTableColumnNames(String tableName, JSONObject jsonObj) throws SQLException, JSONException {
         ResultSet rs = executeQuery("select * from " + tableName);
-        try {
-            ResultSetMetaData data = rs.getMetaData();
-            List<String> columnList = new ArrayList<>();
-            System.out.println("getColumnCount=" + data.getColumnCount());
-            for (int i = 0; i < data.getColumnCount(); i++) {
-                System.out.println("i=" + i);
-                columnList.add(data.getColumnLabel(i + 1));
-            }
-            jsonObj.put("table_column_names", columnList);
-            rs.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        ResultSetMetaData data = rs.getMetaData();
+        List<String> columnList = new ArrayList<>();
+        System.out.println("getColumnCount=" + data.getColumnCount());
+        for (int i = 0; i < data.getColumnCount(); i++) {
+            System.out.println("i=" + i);
+            columnList.add(data.getColumnLabel(i + 1));
         }
+        jsonObj.put("table_column_names", columnList);
+        rs.close();
         close();
     }
 
-    public void putTableColumnNames(String[] labels, JSONObject jsonObj) {
+    public void putTableColumnNames(String[] labels, JSONObject jsonObj) throws SQLException, JSONException {
         List<String> columnList = new ArrayList<>();
         Collections.addAll(columnList, labels);
-        try {
-            jsonObj.put("table_column_names", columnList);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        jsonObj.put("table_column_names", columnList);
     }
 
 //    public void getProperty() {

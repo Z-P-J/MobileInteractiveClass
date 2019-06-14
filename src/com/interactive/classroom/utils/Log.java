@@ -6,8 +6,8 @@ public final class Log {
         throw new RuntimeException("forbiden");
     }
 
-    public static void d(String title, String msg) {
-        System.out.println(title + " : " + msg);
+    public static void d(String tag, String msg) {
+        System.out.println(tag + " : " + msg);
     }
 
 //    public static void d(Class c, String msg) {

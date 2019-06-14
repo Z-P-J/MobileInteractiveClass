@@ -6,6 +6,7 @@ import com.iWen.survey.dao.QuestionDAO;
 import com.iWen.survey.dao.SurveyDAO;
 import com.iWen.survey.dto.Survey;
 import com.iWen.survey.util.StringUtil;
+import com.interactive.classroom.utils.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ public class SurveyManageAction extends BaseAction {
                 .getParameter("Survey_name")));
         survey.setSAuthor(StringUtil.encodeString(request
                 .getParameter("Survey_author")));
+        Log.d("", "SAuthor=" + survey.getSAuthor());
         survey.setSDesc(StringUtil.encodeString(request
                 .getParameter("Survey_description")));
         survey.setSCreateDate(new Date());

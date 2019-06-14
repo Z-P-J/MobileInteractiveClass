@@ -5,8 +5,10 @@ package com.interactive.classroom.user;
  */
 
 import com.interactive.classroom.base.BaseHttpServlet;
-import com.interactive.classroom.user.bean.UserBean;
-import com.interactive.classroom.user.dao.UserDao;
+import com.interactive.classroom.bean.UserBean;
+import com.interactive.classroom.dao.DaoFactory;
+import com.interactive.classroom.dao.UserDao;
+import com.interactive.classroom.utils.Log;
 import org.json.JSONObject;
 import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.ServletUtil;
@@ -19,9 +21,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class ServletAction extends BaseHttpServlet {
+
+    private static final String TAG = "";
+
     //这里是需要改的,module和sub
     private static final String MODULE = "user";
     private static final String SUB = "info";
@@ -35,7 +42,7 @@ public class ServletAction extends BaseHttpServlet {
 //    private static final String REDIRECT_URL = REDIRECT_PATH + "/" + REDIRECT_PAGE;
 //    public String databaseName = "ylxdb";
 //    public SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    public LogEvent ylxLog = new LogEvent();
+
 
     /*
      * 处理顺序：先是service，后根据情况doGet或者doPost
@@ -45,16 +52,10 @@ public class ServletAction extends BaseHttpServlet {
         processAction(request, response);
     }
 
-    public void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
-        try {
-            ylxLog.setSession(session);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         String action = request.getParameter("action");
-        boolean actionOk = false;
         showDebug("processAction收到的action是：" + action);
         try {
             if (session.getAttribute("user_role") == null) {
@@ -106,7 +107,7 @@ public class ServletAction extends BaseHttpServlet {
     }
 
     public void showDebug(String msg) {
-        System.out.println("[" + TimeUtil.currentDate() + "][" + MODULE + "/" + SUB + "/ServletAction]" + msg);
+        Log.d(TAG, "[" + TimeUtil.currentDate() + "][" + MODULE + "/" + SUB + "/ServletAction]" + msg);
     }
 
     /*
@@ -161,7 +162,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             //如果是新查询
-            UserDao infoDao = new UserDao();
+            com.interactive.classroom.dao.UserDao infoDao = DaoFactory.getUserDao();
             jsonObj = infoDao.getRecord(query);
 //            String sql = "select * from ";
             session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
@@ -212,8 +213,8 @@ public class ServletAction extends BaseHttpServlet {
                 showDebug("[getRecordView]没有就重新查询一次。");
                 String creator = (String) session.getAttribute("user_name");
                 String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-                UserDao infoDao = new UserDao();
-                jsonObj = infoDao.getRecord(query);
+                UserDao dao = DaoFactory.getUserDao();
+                jsonObj = dao.getRecord(query);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
                 jsonObj.put("action", action);
@@ -225,7 +226,7 @@ public class ServletAction extends BaseHttpServlet {
             showDebug("[getRecordView]existsResult=0，重新查询");
             String creator = (String) session.getAttribute("user_name");
             String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-            UserDao infoDao = new UserDao();
+            UserDao infoDao = DaoFactory.getUserDao();
             jsonObj = infoDao.getRecord(query);
             jsonObj.put("user_id", userId);
             jsonObj.put("user_name", userName);
@@ -243,38 +244,45 @@ public class ServletAction extends BaseHttpServlet {
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         String limitTime = request.getParameter("limit_time");
-        /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        JSONObject jsonObj = null;
-        //检查输入参数是否正确先
+
         String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         String creator = (String) session.getAttribute("user_name");
         String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        UserDao infoDao = new UserDao();
-        UserBean info = new UserBean();
-        info.setAction(action);
-        info.setParentId(userManageId);
-        info.setTitle(title);
-        info.setContent(content);
-        info.setLimitTime(limitTime);
-        info.setUserId(userId);
-        info.setCreator(creator);
-        info.setCreateTime(createTime);
+        UserDao infoDao = DaoFactory.getUserDao();
+        UserBean user = new UserBean();
+        user.setAction(action);
+        user.setParentId(userManageId);
+        user.setTitle(title);
+        user.setContent(content);
+        user.setLimitTime(limitTime);
+        user.setUserId(userId);
+        user.setCreator(creator);
+        user.setCreateTime(createTime);
 
-        info.setUserName(request.getParameter("user_name"));
-        info.setName(request.getParameter("password"));
-        info.setName(request.getParameter("name"));
-        info.setSex(request.getParameter("sex"));
-        info.setEmail(request.getParameter("email"));
-        info.setPhone(request.getParameter("phone"));
-        info.setWechat(request.getParameter("wechat"));
-        info.setGrade(request.getParameter("grade"));
-        info.setClassStr(request.getParameter("class"));
-        info.setStudentNum(request.getParameter("student_num"));
-        info.setFaculty(request.getParameter("faculty"));
+        user.setUserName(request.getParameter("user_name"));
+        user.setName(request.getParameter("password"));
+        user.setName(request.getParameter("name"));
+        user.setSex(request.getParameter("sex"));
+        user.setEmail(request.getParameter("email"));
+        user.setPhone(request.getParameter("phone"));
+        user.setWechat(request.getParameter("wechat"));
+        user.setGrade(request.getParameter("grade"));
+        user.setClassStr(request.getParameter("class"));
+        user.setStudentNum(request.getParameter("student_num"));
+        user.setFaculty(request.getParameter("faculty"));
 
-        jsonObj = infoDao.addRecord(info);
-        ylxLog.log("用户 " + creator + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
+        int id = infoDao.registerUser(user);
+        JSONObject jsonObj = new JSONObject();
+        jsonObj.put("aaData", new ArrayList());
+        jsonObj.put("action", user.getAction());
+        jsonObj.put("result_msg", "ok");
+        jsonObj.put("result_code", 0);
+        LogEvent.getInstance().log(
+                "用户 " + creator + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录",
+                "添加记录",
+                MODULE
+        );
 
         onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
     }
@@ -295,7 +303,7 @@ public class ServletAction extends BaseHttpServlet {
         if (id != null) {
             String creator = (String) session.getAttribute("user_name");
             String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-            UserDao infoDao = new UserDao();
+            UserDao infoDao = DaoFactory.getUserDao();
             UserBean info = new UserBean();
             info.setId(id);
             info.setTitle(title);
@@ -316,7 +324,11 @@ public class ServletAction extends BaseHttpServlet {
             info.setFaculty(request.getParameter("faculty"));
 
             jsonObj = infoDao.modifyRecord(info);
-            ylxLog.log("用户 " + creator + " 于 " + createTime + " 修改了 [" + MODULE + "][" + SUB + "] 记录", "修改记录", MODULE);
+            LogEvent.getInstance().log(
+                    "用户 " + creator + " 于 " + createTime + " 修改了 [" + MODULE + "][" + SUB + "] 记录",
+                    "修改记录",
+                    MODULE
+            );
         }
 
         onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
@@ -325,8 +337,9 @@ public class ServletAction extends BaseHttpServlet {
     public void deleteRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
-        String id = request.getParameter("id");
+//        String id = request.getParameter("id");
         String[] ids = request.getParameterValues("id");
+        Log.d(TAG, "ids=" + Arrays.toString(ids));
 
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
@@ -335,19 +348,23 @@ public class ServletAction extends BaseHttpServlet {
             String creator = (String) session.getAttribute("user_name");
             String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            UserDao infoDao = new UserDao();
-            jsonObj = infoDao.deleteRecord(action, ids, creator, createTime);
-            ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
+            UserDao infoDao = DaoFactory.getUserDao();
+            jsonObj = infoDao.deleteRecord(action, ids);
+            LogEvent.getInstance()
+                    .log(
+                            "用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录",
+                            "删除记录",
+                            MODULE);
         }
 
-        if (id != null) {
-            String creator = (String) session.getAttribute("user_name");
-            String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
-            /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            UserDao infoDao = new UserDao();
-            jsonObj = infoDao.deleteRecord(action, id, creator, createTime);
-            ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
-        }
+//        if (id != null) {
+//            String creator = (String) session.getAttribute("user_name");
+//            String createTime = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date());
+//            /*----------------------------------------数据获取完毕，开始和数据库交互*/
+//            UserDao infoDao = DaoFactory.getUserDao();
+//            jsonObj = infoDao.deleteRecord(action, id);
+//            ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
+//        }
 
         onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
     }

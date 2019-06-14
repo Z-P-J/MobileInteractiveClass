@@ -1,24 +1,20 @@
 package com.interactive.classroom.user;
 
 import com.interactive.classroom.base.BaseHttpServlet;
-import com.interactive.classroom.user.bean.UserBean;
-import com.interactive.classroom.user.dao.UserDao;
+import com.interactive.classroom.bean.UserBean;
+import com.interactive.classroom.constant.UserType;
+import com.interactive.classroom.dao.DaoFactory;
+import com.interactive.classroom.dao.UserDao;
 import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.TimeUtil;
-import org.apache.struts2.json.annotations.JSON;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * @author Z-P-J
@@ -55,7 +51,7 @@ public class LoginAction extends BaseHttpServlet {
             addRecord(request, response);
         } else if ("check_user_name".equals(action)) {
             String userName = request.getParameter("user_name");
-            UserDao dao = new UserDao();
+            UserDao dao = DaoFactory.getUserDao();
             UserBean bean = dao.getUserByUserName(userName);
             response.setContentType("application/json; charset=UTF-8");
             try {
@@ -75,7 +71,7 @@ public class LoginAction extends BaseHttpServlet {
         HttpSession session = request.getSession();
         String userName = request.getParameter("user_name");
         String password = request.getParameter("user_password");
-        UserDao dao = new UserDao();
+        UserDao dao = DaoFactory.getUserDao();
         UserBean user = dao.getUserByUserName(userName);
         if (user != null) {
             Log.d(getClass().getName(), "password=" + password + "    saveedPassword=" + user.getPassword());
@@ -89,7 +85,7 @@ public class LoginAction extends BaseHttpServlet {
     public void addRecord(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
-        UserDao userDao = new UserDao();
+        UserDao userDao = DaoFactory.getUserDao();
         UserBean bean = new UserBean();
         String userName = request.getParameter("register_user_name");
         String password = request.getParameter("register_password");

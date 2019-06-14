@@ -93,5 +93,5 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE SCRIPTS -->
-<script src="../assets/module/scripts/project/file/file_list.js" type="text/javascript"></script>
+<script src="../assets/module/scripts/file/file_list.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

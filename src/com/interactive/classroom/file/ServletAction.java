@@ -5,8 +5,9 @@ package com.interactive.classroom.file;
  */
 
 import com.interactive.classroom.base.BaseHttpServlet;
-import com.interactive.classroom.file.bean.FileBean;
-import com.interactive.classroom.file.dao.FileDao;
+import com.interactive.classroom.bean.FileBean;
+import com.interactive.classroom.dao.DaoFactory;
+import com.interactive.classroom.dao.FileDao;
 import com.interactive.classroom.utils.*;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -144,7 +145,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             //如果是新查询
-            FileDao dao = new FileDao();
+            FileDao dao = DaoFactory.getFileDao();
             jsonObj = dao.getRecord(bean);
             session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
         }
@@ -221,7 +222,7 @@ public class ServletAction extends BaseHttpServlet {
             } else {
                 //如果没有就重新查询一次
                 Log.d(getClass().getName(), "[getRecordView]没有就重新查询一次。");
-                FileDao dao = new FileDao();
+                FileDao dao = DaoFactory.getFileDao();
                 jsonObj = dao.getRecord(bean);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
@@ -232,7 +233,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             Log.d(getClass().getName(), "[getRecordView]existsResult=0，重新查询");
-            FileDao dao = new FileDao();
+            FileDao dao = DaoFactory.getFileDao();
             jsonObj = dao.getRecord(bean);
             jsonObj.put("user_id", userId);
             jsonObj.put("user_name", userName);
@@ -275,7 +276,7 @@ public class ServletAction extends BaseHttpServlet {
         String creator = (String) session.getAttribute("user_name");
         String createTime = TimeUtil.currentDate();
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        FileDao dao = new FileDao();
+        FileDao dao = DaoFactory.getFileDao();
         FileBean bean = new FileBean();
         bean.setAction(request.getParameter("action"));
 
@@ -298,7 +299,7 @@ public class ServletAction extends BaseHttpServlet {
         if (id != null) {
             String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
-            FileDao dao = new FileDao();
+            FileDao dao = DaoFactory.getFileDao();
             FileBean bean = new FileBean();
             bean.setId(id);
             bean.setFileName(request.getParameter("file_name"));
@@ -321,7 +322,7 @@ public class ServletAction extends BaseHttpServlet {
             String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            FileDao dao = new FileDao();
+            FileDao dao = DaoFactory.getFileDao();
             jsonObj = dao.deleteRecord(action, ids, creator, createTime);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }

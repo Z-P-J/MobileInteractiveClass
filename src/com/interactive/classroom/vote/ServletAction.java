@@ -13,14 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.interactive.classroom.base.BaseHttpServlet;
+import com.interactive.classroom.dao.DaoFactory;
 import org.json.JSONObject;
 
 import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.ServletUtil;
 import com.interactive.classroom.utils.TimeUtil;
 import com.interactive.classroom.utils.export.ExportUtil;
-import com.interactive.classroom.vote.dao.VoteDao;
-import com.interactive.classroom.vote.bean.VoteBean;
+import com.interactive.classroom.dao.VoteDao;
+import com.interactive.classroom.bean.VoteBean;
 
 public class ServletAction extends BaseHttpServlet {
     //这里是需要改的,module和sub
@@ -164,7 +165,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             //如果是新查询
-            VoteDao voteDao = new VoteDao();
+            VoteDao voteDao = DaoFactory.getVoteDao();
             jsonObj = voteDao.getRecord(query);
             session.setAttribute(module + "_" + sub + "_get_record_result", jsonObj);
         }
@@ -214,7 +215,7 @@ public class ServletAction extends BaseHttpServlet {
             } else {
                 //如果没有就重新查询一次
                 showDebug("[getRecordView]没有就重新查询一次。");
-                VoteDao voteDao = new VoteDao();
+                VoteDao voteDao = DaoFactory.getVoteDao();
                 jsonObj = voteDao.getRecord(query);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
@@ -225,7 +226,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             showDebug("[getRecordView]existsResult=0，重新查询");
-            VoteDao voteDao = new VoteDao();
+            VoteDao voteDao = DaoFactory.getVoteDao();
             jsonObj = voteDao.getRecord(query);
             jsonObj.put("user_id", userId);
             jsonObj.put("user_name", userName);
@@ -251,7 +252,7 @@ public class ServletAction extends BaseHttpServlet {
         String creator = (String) session.getAttribute("user_name");
         String createTime = TimeUtil.currentDate();
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        VoteDao voteDao = new VoteDao();
+        VoteDao voteDao = DaoFactory.getVoteDao();
         VoteBean file = new VoteBean();
         file.setAction(action);
         file.setParentId(voteId);
@@ -286,7 +287,7 @@ public class ServletAction extends BaseHttpServlet {
         if (id != null) {
             String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
-            VoteDao voteDao = new VoteDao();
+            VoteDao voteDao = DaoFactory.getVoteDao();
             VoteBean file = new VoteBean();
             file.setId(id);
             file.setTitle(title);
@@ -314,7 +315,7 @@ public class ServletAction extends BaseHttpServlet {
             String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            VoteDao voteDao = new VoteDao();
+            VoteDao voteDao = DaoFactory.getVoteDao();
             jsonObj = voteDao.deleteRecord(action, ids, creator, createTime);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + module + "][" + sub + "] 记录", "删除记录", module);
         }
@@ -333,7 +334,7 @@ public class ServletAction extends BaseHttpServlet {
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
         JSONObject jsonObj = null;
         //检查输入参数是否正确先
-        VoteDao voteDao = new VoteDao();
+        VoteDao voteDao = DaoFactory.getVoteDao();
         jsonObj = voteDao.setRecordTop(action, type, userId, id);
         jsonObj.put("user_id", userId);
         jsonObj.put("user_name", userName);

@@ -5,8 +5,9 @@ package com.interactive.classroom.investigation;
  */
 
 import com.interactive.classroom.base.BaseHttpServlet;
-import com.interactive.classroom.investigation.bean.InvestigationBean;
-import com.interactive.classroom.investigation.dao.InvestigationDao;
+import com.interactive.classroom.bean.InvestigationBean;
+import com.interactive.classroom.dao.DaoFactory;
+import com.interactive.classroom.dao.InvestigationDao;
 import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.ServletUtil;
@@ -139,7 +140,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             //如果是新查询
-            InvestigationDao dao = new InvestigationDao();
+            InvestigationDao dao = DaoFactory.getInvestigationDao();
             String type = request.getParameter("type");
             jsonObj = dao.getRecord(bean, type);
             session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
@@ -192,7 +193,7 @@ public class ServletAction extends BaseHttpServlet {
             } else {
                 //如果没有就重新查询一次
                 Log.d(getClass().getName(), "[getRecordView]没有就重新查询一次。");
-                InvestigationDao dao = new InvestigationDao();
+                InvestigationDao dao = DaoFactory.getInvestigationDao();
                 jsonObj = dao.getRecord(bean, type);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
@@ -203,7 +204,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             Log.d(getClass().getName(), "[getRecordView]existsResult=0，重新查询");
-            InvestigationDao dao = new InvestigationDao();
+            InvestigationDao dao = DaoFactory.getInvestigationDao();
             jsonObj = dao.getRecord(bean, type);
             jsonObj.put("user_id", userId);
             jsonObj.put("user_name", userName);
@@ -220,7 +221,7 @@ public class ServletAction extends BaseHttpServlet {
         String creator = (String) session.getAttribute("user_name");
         String createTime = TimeUtil.currentDate();
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        InvestigationDao dao = new InvestigationDao();
+        InvestigationDao dao = DaoFactory.getInvestigationDao();
         InvestigationBean bean = new InvestigationBean();
         bean.setAction(request.getParameter("action"));
         bean.setParentId(request.getParameter("project_id"));
@@ -248,7 +249,7 @@ public class ServletAction extends BaseHttpServlet {
         if (id != null) {
             String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
-            InvestigationDao dao = new InvestigationDao();
+            InvestigationDao dao = DaoFactory.getInvestigationDao();
             InvestigationBean bean = new InvestigationBean();
             bean.setId(id);
             bean.setLink(request.getParameter("link"));
@@ -276,7 +277,7 @@ public class ServletAction extends BaseHttpServlet {
             String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            InvestigationDao dao = new InvestigationDao();
+            InvestigationDao dao = DaoFactory.getInvestigationDao();
             jsonObj = dao.deleteRecord(action, ids, creator, createTime);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }

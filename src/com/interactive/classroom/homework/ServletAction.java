@@ -5,10 +5,11 @@ package com.interactive.classroom.homework;
  */
 
 import com.interactive.classroom.base.BaseHttpServlet;
-import com.interactive.classroom.homework.bean.HomeworkBean;
-import com.interactive.classroom.homework.bean.HomeworkFileBean;
-import com.interactive.classroom.homework.dao.HomeworkDao;
-import com.interactive.classroom.homework.dao.HomeworkFileDao;
+import com.interactive.classroom.bean.HomeworkBean;
+import com.interactive.classroom.bean.HomeworkFileBean;
+import com.interactive.classroom.dao.DaoFactory;
+import com.interactive.classroom.dao.HomeworkDao;
+import com.interactive.classroom.dao.HomeworkFileDao;
 import com.interactive.classroom.utils.*;
 import com.interactive.classroom.utils.export.ExportUtil;
 import org.json.JSONException;
@@ -19,10 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Z-P-J
@@ -155,7 +154,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             //如果是新查询
-            HomeworkDao dao = new HomeworkDao();
+            HomeworkDao dao = DaoFactory.getHomeworkDao();
             jsonObj = dao.getRecord(bean);
             session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
         }
@@ -176,7 +175,7 @@ public class ServletAction extends BaseHttpServlet {
         String creator = (String) session.getAttribute("user_name");
         String createTime = TimeUtil.currentDate();
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        HomeworkDao dao = new HomeworkDao();
+        HomeworkDao dao = DaoFactory.getHomeworkDao();
         HomeworkBean bean = new HomeworkBean();
         bean.setAction(request.getParameter("action"));
 
@@ -199,7 +198,7 @@ public class ServletAction extends BaseHttpServlet {
         if (id != null) {
             String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
-            HomeworkDao dao = new HomeworkDao();
+            HomeworkDao dao = DaoFactory.getHomeworkDao();
             HomeworkBean bean = new HomeworkBean();
             bean.setId(id);
             bean.setFileName(request.getParameter("file_name"));
@@ -222,7 +221,7 @@ public class ServletAction extends BaseHttpServlet {
             String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            HomeworkDao dao = new HomeworkDao();
+            HomeworkDao dao = DaoFactory.getHomeworkDao();
             jsonObj = dao.deleteRecord(action, ids, creator, createTime);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
@@ -242,7 +241,7 @@ public class ServletAction extends BaseHttpServlet {
             String creator = (String) session.getAttribute("user_name");
             String createTime = TimeUtil.currentDate();
             /*----------------------------------------数据获取完毕，开始和数据库交互*/
-            HomeworkFileDao dao = new HomeworkFileDao();
+            HomeworkFileDao dao = DaoFactory.getHomeworkFileDao();
 
             jsonObj = dao.deleteRecord(action, ids, creator, createTime, getServletContext().getRealPath("/") + File.separator);
             ylxLog.log("用户 " + creator + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
@@ -291,7 +290,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             //如果是新查询
-            HomeworkFileDao dao = new HomeworkFileDao();
+            HomeworkFileDao dao = DaoFactory.getHomeworkFileDao();
             jsonObj = dao.getRecord(bean);
             session.setAttribute(attr, jsonObj);
         }
@@ -344,7 +343,7 @@ public class ServletAction extends BaseHttpServlet {
             } else {
                 //如果没有就重新查询一次
                 Log.d(getClass().getName(), "[getRecordView]没有就重新查询一次。");
-                HomeworkDao dao = new HomeworkDao();
+                HomeworkDao dao = DaoFactory.getHomeworkDao();
                 jsonObj = dao.getRecord(bean);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
@@ -355,7 +354,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             Log.d(getClass().getName(), "[getRecordView]existsResult=0，重新查询");
-            HomeworkDao dao = new HomeworkDao();
+            HomeworkDao dao = DaoFactory.getHomeworkDao();
             jsonObj = dao.getRecord(bean);
             jsonObj.put("user_id", userId);
             jsonObj.put("user_name", userName);

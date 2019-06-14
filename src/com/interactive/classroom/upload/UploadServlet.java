@@ -1,12 +1,11 @@
 package com.interactive.classroom.upload;
 
 import com.interactive.classroom.base.BaseServlet;
-import com.interactive.classroom.file.bean.FileBean;
-import com.interactive.classroom.file.dao.FileDao;
-import com.interactive.classroom.homework.bean.HomeworkBean;
-import com.interactive.classroom.homework.bean.HomeworkFileBean;
-import com.interactive.classroom.homework.dao.HomeworkDao;
-import com.interactive.classroom.homework.dao.HomeworkFileDao;
+import com.interactive.classroom.bean.FileBean;
+import com.interactive.classroom.dao.DaoFactory;
+import com.interactive.classroom.dao.FileDao;
+import com.interactive.classroom.bean.HomeworkFileBean;
+import com.interactive.classroom.dao.HomeworkFileDao;
 import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.ProgressSingleton;
 import org.apache.commons.fileupload.FileItem;
@@ -22,9 +21,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Z-P-J
@@ -143,7 +140,7 @@ public class UploadServlet extends BaseServlet {
                                 bean.setFileSize(fileItem.getSize());
                                 bean.setUploadTime(TimeUtil.currentDate());
                                 bean.setDownloadLink("../../DownloadServlet?file_name=" + fileName);
-                                HomeworkFileDao dao = new HomeworkFileDao();
+                                HomeworkFileDao dao = DaoFactory.getHomeworkFileDao();
                                 dao.addRecord(bean);
                             } else {
                                 FileBean bean = new FileBean();
@@ -153,7 +150,7 @@ public class UploadServlet extends BaseServlet {
                                 bean.setFileSize(fileItem.getSize());
                                 bean.setUploadTime(TimeUtil.currentDate());
                                 bean.setDownloadLink("../../DownloadServlet?file_name=" + fileName);
-                                FileDao dao = new FileDao();
+                                FileDao dao = DaoFactory.getFileDao();
                                 dao.addRecord(bean);
                             }
 

@@ -5,10 +5,11 @@ package com.interactive.classroom.statistic;
  */
 
 import com.interactive.classroom.base.BaseHttpServlet;
+import com.interactive.classroom.dao.DaoFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.interactive.classroom.statistic.bean.StatisticBean;
-import com.interactive.classroom.statistic.dao.StatisticDao;
+import com.interactive.classroom.bean.StatisticBean;
+import com.interactive.classroom.dao.StatisticDao;
 import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.TimeUtil;
@@ -152,7 +153,7 @@ public class ServletAction extends BaseHttpServlet {
         String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
 
         /*----------------------------------------数据获取完毕，开始和数据库交互*/
-        StatisticDao statisticDao = new StatisticDao();
+        StatisticDao statisticDao = DaoFactory.getStatisticDao();
         StatisticBean bean = new StatisticBean();
         bean.setTimeFrom(timeFrom);
         bean.setTimeTo(timeTo);

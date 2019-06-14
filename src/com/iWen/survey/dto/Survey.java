@@ -115,4 +115,21 @@ public class Survey implements java.io.Serializable {
         this.sType = sType;
     }
 
+    @Override
+    public String toString() {
+        return "Survey{" +
+                "SId=" + SId +
+                ", SName='" + SName + '\'' +
+                ", SDesc='" + SDesc + '\'' +
+                ", SAuthor='" + SAuthor + '\'' +
+                ", SImg='" + SImg + '\'' +
+                ", SCreateDate=" + SCreateDate +
+                ", SPassword='" + SPassword + '\'' +
+                ", SIsOpen=" + SIsOpen +
+                ", SExpireDate=" + SExpireDate +
+                ", SIsAudited=" + SIsAudited +
+                ", SUsehits=" + SUsehits +
+                ", sType='" + sType + '\'' +
+                '}';
+    }
 }

@@ -9,20 +9,24 @@ package com.interactive.classroom.utils;
  * 5.或者：log.log("某某信息","某某操作",1);
  */
 
-import java.text.SimpleDateFormat;
-
-import com.interactive.classroom.dao.ylx_db;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 
 public class LogEvent {
-    HttpSession session = null;
-    String userId = "";
-    String time = "";
-    String ip = "";
+
+    private static final LogEvent LOG_EVENT = new LogEvent();
+
+    private HttpSession session = null;
+    private String userId = "";
+    private String time = "";
+    private String ip = "";
 
     public LogEvent() {
+    }
+
+    public synchronized static LogEvent getInstance() {
+        return LOG_EVENT;
     }
 
     public LogEvent(HttpSession session) {
