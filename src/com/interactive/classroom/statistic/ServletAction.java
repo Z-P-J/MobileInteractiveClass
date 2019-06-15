@@ -5,17 +5,15 @@ package com.interactive.classroom.statistic;
  */
 
 import com.interactive.classroom.base.BaseHttpServlet;
-import com.interactive.classroom.dao.DaoFactory;
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.interactive.classroom.bean.StatisticBean;
+import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.StatisticDao;
-import com.interactive.classroom.utils.Log;
-import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.TimeUtil;
 import com.interactive.classroom.utils.export.ExportBean;
 import com.interactive.classroom.utils.export.ExportDao;
 import com.interactive.classroom.utils.export.ExportUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +28,6 @@ import java.sql.SQLException;
  */
 public class ServletAction extends BaseHttpServlet {
     /*----------线程需要的信息----------*/
-    public HttpSession session = null;
     String sessionId = null;
     String filePathName = null;
     String fileName = null;
@@ -55,51 +52,35 @@ public class ServletAction extends BaseHttpServlet {
 
     @Override
     public void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
-        if (userRole == null) {
-            try {
-                processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            if (action == null) {
+        switch (action) {
+            case "statistic_record":
                 try {
-                    processError(request, response, 1, "传递过来的action是null！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                    statisticRecord(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else {
-                switch (action) {
-                    case "statistic_record":
-                        try {
-                            statisticRecord(request, response);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    case "get_statistic_record":
-                        try {
-                            getStatisticRecord(request, response);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    case "export_statistic_resultset":
-                        try {
-                            exportStatisticResultset(request, response);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    default:
-                        try {
-                            processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        break;
+                break;
+            case "get_statistic_record":
+                try {
+                    getStatisticRecord(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            }
+                break;
+            case "export_statistic_resultset":
+                try {
+                    exportStatisticResultset(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                try {
+                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 

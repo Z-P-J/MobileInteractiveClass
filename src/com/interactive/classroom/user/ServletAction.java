@@ -9,21 +9,15 @@ import com.interactive.classroom.bean.UserBean;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.UserDao;
 import com.interactive.classroom.utils.Log;
-import org.json.JSONObject;
-import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.ServletUtil;
 import com.interactive.classroom.utils.TimeUtil;
 import com.interactive.classroom.utils.export.ExportUtil;
+import org.json.JSONObject;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 public class ServletAction extends BaseHttpServlet {
 
@@ -33,7 +27,7 @@ public class ServletAction extends BaseHttpServlet {
     private static final String MODULE = "user";
     private static final String SUB = "info";
 
-//    public String preFix = MODULE + "_" + SUB;
+    //    public String preFix = MODULE + "_" + SUB;
     private static final String RESULT_PATH = MODULE + "/" + SUB;
     private static final String RESULT_PAGE = "result.jsp";
     private static final String RESULT_URL = RESULT_PATH + "/" + RESULT_PAGE;
@@ -43,40 +37,31 @@ public class ServletAction extends BaseHttpServlet {
     @Override
     protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
         try {
-            if (userRole == null) {
-                processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-            } else {
-                if (action == null) {
-                    processError(request, response, 1, "传递过来的action是null！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                } else {
-                    //这几个常规增删改查功能
-                    switch (action) {
-                        case "get_record":
-                            getRecord(request, response);
-                            break;
-                        case "get_record_view":
-                            getRecordView(request, response);
-                            break;
-                        case "add_record":
-                            addRecord(request, response);
-                            break;
-                        case "modify_record":
-                            modifyRecord(request, response);
-                            break;
-                        case "delete_record":
-                            deleteRecord(request, response);
-                            break;
-                        case "export_record":
+            switch (action) {
+                case "get_record":
+                    getRecord(request, response);
+                    break;
+                case "get_record_view":
+                    getRecordView(request, response);
+                    break;
+                case "add_record":
+                    addRecord(request, response);
+                    break;
+                case "modify_record":
+                    modifyRecord(request, response);
+                    break;
+                case "delete_record":
+                    deleteRecord(request, response);
+                    break;
+                case "export_record":
 //                            exportRecord(request, response);
-                            JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
-                            jsonObj.put("result_url", RESULT_URL);
-                            onEnd(request, response, jsonObj);
-                            break;
-                        default:
-                            processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                            break;
-                    }
-                }
+                    JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
+                    jsonObj.put("result_url", RESULT_URL);
+                    onEnd(request, response, jsonObj);
+                    break;
+                default:
+                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                    break;
             }
         } catch (Throwable e) {
             e.printStackTrace();
@@ -134,7 +119,7 @@ public class ServletAction extends BaseHttpServlet {
         }
         jsonObj.put("user_id", userId);
         jsonObj.put("user_name", userName);
-        jsonObj.put("user_role", userRole);
+        jsonObj.put("user_role", userType);
         jsonObj.put("user_avatar", userAvatar);
         jsonObj.put("action", action);
         /*--------------------数据查询完毕，根据交互方式返回数据--------------------*/
@@ -169,7 +154,7 @@ public class ServletAction extends BaseHttpServlet {
                 jsonObj.put("result_msg", "ok");
                 //然后还有导航信息
                 json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-                debug("[getRecordView]重新取出来的数据是："+json.toString());
+                debug("[getRecordView]重新取出来的数据是：" + json.toString());
             } else {
                 //如果没有就重新查询一次
                 debug("[getRecordView]没有就重新查询一次。");

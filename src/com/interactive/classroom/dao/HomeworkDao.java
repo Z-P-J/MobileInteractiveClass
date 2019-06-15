@@ -12,18 +12,76 @@ import java.sql.SQLException;
  */
 public interface HomeworkDao {
 
+    /**
+     * 表名
+     */
     String TABLE_NAME = "homework_manage";
-    String[] LABELS = {"id", "file_id", "uploader_id", "file_name", "file_size", "upload_time", "download_link", "deadline", "homework_requirement", "file_format"};
-    String[] LABELS_CH = {"ID", "文件ID", "上传用户", "文件名字", "文件大小", "上传时间"};
+    /**
+     * 数据库中的字段
+     */
+    String[] LABELS = {"id", "publisher_id", "publisher_name", "homework_title", "homework_requirement", "publish_time", "deadline", "file_name_format"};
+    /**
+     * 数据库中字段中文解释
+     */
+    String[] LABELS_CH = {"ID", "发布人ID", "发布人名字", "作业标题", "作业要求", "发布时间", "截止时间", "文件命名格式"};
 
-    JSONObject getRecord(HomeworkBean query) throws SQLException, IOException, JSONException;
+    /**
+     * 获取数据库中所有作业（管理员）
+     * @param order 排序
+     * @return org.json.JSONObject
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
+    JSONObject getAllHomeworks(String order) throws SQLException, JSONException;
 
-    JSONObject modifyRecord(HomeworkBean bean) throws JSONException;
+    /**
+     * 根据课程id获取作业（管理员）
+     * @param courseId 课程id
+     * @param order 排序
+     * @return org.json.JSONObject
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
+    JSONObject getHomeworksByCourse(String courseId, String order) throws SQLException, JSONException;
 
-    JSONObject getRecordById(String action, String id) throws JSONException;
+    /**
+     * 过滤作业
+     * @param courseId 课程id
+     * @param keyword 过滤关键词
+     * @param publishTimeFrom 最小发布时间
+     * @param publishTimeTo 最大发布时间
+     * @param deadlineFrom 最小截止时间
+     * @param deadlineTo 最大截止时间
+     * @param order 排序
+     * @return org.json.JSONObject
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
+    JSONObject queryHomeworks(String courseId, String keyword, String publishTimeFrom, String publishTimeTo, String deadlineFrom, String deadlineTo, String order) throws SQLException, JSONException;
 
-    JSONObject addRecord(HomeworkBean bean) throws JSONException, SQLException;
+    /**
+     * 更新作业信息
+     * @param bean 带更新的HomeworkBean对象
+     * @return org.json.JSONObject
+     */
+    JSONObject updateHomeworkInfo(HomeworkBean bean) throws JSONException;
 
-    JSONObject deleteRecord(String action, String[] ids, String creator, String createTime) throws JSONException, SQLException;
+    /**
+     * 发布作业
+     * @param bean 待发布的HomeworkBean对象
+     * @return JSONObject
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
+    JSONObject publishHomework(HomeworkBean bean) throws JSONException, SQLException;
+
+    /**
+     * 根据id删除作业
+     * @param ids 待删除的ids
+     * @return JSONObject
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
+    JSONObject deleteHomework(String[] ids) throws JSONException, SQLException;
 
 }

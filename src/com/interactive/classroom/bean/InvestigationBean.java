@@ -188,7 +188,7 @@ public class InvestigationBean {
                 ", content='" + content + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", userId='" + userId + '\'' +
-                ", userRole='" + userRole + '\'' +
+                ", userType='" + userRole + '\'' +
                 ", creator='" + creator + '\'' +
                 ", createTime='" + createTime + '\'' +
                 ", action='" + action + '\'' +

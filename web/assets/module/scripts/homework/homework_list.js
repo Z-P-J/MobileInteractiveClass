@@ -24,7 +24,7 @@ var Record = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homework_list&type=all&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_all_homeworks&type=all&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
@@ -204,16 +204,14 @@ var Page = function () {
     var showRecord = function (json) {
         var id = json[0];
         var image = "../../assets/module/img/public/wkbj.jpg";
-        var fileId = json[1];
-        var uploaderId = json[2];
-        var fileName = json[3];
-        var fileSize = json[4];
-        var uploadTime = json[5];
-        var downloadLink = json[6];
-        var deadline = json[7];
-        var homeworkRequirment = json[8];
-        var fileFormat = json[9];
-        var me = json[10];
+        var publisherId = json[1];
+        var publisherName = json[2];
+        var homeworkTitle = json[3];
+        var homeworkRequirement = json[4];
+        var publishTime = json[5];
+        var deadline = json[6];
+        var fileNameFormat = json[7];
+        var me = json[8];
         var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), deadline);
         var state = "";
         if (flag) {
@@ -227,10 +225,10 @@ var Page = function () {
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
-        html = html + "																<span>作业标题：" + fileName + "</span><p>";
-        html = html + "																<span>作业要求：" + homeworkRequirment + "</span><p>";
-        html = html + "																<span>上传作业文件格式要求：" + fileFormat + "</span><p>";
-        html = html + "																<span>发布时间：" + uploadTime + "</span><p>";
+        html = html + "																<span>作业标题：" + homeworkTitle + "</span><p>";
+        html = html + "																<span>作业要求：" + homeworkRequirement + "</span><p>";
+        html = html + "																<span>上传作业文件格式要求：" + fileNameFormat + "</span><p>";
+        html = html + "																<span>发布时间：" + publishTime + "</span><p>";
         html = html + "																<span>截止时间：" + deadline + "</span><p>";
         html = html + "																<span>状态：" + state + "</span><p>";
         // if (me == "1") {

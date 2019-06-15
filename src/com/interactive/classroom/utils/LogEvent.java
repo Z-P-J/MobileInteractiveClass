@@ -9,16 +9,12 @@ package com.interactive.classroom.utils;
  * 5.或者：log.log("某某信息","某某操作",1);
  */
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 
 public class LogEvent {
 
     private HttpSession session = null;
-
-    public LogEvent() {
-    }
 
     public LogEvent(HttpSession session) {
         this.session = session;
@@ -45,7 +41,7 @@ public class LogEvent {
         int type = 0;
         try {
             String sql = "insert into public_log(colTime,colType,colContent,colOperation,colUserId,colModule) values(" + "'" + time + "'" + "," + type + "" + ",'" + msg + "'" + ",'" + operation + "'" + ",'" + operator + "'" + ",'" + module + "')";
-            DBHelper.getInstance().executeUpdate(sql).close();
+            DatabaseHelper.executeUpdate(sql);
         } catch (Exception e) {
             e.printStackTrace();
         }

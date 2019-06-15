@@ -2,12 +2,11 @@ package com.interactive.classroom.dao.impl;
 
 import com.interactive.classroom.bean.StatisticBean;
 import com.interactive.classroom.dao.StatisticDao;
-import com.interactive.classroom.utils.DBHelper;
+import com.interactive.classroom.utils.DatabaseHelper;
 import com.interactive.classroom.utils.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class StatisticDaoImpl implements StatisticDao {
         try {
             //构造sql语句，根据传递过来的查询条件参数
             String sql = getStatisticRecordSql(statisticBean);
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 //查询出来有plate_color,time_interval,count,plate_color_name这几项
                 List<String> list = new ArrayList<>();
@@ -42,7 +41,7 @@ public class StatisticDaoImpl implements StatisticDao {
                 count = count + 1;
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;

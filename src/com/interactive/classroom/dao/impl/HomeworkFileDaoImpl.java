@@ -1,19 +1,22 @@
 package com.interactive.classroom.dao.impl;
 
 import com.interactive.classroom.bean.HomeworkFileBean;
+import com.interactive.classroom.dao.CommentDao;
 import com.interactive.classroom.dao.HomeworkFileDao;
-import com.interactive.classroom.utils.DBHelper;
+import com.interactive.classroom.utils.DatabaseHelper;
 import com.interactive.classroom.utils.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Z-P-J
+ */
 public class HomeworkFileDaoImpl implements HomeworkFileDao {
 
     @Override
@@ -31,7 +34,7 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
             sql = createGetRecordSql(query);
 //            sql = "select * from " + TABLE_NAME + " where homework_id=" + query.getHomeworkId();
             System.out.println("HomeworkDao sql=" + sql);
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 for (String label : LABELS) {
@@ -53,7 +56,7 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -66,10 +69,10 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
 
         for (Object file : jsonList) {
             List list = (List) file;
-            list.add(HomeworkFileDao.getComments((String) list.get(1)));
+            list.add(CommentDao.getComments((String) list.get(1)));
         }
         jsonObj.put("aaData", jsonList);
-        DBHelper.getInstance().putTableColumnNames(LABELS_CH, jsonObj);
+        DatabaseHelper.putTableColumnNames(LABELS_CH, jsonObj);
         jsonObj.put("result_msg", resultMsg);
         //返回0表示正常，不等于0就表示有错误产生，错误代码
         jsonObj.put("result_code", resultCode);
@@ -85,9 +88,9 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
         try {
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "update " + TABLE_NAME + " set file_name='" + bean.getFileName() + "' where id=" + bean.getId();
-            DBHelper.getInstance().executeUpdate(sql);
+            DatabaseHelper.executeUpdate(sql);
             sql = "select * from " + TABLE_NAME + " order by create_time desc";
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 list.add(rs.getString("id"));
@@ -95,7 +98,7 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -121,7 +124,7 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
 //			ylx_db query_db = new ylx_db(dbName);
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "select * from " + TABLE_NAME + " where id=" + id + " order by create_time desc";
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 list.add(rs.getString("id"));
@@ -129,7 +132,7 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -157,7 +160,7 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
                 "'," + bean.getFileSize() + ",'" + bean.getUploadTime() + "','" + bean.getDownloadLink() + "')";
         Log.d(getClass().getName(), "sql=" + sql);
 
-        DBHelper.getInstance().executeUpdate(sql).close();
+        DatabaseHelper.executeUpdate(sql);
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
@@ -176,7 +179,7 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
         //构造sql语句，根据传递过来的查询条件参数
         for (String id : ids) {
             String sql = "select * from " + TABLE_NAME + " where id=" + id;
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             String fileName = "";
             while (rs.next()) {
                 fileName = rs.getString("file_name");
@@ -184,14 +187,13 @@ public class HomeworkFileDaoImpl implements HomeworkFileDao {
                 break;
             }
             sql = "delete from " + TABLE_NAME + " where id=" + id;
-            DBHelper dbHelper = DBHelper.getInstance().executeUpdate(sql);
-            if (dbHelper != null && !fileName.isEmpty()) {
+            if (!fileName.isEmpty()) {
                 File file = new File(folder + fileName);
                 file.delete();
             }
 
         }
-        DBHelper.getInstance().close();
+
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);

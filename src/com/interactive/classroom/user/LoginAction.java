@@ -22,13 +22,35 @@ import java.io.PrintWriter;
  */
 public class LoginAction extends BaseHttpServlet {
 
+    /**
+     * 登录操作名
+     */
+    public enum  LoginActionName {
+        // 登录
+        LOG_IN("log_in"),
+        // 注册
+        SIGN_UP("sign_up"),
+        // 检查用户名
+        CHECK_USER_NAME("check_user_name");
+
+        private final String name;
+
+        LoginActionName(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
     @Override
     protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
-        if ("log_in".equals(action)) {
+        if (LoginActionName.LOG_IN.getName().equals(action)) {
             login(request, response);
-        } else if ("sign_up".equals(action)) {
+        } else if (LoginActionName.SIGN_UP.getName().equals(action)) {
             addRecord(request, response);
-        } else if ("check_user_name".equals(action)) {
+        } else if (LoginActionName.CHECK_USER_NAME.getName().equals(action)) {
             String userName = request.getParameter("user_name");
             UserDao dao = DaoFactory.getUserDao();
             UserBean bean = dao.getUserByUserName(userName);

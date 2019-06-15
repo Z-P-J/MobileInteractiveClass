@@ -1,13 +1,10 @@
 package com.interactive.classroom.dao;
 
 import com.interactive.classroom.bean.UserBean;
-import com.interactive.classroom.utils.DBHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,9 +12,17 @@ import java.util.List;
  */
 public interface UserDao {
 
+    /**
+     * 表名
+     */
     String TABLE_NAME = "user_manage";
-
+    /**
+     * 数据库中的字段
+     */
     String[] LABELS = {"id", "user_name", "user_id", "name", "sex", "email", "phone", "user_type", "wechat", "grade", "class", "student_num", "faculty", "register_date"};
+    /**
+     * 数据库中字段中文解释
+     */
     String[] LABELS_CH = {"ID", "用户名", "用户id", "用户名", "性别", "Email", "手机", "用户类别", "微信", "年级", "班级", "学号", "学院", "注册时间"};
 
     /**

@@ -1,9 +1,8 @@
 package com.iWen.survey.sql;
 
-import com.interactive.classroom.utils.DBHelper;
+import com.interactive.classroom.utils.DatabaseHelper;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
@@ -21,7 +20,7 @@ public class ConnectionFactory {
 //		}
 //		return null;
 		try {
-			return DBHelper.getConnection();
+			return DatabaseHelper.getConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

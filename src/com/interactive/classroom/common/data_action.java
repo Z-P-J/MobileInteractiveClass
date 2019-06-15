@@ -1,7 +1,7 @@
 package com.interactive.classroom.common;
 
 
-import com.interactive.classroom.utils.DBHelper;
+import com.interactive.classroom.utils.DatabaseHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -145,7 +145,7 @@ public class data_action extends HttpServlet {
                 sql = "select * from project_tree a,project_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
             }
         }
-        ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+        ResultSet rs = DatabaseHelper.executeQuery(sql);
         while (rs.next()) {
             Map<String, String> map = new HashMap<>();
             // ////////////////////////////////////////独有部分，要修改的是这里
@@ -169,7 +169,6 @@ public class data_action extends HttpServlet {
             jsonList.add(map);
         }
         rs.close();
-        DBHelper.getInstance().close();
 
 
         JSONObject jsonObj = new JSONObject();
@@ -221,7 +220,7 @@ public class data_action extends HttpServlet {
                 where = " where role='" + role + "' and " + where;
             }
             String sql = "select * from " + tableName + where;
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 Map map = new HashMap();
                 // ////////////////////////////////////////独有部分，要修改的是这里
@@ -234,7 +233,6 @@ public class data_action extends HttpServlet {
                 jsonList.add(map);
             }
             rs.close();
-            DBHelper.getInstance().close();
         } else {
             resultCode = 3;
             resultMsg = "session超时，请重新登陆！";

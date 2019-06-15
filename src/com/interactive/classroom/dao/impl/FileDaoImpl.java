@@ -1,13 +1,13 @@
 package com.interactive.classroom.dao.impl;
 
 import com.interactive.classroom.bean.FileBean;
+import com.interactive.classroom.dao.CommentDao;
 import com.interactive.classroom.dao.FileDao;
-import com.interactive.classroom.utils.DBHelper;
+import com.interactive.classroom.utils.DatabaseHelper;
 import com.interactive.classroom.utils.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,10 +26,9 @@ public class FileDaoImpl implements FileDao {
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "";
             int count = 0;
-            query.setTableName(TABLE_NAME);
             sql = createGetRecordSql(query);
             System.out.println("TodoDao sql=" + sql);
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 for (String label : LABELS) {
@@ -60,7 +59,6 @@ public class FileDaoImpl implements FileDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -73,11 +71,11 @@ public class FileDaoImpl implements FileDao {
 
         for (Object file : jsonList) {
             List list = (List) file;
-            list.add(FileDao.getComments((String) list.get(1)));
+            list.add(CommentDao.getComments((String) list.get(1)));
         }
         jsonObj.put("aaData", jsonList);
 //        jsonObj.put("table_column_names", "");
-        DBHelper.getInstance().putTableColumnNames(LABELS_CH, jsonObj);
+        DatabaseHelper.putTableColumnNames(LABELS_CH, jsonObj);
 //        jsonObj.put("comments", commentList);
         //如果发生错误就设置成"error"等
         jsonObj.put("result_msg", resultMsg);
@@ -95,9 +93,9 @@ public class FileDaoImpl implements FileDao {
         try {
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "update " + TABLE_NAME + " set file_name='" + bean.getFileName() + "' where id=" + bean.getId();
-            DBHelper.getInstance().executeUpdate(sql);
+            DatabaseHelper.executeUpdate(sql);
             sql = "select * from " + TABLE_NAME + " order by create_time desc";
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 list.add(rs.getString("id"));
@@ -105,7 +103,6 @@ public class FileDaoImpl implements FileDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -130,7 +127,7 @@ public class FileDaoImpl implements FileDao {
         try {
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "select * from " + TABLE_NAME + " where id=" + id + " order by create_time desc";
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 list.add(rs.getString("id"));
@@ -138,7 +135,6 @@ public class FileDaoImpl implements FileDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -166,7 +162,7 @@ public class FileDaoImpl implements FileDao {
                 "'," + bean.getFileSize() + ",'" + bean.getUploadTime() + "','" + bean.getDownloadLink() + "')";
         Log.d(getClass().getName(), "sql=" + sql);
 
-        DBHelper.getInstance().executeUpdate(sql).close();
+        DatabaseHelper.executeUpdate(sql);
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
@@ -185,9 +181,8 @@ public class FileDaoImpl implements FileDao {
         //构造sql语句，根据传递过来的查询条件参数
         for (String id : ids) {
             String sql = "delete from " + TABLE_NAME + " where id=" + id;
-            DBHelper.getInstance().executeUpdate(sql);
+            DatabaseHelper.executeUpdate(sql);
         }
-        DBHelper.getInstance().close();
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
@@ -197,9 +192,6 @@ public class FileDaoImpl implements FileDao {
         return jsonObj;
     }
 
-    /*
-     * 功能：构造历史记录查询的sql语句,type=all查询所有，type=id查询某个记录，余下按照条件设置查询
-     */
     private String createGetRecordSql(FileBean query) {
         String sql = "";
         String where = "";
@@ -228,15 +220,15 @@ public class FileDaoImpl implements FileDao {
         }
 
         if (query.getType() != null && "all".equals(query.getType())) {
-            sql = "select * from " + query.getTableName() + orderBy; //" order by create_time desc"
+            sql = "select * from " + TABLE_NAME + orderBy; //" order by create_time desc"
         } else {
             if (query.getId() != null && !"null".equals(query.getId())) {
-                sql = "select * from " + query.getTableName() + " where id=" + query.getId();
+                sql = "select * from " + TABLE_NAME + " where id=" + query.getId();
             } else {
                 if (where.isEmpty()) {
-                    sql = "select * from " + query.getTableName() + orderBy; //" where uploader_id='" + query.getUserId() + "'"
+                    sql = "select * from " + TABLE_NAME + orderBy; //" where uploader_id='" + query.getUserId() + "'"
                 } else {
-                    sql = "select * from " + query.getTableName() + " " + where + orderBy; //" and uploader_id='" + query.getUserId() + "'"
+                    sql = "select * from " + TABLE_NAME + " " + where + orderBy; //" and uploader_id='" + query.getUserId() + "'"
                 }
             }
         }

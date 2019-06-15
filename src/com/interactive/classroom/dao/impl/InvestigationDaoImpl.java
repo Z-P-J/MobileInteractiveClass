@@ -3,19 +3,21 @@ package com.interactive.classroom.dao.impl;
 import com.iWen.survey.sql.SQLCommand;
 import com.interactive.classroom.bean.InvestigationBean;
 import com.interactive.classroom.dao.InvestigationDao;
-import com.interactive.classroom.utils.DBHelper;
+import com.interactive.classroom.utils.DatabaseHelper;
 import com.interactive.classroom.utils.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.sql.RowSet;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Z-P-J
+ */
 public class InvestigationDaoImpl implements InvestigationDao {
 
     @Override
@@ -39,17 +41,6 @@ public class InvestigationDaoImpl implements InvestigationDao {
                     }
                     list.add(rs.getString(label));
                 }
-//                list.add(rs.getString("s_id"));
-//                list.add(rs.getString("s_name"));
-//                list.add(rs.getString("s_desc"));
-//                list.add(rs.getString("s_author"));
-//                list.add(rs.getString("s_img"));
-//                list.add(rs.getString("s_createdate"));
-//                list.add(rs.getString("s_password"));
-//                list.add(rs.getString("s_isopen"));
-//                list.add(rs.getString("s_expiredate"));
-//                list.add(rs.getString("s_isaudited"));
-//                list.add(rs.getString("s_usehits"));
                 Date date = rs.getDate("s_expiredate");
                 System.out.println("date == null?" + (date == null));
                 if (date != null && System.currentTimeMillis() >= date.getTime()) {
@@ -74,7 +65,7 @@ public class InvestigationDaoImpl implements InvestigationDao {
 ////            query.setTableName(TABLE_NAME);
 ////            sql = createGetRecordSql(query);
 ////            System.out.println("TodoDao sql=" + sql);
-////            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+////            ResultSet rs = DatabaseHelper.executeQuery(sql);
 //
 ////            while (rs.next()) {
 ////                List<String> list = new ArrayList<>();
@@ -114,7 +105,7 @@ public class InvestigationDaoImpl implements InvestigationDao {
 ////                jsonList.add(list);
 ////            }
 ////            rs.close();
-////            DBHelper.getInstance().close();
+////
 //        } catch (SQLException sqlexception) {
 //            sqlexception.printStackTrace();
 //            resultCode = 10;
@@ -125,7 +116,7 @@ public class InvestigationDaoImpl implements InvestigationDao {
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
-        DBHelper.getInstance().putTableColumnNames(LABELS, jsonObj);
+        DatabaseHelper.putTableColumnNames(LABELS, jsonObj);
         //如果发生错误就设置成"error"等
         jsonObj.put("result_msg", resultMsg);
         //返回0表示正常，不等于0就表示有错误产生，错误代码
@@ -142,9 +133,9 @@ public class InvestigationDaoImpl implements InvestigationDao {
         try {
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "update " + TABLE_NAME + " set title='" + bean.getTitle() + "',content='" + bean.getContent() + "',end_time='" + bean.getEndTime() + "',link='" + bean.getLink() + "' where id=" + bean.getId();
-            DBHelper.getInstance().executeUpdate(sql);
+            DatabaseHelper.executeUpdate(sql);
             sql = "select * from " + TABLE_NAME + " order by create_time desc";
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 list.add(rs.getString("id"));
@@ -152,7 +143,7 @@ public class InvestigationDaoImpl implements InvestigationDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -178,7 +169,7 @@ public class InvestigationDaoImpl implements InvestigationDao {
 //			ylx_db query_db = new ylx_db(dbName);
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "select * from " + TABLE_NAME + " where id=" + id + " order by create_time desc";
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 list.add(rs.getString("id"));
@@ -186,7 +177,7 @@ public class InvestigationDaoImpl implements InvestigationDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -214,7 +205,7 @@ public class InvestigationDaoImpl implements InvestigationDao {
                 "','" + bean.getUserId() + "','" + bean.getCreator() + "','" + bean.getCreateTime() + "','" + bean.getLink() + "','" + bean.getEndTime() + "')";
         Log.d(getClass().getName(), "sql=" + sql);
 
-        DBHelper.getInstance().executeUpdate(sql).close();
+        DatabaseHelper.executeUpdate(sql);
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
@@ -233,9 +224,9 @@ public class InvestigationDaoImpl implements InvestigationDao {
         //构造sql语句，根据传递过来的查询条件参数
         for (String id : ids) {
             String sql = "delete from " + TABLE_NAME + " where id=" + id;
-            DBHelper.getInstance().executeUpdate(sql);
+            DatabaseHelper.executeUpdate(sql);
         }
-        DBHelper.getInstance().close();
+
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);

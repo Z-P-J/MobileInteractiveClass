@@ -3,18 +3,20 @@ package com.interactive.classroom.dao.impl;
 import com.iWen.survey.sql.SQLCommand;
 import com.interactive.classroom.bean.VoteBean;
 import com.interactive.classroom.dao.VoteDao;
-import com.interactive.classroom.utils.DBHelper;
+import com.interactive.classroom.utils.DatabaseHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.sql.RowSet;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Z-P-J
+ */
 public class VoteDaoImpl implements VoteDao {
 
     @Override
@@ -33,7 +35,7 @@ public class VoteDaoImpl implements VoteDao {
                     + "' order by s_createdate desc,s_id desc";
             SQLCommand cmd = new SQLCommand();
             RowSet rs = cmd.queryRowSet(sql);
-//            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+//            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
 //                int count = 0;
@@ -60,7 +62,7 @@ public class VoteDaoImpl implements VoteDao {
                 jsonList.add(list);
             }
             rs.close();
-//            DBHelper.getInstance().close();
+//
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -71,7 +73,7 @@ public class VoteDaoImpl implements VoteDao {
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
-        DBHelper.getInstance().putTableColumnNames(LABELS, jsonObj);
+        DatabaseHelper.putTableColumnNames(LABELS, jsonObj);
         jsonObj.put("result_msg", resultMsg);//如果发生错误就设置成"error"等
         jsonObj.put("result_code", resultCode);//返回0表示正常，不等于0就表示有错误产生，错误代码
         return jsonObj;
@@ -86,9 +88,9 @@ public class VoteDaoImpl implements VoteDao {
         try {
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "update " + TABLE_NAME + " set title='" + file.getTitle() + "',content='" + file.getContent() + "',limit_time='" + file.getLimitTime() + "',status='" + file.getStatus() + "' where id=" + file.getId();
-            DBHelper.getInstance().executeUpdate(sql);
+            DatabaseHelper.executeUpdate(sql);
             sql = "select * from " + TABLE_NAME + " order by create_time desc";
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List list = new ArrayList();
                 list.add(rs.getString("id"));
@@ -96,7 +98,7 @@ public class VoteDaoImpl implements VoteDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -119,7 +121,7 @@ public class VoteDaoImpl implements VoteDao {
         try {
             //构造sql语句，根据传递过来的查询条件参数
             String sql = "select * from " + TABLE_NAME + " where id=" + id + " order by create_time desc";
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List list = new ArrayList();
                 list.add(rs.getString("id"));
@@ -127,7 +129,7 @@ public class VoteDaoImpl implements VoteDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -156,7 +158,7 @@ public class VoteDaoImpl implements VoteDao {
                 + 1 + ",'"
                 + file.getCreateTime() + "','"
                 + file.getLimitTime() + "')";
-        DBHelper.getInstance().executeUpdate(sql).close();
+        DatabaseHelper.executeUpdate(sql);
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
@@ -174,9 +176,9 @@ public class VoteDaoImpl implements VoteDao {
         //构造sql语句，根据传递过来的查询条件参数
         for (String id : ids) {
             String sql = "delete from " + TABLE_NAME + " where id=" + id;
-            DBHelper.getInstance().executeUpdate(sql);
+            DatabaseHelper.executeUpdate(sql);
         }
-        DBHelper.getInstance().close();
+
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
@@ -195,12 +197,11 @@ public class VoteDaoImpl implements VoteDao {
         //构造sql语句，根据传递过来的查询条件参数
         String sql = "select max(priority) as priority from " + TABLE_NAME + " where user_id='" + userId + "'";
         int priority = 0;
-        ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+        ResultSet rs = DatabaseHelper.executeQuery(sql);
         if (rs.next()) {
             priority = rs.getInt("priority");
         }
-        DBHelper.getInstance().executeUpdate("update " + TABLE_NAME + " set priority=" + (priority + 1) + " where id=" + id);
-        DBHelper.getInstance().close();
+        DatabaseHelper.executeUpdate("update " + TABLE_NAME + " set priority=" + (priority + 1) + " where id=" + id);
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);

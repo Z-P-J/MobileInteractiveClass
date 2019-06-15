@@ -1,5 +1,6 @@
 package com.interactive.classroom.base;
 
+import com.interactive.classroom.user.LoginAction;
 import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.TimeUtil;
 import org.json.JSONException;
@@ -7,8 +8,6 @@ import org.json.JSONObject;
 import com.interactive.classroom.utils.Log;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +26,7 @@ public abstract class BaseHttpServlet extends HttpServlet {
 
     protected String userId = null;
     protected String userName = null;
-    protected String userRole = null;
+    protected String userType = null;
     protected String userAvatar = null;
 
     private LogEvent logEvent;
@@ -43,19 +42,35 @@ public abstract class BaseHttpServlet extends HttpServlet {
         super.service(req, resp);
         req.setCharacterEncoding("UTF-8");
         session = req.getSession();
-
-//        if (session.getAttribute("user_role") == null) {
-//            //todo 登录失效
-//            resp.sendRedirect("");
-//            return;
-//        }
-
-        logEvent = new LogEvent(session);
         initUserInfo();
-
         String action = req.getParameter("action");
         debug("收到的action是：" + action);
-        handleAction(req, resp, action);
+        if (action == null) {
+            //todo "传递过来的action是null！"
+        } else {
+            if (!LoginAction.LoginActionName.LOG_IN.getName().equals(action)
+                    && !LoginAction.LoginActionName.SIGN_UP.getName().equals(action)
+                    && !LoginAction.LoginActionName.CHECK_USER_NAME.getName().equals(action)) {
+                if (userId == null || userType == null || userName == null) {
+                    try {
+                        JSONObject jsonObj = new JSONObject();
+                        jsonObj.put("user_id", userId);
+                        jsonObj.put("user_name", userName);
+                        jsonObj.put("user_role", userType);
+                        jsonObj.put("user_avatar", userAvatar);
+                        jsonObj.put("result_code", 3);
+                        jsonObj.put("result_msg", "session超时，请重新登录系统！");
+                        jsonObj.put("action", action);
+                        responseJson(resp, jsonObj);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    return;
+                }
+            }
+            logEvent = new LogEvent(session);
+            handleAction(req, resp, action);
+        }
     }
 
     protected abstract void handleAction(HttpServletRequest request, HttpServletResponse response, String action);
@@ -130,22 +145,14 @@ public abstract class BaseHttpServlet extends HttpServlet {
      **/
     protected void onEnd(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObject, String url) {
         if (request.getHeader("x-requested-with") == null) {
-            Log.d(getClass().getName(), "url=" + url);
+            debug("onEnd  url=" + url);
             try {
                 response.sendRedirect(url);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            response.setContentType("application/json; charset=UTF-8");
-            try {
-                PrintWriter out = response.getWriter();
-                out.print(jsonObject);
-                out.flush();
-                out.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            responseJson(response, jsonObject);
         }
     }
 
@@ -159,6 +166,22 @@ public abstract class BaseHttpServlet extends HttpServlet {
         onEnd(request, response, jsonObj, "base/export/export_result.jsp", "操作已经执行，请按返回按钮返回列表页面！", 0, "record_list.jsp");
     }
 
+    private void responseJson(HttpServletResponse response, JSONObject jsonObject) {
+        response.setContentType("application/json; charset=UTF-8");
+        try {
+            jsonObject.put("user_id", userId);
+            jsonObject.put("user_name", userName);
+            jsonObject.put("user_role", userType);
+            jsonObject.put("user_avatar", userAvatar);
+            PrintWriter out = response.getWriter();
+            out.print(jsonObject);
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     protected void log(String msg, String operation, String module) {
         if (logEvent != null) {
             logEvent.log(msg, operation, module);
@@ -170,12 +193,12 @@ public abstract class BaseHttpServlet extends HttpServlet {
     }
 
     /**
-     * 获取userId，userName，userRole，userAvatar
+     * 获取userId，userName，userType，userAvatar
      */
     private void initUserInfo() {
         userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
-        userRole = session.getAttribute("user_role") == null ? null : (String) session.getAttribute("user_role");
+        userType = session.getAttribute("user_role") == null ? null : (String) session.getAttribute("user_role");
         userAvatar = session.getAttribute("user_avatar") == null ? null : (String) session.getAttribute("user_avatar");
     }
 

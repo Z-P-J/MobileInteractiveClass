@@ -306,7 +306,7 @@ public class UserBean {
                 ", content='" + content + '\'' +
                 ", limitTime='" + limitTime + '\'' +
                 ", userId='" + userId + '\'' +
-                ", userRole='" + userRole + '\'' +
+                ", userType='" + userRole + '\'' +
                 ", creator='" + creator + '\'' +
                 ", createTime='" + createTime + '\'' +
                 ", action='" + action + '\'' +

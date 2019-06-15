@@ -1,6 +1,6 @@
 package com.interactive.classroom.utils.export;
 
-import com.interactive.classroom.utils.DBHelper;
+import com.interactive.classroom.utils.DatabaseHelper;
 
 public class ExportDao {
     //	public JSONObject getExportRecord(String action,String dbName,String userId) throws SQLException, IOException, JSONException {
@@ -54,7 +54,7 @@ public class ExportDao {
         sql = sql + " values('zakk','" + exportBean.getUserId() + "','" + exportBean.getUserName() + "','" + exportBean.getFilePath() + "','" + exportBean.getFileName() + "','" + exportBean.getFileUrl() + "'," + exportBean.getFileSize();
         sql = sql + "," + exportBean.getExportPercent() + "," + exportBean.getExportType() + "," + exportBean.getExportStatus() + ",'" + exportBean.getCurrentQuerySetup() + "'";
         sql = sql + "," + exportBean.getDownloadCount() + ",'" + exportBean.getLimitTime() + "','" + exportBean.getCreator() + "','" + exportBean.getCreateTime() + "')";
-        DBHelper.getInstance().executeUpdate(sql).close();
+        DatabaseHelper.executeUpdate(sql);
     }
 
     /*
@@ -62,7 +62,7 @@ public class ExportDao {
      */
     public void setExportEnd(ExportBean exportBean) {
         String sql = "update user_export set export_percent=100,export_status=3 where user_id='" + exportBean.getUserId() + "' and file_name='" + exportBean.getFileName() + "'";
-        DBHelper.getInstance().executeUpdate(sql).close();
+        DatabaseHelper.executeUpdate(sql);
     }
 
     /*
@@ -70,6 +70,6 @@ public class ExportDao {
      */
     public void setExportPercent(ExportBean exportBean) {
         String sql = "update user_export set export_percent=" + exportBean.getExportPercent() + " where user_id='" + exportBean.getUserId() + "' and file_name='" + exportBean.getFileName() + "'";
-        DBHelper.getInstance().executeUpdate(sql).close();
+        DatabaseHelper.executeUpdate(sql);
     }
 }

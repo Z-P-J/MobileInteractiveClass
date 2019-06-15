@@ -11,7 +11,6 @@ public class FileBean {
     private String downloadLink;
     //传递条件查询用
     private String action;
-    private String tableName = "";
     private String type = "";
     private String timeFrom = "";
     private String timeTo = "";
@@ -89,14 +88,6 @@ public class FileBean {
         this.action = action;
     }
 
-    public String getTableName() {
-        return tableName;
-    }
-
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
-
     public String getType() {
         return type;
     }
@@ -171,7 +162,6 @@ public class FileBean {
                 ", fileSize=" + fileSize +
                 ", uploadTime='" + uploadTime + '\'' +
                 ", action='" + action + '\'' +
-                ", tableName='" + tableName + '\'' +
                 ", type='" + type + '\'' +
                 ", timeFrom='" + timeFrom + '\'' +
                 ", timeTo='" + timeTo + '\'' +

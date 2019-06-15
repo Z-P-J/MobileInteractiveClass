@@ -2,12 +2,11 @@ package com.interactive.classroom.dao.impl;
 
 import com.interactive.classroom.bean.UserBean;
 import com.interactive.classroom.dao.UserDao;
-import com.interactive.classroom.utils.DBHelper;
+import com.interactive.classroom.utils.DatabaseHelper;
 import com.interactive.classroom.utils.TimeUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public final class UserDaoImpl implements UserDao {
             //做上下记录导航用
             int count = 0;
             System.out.println("UserDao--getRecord--sql=" + sql);
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 for (String label : LABELS) {
@@ -59,7 +58,7 @@ public final class UserDaoImpl implements UserDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -67,7 +66,7 @@ public final class UserDaoImpl implements UserDao {
         }
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
-        DBHelper.getInstance().putTableColumnNames(LABELS_CH, jsonObj);
+        DatabaseHelper.putTableColumnNames(LABELS_CH, jsonObj);
         jsonObj.put("result_msg", resultMsg);
         jsonObj.put("result_code", resultCode);
         return jsonObj;
@@ -98,7 +97,7 @@ public final class UserDaoImpl implements UserDao {
                 + user.getFaculty() + "','"
                 + TimeUtil.currentDate() + "','"
                 + user.getUserRole() + "')";
-        return DBHelper.getInstance().executeUpdateAndGetId(sql);
+        return DatabaseHelper.executeUpdateAndGetId(sql);
     }
 
     @Override
@@ -118,9 +117,9 @@ public final class UserDaoImpl implements UserDao {
         List jsonList = new ArrayList();
         for (String id : ids) {
             String sql = "delete from " + TABLE_NAME + " where id=" + id;
-            DBHelper.getInstance().executeUpdate(sql);
+            DatabaseHelper.executeUpdate(sql);
         }
-        DBHelper.getInstance().close();
+
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
         jsonObj.put("action", action);
@@ -142,7 +141,7 @@ public final class UserDaoImpl implements UserDao {
                 + "',student_num='" + user.getStudentNum()
                 + "',faculty='" + user.getFaculty()
                 + "' where name='" + user.getName() + "'";
-        DBHelper.getInstance().executeUpdate(sql).close();
+        DatabaseHelper.executeUpdate(sql);
         return true;
     }
 
@@ -162,9 +161,9 @@ public final class UserDaoImpl implements UserDao {
                     + "',student_num='" + info.getStudentNum()
                     + "',faculty='" + info.getFaculty()
                     + "' where name='" + info.getName() + "'";
-            DBHelper.getInstance().executeUpdate(sql);
+            DatabaseHelper.executeUpdate(sql);
             sql = "select * from " + TABLE_NAME + " order by register_date desc";
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 List<String> list = new ArrayList<>();
                 list.add(rs.getString("id"));
@@ -172,7 +171,7 @@ public final class UserDaoImpl implements UserDao {
                 jsonList.add(list);
             }
             rs.close();
-            DBHelper.getInstance().close();
+
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
@@ -194,7 +193,7 @@ public final class UserDaoImpl implements UserDao {
             sql = sql +  " " + where;
         }
         try {
-            ResultSet rs = DBHelper.getInstance().executeQuery(sql);
+            ResultSet rs = DatabaseHelper.executeQuery(sql);
             if (rs.next()) {
                 UserBean user = new UserBean();
                 user.setId(rs.getString("id"));

@@ -35,47 +35,33 @@ public class ServletAction extends BaseHttpServlet {
 
     @Override
     protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
-        if (userRole == null) {
-            try {
-                processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-            } catch (Exception e) {
-                e.printStackTrace();
+        try {
+            switch (action) {
+                case "get_record":
+                    getRecord(request, response);
+                    break;
+                case "get_record_view":
+                    getRecordView(request, response);
+                    break;
+                case "add_record":
+                    addRecord(request, response);
+                    break;
+                case "modify_record":
+                    modifyRecord(request, response);
+                    break;
+                case "delete_record":
+                    deleteRecord(request, response);
+                    break;
+                case "export_record":
+                    JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
+                    onEnd(request, response, jsonObj);
+                    break;
+                default:
+                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                    break;
             }
-        } else {
-            try {
-                if (action == null) {
-                    processError(request, response, 1, "传递过来的action是null！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                } else {
-                    //这几个常规增删改查功能
-                    switch (action) {
-                        case "get_record":
-                            getRecord(request, response);
-                            break;
-                        case "get_record_view":
-                            getRecordView(request, response);
-                            break;
-                        case "add_record":
-                            addRecord(request, response);
-                            break;
-                        case "modify_record":
-                            modifyRecord(request, response);
-                            break;
-                        case "delete_record":
-                            deleteRecord(request, response);
-                            break;
-                        case "export_record":
-                            JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
-                            onEnd(request, response, jsonObj);
-                            break;
-                        default:
-                            processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                            break;
-                    }
-                }
-            } catch (Throwable e) {
-                e.printStackTrace();
-            }
-
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
     }
 
@@ -92,7 +78,7 @@ public class ServletAction extends BaseHttpServlet {
         bean.setTimeFrom(request.getParameter("time_from"));
         bean.setTimeTo(request.getParameter("time_to"));
         bean.setUserId(userId);
-        bean.setUserRole(userRole);
+        bean.setUserRole(userType);
         bean.setSortIndex(request.getParameter("sort_index"));
         bean.setOrderBy(request.getParameter("order_by"));
         Log.d(getClass().getName(), "FileBean=" + bean.toString());
@@ -121,7 +107,7 @@ public class ServletAction extends BaseHttpServlet {
         }
         jsonObj.put("user_id", userId);
         jsonObj.put("user_name", userName);
-        jsonObj.put("user_role", userRole);
+        jsonObj.put("user_role", userType);
         jsonObj.put("user_avatar", userAvatar);
         jsonObj.put("action", bean.getAction());
         String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";

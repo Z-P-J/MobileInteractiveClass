@@ -8,20 +8,15 @@ import com.interactive.classroom.base.BaseHttpServlet;
 import com.interactive.classroom.bean.FileBean;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.FileDao;
+import com.interactive.classroom.dao.CommentDao;
 import com.interactive.classroom.utils.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.interactive.classroom.utils.export.ExportUtil;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Z-P-J
@@ -41,51 +36,36 @@ public class ServletAction extends BaseHttpServlet {
 
     @Override
     protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
-
-        if (userName == null) {
-            try {
-                processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-            } catch (Exception e) {
-                e.printStackTrace();
+        try {
+            switch (action) {
+                case "get_record":
+                    getRecord(request, response);
+                    break;
+                case "submit_comment":
+                    submitComment(request, response);
+                    break;
+                case "get_record_view":
+                    getRecordView(request, response);
+                    break;
+                case "add_record":
+                    addRecord(request, response);
+                    break;
+                case "modify_record":
+                    modifyRecord(request, response);
+                    break;
+                case "delete_record":
+                    deleteRecord(request, response);
+                    break;
+                case "export_record":
+                    JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
+                    onEnd(request, response, jsonObj);
+                    break;
+                default:
+                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                    break;
             }
-        } else {
-            try {
-                if (action == null) {
-                    processError(request, response, 1, "传递过来的action是null！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                } else {
-                    //这几个常规增删改查功能
-                    switch (action) {
-                        case "get_record":
-                            getRecord(request, response);
-                            break;
-                        case "submit_comment":
-                            submitComment(request, response);
-                            break;
-                        case "get_record_view":
-                            getRecordView(request, response);
-                            break;
-                        case "add_record":
-                            addRecord(request, response);
-                            break;
-                        case "modify_record":
-                            modifyRecord(request, response);
-                            break;
-                        case "delete_record":
-                            deleteRecord(request, response);
-                            break;
-                        case "export_record":
-                            JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
-                            onEnd(request, response, jsonObj);
-                            break;
-                        default:
-                            processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                            break;
-                    }
-                }
-            } catch (Throwable e) {
-                e.printStackTrace();
-            }
-
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
     }
 
@@ -131,7 +111,7 @@ public class ServletAction extends BaseHttpServlet {
         }
         jsonObj.put("user_id", userId);
         jsonObj.put("user_name", userName);
-        jsonObj.put("user_role", userRole);
+        jsonObj.put("user_role", userType);
         jsonObj.put("user_avatar", userAvatar);
         jsonObj.put("action", bean.getAction());
         /*--------------------数据查询完毕，根据交互方式返回数据--------------------*/
@@ -145,14 +125,14 @@ public class ServletAction extends BaseHttpServlet {
                 + fileId + ",'" + userName + "','" + request.getParameter("comment_text") +
                 "'," + 50 + ",'" + TimeUtil.currentDate() + "')";
         Log.d("submitComment", "sql=" + sql);
-        DBHelper.getInstance().executeUpdate(sql).close();
+        DatabaseHelper.executeUpdate(sql);
         if (session.getAttribute(MODULE + "_" + SUB + "_get_record_result") != null) {
             JSONObject json = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
             Log.d(getClass().getName(), json.toString());
             try {
                 ArrayList list = ServletUtil.getIndexFromFileId(fileId, json);
                 if (list != null) {
-                    list.add(9, FileDao.getComments(fileId));
+                    list.add(9, CommentDao.getComments(fileId));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
