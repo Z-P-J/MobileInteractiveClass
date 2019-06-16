@@ -343,7 +343,7 @@ var Page = function () {
             var renameTo = $("#rename_to").val();
             var t = setInterval(function(){
                 $.ajax({
-                    url: '../../ProgressServlet?filename=' + renameTo,
+                    url: '../../UploadServlet?action=get_upload_progress&filename=' + renameTo,
                     type: 'POST',
                     dataType: 'text',
                     data: {
@@ -418,32 +418,24 @@ var Page = function () {
         $("#record_list_div").html(html);
     };
     var showRecord = function (json) {
-        var id = json[0];
         var image = "../../assets/module/img/public/wkbj.jpg";
-        var fileId = json[1];
-        var uploaderId = json[2];
-        var fileName = json[3];
-        var fileSize = json[4];
-        var uploadTime = json[5];
-        var downloadLink = json[6];
-        var me = json[7];
 
         html = html + "														<div style=\"clear:both;width:100%;margin: 0 auto;border:0px solid blue;display: flex\">";
         html = html + "															<div style=\"margin-left: 30%; border:0px solid green;\">";
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
-        html = html + "																<span>文件名：" + fileName + "</span><p>";
-        html = html + "																<span>文件大小：" + fileSize + "</span><p>";
-        html = html + "																<span>上传者：" + uploaderId + "</span><p>";
-        html = html + "																<span>上传时间：" + uploadTime + "</span><p>";
-        html = html + "																<span>下载链接：<a href='" + downloadLink + "' onClick='return confirm(\"确定下载名为“" + fileName + "”的文件?\");'>点击下载</a></span><p>";
-        if (me == "1") {
+        html = html + "																<span>文件名：" + json.file_name + "</span><p>";
+        html = html + "																<span>文件大小：" + json.file_size + "</span><p>";
+        html = html + "																<span>上传者：" + json.uploader_name + "</span><p>";
+        html = html + "																<span>上传时间：" + json.upload_time + "</span><p>";
+        html = html + "																<span>下载链接：<a href='" + json.download_link + "' onClick='return confirm(\"确定下载名为“" + json.file_name + "”的文件?\");'>点击下载</a></span><p>";
+        if (json.isOwner === 1) {
             $("#has_upload").val("1");
-            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
+            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + json.id + ");\">删除</button>";
             // html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
         }
-        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">详细信息</button>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";
     };

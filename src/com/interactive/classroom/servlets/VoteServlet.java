@@ -1,10 +1,10 @@
-package com.interactive.classroom.vote;
+package com.interactive.classroom.servlets;
 /*
  * 待完成：用MVC模式分开DB和Action操作
  * 增删改查看导印统功能的实现
  */
 
-import com.interactive.classroom.base.BaseHttpServlet;
+import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.bean.VoteBean;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.VoteDao;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ServletAction extends BaseHttpServlet {
+public class VoteServlet extends BaseHttpServlet {
     //这里是需要改的,module和sub
     public String module = "vote";
     public String sub = "file";
@@ -56,7 +56,7 @@ public class ServletAction extends BaseHttpServlet {
                     onEnd(request, response, jsonObj);
                     break;
                 default:
-                    processError(request, response, 2, "[" + module + "/" + sub + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, resultPath, resultPage, redirectPath, redirectPage);
+                    processError(request, response, 2, "[" + module + "/" + sub + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, resultPath, resultPage, redirectPath, redirectPage);
                     break;
             }
         } catch (Throwable e) {

@@ -18,20 +18,52 @@ public interface FileDao {
     /**
      * 数据库中的字段
      */
-    String[] LABELS = {"id", "file_id", "uploader_id", "file_name", "file_size", "upload_time", "download_link"};
+    String[] LABELS = {"id", "homework_id", "uploader_id", "uploader_name", "file_name", "file_size", "upload_time", "download_link"};
     /**
      * 数据库中字段中文解释
      */
-    String[] LABELS_CH = {"ID", "文件ID", "上传用户", "文件名字", "文件大小", "上传时间", "下载地址"};
+    String[] LABELS_CH = {"ID", "作业ID", "文件ID", "上传者ID", "上传者", "文件名", "文件大小", "上传时间", "下载地址"};
 
-    JSONObject getRecord(FileBean query) throws SQLException, JSONException;
+    /**
+     * 根据作业id获取文件信息
+     * @param homeworkId 作业id
+     * @param userId 用户id
+     * @return JSONObject
+     * @throws SQLException SQLException
+     * @throws JSONException JSONException
+     */
+    JSONObject getHomeworkFilesById(String homeworkId, String userId) throws SQLException, JSONException;
 
-    JSONObject modifyRecord(FileBean bean) throws JSONException;
+    JSONObject getFilesById(String id, String userId) throws SQLException, JSONException;
 
-    JSONObject getRecordById(String action, String id) throws JSONException;
+    /**
+     * 获取数据库所有文件信息(管理员)
+     * @return JSONObject
+     * @throws SQLException SQLException
+     * @throws JSONException JSONException
+     */
+    JSONObject getAllFiles() throws SQLException, JSONException;
 
-    JSONObject addRecord(FileBean bean) throws JSONException, SQLException;
+    public JSONObject getAllFilesWithComments() throws SQLException, JSONException;
 
-    JSONObject deleteRecord(String action, String[] ids, String creator, String createTime) throws JSONException, SQLException;
+    /**
+     * 添加文件信息到数据库
+     * @param bean FileBean
+     * @return JSONObject
+     * @throws JSONException JSONException
+     */
+    JSONObject addFile(FileBean bean) throws JSONException;
+
+    /**
+     * 根据id删除文件
+     * @param ids 多个id
+     * @param folder 文件保存路径
+     * @return JSONObject
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
+    JSONObject deleteFileById(String[] ids, String folder) throws JSONException, SQLException;
+
+    JSONObject updateFileInfo(FileBean bean) throws JSONException;
 
 }

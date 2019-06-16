@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=UTF-8"%>
+p<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="java.text.*"%>
 <%
 	//做调试用，这里要在正式发布的时候去掉

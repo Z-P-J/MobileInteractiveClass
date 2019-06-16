@@ -47,15 +47,44 @@ public final class ServletUtil {
         return jsonObj;
     }
 
+    public static void wrapJson(String id, String index, JSONObject jsonObj) throws NumberFormatException, JSONException {
+        //根据id获得index
+        if (id != null && !id.isEmpty()) {
+            index = getRecordIndexFromId(id, jsonObj);
+        }
+        int indexNum = Integer.parseInt(index);
+        int count = jsonObj.getJSONArray("aaData").length();
+        jsonObj.put("first", 0);
+        if (indexNum > 0) {
+            jsonObj.put("prev", indexNum - 1);
+        } else {
+            jsonObj.put("prev", 0);
+        }
+        if (indexNum < (count - 1)) {
+            jsonObj.put("next", indexNum + 1);
+        } else {
+            jsonObj.put("next", count - 1);
+        }
+        jsonObj.put("last", count - 1);
+        jsonObj.put("total", count);
+        jsonObj.put("current", indexNum);
+    }
+
     private static String getRecordIndexFromId(String id, JSONObject json) throws JSONException {
         String index = "-1";
         JSONArray jsonArr = json.getJSONArray("aaData");
         for (int i = 0; i < jsonArr.length(); i++) {
-            ArrayList list = (ArrayList) jsonArr.get(i);
-            if (id.equals(list.get(0) + "")) {
-//                index = list.get(11) + "";
+            Object obj = jsonArr.get(i);
+            String currentId;
+            if (obj instanceof JSONObject) {
+                JSONObject jsonObj = (JSONObject) obj;
+                currentId = jsonObj.getString("id");
+            } else {
+                ArrayList list = (ArrayList) jsonArr.get(i);
+                currentId = "" + list.get(0);
+            }
+            if (id.equals(currentId)) {
                 return i + "";
-//                break;
             }
         }
         return index;

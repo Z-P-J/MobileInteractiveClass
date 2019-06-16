@@ -88,28 +88,28 @@
 											<label class="control-label col-md-2">排序</label>
 											<div class="col-md-2">
 												<select class="bs-select form-control" id="sort_01" onchange="Page.sortRecord(1);">
-													<option>（请选择）</option>
+<%--													<option>（请选择）</option>--%>
 													<option value="create_time">按日期</option>
 													<option value="title">按标题</option>
 													<option value="status">按状态</option>
 												</select>
 											</div>
-											<div class="col-md-2">
-												<select class="bs-select form-control" id="sort_02" onchange="Page.sortRecord(2);">
-													<option>（请选择）</option>
-													<option value="create_time">按日期</option>
-													<option value="title">按标题</option>
-													<option value="status">按状态</option>
-												</select>
-											</div>
-											<div class="col-md-2">
-												<select class="bs-select form-control" id="sort_03" onchange="Page.sortRecord(3);">
-													<option>（请选择）</option>
-													<option value="create_time">按日期</option>
-													<option value="title">按标题</option>
-													<option value="status">按状态</option>
-												</select>
-											</div>
+<%--											<div class="col-md-2">--%>
+<%--												<select class="bs-select form-control" id="sort_02" onchange="Page.sortRecord(2);">--%>
+<%--													<option>（请选择）</option>--%>
+<%--													<option value="create_time">按日期</option>--%>
+<%--													<option value="title">按标题</option>--%>
+<%--													<option value="status">按状态</option>--%>
+<%--												</select>--%>
+<%--											</div>--%>
+<%--											<div class="col-md-2">--%>
+<%--												<select class="bs-select form-control" id="sort_03" onchange="Page.sortRecord(3);">--%>
+<%--													<option>（请选择）</option>--%>
+<%--													<option value="create_time">按日期</option>--%>
+<%--													<option value="title">按标题</option>--%>
+<%--													<option value="status">按状态</option>--%>
+<%--												</select>--%>
+<%--											</div>--%>
 										</div>
 									</div>
 									<div class="form-body">
@@ -147,5 +147,8 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE SCRIPTS -->
+<script>
+	$("#sort_01").val("create_time");
+</script>
 <script type="text/javascript" src="../../assets/module/scripts/file/file_list.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

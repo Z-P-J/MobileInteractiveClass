@@ -44,13 +44,13 @@ var Record = function () {
         });
     };
     var viewRecord = function (id) {
-        window.location.href = "view.jsp?id=" + id + "&exist_resultset=1";
+        window.location.href = "view.jsp?id=" + id + "&order_by=" + $("#sort_01").val();;
     };
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
                 $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
-                    if (json.result_code == 0) {
+                    if (json.result_code === 0) {
                         var count = json.count;
                         var amount = json.amount;
                         initRecordList();
@@ -70,7 +70,7 @@ var Record = function () {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         $.post("../../" + module + "_" + sub + "_servlet_action?action=get_record&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
-            if (json.result_code == 0) {
+            if (json.result_code === 0) {
                 Record.userId = json.user_id;
                 Record.userName = json.user_name;
                 Record.userRole = json.user_role;
@@ -185,12 +185,12 @@ var Page = function () {
     }
     var showResult = function (json) {
         var title = "记录显示";
-        if ($("#title_div")) $("#title_div").html(title);
+        $("#title_div").html(title);
         if (json != null) {
             var list = json.aaData;
             var tip = "当前查询到了 " + list.length + " 条记录";
-            if ($("#tip_div")) $("#tip_div").html(tip);
-            if ($("#record_list_tip")) $("#record_list_tip").html(tip);
+            $("#tip_div").html(tip);
+            $("#record_list_tip").html(tip);
             showRecordList(list);
         }
     };
@@ -203,30 +203,22 @@ var Page = function () {
         $("#record_list_div").html(html);
     };
     var showRecord = function (json) {
-        var id = json[0];
         var image = "../../assets/module/img/public/wkbj.jpg";
-        var fileId = json[1];
-        var uploaderId = json[2];
-        var fileName = json[3];
-        var fileSize = json[4];
-        var uploadTime = json[5];
-        var downloadLink = json[6];
-        var me = json[7];
 
         html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
-        html = html + "																<span>文件名：" + fileName + "</span><p>";
-        html = html + "																<span>文件大小：" + fileSize + "</span><p>";
-        html = html + "																<span>上传时间：" + uploadTime + "</span><p>";
-        html = html + "																<span>下载链接：<a href='" + downloadLink + "' onClick='return confirm(\"确定下载名为“" + fileName + "”的文件?\");'>点击下载</a></span><p>";
-        if (me == "1") {
-            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
-            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
+        html = html + "																<span>文件名：" + json.file_name + "</span><p>";
+        html = html + "																<span>文件大小：" + json.file_size + "</span><p>";
+        html = html + "																<span>上传时间：" + json.upload_time + "</span><p>";
+        html = html + "																<span>下载链接：<a href='" + json.download_link + "' onClick='return confirm(\"确定下载名为“" + json.file_name + "”的文件?\");'>点击下载</a></span><p>";
+        if (json.isOwner === 1) {
+            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + json.id + ");\">删除</button>";
+            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + json.id + ");\">修改</button>";
         }
-        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">详细信息</button>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";
     };
@@ -278,9 +270,9 @@ var Page = function () {
     };
     var sortRecord = function (index) {
         var sortName = $("#sort_01").val();
-        if (index == 1) sortName = $("#sort_01").val();
-        if (index == 2) sortName = $("#sort_01").val() + "," + $("#sort_02").val();
-        if (index == 3) sortName = $("#sort_01").val() + "," + $("#sort_02").val() + "," + $("#sort_03").val();
+        // if (index === 1) sortName = $("#sort_01").val();
+        // if (index === 2) sortName = $("#sort_01").val() + "," + $("#sort_02").val();
+        // if (index === 3) sortName = $("#sort_01").val() + "," + $("#sort_02").val() + "," + $("#sort_03").val();
         console.log(sortName);
         Record.sortRecord1(index, sortName);
     };

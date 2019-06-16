@@ -1,6 +1,6 @@
-package com.interactive.classroom.download;
+package com.interactive.classroom.servlets;
 
-import com.interactive.classroom.base.BaseServlet;
+import com.interactive.classroom.servlets.base.BaseServlet;
 import com.interactive.classroom.utils.EncoderUtil;
 
 import javax.servlet.ServletException;

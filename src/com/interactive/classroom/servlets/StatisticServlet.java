@@ -1,10 +1,10 @@
-package com.interactive.classroom.statistic;
+package com.interactive.classroom.servlets;
 /*
  * 增删改查看导印统功能的实现
  * 待完成：用MVC模式分开DB和Action操作
  */
 
-import com.interactive.classroom.base.BaseHttpServlet;
+import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.bean.StatisticBean;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.StatisticDao;
@@ -26,7 +26,7 @@ import java.sql.SQLException;
 /**
  * @author Z-P-J
  */
-public class ServletAction extends BaseHttpServlet {
+public class StatisticServlet extends BaseHttpServlet {
     /*----------线程需要的信息----------*/
     String sessionId = null;
     String filePathName = null;
@@ -76,7 +76,7 @@ public class ServletAction extends BaseHttpServlet {
                 break;
             default:
                 try {
-                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -30,14 +30,6 @@ public final class DaoFactory {
     }
 
     /**
-     * 获取HomeworkFileDao实例
-     * @return com.interactive.classroom.dao.HomeworkFileDao
-     */
-    public static HomeworkFileDao getHomeworkFileDao() {
-        return new HomeworkFileDaoImpl();
-    }
-
-    /**
      *获取StaticDao实例
      * @return com.interactive.classroom.dao.StatisticDao
      */
@@ -67,6 +59,10 @@ public final class DaoFactory {
      */
     public static FileDao getFileDao() {
         return new FileDaoImpl();
+    }
+
+    public static CommentDao getCommentDao() {
+        return new CommentDaoImpl();
     }
 
 }

@@ -43,7 +43,7 @@
 									</div>
 								</div>
 								<div class="portlet-body form">
-									<form class="form-horizontal" role="form" id="page_form" name="page_form"  method="post" action="../../UploadServlet" enctype="multipart/form-data">
+									<form class="form-horizontal" role="form" id="page_form" name="page_form"  method="post" action="../../UploadServlet?action=upload_file" enctype="multipart/form-data">
 										<div class="form-body">
 											<div class="form-group">
 												<div class="form-group" style="text-align: center">

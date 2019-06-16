@@ -1,10 +1,10 @@
-package com.interactive.classroom.user;
+package com.interactive.classroom.servlets;
 /*
  * 待完成：用MVC模式分开DB和Action操作
  * 增删改查看导印统功能的实现
  */
 
-import com.interactive.classroom.base.BaseHttpServlet;
+import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.bean.UserBean;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.UserDao;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ServletAction extends BaseHttpServlet {
+public class UserServlet extends BaseHttpServlet {
 
     private static final String TAG = "";
 
@@ -60,7 +60,7 @@ public class ServletAction extends BaseHttpServlet {
                     onEnd(request, response, jsonObj);
                     break;
                 default:
-                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
                     break;
             }
         } catch (Throwable e) {

@@ -1,19 +1,18 @@
-package com.interactive.classroom.upload;
+package com.interactive.classroom.servlets;
 
-import com.interactive.classroom.base.BaseServlet;
+import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.bean.FileBean;
+import com.interactive.classroom.constant.ActionType;
 import com.interactive.classroom.dao.DaoFactory;
-import com.interactive.classroom.dao.FileDao;
-import com.interactive.classroom.bean.HomeworkFileBean;
-import com.interactive.classroom.dao.HomeworkFileDao;
 import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.ProgressSingleton;
+import com.interactive.classroom.utils.TimeUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import com.interactive.classroom.utils.TimeUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,34 +24,43 @@ import java.util.List;
 
 /**
  * @author Z-P-J
- */ //@WebServlet(name = "UploadServlet", urlPatterns = "/UploadServlet")
-public class UploadServlet extends BaseServlet {
+ */
+public class UploadServlet extends BaseHttpServlet {
 
-    // 上传文件存储目录
+    /**
+     * 上传文件存储目录
+     */
     private static final String UPLOAD_DIRECTORY = "upload";
 
-    // 上传配置
-    private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE      = 1024 * 1024 * 100; // 100MB
-    private static final int MAX_REQUEST_SIZE   = 1024 * 1024 * 120; // 120MB
-
+    /**
+     * 上传配置
+     */
+    private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;
+    private static final int MAX_FILE_SIZE = 1024 * 1024 * 100;
+    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 120;
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.service(req, resp);
-//        PrintWriter writer = resp.getWriter();
+    protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
+        if (ActionType.ACTION_UPLOAD_FILE.equals(action)) {
+            uploadFile(request, response);
+        } else if (ActionType.ACTION_GET_UPLOAD_PROGRESS.equals(action)) {
+            getUploadProgress(request, response);
+        }
+    }
 
-        String from = req.getParameter("from");
+    private void uploadFile(HttpServletRequest request, HttpServletResponse response) {
+        String from = request.getParameter("from");
         Log.d(getClass().getName(), "from=" + from);
-        HttpSession session = req.getSession();
+        HttpSession session = request.getSession();
         String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String fileName = req.getParameter("rename_to");
+        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
+        String fileName = request.getParameter("rename_to");
         Log.d(getClass().getName(), "fileName=" + fileName);
 
-        System.out.println(req.getMethod());
+        System.out.println(request.getMethod());
         //检查是否为post请求以及是否为多媒体上传
         ProgressSingleton.put(fileName + "_progress", 0L);
-        if ("POST".equalsIgnoreCase(req.getMethod()) && ServletFileUpload.isMultipartContent(req)) {
+        if ("POST".equalsIgnoreCase(request.getMethod()) && ServletFileUpload.isMultipartContent(request)) {
             System.out.println("--------------------post-------------------------");
             //配置上传参数
             DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -73,13 +81,10 @@ public class UploadServlet extends BaseServlet {
             if (!file.exists()) {
                 file.mkdirs();
             }
-
-            System.out.println("1111111111111111111111111");
-
             try {
                 //解析请求内容提取上传文件数据
                 System.out.println("121221211312212122122121");
-                List<FileItem> fileItems = upload.parseRequest(req);
+                List<FileItem> fileItems = upload.parseRequest(request);
                 System.out.println("66666666666666666666666");
                 System.out.println("fileItems=" + fileItems);
                 if (fileItems != null) {
@@ -116,7 +121,7 @@ public class UploadServlet extends BaseServlet {
                             FileOutputStream out = new FileOutputStream(storeFile);
                             byte[] buffer = new byte[1024];
                             int readNumber = 0;
-                            while((readNumber = in.read(buffer)) != -1){
+                            while ((readNumber = in.read(buffer)) != -1) {
                                 //每读取一次，更新一次进度大小
                                 progress = progress + readNumber;
                                 //向单例哈希表写入进度
@@ -132,44 +137,55 @@ public class UploadServlet extends BaseServlet {
                             in.close();
                             out.close();
 
+                            FileBean bean = new FileBean();
+                            bean.setFileName(fileName);
+                            bean.setUploaderId(userId);
+                            bean.setUploaderName(userName);
+                            bean.setFileSize(fileItem.getSize());
+                            bean.setUploadTime(TimeUtil.currentDate());
+                            bean.setDownloadLink("../../DownloadServlet?file_name=" + fileName);
                             if ("homework".equals(from)) {
-                                HomeworkFileBean bean = new HomeworkFileBean();
-                                bean.setHomeworkId(req.getParameter("homework_id"));
-                                bean.setFileName(fileName);
-                                bean.setUploaderId(userId);
-                                bean.setFileSize(fileItem.getSize());
-                                bean.setUploadTime(TimeUtil.currentDate());
-                                bean.setDownloadLink("../../DownloadServlet?file_name=" + fileName);
-                                HomeworkFileDao dao = DaoFactory.getHomeworkFileDao();
-                                dao.addRecord(bean);
+                                bean.setHomeworkId(request.getParameter("homework_id"));
                             } else {
-                                FileBean bean = new FileBean();
-                                bean.setFileId("1");
-                                bean.setFileName(fileName);
-                                bean.setUploaderId("zhangsan");
-                                bean.setFileSize(fileItem.getSize());
-                                bean.setUploadTime(TimeUtil.currentDate());
-                                bean.setDownloadLink("../../DownloadServlet?file_name=" + fileName);
-                                FileDao dao = DaoFactory.getFileDao();
-                                dao.addRecord(bean);
+                                bean.setHomeworkId("-1");
                             }
-
-
-
-//                            req.setAttribute("message", "文件上传成功！");
-//                            req.setAttribute("file_name", fileName);
-//                            req.setAttribute("download_link", "../../DownloadServlet?file_name=" + fileName);
+                            DaoFactory.getFileDao().addFile(bean);
                         }
                     }
                 }
-//                onEnd(req, resp, null, "base/export/export_result.jsp", "上传文件成功！", 0, "record_list.jsp");
                 return;
             } catch (Exception e) {
                 e.printStackTrace();
-                req.setAttribute("message", "出错了！" + e.getMessage());
+                request.setAttribute("message", "出错了！" + e.getMessage());
             }
         }
         ProgressSingleton.put(fileName + "_progress", -1L);
-//        onEnd(req, resp, null, "base/export/export_result.jsp", "上传文件失败！", 0, "record_list.jsp");
     }
+
+    private void getUploadProgress(HttpServletRequest request, HttpServletResponse response) {
+        //        String id = request.getSession().getId();
+        String filename = request.getParameter("filename");
+        Log.d(getClass().getName(), "filename=" + filename);
+        //使用sessionid + 文件名生成文件号，与上传的文件保持一致
+//        id = id + filename;
+        long size = ProgressSingleton.get(filename + "_size");
+//        size = size == null ? 100 : size;
+        long progress = ProgressSingleton.get(filename + "_progress");
+//        progress = progress == null ? 0 : progress;
+        JSONObject json = new JSONObject();
+        try {
+            json.put("size", size);
+            json.put("progress", progress);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        System.out.println(getClass().getName() + ":::" + json.toString());
+        response.setContentType("application/json");
+        try {
+            response.getWriter().print(json.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

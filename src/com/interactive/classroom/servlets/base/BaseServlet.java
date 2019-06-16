@@ -1,4 +1,4 @@
-package com.interactive.classroom.base;
+package com.interactive.classroom.servlets.base;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

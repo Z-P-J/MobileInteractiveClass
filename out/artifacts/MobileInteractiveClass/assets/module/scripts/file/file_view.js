@@ -13,46 +13,32 @@ jQuery(document).ready(function () {
 });
 /*================================================================================*/
 var Record = function () {
-    var userId = undefined;
-    var userName = undefined;
-    var userRole = undefined;
-    var userAvatar = undefined;
-    var initRecordStyle = function () {
+    var init = function () {
+        getFiles();
     };
-    var initRecordList = function () {
-        getRecord();
-    }
-    var getRecord = function () {
+    var getFiles = function () {
         var id = $("#id").val();
-        getRecordViewById(id);
-    }
-    var getRecordViewById = function (id) {
         var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_view&id=" + id + "&exist_resultset=1";
         getRecordView(url);
-    }
-    var getRecordViewByIndex = function (index) {
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_view&index=" + index + "&exist_resultset=1";
-        getRecordView(url);
-    }
+    };
     var getRecordView = function (url) {
-        Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
+        // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         $.post(url, function (json) {
-            if (json.result_code == 0) {
-                Record.userId = json.user_id;
-                Record.userName = json.user_name;
+            if (json.result_code === 0) {
                 Record.firstId = json.first;
                 Record.prevId = json.prev;
                 Record.nextId = json.next;
                 Record.lastId = json.last;
                 Record.totalCount = json.total;
-                Record.currentId = json.current_index;
-                Page.showResult(json);
+                Record.aaData = json.aaData;
+                Record.currentId = json.current;
+                Page.showResult(json.aaData[json.current]);
             } else {
                 if (Page != null) {
                     Page.processError(json);
                 }
             }
-            Metronic.stopPageLoading();	//停止等待动画
+            // Metronic.stopPageLoading();	//停止等待动画
         }).error(function (xhr, errorText, errorType) {
             alert('错误信息：' + errorText + ",错误类型：" + errorType);
         });
@@ -64,7 +50,7 @@ var Record = function () {
         if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
                 $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
-                    if (json.result_code == 0) {
+                    if (json.result_code === 0) {
                         window.location.href = "list.jsp";
                         alert("已经从数据表删除该记录！");
                     }
@@ -74,26 +60,41 @@ var Record = function () {
     };
     var exportRecord = function () {
         window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
-    }
+    };
     var search = function () {
         page_form.submit();
-    }
+    };
     var first = function () {
-        getRecordViewByIndex(Record.firstId);
-    }
+        Record.prevId = 0;
+        Record.nextId = 1;
+        Record.currentId = 0;
+        Page.showResult(Record.aaData[0]);
+    };
     var prev = function () {
-        getRecordViewByIndex(Record.prevId);
-    }
+        if (Record.currentId !== 0) {
+            Record.prevId -= 1;
+            Record.currentId -= 1;
+            Record.nextId -= 1;
+        }
+        Page.showResult(Record.aaData[Record.currentId]);
+    };
     var next = function () {
-        getRecordViewByIndex(Record.nextId);
-    }
+        if (Record.currentId !== Record.totalCount - 1) {
+            Record.prevId += 1;
+            Record.nextId += 1;
+            Record.currentId += 1;
+        }
+        Page.showResult(Record.aaData[Record.currentId]);
+    };
     var last = function () {
-        getRecordViewByIndex(Record.lastId);
-    }
+        Record.prevId = Record.lastId - 1;
+        Record.nextId = Record.lastId;
+        Record.currentId = Record.lastId;
+        Page.showResult(Record.aaData[Record.lastId]);
+    };
     return {
         init: function () {
-            initRecordList();
-            initRecordStyle();
+            init();
         },
         deleteRecord: function (id) {
             deleteRecord(id);
@@ -114,7 +115,7 @@ var Record = function () {
             last();
         },
         refresh: function () {
-            getRecordViewByIndex(Record.currentId);
+            getFiles();
         },
         exportRecord: function () {
             exportRecord();
@@ -166,12 +167,13 @@ var Page = function () {
                 alert("评论不能为空！");
             } else {
                 var fileId = $("#file_id").val();
-                $.post("../../" + module + "_" + sub + "_servlet_action?action=submit_comment&comment_text=" + commentText + "&file_id=" + fileId, function () {
-                    // location.reload();
-                    Metronic.startPageLoading({message: '评论成功'});
-                    $("#comment_text").val("");
-                    Record.refresh();
-                    Metronic.stopPageLoading();
+                $.post("../../comment?action=submit_comment&comment_text=" + commentText + "&file_id=" + fileId, function (json) {
+                    // alert(JSON.stringify(json));
+                    if (json.result_code === 0) {
+                        $("#comment_text").val("");
+                        Record.aaData[Record.currentId]['comments'] = json.comments;
+                        showCommentList(json.comments);
+                    }
                 })
             }
         });
@@ -214,30 +216,32 @@ var Page = function () {
     };
     var addRecord = function () {
         window.location.href = "add.jsp";//sub + "_add.jsp";
-    }
+    };
     var showResult = function (json) {
         var title = "记录显示";
-        if ($("#title_div")) $("#title_div").html(title);
+        $("#title_div").html(title);
         if (json != null) {
             // console.log(json.comments.toString());
-            var list = json.aaData;
-            console.log(json.aaData.toString());
+            // var list = json.aaData;
+            // console.log(json.aaData.toString());
             var tip = "当前查询到了 " + Record.totalCount + " 条记录";
             tip = tip + "，现在是第 " + (parseInt(Record.currentId) + 1) + " 条记录。";
-            if ($("#tip_div")) $("#tip_div").html(tip);
-            if ($("#record_list_tip")) $("#record_list_tip").html(tip);
-            showRecordList(list);
-            // var index = parseInt(Record.currentId);
-            // showRecord(list[index]);
+            $("#tip_div").html(tip);
+            $("#record_list_tip").html(tip);
+            showRecordList(json);
         }
     };
-    var showRecordList = function (list) {
+    var showRecordList = function (json) {
         html = "													<div><span id=\"tip_div\"></span>";
-        for (var i = 0; i < list.length; i++) {
-            showRecord(list[i]);
-        }
+        $("#file_id").val(json.id);
+        $("#file_name").val(json.file_name);
+        $("#uploader").val(json.uploader_name);
+        $("#file_size").val(json.file_size);
+        $("#upload_time").val(json.upload_time);
         html = html + "													</div>";
         $("#record_list_div").html(html);
+
+        showCommentList(json.comments);
     };
     var showCommentList = function (list) {
         html = "<div>";
@@ -253,43 +257,18 @@ var Page = function () {
         html = html + "													</div>";
         $("#comment_list_div").html(html);
     };
-    var showRecord = function (json) {
-        console.log(json.toString());
-        var id = json[0];
-        var fileId = json[1]
-        var uploader = json[2];
-        var fileName = json[3];
-        var fileSize = json[4];
-        var uploadTime = json[5];
-        var list = json[9];
-        $("#file_id").val(fileId);
-        $("#file_name").val(fileName);
-        $("#uploader").val(uploader);
-        $("#file_size").val(fileSize);
-        $("#upload_time").val(uploadTime);
-        // var comments = json.comments;
-        console.log(list.toString());
-        showCommentList(list);
-    };
     var showComment = function (json) {
-        var id = json[0];
         var image = "../../assets/module/img/security/user/avatar/avatar.jpg";
-        var fileId = json[1];
-        var userId = json[2];
-        var commentContent = json[3];
-        var score = json[4];
-        var publishDate = json[5];
-
 
         html = html + "														<div style=\"clear:both;width:auto;height:100px;margin:5px;border:1px solid lightgrey;text-align: center;\">";
         // html = html + "                                                         <input type=\"hidden\" id=\"file_id\" name=\"file_id\" value=" + fileId + " />"
         html = html + "															<div style=\"float:left;border:0px solid green;text-align: center;margin:5px;\">";
         html = html + "																<img src='"+ image +"' style=\"width:18px;height:auto;border-radius:50%!important;border:0px solid red;\">";
-        html = html + "															    <div style=\"text-align: center; color: black;\"><p>" + userId + "</p></div>";
-        html = html + "															    <div class=\"comt-meta\" ><span class=\"comt-author\"></span>" + publishDate + "</div>";
+        html =   + "															    <div style=\"text-align: center; color: black;\"><p>" + json.user_id + "</p></div>";
+        html = html + "															    <div class=\"comt-meta\" ><span class=\"comt-author\"></span>" + json.publish_date + "</div>";
         html = html + "														    </div>";
         html = html + "														    <div style=\"width:auto;height:100px;display:table-cell;margin-left:10px;margin-right:10px;margin-top:50px;margin-bottom:10px;border:0px solid blue;text-align: center;padding: 10px\">";
-        html = html + "																<p><span style='font-weight:bold;'>" + commentContent + "</span></p>";
+        html = html + "																<p><span style='font-weight:bold;'>" + json.comment_content + "</span></p>";
         html = html + "														    </div>";
         html = html + "														</div>";
     };

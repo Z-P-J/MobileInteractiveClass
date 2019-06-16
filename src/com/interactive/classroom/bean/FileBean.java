@@ -1,24 +1,18 @@
 package com.interactive.classroom.bean;
 
+/**
+ * @author Z-P-J
+ */
 public class FileBean {
-    //数据库字段
+
     private String id;
-    private String fileId;
-    private String uploaderId = "zhangsan";
+    private String homeworkId;
+    private String uploaderId;
+    private String uploaderName;
     private String fileName;
     private long fileSize;
     private String uploadTime;
     private String downloadLink;
-    //传递条件查询用
-    private String action;
-    private String type = "";
-    private String timeFrom = "";
-    private String timeTo = "";
-    private String groupId = "";
-    private String timeInterval = "";
-    private String sortIndex = "";
-    private String orderBy = "";
-    private String userId = "";
 
 
     public FileBean() {
@@ -32,12 +26,12 @@ public class FileBean {
         this.id = id;
     }
 
-    public String getFileId() {
-        return fileId;
+    public String getHomeworkId() {
+        return homeworkId;
     }
 
-    public void setFileId(String fileId) {
-        this.fileId = fileId;
+    public void setHomeworkId(String homeworkId) {
+        this.homeworkId = homeworkId;
     }
 
     public String getUploaderId() {
@@ -48,20 +42,20 @@ public class FileBean {
         this.uploaderId = uploaderId;
     }
 
+    public String getUploaderName() {
+        return uploaderName;
+    }
+
+    public void setUploaderName(String uploaderName) {
+        this.uploaderName = uploaderName;
+    }
+
     public String getFileName() {
         return fileName;
     }
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
-    }
-
-    public String getDownloadLink() {
-        return downloadLink;
-    }
-
-    public void setDownloadLink(String downloadLink) {
-        this.downloadLink = downloadLink;
     }
 
     public long getFileSize() {
@@ -80,95 +74,11 @@ public class FileBean {
         this.uploadTime = uploadTime;
     }
 
-    public String getAction() {
-        return action;
+    public String getDownloadLink() {
+        return downloadLink;
     }
 
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getTimeFrom() {
-        return timeFrom;
-    }
-
-    public void setTimeFrom(String timeFrom) {
-        this.timeFrom = timeFrom;
-    }
-
-    public String getTimeTo() {
-        return timeTo;
-    }
-
-    public void setTimeTo(String timeTo) {
-        this.timeTo = timeTo;
-    }
-
-    public String getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
-    }
-
-    public String getTimeInterval() {
-        return timeInterval;
-    }
-
-    public void setTimeInterval(String timeInterval) {
-        this.timeInterval = timeInterval;
-    }
-
-    public String getSortIndex() {
-        return sortIndex;
-    }
-
-    public void setSortIndex(String sortIndex) {
-        this.sortIndex = sortIndex;
-    }
-
-    public String getOrderBy() {
-        return orderBy;
-    }
-
-    public void setOrderBy(String orderBy) {
-        this.orderBy = orderBy;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    @Override
-    public String toString() {
-        return "FileBean{" +
-                "id='" + id + '\'' +
-                ", fileId='" + fileId + '\'' +
-                ", uploader_id='" + uploaderId + '\'' +
-                ", fileName='" + fileName + '\'' +
-                ", fileSize=" + fileSize +
-                ", uploadTime='" + uploadTime + '\'' +
-                ", action='" + action + '\'' +
-                ", type='" + type + '\'' +
-                ", timeFrom='" + timeFrom + '\'' +
-                ", timeTo='" + timeTo + '\'' +
-                ", groupId='" + groupId + '\'' +
-                ", timeInterval='" + timeInterval + '\'' +
-                ", sortIndex='" + sortIndex + '\'' +
-                ", orderBy='" + orderBy + '\'' +
-                '}';
+    public void setDownloadLink(String downloadLink) {
+        this.downloadLink = downloadLink;
     }
 }

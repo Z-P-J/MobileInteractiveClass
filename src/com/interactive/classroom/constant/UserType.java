@@ -9,30 +9,28 @@ public enum UserType {
     /**
      * 用户类型：学生
      * */
-    STUDENT(0, "student"),
+    STUDENT("student"),
     /**
      * 用户类型：老师
      * */
-    TEACHER(1, "teacher"),
+    TEACHER("teacher"),
     /**
      * 用户类型：管理员
      * */
-    MANAGER(2, "manager");
+    MANAGER("manager");
 
 
-    private int id;
     private String typeName;
 
-    UserType(int id, String typeName) {
-        this.id = id;
+    UserType(String typeName) {
         this.typeName = typeName;
     }
 
-    public int getId() {
-        return id;
-    }
+//    public String getTypeName() {
+//        return typeName;
+//    }
 
-    public String getTypeName() {
-        return typeName;
+    public boolean equals(String userType) {
+        return typeName.equals(userType);
     }
 }

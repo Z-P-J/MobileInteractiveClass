@@ -1,15 +1,13 @@
-package com.interactive.classroom.user;
+package com.interactive.classroom.servlets;
 
-import com.interactive.classroom.base.BaseHttpServlet;
+import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.bean.UserBean;
 import com.interactive.classroom.constant.UserType;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.UserDao;
-import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.TimeUtil;
 import org.json.JSONObject;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,7 +18,7 @@ import java.io.PrintWriter;
  * @author Z-P-J
  * @date 2019/5/28 0:02
  */
-public class LoginAction extends BaseHttpServlet {
+public class LoginServlet extends BaseHttpServlet {
 
     /**
      * 登录操作名
@@ -101,7 +99,7 @@ public class LoginAction extends BaseHttpServlet {
         bean.setUserName(userName);
         bean.setPassword(password);
         bean.setName(name);
-        if (UserType.STUDENT.getTypeName().equals(userType)) {
+        if (UserType.STUDENT.equals(userType)) {
             bean.setStudentNum(studentNum);
         }
         bean.setEmail(email);
@@ -137,7 +135,7 @@ public class LoginAction extends BaseHttpServlet {
         session.setAttribute("grade", user.getGrade());
         session.setAttribute("class", user.getClassStr());
         session.setAttribute("faculty", user.getFaculty());
-        if (UserType.STUDENT.getTypeName().equals(user.getUserRole())) {
+        if (UserType.STUDENT.equals(user.getUserRole())) {
             session.setAttribute("student_num", user.getStudentNum());
         }
         session.setAttribute("register_date", user.getCreateTime());

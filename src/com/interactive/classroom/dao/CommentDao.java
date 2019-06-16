@@ -1,6 +1,11 @@
 package com.interactive.classroom.dao;
 
+import com.interactive.classroom.bean.CommentBean;
 import com.interactive.classroom.utils.DatabaseHelper;
+import org.apache.struts2.json.annotations.JSON;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,37 +15,36 @@ import java.util.List;
 /**
  * @author Z-P-J
  */
-public class CommentDao {
+public interface CommentDao {
 
-    private CommentDao() { }
+    /**
+     * 表名
+     */
+    String TABLE_NAME = "file_comment";
+    /**
+     * 数据库中的字段
+     */
+    String[] LABELS = {"id", "file_id", "user_id", "user_name", "comment_content", "score", "publish_date"};
+    /**
+     * 数据库中字段中文解释
+     */
+    String[] LABELS_CH = {"ID", "文件ID", "用户ID", "用户名", "评论内容", "文评分", "评论时间"};
 
     /**
      * 根据文件id获取评论
      * @param fileId 文件id
      * @return java.util.List<java.util.List<java.lang.String>>
      */
-    public static List<List<String>> getComments(String fileId) {
-        List<List<String>> jsonList = new ArrayList<>();
-        try {
-            //构造sql语句，根据传递过来的查询条件参数
-            String sql = "select * from file_comment where file_id=" + fileId;
-            System.out.println("TodoDao sql=" + sql);
-            ResultSet rs = DatabaseHelper.executeQuery(sql);
-            while (rs.next()) {
-                List<String> list = new ArrayList<>();
-                list.add(rs.getString("id"));
-                list.add(rs.getString("file_id"));
-                list.add(rs.getString("user_id"));
-                list.add(rs.getString("comment_content"));
-                list.add(rs.getString("score"));
-                list.add(rs.getString("publish_date"));
-                jsonList.add(list);
-            }
-            rs.close();
-        } catch (SQLException sqlexception) {
-            sqlexception.printStackTrace();
-        }
-        return jsonList;
-    }
+    List<List<String>> getComments(String fileId);
+
+    /**
+     * 根据文件id获取评论
+     * @param fileId 文件id
+     * @return JSONArray
+     * @throws JSONException JSONException
+     */
+    JSONArray getFileComments(String fileId) throws JSONException;
+
+    void submitComment(CommentBean comment);
 
 }

@@ -82,39 +82,6 @@ public class HomeworkDaoImpl implements HomeworkDao {
         return jsonObj;
     }
 
-    private String createQuerySql(String courseId, String keyword, String publishTimeFrom, String publishTimeTo, String deadlineFrom, String deadlineTo, String order) {
-        String sql = "select * from " + TABLE_NAME;
-        if (!TextUtil.isEmpty(courseId)) {
-            sql += " where course_id=" + courseId;
-        }
-        if (!TextUtil.isEmpty(keyword)) {
-            if (sql.contains("where")) {
-                sql += " and ";
-            } else {
-                sql += " where ";
-            }
-            sql += "(homework_title like '%" + keyword + "%' or homework_requirement like '%" + keyword + "%')";
-        }
-        if (!TextUtil.isEmpty(publishTimeFrom) && !TextUtil.isEmpty(publishTimeTo)) {
-            if (sql.contains("where")) {
-                sql += " and ";
-            } else {
-                sql += " where ";
-            }
-            sql += "publish_time between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
-        }
-        if (!TextUtil.isEmpty(deadlineFrom) && !TextUtil.isEmpty(deadlineTo)) {
-            if (sql.contains("where")) {
-                sql += " and ";
-            } else {
-                sql += " where ";
-            }
-            sql += "deadline between '" + deadlineFrom + "' and '" + deadlineTo + "'";
-        }
-        sql += wrapOrder(order);
-        return sql;
-    }
-
     private JSONObject findHomeworks(String sql) throws JSONException, SQLException {
         Log.d(getClass().getName(), "findHomeworks sql=" + sql);
         String resultMsg = "ok";
@@ -147,9 +114,39 @@ public class HomeworkDaoImpl implements HomeworkDao {
         return jsonObj;
     }
 
+    private String createQuerySql(String courseId, String keyword, String publishTimeFrom, String publishTimeTo, String deadlineFrom, String deadlineTo, String order) {
+        String sql = "select * from " + TABLE_NAME;
+        if (!TextUtil.isEmpty(courseId)) {
+            sql += " where course_id=" + courseId;
+        }
+        if (!TextUtil.isEmpty(keyword)) {
+            sql = checkWhere(sql);
+            sql += "(homework_title like '%" + keyword + "%' or homework_requirement like '%" + keyword + "%')";
+        }
+        if (!TextUtil.isEmpty(publishTimeFrom) && !TextUtil.isEmpty(publishTimeTo)) {
+            sql = checkWhere(sql);
+            sql += "publish_time between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
+        }
+        if (!TextUtil.isEmpty(deadlineFrom) && !TextUtil.isEmpty(deadlineTo)) {
+            sql = checkWhere(sql);
+            sql += "deadline between '" + deadlineFrom + "' and '" + deadlineTo + "'";
+        }
+        sql += wrapOrder(order);
+        return sql;
+    }
+
+    private String checkWhere(String sql) {
+        if (sql.contains("where")) {
+            sql += " and ";
+        } else {
+            sql += " where ";
+        }
+        return sql;
+    }
+
     private String wrapOrder(String order) {
         String orderBy;
-        if (TextUtil.isEmpty(order)) {
+        if (TextUtil.isEmpty(order) || "null".equals(order)) {
             orderBy = " order by publish_time desc";
         } else {
             orderBy = " order by " + order + " desc";

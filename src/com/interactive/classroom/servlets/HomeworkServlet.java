@@ -1,17 +1,15 @@
-package com.interactive.classroom.homework;
+package com.interactive.classroom.servlets;
 /*
  * 待完成：用MVC模式分开DB和Action操作
  * 增删改查看导印统功能的实现
  */
 
-import com.interactive.classroom.base.BaseHttpServlet;
+import com.interactive.classroom.servlets.base.BaseHttpServlet;
+import com.interactive.classroom.bean.FileBean;
 import com.interactive.classroom.bean.HomeworkBean;
-import com.interactive.classroom.bean.HomeworkFileBean;
 import com.interactive.classroom.constant.UserType;
-import com.interactive.classroom.dao.CommentDao;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.HomeworkDao;
-import com.interactive.classroom.dao.HomeworkFileDao;
 import com.interactive.classroom.utils.DatabaseHelper;
 import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.ServletUtil;
@@ -28,8 +26,8 @@ import java.util.ArrayList;
 /**
  * @author Z-P-J
  */
-public class ServletAction extends BaseHttpServlet {
-    //这里是需要改的,module和sub
+public class HomeworkServlet extends BaseHttpServlet {
+
     private static final String MODULE = "homework";
     private static final String SUB = "core";
 
@@ -49,7 +47,7 @@ public class ServletAction extends BaseHttpServlet {
                 case "query_homeworks":
                     queryHomeworks(request, response);
                     break;
-                case "add_record":
+                case "publish_homework":
                     publishHomework(request, response);
                     break;
                 case "modify_record":
@@ -59,7 +57,7 @@ public class ServletAction extends BaseHttpServlet {
                     deleteRecord(request, response);
                     break;
                 case "delete_file_record":
-                    deleteFileRecord(request, response);
+                    deleteHomeworkFile(request, response);
                     break;
                 case "export_record":
                     JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
@@ -70,13 +68,13 @@ public class ServletAction extends BaseHttpServlet {
                     getUploadedFiles(request, response);
                     break;
                 case "submit_comment":
-                    submitComment(request, response);
+                    submitComment(request);
                     break;
                 case "get_homework_detail":
                     getHomeworkDetail(request, response);
                     break;
                 default:
-                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/ServletAction]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
                     break;
             }
         } catch (Throwable e) {
@@ -85,9 +83,9 @@ public class ServletAction extends BaseHttpServlet {
     }
 
     private void getHomeworks(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        JSONObject jsonObj = new JSONObject();
+        JSONObject jsonObj;
         String orderBy = request.getParameter("order_by");
-        if (UserType.MANAGER.getTypeName().equals(userType)) {
+        if (UserType.MANAGER.equals(userType)) {
             // 管理员
             // TODO 直接获取数据库所有作业
             jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(orderBy);
@@ -207,23 +205,20 @@ public class ServletAction extends BaseHttpServlet {
         String[] ids = request.getParameterValues("id");
         JSONObject jsonObj = null;
         if (ids != null) {
-            HomeworkDao dao = DaoFactory.getHomeworkDao();
-            jsonObj = dao.deleteHomework(ids);
+            jsonObj = DaoFactory.getHomeworkDao().deleteHomework(ids);
             jsonObj.put("action", action);
             log("用户 " + userName + " 于 " + TimeUtil.currentDate() + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
         onEndDefault(request, response, jsonObj);
     }
 
-    private void deleteFileRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String action = request.getParameter("action");
+    private void deleteHomeworkFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String[] ids = request.getParameterValues("id");
         JSONObject jsonObj = null;
-        //检查输入参数是否正确先
         if (ids != null) {
             String createTime = TimeUtil.currentDate();
-            HomeworkFileDao dao = DaoFactory.getHomeworkFileDao();
-            jsonObj = dao.deleteRecord(action, ids, userName, createTime, getServletContext().getRealPath("/") + File.separator);
+            jsonObj = DaoFactory.getFileDao().deleteFileById(ids, getServletContext().getRealPath("/") + File.separator);
+            jsonObj.put("action", request.getParameter("action"));
             log("用户 " + userName + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
         onEndDefault(request, response, jsonObj);
@@ -233,21 +228,10 @@ public class ServletAction extends BaseHttpServlet {
     //作业管理文件详细信息
 
     private void getUploadedFiles(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HomeworkFileBean bean = new HomeworkFileBean();
+        FileBean bean = new FileBean();
         String homeworkId = request.getParameter("homework_id");
         String attr = "uploaded_homework_files_" + homeworkId;
         bean.setHomeworkId(homeworkId);
-        bean.setFileName(request.getParameter("file_name"));
-        bean.setUserId(userId);
-        bean.setUploaderId(userId);
-        bean.setAction(request.getParameter("action"));
-        bean.setType(request.getParameter("type"));
-
-        bean.setTimeFrom(request.getParameter("time_from"));
-        bean.setTimeTo(request.getParameter("time_to"));
-        bean.setSortIndex(request.getParameter("sort_index"));
-        bean.setOrderBy(request.getParameter("order_by"));
-        debug("FileBean=" + bean.toString());
 
         String existResultset = request.getParameter("exist_resultset");
         Log.d(getClass().getName(), "existResultset=" + existResultset);
@@ -267,16 +251,9 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             //如果是新查询
-            HomeworkFileDao dao = DaoFactory.getHomeworkFileDao();
-            jsonObj = dao.getRecord(bean);
+            jsonObj = DaoFactory.getFileDao().getHomeworkFilesById(homeworkId, userId);
             session.setAttribute(attr, jsonObj);
         }
-        jsonObj.put("user_id", userId);
-        jsonObj.put("user_name", userName);
-        jsonObj.put("user_role", userType);
-        jsonObj.put("user_avatar", userAvatar);
-        jsonObj.put("action", bean.getAction());
-        /*--------------------数据查询完毕，根据交互方式返回数据--------------------*/
         String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
         onEnd(request, response, jsonObj, url);
     }
@@ -312,8 +289,7 @@ public class ServletAction extends BaseHttpServlet {
             } else {
                 //如果没有就重新查询一次
                 debug("[getRecordView]没有就重新查询一次。");
-                HomeworkDao dao = DaoFactory.getHomeworkDao();
-                jsonObj = dao.getAllHomeworks(null);
+                jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(null);
                 jsonObj.put("user_id", userId);
                 jsonObj.put("user_name", userName);
                 jsonObj.put("result_code", 0);
@@ -322,8 +298,7 @@ public class ServletAction extends BaseHttpServlet {
             }
         } else {
             debug("[getRecordView]existsResult=0，重新查询");
-            HomeworkDao dao = DaoFactory.getHomeworkDao();
-            jsonObj = dao.getAllHomeworks(null);
+            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(null);
             jsonObj.put("user_id", userId);
             jsonObj.put("user_name", userName);
             session.setAttribute(attr, jsonObj);
@@ -331,7 +306,7 @@ public class ServletAction extends BaseHttpServlet {
         onEndDefault(request, response, jsonObj);
     }
 
-    private void submitComment(HttpServletRequest request, HttpServletResponse response) {
+    private void submitComment(HttpServletRequest request) {
         String fileId = request.getParameter("file_id");
         String sql = "insert into file_comment (file_id,user_id,comment_content,score,publish_date) values("
                 + fileId + ",'" + userName + "','" + request.getParameter("comment_text") +
@@ -344,7 +319,7 @@ public class ServletAction extends BaseHttpServlet {
             try {
                 ArrayList list = ServletUtil.getIndexFromFileId(fileId, json);
                 if (list != null) {
-                    list.add(9, CommentDao.getComments(fileId));
+                    list.add(9, DaoFactory.getCommentDao().getComments(fileId));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -50,38 +50,18 @@
 
     <servlet>
         <servlet-name>statistic_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.statistic.ServletAction</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.StatisticServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>statistic_servlet_action</servlet-name>
         <url-pattern>/statistic_servlet_action</url-pattern>
     </servlet-mapping>
     <!-- ================  project end =================           -->
-    <!-- ================  forum begin =================           -->
-<!--    <servlet>-->
-<!--        <servlet-name>forum_file_servlet_action</servlet-name>-->
-<!--        <servlet-class>com.interactive.classroom.forum.file.ServletAction</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>forum_file_servlet_action</servlet-name>-->
-<!--        <url-pattern>/forum_file_servlet_action</url-pattern>-->
-<!--    </servlet-mapping>-->
-    <!-- ================  forum end =================           -->
-    <!-- ================  clinic begin =================           -->
-    <servlet>
-        <servlet-name>clinic_pay_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.clinic.pay.ServletAction</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>clinic_pay_servlet_action</servlet-name>
-        <url-pattern>/clinic_pay_servlet_action</url-pattern>
-    </servlet-mapping>
-    <!-- ================  clinic end ================= -->
 
 
     <servlet>
         <servlet-name>investigation_core_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.investigation.ServletAction</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.InvestigationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>investigation_core_servlet_action</servlet-name>
@@ -90,7 +70,7 @@
 
 <!--    <servlet>-->
 <!--        <servlet-name>vote_statistic_servlet_action</servlet-name>-->
-<!--        <servlet-class>vote.statistic.ServletAction</servlet-class>-->
+<!--        <servlet-class>vote.statistic.FileServlet</servlet-class>-->
 <!--    </servlet>-->
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>vote_statistic_servlet_action</servlet-name>-->
@@ -99,7 +79,7 @@
 
     <servlet>
         <servlet-name>vote_file_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.vote.ServletAction</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.VoteServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>vote_file_servlet_action</servlet-name>
@@ -108,7 +88,7 @@
 
     <servlet>
         <servlet-name>user_info_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.user.ServletAction</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.UserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>user_info_servlet_action</servlet-name>
@@ -118,7 +98,7 @@
 
     <servlet>
         <servlet-name>file_core_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.file.ServletAction</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.FileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>file_core_servlet_action</servlet-name>
@@ -127,7 +107,7 @@
 
     <servlet>
         <servlet-name>homework_core_servlet_action</servlet-name>
-        <servlet-class>com.interactive.classroom.homework.ServletAction</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.HomeworkServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>homework_core_servlet_action</servlet-name>
@@ -138,7 +118,7 @@
 
     <servlet>
         <servlet-name>DownloadServlet</servlet-name>
-        <servlet-class>com.interactive.classroom.download.DownloadServlet</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.DownloadServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DownloadServlet</servlet-name>
@@ -147,7 +127,7 @@
 
     <servlet>
         <servlet-name>UploadServlet</servlet-name>
-        <servlet-class>com.interactive.classroom.upload.UploadServlet</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.UploadServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UploadServlet</servlet-name>
@@ -155,31 +135,21 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ProgressServlet</servlet-name>
-        <servlet-class>com.interactive.classroom.upload.ProgressServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ProgressServlet</servlet-name>
-        <url-pattern>/ProgressServlet</url-pattern>
-    </servlet-mapping>
-
-<!--    <servlet>-->
-<!--        <servlet-name>ProgressServlet</servlet-name>-->
-<!--        <servlet-class>com.interactive.classroom.upload.ProgressServlet</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>ProgressServlet</servlet-name>-->
-<!--        <url-pattern>/ProgressServlet</url-pattern>-->
-<!--    </servlet-mapping>-->
-
-
-    <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>com.interactive.classroom.user.LoginAction</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Comment</servlet-name>
+        <servlet-class>com.interactive.classroom.servlets.CommentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Comment</servlet-name>
+        <url-pattern>/comment</url-pattern>
     </servlet-mapping>
 
 

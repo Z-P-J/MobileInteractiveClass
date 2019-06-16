@@ -1,6 +1,6 @@
-package com.interactive.classroom.base;
+package com.interactive.classroom.servlets.base;
 
-import com.interactive.classroom.user.LoginAction;
+import com.interactive.classroom.servlets.LoginServlet;
 import com.interactive.classroom.utils.LogEvent;
 import com.interactive.classroom.utils.TimeUtil;
 import org.json.JSONException;
@@ -48,9 +48,9 @@ public abstract class BaseHttpServlet extends HttpServlet {
         if (action == null) {
             //todo "传递过来的action是null！"
         } else {
-            if (!LoginAction.LoginActionName.LOG_IN.getName().equals(action)
-                    && !LoginAction.LoginActionName.SIGN_UP.getName().equals(action)
-                    && !LoginAction.LoginActionName.CHECK_USER_NAME.getName().equals(action)) {
+            if (!LoginServlet.LoginActionName.LOG_IN.getName().equals(action)
+                    && !LoginServlet.LoginActionName.SIGN_UP.getName().equals(action)
+                    && !LoginServlet.LoginActionName.CHECK_USER_NAME.getName().equals(action)) {
                 if (userId == null || userType == null || userName == null) {
                     try {
                         JSONObject jsonObj = new JSONObject();
@@ -61,7 +61,7 @@ public abstract class BaseHttpServlet extends HttpServlet {
                         jsonObj.put("result_code", 3);
                         jsonObj.put("result_msg", "session超时，请重新登录系统！");
                         jsonObj.put("action", action);
-                        responseJson(resp, jsonObj);
+                        responseByJson(resp, jsonObj);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -152,7 +152,7 @@ public abstract class BaseHttpServlet extends HttpServlet {
                 e.printStackTrace();
             }
         } else {
-            responseJson(response, jsonObject);
+            responseByJson(response, jsonObject);
         }
     }
 
@@ -166,7 +166,7 @@ public abstract class BaseHttpServlet extends HttpServlet {
         onEnd(request, response, jsonObj, "base/export/export_result.jsp", "操作已经执行，请按返回按钮返回列表页面！", 0, "record_list.jsp");
     }
 
-    private void responseJson(HttpServletResponse response, JSONObject jsonObject) {
+    private void responseByJson(HttpServletResponse response, JSONObject jsonObject) {
         response.setContentType("application/json; charset=UTF-8");
         try {
             jsonObject.put("user_id", userId);
@@ -200,6 +200,20 @@ public abstract class BaseHttpServlet extends HttpServlet {
         userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
         userType = session.getAttribute("user_role") == null ? null : (String) session.getAttribute("user_role");
         userAvatar = session.getAttribute("user_avatar") == null ? null : (String) session.getAttribute("user_avatar");
+    }
+
+    protected JSONObject getSuccessJsonObject() throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("result_code", 0);
+        jsonObject.put("result_msg", "ok");
+        return jsonObject;
+    }
+
+    protected JSONObject getErrorJsonObject(String errMsg) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("result_code", 10);
+        jsonObject.put("result_msg", errMsg);
+        return jsonObject;
     }
 
 }

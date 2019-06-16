@@ -1,30 +1,18 @@
 package com.interactive.classroom.bean;
 
+/**
+ * @author Z-P-J
+ */
 public class HomeworkFileBean {
     //数据库字段
     private String id;
     private String homeworkId;
-    private String uploaderId = "zhangsan";
-    private String uploaderName = "zhangsan";
+    private String uploaderId;
+    private String uploaderName;
     private String fileName;
     private long fileSize;
     private String uploadTime;
     private String downloadLink;
-    //传递条件查询用
-    private String action;
-    private String tableName = "";
-    private String type = "";
-    private String timeFrom = "";
-    private String timeTo = "";
-    private String groupId = "";
-    private String timeInterval = "";
-    private String sortIndex = "";
-    private String orderBy = "";
-    private String userId = "";
-
-
-    public HomeworkFileBean() {
-    }
 
     public String getId() {
         return id;
@@ -90,104 +78,4 @@ public class HomeworkFileBean {
         this.uploadTime = uploadTime;
     }
 
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public String getTableName() {
-        return tableName;
-    }
-
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getTimeFrom() {
-        return timeFrom;
-    }
-
-    public void setTimeFrom(String timeFrom) {
-        this.timeFrom = timeFrom;
-    }
-
-    public String getTimeTo() {
-        return timeTo;
-    }
-
-    public void setTimeTo(String timeTo) {
-        this.timeTo = timeTo;
-    }
-
-    public String getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
-    }
-
-    public String getTimeInterval() {
-        return timeInterval;
-    }
-
-    public void setTimeInterval(String timeInterval) {
-        this.timeInterval = timeInterval;
-    }
-
-    public String getSortIndex() {
-        return sortIndex;
-    }
-
-    public void setSortIndex(String sortIndex) {
-        this.sortIndex = sortIndex;
-    }
-
-    public String getOrderBy() {
-        return orderBy;
-    }
-
-    public void setOrderBy(String orderBy) {
-        this.orderBy = orderBy;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    @Override
-    public String toString() {
-        return "FileBean{" +
-                "id='" + id + '\'' +
-                ", homeworkId='" + homeworkId + '\'' +
-                ", uploader_id='" + uploaderId + '\'' +
-                ", fileName='" + fileName + '\'' +
-                ", fileSize=" + fileSize +
-                ", uploadTime='" + uploadTime + '\'' +
-                ", action='" + action + '\'' +
-                ", tableName='" + tableName + '\'' +
-                ", type='" + type + '\'' +
-                ", timeFrom='" + timeFrom + '\'' +
-                ", timeTo='" + timeTo + '\'' +
-                ", groupId='" + groupId + '\'' +
-                ", timeInterval='" + timeInterval + '\'' +
-                ", sortIndex='" + sortIndex + '\'' +
-                ", orderBy='" + orderBy + '\'' +
-                '}';
-    }
 }

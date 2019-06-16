@@ -9,15 +9,8 @@
     <file url="file://$PROJECT_DIR$/src/com/iWen/survey/pager/PageControl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/iWen/survey/sql/ConnectionFactory.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/iWen/survey/sql/SQLCommand.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/clinic/pay/ServletAction.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/common/data_action.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/forum/file/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/investigation/dao/InvestigationDao.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/diary/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/document/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/file/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/project/investigation/ServletAction.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/statistic/ServletAction.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/interactive/classroom/servlets/StatisticServlet.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
