@@ -25,9 +25,9 @@ var Record = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record&type=all&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../file_core_servlet_action?action=get_all_files&type=all&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
-            if (json.result_code == 0) {
+            if (json.result_code === 0) {
                 Record.userId = json.user_id;
                 Record.userName = json.user_name;
                 Record.userRole = json.user_role;
@@ -44,18 +44,20 @@ var Record = function () {
         });
     };
     var viewRecord = function (id) {
-        window.location.href = "view.jsp?id=" + id + "&order_by=" + $("#sort_01").val();;
+        window.location.href = "file_detail.jsp?id=" + id + "&order_by=" + $("#sort_01").val();;
     };
     var deleteRecord = function (id) {
-        if (confirm("您确定要删除这条记录吗？")) {
+        if (confirm("您确定要删除这条记录文件吗？该操作将同时删除服务器中相应的文件！")) {
             if (id > -1) {
-                $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
+                $.post("../../file_core_servlet_action?action=delete_file&id=" + id, function (json) {
                     if (json.result_code === 0) {
                         var count = json.count;
                         var amount = json.amount;
                         initRecordList();
                         initRecordStyle();
-                        alert("已经从数据表删除该记录！");
+                        alert("操作成功！");
+                    } else {
+                        alert("操作失败！" + json.result_msg);
                     }
                 })
             }
@@ -63,12 +65,12 @@ var Record = function () {
     };
     var exportRecord = function () {
         if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\upload\\project\\export存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
-            window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
+            window.location.href = "../../file_core_servlet_action?action=export_files&exist_resultset=1";
         }
     };
-    var sortRecord1 = function (index, sortName) {
+    var sortFiles = function (index, sortName) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
-        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_record&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../file_core_servlet_action?action=get_all_files&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code === 0) {
                 Record.userId = json.user_id;
@@ -101,8 +103,8 @@ var Record = function () {
         exportRecord: function () {
             exportRecord();
         },
-        sortRecord1: function (index, sortName) {
-            sortRecord1(index, sortName);
+        sortFiles: function (index, sortName) {
+            sortFiles(index, sortName);
         },
         search: function () {
             search();
@@ -181,7 +183,7 @@ var Page = function () {
         });
     };
     var addRecord = function () {
-        window.location.href = "add.jsp";//sub + "_add.jsp";
+        window.location.href = "file_upload.jsp";//sub + "_add.jsp";
     }
     var showResult = function (json) {
         var title = "记录显示";
@@ -249,32 +251,32 @@ var Page = function () {
         Record.viewRecord(id);
     };
     var modifyRecord = function (id) {
-        window.location.href = "view.jsp?id=" + id;
+        window.location.href = "file_detail.jsp?id=" + id;
     };
     var searchRecord = function () {
-        window.location.href = "query.jsp";
+        window.location.href = "file_query.jsp";
     };
     var statisticRecord = function () {
         // window.location.href = "statistic.jsp";
         window.location.href = "../../base/statistic/statistic_query.jsp?table_name=file_manage";
     }
     var layoutRecord = function () {
-        if (layout == 1)
+        if (layout === 1)
             window.location.href = "record_list.jsp";
-        if (layout == 2)
+        if (layout === 2)
             window.location.href = "list.jsp";
     }
     var printRecord = function () {
         // window.location.href = "print.jsp?exist_resultset=1";
         window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
     };
-    var sortRecord = function (index) {
+    var sortFiles = function (index) {
         var sortName = $("#sort_01").val();
         // if (index === 1) sortName = $("#sort_01").val();
         // if (index === 2) sortName = $("#sort_01").val() + "," + $("#sort_02").val();
         // if (index === 3) sortName = $("#sort_01").val() + "," + $("#sort_02").val() + "," + $("#sort_03").val();
         console.log(sortName);
-        Record.sortRecord1(index, sortName);
+        Record.sortFiles(index, sortName);
     };
     var confirmBack = function () {
         DraggableDialog.setId("confirm_back");
@@ -336,8 +338,8 @@ var Page = function () {
         layoutRecord: function () {
             layoutRecord();
         },
-        sortRecord: function (index) {
-            sortRecord(index);
+        sortFiles: function (index) {
+            sortFiles(index);
         },
         confirmBack: function () {
             confirmBack();

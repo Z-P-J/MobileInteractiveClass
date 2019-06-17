@@ -93,8 +93,8 @@ Set the animation used by the `attention` method. Any animation in [animate.css]
 + **modalOverflow**
 Set this property to true for modals with highly dynamic content. This will force the modal to behave as if it is larger than the viewport.
 
-+ **manager**
-Set the modal's manager. By default this is set to the `GlobalModalManager` and will most likely not need to be overridden.
++ **userType**
+Set the modal's userType. By default this is set to the `GlobalModalManager` and will most likely not need to be overridden.
 
 **ModalManager**
 

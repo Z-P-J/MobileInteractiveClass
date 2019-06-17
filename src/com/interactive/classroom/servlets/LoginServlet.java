@@ -1,11 +1,13 @@
 package com.interactive.classroom.servlets;
 
+import com.interactive.classroom.constant.ActionType;
 import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.bean.UserBean;
 import com.interactive.classroom.constant.UserType;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.UserDao;
 import com.interactive.classroom.utils.TimeUtil;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,29 +46,25 @@ public class LoginServlet extends BaseHttpServlet {
 
     @Override
     protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
-        if (LoginActionName.LOG_IN.getName().equals(action)) {
-            login(request, response);
-        } else if (LoginActionName.SIGN_UP.getName().equals(action)) {
-            addRecord(request, response);
-        } else if (LoginActionName.CHECK_USER_NAME.getName().equals(action)) {
-            String userName = request.getParameter("user_name");
-            UserDao dao = DaoFactory.getUserDao();
-            UserBean bean = dao.getUserByUserName(userName);
-            response.setContentType("application/json; charset=UTF-8");
-            try {
+        try {
+            if (ActionType.ACTION_LOG_IN.equals(action)) {
+                login(request, response);
+            } else if (ActionType.ACTION_SIGN_UP.equals(action)) {
+                signUp(request, response);
+            } else if (ActionType.ACTION_CHECK_USER_NAME.equals(action)) {
+                String userName = request.getParameter("user_name");
+                UserDao dao = DaoFactory.getUserDao();
+                UserBean bean = dao.getUserByUserName(userName);
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("valid_user_name", bean == null ? "true" : "false");
-                PrintWriter out = response.getWriter();
-                out.print(jsonObject.toString());
-                out.flush();
-                out.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+                responseByJson(response, jsonObject);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    private void login(HttpServletRequest request, HttpServletResponse response) {
+    private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String password = request.getParameter("user_password");
         UserDao dao = DaoFactory.getUserDao();
         UserBean user = dao.getUserByUserName(request.getParameter("user_name"));
@@ -76,35 +74,21 @@ public class LoginServlet extends BaseHttpServlet {
                 wrapSession(session, user);
             }
         }
-        try {
-            response.sendRedirect("index.jsp");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        response.sendRedirect("index.jsp");
     }
 
-    public void addRecord(HttpServletRequest request, HttpServletResponse response) {
-
+    private void signUp(HttpServletRequest request, HttpServletResponse response) {
         UserDao userDao = DaoFactory.getUserDao();
         UserBean bean = new UserBean();
-        String userName = request.getParameter("register_user_name");
-        String password = request.getParameter("register_password");
-        String name = request.getParameter("register_full_name");
-        System.out.println("name=" + name);
-        String studentNum = request.getParameter("register_student_num");
-        String email = request.getParameter("register_email");
-        String userType = request.getParameter("register_user_type");
-        System.out.println("userType=" + userType);
-        String registerDate = TimeUtil.currentDate();
-        bean.setUserName(userName);
-        bean.setPassword(password);
-        bean.setName(name);
+        bean.setUserName(request.getParameter("register_user_name"));
+        bean.setPassword(request.getParameter("register_password"));
+        bean.setName(request.getParameter("register_full_name"));
+        bean.setEmail(request.getParameter("register_email"));
+        bean.setRegisterDate(TimeUtil.currentDate());
+        bean.setUserType(request.getParameter("register_user_type"));
         if (UserType.STUDENT.equals(userType)) {
-            bean.setStudentNum(studentNum);
+            bean.setStudentNum(request.getParameter("register_student_num"));
         }
-        bean.setEmail(email);
-        bean.setCreateTime(registerDate);
-        bean.setUserRole(userType);
 
         try {
             int id = userDao.registerUser(bean);
@@ -130,15 +114,15 @@ public class LoginServlet extends BaseHttpServlet {
         session.setAttribute("sex", user.getSex());
         session.setAttribute("email", user.getEmail());
         session.setAttribute("phone", user.getPhone());
-        session.setAttribute("user_role", user.getUserRole());
-        session.setAttribute("wechat", user.getWechat());
+        session.setAttribute("user_role", user.getUserType());
+        session.setAttribute("wechat", user.getWeChat());
         session.setAttribute("grade", user.getGrade());
-        session.setAttribute("class", user.getClassStr());
+        session.setAttribute("class", user.getClassName());
         session.setAttribute("faculty", user.getFaculty());
-        if (UserType.STUDENT.equals(user.getUserRole())) {
+        if (UserType.STUDENT.equals(user.getUserType())) {
             session.setAttribute("student_num", user.getStudentNum());
         }
-        session.setAttribute("register_date", user.getCreateTime());
+        session.setAttribute("register_date", user.getRegisterDate());
         session.setAttribute("user_avatar", "assets/module/img/security/user/avatar.jpg");
     }
 

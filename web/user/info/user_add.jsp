@@ -178,5 +178,5 @@
         src="../../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE SCRIPTS -->
-<script type="text/javascript" src="../../assets/module/scripts/user/info/info_add.js"></script>
+<script type="text/javascript" src="../../assets/module/scripts/user/user_add.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

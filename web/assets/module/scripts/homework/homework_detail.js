@@ -53,74 +53,24 @@ jQuery(document).ready(function () {
 });
 /*================================================================================*/
 var Record = function () {
-    var userId = undefined;
-    var userName = undefined;
-    var userRole = undefined;
-    var userAvatar = undefined;
-    var initRecordStyle = function () {
-    };
-    var initRecordList = function () {
-        getRecord();
-        getRecord2()
-    };
-    var getRecord = function () {
-        Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
+    var init = function () {
         var homeworkId = $("#homework_id").val();
-        var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_uploaded_files&type=all&homework_id=" + homeworkId + "&exist_resultset=" + existResultset;
-        $.post(url, function (json) {
-            if (json.result_code == 0) {
-                Record.userId = json.user_id;
-                Record.userName = json.user_name;
-                Record.userRole = json.user_role;
-                Record.userAvatar = json.user_avatar;
-                Page.showResult(json);
-            } else {
-                if (Page != null) {
-                    Page.processError(json);
-                }
-            }
-            Metronic.stopPageLoading();	//停止等待动画
-        }).error(function (xhr, errorText, errorType) {
-            alert('错误信息：' + errorText + ",错误类型：" + errorType);
-        });
-    };
-    var getRecord2 = function () {
-        var homeworkId = $("#homework_id").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homework_detail&homework_id=" + homeworkId + "&exist_resultset=1";
+        var sortName = $("#sort_01").val();
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homework_detail&homework_id=" + homeworkId + "&order_by=" + sortName;
         getHomeworkDetail(url);
     };
-
     var getHomeworkDetail = function (url) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         console.log(url);
         $.post(url, function (json) {
-            if (json.result_code == 0) {
-                Record.userId = json.user_id;
-                Record.userName = json.user_name;
-                Record.firstId = json.first;
-                Record.prevId = json.prev;
-                Record.nextId = json.next;
-                Record.lastId = json.last;
-                Record.totalCount = json.total;
-                Record.currentId = json.current_index;
+            if (json.result_code === 0) {
                 var list = json.aaData;
 
                 for (var i = 0; i < list.length; i++) {
-                    var id = list[i][0];
-                    var image = "../../assets/module/img/public/wkbj.jpg";
-                    var fileId = list[i][1];
-                    var uploaderId = list[i][2];
-                    var fileName = list[i][3];
-                    $("#homework_detail_title").html(fileName);
-                    var fileSize = list[i][4];
-                    var uploadTime = list[i][5];
-                    var downloadLink = list[i][6];
-                    var deadline = list[i][7];
-                    var homeworkRequirment = list[i][8];
-                    var fileFormat = list[i][9];
-                    var me = list[i][10];
-                    var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), deadline);
+                    var homework = list[i];
+                    var title =  homework.homework_title;
+                    $("#homework_detail_title").html(title);
+                    var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), homework.deadline);
                     var state = "";
                     if (flag) {
                         state = "已截止";
@@ -129,14 +79,16 @@ var Record = function () {
                     }
 
                     var html = "";
-                    html = html + "																<span>作业标题：" + fileName + "</span><p>";
-                    html = html + "																<span>作业要求:" + homeworkRequirment + "</span><p>";
-                    html = html + "																<span>上传文件格式要求:" + fileFormat + "</span><p>";
-                    html = html + "																<span>上传时间：" + uploadTime + "</span><p>";
-                    html = html + "																<span>截止时间:<h id='deadline'>" + deadline + "</h></span><p>";
+                    html = html + "																<span>作业标题：" + title + "</span><p>";
+                    html = html + "																<span>作业要求:" + homework.homework_requirement + "</span><p>";
+                    html = html + "																<span>上传文件格式要求:" + homework.file_name_format + "</span><p>";
+                    html = html + "																<span>上传时间：" + homework.publish_time + "</span><p>";
+                    html = html + "																<span>截止时间:<h id='deadline'>" + homework.deadline + "</h></span><p>";
                     html = html + "																<span>状态:" + state + "</span><p>";
 
                     $("#homework_detail_div").html(html);
+
+                    Page.showRecordList(homework.file_list);
                 }
             } else {
                 if (Page != null) {
@@ -148,18 +100,19 @@ var Record = function () {
             alert('错误信息：' + errorText + ",错误类型：" + errorType);
         });
     };
-    var viewRecord = function (id) {
-        window.location.href = "view.jsp?id=" + id + "&exist_resultset=1";
+    var viewFile = function (id) {
+        var homeworkId = $("#homework_id").val();
+        var orderBy = $("#sort_01").val();
+        window.location.href = "../../file/core/view.jsp?homework_id=" + homeworkId + "&id=" + id + "&order_by=" + orderBy;
     };
-    var deleteRecord = function (id) {
+    var deleteFile = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
-                $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_file_record&id=" + id, function (json) {
-                    if (json.result_code == 0) {
+                $.post("../../file_core_servlet_action?action=delete_file&id=" + id, function (json) {
+                    if (json.result_code === 0) {
                         var count = json.count;
                         var amount = json.amount;
                         initRecordList();
-                        initRecordStyle();
                         alert("已经从数据表删除该记录！");
                         $("#has_upload").val("0");
                     }
@@ -167,23 +120,18 @@ var Record = function () {
             }
         }
     };
-    var sortRecord1 = function (index, sortName) {
-        // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
+    var sortFiles = function (index, sortName) {
         console.log("sortName=" + sortName);
-        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_uploaded_files&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        var homeworkId = $("#homework_id").val();
+        $.post("../../file_core_servlet_action?action=get_all_files&homework_id=" + homeworkId + "&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
-            if (json.result_code == 0) {
-                Record.userId = json.user_id;
-                Record.userName = json.user_name;
-                Record.userRole = json.user_role;
-                Record.userAvatar = json.user_avatar;
-                Page.showResult(json);
+            if (json.result_code === 0) {
+                Page.showRecordList(json.aaData);
             } else {
                 if (Page != null) {
                     Page.processError(json);
                 }
             }
-            // Metronic.stopPageLoading();	//停止等待动画
         });
     };
     var search = function () {
@@ -191,17 +139,16 @@ var Record = function () {
     };
     return {
         init: function () {
-            initRecordList();
-            initRecordStyle();
+            init();
         },
-        deleteRecord: function (id) {
-            deleteRecord(id);
+        deleteFile: function (id) {
+            deleteFile(id);
         },
-        viewRecord: function (id) {
-            viewRecord(id);
+        viewFile: function (id) {
+            viewFile(id);
         },
-        sortRecord1: function (index, sortName) {
-            sortRecord1(index, sortName);
+        sortFiles: function (index, sortName) {
+            sortFiles(index, sortName);
         },
         search: function () {
             search();
@@ -398,18 +345,19 @@ var Page = function () {
     var addRecord = function () {
         window.location.href = "add.jsp";//sub + "_add.jsp";
     }
-    var showResult = function (json) {
-        var title = "记录显示";
-        if ($("#title_div")) $("#title_div").html(title);
-        if (json != null) {
-            var list = json.aaData;
-            // var tip = "当前查询到了 " + list.length + " 条记录";
-            // if ($("#tip_div")) $("#tip_div").html(tip);
-            // if ($("#record_list_tip")) $("#record_list_tip").html("已提交的作业");
-            showRecordList(list);
-        }
-    };
+    // var showResult = function (json) {
+    //
+    //     if (json != null) {
+    //         var list = json.aaData;
+    //         // var tip = "当前查询到了 " + list.length + " 条记录";
+    //         // if ($("#tip_div")) $("#tip_div").html(tip);
+    //         // if ($("#record_list_tip")) $("#record_list_tip").html("已提交的作业");
+    //         showRecordList(list);
+    //     }
+    // };
     var showRecordList = function (list) {
+        var title = "记录显示";
+        $("#title_div").html(title);
         html = "													<div><span id=\"tip_div\"></span>";
         for (var i = 0; i < list.length; i++) {
             showRecord(list[i]);
@@ -456,14 +404,13 @@ var Page = function () {
             Frame.showMsg("名称不能为空！");
             bOk = false;
         }
-        ;
         return bOk;
     };
     var deleteRecord = function (id) {
-        Record.deleteRecord(id);
+        Record.deleteFile(id);
     };
     var viewRecord = function (id) {
-        Record.viewRecord(id);
+        Record.viewFile(id);
     };
     var modifyRecord = function (id) {
         window.location.href = "view.jsp?id=" + id;
@@ -483,15 +430,12 @@ var Page = function () {
     }
     var printRecord = function () {
         // window.location.href = "print.jsp?exist_resultset=1";
-        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
+        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result";
     };
     var sortRecord = function (index) {
         var sortName = $("#sort_01").val();
-        if (index == 1) sortName = $("#sort_01").val();
-        if (index == 2) sortName = $("#sort_01").val() + "," + $("#sort_02").val();
-        if (index == 3) sortName = $("#sort_01").val() + "," + $("#sort_02").val() + "," + $("#sort_03").val();
         console.log(sortName);
-        Record.sortRecord1(index, sortName);
+        Record.sortFiles(index, sortName);
     };
     var confirmBack = function () {
         DraggableDialog.setId("confirm_back");
@@ -513,9 +457,6 @@ var Page = function () {
         },
         processError: function (json) {
             processError(json);
-        },
-        showResult: function (json) {
-            showResult(json);
         },
         showRecordList: function (list) {
             showRecordList(list);

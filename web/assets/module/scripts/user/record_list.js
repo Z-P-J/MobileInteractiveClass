@@ -42,7 +42,7 @@ var Record = function () {
                     "sortAscending": ": activate to sort column ascending",
                     "sortDescending": ": activate to sort column descending"
                 },
-                "sProcessing": "<img src='../../../../../assets/module/img/public/loading.gif' />处理中...",
+                "sProcessing": "<img src='../../img/public/loading.gif' />处理中...",
                 "sLengthMenu": "_MENU_ 学生信息/页",
                 "sZeroRecords": "<span style='color:red;'>没有找到对应的学生信息！</span>",
                 "sInfo": "显示第 _START_ 至 _END_ 项学生信息，共 _TOTAL_ 项",
@@ -236,7 +236,7 @@ var Record = function () {
     var processModifyRecordResult = function (data) {
         var json = eval("(" + data + ")");
         if (checkSession(json)) {
-            window.location = "../../home/main/login.jsp";
+            window.location = "../../../../home/main/login.jsp";
         }
         if (json.result_code == 0) {
             window.location.reload();
@@ -329,13 +329,13 @@ var Page = function () {
         if (layout == 1)
             window.location.href = "record_list.jsp";
         if (layout == 2)
-            window.location.href = "info_list.jsp";
+            window.location.href = "user_list.jsp";
     }
     var processError = function (json) {
         Frame.processError(json);
     };
     var searchRecord = function () {
-        window.location.href = "info_query.jsp";
+        window.location.href = "user_query.jsp";
     };
     return {
         init: function () {

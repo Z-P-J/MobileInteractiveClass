@@ -14,9 +14,9 @@ public final class TextUtil {
      */
     public static boolean isEmpty(String str) {
         if (str == null) {
-            return false;
+            return true;
         }
-        return !str.isEmpty();
+        return str.isEmpty();
     }
 
 }

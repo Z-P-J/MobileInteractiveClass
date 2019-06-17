@@ -73,7 +73,7 @@ public abstract class BaseHttpServlet extends HttpServlet {
         }
     }
 
-    protected abstract void handleAction(HttpServletRequest request, HttpServletResponse response, String action);
+    protected abstract void handleAction(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException;
 
     /**
      * errorNo=0->没有错误
@@ -152,7 +152,11 @@ public abstract class BaseHttpServlet extends HttpServlet {
                 e.printStackTrace();
             }
         } else {
-            responseByJson(response, jsonObject);
+            try {
+                responseByJson(response, jsonObject);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -166,8 +170,31 @@ public abstract class BaseHttpServlet extends HttpServlet {
         onEnd(request, response, jsonObj, "base/export/export_result.jsp", "操作已经执行，请按返回按钮返回列表页面！", 0, "record_list.jsp");
     }
 
-    private void responseByJson(HttpServletResponse response, JSONObject jsonObject) {
+    protected void onSuccess(HttpServletResponse response) throws JSONException {
+        responseByJson(response, getSuccessJsonObject());
+    }
+
+    protected void onSuccess(HttpServletResponse response, JSONObject jsonObj) throws JSONException {
+        jsonObj.put("result_code", 0);
+        jsonObj.put("result_msg", "ok");
+        responseByJson(response, jsonObj);
+    }
+
+    protected void onError(HttpServletResponse response, String errMsg) throws JSONException {
+        responseByJson(response, getErrorJsonObject(errMsg));
+    }
+
+    protected void onError(HttpServletResponse response, JSONObject jsonObj, String errMsg) throws JSONException {
+        jsonObj.put("result_code", 10);
+        jsonObj.put("result_msg", errMsg);
+        responseByJson(response, jsonObj);
+    }
+
+    protected void responseByJson(HttpServletResponse response, JSONObject jsonObject) throws JSONException {
         response.setContentType("application/json; charset=UTF-8");
+        if (jsonObject == null) {
+            jsonObject = getErrorJsonObject("JsonObject is null!");
+        }
         try {
             jsonObject.put("user_id", userId);
             jsonObject.put("user_name", userName);

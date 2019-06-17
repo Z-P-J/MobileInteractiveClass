@@ -114,5 +114,5 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE SCRIPTS -->
-<script type="text/javascript" src="../../assets/module/scripts/user/info/record_list.js"></script>
+<script type="text/javascript" src="../../assets/module/scripts/user/record_list.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

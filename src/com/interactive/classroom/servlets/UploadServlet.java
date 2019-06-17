@@ -5,7 +5,7 @@ import com.interactive.classroom.bean.FileBean;
 import com.interactive.classroom.constant.ActionType;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.utils.Log;
-import com.interactive.classroom.utils.ProgressSingleton;
+import com.interactive.classroom.utils.ServletUtil;
 import com.interactive.classroom.utils.TimeUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -15,12 +15,12 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Z-P-J
@@ -28,9 +28,10 @@ import java.util.List;
 public class UploadServlet extends BaseHttpServlet {
 
     /**
-     * 上传文件存储目录
+     * 使用Map<String, Long>装文件上传进度（String：上传文件名 LONG：上传进度）
+     * ConcurrentHashMap在一定程度上保证线程安全
      */
-    private static final String UPLOAD_DIRECTORY = "upload";
+    private static final ConcurrentHashMap<String, Long> PROGRESS_MAP = new ConcurrentHashMap<>();
 
     /**
      * 上传配置
@@ -51,15 +52,12 @@ public class UploadServlet extends BaseHttpServlet {
     private void uploadFile(HttpServletRequest request, HttpServletResponse response) {
         String from = request.getParameter("from");
         Log.d(getClass().getName(), "from=" + from);
-        HttpSession session = request.getSession();
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
         String fileName = request.getParameter("rename_to");
         Log.d(getClass().getName(), "fileName=" + fileName);
 
         System.out.println(request.getMethod());
         //检查是否为post请求以及是否为多媒体上传
-        ProgressSingleton.put(fileName + "_progress", 0L);
+        PROGRESS_MAP.put(fileName + "_progress", 0L);
         if ("POST".equalsIgnoreCase(request.getMethod()) && ServletFileUpload.isMultipartContent(request)) {
             System.out.println("--------------------post-------------------------");
             //配置上传参数
@@ -76,7 +74,7 @@ public class UploadServlet extends BaseHttpServlet {
             //中文处理
             upload.setHeaderEncoding("UTF-8");
 
-            String uploadPath = getServletContext().getRealPath("/") + File.separator + UPLOAD_DIRECTORY;
+            String uploadPath = ServletUtil.getUploadPath(this);
             File file = new File(uploadPath);
             if (!file.exists()) {
                 file.mkdirs();
@@ -94,26 +92,20 @@ public class UploadServlet extends BaseHttpServlet {
                     System.out.println("2222222222222222222222222222");
                     for (FileItem fileItem : fileItems) {
                         //处理不在表单中的字段
+                        Log.d(getClass().getName(), "fileItem size=" + fileItem.getSize());
+                        Log.d(getClass().getName(), "fileItem size=" + fileItem.getName());
+                        Log.d(getClass().getName(), "fileItem size=" + fileItem.isFormField());
+
                         if (!fileItem.isFormField()) {
                             System.out.println("333333333333333333333333333333333");
-
-//                            if (renameTo != null && !renameTo.isEmpty()) {
-//                                fileName = renameTo;
-//                            } else {
-//                                fileName = new File(fileItem.getName()).getName();
-//                            }
                             long fileSize = fileItem.getSize();
-                            ProgressSingleton.put(fileName + "_size", fileSize);
+                            PROGRESS_MAP.put(fileName + "_size", fileSize);
                             Log.d(getClass().getName(), "key=" + (fileName + "_size"));
                             Log.d(getClass().getName(), "size=" + fileItem.getSize());
-                            String filePath = uploadPath + File.separator + fileName;
-
+                            String filePath = uploadPath + fileName;
 
                             System.out.println(filePath);
                             File storeFile = new File(filePath);
-//                            fileItem.write(storeFile);
-
-
                             long progress = 0;
                             //用流的方式读取文件，以便可以实时的获取进度
                             InputStream in = fileItem.getInputStream();
@@ -124,16 +116,14 @@ public class UploadServlet extends BaseHttpServlet {
                             while ((readNumber = in.read(buffer)) != -1) {
                                 //每读取一次，更新一次进度大小
                                 progress = progress + readNumber;
-                                //向单例哈希表写入进度
-                                ProgressSingleton.put(fileName + "_progress", progress);
+                                //向单例Map写入进度
+                                PROGRESS_MAP.put(fileName + "_progress", progress);
                                 Log.d(getClass().getName(), "key=" + (fileName + "_progress"));
                                 Log.d(getClass().getName(), "progress=" + progress);
                                 out.write(buffer);
                             }
                             //当文件上传完成之后，从单例中移除此次上传的状态信息
-//                            ProgressSingleton.remove(fileName + "_size");
-//                            ProgressSingleton.remove(fileName + "_progress");
-                            ProgressSingleton.put(fileName + "_progress", fileSize);
+                            PROGRESS_MAP.put(fileName + "_progress", fileSize);
                             in.close();
                             out.close();
 
@@ -159,7 +149,7 @@ public class UploadServlet extends BaseHttpServlet {
                 request.setAttribute("message", "出错了！" + e.getMessage());
             }
         }
-        ProgressSingleton.put(fileName + "_progress", -1L);
+        PROGRESS_MAP.put(fileName + "_progress", -1L);
     }
 
     private void getUploadProgress(HttpServletRequest request, HttpServletResponse response) {
@@ -168,9 +158,9 @@ public class UploadServlet extends BaseHttpServlet {
         Log.d(getClass().getName(), "filename=" + filename);
         //使用sessionid + 文件名生成文件号，与上传的文件保持一致
 //        id = id + filename;
-        long size = ProgressSingleton.get(filename + "_size");
+        long size = PROGRESS_MAP.get(filename + "_size");
 //        size = size == null ? 100 : size;
-        long progress = ProgressSingleton.get(filename + "_progress");
+        long progress = PROGRESS_MAP.get(filename + "_progress");
 //        progress = progress == null ? 0 : progress;
         JSONObject json = new JSONObject();
         try {

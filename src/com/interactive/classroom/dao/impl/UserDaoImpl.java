@@ -2,8 +2,12 @@ package com.interactive.classroom.dao.impl;
 
 import com.interactive.classroom.bean.UserBean;
 import com.interactive.classroom.dao.UserDao;
+import com.interactive.classroom.dao.filters.UserFilter;
 import com.interactive.classroom.utils.DatabaseHelper;
+import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.TimeUtil;
+import org.apache.struts2.json.annotations.JSON;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,60 +21,95 @@ import java.util.List;
  */
 public final class UserDaoImpl implements UserDao {
 
-    @Override
-    public List<UserBean> getAllUsers(UserBean bean) {
-        return findUsers("");
-    }
+//    @Override
+//    public List<UserBean> getAllUsers(UserBean bean) {
+//        return findUsers("");
+//    }
+//
+//    @Override
+//    public List<UserBean> getAllStudents(UserBean bean) {
+//        return findUsers("");
+//    }
+//
+//    @Override
+//    public List<UserBean> getAllTeachers(UserBean bean) {
+//        return findUsers("");
+//    }
 
     @Override
-    public List<UserBean> getAllStudents(UserBean bean) {
-        return findUsers("");
-    }
-
-    @Override
-    public List<UserBean> getAllTeachers(UserBean bean) {
-        return findUsers("");
-    }
-
-    @Override
-    public JSONObject getRecord(UserBean query) throws SQLException, JSONException {
+    public JSONObject queryUsers(UserFilter filter) throws SQLException, JSONException {
         String resultMsg = "ok";
         int resultCode = 0;
-        List<List<String>> jsonList = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
         try {
-            String sql = createGetRecordSql(query);
-            //做上下记录导航用
-            int count = 0;
+            String sql = filter.getQuerySql(TABLE_NAME);
             System.out.println("UserDao--getRecord--sql=" + sql);
             ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
-                List<String> list = new ArrayList<>();
+                JSONObject jsonObj = new JSONObject();
                 for (String label : LABELS) {
-                    list.add(rs.getString(label));
+                    jsonObj.put(label, rs.getString(label));
                 }
-                if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
-                    list.add("1");
+                if (filter.getUserId() != null && filter.getUserId().equals(rs.getString("id"))) {
+                    jsonObj.put("isOwner", 1);
                 } else {
-                    list.add("0");
+                    jsonObj.put("isOwner", 0);
                 }
-                list.add(count + "");
-                count = count + 1;
-                jsonList.add(list);
+                jsonArray.put(jsonObj);
             }
             rs.close();
-
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
             resultCode = 10;
             resultMsg = "查询数据库出现错误！" + sqlexception.getMessage();
         }
         JSONObject jsonObj = new JSONObject();
-        jsonObj.put("aaData", jsonList);
+        jsonObj.put("aaData", jsonArray);
         DatabaseHelper.putTableColumnNames(LABELS_CH, jsonObj);
         jsonObj.put("result_msg", resultMsg);
         jsonObj.put("result_code", resultCode);
         return jsonObj;
     }
+
+//    @Override
+//    public JSONObject getRecord(UserBean query) throws SQLException, JSONException {
+//        String resultMsg = "ok";
+//        int resultCode = 0;
+//        List<List<String>> jsonList = new ArrayList<>();
+//        try {
+//            String sql = createGetRecordSql(query);
+//            //做上下记录导航用
+//            int count = 0;
+//            System.out.println("UserDao--getRecord--sql=" + sql);
+//            ResultSet rs = DatabaseHelper.executeQuery(sql);
+//            while (rs.next()) {
+//                List<String> list = new ArrayList<>();
+//                for (String label : LABELS) {
+//                    list.add(rs.getString(label));
+//                }
+//                if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
+//                    list.add("1");
+//                } else {
+//                    list.add("0");
+//                }
+//                list.add(count + "");
+//                count = count + 1;
+//                jsonList.add(list);
+//            }
+//            rs.close();
+//
+//        } catch (SQLException sqlexception) {
+//            sqlexception.printStackTrace();
+//            resultCode = 10;
+//            resultMsg = "查询数据库出现错误！" + sqlexception.getMessage();
+//        }
+//        JSONObject jsonObj = new JSONObject();
+//        jsonObj.put("aaData", jsonList);
+//        DatabaseHelper.putTableColumnNames(LABELS_CH, jsonObj);
+//        jsonObj.put("result_msg", resultMsg);
+//        jsonObj.put("result_code", resultCode);
+//        return jsonObj;
+//    }
 
     @Override
     public UserBean getUserByUserName(String username) {
@@ -90,13 +129,13 @@ public final class UserDaoImpl implements UserDao {
                 + user.getName() + "','"
                 + user.getSex() + "','"
                 + user.getEmail() + "','"
-                + user.getWechat() + "','"
+                + user.getWeChat() + "','"
                 + user.getGrade() + "','"
-                + user.getClassStr() + "','"
+                + user.getClassName() + "','"
                 + user.getStudentNum() + "','"
                 + user.getFaculty() + "','"
                 + TimeUtil.currentDate() + "','"
-                + user.getUserRole() + "')";
+                + user.getUserType() + "')";
         return DatabaseHelper.executeUpdateAndGetId(sql);
     }
 
@@ -129,61 +168,63 @@ public final class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean updateUser(UserBean user) {
+    public JSONObject updateUser(UserBean user) throws JSONException {
         String sql = "update " + TABLE_NAME
                 + " set user_name='" + user.getUserName()
 //                    + "',name='" + info.getName()
                 + "',sex='" + user.getSex()
                 + "',email='" + user.getEmail()
                 + "',phone='" + user.getPhone()
-                + "',wechat='" + user.getWechat()
+                + "',wechat='" + user.getWeChat()
                 + "',grade='" + user.getGrade()
                 + "',student_num='" + user.getStudentNum()
                 + "',faculty='" + user.getFaculty()
                 + "' where name='" + user.getName() + "'";
         DatabaseHelper.executeUpdate(sql);
-        return true;
-    }
-
-    @Override
-    public JSONObject modifyRecord(UserBean info) throws JSONException {
-        String resultMsg = "ok";
-        int resultCode = 0;
-        List<List<String>> jsonList = new ArrayList<>();
-        try {
-            String sql = "update " + TABLE_NAME
-                    + " set user_name='" + info.getUserName()
-                    + "',sex='" + info.getSex()
-                    + "',email='" + info.getEmail()
-                    + "',phone='" + info.getPhone()
-                    + "',wechat='" + info.getWechat()
-                    + "',grade='" + info.getGrade()
-                    + "',student_num='" + info.getStudentNum()
-                    + "',faculty='" + info.getFaculty()
-                    + "' where name='" + info.getName() + "'";
-            DatabaseHelper.executeUpdate(sql);
-            sql = "select * from " + TABLE_NAME + " order by register_date desc";
-            ResultSet rs = DatabaseHelper.executeQuery(sql);
-            while (rs.next()) {
-                List<String> list = new ArrayList<>();
-                list.add(rs.getString("id"));
-                list.add(rs.getString("content"));
-                jsonList.add(list);
-            }
-            rs.close();
-
-        } catch (SQLException sqlexception) {
-            sqlexception.printStackTrace();
-            resultCode = 10;
-            resultMsg = "查询数据库出现错误！" + sqlexception.getMessage();
-        }
         JSONObject jsonObj = new JSONObject();
-        jsonObj.put("aaData", jsonList);
-        jsonObj.put("action", info.getAction());
-        jsonObj.put("result_msg", resultMsg);
-        jsonObj.put("result_code", resultCode);
+        jsonObj.put("result_msg", "ok");
+        jsonObj.put("result_code", 0);
         return jsonObj;
     }
+
+
+//    public JSONObject modifyRecord(UserBean info) throws JSONException {
+//        String resultMsg = "ok";
+//        int resultCode = 0;
+//        List<List<String>> jsonList = new ArrayList<>();
+//        try {
+//            String sql = "update " + TABLE_NAME
+//                    + " set user_name='" + info.getUserName()
+//                    + "',sex='" + info.getSex()
+//                    + "',email='" + info.getEmail()
+//                    + "',phone='" + info.getPhone()
+//                    + "',wechat='" + info.getWeChat()
+//                    + "',grade='" + info.getGrade()
+//                    + "',student_num='" + info.getStudentNum()
+//                    + "',faculty='" + info.getFaculty()
+//                    + "' where name='" + info.getName() + "'";
+//            DatabaseHelper.executeUpdate(sql);
+//            sql = "select * from " + TABLE_NAME + " order by register_date desc";
+//            ResultSet rs = DatabaseHelper.executeQuery(sql);
+//            while (rs.next()) {
+//                List<String> list = new ArrayList<>();
+//                list.add(rs.getString("id"));
+//                list.add(rs.getString("content"));
+//                jsonList.add(list);
+//            }
+//            rs.close();
+//
+//        } catch (SQLException sqlexception) {
+//            sqlexception.printStackTrace();
+//            resultCode = 10;
+//            resultMsg = "查询数据库出现错误！" + sqlexception.getMessage();
+//        }
+//        JSONObject jsonObj = new JSONObject();
+//        jsonObj.put("aaData", jsonList);
+//        jsonObj.put("result_msg", resultMsg);
+//        jsonObj.put("result_code", resultCode);
+//        return jsonObj;
+//    }
 
 
     private List<UserBean> findUsers(String where) {
@@ -203,13 +244,13 @@ public final class UserDaoImpl implements UserDao {
                 user.setSex(rs.getString("sex"));
                 user.setEmail(rs.getString("email"));
                 user.setPhone(rs.getString("phone"));
-                user.setUserRole(rs.getString("user_type"));
-                user.setWechat(rs.getString("wechat"));
+                user.setUserType(rs.getString("user_type"));
+                user.setWeChat(rs.getString("wechat"));
                 user.setGrade(rs.getString("grade"));
-                user.setClassStr(rs.getString("class"));
+                user.setClassName(rs.getString("class"));
                 user.setFaculty(rs.getString("faculty"));
                 user.setStudentNum(rs.getString("student_num"));
-                user.setCreateTime(rs.getString("register_date"));
+                user.setRegisterDate(rs.getString("register_date"));
                 userList.add(user);
             }
         } catch (Exception e) {
@@ -226,52 +267,52 @@ public final class UserDaoImpl implements UserDao {
         return null;
     }
 
-    private String createGetRecordSql(UserBean query) {
-        String sql = "select * from " + TABLE_NAME;
-        String where = "";
-//        if (query.getId() != null && !query.getId().equals("null")) {
-//            where = "where id=" + query.getId();
+//    private String createGetRecordSql(UserBean query) {
+//        String sql = "select * from " + TABLE_NAME;
+//        String where = "";
+////        if (query.getId() != null && !query.getId().equals("null")) {
+////            where = "where id=" + query.getId();
+////        }
+//        if (query.getTitle() != null && !query.getTitle().equals("null") && !query.getTitle().isEmpty()) {
+//            if (!where.isEmpty()) {
+//                where = where + " and name like '%" + query.getTitle() + "%'";
+//            } else {
+//                where = "where name like '%" + query.getTitle() + "%'";
+//            }
 //        }
-        if (query.getTitle() != null && !query.getTitle().equals("null") && !query.getTitle().isEmpty()) {
-            if (!where.isEmpty()) {
-                where = where + " and name like '%" + query.getTitle() + "%'";
-            } else {
-                where = "where name like '%" + query.getTitle() + "%'";
-            }
-        }
-        if (query.getTimeFrom() != null && query.getTimeTo() != null && !query.getTimeFrom().isEmpty()) {
-            if (!where.isEmpty()) {
-                where = where + " and register_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
-            } else {
-                where = "where register_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
-            }
-        }
-
-
-        String orderBy = "";
-        if ((query.getSortIndex() != null) && (!query.getSortIndex().equals("null"))) {
-            if (query.getOrderBy() != null) {
-                orderBy = " order by " + query.getOrderBy();
-                System.out.println("---------------------------------orderBy:" + orderBy);
-            }
-        }
-
-        if (query.getType() != null && query.getType().equals("all") && query.getUserRole().equals("manager")) {
-            sql = "select * from " + TABLE_NAME + " order by register_date desc";
-        } else {
-            if (query.getId() != null && !query.getId().equals("null")) {
-                sql = "select * from " + TABLE_NAME + " where id=" + query.getId();
-            } else {
-                if (where.isEmpty()) {
-                    sql = "select * from " + TABLE_NAME + " " + orderBy;
-//                    sql = "select * from " + query.getTableName() + " where user_id='" + query.getUserId() + "'" + orderBy;
-                    System.out.println("---------------------------------orderBy:" + orderBy);
-                } else {
-                    sql = "select * from " + TABLE_NAME + " " + where + " " + orderBy;
-                }
-            }
-        }
-        return sql;
-    }
+//        if (query.getTimeFrom() != null && query.getTimeTo() != null && !query.getTimeFrom().isEmpty()) {
+//            if (!where.isEmpty()) {
+//                where = where + " and register_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
+//            } else {
+//                where = "where register_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
+//            }
+//        }
+//
+//
+//        String orderBy = "";
+//        if ((query.getSortIndex() != null) && (!query.getSortIndex().equals("null"))) {
+//            if (query.getOrderBy() != null) {
+//                orderBy = " order by " + query.getOrderBy();
+//                System.out.println("---------------------------------orderBy:" + orderBy);
+//            }
+//        }
+//
+//        if (query.getType() != null && query.getType().equals("all") && query.getUserType().equals("manager")) {
+//            sql = "select * from " + TABLE_NAME + " order by register_date desc";
+//        } else {
+//            if (query.getId() != null && !query.getId().equals("null")) {
+//                sql = "select * from " + TABLE_NAME + " where id=" + query.getId();
+//            } else {
+//                if (where.isEmpty()) {
+//                    sql = "select * from " + TABLE_NAME + " " + orderBy;
+////                    sql = "select * from " + query.getTableName() + " where user_id='" + query.getUserId() + "'" + orderBy;
+//                    System.out.println("---------------------------------orderBy:" + orderBy);
+//                } else {
+//                    sql = "select * from " + TABLE_NAME + " " + where + " " + orderBy;
+//                }
+//            }
+//        }
+//        return sql;
+//    }
 
 }

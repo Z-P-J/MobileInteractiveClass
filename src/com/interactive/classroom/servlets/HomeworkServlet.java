@@ -4,10 +4,11 @@ package com.interactive.classroom.servlets;
  * 增删改查看导印统功能的实现
  */
 
+import com.interactive.classroom.dao.filters.FileFilter;
+import com.interactive.classroom.dao.filters.FilterFactory;
+import com.interactive.classroom.dao.filters.HomeworkFilter;
 import com.interactive.classroom.servlets.base.BaseHttpServlet;
-import com.interactive.classroom.bean.FileBean;
 import com.interactive.classroom.bean.HomeworkBean;
-import com.interactive.classroom.constant.UserType;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.HomeworkDao;
 import com.interactive.classroom.utils.DatabaseHelper;
@@ -20,7 +21,6 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -41,7 +41,7 @@ public class HomeworkServlet extends BaseHttpServlet {
         try {
             switch (action) {
                 //作业管理
-                case "get_all_homeworks":
+                case "get_homeworks":
                     getHomeworks(request, response);
                     break;
                 case "query_homeworks":
@@ -85,50 +85,24 @@ public class HomeworkServlet extends BaseHttpServlet {
     private void getHomeworks(HttpServletRequest request, HttpServletResponse response) throws Exception {
         JSONObject jsonObj;
         String orderBy = request.getParameter("order_by");
-        if (UserType.MANAGER.equals(userType)) {
-            // 管理员
-            // TODO 直接获取数据库所有作业
-            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(orderBy);
-        } else {
-            // TODO 弄个课程管理模块，根据课程获取作业
-            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(orderBy);
-        }
+        HomeworkFilter filter = FilterFactory.getHomeworkFilter()
+                .setUserId(userId)
+                .setUserType(userType)
+                .setOrder(orderBy);
+        jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
+//        if (UserType.MANAGER.equals(userType)) {
+//            // 管理员
+//            // TODO 直接获取数据库所有作业
+//            HomeworkFilter filter = FilterFactory.getHomeworkFilter()
+//                    .setOrder(orderBy);
+//            jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
+//        } else {
+//            // TODO 弄个课程管理模块，根据课程获取作业
+//            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(orderBy);
+//        }
         session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
         String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
         onEnd(request, response, jsonObj, url);
-
-//        HomeworkBean bean = new HomeworkBean();
-//        bean.setId(request.getParameter("id"));
-//        bean.setPublisherName(request.getParameter("file_name"));
-//        Log.d(getClass().getName(), "FileBean=" + bean.toString());
-//
-//        String existResultset = request.getParameter("exist_resultset");
-//        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
-//            existResultset = "0";
-//        }
-//        JSONObject jsonObj;
-//        if ("1".equals(existResultset)) {
-//            //要求提取之前查询结果，如果有就取出来，如果没有就重新查询一次，并且保存进session里
-//            if (session.getAttribute(MODULE + "_" + SUB + "_get_record_result") != null) {
-//                jsonObj = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-//            } else {
-//                //如果没有就报错
-//                jsonObj = new JSONObject();
-//                jsonObj.put("result_code", 10);
-//                jsonObj.put("result_msg", "exist_resultset参数不当，服务器当前没有结果数据！请重新设置！");
-//            }
-//        } else {
-//            //如果是新查询
-//            HomeworkDao dao = DaoFactory.getHomeworkDao();
-//            jsonObj = dao.getRecord(bean);
-//            session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-//        }
-//        jsonObj.put("user_id", userId);
-//        jsonObj.put("user_name", userName);
-//        jsonObj.put("user_role", userType);
-//        jsonObj.put("user_avatar", userAvatar);
-//        String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
-//        onEnd(request, response, jsonObj, url);
     }
 
     private void queryHomeworks(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -154,8 +128,12 @@ public class HomeworkServlet extends BaseHttpServlet {
             }
         } else {
             //如果是新查询
-            HomeworkDao dao = DaoFactory.getHomeworkDao();
-            jsonObj = dao.queryHomeworks(null, keyword, timeFrom, timeTo, null, null, orderBy);
+            HomeworkFilter filter = FilterFactory.getHomeworkFilter()
+                    .setOrder(orderBy)
+                    .setKeyword(keyword)
+                    .setPublishTimeFrom(timeFrom)
+                    .setPublishTimeTo(timeTo);
+            jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
             session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
         }
         String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
@@ -217,7 +195,7 @@ public class HomeworkServlet extends BaseHttpServlet {
         JSONObject jsonObj = null;
         if (ids != null) {
             String createTime = TimeUtil.currentDate();
-            jsonObj = DaoFactory.getFileDao().deleteFileById(ids, getServletContext().getRealPath("/") + File.separator);
+            jsonObj = DaoFactory.getFileDao().deleteFileById(ids, ServletUtil.getUploadPath(this));
             jsonObj.put("action", request.getParameter("action"));
             log("用户 " + userName + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
@@ -228,82 +206,69 @@ public class HomeworkServlet extends BaseHttpServlet {
     //作业管理文件详细信息
 
     private void getUploadedFiles(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        FileBean bean = new FileBean();
         String homeworkId = request.getParameter("homework_id");
-        String attr = "uploaded_homework_files_" + homeworkId;
-        bean.setHomeworkId(homeworkId);
-
-        String existResultset = request.getParameter("exist_resultset");
-        Log.d(getClass().getName(), "existResultset=" + existResultset);
-        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
-            existResultset = "0";
-        }
-        JSONObject jsonObj;
-        if ("1".equals(existResultset)) {
-            //要求提取之前查询结果，如果有就取出来，如果没有就重新查询一次，并且保存进session里
-            if (session.getAttribute(attr) != null) {
-                jsonObj = (JSONObject) session.getAttribute(attr);
-            } else {
-                //如果没有就报错
-                jsonObj = new JSONObject();
-                jsonObj.put("result_code", 10);
-                jsonObj.put("result_msg", "exist_resultset参数不当，服务器当前没有结果数据！请重新设置！");
-            }
-        } else {
-            //如果是新查询
-            jsonObj = DaoFactory.getFileDao().getHomeworkFilesById(homeworkId, userId);
-            session.setAttribute(attr, jsonObj);
-        }
+        FileFilter filter = FilterFactory.getFileFilter()
+                .setHomeworkId(homeworkId)
+                .setUserId(userId);
+        JSONObject jsonObj = DaoFactory.getFileDao().queryFiles(filter);
         String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
         onEnd(request, response, jsonObj, url);
     }
 
     private void getHomeworkDetail(HttpServletRequest request, HttpServletResponse response) throws Throwable {
         String homeworkId = request.getParameter("homework_id");
-        String attr = MODULE + "_" + SUB + "_get_record_result";
+//        String index = request.getParameter("index");
 
-        String index = request.getParameter("index");
-        HomeworkBean bean = new HomeworkBean();
-        debug("getHomeworkDetail bean=" + bean.toString());
+        HomeworkFilter filter = FilterFactory.getHomeworkFilter()
+                // 注：在此处order为文件的排序
+                .setOrder(request.getParameter("order_by"))
+                .setHomeworkId(homeworkId)
+                .setUserId(userId)
+                .setUserType(userType)
+                .setGetFiles(true);
 
-        String existResultset = request.getParameter("exist_resultset");
-        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
-            existResultset = "0";
-        }
+        JSONObject jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
+        responseByJson(response, jsonObj);
 
-        //如果是新查询
-        JSONObject jsonObj;
-        if ("1".equals(existResultset)) {
-            //如果有就取出来，如果没有就重新查询一次，并且保存进session里
-            if (session.getAttribute(attr) != null) {
-                JSONObject json = (JSONObject) session.getAttribute(attr);
-                Log.d(getClass().getName(), json.toString());
-                jsonObj = ServletUtil.getResultSetNavigateId(homeworkId, index, json);
-                jsonObj.put("user_id", userId);
-                jsonObj.put("user_name", userName);
-                jsonObj.put("result_code", 0);
-                jsonObj.put("result_msg", "ok");
-                //然后还有导航信息
-                json = (JSONObject) session.getAttribute(attr);
-                debug("[getRecordView]重新取出来的数据是：" + json.toString());
-            } else {
-                //如果没有就重新查询一次
-                debug("[getRecordView]没有就重新查询一次。");
-                jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(null);
-                jsonObj.put("user_id", userId);
-                jsonObj.put("user_name", userName);
-                jsonObj.put("result_code", 0);
-                jsonObj.put("result_msg", "ok");
-                session.setAttribute(attr, jsonObj);
-            }
-        } else {
-            debug("[getRecordView]existsResult=0，重新查询");
-            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(null);
-            jsonObj.put("user_id", userId);
-            jsonObj.put("user_name", userName);
-            session.setAttribute(attr, jsonObj);
-        }
-        onEndDefault(request, response, jsonObj);
+//        String attr = MODULE + "_" + SUB + "_get_record_result";
+//        String existResultset = request.getParameter("exist_resultset");
+//        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
+//            existResultset = "0";
+//        }
+//
+//        //如果是新查询
+//        JSONObject jsonObj;
+//        if ("1".equals(existResultset)) {
+//            //如果有就取出来，如果没有就重新查询一次，并且保存进session里
+//            if (session.getAttribute(attr) != null) {
+//                JSONObject json = (JSONObject) session.getAttribute(attr);
+//                Log.d(getClass().getName(), json.toString());
+//                jsonObj = ServletUtil.getResultSetNavigateId(homeworkId, index, json);
+//                jsonObj.put("user_id", userId);
+//                jsonObj.put("user_name", userName);
+//                jsonObj.put("result_code", 0);
+//                jsonObj.put("result_msg", "ok");
+//                //然后还有导航信息
+//                json = (JSONObject) session.getAttribute(attr);
+//                debug("[getRecordView]重新取出来的数据是：" + json.toString());
+//            } else {
+//                //如果没有就重新查询一次
+//                debug("[getRecordView]没有就重新查询一次。");
+//                jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(null);
+//                jsonObj.put("user_id", userId);
+//                jsonObj.put("user_name", userName);
+//                jsonObj.put("result_code", 0);
+//                jsonObj.put("result_msg", "ok");
+//                session.setAttribute(attr, jsonObj);
+//            }
+//        } else {
+//            debug("[getRecordView]existsResult=0，重新查询");
+//            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(null);
+//            jsonObj.put("user_id", userId);
+//            jsonObj.put("user_name", userName);
+//            session.setAttribute(attr, jsonObj);
+//        }
+//        onEndDefault(request, response, jsonObj);
     }
 
     private void submitComment(HttpServletRequest request) {

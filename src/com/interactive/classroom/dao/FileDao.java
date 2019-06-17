@@ -1,6 +1,7 @@
 package com.interactive.classroom.dao;
 
 import com.interactive.classroom.bean.FileBean;
+import com.interactive.classroom.dao.filters.FileFilter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,26 +26,42 @@ public interface FileDao {
     String[] LABELS_CH = {"ID", "作业ID", "文件ID", "上传者ID", "上传者", "文件名", "文件大小", "上传时间", "下载地址"};
 
     /**
-     * 根据作业id获取文件信息
-     * @param homeworkId 作业id
-     * @param userId 用户id
-     * @return JSONObject
-     * @throws SQLException SQLException
-     * @throws JSONException JSONException
+     *
+     * @param filter
+     * @return
+     * @throws SQLException
+     * @throws JSONException
      */
-    JSONObject getHomeworkFilesById(String homeworkId, String userId) throws SQLException, JSONException;
+    JSONObject queryFiles(FileFilter filter) throws SQLException, JSONException;
 
-    JSONObject getFilesById(String id, String userId) throws SQLException, JSONException;
+//    /**
+//     * 根据作业id获取文件信息
+//     * @param homeworkId 作业id
+//     * @param userId 用户id
+//     * @return JSONObject
+//     * @throws SQLException SQLException
+//     * @throws JSONException JSONException
+//     */
+//    JSONObject getHomeworkFilesById(String homeworkId, String userId) throws SQLException, JSONException;
 
-    /**
-     * 获取数据库所有文件信息(管理员)
-     * @return JSONObject
-     * @throws SQLException SQLException
-     * @throws JSONException JSONException
-     */
-    JSONObject getAllFiles() throws SQLException, JSONException;
+//    JSONObject getFilesById(String id, String userId) throws SQLException, JSONException;
 
-    public JSONObject getAllFilesWithComments() throws SQLException, JSONException;
+//    /**
+//     * 获取数据库所有文件信息(管理员)
+//     * @return JSONObject
+//     * @throws SQLException SQLException
+//     * @throws JSONException JSONException
+//     */
+//    JSONObject getAllFiles() throws SQLException, JSONException;
+
+//    /**
+//     *
+//     * @param filter FileFilter
+//     * @return
+//     * @throws SQLException
+//     * @throws JSONException
+//     */
+//    JSONObject getFilesWithComments(FileFilter filter) throws SQLException, JSONException;
 
     /**
      * 添加文件信息到数据库
@@ -64,6 +81,12 @@ public interface FileDao {
      */
     JSONObject deleteFileById(String[] ids, String folder) throws JSONException, SQLException;
 
+    /**
+     * 更新文件信息
+     * @param bean the FileBean
+     * @return org.json.JSONObject
+     * @throws JSONException JSONException
+     */
     JSONObject updateFileInfo(FileBean bean) throws JSONException;
 
 }

@@ -116,7 +116,7 @@ var Page = function() {
 		$('#month_button').click(function() {Page.monthTime();});
 	};
 	var addRecord=function(){
-		window.location.href=sub+"_add.jsp";
+		window.location.href = "user_add.jsp";
 	}
 	var showResult=function(json){
 		var title="管理";

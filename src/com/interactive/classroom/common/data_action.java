@@ -2,6 +2,7 @@ package com.interactive.classroom.common;
 
 
 import com.interactive.classroom.utils.DatabaseHelper;
+import com.interactive.classroom.utils.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -149,6 +150,10 @@ public class data_action extends HttpServlet {
         while (rs.next()) {
             Map<String, String> map = new HashMap<>();
             // ////////////////////////////////////////独有部分，要修改的是这里
+            rs.getMetaData().getColumnCount();
+            for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
+                Log.d("data_action  ", rs.getMetaData().getColumnLabel(i + 1));
+            }
             map.put("module_name", rs.getString("module_name"));
             map.put("category_id", rs.getString("category_id"));
             map.put("parent_item_id", rs.getString("parent_category_id"));

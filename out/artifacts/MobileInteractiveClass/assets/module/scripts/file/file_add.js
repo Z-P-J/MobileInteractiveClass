@@ -63,7 +63,7 @@ var Record = function () {
         }
     };
     var exportRecord = function () {
-        window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
+        window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_files&exist_resultset=1";
     }
     var search = function () {
         page_form.submit();

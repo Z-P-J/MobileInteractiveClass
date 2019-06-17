@@ -202,5 +202,5 @@
 <script type="text/javascript" src="../../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE SCRIPTS -->
-<script src="../../assets/module/scripts/user/info/info_view.js" type="text/javascript"></script>
+<script src="../../assets/module/scripts/user/user_detail.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

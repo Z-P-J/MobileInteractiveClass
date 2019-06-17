@@ -5,6 +5,72 @@ package com.interactive.classroom.constant;
  */
 public enum ActionType {
 
+    /**
+     *
+     */
+    ACTION_EXPORT("export"),
+
+    //------------------------登录----------------------
+    ACTION_LOG_IN("log_in"),
+
+    ACTION_SIGN_UP("sign_up"),
+
+    ACTION_CHECK_USER_NAME("check_user_name"),
+
+
+    //-----------------------用户-----------------------
+    /**
+     *
+     */
+    ACTION_GET_USRES("get_users"),
+
+    /**
+     *
+     */
+    ACTION_GET_USRE_DETAIL("get_user_detail"),
+
+    /**
+     *
+     */
+    ACTION_DELETE_USER("delete_user"),
+
+    /**
+     *
+     */
+    ACTION_UPDATE_USER("update_user"),
+
+    /**
+     *
+     */
+    ACTION_ADD_USER("add_user"),
+
+    //----------------------文件-----------------------
+    /**
+     * 获取所有文件信息action（管理员）
+     */
+    ACTION_GET_ALL_FILES("get_all_files"),
+
+    /**
+     * 将文件到处到Excel文档action（管理员）
+     */
+    ACTION_EXPORT_FILES("export_files"),
+
+    /**
+     * 删除文件action
+     */
+    ACTION_DELETE_FILE("delete_file"),
+
+    /**
+     * 获取文件详细信息action
+     */
+    ACTION_GET_FILE_DETAIIL("get_file_detail"),
+
+    /**
+     * 更新文件信息action
+     */
+    ACTION_UPDATE_FILE_INFO("update_file_info"),
+
+
 
     //----------------------评论-----------------------
     /**
@@ -17,8 +83,6 @@ public enum ActionType {
      */
     ACTION_SUBMIT_COMMENT("submit_comment"),
 
-
-
     //----------------------上传-----------------------
     /**
      * 上传文件action
@@ -30,6 +94,9 @@ public enum ActionType {
      */
     ACTION_GET_UPLOAD_PROGRESS("get_upload_progress");
 
+    /**
+     * The String of action
+     */
     private String action;
 
     ActionType(String action) {

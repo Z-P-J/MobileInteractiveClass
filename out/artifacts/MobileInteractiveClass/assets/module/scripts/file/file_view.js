@@ -18,7 +18,12 @@ var Record = function () {
     };
     var getFiles = function () {
         var id = $("#id").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_view&id=" + id + "&exist_resultset=1";
+        var homeworkId = $("#homework_id").val();
+        var url = "../../file_core_servlet_action?action=get_file_detail&id=" + id + "&exist_resultset=1";
+        if (homeworkId !== "") {
+            url += ("&homework_id=" + homeworkId);
+        }
+        console.log("url=" + url);
         getRecordView(url);
     };
     var getRecordView = function (url) {
@@ -59,7 +64,7 @@ var Record = function () {
         }
     };
     var exportRecord = function () {
-        window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
+        window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_files&exist_resultset=1";
     };
     var search = function () {
         page_form.submit();
@@ -228,24 +233,21 @@ var Page = function () {
             tip = tip + "，现在是第 " + (parseInt(Record.currentId) + 1) + " 条记录。";
             $("#tip_div").html(tip);
             $("#record_list_tip").html(tip);
-            showRecordList(json);
+            html = "													<div><span id=\"tip_div\"></span>";
+            $("#file_id").val(json.id);
+            $("#file_name").val(json.file_name);
+            $("#uploader").val(json.uploader_name);
+            $("#file_size").val(json.file_size);
+            $("#upload_time").val(json.upload_time);
+            html = html + "													</div>";
+            $("#record_list_div").html(html);
+            showCommentList(json.comments);
         }
-    };
-    var showRecordList = function (json) {
-        html = "													<div><span id=\"tip_div\"></span>";
-        $("#file_id").val(json.id);
-        $("#file_name").val(json.file_name);
-        $("#uploader").val(json.uploader_name);
-        $("#file_size").val(json.file_size);
-        $("#upload_time").val(json.upload_time);
-        html = html + "													</div>";
-        $("#record_list_div").html(html);
-
-        showCommentList(json.comments);
     };
     var showCommentList = function (list) {
         html = "<div>";
         var length = list.length;
+        // alert(length);
         if (length === 0) {
             html = html + "<p>无评论</p>"
         } else {
@@ -253,8 +255,8 @@ var Page = function () {
                 showComment(list[i]);
             }
         }
-
         html = html + "													</div>";
+
         $("#comment_list_div").html(html);
     };
     var showComment = function (json) {
@@ -264,7 +266,7 @@ var Page = function () {
         // html = html + "                                                         <input type=\"hidden\" id=\"file_id\" name=\"file_id\" value=" + fileId + " />"
         html = html + "															<div style=\"float:left;border:0px solid green;text-align: center;margin:5px;\">";
         html = html + "																<img src='"+ image +"' style=\"width:18px;height:auto;border-radius:50%!important;border:0px solid red;\">";
-        html =   + "															    <div style=\"text-align: center; color: black;\"><p>" + json.user_id + "</p></div>";
+        html = html + "															    <div style=\"text-align: center; color: black;\"><p>" + json.user_id + "</p></div>";
         html = html + "															    <div class=\"comt-meta\" ><span class=\"comt-author\"></span>" + json.publish_date + "</div>";
         html = html + "														    </div>";
         html = html + "														    <div style=\"width:auto;height:100px;display:table-cell;margin-left:10px;margin-right:10px;margin-top:50px;margin-bottom:10px;border:0px solid blue;text-align: center;padding: 10px\">";
@@ -328,9 +330,6 @@ var Page = function () {
         },
         showResult: function (json) {
             showResult(json);
-        },
-        showRecordList: function (list) {
-            showRecordList(list);
         },
         submitRecord: function () {
             submitRecord();

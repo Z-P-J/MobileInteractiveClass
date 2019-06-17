@@ -280,7 +280,7 @@ v1.6.0 (2013-03-18)
 - when clicking fast on buttons, prevent text selection
 - bundled with latest jQuery (1.9.1) and jQuery UI (1.10.2)
 - Grunt/Lumbar build system for internal development
-- build for Bower package manager
+- build for Bower package userType
 - build for jQuery plugin site
 
 [191]: https://code.google.com/p/fullcalendar/issues/detail?id=191

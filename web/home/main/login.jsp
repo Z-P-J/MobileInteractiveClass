@@ -4,14 +4,14 @@
     String userId = null;
     String userName = null;
     String userAvatar = null;
-    String userRole = null;
+    String userType = null;
     if (session.getAttribute("user_role") != null) {
-        userRole = (String) session.getAttribute("user_role");
+        userType = (String) session.getAttribute("user_role");
         userAvatar = (String) session.getAttribute("user_avatar");
         userId = (String) session.getAttribute("user_id");
         userName = (String) session.getAttribute("user_name");
     }
-    if (userName != null && userId != null && userAvatar != null && userRole != null) {
+    if (userName != null && userId != null && userAvatar != null && userType != null) {
         response.sendRedirect("index.jsp");
     } else {
     }

@@ -58,14 +58,14 @@ var Record = function () {
         });
     };
     var viewRecord = function (id) {
-        window.location.href = "info_view.jsp?id=" + id;
+        window.location.href = "user_detail.jsp?id=" + id;
     };
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条学生信息吗？")) {
             if (id > -1) {
                 $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
                     if (json.result_code == 0) {
-                        window.location.href = "info_list.jsp";
+                        window.location.href = "user_list.jsp";
                         alert("已经从数据表删除该学生信息！");
                     }
                 })
@@ -195,7 +195,7 @@ var Page = function () {
         });
     };
     var addRecord = function () {
-        window.location.href = sub + "_add.jsp";
+        window.location.href = "user_add.jsp";
     }
     var showResult = function (json) {
         var title = "学生信息显示";
@@ -275,10 +275,10 @@ var Page = function () {
         Record.viewRecord(id);
     };
     var modifyRecord = function (id) {
-        window.location.href = "info_view.jsp?id=" + id;
+        window.location.href = "user_detail.jsp?id=" + id;
     };
     var searchRecord = function () {
-        window.location.href = "info_query.jsp";
+        window.location.href = "user_query.jsp";
     };
     var confirmBack = function () {
         DraggableDialog.setId("confirm_back");

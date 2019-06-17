@@ -1,5 +1,6 @@
 package com.interactive.classroom.utils.export;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.TimeUtil;
@@ -19,7 +20,7 @@ public class ExportUtil {
 
     }
 
-    public static void exportData(JSONObject jsonObj, String tableNick, String filePathName) throws Exception {
+    public static void exportData(JSONObject jsonObj, String tableNick, String filePathName) throws JSONException {
         if (jsonObj != null) {
             //开始导出到excel
             //name⊙type⊙nick
@@ -30,7 +31,7 @@ public class ExportUtil {
         }
     }
 
-    public static JSONObject exportRecord(HttpServletRequest request, HttpServletResponse response, String module, String sub, String tableNick) throws Exception {
+    public static JSONObject exportRecord(HttpServletRequest request, HttpServletResponse response, String module, String sub, String tableNick) throws JSONException {
         File folder = new File("C:\\upload\\" + module + "\\export");
         if (!folder.exists()) {
             folder.mkdirs();

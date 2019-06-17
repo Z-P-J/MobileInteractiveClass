@@ -129,5 +129,5 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE SCRIPTS -->
-<script src="../../assets/module/scripts/user/info/info_query.js" type="text/javascript"></script>
+<script src="../../assets/module/scripts/user/user_query.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

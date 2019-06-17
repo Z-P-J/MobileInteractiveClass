@@ -109,7 +109,7 @@ tests currently *only* pass on OS X.
 ### 0.4.0 - 26th January 2013
 
 - Goals and events [#103](https://github.com/morrisjs/morris.js/issues/103).
-- Bower package manager metadata.
+- Bower package userType metadata.
 - More flexible formatters [#107](https://github.com/morrisjs/morris.js/issues/107).
 - Color callbacks.
 - Decade intervals for time-axis labels.

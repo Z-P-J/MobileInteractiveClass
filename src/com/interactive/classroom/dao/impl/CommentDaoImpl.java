@@ -50,7 +50,7 @@ public class CommentDaoImpl implements CommentDao {
 //        List<List<String>> jsonList = new ArrayList<>();
         try {
             String sql = "select * from file_comment where file_id=" + fileId;
-            System.out.println("TodoDao sql=" + sql);
+            System.out.println("getFileComments sql=" + sql);
             ResultSet rs = DatabaseHelper.executeQuery(sql);
             while (rs.next()) {
                 JSONObject jsonObject = new JSONObject();
@@ -71,6 +71,7 @@ public class CommentDaoImpl implements CommentDao {
         } catch (SQLException sqlexception) {
             sqlexception.printStackTrace();
         }
+        Log.d("getFileComments", "count=" + jsonArray.length());
         return jsonArray;
     }
 

@@ -15,7 +15,7 @@ public final class DaoFactory {
 
     /**
      * 获取UserDao实例
-     * @return UserDao
+     * @return com.interactive.classroom.dao.UserDao
      */
     public static UserDao getUserDao() {
         return new UserDaoImpl();
@@ -61,6 +61,10 @@ public final class DaoFactory {
         return new FileDaoImpl();
     }
 
+    /**
+     * 获取CommentDao实例
+     * @return com.interactive.classroom.dao.CommentDao
+     */
     public static CommentDao getCommentDao() {
         return new CommentDaoImpl();
     }

@@ -4,6 +4,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.servlet.http.HttpServlet;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,6 +14,11 @@ import java.util.Arrays;
  * 封装一些该项目中Servlet中常用函数
  */
 public final class ServletUtil {
+
+    /**
+     * 上传文件存储目录
+     */
+    private static final String UPLOAD_DIRECTORY = "upload";
 
     private ServletUtil() {
 
@@ -102,6 +109,15 @@ public final class ServletUtil {
             }
         }
         return null;
+    }
+
+    /**
+     * 获取上传文件保存路径
+     * @param servlet the HttpServlet
+     * @return 保存路径
+     */
+    public static String getUploadPath(HttpServlet servlet) {
+        return servlet.getServletContext().getRealPath("/") + File.separator + UPLOAD_DIRECTORY + File.separator;
     }
 
 }

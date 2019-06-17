@@ -224,7 +224,7 @@ var Record = function () {
         var executor = encodeURI(document.getElementById("executor").value);
         var endTag = document.getElementById("end_tag").value;
         var status = document.getElementById("status").value;
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=modify_record" +
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=update_file_info" +
             "&id=" + id + "&project_id=" + projectId + "&title=" + title + "&content=" + content + "&begin_time=" +
             beginTime + "&end_time=" + endTime + "&expect_end_time=" + expectEndTime + "&executor=" + executor + "&end_tag=" + endTag + "&status=" + status;
         alert(url);
@@ -327,16 +327,16 @@ var Page = function () {
         });
     };
     var layoutRecord = function () {
-        if (layout == 1)
+        if (layout === 1)
             window.location.href = "record_list.jsp";
-        if (layout == 2)
-            window.location.href = "list.jsp";
+        if (layout === 2)
+            window.location.href = "file_list.jsp";
     }
     var processError = function (json) {
         Frame.processError(json);
     };
     var searchRecord = function () {
-        window.location.href = "query.jsp";
+        window.location.href = "file_query.jsp";
     };
     return {
         init: function () {

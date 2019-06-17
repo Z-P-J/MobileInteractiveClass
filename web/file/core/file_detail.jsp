@@ -1,11 +1,11 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@page import="java.text.*" %>
 <%
-    //做调试用，这里要在正式发布的时候去掉
-    System.out.println("[" + (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new java.util.Date()) + "]=======================调试：" + request.getServletPath() + "开始==============================");
-%>
-<%
     String id = request.getParameter("id");
+    String homeworkId = request.getParameter("homework_id");
+    if (homeworkId == null) {
+        homeworkId = "";
+    }
     String existResultset = request.getParameter("exist_resultset");
 %>
 <!DOCTYPE html>
@@ -50,6 +50,7 @@
                             <form class="form-horizontal" role="form" id="page_form" name="page_form" action="#">
                                 <input type="hidden" id="action" name="action" value="modify_record"/>
                                 <input type="hidden" id="id" name="id" value="<%=id%>"/>
+                                <input type="hidden" id="homework_id" name="homework_id" value="<%=homeworkId%>"/>
                                 <input type="hidden" id="exist_resultset" name="exist_resultset"
                                        value="<%=existResultset%>"/>
                                 <input type="hidden" id="file_id" name="file_id" value="" />
@@ -135,9 +136,9 @@
                                     <%--										<label class="btn red">注意：单页浏览设计得过于复杂难懂，仅作为进阶参考，初步入门可不管这个</label>--%>
                                 </div>
                                 <div class="form-actions right1">
-<%--                                    <button type="button" id="submit_button" class="btn green" title="把修改好的信息提交到后台保存">--%>
-<%--                                        提交修改--%>
-<%--                                    </button>--%>
+                                    <%--                                    <button type="button" id="submit_button" class="btn green" title="把修改好的信息提交到后台保存">--%>
+                                    <%--                                        提交修改--%>
+                                    <%--                                    </button>--%>
                                     <button type="button" id="return_button" class="btn green">
                                         返回
                                     </button>

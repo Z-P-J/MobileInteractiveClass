@@ -24,7 +24,7 @@ var Record = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_all_homeworks&type=all&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homeworks&type=all&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
@@ -43,7 +43,7 @@ var Record = function () {
         });
     };
     var viewRecord = function (id) {
-        window.location.href = "list.jsp?homework_id=" + id + "&exist_resultset=0";
+        window.location.href = "homework_detail.jsp?homework_id=" + id + "&exist_resultset=0";
     };
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
@@ -67,7 +67,7 @@ var Record = function () {
     };
     var sortRecord1 = function (index, sortName) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
-        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_homework_list&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_homeworks&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
@@ -212,7 +212,7 @@ var Page = function () {
         var deadline = json[6];
         var fileNameFormat = json[7];
         var me = json[8];
-        var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), deadline);
+        var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), json.deadline);
         var state = "";
         if (flag) {
             state = "已截止";
@@ -225,17 +225,17 @@ var Page = function () {
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
-        html = html + "																<span>作业标题：" + homeworkTitle + "</span><p>";
-        html = html + "																<span>作业要求：" + homeworkRequirement + "</span><p>";
-        html = html + "																<span>上传作业文件格式要求：" + fileNameFormat + "</span><p>";
-        html = html + "																<span>发布时间：" + publishTime + "</span><p>";
-        html = html + "																<span>截止时间：" + deadline + "</span><p>";
+        html = html + "																<span>作业标题：" + json.homework_title + "</span><p>";
+        html = html + "																<span>作业要求：" + json.homework_requirement + "</span><p>";
+        html = html + "																<span>上传作业文件格式要求：" + json.file_name_format + "</span><p>";
+        html = html + "																<span>发布时间：" + json.publish_time + "</span><p>";
+        html = html + "																<span>截止时间：" + json.deadline + "</span><p>";
         html = html + "																<span>状态：" + state + "</span><p>";
         // if (me == "1") {
         //     html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
         //     html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
         // }
-        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">详细信息</button>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";
     };
@@ -287,9 +287,9 @@ var Page = function () {
     };
     var sortRecord = function (index) {
         var sortName = $("#sort_01").val();
-        if (index == 1) sortName = $("#sort_01").val();
-        if (index == 2) sortName = $("#sort_01").val() + "," + $("#sort_02").val();
-        if (index == 3) sortName = $("#sort_01").val() + "," + $("#sort_02").val() + "," + $("#sort_03").val();
+        // if (index == 1) sortName = $("#sort_01").val();
+        // if (index == 2) sortName = $("#sort_01").val() + "," + $("#sort_02").val();
+        // if (index == 3) sortName = $("#sort_01").val() + "," + $("#sort_02").val() + "," + $("#sort_03").val();
         console.log(sortName);
         Record.sortRecord1(index, sortName);
     };
