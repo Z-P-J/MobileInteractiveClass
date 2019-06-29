@@ -1,4 +1,4 @@
-var module = "file";
+var module = "homework";
 var sub = "core";
 jQuery(document).ready(function () {
     Metronic.init(); // init metronic investigation components
@@ -20,19 +20,32 @@ var Record = function () {
     var initRecordStyle = function () {
     };
     var initRecordList = function () {
-        // getRecord();
+        getRecord();
     }
     var getRecord = function () {
-        Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
-        var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_file_servlet_action?action=get_record&id=" + id + "&exist_resultset=" + existResultset;
+        getRecordViewById(id);
+    }
+    var getRecordViewById = function (id) {
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_view&id=" + id + "&exist_resultset=1";
+        getRecordView(url);
+    }
+    var getRecordViewByIndex = function (index) {
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_view&index=" + index + "&exist_resultset=1";
+        getRecordView(url);
+    }
+    var getRecordView = function (url) {
+        Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
                 Record.userName = json.user_name;
-                Record.userRole = json.user_role;
-                Record.userAvatar = json.user_avatar;
+                Record.firstId = json.first;
+                Record.prevId = json.prev;
+                Record.nextId = json.next;
+                Record.lastId = json.last;
+                Record.totalCount = json.total;
+                Record.currentId = json.current_index;
                 Page.showResult(json);
             } else {
                 if (Page != null) {
@@ -52,10 +65,7 @@ var Record = function () {
             if (id > -1) {
                 $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
                     if (json.result_code == 0) {
-                        var count = json.count;
-                        var amount = json.amount;
-                        initRecordList();
-                        initRecordStyle();
+                        window.location.href = "list.jsp";
                         alert("已经从数据表删除该记录！");
                     }
                 })
@@ -63,10 +73,22 @@ var Record = function () {
         }
     };
     var exportRecord = function () {
-        window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_files&exist_resultset=1";
+        window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
     }
     var search = function () {
         page_form.submit();
+    }
+    var first = function () {
+        getRecordViewByIndex(Record.firstId);
+    }
+    var prev = function () {
+        getRecordViewByIndex(Record.prevId);
+    }
+    var next = function () {
+        getRecordViewByIndex(Record.nextId);
+    }
+    var last = function () {
+        getRecordViewByIndex(Record.lastId);
     }
     return {
         init: function () {
@@ -78,6 +100,21 @@ var Record = function () {
         },
         viewRecord: function (id) {
             viewRecord(id);
+        },
+        first: function () {
+            first();
+        },
+        prev: function () {
+            prev();
+        },
+        next: function () {
+            next();
+        },
+        last: function () {
+            last();
+        },
+        refresh: function () {
+            getRecordViewByIndex(Record.currentId);
         },
         exportRecord: function () {
             exportRecord();
@@ -123,121 +160,138 @@ var Page = function () {
             Frame.processError(json);
     };
     var handleButtonEvent = function () {
-        $("#fileinp").change(function (e) {
-            $("#text").html($("#fileinp").val());
-            console.log(e);
-
-            console.log($(this).val());
-            // console.log(getFullPath(this));
-
-            var fileMsg = e.currentTarget.files;
-            var fileName = fileMsg[0].name;
-            console.log(fileName);
-            var fileSize = fileMsg[0].size;
-            console.log(fileSize);
-            var fileType = fileMsg[0].type;
-            console.log(fileType);
-
-            $("#file_name").val(fileName);
-            // $("#file_path").val(getFullPath(this));
-            $("#file_size").val(fileSize);
-            // $("#file_type").val(fileType);
+        $('#submit_comment').click(function () {
+            var commentText = $("#comment_text").val();
+            if (typeof commentText == "undefined" || commentText == null || commentText == "") {
+                alert("评论不能为空！");
+            } else {
+                var fileId = $("#file_id").val();
+                $.post("../../" + module + "_" + sub + "_servlet_action?action=submit_comment&comment_text=" + commentText + "&file_id=" + fileId, function () {
+                    // location.reload();
+                    Metronic.startPageLoading({message: '评论成功'});
+                    $("#comment_text").val("");
+                    Record.refresh();
+                    Metronic.stopPageLoading();
+                })
+            }
         });
-        var btnNode = document.getElementById('btn');
-        var inputNode = document.getElementById('fileinp');
-        btnNode.addEventListener('click', function (e) {
-            // 模拟input点击事件
-            var evt = new MouseEvent("click", {
-                bubbles: false,
-                cancelable: true,
-                view: window
-            });
-            inputNode.dispatchEvent(evt);
-        }, false);
         $('#return_button').click(function () {
             Page.confirmBack();
         });
+        $('#search_button').click(function () {
+            Page.searchRecord();
+        });
+        $('#delete_button').click(function () {
+            Page.deleteRecord();
+        });
+        $('#add_button').click(function () {
+            Page.addRecord();
+        });
         $('#submit_button').click(function () {
-
-            var fileName = $("#file_name").val();
-            if (fileName == "") {
-                alert("请选择上传文件！");
-                return;
-            }
-            var fileSize = parseInt($("#file_size").val());
-            if (fileSize > 1024 * 1024 * 100) {
-                alert("上传文件过大！");
-                return;
-            }
-
-            $('#page_form').submit();
-            document.getElementById('wrapper').style.display = "block";
-
-            var t = setInterval(function(){
-                $.ajax({
-                    url: '../../UploadServlet?action=get_upload_progress&filename=' + fileName,
-                    type: 'POST',
-                    dataType: 'text',
-                    data: {
-                        filename: fileName
-                    },
-                    success: function (responseText) {
-                        var data = JSON.parse(responseText);
-                        //前台更新进度
-                        var progress = parseInt((data.progress / data.size) * 100);
-                        console.log("progress=" + progress);
-                        $("#pg").val(progress);
-
-                        if (progress >= 0 && progress < 100) {
-                            $("#uploading").html("上传中..." + progress + "%");
-                        } else if (progress === 100) {
-                            $("#uploading").html("上传完成！");
-                            alert("上传完成！");
-                        } else if (progress < 0) {
-                            $("#uploading").html("上传失败！");
-                            alert("上传失败！");
-                        }
-
-                        if(progress === 100 || progress < 0) {
-                            // document.getElementById('wrapper').style.display = "none";
-                            // window.location.reload();
-                            clearInterval(t);
-                        }
-
-                    },
-                    error: function(){
-                        console.log("error");
-                        $("#uploading").html("上传失败！");
-                    }
-                });
-            }, 500);
+            Page.submitRecord();
+        });
+        $('#tools_menu_reload').click(function () {
+            Page.reload();
         });
         $('#help_button').click(function () {
             Page.help();
         });
+        $('#export_button').click(function () {
+            Page.exportRecord();
+        });
+        $('#first_button').click(function () {
+            Page.first();
+        });
+        $('#prev_button').click(function () {
+            Page.prev();
+        });
+        $('#next_button').click(function () {
+            Page.next();
+        });
+        $('#last_button').click(function () {
+            Page.last();
+        });
     };
+    var addRecord = function () {
+        window.location.href = "add.jsp";//sub + "_add.jsp";
+    }
     var showResult = function (json) {
         var title = "记录显示";
         if ($("#title_div")) $("#title_div").html(title);
         if (json != null) {
+            // console.log(json.comments.toString());
             var list = json.aaData;
-            var tip = "当前查询到了 " + list.length + " 条记录";
+            console.log(json.aaData.toString());
+            var tip = "当前查询到了 " + Record.totalCount + " 条记录";
+            tip = tip + "，现在是第 " + (parseInt(Record.currentId) + 1) + " 条记录。";
             if ($("#tip_div")) $("#tip_div").html(tip);
             if ($("#record_list_tip")) $("#record_list_tip").html(tip);
             showRecordList(list);
+            // var index = parseInt(Record.currentId);
+            // showRecord(list[index]);
         }
     };
     var showRecordList = function (list) {
+        html = "													<div><span id=\"tip_div\"></span>";
         for (var i = 0; i < list.length; i++) {
             showRecord(list[i]);
         }
-        $("#project_id").html(html);
+        html = html + "													</div>";
+        $("#record_list_div").html(html);
+    };
+    var showCommentList = function (list) {
+        html = "<div>";
+        var length = list.length;
+        if (length === 0) {
+            html = html + "<p>无评论</p>"
+        } else {
+            for (var i = 0; i < length; i++) {
+                showComment(list[i]);
+            }
+        }
+
+        html = html + "													</div>";
+        $("#comment_list_div").html(html);
     };
     var showRecord = function (json) {
+        console.log(json.toString());
         var id = json[0];
-        var projectId = json[1];
-        var projectName = json[2];
-        html = html + "<option value=\"" + projectId + "\">" + projectName + "</option>";
+        var fileId = json[1]
+        var uploader = json[2];
+        var fileName = json[3];
+        var fileSize = json[4];
+        var uploadTime = json[5];
+        var list = json[9];
+        $("#file_id").val(fileId);
+        $("#file_name").val(fileName);
+        $("#uploader").val(uploader);
+        $("#file_size").val(fileSize);
+        $("#upload_time").val(uploadTime);
+        // var comments = json.comments;
+        console.log(list.toString());
+        showCommentList(list);
+    };
+    var showComment = function (json) {
+        var id = json[0];
+        var image = "../../assets/module/img/security/user/avatar/avatar.jpg";
+        var fileId = json[1];
+        var userId = json[2];
+        var commentContent = json[3];
+        var score = json[4];
+        var publishDate = json[5];
+
+
+        html = html + "														<div style=\"clear:both;width:auto;height:100px;margin:5px;border:1px solid lightgrey;text-align: center;\">";
+        // html = html + "                                                         <input type=\"hidden\" id=\"file_id\" name=\"file_id\" value=" + fileId + " />"
+        html = html + "															<div style=\"float:left;border:0px solid green;text-align: center;margin:5px;\">";
+        html = html + "																<img src='"+ image +"' style=\"width:18px;height:auto;border-radius:50%!important;border:0px solid red;\">";
+        html = html + "															    <div style=\"text-align: center; color: black;\"><p>" + userId + "</p></div>";
+        html = html + "															    <div class=\"comt-meta\" ><span class=\"comt-author\"></span>" + publishDate + "</div>";
+        html = html + "														    </div>";
+        html = html + "														    <div style=\"width:auto;height:100px;display:table-cell;margin-left:10px;margin-right:10px;margin-top:50px;margin-bottom:10px;border:0px solid blue;text-align: center;padding: 10px\">";
+        html = html + "																<p><span style='font-weight:bold;'>" + commentContent + "</span></p>";
+        html = html + "														    </div>";
+        html = html + "														</div>";
     };
     var help = function () {
         var strUrl = location.pathname;
@@ -260,6 +314,7 @@ var Page = function () {
         return bOk;
     };
     var deleteRecord = function (id) {
+        id = $("#id").val();
         Record.deleteRecord(id);
     };
     var viewRecord = function (id) {
@@ -278,11 +333,6 @@ var Page = function () {
         DraggableDialog.setOk(Page.returnBack);
         DraggableDialog.showMsg("确定要返回上一页吗？", "提示");
     };
-    var initLimitTime = function () {
-        var today = new Date();
-        var limitDay = ComponentsPickers.formatDate(today, "yyyy-MM-dd") + " 23:59:59";
-        $("#end_time").val(limitDay);
-    };
     var onCancel = function () {
         DraggableDialog.close();
     }
@@ -293,7 +343,6 @@ var Page = function () {
         init: function () {
             initPageStyle();
             handleButtonEvent();
-            initLimitTime();
         },
         processError: function (json) {
             processError(json);
@@ -315,6 +364,18 @@ var Page = function () {
         },
         viewRecord: function (id) {
             viewRecord(id);
+        },
+        first: function () {
+            Record.first();
+        },
+        prev: function () {
+            Record.prev();
+        },
+        next: function () {
+            Record.next();
+        },
+        last: function () {
+            Record.last();
         },
         searchRecord: function () {
             searchRecord();

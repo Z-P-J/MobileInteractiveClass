@@ -6,6 +6,7 @@ import com.interactive.classroom.constant.ActionType;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.utils.Log;
 import com.interactive.classroom.utils.ServletUtil;
+import com.interactive.classroom.utils.TextUtil;
 import com.interactive.classroom.utils.TimeUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -53,11 +54,14 @@ public class UploadServlet extends BaseHttpServlet {
         String from = request.getParameter("from");
         Log.d(getClass().getName(), "from=" + from);
         String fileName = request.getParameter("rename_to");
-        Log.d(getClass().getName(), "fileName=" + fileName);
+        Log.d(getClass().getName(), "fileName111=" + fileName);
+        if (TextUtil.isEmpty(fileName)) {
+            fileName = request.getParameter("file_name");
+        }
+        Log.d(getClass().getName(), "fileName222=" + fileName);
 
         System.out.println(request.getMethod());
         //检查是否为post请求以及是否为多媒体上传
-        PROGRESS_MAP.put(fileName + "_progress", 0L);
         if ("POST".equalsIgnoreCase(request.getMethod()) && ServletFileUpload.isMultipartContent(request)) {
             System.out.println("--------------------post-------------------------");
             //配置上传参数
@@ -99,6 +103,10 @@ public class UploadServlet extends BaseHttpServlet {
                         if (!fileItem.isFormField()) {
                             System.out.println("333333333333333333333333333333333");
                             long fileSize = fileItem.getSize();
+                            if (TextUtil.isEmpty(fileName)) {
+                                fileName = fileItem.getName();
+                            }
+                            PROGRESS_MAP.put(fileName + "_progress", 0L);
                             PROGRESS_MAP.put(fileName + "_size", fileSize);
                             Log.d(getClass().getName(), "key=" + (fileName + "_size"));
                             Log.d(getClass().getName(), "size=" + fileItem.getSize());

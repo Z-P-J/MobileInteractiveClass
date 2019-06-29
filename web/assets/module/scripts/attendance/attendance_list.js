@@ -1,32 +1,30 @@
-var module = "file";
+﻿var module = "homework";
 var sub = "core";
+function compareDate(s1, s2) {
+    return ((new Date(s1.replace(/-/g, "\/"))) > (new Date(s2.replace(/-/g, "\/"))));
+}
 jQuery(document).ready(function () {
     Metronic.init(); // init metronic investigation components
     Layout.init(); // init current layout
     QuickSidebar.init(); // init quick sidebar
     Demo.init(); // init demo features
     ComponentsDropdowns.init();
-    ComponentsPickers.init();	//这个本页面要编写对应的对象
     Frame.init(module, sub);
     Page.init();
     Record.init();
 });
 /*================================================================================*/
 var Record = function () {
-    var userId = undefined;
-    var userName = undefined;
-    var userRole = undefined;
-    var userAvatar = undefined;
     var initRecordStyle = function () {
     };
     var initRecordList = function () {
-        // getRecord();
-    }
-    var getRecord = function () {
+        getHomeworks();
+    };
+    var getHomeworks = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_file_servlet_action?action=get_record&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homeworks&type=all&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
             if (json.result_code == 0) {
                 Record.userId = json.user_id;
@@ -45,13 +43,14 @@ var Record = function () {
         });
     };
     var viewRecord = function (id) {
-        window.location.href = "view.jsp?id=" + id;
+        alert("考勤成功");
+        // window.location.href = "homework_detail.jsp?homework_id=" + id + "&exist_resultset=0";
     };
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
                 $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
-                    if (json.result_code == 0) {
+                    if (json.result_code === 0) {
                         var count = json.count;
                         var amount = json.amount;
                         initRecordList();
@@ -63,11 +62,31 @@ var Record = function () {
         }
     };
     var exportRecord = function () {
-        window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_files&exist_resultset=1";
-    }
+        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\upload\\project\\export存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
+            window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
+        }
+    };
+    var sortRecord1 = function (index, sortName) {
+        // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
+        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_homeworks&sort_index=" + index + "&order_by=" + sortName, function (json) {
+            console.log(JSON.stringify(json));
+            if (json.result_code == 0) {
+                Record.userId = json.user_id;
+                Record.userName = json.user_name;
+                Record.userRole = json.user_role;
+                Record.userAvatar = json.user_avatar;
+                Page.showResult(json);
+            } else {
+                if (Page != null) {
+                    Page.processError(json);
+                }
+            }
+            // Metronic.stopPageLoading();	//停止等待动画
+        });
+    };
     var search = function () {
         page_form.submit();
-    }
+    };
     return {
         init: function () {
             initRecordList();
@@ -82,6 +101,9 @@ var Record = function () {
         exportRecord: function () {
             exportRecord();
         },
+        sortRecord1: function (index, sortName) {
+            sortRecord1(index, sortName);
+        },
         search: function () {
             search();
         }
@@ -91,6 +113,7 @@ var Record = function () {
 //关于页面的控件生成等操作都放在Page里，和Record独立，Record主要是和记录集交互
 var Page = function () {
     var html = "";
+    var layout = 1;
     var initPageStyle = function () {
         hideFrameNav();
     };
@@ -123,99 +146,43 @@ var Page = function () {
             Frame.processError(json);
     };
     var handleButtonEvent = function () {
-        $("#fileinp").change(function (e) {
-            $("#text").html($("#fileinp").val());
-            console.log(e);
-
-            console.log($(this).val());
-            // console.log(getFullPath(this));
-
-            var fileMsg = e.currentTarget.files;
-            var fileName = fileMsg[0].name;
-            console.log(fileName);
-            var fileSize = fileMsg[0].size;
-            console.log(fileSize);
-            var fileType = fileMsg[0].type;
-            console.log(fileType);
-
-            $("#file_name").val(fileName);
-            // $("#file_path").val(getFullPath(this));
-            $("#file_size").val(fileSize);
-            // $("#file_type").val(fileType);
-        });
-        var btnNode = document.getElementById('btn');
-        var inputNode = document.getElementById('fileinp');
-        btnNode.addEventListener('click', function (e) {
-            // 模拟input点击事件
-            var evt = new MouseEvent("click", {
-                bubbles: false,
-                cancelable: true,
-                view: window
-            });
-            inputNode.dispatchEvent(evt);
-        }, false);
         $('#return_button').click(function () {
             Page.confirmBack();
         });
+        $('#search_button').click(function () {
+            Page.searchRecord();
+        });
+        $('#delete_button').click(function () {
+            Page.deleteRecord();
+        });
+        $('#add_button').click(function () {
+            Page.addRecord();
+        });
         $('#submit_button').click(function () {
-
-            var fileName = $("#file_name").val();
-            if (fileName == "") {
-                alert("请选择上传文件！");
-                return;
-            }
-            var fileSize = parseInt($("#file_size").val());
-            if (fileSize > 1024 * 1024 * 100) {
-                alert("上传文件过大！");
-                return;
-            }
-
-            $('#page_form').submit();
-            document.getElementById('wrapper').style.display = "block";
-
-            var t = setInterval(function(){
-                $.ajax({
-                    url: '../../UploadServlet?action=get_upload_progress&filename=' + fileName,
-                    type: 'POST',
-                    dataType: 'text',
-                    data: {
-                        filename: fileName
-                    },
-                    success: function (responseText) {
-                        var data = JSON.parse(responseText);
-                        //前台更新进度
-                        var progress = parseInt((data.progress / data.size) * 100);
-                        console.log("progress=" + progress);
-                        $("#pg").val(progress);
-
-                        if (progress >= 0 && progress < 100) {
-                            $("#uploading").html("上传中..." + progress + "%");
-                        } else if (progress === 100) {
-                            $("#uploading").html("上传完成！");
-                            alert("上传完成！");
-                        } else if (progress < 0) {
-                            $("#uploading").html("上传失败！");
-                            alert("上传失败！");
-                        }
-
-                        if(progress === 100 || progress < 0) {
-                            // document.getElementById('wrapper').style.display = "none";
-                            // window.location.reload();
-                            clearInterval(t);
-                        }
-
-                    },
-                    error: function(){
-                        console.log("error");
-                        $("#uploading").html("上传失败！");
-                    }
-                });
-            }, 500);
+            Page.submitRecord();
+        });
+        $('#tools_menu_reload').click(function () {
+            Page.reload();
         });
         $('#help_button').click(function () {
             Page.help();
         });
+        $('#export_button').click(function () {
+            Page.exportRecord();
+        });
+        $('#statistic_button').click(function () {
+            Page.statisticRecord();
+        });
+        $('#layout_button').click(function () {
+            Page.layoutRecord();
+        });
+        $('#print_button').click(function () {
+            Page.printRecord();
+        });
     };
+    var addRecord = function () {
+        window.location.href = "add.jsp";//sub + "_add.jsp";
+    }
     var showResult = function (json) {
         var title = "记录显示";
         if ($("#title_div")) $("#title_div").html(title);
@@ -228,16 +195,45 @@ var Page = function () {
         }
     };
     var showRecordList = function (list) {
+        html = "													<div><span id=\"tip_div\"></span>";
         for (var i = 0; i < list.length; i++) {
             showRecord(list[i]);
         }
-        $("#project_id").html(html);
+        html = html + "													</div>";
+        $("#record_list_div").html(html);
     };
     var showRecord = function (json) {
         var id = json[0];
-        var projectId = json[1];
-        var projectName = json[2];
-        html = html + "<option value=\"" + projectId + "\">" + projectName + "</option>";
+        var image = "../../assets/module/img/public/wkbj.jpg";
+        var publisherId = json[1];
+        var publisherName = json[2];
+        var homeworkTitle = json[3];
+        var homeworkRequirement = json[4];
+        var publishTime = json[5];
+        var deadline = json[6];
+        var fileNameFormat = json[7];
+        var me = json[8];
+        var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), json.deadline);
+        var state = "";
+        if (flag) {
+            state = "已截止";
+        } else {
+            state = "未截止";
+        }
+
+        html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
+        html = html + "															<div style=\"float:left;border:0px solid green;\">";
+        html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
+        html = html + "															</div>";
+        html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
+        html = html + "																<span>考勤课程：" + json.homework_title + "</span><p>";
+        html = html + "																<span>考勤要求：" + json.homework_requirement + "</span><p>";
+        html = html + "																<span>发布时间：" + json.publish_time + "</span><p>";
+        html = html + "																<span>截止时间：" + json.deadline + "</span><p>";
+        html = html + "																<span>状态：" + state + "</span><p>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">点击考勤</button>";
+        html = html + "															</div>";
+        html = html + "														</div>";
     };
     var help = function () {
         var strUrl = location.pathname;
@@ -271,17 +267,34 @@ var Page = function () {
     var searchRecord = function () {
         window.location.href = "query.jsp";
     };
+    var statisticRecord = function () {
+        // window.location.href = "statistic.jsp";
+        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=file_manage";
+    }
+    var layoutRecord = function () {
+        if (layout == 1)
+            window.location.href = "record_list.jsp";
+        if (layout == 2)
+            window.location.href = "list.jsp";
+    }
+    var printRecord = function () {
+        // window.location.href = "print.jsp?exist_resultset=1";
+        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
+    };
+    var sortRecord = function (index) {
+        var sortName = $("#sort_01").val();
+        // if (index == 1) sortName = $("#sort_01").val();
+        // if (index == 2) sortName = $("#sort_01").val() + "," + $("#sort_02").val();
+        // if (index == 3) sortName = $("#sort_01").val() + "," + $("#sort_02").val() + "," + $("#sort_03").val();
+        console.log(sortName);
+        Record.sortRecord1(index, sortName);
+    };
     var confirmBack = function () {
         DraggableDialog.setId("confirm_back");
         DraggableDialog.setCancel(Page.onCancel);
         DraggableDialog.setButtonTitle("确定", "取消");
         DraggableDialog.setOk(Page.returnBack);
         DraggableDialog.showMsg("确定要返回上一页吗？", "提示");
-    };
-    var initLimitTime = function () {
-        var today = new Date();
-        var limitDay = ComponentsPickers.formatDate(today, "yyyy-MM-dd") + " 23:59:59";
-        $("#end_time").val(limitDay);
     };
     var onCancel = function () {
         DraggableDialog.close();
@@ -293,7 +306,6 @@ var Page = function () {
         init: function () {
             initPageStyle();
             handleButtonEvent();
-            initLimitTime();
         },
         processError: function (json) {
             processError(json);
@@ -322,8 +334,23 @@ var Page = function () {
         exportRecord: function () {
             Record.exportRecord();
         },
+        statisticRecord: function () {
+            statisticRecord();
+        },
+        printRecord: function () {
+            printRecord();
+        },
+        modifyRecord: function (id) {
+            modifyRecord(id);
+        },
         reload: function () {
             window.location.reload();
+        },
+        layoutRecord: function () {
+            layoutRecord();
+        },
+        sortRecord: function (index) {
+            sortRecord(index);
         },
         confirmBack: function () {
             confirmBack();

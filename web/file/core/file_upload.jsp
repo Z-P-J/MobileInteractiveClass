@@ -43,7 +43,8 @@
                             </div>
                         </div>
                         <div class="portlet-body form">
-                            <form class="form-horizontal" role="form" id="page_form" name="page_form"  method="post" action="../../UploadServlet?action=upload_file" enctype="multipart/form-data">
+                            <iframe name="frame1" frameborder="0" height="0" width="0" style="display: none"></iframe>
+                            <form class="form-horizontal" target="frame1" role="form" id="page_form" name="page_form"  method="post" action="../../UploadServlet?action=upload_file" enctype="multipart/form-data">
                                 <div class="form-body">
                                     <div class="form-group">
                                         <div class="form-group" style="text-align: center">
@@ -66,10 +67,15 @@
                                                     <%--															<input type="file" name="uploadFile"  id="choose_file" value="选择文件" style="text-align: center;margin:0 0;"/>--%>
                                                     <label for="fileinp">
                                                         <input type="button" id="btn" value="选择文件">
-                                                        <input type="file" id="fileinp">
+                                                        <input type="file" id="fileinp" name="file">
                                                         <%--																<span id="text">请选择上传文件</span>--%>
 
                                                     </label>
+                                                </div>
+                                                <div id="wrapper" style="display: none">
+                                                    <!--进度条容器-->
+                                                    <progress max="100" value="0" id="pg"></progress>
+                                                    <span id="uploading">上传中...</span>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,79 +1,74 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : test
+ Source Server         : mysql
  Source Server Type    : MySQL
- Source Server Version : 80012
+ Source Server Version : 80016
  Source Host           : localhost:3306
  Source Schema         : my_test
 
  Target Server Type    : MySQL
- Target Server Version : 80012
+ Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 03/06/2019 00:28:01
+ Date: 29/06/2019 16:58:57
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for document_main
+-- Table structure for attendance_manage
 -- ----------------------------
-DROP TABLE IF EXISTS `document_main`;
-CREATE TABLE `document_main`  (
+DROP TABLE IF EXISTS `attendance_manage`;
+CREATE TABLE `attendance_manage`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `main_code` char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `KIND` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `fieldType_tag` tinyint(1) UNSIGNED NULL DEFAULT 0,
-  `REASON` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `VALUE` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `VALUE1` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `topic` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `picture` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `role` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `object` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `range` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `reader` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `reference` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `comment` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `attachment1` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `attachment2` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `standard` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `attachment3` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `attachment4` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `mains` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `attachment5` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `attachment6` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `relation` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `attachment7` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `attachment8` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `function` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `attachment9` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `attachment10` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `filesystem` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `attachment11` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `attachment12` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `dbsystem` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `attachment13` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `attachment14` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `remark` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `lately_change_time` datetime(0) NULL DEFAULT '1800-01-01 00:00:00',
-  `register_time` datetime(0) NULL DEFAULT '1800-01-01 00:00:00',
-  `change_time` datetime(0) NULL DEFAULT '1800-01-01 00:00:00',
-  `register` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `changer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `change_amount` int(11) UNSIGNED NULL DEFAULT 0,
-  `doc_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `doc_ver` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `publisher_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `attendance_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `publish_time` datetime(0) NULL DEFAULT NULL,
+  `deadline` datetime(0) NULL DEFAULT NULL,
+  `file_name_format` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `attendance_requirement` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `publisher_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `course_id` int(11) NULL DEFAULT NULL,
+  `class_id` int(11) NULL DEFAULT NULL,
+  `class_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
--- Records of document_main
+-- Records of attendance_manage
 -- ----------------------------
 BEGIN;
-INSERT INTO `document_main` VALUES (21, '21', '模块', 1, 'homework', '作业管理', 'teach/教学管理', '', 'teach.jpg', 'normal', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (29, '01', '模块', 0, 'crm', '客户关系', 'crm/客户关系', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (30, '02', '模块', 0, 'design', '产品设计', 'design/产品设计', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (31, '03', '模块', 0, 'manufacture', '生产管理', 'manufacture/生产管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (32, '04', '模块', 0, 'stock', '库存管理', 'stock/库存管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (33, '05', '模块', 0, 'purchase', '采购管理', 'purchase/采购管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (34, '06', '模块', 0, 'intrmanufacture', '委外管理', 'intrmanufacture/委外管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (35, '07', '模块', 0, 'fund', '资金控制', 'fund/资金控制', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (36, '08', '模块', 0, 'finance', '财务系统', 'finance/财务系统', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (37, '09', '模块', 0, 'hr', '人力资源', 'hr/人力资源', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (38, '10', '模块', 0, 'oa', '协同办公', 'oa/协同办公', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (39, '11', '模块', 0, 'ecommerce', '电子商务', 'ecommerce/电子商务', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (40, '12', '模块', 0, 'logistics', '物流配送', 'logistics/物流配送', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (41, '14', '模块', 0, 'qcs', '质量控制', 'qcs/质量控制', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (42, '15', '模块', 1, 'security', '系统安全', 'security/系统安全', '', 'security.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (43, '16', '模块', 0, 'draft', '草稿箱', 'draft/草稿箱', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (44, '17', '模块', 0, 'garbage', '垃圾箱', 'garbage/垃圾箱', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (45, '18', '模块', 0, 'market', '市场信息', 'market/市场信息', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (46, '19', '模块', 1, 'project', '项目管理', 'project/项目管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (47, '20', '模块', 1, 'sports', '体育运动', 'sports/体育运动', '', 'img20.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (48, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (50, '23', '模块', 1, 'monitor', '系统监控', 'monitor/系统监控', '', 'img23.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (51, '24', '模块', 1, 'prison', '看守所', 'prison/看守所', '', 'img24.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (52, '25', '模块', 1, 'gis', '电子地图', 'gis/电子地图', '', 'gis.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (53, '26', '模块', 1, 'light', '交通信号', 'light/交通信号', '', 'light.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (54, '27', '模块', 1, 'gps', '警力资源', 'gps/警力资源', '', 'img27.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (55, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (56, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (57, '19', '模块', 1, 'project', '项目管理', 'project/项目管理', '', 'img1.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (58, '20', '模块', 1, 'sports', '体育运动', 'sports/体育运动', '', 'img20.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (60, '23', '模块', 1, 'monitor', '系统监控', 'monitor/系统监控', '', 'img23.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (61, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (62, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (63, '29', '模块', 1, 'wechat', '微信管理', 'wechat/微信管理', '', 'wechat.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (64, '29', '模块', 1, 'travel', '旅游民宿', 'travel/旅游民宿', '', 'travel.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (65, '29', '模块', 1, 'user', '学生管理', 'travel/旅游民宿', '', 'travel.jpg', 'normal', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (66, '29', '模块', 1, 'zakk', '治安卡口', 'zakk/治安卡口', '', 'zakk.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (67, '30', '模块', 1, 'vote', '投票管理', 'club/社团管理', '', 'club.jpg', 'normal', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (68, '31', '模块', 1, 'help', '帮助系统', 'help/帮助系统', '', 'help.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (69, '32', '模块', 1, 'shop', '商铺管理', 'shop/商铺管理', '', 'shop.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (70, '32', '模块', 1, 'shop', '商铺管理', 'shop/商铺管理', '', 'shop.jpg', 'travel_shop_manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (71, '29', '模块', 1, 'travel', '旅游民宿', 'travel/旅游民宿', '', 'travel.jpg', 'travel_shop_manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (72, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'travel_shop_manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (73, '19', '模块', 1, 'investigation', '调查管理', 'project/调查管理', '', 'img1.jpg', 'normal', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (74, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'wechat_guest', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (75, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (76, '30', '模块', 1, 'club', '社团管理', 'club/社团管理', '', 'club.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (77, '30', '模块', 1, 'club', '社团管理', 'club/社团管理', '', 'club.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (78, '30', '模块', 1, 'club', '社团管理', 'club/社团管理', '', 'club.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (79, '30', '模块', 1, 'dzjc', '电子警察', 'dzjc/电子警察', '', 'dzjc.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (80, '30', '模块', 1, 'dzjc', '电子警察', 'dzjc/电子警察', '', 'dzjc.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (81, '30', '模块', 1, 'video', '视频监控', 'video/视频监控', '', 'club.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (82, '19', '模块', 1, 'file', '文件管理', 'forum/百家论坛', '', 'img1.jpg', 'normal', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (83, '19', '模块', 1, 'forum', '百家论坛', 'forum/百家论坛', '', 'img1.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', '');
+INSERT INTO `attendance_manage` VALUES (22, '1', '操作系统', '2019-05-07 01:15:36', '2019-06-01 12:59:09', '学号_姓名_作业名', 'xxxxxxxxxxxxxxxxxxxxxx', 'xxx', NULL, NULL, NULL), (23, '2', '研究与开发实践', '2019-05-07 01:16:16', '2019-05-30 12:59:27', '学号_姓名_作业名', 'hhhhhhhhhhhhhhhhhhhhhhhh', '哈哈哈', NULL, NULL, NULL);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for class_manage
+-- ----------------------------
+DROP TABLE IF EXISTS `class_manage`;
+CREATE TABLE `class_manage`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Table structure for course_manage
+-- ----------------------------
+DROP TABLE IF EXISTS `course_manage`;
+CREATE TABLE `course_manage`  (
+  `id` int(11) NOT NULL,
+  `course_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `teacher_id` int(11) NULL DEFAULT NULL,
+  `teacher_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of course_manage
+-- ----------------------------
+BEGIN;
+INSERT INTO `course_manage` VALUES (1, 'xxxxxxxx', 1, 'xxx');
 COMMIT;
 
 -- ----------------------------
@@ -87,14 +82,15 @@ CREATE TABLE `file_comment`  (
   `comment_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `score` int(10) NULL DEFAULT NULL,
   `publish_date` datetime(0) NULL DEFAULT NULL,
+  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of file_comment
 -- ----------------------------
 BEGIN;
-INSERT INTO `file_comment` VALUES (20, 1, 'zhangsan', '好好好', 100, '2019-05-06 22:50:38'), (21, 1, 'zhangsan', '不错不错', 26, '2019-05-07 01:14:37'), (22, 1, '李四', '哈哈哈哈', 87, '2019-05-07 01:15:36'), (23, 1, 'zhangsan', '再接再厉', 16, '2019-05-07 01:16:16'), (24, 2, '李四', '支持楼主', 34, '2019-05-01 13:08:40'), (25, 4, '张三', '哈哈哈哈哈哈', 50, '2019-05-07 14:19:04'), (26, 4, '王麻子', '好好好', 50, '2019-05-07 14:23:43'), (27, 3, '张三', '233333', 50, '2019-05-07 14:24:43'), (28, 3, '李四', '楼主加油', 50, '2019-05-07 14:28:38'), (29, 3, '张三', '不错', 50, '2019-05-07 14:31:29'), (30, 3, '王麻子', '测试', 50, '2019-05-07 14:32:42'), (31, 4, '李四', 'test', 50, '2019-05-07 14:39:32'), (32, 4, '张三', 'dfhcgk44', 50, '2019-05-07 15:25:14'), (33, 1, '张三', '233333333', 50, '2019-05-07 19:28:17'), (34, 1, '1234', 'zjdhkk', 50, '2019-06-02 20:05:56');
+INSERT INTO `file_comment` VALUES (20, 20, 'zhangsan', '好好好', 100, '2019-05-06 22:50:38', NULL), (21, 20, 'zhangsan', '不错不错', 26, '2019-05-07 01:14:37', NULL), (22, 20, '李四', '哈哈哈哈', 87, '2019-05-07 01:15:36', NULL), (23, 20, 'zhangsan', '再接再厉', 16, '2019-05-07 01:16:16', NULL), (24, 21, '李四', '支持楼主', 34, '2019-05-01 13:08:40', NULL), (25, 22, '张三', '哈哈哈哈哈哈', 50, '2019-05-07 14:19:04', NULL), (26, 4, '王麻子', '好好好', 50, '2019-05-07 14:23:43', NULL), (27, 3, '张三', '233333', 50, '2019-05-07 14:24:43', NULL), (28, 3, '李四', '楼主加油', 50, '2019-05-07 14:28:38', NULL), (29, 3, '张三', '不错', 50, '2019-05-07 14:31:29', NULL), (30, 3, '王麻子', '测试', 50, '2019-05-07 14:32:42', NULL), (31, 4, '李四', 'test', 50, '2019-05-07 14:39:32', NULL), (32, 4, '张三', 'dfhcgk44', 50, '2019-05-07 15:25:14', NULL), (33, 1, '张三', '233333333', 50, '2019-05-07 19:28:17', NULL), (34, 1, '1234', 'zjdhkk', 50, '2019-06-02 20:05:56', NULL), (38, 20, 'root', 'sedhtrlfgkl', 50, '2019-06-16 22:56:41', NULL), (39, 20, 'root', 'q7326534', 50, '2019-06-16 23:00:58', NULL), (40, 20, 'root', '378534', 50, '2019-06-16 23:01:24', NULL), (41, 20, 'root', '二位3o867trtyi', 50, '2019-06-16 23:04:19', NULL), (42, 20, 'root', '3754946846954b7r6yvn', 50, '2019-06-17 20:48:19', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -103,43 +99,21 @@ COMMIT;
 DROP TABLE IF EXISTS `file_manage`;
 CREATE TABLE `file_manage`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `file_id` int(10) NULL DEFAULT NULL,
-  `uploader_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `file_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `file_size` int(10) NULL DEFAULT NULL,
-  `upload_time` datetime(0) NULL DEFAULT NULL,
-  `download_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
-
--- ----------------------------
--- Records of file_manage
--- ----------------------------
-BEGIN;
-INSERT INTO `file_manage` VALUES (20, 1, 'zhangsan', 'BBFlashBack.rar', 100, '2019-05-06 22:50:38', NULL), (21, 2, 'zhangsan', '张彭俊_第2周作业.rar', 2697647, '2019-05-07 01:14:37', '../../DownloadServlet?file_name=张彭俊_第2周作业.rar'), (22, 3, 'zhangsan', '六级准考证.pdf', 87816, '2019-05-07 01:15:36', '../../DownloadServlet?file_name=六级准考证.pdf'), (23, 4, 'zhangsan', '一带一路.docx', 16006, '2019-05-07 01:16:16', '../../DownloadServlet?file_name=一带一路.docx'), (24, 1, 'zhangsan', '浅谈石油化工安全.doc', 35328, '2019-05-07 19:27:37', '../../DownloadServlet?file_name=浅谈石油化工安全.doc'), (25, 1, 'zhangsan', '白色谷歌开机动画(卡刷包-乐橙).zip', 1824317, '2019-05-13 11:02:37', '../../DownloadServlet?file_name=白色谷歌开机动画(卡刷包-乐橙).zip'), (26, 1, 'zhangsan', '实战Java高并发程序设计@www.java1234.com.pdf', 83894684, '2019-05-13 11:10:16', '../../DownloadServlet?file_name=实战Java高并发程序设计@www.java1234.com.pdf'), (27, 1, 'zhangsan', '基于PC的语音信号处理.docx', 63321, '2019-05-14 09:32:14', '../../DownloadServlet?file_name=基于PC的语音信号处理.docx');
-COMMIT;
-
--- ----------------------------
--- Table structure for homework_file_manage
--- ----------------------------
-DROP TABLE IF EXISTS `homework_file_manage`;
-CREATE TABLE `homework_file_manage`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `homework_id` int(10) NULL DEFAULT NULL,
-  `uploader_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `uploader_id` int(20) NULL DEFAULT NULL,
   `file_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `file_size` int(10) NULL DEFAULT NULL,
   `upload_time` datetime(0) NULL DEFAULT NULL,
   `download_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `uploader_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
--- Records of homework_file_manage
+-- Records of file_manage
 -- ----------------------------
 BEGIN;
-INSERT INTO `homework_file_manage` VALUES (20, 23, '李四', 'BBFlashBack.rar', 100, '2019-05-06 22:50:38', NULL, NULL), (21, 23, '王麻子', '张彭俊_第2周作业.rar', 2697647, '2019-05-07 01:14:37', '../../DownloadServlet?file_name=张彭俊_第2周作业.rar', NULL), (22, 23, 'xxx', '六级准考证.pdf', 87816, '2019-05-07 01:15:36', '../../DownloadServlet?file_name=六级准考证.pdf', NULL), (23, 23, '哈哈哈', '一带一路.docx', 16006, '2019-05-07 01:16:16', '../../DownloadServlet?file_name=一带一路.docx', NULL), (24, 22, 'test', '浅谈石油化工安全.doc', 35328, '2019-05-07 19:27:37', '../../DownloadServlet?file_name=浅谈石油化工安全.doc', NULL), (25, 22, 'Maria', '白色谷歌开机动画(卡刷包-乐橙).zip', 1824317, '2019-05-13 11:02:37', '../../DownloadServlet?file_name=白色谷歌开机动画(卡刷包-乐橙).zip', NULL), (26, 22, 'Tom', '实战Java高并发程序设计@www.java1234.com.pdf', 83894684, '2019-05-13 11:10:16', '../../DownloadServlet?file_name=实战Java高并发程序设计@www.java1234.com.pdf', NULL), (27, 23, '张武', 'XM05-移动互动课堂-概要设计.doc', 1441280, '2019-05-14 09:50:58', '../../DownloadServlet?file_name=XM05-移动互动课堂-概要设计.doc', NULL), (58, 23, 'zhangsan', '2017141400000_张三_第二次作业.rar', 37334485, '2019-05-24 23:44:36', '../../DownloadServlet?file_name=2017141400000_张三_第二次作业.rar', 'zhangsan');
+INSERT INTO `file_manage` VALUES (20, 23, 1, 'BBFlashBack.rar', 100, '2019-05-06 22:50:38', NULL, '李四'), (21, 23, 2, '张彭俊_第2周作业.rar', 2697647, '2019-05-07 01:14:37', '../../DownloadServlet?file_name=张彭俊_第2周作业.rar', '王麻子'), (22, 23, 3, '六级准考证.pdf', 87816, '2019-05-07 01:15:36', '../../DownloadServlet?file_name=六级准考证.pdf', 'xxx'), (23, 23, 4, '一带一路.docx', 16006, '2019-05-07 01:16:16', '../../DownloadServlet?file_name=一带一路.docx', '哈哈哈'), (24, 22, 5, '浅谈石油化工安全.doc', 35328, '2019-05-07 19:27:37', '../../DownloadServlet?file_name=浅谈石油化工安全.doc', 'test'), (25, 22, 6, '白色谷歌开机动画(卡刷包-乐橙).zip', 1824317, '2019-05-13 11:02:37', '../../DownloadServlet?file_name=白色谷歌开机动画(卡刷包-乐橙).zip', 'Maria'), (26, 22, 7, '实战Java高并发程序设计@www.java1234.com.pdf', 83894684, '2019-05-13 11:10:16', '../../DownloadServlet?file_name=实战Java高并发程序设计@www.java1234.com.pdf', 'Tom'), (27, 23, 8, 'XM05-移动互动课堂-概要设计.doc', 1441280, '2019-05-14 09:50:58', '../../DownloadServlet?file_name=XM05-移动互动课堂-概要设计.doc', '张武'), (58, 23, 9, '2017141400000_张三_第二次作业.rar', 37334485, '2019-05-24 23:44:36', '../../DownloadServlet?file_name=2017141400000_张三_第二次作业.rar', 'zhangsan'), (59, -1, 27, 'null', 5791101, '2019-06-29 16:43:59', '../../DownloadServlet?file_name=null', 'root');
 COMMIT;
 
 -- ----------------------------
@@ -148,23 +122,22 @@ COMMIT;
 DROP TABLE IF EXISTS `homework_manage`;
 CREATE TABLE `homework_manage`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `file_id` int(10) NULL DEFAULT NULL,
-  `uploader_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `file_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `file_size` int(10) NULL DEFAULT NULL,
-  `upload_time` datetime(0) NULL DEFAULT NULL,
-  `download_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `publisher_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `homework_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `publish_time` datetime(0) NULL DEFAULT NULL,
   `deadline` datetime(0) NULL DEFAULT NULL,
-  `file_format` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `file_name_format` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `homework_requirement` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `publisher_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `course_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of homework_manage
 -- ----------------------------
 BEGIN;
-INSERT INTO `homework_manage` VALUES (22, 3, 'xxx', '第一次作业', 87816, '2019-05-07 01:15:36', '../../DownloadServlet?file_name=六级准考证.pdf', '2019-05-10 12:59:09', '学号_姓名_作业名', 'xxxxxxxxxxxxxxxxxxxxxx'), (23, 4, '哈哈哈', '第二次作业', 16006, '2019-05-07 01:16:16', '../../DownloadServlet?file_name=一带一路.docx', '2019-05-30 12:59:27', '学号_姓名_作业名', 'hhhhhhhhhhhhhhhhhhhhhhhh');
+INSERT INTO `homework_manage` VALUES (22, '1', '第一次作业', '2019-05-07 01:15:36', '2019-06-01 12:59:09', '学号_姓名_作业名', 'xxxxxxxxxxxxxxxxxxxxxx', 'xxx', NULL), (23, '2', '第二次作业', '2019-05-07 01:16:16', '2019-05-30 12:59:27', '学号_姓名_作业名', 'hhhhhhhhhhhhhhhhhhhhhhhh', '哈哈哈', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -223,7 +196,7 @@ CREATE TABLE `interactive_classroom_main`  (
 -- Records of interactive_classroom_main
 -- ----------------------------
 BEGIN;
-INSERT INTO `interactive_classroom_main` VALUES (21, '21', '模块', 1, 'homework', '作业管理', 'teach/教学管理', '', 'teach.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (29, '01', '模块', 0, 'crm', '客户关系', 'crm/客户关系', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (30, '02', '模块', 0, 'design', '产品设计', 'design/产品设计', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (31, '03', '模块', 0, 'manufacture', '生产管理', 'manufacture/生产管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (32, '04', '模块', 0, 'stock', '库存管理', 'stock/库存管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (33, '05', '模块', 0, 'purchase', '采购管理', 'purchase/采购管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (34, '06', '模块', 0, 'intrmanufacture', '委外管理', 'intrmanufacture/委外管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (35, '07', '模块', 0, 'fund', '资金控制', 'fund/资金控制', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (36, '08', '模块', 0, 'finance', '财务系统', 'finance/财务系统', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (37, '09', '模块', 0, 'hr', '人力资源', 'hr/人力资源', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (38, '10', '模块', 0, 'oa', '协同办公', 'oa/协同办公', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (39, '11', '模块', 0, 'ecommerce', '电子商务', 'ecommerce/电子商务', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (40, '12', '模块', 0, 'logistics', '物流配送', 'logistics/物流配送', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (41, '14', '模块', 0, 'qcs', '质量控制', 'qcs/质量控制', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (42, '15', '模块', 1, 'security', '系统安全', 'security/系统安全', '', 'security.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (43, '16', '模块', 0, 'draft', '草稿箱', 'draft/草稿箱', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (44, '17', '模块', 0, 'garbage', '垃圾箱', 'garbage/垃圾箱', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (45, '18', '模块', 0, 'market', '市场信息', 'market/市场信息', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (46, '19', '模块', 1, 'project', '项目管理', 'project/项目管理', '', 'img1.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (47, '20', '模块', 1, 'sports', '体育运动', 'sports/体育运动', '', 'img20.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (48, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (50, '23', '模块', 1, 'monitor', '系统监控', 'monitor/系统监控', '', 'img23.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (51, '24', '模块', 1, 'prison', '看守所', 'prison/看守所', '', 'img24.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (52, '25', '模块', 1, 'gis', '电子地图', 'gis/电子地图', '', 'gis.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (53, '26', '模块', 1, 'light', '交通信号', 'light/交通信号', '', 'light.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (54, '27', '模块', 1, 'gps', '警力资源', 'gps/警力资源', '', 'img27.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (55, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (56, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (57, '19', '模块', 1, 'project', '项目管理', 'project/项目管理', '', 'img1.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (58, '20', '模块', 1, 'sports', '体育运动', 'sports/体育运动', '', 'img20.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (60, '23', '模块', 1, 'monitor', '系统监控', 'monitor/系统监控', '', 'img23.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (61, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'student1', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (62, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (63, '29', '模块', 1, 'wechat', '微信管理', 'wechat/微信管理', '', 'wechat.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (64, '29', '模块', 1, 'travel', '旅游民宿', 'travel/旅游民宿', '', 'travel.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (65, '29', '模块', 1, 'user', '学生管理', 'travel/旅游民宿', '', 'travel.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (66, '29', '模块', 1, 'zakk', '治安卡口', 'zakk/治安卡口', '', 'zakk.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (67, '30', '模块', 1, 'vote', '投票管理', 'club/社团管理', '', 'club.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (68, '31', '模块', 1, 'help', '帮助系统', 'help/帮助系统', '', 'help.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (69, '32', '模块', 1, 'shop', '商铺管理', 'shop/商铺管理', '', 'shop.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (70, '32', '模块', 1, 'shop', '商铺管理', 'shop/商铺管理', '', 'shop.jpg', 'travel_shop_manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (71, '29', '模块', 1, 'travel', '旅游民宿', 'travel/旅游民宿', '', 'travel.jpg', 'travel_shop_manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (72, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'travel_shop_manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (73, '19', '模块', 1, 'investigation', '调查管理', 'project/调查管理', '', 'img1.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (74, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'wechat_guest', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (75, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (76, '30', '模块', 1, 'club', '社团管理', 'club/社团管理', '', 'club.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (77, '30', '模块', 1, 'club', '社团管理', 'club/社团管理', '', 'club.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (78, '30', '模块', 1, 'club', '社团管理', 'club/社团管理', '', 'club.jpg', 'student1', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (79, '30', '模块', 1, 'dzjc', '电子警察', 'dzjc/电子警察', '', 'dzjc.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (80, '30', '模块', 1, 'dzjc', '电子警察', 'dzjc/电子警察', '', 'dzjc.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (81, '30', '模块', 1, 'video', '视频监控', 'video/视频监控', '', 'club.jpg', 'userType', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (82, '19', '模块', 1, 'file', '文件管理', 'forum/百家论坛', '', 'img1.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (83, '19', '模块', 1, 'forum', '百家论坛', 'forum/百家论坛', '', 'img1.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', '');
+INSERT INTO `interactive_classroom_main` VALUES (21, '21', '模块', 1, 'homework', '作业管理', 'teach/教学管理', '', 'teach.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (29, '01', '模块', 0, 'crm', '客户关系', 'crm/客户关系', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (30, '02', '模块', 0, 'design', '产品设计', 'design/产品设计', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (31, '03', '模块', 0, 'manufacture', '生产管理', 'manufacture/生产管理', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (32, '04', '模块', 0, 'stock', '库存管理', 'stock/库存管理', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (33, '05', '模块', 0, 'purchase', '采购管理', 'purchase/采购管理', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (34, '06', '模块', 0, 'intrmanufacture', '委外管理', 'intrmanufacture/委外管理', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (35, '07', '模块', 0, 'fund', '资金控制', 'fund/资金控制', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (36, '08', '模块', 0, 'finance', '财务系统', 'finance/财务系统', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (37, '09', '模块', 0, 'hr', '人力资源', 'hr/人力资源', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (38, '10', '模块', 0, 'oa', '协同办公', 'oa/协同办公', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (39, '11', '模块', 0, 'ecommerce', '电子商务', 'ecommerce/电子商务', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (40, '12', '模块', 0, 'logistics', '物流配送', 'logistics/物流配送', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (41, '14', '模块', 0, 'qcs', '质量控制', 'qcs/质量控制', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (42, '15', '模块', 1, 'security', '系统安全', 'security/系统安全', '', 'security.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (43, '16', '模块', 0, 'draft', '草稿箱', 'draft/草稿箱', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (44, '17', '模块', 0, 'garbage', '垃圾箱', 'garbage/垃圾箱', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (45, '18', '模块', 0, 'market', '市场信息', 'market/市场信息', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (46, '19', '模块', 1, 'project', '项目管理', 'project/项目管理', '', 'img1.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (47, '20', '模块', 1, 'sports', '体育运动', 'sports/体育运动', '', 'img20.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (48, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (50, '23', '模块', 1, 'monitor', '系统监控', 'monitor/系统监控', '', 'img23.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (51, '24', '模块', 1, 'prison', '看守所', 'prison/看守所', '', 'img24.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (52, '25', '模块', 1, 'gis', '电子地图', 'gis/电子地图', '', 'gis.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (53, '26', '模块', 1, 'light', '交通信号', 'light/交通信号', '', 'light.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (54, '27', '模块', 1, 'gps', '警力资源', 'gps/警力资源', '', 'img27.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (55, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (56, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (57, '19', '模块', 1, 'project', '项目管理', 'project/项目管理', '', 'img1.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (58, '20', '模块', 1, 'sports', '体育运动', 'sports/体育运动', '', 'img20.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (60, '23', '模块', 1, 'monitor', '系统监控', 'monitor/系统监控', '', 'img23.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (61, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'student1', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (62, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (63, '29', '模块', 1, 'wechat', '微信管理', 'wechat/微信管理', '', 'wechat.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (64, '29', '模块', 1, 'travel', '旅游民宿', 'travel/旅游民宿', '', 'travel.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (65, '29', '模块', 1, 'user', '学生管理', 'travel/旅游民宿', '', 'travel.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (66, '29', '模块', 1, 'zakk', '治安卡口', 'zakk/治安卡口', '', 'zakk.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (67, '30', '模块', 1, 'vote', '投票管理', 'club/社团管理', '', 'club.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (68, '31', '模块', 1, 'help', '帮助系统', 'help/帮助系统', '', 'help.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (69, '32', '模块', 1, 'shop', '商铺管理', 'shop/商铺管理', '', 'shop.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (70, '32', '模块', 1, 'shop', '商铺管理', 'shop/商铺管理', '', 'shop.jpg', 'travel_shop_manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (71, '29', '模块', 1, 'travel', '旅游民宿', 'travel/旅游民宿', '', 'travel.jpg', 'travel_shop_manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (72, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'travel_shop_manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (73, '19', '模块', 1, 'investigation', '调查管理', 'project/调查管理', '', 'img1.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (74, '21', '模块', 1, 'teach', '教学管理', 'teach/教学管理', '', 'teach.jpg', 'wechat_guest', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (75, '28', '模块', 1, 'user', '用户管理', 'user/用户管理', '', 'user.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (76, '30', '模块', 1, 'club', '社团管理', 'club/社团管理', '', 'club.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (77, '30', '模块', 1, 'club', '社团管理', 'club/社团管理', '', 'club.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (78, '30', '模块', 1, 'club', '社团管理', 'club/社团管理', '', 'club.jpg', 'student1', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (79, '30', '模块', 1, 'dzjc', '电子警察', 'dzjc/电子警察', '', 'dzjc.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (80, '30', '模块', 1, 'dzjc', '电子警察', 'dzjc/电子警察', '', 'dzjc.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (81, '30', '模块', 1, 'video', '视频监控', 'video/视频监控', '', 'club.jpg', 'manager', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (82, '19', '模块', 1, 'file', '文件管理', 'forum/百家论坛', '', 'img1.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (83, '19', '模块', 1, 'forum', '百家论坛', 'forum/百家论坛', '', 'img1.jpg', 'teacher', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', ''), (84, '21', '模块', 1, 'attendance', '考勤管理', 'teach/考勤管理', '', 'teach.jpg', 'student', NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, '1800-01-01 00:00:00', '1800-01-01 00:00:00', '1800-01-01 00:00:00', '', '', 0, '', '');
 COMMIT;
 
 -- ----------------------------
@@ -241,7 +214,7 @@ CREATE TABLE `investigation_manage`  (
   `create_time` datetime(0) NULL DEFAULT NULL,
   `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of investigation_manage
@@ -249,127 +222,6 @@ CREATE TABLE `investigation_manage`  (
 BEGIN;
 INSERT INTO `investigation_manage` VALUES (4, 'kfjwwxpt', 'zhangsan', '食堂饭菜满意度调查', '调查学生对学校食堂饭菜的满意度调查', '2015-11-29 00:00:00', '张三', '2017-04-23 14:50:37', 'https://www.wjx.cn'), (10, 'PRJ_20161210020741', 'zhangsan', '下周三是否有空', '调查学生周三是否有空', '2019-04-18 23:58:17', '辛卫', '2017-04-29 14:50:37', 'https://www.wjx.cn'), (11, 'PRJ_20161207052455', 'zhangsan', '意见收集', '收集学生对课堂教学的意见', '2019-04-02 23:58:24', '辛卫', '2017-05-01 14:50:37', 'https://www.wjx.cn'), (13, 'PRJ_20161022023027', 'zhangsan', '教学满意度调查', '调查学生对老师教学情况', '2019-04-19 23:58:27', '张三', '2017-05-11 14:34:27', 'https://www.wjx.cn'), (15, 'PRJ_20161022023027', 'zhangsan', '考试考试', '考试快来看看看看看', '2019-05-01 23:58:31', '张三', '2017-05-11 14:52:06', 'https://www.wjx.cn');
 COMMIT;
-
--- ----------------------------
--- Table structure for project_core
--- ----------------------------
-DROP TABLE IF EXISTS `project_core`;
-CREATE TABLE `project_core`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `type` int(10) NULL DEFAULT NULL,
-  `limit_time` datetime(0) NULL DEFAULT NULL,
-  `end_tag` int(10) NULL DEFAULT 0,
-  `begin_time` datetime(0) NULL DEFAULT NULL,
-  `end_time` datetime(0) NULL DEFAULT NULL,
-  `executor` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `attachment_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `attachment_size` int(10) NULL DEFAULT 0,
-  `priority` int(10) NULL DEFAULT NULL,
-  `check_tag` int(10) NULL DEFAULT 0,
-  `checker` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `check_time` datetime(0) NULL DEFAULT NULL,
-  `excel_tag` int(10) NULL DEFAULT 0,
-  `gar_tag` int(10) NULL DEFAULT 0,
-  `used_tag` int(10) NULL DEFAULT 1,
-  `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
-
--- ----------------------------
--- Records of project_core
--- ----------------------------
-BEGIN;
-INSERT INTO `project_core` VALUES (3, 'kfjwwxpt', 'zhangsan', '关于作业完成情况的查询', '调查学生作业完成情况', NULL, '2017-04-21 14:50:37', 0, '2016-05-24 00:00:00', '2016-05-25 00:00:00', '张三', '准备执行', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '', '2017-04-21 14:50:37', 'https://www.wjx.cn'), (4, 'kfjwwxpt', 'zhangsan', '食堂饭菜满意度调查', '调查学生对学校食堂饭菜的满意度调查', NULL, '2017-04-23 14:50:37', 0, '2015-11-29 00:00:00', '2015-11-29 00:00:00', '张三', '准备执行', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '', '2017-04-23 14:50:37', 'https://www.wjx.cn'), (10, 'PRJ_20161210020741', 'zhangsan', '下周三是否有空', '调查学生周三是否有空', NULL, '2017-04-29 14:50:37', 0, NULL, '2019-04-18 23:58:17', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '辛卫', '2017-04-29 14:50:37', 'https://www.wjx.cn'), (11, 'PRJ_20161207052455', 'zhangsan', '意见收集', '收集学生对课堂教学的意见', NULL, '2017-05-01 14:50:37', 0, NULL, '2019-04-02 23:58:24', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '辛卫', '2017-05-01 14:50:37', 'https://www.wjx.cn'), (13, 'PRJ_20161022023027', 'zhangsan', '教学满意度调查', '调查学生对老师教学情况', NULL, '2017-05-18 14:50:59', 0, NULL, '2019-04-19 23:58:27', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '张三', '2017-05-11 14:34:27', 'https://www.wjx.cn'), (15, 'PRJ_20161022023027', 'zhangsan', '考试考试', '考试快来看看看看看', NULL, '2017-05-11 14:52:06', 0, NULL, '2019-05-01 23:58:31', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '张三', '2017-05-11 14:52:06', 'https://www.wjx.cn'), (19, 'PRJ_20161022023027', 'zhangsan', 'dihfgdl', 'shgxlk', NULL, '2019-04-29 23:59:59', 0, NULL, '2019-04-29 23:59:59', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '张三', '2019-04-29 22:59:10', 'www.baidu.com');
-COMMIT;
-
--- ----------------------------
--- Table structure for project_file
--- ----------------------------
-DROP TABLE IF EXISTS `project_file`;
-CREATE TABLE `project_file`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `project_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `project_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `project_nick` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `project_class` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `project_source` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `project_describe` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `project_manager_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `project_manager_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `apply_money` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `approval_money` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `group_member` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `start_time` datetime(0) NULL DEFAULT NULL,
-  `end_time` datetime(0) NULL DEFAULT NULL,
-  `superior_unit` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `superior_manager` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0.00',
-  `attachment_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `open_level` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `check_tag` int(10) NULL DEFAULT 0,
-  `checker` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `check_time` datetime(0) NULL DEFAULT NULL,
-  `price_alarm_tag` int(10) NULL DEFAULT 0,
-  `price_change_tag` int(10) NULL DEFAULT 0,
-  `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `modifier` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `modify_time` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
-
--- ----------------------------
--- Records of project_file
--- ----------------------------
-BEGIN;
-INSERT INTO `project_file` VALUES (14, 'XM04', '基于OpenCV的交通视频质量诊断系统', '视频质量诊断', '三级[1,5)', NULL, '对交通视频进行质量检测是智能交通监控系统正常运行的保障。它能及时有效地发现电路摄像头损坏，线路损坏，信号收到干扰等问题并进行报警，提醒工作人员尽快对其进行修复。对交通视频的质量检测目的为实现所有道路上的监控录像都能高清有效，有利于我们更好的交通管理和问题处理。', NULL, '邹江华', '10000', '10000', '邹江华\r\n黄益明\r\n马普朝', '2014-03-13 17:48:30', '2014-06-18 17:48:38', '项目管理中心', '韦东鑫', 'XM111000000382XM11企业资源计划项目管理子系统-第八周.doc', 'all', 1, 'admin', '2014-06-04 01:56:02', 0, 0, 'admin', '2014-04-29 17:46:55', NULL, NULL), (15, 'XM15', '医院信息管理系统-病案管理', '', '四级[0.3,1)', NULL, '随着信息技术的发展，利用信息技术对医院进行信息化建设，提高医院的管理水平，已经成为了医院信息化的重要发展方向。作为医院重要的信息节点之一，病案信息的管理对医院管理决策的制定、医疗信息的利用、司法资料的取证等具有重要的作用。传统的手工操作和纯粹手工操作计算机化的病案管理模式，直接影响了医院信息化管理发展的进程。因此，对病案这一重要信息枢纽实行信息化管理，对医院内、医院间、乃至全球的信息交流与应用，以及对医院的现代化管理及医学科学的发展等都具有重要的现实意义和实用价值。改变了手工操作和纯粹手工操作计算机化的病案管理模式，实现了计算机的一体化管理；提高了病案管理的工作效率；扩大了病案信息资料计算机的存储、检索及利用；及时反馈了医疗信息的统计数据；保证了病案流通病案资料保存的完整性。', NULL, '李虎', '5000', '5000', '李虎  2012141461027\r\n徐方婧2012141461077\r\n马锐  2012141461187', '2014-03-12 19:17:43', '2014-06-25 19:17:48', '项目管理中心', '任倩', 'XM111000000382XM11企业资源计划项目管理子系统-第八周.doc', 'all', 1, 'admin', '2014-04-29 22:22:00', 0, 0, 'admin', '2014-04-29 19:14:22', NULL, NULL), (16, 'XM05', '非接触式读写应用', '非接触式读写应用', '三级[1,5)', NULL, '研究各种非接触式读写应用。', NULL, '吴惠惠', '5000', '5000', '吴惠惠\r\n杨晓玲\r\n于佳铨', '2014-03-12 19:21:08', '2014-06-25 19:25:05', '项目管理中心', '韦东鑫', 'XM051000000379XM05-非接触式读写应用-项目周报-第九周.doc', 'all', 1, 'admin', '2014-04-29 21:46:05', 0, 0, 'admin', '2014-04-29 19:19:21', NULL, NULL), (18, 'XM11', '企业资源计划项目管理子系统', '项目管理子系统', '一级(20万及以上)', NULL, '项目管理子系统', NULL, '高岩', '100', '100', '高岩\r\n苏建松', '2014-03-17 20:31:32', '2014-06-16 20:31:37', '研究与开发实践', '辛卫', 'XM111000000382XM11企业资源计划项目管理子系统-第八周.doc', 'all', 1, 'admin', '2014-04-29 21:45:23', 0, 0, 'admin', '2014-04-29 20:30:29', NULL, NULL), (19, 'XM07', '基于GeoServer的GIS研发', 'GIS', '三级[1,5)', NULL, '基于GeoServer的GIS研发：使用GeoServer搭建自己的地图层，并在其基础上实现定位、修改、查看等应用。并将地图供第八组使用。', NULL, '张翔', '10000', '10000', '张翔、张原嘉、张鹏', '2014-04-01 21:05:08', '2014-06-15 21:05:13', '项目管理中心', '韦东鑫', 'XM071000000384XM07-基于GeoServer的GIS研发.doc', 'all', 1, 'admin', '2014-04-29 21:31:59', 0, 0, 'admin', '2014-04-29 21:04:12', NULL, NULL), (20, 'XM16', '医院信息管理系统-门诊、住院部药房管理', '药房管理', '三级[1,5)', NULL, '包括门诊、住院部药房管理系统', NULL, '曾蕊', '50000', '45000', '曾蕊、白静宜、李梦媛、任倩', '2014-03-26 21:39:03', '2014-06-11 21:39:00', '项目管理中心', '任倩', 'XM111000000382XM11企业资源计划项目管理子系统-第八周.doc', 'all', 1, 'admin', '2014-04-29 22:22:14', 0, 0, 'admin', '2014-04-29 21:37:46', NULL, NULL), (21, 'XM09', '市场信息管理', '市场信息', '四级[0.3,1)', NULL, '市场信息管理', NULL, '宋琦', '10000', '10000', '黄圳 徐健', '2014-03-13 22:00:07', '2014-06-10 22:01:00', '项目管理中心', '任倩', 'XM111000000382XM11企业资源计划项目管理子系统-第八周.doc', 'all', 1, 'admin', '2014-04-29 22:16:52', 0, 0, 'admin', '2014-04-29 21:59:06', NULL, NULL), (22, 'XM06', '汽配会员制门户网站', '门户网站', '一级(20万及以上)', NULL, '', NULL, '刘晨航', '1', '1', '马驰\r\n李聪', '2014-03-12 22:27:54', '2014-06-30 22:28:57', '项目管理中心', '韦东鑫', 'XM111000000382XM11企业资源计划项目管理子系统-第八周.doc', 'all', 1, 'admin', '2014-04-29 22:32:21', 0, 0, 'admin', '2014-04-29 22:26:50', NULL, NULL), (24, 'XM02', '关于视频人脸识别的项目', '人脸', '一级(20万及以上)', NULL, '人脸识别应用与交通道路监控', NULL, '张三', '15000', '15000', '张三、李四、王五', '2014-04-30 01:24:20', '2014-04-30 01:24:20', '项目管理中心', '韦东鑫', 'XM021000000380', 'all', 1, 'admin', '2014-04-30 21:04:21', 0, 0, 'admin', '2014-04-30 01:24:20', NULL, NULL), (30, 'PRJ_20161022002245', '物联网农业大棚项目', '农业大棚', '10万', '自拟研发', '这是一个农业大棚项目，兰陵县自然条件优越，农产品资源丰富，是全国蔬菜生产大县，是上海市蔬菜直供基地、北京市蔬菜外埠基地。常年蔬菜种植面积110万亩，其中2015年全县蔬菜收获面积112万亩，总产量420万吨，总产值达85亿元，被誉为“中国蔬菜之乡”。兰陵县也是冬暖式大棚发源地，自上世纪八十年代初，在向城镇苏圈开始试种植反季节温室棚黄瓜成功，经过30多年的蔬菜生产经营探索改革，兰陵县的蔬菜产业正走向规模化种植、标准化生产、产业化经营、品牌化营销的发展道路，成为拉动当地经济发展的支柱产业。', 'ylx_admin', '超级管理员', '10万', '9万', '张三、李四王五', '2016-10-20 00:00:00', '2017-10-20 00:00:00', '项目管理中心', '陈光标', '', 'all', 1, 'checker', '2016-10-21 00:00:00', 1, 2, '超级管理员', '2016-10-22 00:22:45', NULL, NULL), (32, 'PRJ_20161022020045', '高速公路气候监测系统', '气候监测', 'large', 'client', '高速公路自动气象监测系统专门为监测高速公路气象参数而研制。该系统实时监测高速公路的天气状况，可自动收集气象信息，自动进行处理并及时上传到监控中心，供交通管制系统参考，以便根据天气状况及时提出最佳监控案。  高速公路自动气象监测系统由传感器、气象数据采集系统和数据通讯装置三个主要部分组成。气象数据采集器由多路开关、频率测量、V/F变换、高速计数器、控制微机、数据存储器、串行接口、电源等组成。', NULL, '超级管理员', '500', '400', '张三李四王五', '2016-10-20 00:00:00', '2017-10-20 00:00:00', 'department', '陈东升', '', 'school_inner', 1, 'checker', '2016-10-21 00:00:00', 0, 0, '超级管理员', '2016-10-22 02:00:45', NULL, NULL), (33, 'PRJ_20161022023027', '物联网安防项目', '安防', 'medium', 'client', '这是一个安防项目', NULL, '超级管理员', '40万元', '38万元', 'lightmd.ddk.eet，懒人', '2016-10-20 00:00:00', '2017-10-20 00:00:00', 'department', '尔冬升', 'dldlld.zip', 'school_inner', 1, 'checker', '2016-10-21 00:00:00', 0, 0, '超级管理员', '2016-10-22 02:30:27', NULL, NULL);
-COMMIT;
-
--- ----------------------------
--- Table structure for project_member
--- ----------------------------
-DROP TABLE IF EXISTS `project_member`;
-CREATE TABLE `project_member`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `project_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `member_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `member_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `member_role` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `start_time` datetime(0) NULL DEFAULT NULL,
-  `end_time` datetime(0) NULL DEFAULT NULL,
-  `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `modifier` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `modify_time` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
-
--- ----------------------------
--- Records of project_member
--- ----------------------------
-BEGIN;
-INSERT INTO `project_member` VALUES (54, 'PRJ_20161022023027', 'zhangsan', '张三', 'member', '../../assets/module/img/security/user/avatar/avatar.jpg', NULL, NULL, NULL, NULL, NULL, NULL), (55, 'PRJ_20161022002245', 'zhangsan', '张三', 'member', '../../assets/module/img/security/user/avatar/avatar.jpg', NULL, NULL, NULL, NULL, NULL, NULL), (56, 'PRJ_20161022020045', 'zhangsan', '张三', 'member', '../../assets/module/img/security/user/avatar/avatar.jpg', NULL, NULL, NULL, NULL, NULL, NULL);
-COMMIT;
-
--- ----------------------------
--- Table structure for project_statistic
--- ----------------------------
-DROP TABLE IF EXISTS `project_statistic`;
-CREATE TABLE `project_statistic`  (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `colTime` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `colCount` int(10) NULL DEFAULT NULL,
-  `colType` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `colTitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Table structure for project_tree
@@ -424,46 +276,7 @@ CREATE TABLE `project_view`  (
 -- Records of project_view
 -- ----------------------------
 BEGIN;
-INSERT INTO `project_view` VALUES (203, '210101', 'student'), (204, '210201', 'student'), (205, '210202', 'student'), (206, '12010101', 'userType'), (207, '12010105', 'userType'), (208, '12010201', 'userType'), (209, '12010301', 'userType'), (210, '12010401', 'userType'), (211, '12010402', 'userType'), (212, '12010403', 'userType'), (213, '12010404', 'userType'), (214, '120101', 'userType'), (215, '120102', 'userType'), (216, '120103', 'userType'), (217, '120104', 'userType'), (218, '120201', 'userType'), (219, '120202', 'userType'), (220, '120203', 'userType'), (221, '120204', 'userType'), (222, '120205', 'userType'), (223, '120206', 'userType'), (224, '120301', 'userType'), (225, '120302', 'userType'), (226, '120303', 'userType'), (227, '120401', 'userType'), (228, '120402', 'userType'), (229, '120403', 'userType'), (230, '120404', 'userType'), (231, '120501', 'userType'), (232, '120502', 'userType'), (233, '120503', 'userType'), (234, '120601', 'userType'), (235, '120602', 'userType'), (236, '120603', 'userType'), (237, '120605', 'userType'), (238, '120701', 'userType'), (239, '120702', 'userType'), (240, '120703', 'userType'), (241, '120704', 'userType'), (242, '120705', 'userType'), (243, '120801', 'userType'), (244, '120802', 'userType'), (245, '120803', 'userType'), (246, '120804', 'userType'), (247, '120806', 'userType'), (248, '120807', 'userType'), (249, '120808', 'userType'), (250, '120809', 'userType'), (251, '120901', 'userType'), (252, '121001', 'userType'), (253, '121002', 'userType'), (254, '121003', 'userType'), (255, '121004', 'userType'), (256, '121101', 'userType'), (257, '121102', 'userType'), (258, '121103', 'userType'), (259, '121104', 'userType'), (260, '1201', 'userType'), (261, '1202', 'userType'), (262, '1203', 'userType'), (263, '1204', 'userType'), (264, '1205', 'userType'), (265, '1206', 'userType'), (266, '1207', 'userType'), (267, '1208', 'userType'), (268, '1209', 'userType'), (269, '1210', 'userType'), (270, '1211', 'userType'), (292, '1202', 'normal'), (293, '120201', 'normal'), (294, '120202', 'normal'), (295, '120203', 'normal'), (296, '120204', 'normal'), (297, '120205', 'normal'), (298, '120206', 'normal'), (299, '1206', 'normal'), (300, '120601', 'normal'), (301, '120602', 'normal'), (302, '120603', 'normal'), (303, '120605', 'normal'), (304, '1208', 'normal'), (305, '120801', 'normal'), (306, '120802', 'normal'), (307, '120803', 'normal'), (308, '120804', 'normal'), (309, '120806', 'normal'), (310, '120807', 'normal'), (311, '120808', 'normal'), (312, '120809', 'normal');
-COMMIT;
-
--- ----------------------------
--- Table structure for project_vote
--- ----------------------------
-DROP TABLE IF EXISTS `project_vote`;
-CREATE TABLE `project_vote`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `type` int(10) NULL DEFAULT NULL,
-  `limit_time` datetime(0) NULL DEFAULT NULL,
-  `end_tag` int(10) NULL DEFAULT 0,
-  `begin_time` datetime(0) NULL DEFAULT NULL,
-  `end_time` datetime(0) NULL DEFAULT NULL,
-  `executor` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `attachment_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `attachment_size` int(10) NULL DEFAULT 0,
-  `priority` int(10) NULL DEFAULT NULL,
-  `check_tag` int(10) NULL DEFAULT 0,
-  `checker` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `check_time` datetime(0) NULL DEFAULT NULL,
-  `excel_tag` int(10) NULL DEFAULT 0,
-  `gar_tag` int(10) NULL DEFAULT 0,
-  `used_tag` int(10) NULL DEFAULT 1,
-  `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
-
--- ----------------------------
--- Records of project_vote
--- ----------------------------
-BEGIN;
-INSERT INTO `project_vote` VALUES (3, 'kfjwwxpt', 'zhangsan', '关于作业完成情况的查询', '调查学生作业完成情况', NULL, '2017-04-21 14:50:37', 0, '2016-05-24 00:00:00', '2016-05-25 00:00:00', '张三', '准备执行', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '', '2017-04-21 14:50:37', 'https://www.wjx.cn'), (4, 'kfjwwxpt', 'zhangsan', '食堂饭菜满意度调查', '调查学生对学校食堂饭菜的满意度调查', NULL, '2017-04-23 14:50:37', 0, '2015-11-29 00:00:00', '2015-11-29 00:00:00', '张三', '准备执行', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '', '2017-04-23 14:50:37', 'https://www.wjx.cn'), (10, 'PRJ_20161210020741', 'zhangsan', '下周三是否有空', '调查学生周三是否有空', NULL, '2017-04-29 14:50:37', 0, NULL, '2019-04-18 23:58:17', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '辛卫', '2017-04-29 14:50:37', 'https://www.wjx.cn'), (11, 'PRJ_20161207052455', 'zhangsan', '意见收集', '收集学生对课堂教学的意见', NULL, '2017-05-01 14:50:37', 0, NULL, '2019-04-02 23:58:24', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '辛卫', '2017-05-01 14:50:37', 'https://www.wjx.cn'), (13, 'PRJ_20161022023027', 'zhangsan', '教学满意度调查', '调查学生对老师教学情况', NULL, '2017-05-18 14:50:59', 0, NULL, '2019-04-19 23:58:27', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '张三', '2017-05-11 14:34:27', 'https://www.wjx.cn'), (15, 'PRJ_20161022023027', 'zhangsan', '考试考试', '考试快来看看看看看', NULL, '2017-05-11 14:52:06', 0, NULL, '2019-05-01 23:58:31', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '张三', '2017-05-11 14:52:06', 'https://www.wjx.cn'), (19, 'PRJ_20161022023027', 'zhangsan', 'dihfgdl', 'shgxlk', NULL, '2019-04-29 23:59:59', 0, NULL, '2019-04-29 23:59:59', '', '', NULL, 0, NULL, 0, NULL, NULL, 0, 0, 1, '张三', '2019-04-29 22:59:10', 'www.baidu.com');
+INSERT INTO `project_view` VALUES (203, '210101', 'student'), (204, '210201', 'student'), (205, '210202', 'student'), (206, '12010101', 'manager'), (207, '12010105', 'manager'), (208, '12010201', 'manager'), (209, '12010301', 'manager'), (210, '12010401', 'manager'), (211, '12010402', 'manager'), (212, '12010403', 'manager'), (213, '12010404', 'manager'), (214, '120101', 'manager'), (215, '120102', 'manager'), (216, '120103', 'manager'), (217, '120104', 'manager'), (218, '120201', 'manager'), (219, '120202', 'manager'), (220, '120203', 'manager'), (221, '120204', 'manager'), (222, '120205', 'manager'), (223, '120206', 'manager'), (224, '120301', 'manager'), (225, '120302', 'manager'), (226, '120303', 'manager'), (227, '120401', 'manager'), (228, '120402', 'manager'), (229, '120403', 'manager'), (230, '120404', 'manager'), (231, '120501', 'manager'), (232, '120502', 'manager'), (233, '120503', 'manager'), (234, '120601', 'manager'), (235, '120602', 'manager'), (236, '120603', 'manager'), (237, '120605', 'manager'), (238, '120701', 'manager'), (239, '120702', 'manager'), (240, '120703', 'manager'), (241, '120704', 'manager'), (242, '120705', 'manager'), (243, '120801', 'manager'), (244, '120802', 'manager'), (245, '120803', 'manager'), (246, '120804', 'manager'), (247, '120806', 'manager'), (248, '120807', 'manager'), (249, '120808', 'manager'), (250, '120809', 'manager'), (251, '120901', 'manager'), (252, '121001', 'manager'), (253, '121002', 'manager'), (254, '121003', 'manager'), (255, '121004', 'manager'), (256, '121101', 'manager'), (257, '121102', 'manager'), (258, '121103', 'manager'), (259, '121104', 'manager'), (260, '1201', 'manager'), (261, '1202', 'manager'), (262, '1203', 'manager'), (263, '1204', 'manager'), (264, '1205', 'manager'), (265, '1206', 'manager'), (266, '1207', 'manager'), (267, '1208', 'manager'), (268, '1209', 'manager'), (269, '1210', 'manager'), (270, '1211', 'manager'), (292, '1202', 'normal'), (293, '120201', 'normal'), (294, '120202', 'normal'), (295, '120203', 'normal'), (296, '120204', 'normal'), (297, '120205', 'normal'), (298, '120206', 'normal'), (299, '1206', 'normal'), (300, '120601', 'normal'), (301, '120602', 'normal'), (302, '120603', 'normal'), (303, '120605', 'normal'), (304, '1208', 'normal'), (305, '120801', 'normal'), (306, '120802', 'normal'), (307, '120803', 'normal'), (308, '120804', 'normal'), (309, '120806', 'normal'), (310, '120807', 'normal'), (311, '120808', 'normal'), (312, '120809', 'normal');
 COMMIT;
 
 -- ----------------------------
@@ -479,64 +292,13 @@ CREATE TABLE `public_log`  (
   `colUserId` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `colModule` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of public_log
 -- ----------------------------
 BEGIN;
 INSERT INTO `public_log` VALUES (1, '2017-05-11 14:34:27', 0, '用户 张三 于 2017-05-11 14:34:27 添加了 [project][todo] 记录', '添加记录', 'zhangsan', 'project'), (2, '2017-05-11 14:48:57', 0, '用户 张三 于 2017-05-11 14:48:56 添加了 [project][todo] 记录', '添加记录', 'zhangsan', 'project'), (3, '2017-05-11 14:52:07', 0, '用户 张三 于 2017-05-11 14:52:06 添加了 [project][todo] 记录', '添加记录', 'zhangsan', 'project'), (4, '2017-05-11 14:52:17', 0, '用户 张三 于 2017-05-11 14:52:17 删除了 [project][todo] 记录', '删除记录', 'zhangsan', 'project'), (5, '2019-04-29 22:01:31', 0, '用户 张三 于 2019-04-29 22:01:30 修改了 [project][todo] 记录', '修改记录', 'zhangsan', 'project'), (6, '2019-04-29 22:21:39', 0, '用户 张三 于 2019-04-29 22:21:39 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (7, '2019-04-29 22:30:02', 0, '用户 张三 于 2019-04-29 22:30:02 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (8, '2019-04-29 22:38:03', 0, '用户 张三 于 2019-04-29 22:38:03 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (9, '2019-04-29 22:38:29', 0, '用户 张三 于 2019-04-29 22:38:29 删除了 [project][core] 记录', '删除记录', 'zhangsan', 'project'), (10, '2019-04-29 22:53:14', 0, '用户 张三 于 2019-04-29 22:53:14 删除了 [project][core] 记录', '删除记录', 'zhangsan', 'project'), (11, '2019-04-29 22:53:20', 0, '用户 张三 于 2019-04-29 22:53:20 删除了 [project][core] 记录', '删除记录', 'zhangsan', 'project'), (12, '2019-04-29 22:59:10', 0, '用户 张三 于 2019-04-29 22:59:10 添加了 [project][core] 记录', '添加记录', 'zhangsan', 'project'), (13, '2019-05-07 15:45:44', 0, '用户 张三 于 2019-05-07 15:45:44 添加了 [investigation][core] 记录', '添加记录', 'zhangsan', 'investigation'), (14, '2019-05-07 18:35:54', 0, '用户 张三 于 2019-05-07 18:35:54 添加了 [investigation][core] 记录', '添加记录', 'zhangsan', 'investigation'), (15, '2019-05-07 18:38:11', 0, '用户 张三 于 2019-05-07 18:38:11 添加了 [investigation][core] 记录', '添加记录', 'zhangsan', 'investigation'), (16, '2019-05-07 18:51:32', 0, '用户 张三 于 2019-05-07 18:51:32 添加了 [user][info] 记录', '添加记录', 'zhangsan', 'user'), (17, '2019-05-07 19:00:40', 0, '用户 张三 于 2019-05-07 19:00:40 添加了 [vote][file] 记录', '添加记录', 'zhangsan', 'vote'), (18, '2019-05-07 19:01:14', 0, '用户 张三 于 2019-05-07 19:01:14 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (19, '2019-05-07 19:15:04', 0, '用户 张三 于 2019-05-07 19:15:04 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (20, '2019-05-07 19:15:04', 0, '用户 张三 于 2019-05-07 19:15:04 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (21, '2019-05-07 19:15:25', 0, '用户 张三 于 2019-05-07 19:15:25 删除了 [investigation][core] 记录', '删除记录', 'zhangsan', 'investigation'), (22, '2019-05-07 19:25:44', 0, '用户 张三 于 2019-05-07 19:25:44 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (23, '2019-05-07 19:25:44', 0, '用户 张三 于 2019-05-07 19:25:44 删除了 [user][info] 记录', '删除记录', 'zhangsan', 'user'), (24, '2019-05-14 10:53:28', 0, '用户 张三 于 2019-05-14 10:53:28 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (25, '2019-05-14 14:59:33', 0, '用户 张三 于 2019-05-14 14:59:33 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (26, '2019-05-14 15:17:35', 0, '用户 张三 于 2019-05-14 15:17:35 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (27, '2019-05-14 15:18:07', 0, '用户 张三 于 2019-05-14 15:18:07 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (28, '2019-05-14 15:29:28', 0, '用户 张三 于 2019-05-14 15:29:28 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (29, '2019-05-14 15:57:20', 0, '用户 张三 于 2019-05-14 15:57:20 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (30, '2019-05-14 16:00:24', 0, '用户 张三 于 2019-05-14 16:00:24 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (31, '2019-05-14 16:02:04', 0, '用户 张三 于 2019-05-14 16:02:04 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (32, '2019-05-14 16:27:19', 0, '用户 张三 于 2019-05-14 16:27:19 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (33, '2019-05-14 16:58:10', 0, '用户 张三 于 2019-05-14 16:58:10 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (34, '2019-05-14 17:00:14', 0, '用户 张三 于 2019-05-14 17:00:14 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (35, '2019-05-14 17:07:08', 0, '用户 张三 于 2019-05-14 17:07:08 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (36, '2019-05-14 17:09:24', 0, '用户 张三 于 2019-05-14 17:09:24 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (37, '2019-05-14 17:11:43', 0, '用户 张三 于 2019-05-14 17:11:43 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (38, '2019-05-14 17:13:21', 0, '用户 张三 于 2019-05-14 17:13:21 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (39, '2019-05-14 17:14:42', 0, '用户 张三 于 2019-05-14 17:14:42 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (40, '2019-05-14 17:22:50', 0, '用户 张三 于 2019-05-14 17:22:50 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (41, '2019-05-14 17:25:44', 0, '用户 张三 于 2019-05-14 17:25:44 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (42, '2019-05-24 23:19:02', 0, '用户 张三 于 2019-05-24 23:19:02 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (43, '2019-05-24 23:19:14', 0, '用户 张三 于 2019-05-24 23:19:14 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (44, '2019-05-24 23:19:18', 0, '用户 张三 于 2019-05-24 23:19:18 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (45, '2019-05-24 23:41:13', 0, '用户 张三 于 2019-05-24 23:41:13 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (46, '2019-05-24 23:44:00', 0, '用户 张三 于 2019-05-24 23:43:59 删除了 [homework][core] 记录', '删除记录', 'zhangsan', 'homework'), (47, '2019-05-27 13:17:05', 0, '用户 张三 于 2019-05-27 13:17:05 添加了 [user][info] 记录', '添加记录', 'zhangsan', 'user'), (48, '2019-05-28 00:38:31', 0, '用户 root 于 2019-05-28 00:38:31 添加了 [user][info] 记录', '添加记录', 'root', 'user'), (49, '2019-05-28 01:33:08', 0, '用户 root 于 2019-05-28 01:33:08 删除了 [user][info] 记录', '删除记录', 'root', 'user'), (50, '2019-05-28 01:33:08', 0, '用户 root 于 2019-05-28 01:33:08 删除了 [user][info] 记录', '删除记录', 'root', 'user'), (51, '2019-06-02 22:53:02', 0, '用户 root 于 2019-06-02 22:53:02 修改了 [user][info] 记录', '修改记录', '27', 'user');
-COMMIT;
-
--- ----------------------------
--- Table structure for security_users
--- ----------------------------
-DROP TABLE IF EXISTS `security_users`;
-CREATE TABLE `security_users`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `HUMAN_MAJOR_FIRST_KIND_ID` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
-  `HUMAN_MAJOR_FIRST_KIND_NAME` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `HUMAN_MAJOR_SECOND_KIND_ID` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
-  `HUMAN_MAJOR_SECOND_KIND_NAME` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `HUMAN_ID` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `HUMAN_NAME` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `nick_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `NAME` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `PASSWD` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `TAGC` int(11) NULL DEFAULT 0,
-  `TAG` int(1) NULL DEFAULT 0,
-  `FORBID_TIME` datetime(0) NULL DEFAULT NULL,
-  `FORBID_TAG` int(1) NULL DEFAULT 0,
-  `ORDER_DISCOUNT` double(15, 2) NULL DEFAULT 0.00,
-  `RETAIL_DISCOUNT` double(15, 2) NULL DEFAULT 0.00,
-  `CREDIT_DISCOUNT` double(15, 2) NULL DEFAULT 0.00,
-  `type` int(11) NULL DEFAULT 0,
-  `language` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `question` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `answer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `CHAIN_ID` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `CHAIN_NAME` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `group_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `mobile` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `wechat_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `role` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `authority` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `register` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `register_time` datetime(0) NULL DEFAULT NULL,
-  `fans_count` int(10) NULL DEFAULT NULL,
-  `follow_count` int(10) NULL DEFAULT NULL,
-  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `qq` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 85 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
-
--- ----------------------------
--- Records of security_users
--- ----------------------------
-BEGIN;
-INSERT INTO `security_users` VALUES (85, '0', '', '0', '', '302983098409', '张三', 'zhangsan', '', '', 0, 0, NULL, 0, 0.00, 0.00, 0.00, 0, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'normal', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -550,7 +312,7 @@ CREATE TABLE `survey_admins`  (
   `a_email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `a_phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`a_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of survey_admins
@@ -577,13 +339,13 @@ CREATE TABLE `survey_all`  (
   `s_usehits` int(255) NULL DEFAULT NULL,
   `s_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`s_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of survey_all
 -- ----------------------------
 BEGIN;
-INSERT INTO `survey_all` VALUES (1, '作业调查', 'xxxxxxxxxxxx', 'xx', NULL, '2019-05-16 00:00:00', NULL, 1, '2019-06-15 00:00:00', 1, 2, 'investigation'), (3, '哈哈哈哈哈哈哈哈哈哈', '密密麻麻', 'zpj', NULL, '2019-05-18 00:00:00', NULL, 1, '2019-06-17 00:00:00', 0, 3, 'investigation'), (4, '问题1', '问题一描述', 'zpj', NULL, '2019-05-19 00:00:00', NULL, 1, '2019-06-18 00:00:00', 1, 0, 'investigation'), (8, '是的日光和地方', 'hhhhhhhhhhhhh', 'zpj', NULL, '2019-05-22 00:00:00', NULL, 1, '2019-05-31 00:00:00', 1, 0, 'vote'), (10, 'dghf', 'srdfg', '生日歌s', NULL, '2019-05-26 00:00:00', NULL, 1, '2019-06-25 00:00:00', 0, 0, 'investigation');
+INSERT INTO `survey_all` VALUES (1, '作业调查', 'xxxxxxxxxxxx', 'xx', NULL, '2019-05-16 00:00:00', NULL, 1, '2019-06-15 00:00:00', 1, 2, 'investigation'), (3, '哈哈哈哈哈哈哈哈哈哈', '密密麻麻', 'zpj', NULL, '2019-05-18 00:00:00', NULL, 1, '2019-06-17 00:00:00', 0, 3, 'investigation'), (4, '问题1', '问题一描述', 'zpj', NULL, '2019-05-19 00:00:00', NULL, 1, '2019-06-18 00:00:00', 1, 0, 'investigation'), (8, '是的日光和地方', 'hhhhhhhhhhhhh', 'zpj', NULL, '2019-05-22 00:00:00', NULL, 1, '2019-05-31 00:00:00', 1, 0, 'vote'), (10, 'dghf', 'srdfg', '生日歌s', NULL, '2019-05-26 00:00:00', NULL, 1, '2019-06-25 00:00:00', 0, 0, 'investigation'), (11, 'jksrdhufgdfkc', 'sjdhgfuktfldtdk', 'root', NULL, '2019-06-14 00:00:00', NULL, 1, '2019-07-14 00:00:00', 0, 0, 'vote'), (12, 'sedhfgj', 'kewutr8ro576895r\r\n', 'root', NULL, '2019-06-14 00:00:00', NULL, 1, '2019-07-14 00:00:00', 0, 0, 'vote');
 COMMIT;
 
 -- ----------------------------
@@ -597,7 +359,7 @@ CREATE TABLE `survey_answersheet`  (
   `as_postdate` datetime(0) NULL DEFAULT NULL,
   `as_userip` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`as_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of survey_answersheet
@@ -618,7 +380,7 @@ CREATE TABLE `survey_config`  (
   `c_closeWord` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `copyright` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of survey_config
@@ -657,7 +419,7 @@ CREATE TABLE `survey_question`  (
   `q_jdtz` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `q_order` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`q_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of survey_question
@@ -713,38 +475,13 @@ CREATE TABLE `survey_view`  (
   `file_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `role_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 312 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 308 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of survey_view
 -- ----------------------------
 BEGIN;
-INSERT INTO `survey_view` VALUES (206, '12010101', 'userType'), (207, '12010105', 'userType'), (208, '12010201', 'userType'), (209, '12010301', 'userType'), (210, '12010401', 'userType'), (211, '12010402', 'userType'), (212, '12010403', 'userType'), (213, '12010404', 'userType'), (214, '120101', 'userType'), (215, '120102', 'userType'), (216, '120103', 'userType'), (217, '120104', 'userType'), (218, '120201', 'userType'), (219, '120202', 'userType'), (220, '120203', 'userType'), (221, '120204', 'userType'), (222, '120205', 'userType'), (223, '120206', 'userType'), (224, '120301', 'userType'), (225, '120302', 'userType'), (226, '120303', 'userType'), (227, '120401', 'userType'), (228, '120402', 'userType'), (229, '120403', 'userType'), (230, '120404', 'userType'), (231, '120501', 'userType'), (232, '120502', 'userType'), (233, '120503', 'userType'), (234, '120601', 'userType'), (235, '120602', 'userType'), (236, '120603', 'userType'), (237, '120605', 'userType'), (238, '120701', 'userType'), (239, '120702', 'userType'), (240, '120703', 'userType'), (241, '120704', 'userType'), (242, '120705', 'userType'), (243, '120801', 'userType'), (244, '120802', 'userType'), (245, '120803', 'userType'), (246, '120804', 'userType'), (247, '120806', 'userType'), (248, '120807', 'userType'), (249, '120808', 'userType'), (250, '120809', 'userType'), (251, '120901', 'userType'), (252, '121001', 'userType'), (253, '121002', 'userType'), (254, '121003', 'userType'), (255, '121004', 'userType'), (256, '121101', 'userType'), (257, '121102', 'userType'), (258, '121103', 'userType'), (259, '121104', 'userType'), (260, '1201', 'userType'), (261, '1202', 'userType'), (262, '1203', 'userType'), (263, '1204', 'userType'), (264, '1205', 'userType'), (265, '1206', 'userType'), (266, '1207', 'userType'), (267, '1208', 'userType'), (268, '1209', 'userType'), (269, '1210', 'userType'), (270, '1211', 'userType'), (299, '1206', 'normal'), (300, '120601', 'normal'), (301, '120602', 'normal'), (302, '120603', 'normal'), (303, '120605', 'normal'), (304, '1206', 'student'), (305, '120601', 'student'), (306, '120602', 'student'), (307, '120603', 'student'), (308, '120605', 'student');
-COMMIT;
-
--- ----------------------------
--- Table structure for user_file
--- ----------------------------
-DROP TABLE IF EXISTS `user_file`;
-CREATE TABLE `user_file`  (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `object_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `role_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `used_tag` bit(1) NULL DEFAULT b'1',
-  `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 87 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
-
--- ----------------------------
--- Records of user_file
--- ----------------------------
-BEGIN;
-INSERT INTO `user_file` VALUES (85, NULL, NULL, 'USER_201903220600000001', '张三', NULL, 'normal', b'1', 'admin', '2019-03-22 00:00:00'), (86, NULL, NULL, 'USER_201903220600000002', '李四', NULL, 'normal', b'1', 'admin', '2019-03-22 00:00:00'), (87, NULL, NULL, 'USER_201903220600000003', '王五', NULL, 'userType', b'1', 'admin', '2019-03-22 00:00:00');
+INSERT INTO `survey_view` VALUES (206, '12010101', 'manager'), (207, '12010105', 'manager'), (208, '12010201', 'manager'), (209, '12010301', 'manager'), (210, '12010401', 'manager'), (211, '12010402', 'manager'), (212, '12010403', 'manager'), (213, '12010404', 'manager'), (214, '120101', 'manager'), (215, '120102', 'manager'), (216, '120103', 'manager'), (217, '120104', 'manager'), (218, '120201', 'manager'), (219, '120202', 'manager'), (220, '120203', 'manager'), (221, '120204', 'manager'), (222, '120205', 'manager'), (223, '120206', 'manager'), (224, '120301', 'manager'), (225, '120302', 'manager'), (226, '120303', 'manager'), (227, '120401', 'manager'), (228, '120402', 'manager'), (229, '120403', 'manager'), (230, '120404', 'manager'), (231, '120501', 'manager'), (232, '120502', 'manager'), (233, '120503', 'manager'), (234, '120601', 'manager'), (235, '120602', 'manager'), (236, '120603', 'manager'), (237, '120605', 'manager'), (238, '120701', 'manager'), (239, '120702', 'manager'), (240, '120703', 'manager'), (241, '120704', 'manager'), (242, '120705', 'manager'), (243, '120801', 'manager'), (244, '120802', 'manager'), (245, '120803', 'manager'), (246, '120804', 'manager'), (247, '120806', 'manager'), (248, '120807', 'manager'), (249, '120808', 'manager'), (250, '120809', 'manager'), (251, '120901', 'manager'), (252, '121001', 'manager'), (253, '121002', 'manager'), (254, '121003', 'manager'), (255, '121004', 'manager'), (256, '121101', 'manager'), (257, '121102', 'manager'), (258, '121103', 'manager'), (259, '121104', 'manager'), (260, '1201', 'manager'), (261, '1202', 'manager'), (262, '1203', 'manager'), (263, '1204', 'manager'), (264, '1205', 'manager'), (265, '1206', 'manager'), (266, '1207', 'manager'), (267, '1208', 'manager'), (268, '1209', 'manager'), (269, '1210', 'manager'), (270, '1211', 'manager'), (299, '1206', 'normal'), (300, '120601', 'normal'), (301, '120602', 'normal'), (302, '120603', 'normal'), (303, '120605', 'normal'), (304, '1206', 'student'), (305, '120601', 'student'), (306, '120602', 'student'), (307, '120603', 'student'), (308, '120605', 'student');
 COMMIT;
 
 -- ----------------------------
@@ -753,7 +490,6 @@ COMMIT;
 DROP TABLE IF EXISTS `user_manage`;
 CREATE TABLE `user_manage`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -768,13 +504,13 @@ CREATE TABLE `user_manage`  (
   `student_num` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `register_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 
 -- ----------------------------
 -- Records of user_manage
 -- ----------------------------
 BEGIN;
-INSERT INTO `user_manage` VALUES (2, 'lisi', '呵呵呵11', '12345678', '李四', '男', '114651@qq.com', '120', 'student', 'sjdf', '大一', '2班', '计算机', '123456738459', '2019-05-07 16:25:29'), (22, 'zhangsan', 'zpj', '1111', '张三', '男', 'redhfdrtf@qq.com', NULL, 'student', 'dfhbgkjfl', '大三', '2班', '计算机', '20171414', '2019-05-27 13:17:05'), (27, NULL, 'root', '1234', '王麻子', '', 'redhfdrtf@qq.com', NULL, 'student', '', '', '', 'null', '', '2019-05-30 23:27:00'), (30, NULL, '1234', '1234', '张三', '', 'null', NULL, 'student', '', '', '', 'null', '', '2019-06-02 15:27:22'), (31, NULL, '呵呵呵11', '1234', '李四', '男', '114651@qq.com', '120', 'student', 'sjdf', '大一', '', '计算机', '123456738459', '2019-06-02 16:25:57');
+INSERT INTO `user_manage` VALUES (2, '呵呵呵11', '12345678', '李四', '男', '114651@qq.com', '120', 'student', 'sjdf', '大一', '2班', '计算机', '123456738459', '2019-05-07 16:25:29'), (22, 'zpj', '1111', '张三', '男', 'redhfdrtf@qq.com', NULL, 'student', 'dfhbgkjfl', '大三', '2班', '计算机', '20171414', '2019-05-27 13:17:05'), (27, 'root', '1234', '王麻子', '', 'redhfdrtf@qq.com', NULL, 'student', '', '', '', 'null', '', '2019-05-30 23:27:00'), (30, '1234', '1234', '张三', '', 'null', NULL, 'student', '', '', '', 'null', '', '2019-06-02 15:27:22'), (31, '呵呵呵11', '1234', '李四', '男', '114651@qq.com', '120', 'student', 'sjdf', '大一', '', '计算机', '123456738459', '2019-06-02 16:25:57');
 COMMIT;
 
 -- ----------------------------

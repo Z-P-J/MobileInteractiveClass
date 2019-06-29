@@ -158,10 +158,59 @@ var Page = function () {
             Page.confirmBack();
         });
         $('#submit_button').click(function () {
-            // Page.submitRecord();
+
+            var fileName = $("#file_name").val();
+            if (fileName == "") {
+                alert("请选择上传文件！");
+                return;
+            }
+            var fileSize = parseInt($("#file_size").val());
+            if (fileSize > 1024 * 1024 * 100) {
+                alert("上传文件过大！");
+                return;
+            }
+
             $('#page_form').submit();
-            // var form = document.getElementById('page_form');
-            // form.submit();
+            document.getElementById('wrapper').style.display = "block";
+
+            var t = setInterval(function(){
+                $.ajax({
+                    url: '../../UploadServlet?action=get_upload_progress&filename=' + fileName,
+                    type: 'POST',
+                    dataType: 'text',
+                    data: {
+                        filename: fileName
+                    },
+                    success: function (responseText) {
+                        var data = JSON.parse(responseText);
+                        //前台更新进度
+                        var progress = parseInt((data.progress / data.size) * 100);
+                        console.log("progress=" + progress);
+                        $("#pg").val(progress);
+
+                        if (progress >= 0 && progress < 100) {
+                            $("#uploading").html("上传中..." + progress + "%");
+                        } else if (progress === 100) {
+                            $("#uploading").html("上传完成！");
+                            alert("上传完成！");
+                        } else if (progress < 0) {
+                            $("#uploading").html("上传失败！");
+                            alert("上传失败！");
+                        }
+
+                        if(progress === 100 || progress < 0) {
+                            // document.getElementById('wrapper').style.display = "none";
+                            // window.location.reload();
+                            clearInterval(t);
+                        }
+
+                    },
+                    error: function(){
+                        console.log("error");
+                        $("#uploading").html("上传失败！");
+                    }
+                });
+            }, 500);
         });
         $('#help_button').click(function () {
             Page.help();
