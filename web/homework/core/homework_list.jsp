@@ -54,6 +54,7 @@
 									<div class="form-body">
 										<div class="form-group">
 											<div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+
 <%--												<button type="button" id="add_button" class="btn green" title="添加新的记录">--%>
 <%--													上传文件--%>
 <%--												</button>--%>

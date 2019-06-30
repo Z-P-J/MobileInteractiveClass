@@ -8,7 +8,7 @@
 p<%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="java.text.*"%>
 <%
-    String homeworkId = request.getParameter("homework_id");
+    String attendanceId = request.getParameter("homework_id");
     String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
     String studentNum = session.getAttribute("student_num") == null ? null : (String) session.getAttribute("student_num");
 %>
@@ -55,9 +55,9 @@ p<%@page contentType="text/html; charset=UTF-8"%>
                         </div>
                         <div class="portlet-body form">
                             <iframe name="frame1" frameborder="0" height="0" width="0" style="display: none"></iframe>
-                            <form class="form-horizontal" target="frame1" role="form" method="post" name="page_form" id="page_form"  method="post" action="../../UploadServlet?homework_id=<%=homeworkId%>&from=homework" enctype="multipart/form-data">
+                            <form class="form-horizontal" target="frame1" role="form" method="post" name="page_form" id="page_form"  method="post" action="../../UploadServlet?homework_id=<%=attendanceId%>&from=homework" enctype="multipart/form-data">
                                 <input type="hidden" id="action" name="action" value="get_record" />
-                                <input type="hidden" id="homework_id" name="homework_id" value="<%=homeworkId%>" />
+                                <input type="hidden" id="homework_id" name="homework_id" value="<%=attendanceId%>" />
                                 <input type="hidden" id="file_size_hidden" name="file_size_hidden" value=""/>
                                 <input type="hidden" id="user_name" name="user_name" value="<%=userName%>"/>
                                 <input type="hidden" id="student_num" name="student_num" value="<%=studentNum%>"/>

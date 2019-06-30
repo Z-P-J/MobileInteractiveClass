@@ -32,6 +32,11 @@ public class UserFilter extends BaseFilter {
     }
 
     @Override
+    public String getStatisticSql(String tableName) {
+        return null;
+    }
+
+    @Override
     public String getDefaultOrder() {
         return "register_date";
     }
@@ -57,6 +62,24 @@ public class UserFilter extends BaseFilter {
     @Override
     public UserFilter setKeyword(String keyword) {
         this.keyword = keyword;
+        return this;
+    }
+
+    @Override
+    public UserFilter setTimeInterval(String timeInterval) {
+        this.timeInterval = timeInterval;
+        return this;
+    }
+
+    @Override
+    public UserFilter setTimeFrom(String timeFrom) {
+        this.timeFrom = timeFrom;
+        return this;
+    }
+
+    @Override
+    public UserFilter setTimeTo(String timeTo) {
+        this.timeTo = timeTo;
         return this;
     }
 

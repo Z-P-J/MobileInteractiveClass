@@ -95,7 +95,7 @@ public class HomeworkServlet extends BaseHttpServlet {
 //            // TODO 直接获取数据库所有作业
 //            HomeworkFilter filter = FilterFactory.getHomeworkFilter()
 //                    .setOrder(orderBy);
-//            jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
+//            jsonObj = DaoFactory.getHomeworkDao().queryAttendances(filter);
 //        } else {
 //            // TODO 弄个课程管理模块，根据课程获取作业
 //            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(orderBy);

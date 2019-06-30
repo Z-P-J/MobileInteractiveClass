@@ -73,7 +73,7 @@ public class VoteDaoImpl implements VoteDao {
         //下面开始构建返回的json
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonList);
-        DatabaseHelper.putTableColumnNames(LABELS, jsonObj);
+        DatabaseHelper.putTableColumnNames(LABELS, LABELS_CH, jsonObj);
         jsonObj.put("result_msg", resultMsg);//如果发生错误就设置成"error"等
         jsonObj.put("result_code", resultCode);//返回0表示正常，不等于0就表示有错误产生，错误代码
         return jsonObj;

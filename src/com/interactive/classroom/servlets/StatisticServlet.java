@@ -4,6 +4,9 @@ package com.interactive.classroom.servlets;
  * 待完成：用MVC模式分开DB和Action操作
  */
 
+import com.interactive.classroom.constant.ActionType;
+import com.interactive.classroom.dao.filters.AttendanceFilter;
+import com.interactive.classroom.dao.filters.FilterFactory;
 import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.bean.StatisticBean;
 import com.interactive.classroom.dao.DaoFactory;
@@ -52,36 +55,84 @@ public class StatisticServlet extends BaseHttpServlet {
 
     @Override
     public void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
-        switch (action) {
-            case "statistic_record":
-                try {
-                    statisticRecord(request, response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "get_statistic_record":
-                try {
-                    getStatisticRecord(request, response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "export_statistic_resultset":
-                try {
-                    exportStatisticResultset(request, response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            default:
-                try {
-                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
+        if (ActionType.ACTION_START_STATISTIC.equals(action)) {
+            try {
+                startStatistic(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            switch (action) {
+                case "statistic_record":
+                    try {
+                        statisticRecord(request, response);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "get_statistic_record":
+                    try {
+                        getStatisticRecord(request, response);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "export_statistic_resultset":
+                    try {
+                        exportStatisticResultset(request, response);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                default:
+                    try {
+                        processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
         }
+    }
+
+    private void startStatistic(HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
+        String timeFrom = request.getParameter("time_from");
+        String timeTo = request.getParameter("time_to");
+        String timeInterval = request.getParameter("time_interval");
+        String addressId = request.getParameter("address_id");
+        String tableName = request.getParameter("table_name");
+
+        if ("attendance_manage".equals(tableName)) {
+            statisticAttendance(request, response);
+        }
+
+    }
+
+    private void statisticAttendance(HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
+        String timeFrom = request.getParameter("time_from");
+        String timeTo = request.getParameter("time_to");
+        String addressId = request.getParameter("address_id");
+        String timeInterval = request.getParameter("time_interval");
+
+        AttendanceFilter filter = FilterFactory.getAttendanceFilter()
+                .setUserId(userId)
+                .setUserType(userType)
+                .setTimeInterval(timeInterval)
+                .setTimeFrom(timeFrom)
+                .setTimeTo(timeTo);
+
+//        JSONObject jsonObject = DaoFactory.getAttendanceDao().queryAttendances(filter);
+//        responseByJson(response, jsonObject);
+
+        StatisticDao statisticDao = DaoFactory.getStatisticDao();
+//        StatisticBean bean = new StatisticBean();
+//        bean.setTimeFrom(timeFrom);
+//        bean.setTimeTo(timeTo);
+//        bean.setUserId(userId);
+//        bean.setTimeInterval(timeInterval);
+//        bean.setTableName("attendance_manage");
+        JSONObject jsonObj = statisticDao.statisticRecord(filter.getStatisticSql("attendance_manage"));
+        responseByJson(response, jsonObj);
     }
 
     /*

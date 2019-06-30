@@ -127,5 +127,5 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE SCRIPTS -->
-<script src="../../assets/module/scripts/file/file_query.js" type="text/javascript"></script>
+<script src="../../assets/module/scripts/homework/file_query.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

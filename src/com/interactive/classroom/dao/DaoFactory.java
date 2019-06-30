@@ -77,4 +77,12 @@ public final class DaoFactory {
         return new AttendanceDaoImpl();
     }
 
+    /**
+     * 获取CourseDao实例
+     * @return com.interactive.classroom.dao.CourseDao
+     */
+    public static CourseDao getCourseDao() {
+        return new CourseDaoImpl();
+    }
+
 }

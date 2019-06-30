@@ -71,7 +71,7 @@ public class HomeworkDaoImpl implements HomeworkDao {
         }
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonArray);
-        DatabaseHelper.putTableColumnNames(LABELS_CH, jsonObj);
+        DatabaseHelper.putTableColumnNames(LABELS, LABELS_CH, jsonObj);
         jsonObj.put("result_msg", resultMsg);
         jsonObj.put("result_code", resultCode);
         return jsonObj;
@@ -102,7 +102,7 @@ public class HomeworkDaoImpl implements HomeworkDao {
                 + bean.getPublishTime() + "','"
                 + bean.getDeadline() + "','"
                 + bean.getFileNameFormat() + "')";
-        Log.d(getClass().getName(), "publishHomework sql=" + sql);
+        Log.d(getClass().getName(), "publishAttendance sql=" + sql);
         DatabaseHelper.executeUpdate(sql);
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("result_msg", resultMsg);

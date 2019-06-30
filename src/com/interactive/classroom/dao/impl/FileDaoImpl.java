@@ -59,7 +59,7 @@ public class FileDaoImpl implements FileDao {
         }
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonArray);
-        DatabaseHelper.putTableColumnNames(LABELS_CH, jsonObj);
+        DatabaseHelper.putTableColumnNames(LABELS, LABELS_CH, jsonObj);
         jsonObj.put("result_msg", resultMsg);
         jsonObj.put("result_code", resultCode);
         return jsonObj;

@@ -7,13 +7,40 @@ import com.interactive.classroom.utils.TextUtil;
  */
 public abstract class BaseFilter {
 
+    /**
+     * 排序字段
+     */
     protected String order;
 
+    /**
+     * 用户ID
+     */
     protected String userId;
 
+    /**
+     * 用户类型
+     */
     protected String userType;
 
+    /**
+     * 查询关键词
+     */
     protected String keyword;
+
+    /**
+     * 统计时间间隔
+     */
+    protected String timeInterval;
+
+    /**
+     * 统计或查询的开始时间
+     */
+    protected String timeFrom;
+
+    /**
+     * 统计或查询的结束时间
+     */
+    protected String timeTo;
 
     //---------------------------------------abstract methods--------------------------------------
 
@@ -23,6 +50,13 @@ public abstract class BaseFilter {
      * @return sql
      */
     public abstract String getQuerySql(String tableName);
+
+    /**
+     * 获取统计sql语句
+     * @param tableName the table name
+     * @return sql
+     */
+    public abstract String getStatisticSql(String tableName);
 
     /**
      * 获取默认排序
@@ -58,6 +92,27 @@ public abstract class BaseFilter {
      */
     public abstract BaseFilter setKeyword(String keyword);
 
+    /**
+     *
+     * @param timeInterval 时间间隔
+     * @return BaseFilter
+     */
+    public abstract BaseFilter setTimeInterval(String timeInterval);
+
+    /**
+     *
+     * @param timeFrom 开始时间
+     * @return BaseFilter
+     */
+    public abstract BaseFilter setTimeFrom(String timeFrom);
+
+    /**
+     *
+     * @param timeTo 结束时间
+     * @return BaseFilter
+     */
+    public abstract BaseFilter setTimeTo(String timeTo);
+
     //-------------------------------------------getter---------------------------------------
 
     public String getOrder() {
@@ -74,6 +129,25 @@ public abstract class BaseFilter {
 
     public String getKeyword() {
         return keyword;
+    }
+
+    public String getTimeInterval() {
+        if ("hour".equals(timeInterval)) {
+            timeInterval = "%Y-%m-%d %h";
+        } else if ("day".equals(timeInterval)) {
+            timeInterval = "%Y-%m-%d";
+        } else if ("month".equals(timeInterval)) {
+            timeInterval = "%Y-%m";
+        }
+        return timeInterval;
+    }
+
+    public String getTimeFrom() {
+        return timeFrom;
+    }
+
+    public String getTimeTo() {
+        return timeTo;
     }
 
     //-----------------------------------------methods related to getQuerySql-----------------------------------

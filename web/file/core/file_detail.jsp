@@ -2,9 +2,9 @@
 <%@page import="java.text.*" %>
 <%
     String id = request.getParameter("id");
-    String homeworkId = request.getParameter("homework_id");
-    if (homeworkId == null) {
-        homeworkId = "";
+    String attendanceId = request.getParameter("homework_id");
+    if (attendanceId == null) {
+        attendanceId = "";
     }
     String existResultset = request.getParameter("exist_resultset");
 %>
@@ -50,7 +50,7 @@
                             <form class="form-horizontal" role="form" id="page_form" name="page_form" action="#">
                                 <input type="hidden" id="action" name="action" value="modify_record"/>
                                 <input type="hidden" id="id" name="id" value="<%=id%>"/>
-                                <input type="hidden" id="homework_id" name="homework_id" value="<%=homeworkId%>"/>
+                                <input type="hidden" id="homework_id" name="homework_id" value="<%=attendanceId%>"/>
                                 <input type="hidden" id="exist_resultset" name="exist_resultset"
                                        value="<%=existResultset%>"/>
                                 <input type="hidden" id="file_id" name="file_id" value="" />

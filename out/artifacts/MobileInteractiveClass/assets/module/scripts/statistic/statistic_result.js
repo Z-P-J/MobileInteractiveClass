@@ -119,7 +119,13 @@ var Record = function () {
     };
     var getStatisticResult = function () {
         var action = "get_statistic_record";
-        var url = "../../" + module + "_servlet_action?action=" + action + "&exist_resultset=1";
+        // var url = "../../" + module + "_servlet_action?action=" + action + "&exist_resultset=1";
+        var url = "../../statistic_servlet"
+            + "?action=start_statistic"
+            + "&table_name=attendance_manage"
+            + "&time_from=2019-01-01 23:59:59"
+            + "&time_to=2019-07-01 23:59:59"
+            + "&time_interval=day";
         console.log("url=" + url);
         $.post(url, function (json) {
             console.log(JSON.stringify(json));
@@ -152,7 +158,7 @@ var Record = function () {
         }
         console.log(JSON.stringify(data));
         return data;
-    }
+    };
     var showStatisticList = function (json) {
         return;
         updateTableList(json);
@@ -172,7 +178,13 @@ var Record = function () {
     var getRecord = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_servlet_action?action=get_statistic_record&exist_resultset=" + existResultset;
+        // var url = "../../statistic_servlet?action=start_statistic&exist_resultset=" + existResultset;
+        var url = "../../statistic_servlet"
+            + "?action=start_statistic"
+            + "&table_name=attendance_manage"
+            + "&time_from=2019-01-01 23:59:59"
+            + "&time_to=2019-07-01 23:59:59"
+            + "&time_interval=day";
         $.post(url, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code == 0) {
@@ -329,7 +341,7 @@ var Page = function () {
         html = "													<div><span id=\"tip_div\"></span>";
         var l = "";
         for (var i = 0; i < list.length; i++) {
-            showRecord(list[i]);
+            // showRecord(list[i]);
             data[i] = [];
             data[i][0] = i;
             data[i][1] = list[i][1];
@@ -410,6 +422,9 @@ var Page = function () {
             processError(json);
         },
         showResult: function (json) {
+            showResult(json);
+        },
+        showStatistic: function (json) {
             showResult(json);
         },
         showRecordList: function (list) {

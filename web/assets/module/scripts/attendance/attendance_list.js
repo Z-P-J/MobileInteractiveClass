@@ -1,9 +1,21 @@
-﻿var module = "homework";
+﻿var module = "attendance";
 var sub = "core";
+var tableName = "attendance_manage";
 function compareDate(s1, s2) {
     return ((new Date(s1.replace(/-/g, "\/"))) > (new Date(s2.replace(/-/g, "\/"))));
 }
+
 jQuery(document).ready(function () {
+    // if (window.history && window.history.pushState) {
+    //
+    // }
+    // $(window).on('popstate', function () {
+    //     window.history.pushState('forward', null, '#');
+    //     // window.history.forward(1);
+    //     // // alert("不可回退");  //如果需在弹框就有它
+    //     // self.location="orderinfo.html"; //如查需要跳转页面就用它
+    //     alert("test");
+    // });
     Metronic.init(); // init metronic investigation components
     Layout.init(); // init current layout
     QuickSidebar.init(); // init quick sidebar
@@ -11,6 +23,7 @@ jQuery(document).ready(function () {
     ComponentsDropdowns.init();
     Frame.init(module, sub);
     Page.init();
+    Page.tableName = tableName;
     Record.init();
 });
 /*================================================================================*/
@@ -18,38 +31,53 @@ var Record = function () {
     var initRecordStyle = function () {
     };
     var initRecordList = function () {
-        getHomeworks();
+        getAttendances();
     };
-    var getHomeworks = function () {
+    var getAttendances = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homeworks&type=all&id=" + id + "&exist_resultset=" + existResultset;
-        $.post(url, function (json) {
-            if (json.result_code == 0) {
+        var url = "../../attendance_servlet?action=get_attendances&type=all&id=" + id + "&exist_resultset=" + existResultset;
+        $.get(url, function (json) {
+            if (json.result_code === 0) {
                 Record.userId = json.user_id;
                 Record.userName = json.user_name;
                 Record.userRole = json.user_role;
+                // if (json.user_role === "student") {
+                //     $("#publish_attendance").hide();
+                // }
                 Record.userAvatar = json.user_avatar;
                 Page.showResult(json);
             } else {
                 if (Page != null) {
                     Page.processError(json);
                 }
+                // $("#publish_attendance").hide();
             }
             Metronic.stopPageLoading();	//停止等待动画
         }).error(function (xhr, errorText, errorType) {
             alert('错误信息：' + errorText + ",错误类型：" + errorType);
         });
     };
-    var viewRecord = function (id) {
-        alert("考勤成功");
-        // window.location.href = "homework_detail.jsp?homework_id=" + id + "&exist_resultset=0";
+    var checkAttendance = function (id, courseId) {
+        $.post("../../attendance_servlet?action=check_attendance&id=" + id + "&course_id=" + courseId, function (json) {
+            console.log(JSON.stringify(json));
+            if (json.result_code === 0) {
+                alert("考勤成功！");
+                $("#attendance_btn_" + id).html("已考勤");
+            } else {
+                alert("考勤失败！");
+            }
+        });
+
+    };
+    var viewAttendance = function (id, courseId) {
+        window.location.href = "attendance_detail.jsp?id=" + id + "&course_id=" + courseId;
     };
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
-                $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
+                $.post("../../attendance_servlet?action=delete_record&id=" + id, function (json) {
                     if (json.result_code === 0) {
                         var count = json.count;
                         var amount = json.amount;
@@ -61,16 +89,26 @@ var Record = function () {
             }
         }
     };
-    var exportRecord = function () {
-        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\upload\\project\\export存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
-            window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
+    var exportAttendances = function () {
+        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\xm05\\export\\" + module + "存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
+            $.get("../../attendance_servlet?action=export_attendances", function (json) {
+                console.log(JSON.stringify(json));
+                if (json.result_code === 0) {
+                    alert("导出成功！");
+                } else {
+                    if (Page != null) {
+                        Page.processError(json);
+                    }
+                    alert("导出失败！msg=" + json.result_msg);
+                }
+            });
         }
     };
     var sortRecord1 = function (index, sortName) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
-        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_homeworks&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../attendance_servlet?action=get_attendances&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
-            if (json.result_code == 0) {
+            if (json.result_code === 0) {
                 Record.userId = json.user_id;
                 Record.userName = json.user_name;
                 Record.userRole = json.user_role;
@@ -95,11 +133,14 @@ var Record = function () {
         deleteRecord: function (id) {
             deleteRecord(id);
         },
-        viewRecord: function (id) {
-            viewRecord(id);
+        checkAttendance: function (id, courseId) {
+            checkAttendance(id, courseId);
         },
-        exportRecord: function () {
-            exportRecord();
+        viewAttendance: function (id, courseId) {
+            viewAttendance(id, courseId);
+        },
+        exportAttendances: function () {
+            exportAttendances();
         },
         sortRecord1: function (index, sortName) {
             sortRecord1(index, sortName);
@@ -168,7 +209,7 @@ var Page = function () {
             Page.help();
         });
         $('#export_button').click(function () {
-            Page.exportRecord();
+            Page.exportAttendances();
         });
         $('#statistic_button').click(function () {
             Page.statisticRecord();
@@ -197,22 +238,14 @@ var Page = function () {
     var showRecordList = function (list) {
         html = "													<div><span id=\"tip_div\"></span>";
         for (var i = 0; i < list.length; i++) {
-            showRecord(list[i]);
+            html += showRecord(list[i]);
         }
         html = html + "													</div>";
         $("#record_list_div").html(html);
     };
     var showRecord = function (json) {
-        var id = json[0];
         var image = "../../assets/module/img/public/wkbj.jpg";
-        var publisherId = json[1];
-        var publisherName = json[2];
-        var homeworkTitle = json[3];
-        var homeworkRequirement = json[4];
-        var publishTime = json[5];
-        var deadline = json[6];
-        var fileNameFormat = json[7];
-        var me = json[8];
+
         var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), json.deadline);
         var state = "";
         if (flag) {
@@ -221,19 +254,52 @@ var Page = function () {
             state = "未截止";
         }
 
-        html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
+        var html = "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
-        html = html + "																<span>考勤课程：" + json.homework_title + "</span><p>";
-        html = html + "																<span>考勤要求：" + json.homework_requirement + "</span><p>";
+        html = html + "																<span>考勤课程：" + json.attendance_title + "</span><p>";
+        html = html + "																<span>考勤要求：" + json.attendance_requirement + "</span><p>";
         html = html + "																<span>发布时间：" + json.publish_time + "</span><p>";
         html = html + "																<span>截止时间：" + json.deadline + "</span><p>";
-        html = html + "																<span>状态：" + state + "</span><p>";
-        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">点击考勤</button>";
+        html = html + "																<span id='attendance_state_" + json.id + "'>状态：" + state + "</span><p>";
+
+        if (state === "未截止") {
+            html = html + "																<span id='attendance_" + json.id + "' style='color: red'>还剩：计算中...</span><p>";
+
+
+            if (Record.userRole === "student") {
+                html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" " + (json.has_attendance ? "" : "onclick=\"Page.checkAttendance(" + json.id + "," + json.course_id + ");\"") + ">" + (json.has_attendance ? "已考勤" : "点击考勤") + "</button>";
+            } else if (Record.userRole === "teacher") {
+                html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" onclick=\"Page.viewAttendance(" + json.id + "," + json.course_id + ");\">详细信息</button>";
+            } else {
+
+            }
+
+            var t = setInterval(function () {
+                var sec =  (new Date(json.deadline.replace(/-/g, "\/")).getTime() - new Date().getTime()) / 1000;
+                $("#attendance_" + json.id).html("还剩：" + Math.floor(sec) + "秒");
+                if (sec <= 0) {
+                    $("#attendance_state_" + json.id).html("状态：已截止");
+                    // $("#attendance_btn_" + json.id).hide();
+                    document.getElementById("attendance_" + json.id).style.display = "none";
+                    clearInterval(t);
+                }
+            }, 1000);
+        } else {
+            if (Record.userRole === "student") {
+                html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" disabled>" + (json.has_attendance ? "已考勤" : "未考勤") + "</button>";
+            } else if (Record.userRole === "teacher") {
+                html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" onclick=\"Page.viewAttendance(" + json.id + "," + json.course_id + ");\">详细信息</button>";
+            } else {
+
+            }
+        }
+
         html = html + "															</div>";
         html = html + "														</div>";
+        return html;
     };
     var help = function () {
         var strUrl = location.pathname;
@@ -241,7 +307,7 @@ var Page = function () {
     }
     var submitRecord = function () {
         if (checkInput() == true) {
-            page_form.action = "../../" + module + "_" + sub + "_servlet_action";
+            page_form.action = "../../attendance_servlet";
             page_form.submit();
         }
     };
@@ -258,8 +324,11 @@ var Page = function () {
     var deleteRecord = function (id) {
         Record.deleteRecord(id);
     };
-    var viewRecord = function (id) {
-        Record.viewRecord(id);
+    var checkAttendance = function (id, courseId) {
+        Record.checkAttendance(id, courseId);
+    };
+    var viewAttendance = function (id, courseId) {
+        Record.viewAttendance(id, courseId);
     };
     var modifyRecord = function (id) {
         window.location.href = "view.jsp?id=" + id;
@@ -269,7 +338,7 @@ var Page = function () {
     };
     var statisticRecord = function () {
         // window.location.href = "statistic.jsp";
-        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=file_manage";
+        window.location.href = "../../base/statistic/statistic_query.jsp?table_name=attendance_manage";
     }
     var layoutRecord = function () {
         if (layout == 1)
@@ -279,7 +348,7 @@ var Page = function () {
     }
     var printRecord = function () {
         // window.location.href = "print.jsp?exist_resultset=1";
-        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
+        window.location.href = "../../base/print/print.jsp?module_name=" + module + "&record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
     };
     var sortRecord = function (index) {
         var sortName = $("#sort_01").val();
@@ -316,6 +385,9 @@ var Page = function () {
         showRecordList: function (list) {
             showRecordList(list);
         },
+        showRecord: function (json) {
+            return showRecord(json);
+        },
         submitRecord: function () {
             submitRecord();
         },
@@ -325,14 +397,17 @@ var Page = function () {
         deleteRecord: function (id) {
             deleteRecord(id);
         },
-        viewRecord: function (id) {
-            viewRecord(id);
+        checkAttendance: function (id, courseId) {
+            checkAttendance(id, courseId);
+        },
+        viewAttendance: function (id, courseId) {
+            viewAttendance(id, courseId);
         },
         searchRecord: function () {
             searchRecord();
         },
-        exportRecord: function () {
-            Record.exportRecord();
+        exportAttendances: function () {
+            Record.exportAttendances();
         },
         statisticRecord: function () {
             statisticRecord();

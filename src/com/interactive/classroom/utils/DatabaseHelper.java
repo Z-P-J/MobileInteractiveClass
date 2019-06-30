@@ -134,10 +134,13 @@ public final class DatabaseHelper {
         rs.close();
     }
 
-    public static void putTableColumnNames(String[] labels, JSONObject jsonObj) throws SQLException, JSONException {
+    public static void putTableColumnNames(String[] labels, String[] labelsZh, JSONObject jsonObj) throws SQLException, JSONException {
         List<String> columnList = new ArrayList<>();
+        List<String> columnListZh = new ArrayList<>();
         Collections.addAll(columnList, labels);
+        Collections.addAll(columnListZh, labelsZh);
         jsonObj.put("table_column_names", columnList);
+        jsonObj.put("table_column_names_zh", columnListZh);
     }
 
 }

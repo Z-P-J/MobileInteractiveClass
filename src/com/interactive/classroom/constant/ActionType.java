@@ -71,6 +71,21 @@ public enum ActionType {
     ACTION_UPDATE_FILE_INFO("update_file_info"),
 
 
+    //----------------------------课程------------------------------
+
+    /**
+     * 获取所有课程
+     */
+    ACTION_GET_COURSES("get_courses"),
+
+
+    //-----------------------------统计-------------------------------
+    ACTION_START_STATISTIC("start_statistic"),
+
+    //-------------------------------打印---------------------------------
+    ACTION_GET_PRINT_DATA("get_print_data"),
+
+
 
     //----------------------评论-----------------------
     /**

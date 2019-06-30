@@ -31,4 +31,20 @@ public class FilterFactory {
         return new UserFilter();
     }
 
+    /**
+     *
+     * @return AttendanceFilter
+     */
+    public static AttendanceFilter getAttendanceFilter() {
+        return new AttendanceFilter();
+    }
+
+    /**
+     *
+     * @return CourseFilter
+     */
+    public static CourseFilter getCourseFilter() {
+        return new CourseFilter();
+    }
+
 }

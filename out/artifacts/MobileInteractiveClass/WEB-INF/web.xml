@@ -46,17 +46,24 @@
         <servlet-name>common_data_action</servlet-name>
         <url-pattern>/common_data_action</url-pattern>
     </servlet-mapping>
-    <!-- ================  project begin =================           -->
 
     <servlet>
-        <servlet-name>statistic_servlet_action</servlet-name>
+        <servlet-name>statistic_servlet</servlet-name>
         <servlet-class>com.interactive.classroom.servlets.StatisticServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>statistic_servlet_action</servlet-name>
-        <url-pattern>/statistic_servlet_action</url-pattern>
+        <servlet-name>statistic_servlet</servlet-name>
+        <url-pattern>/statistic_servlet</url-pattern>
     </servlet-mapping>
-    <!-- ================  project end =================           -->
+
+    <servlet>
+        <servlet-name>print_servlet</servlet-name>
+        <servlet-class>com.interactive.classroom.servlets.PrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>print_servlet</servlet-name>
+        <url-pattern>/print_servlet</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>
@@ -114,7 +121,24 @@
         <url-pattern>/homework_core_servlet_action</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>attendance_servlet</servlet-name>
+        <servlet-class>com.interactive.classroom.servlets.AttendanceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>attendance_servlet</servlet-name>
+        <url-pattern>/attendance_servlet</url-pattern>
+    </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>course_servlet</servlet-name>
+        <servlet-class>com.interactive.classroom.servlets.CourseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>course_servlet</servlet-name>
+        <url-pattern>/course_servlet</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>DownloadServlet</servlet-name>

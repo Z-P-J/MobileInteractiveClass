@@ -1,5 +1,6 @@
 package com.interactive.classroom.dao.filters;
 
+import com.interactive.classroom.constant.UserType;
 import com.interactive.classroom.utils.TextUtil;
 
 /**
@@ -10,7 +11,7 @@ public class AttendanceFilter extends BaseFilter {
 
     private String courseId;
 
-    private String homeworkId;
+    private String attendanceId;
 
     private String publishTimeFrom;
 
@@ -28,11 +29,25 @@ public class AttendanceFilter extends BaseFilter {
 
     @Override
     public String getQuerySql(String tableName) {
-        String sql = "select * from " + tableName;
-        if (!TextUtil.isEmpty(homeworkId)) {
-            sql += " where id=" + homeworkId;
+        String sql;
+        if (UserType.STUDENT.equals(userType)) {
+            sql = "select " + tableName + ".*,course_student.*,course_manage.*"
+                    + " from " + tableName + ",course_student,course_manage"
+                    + " where course_student.student_id = " + userId
+                    + " and course_student.course_id = " + tableName + ".course_id"
+                    + " and course_manage.id = course_student.course_id";
+        } else if (UserType.TEACHER.equals(userType)) {
+            sql = "select * from " + tableName + " where publisher_id=" + userId;
+        } else {
+            sql = "select * from " + tableName;
+        }
+
+        if (!TextUtil.isEmpty(attendanceId)) {
+            sql = checkWhere(sql);
+            sql += "id=" + attendanceId;
         } else if (!TextUtil.isEmpty(courseId)) {
-            sql += " where course_id=" + courseId;
+            sql = checkWhere(sql);
+            sql += "course_id=" + courseId;
         }
         if (!TextUtil.isEmpty(keyword)) {
             sql = checkWhere(sql);
@@ -46,9 +61,32 @@ public class AttendanceFilter extends BaseFilter {
             sql = checkWhere(sql);
             sql += "deadline between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
         }
-        if (TextUtil.isEmpty(homeworkId)) {
+        if (TextUtil.isEmpty(attendanceId)) {
             sql += wrapOrder(order);
         }
+        return sql;
+    }
+
+    @Override
+    public String getStatisticSql(String tableName) {
+        String sql = "select date_format(publish_time,\"" + getTimeInterval() + "\") as time_interval,count(*) as count";
+        if (UserType.STUDENT.equals(userType)) {
+            sql += "," + tableName + ".*,course_student.*,course_manage.*"
+                    + " from " + tableName + ",course_student,course_manage"
+                    + " where course_student.student_id = " + userId
+                    + " and course_student.course_id = " + tableName + ".course_id"
+                    + " and course_manage.id = course_student.course_id";
+        } else if (UserType.TEACHER.equals(userType)) {
+            sql = " from " + tableName + " where publisher_id=" + userId;
+        } else {
+            sql = " from " + tableName;
+        }
+        sql = checkWhere(sql);
+        sql = sql + "publish_time between \"" + timeFrom + "\" and \"" + timeTo + "\"";
+
+//        sql = "select date_format(publish_time,\"" + timeInterval + "\") as time_interval,count(*) as count from " + tableName + " a";
+//        sql = sql + " where publish_time between \"" + timeFrom + "\" and \"" + timeTo + "\"";
+        sql = sql + " group by time_interval order by time_interval";
         return sql;
     }
 
@@ -81,6 +119,24 @@ public class AttendanceFilter extends BaseFilter {
         return this;
     }
 
+    @Override
+    public AttendanceFilter setTimeInterval(String timeInterval) {
+        this.timeInterval = timeInterval;
+        return this;
+    }
+
+    @Override
+    public AttendanceFilter setTimeFrom(String timeFrom) {
+        this.timeFrom = timeFrom;
+        return this;
+    }
+
+    @Override
+    public AttendanceFilter setTimeTo(String timeTo) {
+        this.timeTo = timeTo;
+        return this;
+    }
+
     //-----------------------------------setter-----------------------------------
 
     public AttendanceFilter setCourseId(String courseId) {
@@ -88,8 +144,8 @@ public class AttendanceFilter extends BaseFilter {
         return this;
     }
 
-    public AttendanceFilter setHomeworkId(String homeworkId) {
-        this.homeworkId = homeworkId;
+    public AttendanceFilter setAttendanceId(String attendanceId) {
+        this.attendanceId = attendanceId;
         return this;
     }
 
@@ -124,8 +180,8 @@ public class AttendanceFilter extends BaseFilter {
         return courseId;
     }
 
-    public String getHomeworkId() {
-        return homeworkId;
+    public String getAttendanceId() {
+        return attendanceId;
     }
 
     public String getPublishTimeFrom() {

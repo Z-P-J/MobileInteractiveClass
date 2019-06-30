@@ -11,9 +11,9 @@ public class FileFilter extends BaseFilter {
 
     private boolean getComments;
 
-    private String timeFrom;
-
-    private String timeTo;
+//    private String timeFrom;
+//
+//    private String timeTo;
 
     private String minSize;
 
@@ -38,6 +38,12 @@ public class FileFilter extends BaseFilter {
     @Override
     public FileFilter setKeyword(String keyword) {
         this.keyword = keyword;
+        return this;
+    }
+
+    @Override
+    public FileFilter setTimeInterval(String timeInterval) {
+        this.timeInterval = timeInterval;
         return this;
     }
 
@@ -70,8 +76,25 @@ public class FileFilter extends BaseFilter {
     }
 
     @Override
+    public String getStatisticSql(String tableName) {
+        return null;
+    }
+
+    @Override
     public String getDefaultOrder() {
         return "upload_time";
+    }
+
+    @Override
+    public FileFilter setTimeFrom(String timeFrom) {
+        this.timeFrom = timeFrom;
+        return this;
+    }
+
+    @Override
+    public FileFilter setTimeTo(String timeTo) {
+        this.timeTo = timeTo;
+        return this;
     }
 
     //----------------------------------------setter------------------------------------
@@ -83,16 +106,6 @@ public class FileFilter extends BaseFilter {
 
     public FileFilter setGetComments(boolean getComments) {
         this.getComments = getComments;
-        return this;
-    }
-
-    public FileFilter setTimeFrom(String timeFrom) {
-        this.timeFrom = timeFrom;
-        return this;
-    }
-
-    public FileFilter setTimeTo(String timeTo) {
-        this.timeTo = timeTo;
         return this;
     }
 
@@ -114,14 +127,6 @@ public class FileFilter extends BaseFilter {
 
     public boolean isGetComments() {
         return getComments;
-    }
-
-    public String getTimeFrom() {
-        return timeFrom;
-    }
-
-    public String getTimeTo() {
-        return timeTo;
     }
 
     public String getMinSize() {
