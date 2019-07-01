@@ -20,11 +20,11 @@ public interface HomeworkDao {
     /**
      * 数据库中的字段
      */
-    String[] LABELS = {"id", "publisher_id", "publisher_name", "homework_title", "homework_requirement", "publish_time", "deadline", "file_name_format"};
+    String[] LABELS = {"id", "publisher_id", "publisher_name", "homework_title", "homework_requirement", "publish_time", "deadline", "file_name_format", "course_id"};
     /**
      * 数据库中字段中文解释
      */
-    String[] LABELS_CH = {"ID", "发布人ID", "发布人名字", "作业标题", "作业要求", "发布时间", "截止时间", "文件命名格式"};
+    String[] LABELS_CH = {"ID", "发布人ID", "发布人名字", "作业标题", "作业要求", "发布时间", "截止时间", "文件命名格式", "课程ID"};
 
 //    /**
 //     * 获取数据库中所有作业（管理员）

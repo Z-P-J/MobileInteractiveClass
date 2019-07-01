@@ -80,20 +80,18 @@ public interface UserDao {
     int registerUser(UserBean bean);
 
     /**
-     * 根据ID删除用户
-     * @param id 用户id
-     * @return 删除是否成功（成功：true 失败：false）
-     * */
-    boolean deleteUserById(int id);
-
-    /**
      * 根据用户名删除用户
      * @param userName 用户名
      * @return boolean 删除是否成功（成功：true 失败：false）
      */
     boolean deleteUserByUserName(String userName);
 
-    JSONObject deleteRecord(String action, String[] ids) throws JSONException, SQLException;
+    /**
+     * 根据ID删除用户
+     * @param ids 用户id
+     * @return JSONObject
+     * */
+    JSONObject deleteUsers(String[] ids) throws JSONException, SQLException;
 
     /**
      * 更新用户信息

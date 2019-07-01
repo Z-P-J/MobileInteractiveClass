@@ -1,5 +1,6 @@
 package com.interactive.classroom.dao.filters;
 
+import com.interactive.classroom.constant.UserType;
 import com.interactive.classroom.utils.TextUtil;
 
 /**
@@ -55,10 +56,19 @@ public class FileFilter extends BaseFilter {
 
     @Override
     public String getQuerySql(String tableName) {
-        String sql = "select * from " + tableName;
-        if (!TextUtil.isEmpty(homeworkId)) {
+
+        String sql = "";
+        if (TextUtil.isEmpty(homeworkId)) {
+            if (UserType.STUDENT.equals(userType) || UserType.TEACHER.equals(userType)) {
+                sql = "select * from " + tableName + " where uploader_id=" + userId;
+            } else if (UserType.MANAGER.equals(userType)){
+                sql = "select * from " + tableName;
+            }
+        } else {
+            sql = "select * from " + tableName;
             sql += " where homework_id=" + homeworkId;
         }
+
         if (!TextUtil.isEmpty(keyword)) {
             sql = checkWhere(sql);
             sql += "(file_name like '%" + keyword + "%' or uploader_name like '%" + keyword + "%')";
@@ -77,7 +87,21 @@ public class FileFilter extends BaseFilter {
 
     @Override
     public String getStatisticSql(String tableName) {
-        return null;
+        String sql = "select date_format(upload_time,\"" + getTimeInterval() + "\") as time_interval,count(*) as count";
+        if (TextUtil.isEmpty(homeworkId)) {
+            if (UserType.STUDENT.equals(userType) || UserType.TEACHER.equals(userType)) {
+                sql += " from " + tableName + " where uploader_id=" + userId;
+            } else if (UserType.MANAGER.equals(userType)){
+                sql += " from " + tableName;
+            }
+        } else {
+            sql += " from " + tableName;
+            sql += " where homework_id=" + homeworkId;
+        }
+        sql = checkWhere(sql);
+        sql = sql + "upload_time between \"" + timeFrom + "\" and \"" + timeTo + "\"";
+        sql = sql + " group by time_interval order by time_interval";
+        return sql;
     }
 
     @Override

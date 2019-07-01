@@ -47,11 +47,8 @@ public class HomeworkDaoImpl implements HomeworkDao {
                 for (String label : LABELS) {
                     jsonObj.put(label, rs.getString(label));
                 }
-                if (filter.getUserId() != null && filter.getUserId().equals(rs.getString("publisher_id"))) {
-                    jsonObj.put("isOwner", 1);
-                } else {
-                    jsonObj.put("isOwner", 0);
-                }
+                boolean isOwner = filter.getUserId() != null && filter.getUserId().equals(rs.getString("publisher_id"));
+                jsonObj.put("isOwner", isOwner ? 1 : 0);
                 if (!TextUtil.isEmpty(filter.getHomeworkId())) {
                     FileFilter fileFilter = FilterFactory.getFileFilter()
                             .setUserId(filter.getUserId())

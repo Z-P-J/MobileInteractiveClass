@@ -6,34 +6,6 @@
 	</h4>
 </div>
 <div class="modal-body">
-<%--	<div class="row">--%>
-<%--		<div class="col-md-12">--%>
-<%--			<h4>--%>
-<%--				请输入考勤的信息--%>
-<%--			</h4>--%>
-<%--			<p>--%>
-<%--				考勤课程：--%>
-<%--				<select class="table-group-action-input form-control input-medium" id="attendance_course" name="attendance_course">--%>
-<%--					<option value="1">（无）</option>--%>
-<%--				</select>--%>
-<%--			</p>--%>
-<%--			<p>--%>
-<%--				考勤要求：--%>
-<%--				<input type="text" class="col-md-12 form-control" id="attendance_requirement" name="attendance_requirement" value="请在规定时间内考勤">--%>
-<%--			</p>--%>
-<%--			<p>--%>
-<%--				截止时间(默认10分钟后截止)：--%>
-<%--				<div class="input-group date form_datetime">--%>
-<%--					<input type="text" id="attendance_deadline" name="attendance_deadline" class="form-control" size="16" placeholder="请输入期限完成时间" value=""/>--%>
-<%--					<span class="input-group-btn">--%>
-<%--						<button class="btn default date-set" type="button">--%>
-<%--							<i class="fa fa-calendar"></i>--%>
-<%--						</button>--%>
-<%--					</span>--%>
-<%--				</div>--%>
-<%--			</p>--%>
-<%--		</div>--%>
-<%--	</div>--%>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="portlet-body form">
@@ -133,9 +105,9 @@
 		var queryKeyword = $("#query_keyword").val();
 		var timeFrom = $("#time_from").val();
 		var timeTo = $("#time_to").val();
-		var url = "../../attendance_servlet"
-				+ "?action=query_attendances"
-				+ "&id=" + id
+		var url = "../../homework_servlet"
+				+ "?action=query_homeworks"
+				// + "&id=" + id
 				+ "&keyword=" + queryKeyword
 				+ "&time_from=" + timeFrom
 				+ "&time_to=" + timeTo;

@@ -8,6 +8,7 @@ jQuery(document).ready(function () {
     ComponentsDropdowns.init();
     Frame.init(module, sub);
     Page.init();
+    Page.tableName = "file_manage";
     Record.init();
 });
 /*================================================================================*/
@@ -25,7 +26,7 @@ var Record = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../file_core_servlet_action?action=get_all_files&type=all&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../file_servlet?action=query_files";
         $.post(url, function (json) {
             if (json.result_code === 0) {
                 Record.userId = json.user_id;
@@ -49,7 +50,7 @@ var Record = function () {
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录文件吗？该操作将同时删除服务器中相应的文件！")) {
             if (id > -1) {
-                $.post("../../file_core_servlet_action?action=delete_file&id=" + id, function (json) {
+                $.post("../../file_servlet?action=delete_file&id=" + id, function (json) {
                     if (json.result_code === 0) {
                         var count = json.count;
                         var amount = json.amount;
@@ -63,14 +64,24 @@ var Record = function () {
             }
         }
     };
-    var exportRecord = function () {
-        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\upload\\project\\export存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
-            window.location.href = "../../file_core_servlet_action?action=export_files&exist_resultset=1";
+    var exportFiles = function () {
+        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\xm05\\export\\" + module + "存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
+            $.get("../../file_servlet?action=export_files", function (json) {
+                console.log(JSON.stringify(json));
+                if (json.result_code === 0) {
+                    alert("导出成功！");
+                } else {
+                    if (Page != null) {
+                        Page.processError(json);
+                    }
+                    alert("导出失败！msg=" + json.result_msg);
+                }
+            });
         }
     };
     var sortFiles = function (index, sortName) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
-        $.post("../../file_core_servlet_action?action=get_all_files&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../file_servlet?action=query_files&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code === 0) {
                 Record.userId = json.user_id;
@@ -100,8 +111,8 @@ var Record = function () {
         viewRecord: function (id) {
             viewRecord(id);
         },
-        exportRecord: function () {
-            exportRecord();
+        exportFiles: function () {
+            exportFiles();
         },
         sortFiles: function (index, sortName) {
             sortFiles(index, sortName);
@@ -170,7 +181,7 @@ var Page = function () {
             Page.help();
         });
         $('#export_button').click(function () {
-            Page.exportRecord();
+            Page.exportFiles();
         });
         $('#statistic_button').click(function () {
             Page.statisticRecord();
@@ -190,16 +201,14 @@ var Page = function () {
         $("#title_div").html(title);
         if (json != null) {
             var list = json.aaData;
-            var tip = "当前查询到了 " + list.length + " 条记录";
-            $("#tip_div").html(tip);
-            $("#record_list_tip").html(tip);
             showRecordList(list);
         }
     };
     var showRecordList = function (list) {
-        html = "													<div><span id=\"tip_div\"></span>";
+        var tip = "当前查询到了 " + list.length + " 条记录";
+        html = "													<div><span id=\"tip_div\">" + tip + "</span>";
         for (var i = 0; i < list.length; i++) {
-            showRecord(list[i]);
+            html += showRecord(list[i]);
         }
         html = html + "													</div>";
         $("#record_list_div").html(html);
@@ -207,7 +216,7 @@ var Page = function () {
     var showRecord = function (json) {
         var image = "../../assets/module/img/public/wkbj.jpg";
 
-        html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
+        var html = "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
@@ -223,6 +232,7 @@ var Page = function () {
         html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";
+        return html;
     };
     var help = function () {
         var strUrl = location.pathname;
@@ -267,8 +277,7 @@ var Page = function () {
             window.location.href = "list.jsp";
     }
     var printRecord = function () {
-        // window.location.href = "print.jsp?exist_resultset=1";
-        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
+        window.location.href = "../../base/print/print.jsp?module_name=" + module;
     };
     var sortFiles = function (index) {
         var sortName = $("#sort_01").val();
@@ -305,6 +314,9 @@ var Page = function () {
         showRecordList: function (list) {
             showRecordList(list);
         },
+        showRecord: function (list) {
+            return showRecord(list);
+        },
         submitRecord: function () {
             submitRecord();
         },
@@ -320,8 +332,8 @@ var Page = function () {
         searchRecord: function () {
             searchRecord();
         },
-        exportRecord: function () {
-            Record.exportRecord();
+        exportFiles: function () {
+            Record.exportFiles();
         },
         statisticRecord: function () {
             statisticRecord();

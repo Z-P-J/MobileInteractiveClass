@@ -53,19 +53,34 @@
 									<input type="hidden" id="exist_resultset" name="exist_resultset" value="<%=existResultset%>" />
 									<div class="form-body">
 										<div class="form-group">
-											<div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+											<div class="btn-group"
+												 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+												<a id="search_button_1" class="btn green" href="homework_query_div.jsp"
+												   data-target="#ajax" data-toggle="modal">查询作业</a>
+											</div>
+											<div class="btn-group"
+												 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+												<a id="publish_attendance" class="btn green"
+												   href="homework_publish_div.jsp" data-target="#ajax"
+												   data-toggle="modal">发布作业 <i class="fa fa-plus" style="display: none"></i> </a>
+											</div>
 
-<%--												<button type="button" id="add_button" class="btn green" title="添加新的记录">--%>
-<%--													上传文件--%>
-<%--												</button>--%>
-												<button type="button" id="search_button" class="btn green" title="设置 条件查询对应的记录">
-													查询作业
-												</button>
+											<div class="btn-group"
+												 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+												<a id="statistic_attendance" class="btn green"
+												   href="../../base/statistic/statistic_div.jsp" data-target="#ajax"
+												   data-toggle="modal">作业统计 <i class="fa fa-plus"></i> </a>
+											</div>
+											<div class="btn-group"
+												 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;display: none">
+												<a id="update_attendance" class="btn green"
+												   href="homework_update_div.jsp" data-target="#ajax"
+												   data-toggle="modal">修改作业 <i class="fa fa-plus"></i> </a>
 											</div>
 											<div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
-												<button type="button" id="statistic_button" class="btn green" title="统计记录">
-													统计报表
-												</button>
+<%--												<button type="button" id="statistic_button" class="btn green" title="统计记录">--%>
+<%--													统计报表--%>
+<%--												</button>--%>
 												<button type="button" id="print_button" class="btn green" title="打印记录">
 													打印
 												</button>
@@ -73,17 +88,17 @@
 													导出
 												</button>
 											</div>
-											<div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
-												<button type="button" id="return_button" class="btn green" title="返回到前一个页面">
-													返回
-												</button>
-												<button type="button" id="layout_button" class="btn green" title="布局切换">
-													<i class="fa fa-th-list"></i>
-												</button>
-												<button type="button" id="help_button" class="btn green" title="在线帮助">
-													<i class="fa fa-question"></i>
-												</button>
-											</div>
+<%--											<div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">--%>
+<%--												<button type="button" id="return_button" class="btn green" title="返回到前一个页面">--%>
+<%--													返回--%>
+<%--												</button>--%>
+<%--												<button type="button" id="layout_button" class="btn green" title="布局切换">--%>
+<%--													<i class="fa fa-th-list"></i>--%>
+<%--												</button>--%>
+<%--												<button type="button" id="help_button" class="btn green" title="在线帮助">--%>
+<%--													<i class="fa fa-question"></i>--%>
+<%--												</button>--%>
+<%--											</div>--%>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-2">排序</label>
@@ -148,6 +163,11 @@
 <%@include file="../../home/frame/frame_javascript.jsp"%>
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
+<script src="../../assets/global/plugins/amcharts4/lib/core.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/charts.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/themes/material.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/lang/zh_Hans.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/themes/animated.js"></script>
 <!-- BEGIN PAGE SCRIPTS -->
 <script type="text/javascript" src="../../assets/module/scripts/homework/homework_list.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

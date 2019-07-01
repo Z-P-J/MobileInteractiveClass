@@ -51,30 +51,35 @@
 									<input type="hidden" id="exist_resultset" name="exist_resultset" value="<%=existResultset%>" />
 									<div class="form-body">
 										<div class="form-group">
+											<div class="btn-group"
+												 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+												<a id="search_button_1" class="btn green" href="user_query_div.jsp"
+												   data-target="#ajax" data-toggle="modal">查询用户</a>
+											</div>
+											<div class="btn-group"
+												 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+												<a id="statistic_attendance" class="btn green"
+												   href="../../base/statistic/statistic_div.jsp" data-target="#ajax"
+												   data-toggle="modal">用户统计 <i class="fa fa-plus"></i> </a>
+											</div>
+											<div class="btn-group"
+												 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;display: none">
+												<a id="update_attendance" class="btn green"
+												   href="user_update_div.jsp" data-target="#ajax"
+												   data-toggle="modal">用户详情 <i class="fa fa-plus"></i> </a>
+											</div>
 											<div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
 												<button type="button" id="add_button" class="btn green" title="添加新的学生">
-													学生注册
-												</button>
-												<button type="button" id="search_button" class="btn green" title="设置 条件查询对应的学生信息">
-													查询学生信息
-												</button>
-												<button type="button" id="statistic_button" class="btn green" title="统计学生注册情况">
-													统计学生注册情况
+													添加用户
 												</button>
 												<button type="button" id="print_button" class="btn green" title="打印学生信息">
-													打印学生信息
+													打印
 												</button>
 												<button type="button" id="export_button" class="btn green" title="导出 学生信息">
-													导出学生信息
+													导出
 												</button>
 												<button type="button" id="return_button" class="btn green" title="返回到前一个页面">
 													返回
-												</button>
-												<button type="button" id="layout_button" class="btn green" title="布局切换">
-													<i class="fa fa-th-list"></i>
-												</button>
-												<button type="button" id="help_button" class="btn green" title="在线帮助">
-													<i class="fa fa-question"></i>
 												</button>
 											</div>
 										</div>
@@ -141,6 +146,11 @@
 <%@include file="../../home/frame/frame_javascript.jsp"%>
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
+<script src="../../assets/global/plugins/amcharts4/lib/core.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/charts.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/themes/material.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/lang/zh_Hans.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/themes/animated.js"></script>
 <!-- BEGIN PAGE SCRIPTS -->
 <script type="text/javascript" src="../../assets/module/scripts/user/user_list.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->

@@ -11,26 +11,28 @@ jQuery(document).ready(function () {
     ComponentsDropdowns.init();
     Frame.init(module, sub);
     Page.init();
+    Page.tableName = "homework_manage";
     Record.init();
 });
 /*================================================================================*/
 var Record = function () {
-    var initRecordStyle = function () {
-    };
-    var initRecordList = function () {
+    var init = function () {
         getHomeworks();
     };
     var getHomeworks = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homeworks&type=all&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../homework_servlet?action=query_homeworks&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
-            if (json.result_code == 0) {
+            if (json.result_code === 0) {
                 Record.userId = json.user_id;
                 Record.userName = json.user_name;
                 Record.userRole = json.user_role;
                 Record.userAvatar = json.user_avatar;
+                if (json.user_role !== "student") {
+                    $("#publish_attendance").show();
+                }
                 Page.showResult(json);
             } else {
                 if (Page != null) {
@@ -45,31 +47,40 @@ var Record = function () {
     var viewRecord = function (id) {
         window.location.href = "homework_detail.jsp?homework_id=" + id + "&exist_resultset=0";
     };
-    var deleteRecord = function (id) {
+    var deleteHomework = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
-                $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
+                $.post("../../homework_servlet?action=delete_homework&id=" + id, function (json) {
                     if (json.result_code === 0) {
-                        var count = json.count;
-                        var amount = json.amount;
-                        initRecordList();
-                        initRecordStyle();
+                        getHomeworks();
                         alert("已经从数据表删除该记录！");
+                    } else {
+                        alert("删除失败！msg=" + json.result_msg);
                     }
                 })
             }
         }
     };
-    var exportRecord = function () {
-        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\upload\\project\\export存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
-            window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
+    var exportHomeworks = function () {
+        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\xm05\\export\\" + module + "存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
+            $.get("../../homework_servlet?action=export_homeworks", function (json) {
+                console.log(JSON.stringify(json));
+                if (json.result_code === 0) {
+                    alert("导出成功！");
+                } else {
+                    if (Page != null) {
+                        Page.processError(json);
+                    }
+                    alert("导出失败！msg=" + json.result_msg);
+                }
+            });
         }
     };
     var sortRecord1 = function (index, sortName) {
         // Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
-        $.post("../../" + module + "_" + sub + "_servlet_action?action=get_homeworks&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../homework_servlet?action=query_homeworks&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
-            if (json.result_code == 0) {
+            if (json.result_code === 0) {
                 Record.userId = json.user_id;
                 Record.userName = json.user_name;
                 Record.userRole = json.user_role;
@@ -88,17 +99,16 @@ var Record = function () {
     };
     return {
         init: function () {
-            initRecordList();
-            initRecordStyle();
+            init();
         },
-        deleteRecord: function (id) {
-            deleteRecord(id);
+        deleteHomework: function (id) {
+            deleteHomework(id);
         },
         viewRecord: function (id) {
             viewRecord(id);
         },
-        exportRecord: function () {
-            exportRecord();
+        exportHomeworks: function () {
+            exportHomeworks();
         },
         sortRecord1: function (index, sortName) {
             sortRecord1(index, sortName);
@@ -167,7 +177,7 @@ var Page = function () {
             Page.help();
         });
         $('#export_button').click(function () {
-            Page.exportRecord();
+            Page.exportHomeworks();
         });
         $('#statistic_button').click(function () {
             Page.statisticRecord();
@@ -188,30 +198,16 @@ var Page = function () {
         if (json != null) {
             var list = json.aaData;
             var tip = "当前查询到了 " + list.length + " 条记录";
-            if ($("#tip_div")) $("#tip_div").html(tip);
-            if ($("#record_list_tip")) $("#record_list_tip").html(tip);
-            showRecordList(list);
+            html = "													<div><span id=\"tip_div\">" + tip + "</span>";
+            for (var i = 0; i < list.length; i++) {
+                html += showRecord(list[i]);
+            }
+            html = html + "													</div>";
+            $("#record_list_div").html(html);
         }
-    };
-    var showRecordList = function (list) {
-        html = "													<div><span id=\"tip_div\"></span>";
-        for (var i = 0; i < list.length; i++) {
-            showRecord(list[i]);
-        }
-        html = html + "													</div>";
-        $("#record_list_div").html(html);
     };
     var showRecord = function (json) {
-        var id = json[0];
         var image = "../../assets/module/img/public/wkbj.jpg";
-        var publisherId = json[1];
-        var publisherName = json[2];
-        var homeworkTitle = json[3];
-        var homeworkRequirement = json[4];
-        var publishTime = json[5];
-        var deadline = json[6];
-        var fileNameFormat = json[7];
-        var me = json[8];
         var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), json.deadline);
         var state = "";
         if (flag) {
@@ -220,7 +216,7 @@ var Page = function () {
             state = "未截止";
         }
 
-        html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
+        var html = "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
@@ -232,12 +228,13 @@ var Page = function () {
         html = html + "																<span>截止时间：" + json.deadline + "</span><p>";
         html = html + "																<span>状态：" + state + "</span><p>";
         // if (me == "1") {
-        //     html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
-        //     html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
+            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteHomework(" + json.id + ");\">删除</button>";
+            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + json.id + ");\">修改</button>";
         // }
         html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";
+        return html;
     };
     var help = function () {
         var strUrl = location.pathname;
@@ -259,14 +256,17 @@ var Page = function () {
         ;
         return bOk;
     };
-    var deleteRecord = function (id) {
-        Record.deleteRecord(id);
+    var deleteHomework = function (id) {
+        Record.deleteHomework(id);
     };
     var viewRecord = function (id) {
         Record.viewRecord(id);
     };
     var modifyRecord = function (id) {
-        window.location.href = "view.jsp?id=" + id;
+        Record.homeworkId = id;
+        alert(id);
+        $("#update_attendance").click();
+        // window.location.href = "view.jsp?id=" + id;
     };
     var searchRecord = function () {
         window.location.href = "query.jsp";
@@ -282,8 +282,7 @@ var Page = function () {
             window.location.href = "list.jsp";
     }
     var printRecord = function () {
-        // window.location.href = "print.jsp?exist_resultset=1";
-        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
+        window.location.href = "../../base/print/print.jsp?module_name=" + module;
     };
     var sortRecord = function (index) {
         var sortName = $("#sort_01").val();
@@ -317,8 +316,8 @@ var Page = function () {
         showResult: function (json) {
             showResult(json);
         },
-        showRecordList: function (list) {
-            showRecordList(list);
+        showRecord: function (list) {
+            return showRecord(list);
         },
         submitRecord: function () {
             submitRecord();
@@ -326,8 +325,8 @@ var Page = function () {
         addRecord: function () {
             addRecord();
         },
-        deleteRecord: function (id) {
-            deleteRecord(id);
+        deleteHomework: function (id) {
+            deleteHomework(id);
         },
         viewRecord: function (id) {
             viewRecord(id);
@@ -335,8 +334,8 @@ var Page = function () {
         searchRecord: function () {
             searchRecord();
         },
-        exportRecord: function () {
-            Record.exportRecord();
+        exportHomeworks: function () {
+            Record.exportHomeworks();
         },
         statisticRecord: function () {
             statisticRecord();

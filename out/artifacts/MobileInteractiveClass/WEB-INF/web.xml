@@ -94,31 +94,31 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>user_info_servlet_action</servlet-name>
+        <servlet-name>user_servlet</servlet-name>
         <servlet-class>com.interactive.classroom.servlets.UserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>user_info_servlet_action</servlet-name>
-        <url-pattern>/user_info_servlet_action</url-pattern>
+        <servlet-name>user_servlet</servlet-name>
+        <url-pattern>/user_servlet</url-pattern>
     </servlet-mapping>
 
 
     <servlet>
-        <servlet-name>file_core_servlet_action</servlet-name>
+        <servlet-name>file_servlet</servlet-name>
         <servlet-class>com.interactive.classroom.servlets.FileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>file_core_servlet_action</servlet-name>
-        <url-pattern>/file_core_servlet_action</url-pattern>
+        <servlet-name>file_servlet</servlet-name>
+        <url-pattern>/file_servlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>homework_core_servlet_action</servlet-name>
+        <servlet-name>homework_servlet</servlet-name>
         <servlet-class>com.interactive.classroom.servlets.HomeworkServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>homework_core_servlet_action</servlet-name>
-        <url-pattern>/homework_core_servlet_action</url-pattern>
+        <servlet-name>homework_servlet</servlet-name>
+        <url-pattern>/homework_servlet</url-pattern>
     </servlet-mapping>
 
     <servlet>

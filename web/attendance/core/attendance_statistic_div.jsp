@@ -348,7 +348,11 @@
 		pushHistory();
 		window.addEventListener("popstate", function(e) {
 			// alert("我监听到了浏览器的返回按钮事件啦");
-			$("#close_btn").click();
+			if ($("#ajax").is(":hidden")) {
+				window.history.go(-1);
+			} else {
+				$("#close_btn").click();
+			}
 		}, false);
 		function pushHistory() {
 			var state = {

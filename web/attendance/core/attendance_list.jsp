@@ -68,8 +68,8 @@
                                             <a id="search_button_1" class="btn green" href="attendance_query_div.jsp"
                                                data-target="#ajax" data-toggle="modal">查询考勤</a>
                                         </div>
-                                        <div class="btn-group"
-                                             style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+                                        <div id="div_publish_attendance" class="btn-group"
+                                             style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;display: none">
                                             <a id="publish_attendance" class="btn green"
                                                href="attendance_publish_div.jsp" data-target="#ajax"
                                                data-toggle="modal">发布考勤 <i class="fa fa-plus"></i> </a>

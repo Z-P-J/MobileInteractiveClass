@@ -2,8 +2,7 @@ package com.interactive.classroom.servlets;
 
 import com.interactive.classroom.constant.ActionType;
 import com.interactive.classroom.dao.DaoFactory;
-import com.interactive.classroom.dao.filters.AttendanceFilter;
-import com.interactive.classroom.dao.filters.FilterFactory;
+import com.interactive.classroom.dao.filters.*;
 import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.utils.Log;
 import org.json.JSONException;
@@ -31,25 +30,43 @@ public class PrintServlet extends BaseHttpServlet {
 
     @Override
     public void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
-        if (ActionType.ACTION_GET_PRINT_DATA.equals(action)) {
-            try {
+        try {
+            if (ActionType.ACTION_GET_PRINT_DATA.equals(action)) {
                 getPrintData(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private void getPrintData(HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
         String moduleName = request.getParameter("module_name");
         Log.d(getClass().getName(), "moduleName=" + moduleName);
+        JSONObject jsonObject;
         if ("attendance".equals(moduleName)) {
             AttendanceFilter filter = FilterFactory.getAttendanceFilter()
                     .setUserId(userId)
                     .setUserType(userType);
-            JSONObject jsonObject = DaoFactory.getAttendanceDao().queryAttendances(filter);
-            responseByJson(response, jsonObject);
+            jsonObject = DaoFactory.getAttendanceDao().queryAttendances(filter);
+        } else if ("homework".equals(moduleName)) {
+            HomeworkFilter filter = FilterFactory.getHomeworkFilter()
+                    .setUserType(userType)
+                    .setUserId(userId);
+            jsonObject = DaoFactory.getHomeworkDao().queryHomeworks(filter);
+        } else if ("file".equals(moduleName)) {
+            FileFilter filter = FilterFactory.getFileFilter()
+                    .setUserId(userId)
+                    .setUserType(userType);
+            jsonObject = DaoFactory.getFileDao().queryFiles(filter);
+        } else if ("user".equals(moduleName)) {
+            UserFilter filter = FilterFactory.getUserFilter()
+                    .setUserType(userType)
+                    .setUserId(userId);
+            jsonObject = DaoFactory.getUserDao().queryUsers(filter);
+        } else {
+            jsonObject = getErrorJsonObject("模块不存在！");
         }
+        responseByJson(response, jsonObject);
     }
 
 }

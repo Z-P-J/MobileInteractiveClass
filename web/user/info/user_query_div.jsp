@@ -1,39 +1,11 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+	<button type="button" class="close" data-dismiss="modal"></button>
 	<h4 class="modal-title">
-		查询考勤
+		查询用户
 	</h4>
 </div>
 <div class="modal-body">
-<%--	<div class="row">--%>
-<%--		<div class="col-md-12">--%>
-<%--			<h4>--%>
-<%--				请输入考勤的信息--%>
-<%--			</h4>--%>
-<%--			<p>--%>
-<%--				考勤课程：--%>
-<%--				<select class="table-group-action-input form-control input-medium" id="attendance_course" name="attendance_course">--%>
-<%--					<option value="1">（无）</option>--%>
-<%--				</select>--%>
-<%--			</p>--%>
-<%--			<p>--%>
-<%--				考勤要求：--%>
-<%--				<input type="text" class="col-md-12 form-control" id="attendance_requirement" name="attendance_requirement" value="请在规定时间内考勤">--%>
-<%--			</p>--%>
-<%--			<p>--%>
-<%--				截止时间(默认10分钟后截止)：--%>
-<%--				<div class="input-group date form_datetime">--%>
-<%--					<input type="text" id="attendance_deadline" name="attendance_deadline" class="form-control" size="16" placeholder="请输入期限完成时间" value=""/>--%>
-<%--					<span class="input-group-btn">--%>
-<%--						<button class="btn default date-set" type="button">--%>
-<%--							<i class="fa fa-calendar"></i>--%>
-<%--						</button>--%>
-<%--					</span>--%>
-<%--				</div>--%>
-<%--			</p>--%>
-<%--		</div>--%>
-<%--	</div>--%>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="portlet-body form">
@@ -58,7 +30,7 @@
 								<input type="checkbox" class="icheck" id="record_select_all" name="record_select_all" data-checkbox="icheckbox_minimal-grey" style="border: 0px solid red; display: none;" />
 							</label>
 							<label class="control-label col-md-3">
-								请选择发布的时间段<font color="red">*</font>
+								请选择注册的时间段<font color="red">*</font>
 							</label>
 							<div class="col-md-6">
 								<span>从</span>
@@ -111,12 +83,13 @@
 	$(function(){
 		pushHistory();
 		window.addEventListener("popstate", function(e) {
-			// alert("我监听到了浏览器的返回按钮事件啦");
 			if ($("#ajax").is(":hidden")) {
 				window.history.go(-1);
 			} else {
 				$("#close_btn").click();
 			}
+			// alert("我监听到了浏览器的返回按钮事件啦");
+
 		}, false);
 		function pushHistory() {
 			var state = {
@@ -127,15 +100,19 @@
 		}
 	});
 
+	// document.onmouseup = function (ev) {
+	// 	alert($("#ajax").is(":hidden"));
+	// }
+
 	// 查询
 	function query() {
 		var id = $("#id").val();
 		var queryKeyword = $("#query_keyword").val();
 		var timeFrom = $("#time_from").val();
 		var timeTo = $("#time_to").val();
-		var url = "../../attendance_servlet"
-				+ "?action=query_attendances"
-				+ "&id=" + id
+		var url = "../../user_servlet"
+				+ "?action=query_users"
+				// + "&id=" + id
 				+ "&keyword=" + queryKeyword
 				+ "&time_from=" + timeFrom
 				+ "&time_to=" + timeTo;
@@ -144,7 +121,7 @@
 
 				// Page.showResult(json);
 				// alert(JSON.stringify(json));
-				if (jsonObj != null) {
+				if (jsonObj !== null) {
 					var list = jsonObj.aaData;
 					var tip = "当前查询到了 " + list.length + " 条记录";
 					var html = "													<div><span id=\"tip_div\" style='color: red'>" + tip + "</span>";

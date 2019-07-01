@@ -8,6 +8,7 @@ jQuery(document).ready(function () {
     ComponentsDropdowns.init();
     Frame.init(module, sub);
     Page.init();
+    Page.tableName = "user_manage";
     Record.init();
 });
 /*================================================================================*/
@@ -21,7 +22,7 @@ var Record = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../user_info_servlet_action?action=get_users&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../user_servlet?action=query_users&id=" + id + "&exist_resultset=" + existResultset;
         $.post(url, function (json) {
             if (json.result_code === 0) {
                 Record.userId = json.user_id;
@@ -45,26 +46,35 @@ var Record = function () {
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条学生信息吗？")) {
             if (id > -1) {
-                $.post("../../user_info_servlet_action?action=delete_record&id=" + id, function (json) {
+                $.post("../../user_servlet?action=delete_user&id=" + id, function (json) {
                     if (json.result_code === 0) {
-                        var count = json.count;
-                        var amount = json.amount;
                         initRecordList();
-                        initRecordStyle();
-                        alert("已经从数据表删除该学生信息！");
+                        alert("已经从数据表删除该用户信息！");
+                    } else {
+                        alert("删除失败！");
                     }
                 })
             }
         }
     };
     var exportRecord = function () {
-        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\upload\\userManage\\export存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
-            window.location.href = "../../user_info_servlet_action?action=export_record&exist_resultset=1";
+        if (confirm("导出之前，必须在指定的分区创建对应的目录，否则导出会出错！\r\n请在导出前确保目录C:\\xm05\\export\\" + module + "存在，如果没有就创建一个。\r\n请问条件符合了吗？")) {
+            $.get("../../user_servlet?action=export_users", function (json) {
+                console.log(JSON.stringify(json));
+                if (json.result_code === 0) {
+                    alert("导出成功！");
+                } else {
+                    if (Page != null) {
+                        Page.processError(json);
+                    }
+                    alert("导出失败！msg=" + json.result_msg);
+                }
+            });
         }
     };
     var sortRecord = function (index, sortName) {
         var id = $("#id").val();
-        $.post("../../user_info_servlet_action?action=get_users&id=" + id + "&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../user_servlet?action=get_users&id=" + id + "&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code === 0) {
                 Record.userId = json.user_id;
@@ -184,64 +194,48 @@ var Page = function () {
         if (json != null) {
             var list = json.aaData;
             var tip = "当前查询到了 " + list.length + " 条学生信息";
-            $("#tip_div").html(tip);
-            $("#record_list_tip").html(tip);
-            showRecordList(list);
+            html = "													<div><span id=\"tip_div\">" + tip + "</span>";
+            for (var i = 0; i < list.length; i++) {
+                html += showRecord(list[i]);
+            }
+            html = html + "													</div>";
+            $("#record_list_div").html(html);
         }
-    };
-    var showRecordList = function (list) {
-        html = "													<div><span id=\"tip_div\"></span>";
-        for (var i = 0; i < list.length; i++) {
-            showRecord(list[i]);
-        }
-        html = html + "													</div>";
-        $("#record_list_div").html(html);
     };
     var showRecord = function (json) {
-        var id = json[0];
         var image = "../../assets/module/img/public/wkbj.jpg";
-        var userName = json[1];
-        var name = json[3];
-        var sex = json[4];
-        var email = json[5];
-        var phone = json[6];
-        var user_type = json[7];
+        var user_type = json.user_type;
         if (user_type === "student") {
             user_type = "学生";
         } else if (user_type === "teacher") {
             user_type = "老师";
+        } else if (user_type === "manage") {
+            user_type = "管理员";
         }
-        var wechat = json[8];
-        var nianji = json[12] + " " + json[9] + " " + json[10];
-        var studentNum = json[11];
-        var registerDate = json[13];
-        // var content = json[2];
-        // var createTime = json[4];
-        // var status = json[6];
-        // var me = json[10];
-        html = html + "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
+        var html = "														<div style=\"clear:both;width:100%;margin-top:5px;border:0px solid blue;\">";
         html = html + "															<div style=\"float:left;border:0px solid green;\">";
         html = html + "																<img src=\"" + image + "\" style=\"width:100px;height:auto;border-radius:50%!important;border:0px solid red;\"></img>";
         html = html + "															</div>";
         html = html + "															<div style=\"display:table-cell;margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border:0px solid blue;\"><p>";
-        html = html + "																<span>用户名：" + userName + "</span><p>";
-        html = html + "																<span>姓名：" + name + "</span><p>";
-        html = html + "																<span>学号：" + studentNum + "</span><p>";
-        html = html + "																<span>年级：" + nianji + "</span><p>";
-        html = html + "																<span>注册时间：" + registerDate + "</span><p>";
-        html = html + "																<span>性别：" + sex + "</span><p>";
-        html = html + "																<span>邮箱：" + email + "</span><p>";
-        html = html + "																<span>电话：" + phone + "</span><p>";
-        html = html + "																<span>微信：" + wechat + "</span><p>";
+        html = html + "																<span>用户名：" + json.user_name + "</span><p>";
+        html = html + "																<span>姓名：" + json.name + "</span><p>";
+        html = html + "																<span>学号：" + json.student_num + "</span><p>";
+        html = html + "																<span>年级：" + json.grade + "</span><p>";
+        html = html + "																<span>注册时间：" + json.register_date + "</span><p>";
+        html = html + "																<span>性别：" + json.sex + "</span><p>";
+        html = html + "																<span>邮箱：" + json.email + "</span><p>";
+        html = html + "																<span>电话：" + json.phone + "</span><p>";
+        html = html + "																<span>微信：" + json.wechat + "</span><p>";
         html = html + "																<span>用户类型：" + user_type + "</span><p>";
         //html=html+"																<span>状态："+status+"</span><p>";
         // if (me == "1") {
-            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + id + ");\">删除</button>";
-            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
+            html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + json.id + ");\">删除</button>";
+            // html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + json.id + ");\">修改</button>";
         // }
-        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + id + ");\">详细信息</button>";
+        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";
+        return html;
     };
     var help = function () {
         var strUrl = location.pathname;
@@ -293,8 +287,7 @@ var Page = function () {
         Record.sortRecord(index, sortName);
     };
     var printRecord = function () {
-        // window.location.href = sub + "_print.jsp?exist_resultset=1";
-        window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result&exist_resultset=1";
+        window.location.href = "../../base/print/print.jsp?module_name=" + module;
     };
     var confirmBack = function () {
         DraggableDialog.setId("confirm_back");
@@ -320,8 +313,8 @@ var Page = function () {
         showResult: function (json) {
             showResult(json);
         },
-        showRecordList: function (list) {
-            showRecordList(list);
+        showRecord: function (list) {
+            return showRecord(list);
         },
         submitRecord: function () {
             submitRecord();

@@ -1,5 +1,5 @@
-<%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.text.*"%>
+<%@page contentType="text/html; charset=UTF-8" %>
+<%@page import="java.text.*" %>
 <%@ page import="com.interactive.classroom.utils.TimeUtil" %>
 <%
     //做调试用，这里要在正式发布的时候去掉
@@ -13,24 +13,24 @@
 <head>
     <title>管理系统</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <%@include file="../../home/frame/frame_style.jsp"%>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <%@include file="../../home/frame/frame_style.jsp" %>
     <!-- BEGIN PAGE LEVEL STYLES -->
     <!-- END PAGE LEVEL SCRIPTS -->
 </head>
 <body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
-<%@include file="../../home/frame/frame_top.jsp"%>
+<%@include file="../../home/frame/frame_top.jsp" %>
 <div class="clearfix"></div>
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
-    <%@include file="../../home/frame/frame_left.jsp"%>
+    <%@include file="../../home/frame/frame_left.jsp" %>
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT -->
         <div class="page-content">
-            <%@include file="../../home/frame/frame_portlet.jsp"%>
-            <%@include file="../../home/frame/frame_theme_color.jsp"%>
-            <%@include file="../../home/frame/frame_page_header.jsp"%>
+            <%@include file="../../home/frame/frame_portlet.jsp" %>
+            <%@include file="../../home/frame/frame_theme_color.jsp" %>
+            <%@include file="../../home/frame/frame_page_header.jsp" %>
             <!-- BEGIN PAGE CONTENT-->
             <!-- ----------------------------------------页面开始，替换这里即可---------------------------------------- -->
             <div class="row">
@@ -47,24 +47,45 @@
                             </div>
                         </div>
                         <div class="portlet-body form">
-                            <form class="form-horizontal" role="form" method="post" id="page_form" name="page_form" action="#">
-                                <input type="hidden" id="action" name="action" value="get_all_files" />
-                                <input type="hidden" id="id" name="id" value="<%=id%>" />
-                                <input type="hidden" id="exist_resultset" name="exist_resultset" value="<%=existResultset%>" />
+                            <form class="form-horizontal" role="form" method="post" id="page_form" name="page_form"
+                                  action="#">
+                                <input type="hidden" id="action" name="action" value="query_files"/>
+                                <input type="hidden" id="id" name="id" value="<%=id%>"/>
+                                <input type="hidden" id="exist_resultset" name="exist_resultset"
+                                       value="<%=existResultset%>"/>
                                 <div class="form-body">
                                     <div class="form-group">
                                         <div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+                                            <%--                                            <div class="btn-group"--%>
+                                            <%--                                                 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">--%>
+                                            <%--                                                <a id="file_upload" class="btn green"--%>
+                                            <%--                                                   href="file_upload_div.jsp" data-target="#ajax"--%>
+                                            <%--                                                   data-toggle="modal">上传文件 <i class="fa fa-plus"></i> </a>--%>
+                                            <%--                                            </div>--%>
                                             <button type="button" id="add_button" class="btn green" title="添加新的记录">
                                                 上传文件
                                             </button>
-                                            <button type="button" id="search_button" class="btn green" title="设置 条件查询对应的记录">
-                                                查询文件
-                                            </button>
+<%--                                            <button type="button" id="search_button" class="btn green"--%>
+<%--                                                    title="设置 条件查询对应的记录">--%>
+<%--                                                查询文件--%>
+<%--                                            </button>--%>
+                                        </div>
+                                        <div class="btn-group"
+                                             style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+                                            <a id="file_upload" class="btn green"
+                                               href="file_query_div.jsp" data-target="#ajax"
+                                               data-toggle="modal">查询文件 <i class="fa fa-plus"></i> </a>
+                                        </div>
+                                        <div class="btn-group"
+                                             style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+                                            <a id="statistic_file" class="btn green"
+                                               href="../../base/statistic/statistic_div.jsp" data-target="#ajax"
+                                               data-toggle="modal">文件统计 <i class="fa fa-plus"></i> </a>
                                         </div>
                                         <div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
-                                            <button type="button" id="statistic_button" class="btn green" title="统计记录">
-                                                统计报表
-                                            </button>
+<%--                                            <button type="button" id="statistic_button" class="btn green" title="统计记录">--%>
+<%--                                                统计报表--%>
+<%--                                            </button>--%>
                                             <button type="button" id="print_button" class="btn green" title="打印记录">
                                                 打印
                                             </button>
@@ -87,7 +108,8 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-2">排序</label>
                                         <div class="col-md-2">
-                                            <select class="bs-select form-control" id="sort_01" onchange="Page.sortFiles(1);">
+                                            <select class="bs-select form-control" id="sort_01"
+                                                    onchange="Page.sortFiles(1);">
                                                 <%--													<option>（请选择）</option>--%>
                                                 <option value="upload_time">按日期</option>
                                                 <option value="file_name">按文件名</option>
@@ -133,19 +155,24 @@
             <!-- END PAGE CONTENT-->
         </div>
         <!-- END CONTENT -->
-        <%@include file="../../home/frame/frame_sidebar.jsp"%>
+        <%@include file="../../home/frame/frame_sidebar.jsp" %>
     </div>
     <!-- END CONTENT WRAPPER-->
 </div>
 <!-- END CONTAINER -->
-<%@include file="../../home/frame/frame_bottom.jsp"%>
-<%@include file="../../home/frame/frame_ajax_modal.jsp"%>
+<%@include file="../../home/frame/frame_bottom.jsp" %>
+<%@include file="../../home/frame/frame_ajax_modal.jsp" %>
 </body>
 </html>
-<%@include file="../../home/frame/frame_page_component.jsp"%>
-<%@include file="../../home/frame/frame_javascript.jsp"%>
+<%@include file="../../home/frame/frame_page_component.jsp" %>
+<%@include file="../../home/frame/frame_javascript.jsp" %>
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
+<script src="../../assets/global/plugins/amcharts4/lib/core.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/charts.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/themes/material.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/lang/zh_Hans.js"></script>
+<script src="../../assets/global/plugins/amcharts4/lib/themes/animated.js"></script>
 <!-- BEGIN PAGE SCRIPTS -->
 <script>
     $("#sort_01").val("create_time");

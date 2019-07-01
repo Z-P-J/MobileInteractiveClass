@@ -1,5 +1,6 @@
 package com.interactive.classroom.dao.filters;
 
+import com.interactive.classroom.constant.UserType;
 import com.interactive.classroom.utils.TextUtil;
 
 /**
@@ -28,12 +29,35 @@ public class HomeworkFilter extends BaseFilter {
 
     @Override
     public String getQuerySql(String tableName) {
-        String sql = "select * from " + tableName;
-        if (!TextUtil.isEmpty(homeworkId)) {
-            sql += " where id=" + homeworkId;
-        } else if (!TextUtil.isEmpty(courseId)) {
-            sql += " where course_id=" + courseId;
+        String sql = "";
+        if (UserType.STUDENT.equals(userType)) {
+            sql = "select homework_manage.*,course_student.*" +
+                    " from homework_manage,course_student" +
+                    " where course_student.student_id=" + userId +
+                    " and course_student.course_id=homework_manage.course_id";
+
+            if (!TextUtil.isEmpty(homeworkId)) {
+                sql += " and homework_manage.id=" + homeworkId;
+            } else if (!TextUtil.isEmpty(courseId)) {
+                sql += " and homework_manage.course_id=" + courseId;
+            }
+
+        } else if (UserType.TEACHER.equals(userType)) {
+            sql = "select * from " + tableName + " where publisher_id=" + userId;
+            if (!TextUtil.isEmpty(homeworkId)) {
+                sql += " and id=" + homeworkId;
+            } else if (!TextUtil.isEmpty(courseId)) {
+                sql += " and course_id=" + courseId;
+            }
+        } else if (UserType.MANAGER.equals(userType)) {
+            sql = "select * from " + tableName;
+            if (!TextUtil.isEmpty(homeworkId)) {
+                sql += " where id=" + homeworkId;
+            } else if (!TextUtil.isEmpty(courseId)) {
+                sql += " where course_id=" + courseId;
+            }
         }
+
         if (!TextUtil.isEmpty(keyword)) {
             sql = checkWhere(sql);
             sql += "(homework_title like '%" + keyword + "%' or homework_requirement like '%" + keyword + "%')";
@@ -54,7 +78,21 @@ public class HomeworkFilter extends BaseFilter {
 
     @Override
     public String getStatisticSql(String tableName) {
-        return null;
+        String sql = "select date_format(publish_time,\"" + getTimeInterval() + "\") as time_interval,count(*) as count";
+        if (UserType.STUDENT.equals(userType)) {
+            sql += ",homework_manage.*,course_student.*" +
+                    " from homework_manage,course_student" +
+                    " where course_student.student_id=" + userId +
+                    " and course_student.course_id=homework_manage.course_id";
+        } else if (UserType.TEACHER.equals(userType)) {
+            sql += " from " + tableName + " where publisher_id=" + userId;
+        } else if (UserType.MANAGER.equals(userType)) {
+            sql += " from " + tableName;
+        }
+        sql = checkWhere(sql);
+        sql = sql + "publish_time between \"" + timeFrom + "\" and \"" + timeTo + "\"";
+        sql = sql + " group by time_interval order by time_interval";
+        return sql;
     }
 
     @Override

@@ -5,12 +5,10 @@ package com.interactive.classroom.servlets;
  */
 
 import com.interactive.classroom.constant.ActionType;
-import com.interactive.classroom.dao.filters.AttendanceFilter;
-import com.interactive.classroom.dao.filters.FilterFactory;
+import com.interactive.classroom.dao.*;
+import com.interactive.classroom.dao.filters.*;
 import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.bean.StatisticBean;
-import com.interactive.classroom.dao.DaoFactory;
-import com.interactive.classroom.dao.StatisticDao;
 import com.interactive.classroom.utils.TimeUtil;
 import com.interactive.classroom.utils.export.ExportBean;
 import com.interactive.classroom.utils.export.ExportDao;
@@ -30,17 +28,7 @@ import java.sql.SQLException;
  * @author Z-P-J
  */
 public class StatisticServlet extends BaseHttpServlet {
-    /*----------线程需要的信息----------*/
-    String sessionId = null;
-    String filePathName = null;
-    String fileName = null;
-    String filePath = null;
-    String fileUrl = null;
-    String fileSize = "0";
-    int percent = 0;
-    boolean threadRunning = false;
-    private ExportThread exportThread;
-    /*----------------------------------*/
+
     //这里是需要改的,module和sub
     private static final String MODULE = "base";
     private static final String SUB = "statistic";
@@ -53,6 +41,11 @@ public class StatisticServlet extends BaseHttpServlet {
     private static final String REDIRECT_PAGE = "record_list.jsp";
     private String redirectUrl = REDIRECT_PATH + "/" + REDIRECT_PAGE;
 
+    private String timeFrom;
+    private String timeTo;
+    private String timeInterval;
+
+
     @Override
     public void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
         if (ActionType.ACTION_START_STATISTIC.equals(action)) {
@@ -63,23 +56,9 @@ public class StatisticServlet extends BaseHttpServlet {
             }
         } else {
             switch (action) {
-                case "statistic_record":
-                    try {
-                        statisticRecord(request, response);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
                 case "get_statistic_record":
                     try {
                         getStatisticRecord(request, response);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case "export_statistic_resultset":
-                    try {
-                        exportStatisticResultset(request, response);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -96,24 +75,25 @@ public class StatisticServlet extends BaseHttpServlet {
     }
 
     private void startStatistic(HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
-        String timeFrom = request.getParameter("time_from");
-        String timeTo = request.getParameter("time_to");
-        String timeInterval = request.getParameter("time_interval");
+        timeFrom = request.getParameter("time_from");
+        timeTo = request.getParameter("time_to");
+        timeInterval = request.getParameter("time_interval");
         String addressId = request.getParameter("address_id");
         String tableName = request.getParameter("table_name");
 
-        if ("attendance_manage".equals(tableName)) {
+        if (AttendanceDao.TABLE_NAME.equals(tableName)) {
             statisticAttendance(request, response);
+        } else if (HomeworkDao.TABLE_NAME.equals(tableName)) {
+            statisticHomework(request, response);
+        } else if (UserDao.TABLE_NAME.equals(tableName)) {
+            statisticUser(request, response);
+        } else if (FileDao.TABLE_NAME.equals(tableName)){
+            statisticFile(request, response);
         }
 
     }
 
     private void statisticAttendance(HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
-        String timeFrom = request.getParameter("time_from");
-        String timeTo = request.getParameter("time_to");
-        String addressId = request.getParameter("address_id");
-        String timeInterval = request.getParameter("time_interval");
-
         AttendanceFilter filter = FilterFactory.getAttendanceFilter()
                 .setUserId(userId)
                 .setUserType(userType)
@@ -121,67 +101,48 @@ public class StatisticServlet extends BaseHttpServlet {
                 .setTimeFrom(timeFrom)
                 .setTimeTo(timeTo);
 
-//        JSONObject jsonObject = DaoFactory.getAttendanceDao().queryAttendances(filter);
-//        responseByJson(response, jsonObject);
-
-        StatisticDao statisticDao = DaoFactory.getStatisticDao();
-//        StatisticBean bean = new StatisticBean();
-//        bean.setTimeFrom(timeFrom);
-//        bean.setTimeTo(timeTo);
-//        bean.setUserId(userId);
-//        bean.setTimeInterval(timeInterval);
-//        bean.setTableName("attendance_manage");
-        JSONObject jsonObj = statisticDao.statisticRecord(filter.getStatisticSql("attendance_manage"));
+        JSONObject jsonObj = DaoFactory.getStatisticDao()
+                .statisticRecord(filter.getStatisticSql(AttendanceDao.TABLE_NAME));
         responseByJson(response, jsonObj);
     }
 
-    /*
-     * 功能：根据前台页面的设置，统计对应的记录数据
-     */
-    public void statisticRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String action = request.getParameter("action");
+    private void statisticHomework(HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
+        HomeworkFilter filter = FilterFactory.getHomeworkFilter()
+                .setUserId(userId)
+                .setUserType(userType)
+                .setTimeInterval(timeInterval)
+                .setTimeFrom(timeFrom)
+                .setTimeTo(timeTo);
+        JSONObject jsonObj = DaoFactory.getStatisticDao()
+                .statisticRecord(filter.getStatisticSql(HomeworkDao.TABLE_NAME));
+        responseByJson(response, jsonObj);
+    }
+
+    private void statisticUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
         String timeFrom = request.getParameter("time_from");
         String timeTo = request.getParameter("time_to");
         String timeInterval = request.getParameter("time_interval");
-        String addressId = request.getParameter("address_id");
-        String statisticType = request.getParameter("statistic_type");
-        if (statisticType == null) {
-            statisticType = "no";
-        }
-        debug("[statisticRecord]收到页面传过来的参数是：" + timeFrom + "," + timeTo + "," + timeInterval + ",statisticType=" + statisticType);
+        UserFilter filter = FilterFactory.getUserFilter()
+                .setUserId(userId)
+                .setUserType(userType)
+                .setTimeInterval(timeInterval)
+                .setTimeFrom(timeFrom)
+                .setTimeTo(timeTo);
+        JSONObject jsonObj = DaoFactory.getStatisticDao()
+                .statisticRecord(filter.getStatisticSql(UserDao.TABLE_NAME));
+        responseByJson(response, jsonObj);
+    }
 
-        StatisticDao statisticDao = DaoFactory.getStatisticDao();
-        StatisticBean bean = new StatisticBean();
-        bean.setTimeFrom(timeFrom);
-        bean.setTimeTo(timeTo);
-        bean.setUserId(userId);
-        bean.setTimeInterval(timeInterval);
-        bean.setAddressId(addressId);
-        bean.setStatisticType(statisticType);
-        bean.setTableName(request.getParameter("table_name"));
-        /*---------------------------------把状态保存进session---------------------------*/
-        if (timeFrom != null) {
-            session.setAttribute(MODULE + "_" + SUB + "_statistic_query_time_from", timeFrom);
-        }
-        if (timeTo != null) {
-            session.setAttribute(MODULE + "_" + SUB + "_statistic_query_time_to", timeTo);
-        }
-        if (timeInterval != null) {
-            session.setAttribute(MODULE + "_" + SUB + "_statistic_query_timeinterval", timeInterval);
-        }
-        if (addressId != null) {
-            session.setAttribute(MODULE + "_" + SUB + "_statistic_query_addressid", addressId);
-        }
-        /*---------------------------------开始进行统计---------------------------*/
-        JSONObject jsonObj = statisticDao.statisticRecord(action, bean);
-        jsonObj.put("user_id", userId);
-        jsonObj.put("user_name", userName);
-        jsonObj.put("result_image", fileName);
-
-        session.setAttribute(MODULE + "_" + SUB + "_statistic_record_result", jsonObj);
-        debug("[statisticRecord]统计完毕，保存进session：" + MODULE + "_" + SUB + "_statistic_record_result");
-
-        onEnd(request, response, jsonObj, RESULT_PATH + "/statistic_result.jsp", "操作已经执行，请按返回按钮返回列表页面！", 0, "record_list.jsp");
+    private void statisticFile(HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
+        FileFilter filter = FilterFactory.getFileFilter()
+                .setUserId(userId)
+                .setUserType(userType)
+                .setTimeInterval(timeInterval)
+                .setTimeFrom(timeFrom)
+                .setTimeTo(timeTo);
+        JSONObject jsonObj = DaoFactory.getStatisticDao()
+                .statisticRecord(filter.getStatisticSql(FileDao.TABLE_NAME));
+        responseByJson(response, jsonObj);
     }
 
     private void getStatisticRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -284,164 +245,4 @@ public class StatisticServlet extends BaseHttpServlet {
         }
     }
 
-    /*
-     * 功能：导出已存在的结果集的数据
-     */
-    private void exportStatisticResultset(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String dateTime = TimeUtil.currentDate();
-        sessionId = session.getId();
-        fileName = "zakk_statistic_export_" + sessionId + "_" + dateTime + ".xls";
-        filePath = "C:\\upload\\project\\exportBean\\temp";
-        filePathName = filePath + "\\" + fileName;
-        fileUrl = "/upload/project/exportBean/temp/" + fileName;
-        /*--------------------赋值完毕--------------------*/
-        String action = request.getParameter("action");
-        String existResultset = request.getParameter("exist_resultset");
-        if ((existResultset == null) || (existResultset.equals("null") || existResultset.isEmpty())) {
-            existResultset = "0";
-        }
-        String userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
-        String userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
-        int resultCode = 0;
-        //检查输入参数是否正确先
-        debug("收到页面传过来的参数是：" + existResultset + "," + action);
-        String creator = (String) session.getAttribute("user_name");
-        String createTime = TimeUtil.currentDate();
-        JSONObject jsonObj = null;
-
-        ExportBean exportBean = new ExportBean();
-        exportBean.setSessionId(session.getId());
-        exportBean.setCreateTime(createTime);
-        exportBean.setCreator(creator);
-        exportBean.setUserId(userId);
-        exportBean.setUserName(userName);
-        exportBean.setExportStatus("1");
-        exportBean.setFileName(fileName);
-        exportBean.setFilePath(filePath.replaceAll("\\\\", "/"));
-        exportBean.setFileUrl(fileUrl);
-        exportBean.setFileSize(fileSize);
-        exportBean.setLimitTime(createTime);
-        exportBean.setDownloadCount("0");
-        exportBean.setExportPercent("0");
-        exportBean.setExportType("1");
-        processExportThread(request, response, exportBean);
-
-        boolean isAjax = true;
-        if (request.getHeader("x-requested-with") == null) {
-            isAjax = false;
-        }    //判断是异步请求还是同步请求
-        if (isAjax) {
-            response.setContentType("application/json; charset=UTF-8");
-            PrintWriter out;
-            try {
-                out = response.getWriter();
-                out.print(jsonObj);
-                out.flush();
-                out.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            String resultMsg = "操作已经执行，请按返回按钮返回列表页面！";
-            redirectUrl = SUB + "_list.jsp";
-            resultUrl = RESULT_PATH + "/../../user/center/export_list.jsp";
-            resultMsg = java.net.URLEncoder.encode(resultMsg, "UTF-8");
-            String url = resultUrl + "?exist_resultset=1&result_msg=" + resultMsg + "&result_code=" + resultCode + "&redirect_url=" + redirectUrl;
-            response.sendRedirect(url);
-        }
-    }
-
-    /*
-     * 功能：开启线程，进行导出
-     */
-    private void processExportThread(HttpServletRequest request, HttpServletResponse response, ExportBean exportBean) throws SQLException, IOException, ServletException, JSONException {
-        String tempDir = filePath + "/" + session.getId() + "_" + TimeUtil.currentDate();
-        java.io.File f = new java.io.File(tempDir);
-        if (!f.exists()) {
-            f.mkdir();
-        }
-        String zipFilename = "zakk_file_export_" + session.getId() + "_" + TimeUtil.currentDate() + ".rar";
-        //首先找到原来的结果集
-        JSONObject jsonObj = null;
-        if (session.getAttribute(MODULE + "_" + SUB + "_statistic_record_result") != null) {
-            jsonObj = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_statistic_record_result");
-            debug("[getExportRecord]取出了原来的结果");
-            jsonObj.put("result_code", 0);
-            jsonObj.put("result_msg", "读取了上一次的查询配置");
-        } else {
-            jsonObj = new JSONObject();
-            jsonObj.put("result_code", 10);
-            jsonObj.put("result_msg", "session里没有找到之前统计的数据！");
-            debug("[getExportRecord]没有结果");
-        }
-        //找到以后，进行开启线程导出
-
-        if (exportThread != null) {
-            debug("[processExportThread]发现exportThread不为null！");
-        } else {
-            exportThread = new ExportThread();
-            exportThread.setResultset(jsonObj);
-            exportThread.setExportBean(exportBean);
-            exportThread.setTempDir(tempDir);
-            exportThread.setZipFilename(zipFilename);
-            exportThread.start();
-        }
-    }
-
-    class ExportThread extends Thread {
-        private JSONObject jsonObj = null;
-        private ExportBean exportBean = null;
-        String tempPath = null;
-        String zipFilename = null;
-        String module = null;
-
-        @Override
-        public void run() {
-            if (!this.isInterrupted()) {// 线程未中断执行循环
-                try {
-                    threadExecute(module, jsonObj, exportBean, tempPath, zipFilename);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        public void setResultset(JSONObject jsonObj) {
-            this.jsonObj = jsonObj;
-        }
-
-        public void setExportBean(ExportBean exportBean) {
-            this.exportBean = exportBean;
-        }
-
-        void setTempDir(String tempDir) {
-            this.tempPath = tempDir;
-        }
-
-        void setZipFilename(String zipFilename) {
-            this.zipFilename = zipFilename;
-        }
-
-        public String getModule() {
-            return module;
-        }
-
-        public void setModule(String module) {
-            this.module = module;
-        }
-    }
-
-    private void threadExecute(String module, JSONObject jsonObj, ExportBean exportBean, String tempPath, String zipFilename) throws Exception {
-        ExportDao exportDao = new ExportDao();
-        threadRunning = true;
-        exportDao.setExportBegin(exportBean);
-        debug("threadExecute的线程开始了！");
-        ExportUtil.exportData(jsonObj, "数据统计", filePathName);
-        exportBean.setExportPercent("20");
-        exportDao.setExportPercent(exportBean);
-        threadRunning = false;
-        debug("threadExecute的线程退出了！");
-        //导出完毕后，就写数据库
-        exportDao.setExportEnd(exportBean);
-    }
 }

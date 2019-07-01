@@ -27,26 +27,26 @@ var Record = function () {
         getRecordViewById(id);
     }
     var getRecordViewById = function (id) {
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_view&id=" + id + "&exist_resultset=1";
+        var url = "../../user_servlet?action=get_user_detail&id=" + id + "&exist_resultset=1";
         getRecordView(url);
     }
     var getRecordViewByIndex = function (index) {
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_record_view&index=" + index + "&exist_resultset=1";
+        var url = "../../user_servlet?action=get_user_detail&index=" + index + "&exist_resultset=1";
         getRecordView(url);
     }
     var getRecordView = function (url) {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         $.post(url, function (json) {
-            if (json.result_code == 0) {
-                Record.userId = json.user_id;
-                Record.userName = json.user_name;
+            if (json.result_code === 0) {
                 Record.firstId = json.first;
                 Record.prevId = json.prev;
                 Record.nextId = json.next;
                 Record.lastId = json.last;
                 Record.totalCount = json.total;
-                Record.currentId = json.current_index;
-                Page.showResult(json);
+                Record.aaData = json.aaData;
+                Record.currentId = json.current;
+                // alert(JSON.stringify(json.aaData));
+                Page.showResult(json.aaData[json.current]);
             } else {
                 if (Page != null) {
                     Page.processError(json);
@@ -63,7 +63,7 @@ var Record = function () {
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条学生信息吗？")) {
             if (id > -1) {
-                $.post("../../" + module + "_" + sub + "_servlet_action?action=delete_record&id=" + id, function (json) {
+                $.post("../../user_servlet?action=delete_record&id=" + id, function (json) {
                     if (json.result_code == 0) {
                         window.location.href = "user_list.jsp";
                         alert("已经从数据表删除该学生信息！");
@@ -73,23 +73,39 @@ var Record = function () {
         }
     };
     var exportRecord = function () {
-        window.location.href = "../../" + module + "_" + sub + "_servlet_action?action=export_record&exist_resultset=1";
+        window.location.href = "../../user_servlet?action=export_record&exist_resultset=1";
     }
     var search = function () {
         page_form.submit();
     }
     var first = function () {
-        getRecordViewByIndex(Record.firstId);
-    }
+        Record.prevId = 0;
+        Record.nextId = 1;
+        Record.currentId = 0;
+        Page.showResult(Record.aaData[0]);
+    };
     var prev = function () {
-        getRecordViewByIndex(Record.prevId);
-    }
+        if (Record.currentId !== 0) {
+            Record.prevId -= 1;
+            Record.currentId -= 1;
+            Record.nextId -= 1;
+        }
+        Page.showResult(Record.aaData[Record.currentId]);
+    };
     var next = function () {
-        getRecordViewByIndex(Record.nextId);
-    }
+        if (Record.currentId !== Record.totalCount - 1) {
+            Record.prevId += 1;
+            Record.nextId += 1;
+            Record.currentId += 1;
+        }
+        Page.showResult(Record.aaData[Record.currentId]);
+    };
     var last = function () {
-        getRecordViewByIndex(Record.lastId);
-    }
+        Record.prevId = Record.lastId - 1;
+        Record.nextId = Record.lastId;
+        Record.currentId = Record.lastId;
+        Page.showResult(Record.aaData[Record.lastId]);
+    };
     return {
         init: function () {
             initRecordList();
@@ -199,14 +215,26 @@ var Page = function () {
     }
     var showResult = function (json) {
         var title = "学生信息显示";
-        if ($("#title_div")) $("#title_div").html(title);
+        $("#title_div").html(title);
         if (json != null) {
-            var list = json.aaData;
-            var tip = "当前查询到了 " + list.length + " 条学生信息";
-            tip = tip + "，现在是第 " + (parseInt(Record.currentId) + 1) + " 条学生信息。";
-            if ($("#tip_div")) $("#tip_div").html(tip);
-            if ($("#record_list_tip")) $("#record_list_tip").html(tip);
-            showRecordList(list);
+            var tip = "当前查询到了 " + Record.totalCount + " 条记录";
+            tip = tip + "，现在是第 " + (parseInt(Record.currentId) + 1) + " 条记录。";
+            $("#tip_div").html(tip);
+            $("#record_list_tip").html(tip);
+            html = "													<div><span id=\"tip_div\"></span>";
+            $("#user_name").val(json.user_name);
+            $("#name").val(json.name);
+            $("#sex").val(json.sex);
+            $("#email").val(json.email);
+            $("#phone").val(json.phone);
+            $("#wechat").val(json.wechat);
+            $("#grade").val(json.grade);
+            $("#class").val(json.class);
+            $("#student_num").val(json.student_num);
+            $("#faculty").val(json.faculty);
+            $("#register_date").val(json.register_date);
+            html = html + "													</div>";
+            $("#record_list_div").html(html);
         }
     };
     var showRecordList = function (list) {
@@ -218,44 +246,53 @@ var Page = function () {
         $("#record_list_div").html(html);
     };
     var showRecord = function (json) {
-        var id = json[0];
-        var image = "../../assets/module/img/public/logo.jpg";
-        var userName = json[1];
-        var name = json[3];
-        var sex = json[4];
-        var email = json[5];
-        var phone = json[6];
-        var user_type = json[7];
+        var user_type = json.user_type;
         if (user_type == "student") {
             user_type = "学生";
         } else if (user_type == "teacher") {
             user_type = "老师";
         }
-        var wechat = json[8];
-        var nianji = json[12] + " " + json[9] + " " + json[10];
-        var studentNum = json[11];
-        var registerDate = json[13];
-        $("#user_name").val(userName);
-        $("#name").val(name);
-        $("#sex").val(sex);
-        $("#email").val(email);
-        $("#phone").val(phone);
-        $("#wechat").val(json[8]);
-        $("#grade").val(json[9]);
-        $("#class").val(json[10]);
-        $("#student_num").val(json[11]);
-        $("#faculty").val(json[12]);
-        $("#register_date").val(json[13]);
+        $("#user_name").val(json.user_name);
+        $("#name").val(json.name);
+        $("#sex").val(json.sex);
+        $("#email").val(json.email);
+        $("#phone").val(json.phone);
+        $("#wechat").val(json.wechat);
+        $("#grade").val(json.grade);
+        $("#class").val(json.class);
+        $("#student_num").val(json.student_num);
+        $("#faculty").val(json.faculty);
+        $("#register_date").val(json.register_date);
     };
     var help = function () {
-        var strUrl = location.pathname;
-        window.open('../../help/online/new_win_help.jsp?page_url=' + strUrl, 'big', 'fullscreen=yes');
-    }
-    var submitRecord = function () {
         if (checkInput() == true) {
-            page_form.action = "../../" + module + "_" + sub + "_servlet_action";
-            page_form.submit();
+            var strUrl = location.pathname;
+            window.open('../../help/online/new_win_help.jsp?page_url=' + strUrl, 'big', 'fullscreen=yes');
         }
+
+    };
+    var submitRecord = function () {
+        var url = "../../user_servlet?action=update_user" +
+            "&user_name=" + $("#user_name").val() +
+            "&name=" + $("#name").val() +
+            "&sex=" + $("#sex").val() +
+            "&email" + $("#email").val() +
+            "&phone=" + $("#phone").val() +
+            "&wechat=" + $("#wechat").val() +
+            "&grade=" + $("#grade").val() +
+            "&class=" + $("#class").val() +
+            "&student_num=" + $("#student_num").val() +
+            "&faculty=" + $("#faculty").val() +
+            "&register_date" + $("#register_date").val();
+        $.post(url, function (json) {
+            if (json.result_code === 0) {
+                alert("更新成功！");
+            } else {
+                alert("更新失败！msg=" + json.result_msg);
+            }
+        }).error(function (xhr, errorText, errorType) {
+            alert('错误信息：' + errorText + ",错误类型：" + errorType);
+        });
     };
     var checkInput = function () {
         var bOk = true;

@@ -56,7 +56,7 @@ var Record = function () {
     var init = function () {
         var homeworkId = $("#homework_id").val();
         var sortName = $("#sort_01").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homework_detail&homework_id=" + homeworkId + "&order_by=" + sortName;
+        var url = "../../homework_servlet?action=get_homework_detail&homework_id=" + homeworkId + "&order_by=" + sortName;
         getHomeworkDetail(url);
     };
     var getHomeworkDetail = function (url) {
@@ -108,7 +108,7 @@ var Record = function () {
     var deleteFile = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
-                $.post("../../file_core_servlet_action?action=delete_file&id=" + id, function (json) {
+                $.post("../../file_servlet?action=delete_file&id=" + id, function (json) {
                     if (json.result_code === 0) {
                         var count = json.count;
                         var amount = json.amount;
@@ -123,7 +123,7 @@ var Record = function () {
     var sortFiles = function (index, sortName) {
         console.log("sortName=" + sortName);
         var homeworkId = $("#homework_id").val();
-        $.post("../../file_core_servlet_action?action=get_all_files&homework_id=" + homeworkId + "&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../file_servlet?action=query_files&homework_id=" + homeworkId + "&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code === 0) {
                 Page.showRecordList(json.aaData);
@@ -429,7 +429,6 @@ var Page = function () {
             window.location.href = "list.jsp";
     }
     var printRecord = function () {
-        // window.location.href = "print.jsp?exist_resultset=1";
         window.location.href = "../../base/print/print.jsp?record_result=" + module + "_" + sub + "_get_record_result";
     };
     var sortRecord = function (index) {

@@ -4,6 +4,10 @@ package com.interactive.classroom.servlets;
  * 增删改查看导印统功能的实现
  */
 
+import com.interactive.classroom.constant.ActionType;
+import com.interactive.classroom.constant.UserType;
+import com.interactive.classroom.dao.AttendanceDao;
+import com.interactive.classroom.dao.filters.AttendanceFilter;
 import com.interactive.classroom.dao.filters.FileFilter;
 import com.interactive.classroom.dao.filters.FilterFactory;
 import com.interactive.classroom.dao.filters.HomeworkFilter;
@@ -21,6 +25,7 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -39,70 +44,39 @@ public class HomeworkServlet extends BaseHttpServlet {
     @Override
     protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
         try {
-            switch (action) {
-                //作业管理
-                case "get_homeworks":
-                    getHomeworks(request, response);
-                    break;
-                case "query_homeworks":
-                    queryHomeworks(request, response);
-                    break;
-                case "publish_homework":
-                    publishHomework(request, response);
-                    break;
-                case "modify_record":
-                    updateHomeworkInfo(request, response);
-                    break;
-                case "delete_record":
-                    deleteRecord(request, response);
-                    break;
-                case "delete_file_record":
-                    deleteHomeworkFile(request, response);
-                    break;
-                case "export_record":
-                    JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "调查管理");
-                    onEnd(request, response, jsonObj);
-                    break;
-                //作业详情
-                case "get_uploaded_files":
-                    getUploadedFiles(request, response);
-                    break;
-                case "submit_comment":
-                    submitComment(request);
-                    break;
-                case "get_homework_detail":
-                    getHomeworkDetail(request, response);
-                    break;
-                default:
-                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                    break;
+            if (ActionType.ACTION_QUERY_HOMEWORKS.equals(action)) {
+                queryHomeworks(request, response);
+            } else if (ActionType.ACTION_PUBLISH_HOMEWORK.equals(action)) {
+                publishHomework(request, response);
+            } else if (ActionType.ACTION_EXPORT_HOMEWORKS.equals(action)) {
+                exportHomeworks(response);
+            } else if (ActionType.ACTION_DELETE_HOMEWORK.equals(action)) {
+                deleteHomework(request, response);
+            } else if (ActionType.ACTION_SUBMIT_COMMENT.equals(action)) {
+                submitComment(request);
+            } else if (ActionType.ACTION_UPDATE_HOMEWORK.equals(action)) {
+                updateHomeworkInfo(request, response);
+            } else {
+                switch (action) {
+                    //作业管理
+                    case "delete_file_record":
+                        deleteHomeworkFile(request, response);
+                        break;
+                    //作业详情
+                    case "get_uploaded_files":
+                        getUploadedFiles(request, response);
+                        break;
+                    case "get_homework_detail":
+                        getHomeworkDetail(request, response);
+                        break;
+                    default:
+                        processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                        break;
+                }
             }
         } catch (Throwable e) {
             e.printStackTrace();
         }
-    }
-
-    private void getHomeworks(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        JSONObject jsonObj;
-        String orderBy = request.getParameter("order_by");
-        HomeworkFilter filter = FilterFactory.getHomeworkFilter()
-                .setUserId(userId)
-                .setUserType(userType)
-                .setOrder(orderBy);
-        jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
-//        if (UserType.MANAGER.equals(userType)) {
-//            // 管理员
-//            // TODO 直接获取数据库所有作业
-//            HomeworkFilter filter = FilterFactory.getHomeworkFilter()
-//                    .setOrder(orderBy);
-//            jsonObj = DaoFactory.getHomeworkDao().queryAttendances(filter);
-//        } else {
-//            // TODO 弄个课程管理模块，根据课程获取作业
-//            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(orderBy);
-//        }
-        session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
-        onEnd(request, response, jsonObj, url);
     }
 
     private void queryHomeworks(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -110,50 +84,36 @@ public class HomeworkServlet extends BaseHttpServlet {
         String timeFrom = request.getParameter("time_from");
         String timeTo = request.getParameter("time_to");
         String orderBy = request.getParameter("order_by");
-
-        String existResultset = request.getParameter("exist_resultset");
-        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
-            existResultset = "0";
-        }
-        JSONObject jsonObj;
-        if ("1".equals(existResultset)) {
-            //要求提取之前查询结果，如果有就取出来，如果没有就重新查询一次，并且保存进session里
-            if (session.getAttribute(MODULE + "_" + SUB + "_get_record_result") != null) {
-                jsonObj = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-            } else {
-                //如果没有就报错
-                jsonObj = new JSONObject();
-                jsonObj.put("result_code", 10);
-                jsonObj.put("result_msg", "exist_resultset参数不当，服务器当前没有结果数据！请重新设置！");
-            }
-        } else {
-            //如果是新查询
-            HomeworkFilter filter = FilterFactory.getHomeworkFilter()
-                    .setOrder(orderBy)
-                    .setKeyword(keyword)
-                    .setPublishTimeFrom(timeFrom)
-                    .setPublishTimeTo(timeTo);
-            jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
-            session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        }
-        String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
-        onEnd(request, response, jsonObj, url);
+        HomeworkFilter filter = FilterFactory.getHomeworkFilter()
+                .setUserType(userType)
+                .setUserId(userId)
+                .setOrder(orderBy)
+                .setKeyword(keyword)
+                .setPublishTimeFrom(timeFrom)
+                .setPublishTimeTo(timeTo);
+        JSONObject jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
+        responseByJson(response, jsonObj);
     }
 
     private void publishHomework(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        if (UserType.STUDENT.equals(userType)) {
+            onError(response, "非法操作!");
+            return;
+        }
         String createTime = TimeUtil.currentDate();
         HomeworkDao dao = DaoFactory.getHomeworkDao();
         HomeworkBean bean = new HomeworkBean();
         bean.setPublisherId(userId);
         bean.setPublisherName(userName);
-        bean.setHomeworkTitle(request.getParameter("homework_title"));
-        bean.setHomeworkRequirement(request.getParameter("homework_requirement"));
-        bean.setPublishTime(request.getParameter("publish_time"));
+        bean.setHomeworkTitle(request.getParameter("title"));
+        bean.setHomeworkRequirement(request.getParameter("requirement"));
+        bean.setPublishTime(createTime);
         bean.setDeadline(request.getParameter("deadline"));
+        bean.setCourseId(request.getParameter("course_id"));
 
         JSONObject jsonObj = dao.publishHomework(bean);
         log("用户 " + userName + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
-        onEndDefault(request, response, jsonObj);
+        responseByJson(response, jsonObj);
     }
 
     /**
@@ -162,14 +122,18 @@ public class HomeworkServlet extends BaseHttpServlet {
 	 * @param response HttpServletResponse
      */
     private void updateHomeworkInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        if (UserType.STUDENT.equals(userType)) {
+            onError(response, "非法操作!");
+            return;
+        }
         String id = request.getParameter("id");
         JSONObject jsonObj = null;
         if (id != null) {
             HomeworkBean bean = new HomeworkBean();
             bean.setId(id);
             bean.setPublisherName(userName);
-            bean.setHomeworkTitle(request.getParameter("homework_title"));
-            bean.setHomeworkRequirement(request.getParameter("homework_requirement"));
+            bean.setHomeworkTitle(request.getParameter("title"));
+            bean.setHomeworkRequirement(request.getParameter("requirement"));
             bean.setPublishTime(request.getParameter("publish_time"));
             bean.setDeadline(request.getParameter("deadline"));
             jsonObj = DaoFactory.getHomeworkDao().updateHomeworkInfo(bean);
@@ -178,16 +142,30 @@ public class HomeworkServlet extends BaseHttpServlet {
         onEndDefault(request, response, jsonObj);
     }
 
-    private void deleteRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String action = request.getParameter("action");
+    private void deleteHomework(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String[] ids = request.getParameterValues("id");
         JSONObject jsonObj = null;
         if (ids != null) {
             jsonObj = DaoFactory.getHomeworkDao().deleteHomework(ids);
-            jsonObj.put("action", action);
             log("用户 " + userName + " 于 " + TimeUtil.currentDate() + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
-        onEndDefault(request, response, jsonObj);
+        responseByJson(response, jsonObj);
+    }
+
+    private void exportHomeworks(HttpServletResponse response) throws JSONException, SQLException {
+        HomeworkFilter filter = FilterFactory.getHomeworkFilter()
+                .setUserId(userId)
+                .setUserType(userType);
+        JSONObject jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
+
+        ExportUtil.with(jsonObj)
+                .setModuleName(MODULE)
+                .setTableNickName("作业管理")
+                .setLabels(HomeworkDao.LABELS)
+                .setLabelsZh(HomeworkDao.LABELS_CH)
+                .export();
+
+        responseByJson(response, jsonObj);
     }
 
     private void deleteHomeworkFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -196,7 +174,6 @@ public class HomeworkServlet extends BaseHttpServlet {
         if (ids != null) {
             String createTime = TimeUtil.currentDate();
             jsonObj = DaoFactory.getFileDao().deleteFileById(ids, ServletUtil.getUploadPath(this));
-            jsonObj.put("action", request.getParameter("action"));
             log("用户 " + userName + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
         onEndDefault(request, response, jsonObj);
@@ -217,8 +194,6 @@ public class HomeworkServlet extends BaseHttpServlet {
 
     private void getHomeworkDetail(HttpServletRequest request, HttpServletResponse response) throws Throwable {
         String homeworkId = request.getParameter("homework_id");
-//        String index = request.getParameter("index");
-
         HomeworkFilter filter = FilterFactory.getHomeworkFilter()
                 // 注：在此处order为文件的排序
                 .setOrder(request.getParameter("order_by"))
@@ -229,46 +204,6 @@ public class HomeworkServlet extends BaseHttpServlet {
 
         JSONObject jsonObj = DaoFactory.getHomeworkDao().queryHomeworks(filter);
         responseByJson(response, jsonObj);
-
-//        String attr = MODULE + "_" + SUB + "_get_record_result";
-//        String existResultset = request.getParameter("exist_resultset");
-//        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
-//            existResultset = "0";
-//        }
-//
-//        //如果是新查询
-//        JSONObject jsonObj;
-//        if ("1".equals(existResultset)) {
-//            //如果有就取出来，如果没有就重新查询一次，并且保存进session里
-//            if (session.getAttribute(attr) != null) {
-//                JSONObject json = (JSONObject) session.getAttribute(attr);
-//                Log.d(getClass().getName(), json.toString());
-//                jsonObj = ServletUtil.getResultSetNavigateId(homeworkId, index, json);
-//                jsonObj.put("user_id", userId);
-//                jsonObj.put("user_name", userName);
-//                jsonObj.put("result_code", 0);
-//                jsonObj.put("result_msg", "ok");
-//                //然后还有导航信息
-//                json = (JSONObject) session.getAttribute(attr);
-//                debug("[getRecordView]重新取出来的数据是：" + json.toString());
-//            } else {
-//                //如果没有就重新查询一次
-//                debug("[getRecordView]没有就重新查询一次。");
-//                jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(null);
-//                jsonObj.put("user_id", userId);
-//                jsonObj.put("user_name", userName);
-//                jsonObj.put("result_code", 0);
-//                jsonObj.put("result_msg", "ok");
-//                session.setAttribute(attr, jsonObj);
-//            }
-//        } else {
-//            debug("[getRecordView]existsResult=0，重新查询");
-//            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(null);
-//            jsonObj.put("user_id", userId);
-//            jsonObj.put("user_name", userName);
-//            session.setAttribute(attr, jsonObj);
-//        }
-//        onEndDefault(request, response, jsonObj);
     }
 
     private void submitComment(HttpServletRequest request) {

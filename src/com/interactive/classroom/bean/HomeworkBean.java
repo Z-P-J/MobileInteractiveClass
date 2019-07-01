@@ -8,6 +8,7 @@ public class HomeworkBean {
     private String id;
     private String publisherId;
     private String publisherName;
+    private String courseId;
     private String homeworkTitle;
     private String homeworkRequirement;
     private String publishTime;
@@ -38,6 +39,14 @@ public class HomeworkBean {
 
     public void setPublisherName(String publisherName) {
         this.publisherName = publisherName;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getHomeworkTitle() {

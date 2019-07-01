@@ -5,9 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/*
-  覆写doGet和doPost, 处理请求在service方法中进行，其他Servlet类都应继承该类。
-*/
+
+/**
+ * @author Z-P-J
+ */
 public class BaseServlet extends BaseHttpServlet {
 
     private static final String CONTENT_TYPE = "text/html;charset=UTF-8";

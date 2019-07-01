@@ -2,7 +2,7 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
     <h4 class="modal-title">
-        查询考勤
+        统计
     </h4>
 </div>
 <div class="modal-body">
@@ -25,8 +25,7 @@
                             <div class="col-md-3">
                                 <span>从</span>
                                 <div class="input-group date form_datetime">
-                                    <input type="text" id="time_from" name="time_from" size="16"
-                                           class="form-control" readonly="true">
+                                    <input type="text" id="time_from" name="time_from" size="16" class="form-control">
                                     <span class="input-group-btn">
 														<button class="btn default date-set" type="button">
 															<i class="fa fa-calendar"></i>
@@ -34,8 +33,7 @@
                                 </div>
                                 <span>到</span>
                                 <div class="input-group date form_datetime">
-                                    <input type="text" id="time_to" name="time_to" size="16"
-                                           class="form-control" readonly="true">
+                                    <input type="text" id="time_to" name="time_to" size="16" class="form-control">
                                     <span class="input-group-btn">
 														<button class="btn default date-set" type="button">
 															<i class="fa fa-calendar"></i>
@@ -83,7 +81,7 @@
         开始统计
     </button>
 </div>
-<div id="result_image_div">
+<div id="result_image_div" style="display: none;">
     <div id="result_image" style="height: 228px;">
     </div>
 </div>
@@ -348,7 +346,11 @@
         pushHistory();
         window.addEventListener("popstate", function (e) {
             // alert("我监听到了浏览器的返回按钮事件啦");
-            $("#close_btn").click();
+            if ($("#ajax").is(":hidden")) {
+                window.history.go(-1);
+            } else {
+                $("#close_btn").click();
+            }
         }, false);
 
         function pushHistory() {
@@ -394,7 +396,8 @@
         alert(url);
         $.get(url, function (jsonObj) {
             if (jsonObj.result_code === 0) {
-                alert(JSON.stringify(jsonObj));
+                // alert(JSON.stringify(jsonObj));
+                $("#result_image_div").show();
                 ChartsFlotcharts.drawChart(change(jsonObj.aaData));
             } else {
                 alert("查询失败！");

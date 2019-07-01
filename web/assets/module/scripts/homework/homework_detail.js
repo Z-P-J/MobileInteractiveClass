@@ -56,7 +56,7 @@ var Record = function () {
     var init = function () {
         var homeworkId = $("#homework_id").val();
         var sortName = $("#sort_01").val();
-        var url = "../../" + module + "_" + sub + "_servlet_action?action=get_homework_detail&homework_id=" + homeworkId + "&order_by=" + sortName;
+        var url = "../../homework_servlet?action=get_homework_detail&homework_id=" + homeworkId + "&order_by=" + sortName;
         getHomeworkDetail(url);
     };
     var getHomeworkDetail = function (url) {
@@ -68,6 +68,7 @@ var Record = function () {
 
                 for (var i = 0; i < list.length; i++) {
                     var homework = list[i];
+                    alert(JSON.stringify(homework));
                     var title =  homework.homework_title;
                     $("#homework_detail_title").html(title);
                     var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), homework.deadline);
@@ -108,7 +109,7 @@ var Record = function () {
     var deleteFile = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
-                $.post("../../file_core_servlet_action?action=delete_file&id=" + id, function (json) {
+                $.post("../../file_servlet?action=delete_file&id=" + id, function (json) {
                     if (json.result_code === 0) {
                         var count = json.count;
                         var amount = json.amount;
@@ -123,7 +124,7 @@ var Record = function () {
     var sortFiles = function (index, sortName) {
         console.log("sortName=" + sortName);
         var homeworkId = $("#homework_id").val();
-        $.post("../../file_core_servlet_action?action=get_all_files&homework_id=" + homeworkId + "&sort_index=" + index + "&order_by=" + sortName, function (json) {
+        $.post("../../file_servlet?action=query_files&homework_id=" + homeworkId + "&sort_index=" + index + "&order_by=" + sortName, function (json) {
             console.log(JSON.stringify(json));
             if (json.result_code === 0) {
                 Page.showRecordList(json.aaData);
@@ -383,7 +384,7 @@ var Page = function () {
             html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + json.id + ");\">删除</button>";
             // html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + id + ");\">修改</button>";
         }
-        html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">详细信息</button>";
+        // html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">详细信息</button>";
         html = html + "															</div>";
         html = html + "														</div>";
     };
@@ -392,7 +393,7 @@ var Page = function () {
         window.open('../../help/online/new_win_help.jsp?page_url=' + strUrl, 'big', 'fullscreen=yes');
     }
     var submitRecord = function () {
-        if (checkInput() == true) {
+        if (checkInput()) {
             page_form.action = "../../" + module + "_" + sub + "_servlet_action";
             page_form.submit();
         }

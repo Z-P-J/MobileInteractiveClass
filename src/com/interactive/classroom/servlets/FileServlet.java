@@ -4,8 +4,10 @@ import com.interactive.classroom.bean.FileBean;
 import com.interactive.classroom.constant.ActionType;
 import com.interactive.classroom.dao.DaoFactory;
 import com.interactive.classroom.dao.FileDao;
+import com.interactive.classroom.dao.HomeworkDao;
 import com.interactive.classroom.dao.filters.FileFilter;
 import com.interactive.classroom.dao.filters.FilterFactory;
+import com.interactive.classroom.dao.filters.HomeworkFilter;
 import com.interactive.classroom.servlets.base.BaseHttpServlet;
 import com.interactive.classroom.utils.ServletUtil;
 import com.interactive.classroom.utils.TimeUtil;
@@ -37,8 +39,8 @@ public class FileServlet extends BaseHttpServlet {
     @Override
     protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException {
         try {
-            if (ActionType.ACTION_GET_ALL_FILES.equals(action)) {
-                getFiles(request, response);
+            if (ActionType.ACTION_QUERY_FILES.equals(action)) {
+                queryFiles(request, response);
             } else if (ActionType.ACTION_DELETE_FILE.equals(action)) {
                 deleteFile(request, response);
             } else if (ActionType.ACTION_GET_FILE_DETAIIL.equals(action)){
@@ -46,6 +48,7 @@ public class FileServlet extends BaseHttpServlet {
             } else if (ActionType.ACTION_UPDATE_FILE_INFO.equals(action)) {
                 updateFileInfo(request, response);
             } else if (ActionType.ACTION_EXPORT_FILES.equals(action)) {
+                exportFile(response);
                 JSONObject jsonObj = ExportUtil.exportRecord(request, response, MODULE, SUB, "文件管理");
                 onEnd(request, response, jsonObj);
             } else {
@@ -57,12 +60,19 @@ public class FileServlet extends BaseHttpServlet {
         }
     }
 
-    private void getFiles(HttpServletRequest request, HttpServletResponse response) throws JSONException, SQLException {
+    private void queryFiles(HttpServletRequest request, HttpServletResponse response) throws JSONException, SQLException {
+        String keyword = request.getParameter("keyword");
+        String timeFrom = request.getParameter("time_from");
+        String timeTo = request.getParameter("time_to");
+        String orderBy = request.getParameter("order_by");
         FileFilter filter = FilterFactory.getFileFilter()
                 .setHomeworkId(request.getParameter("homework_id"))
-                .setOrder(request.getParameter("order_by"))
                 .setUserId(userId)
-                .setUserType(userType);
+                .setUserType(userType)
+                .setTimeFrom(timeFrom)
+                .setTimeTo(timeTo)
+                .setKeyword(keyword)
+                .setOrder(orderBy);
         debug("getAllFiles--filter=" + filter);
         JSONObject jsonObj = DaoFactory.getFileDao().queryFiles(filter);
         responseByJson(response, jsonObj);
@@ -78,6 +88,22 @@ public class FileServlet extends BaseHttpServlet {
             log("用户 " + userName + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
         }
 //        onEndDefault(request, response, jsonObj);
+        responseByJson(response, jsonObj);
+    }
+
+    private void exportFile(HttpServletResponse response) throws JSONException, SQLException {
+        FileFilter filter = FilterFactory.getFileFilter()
+                .setUserId(userId)
+                .setUserType(userType);
+        JSONObject jsonObj = DaoFactory.getFileDao().queryFiles(filter);
+
+        ExportUtil.with(jsonObj)
+                .setModuleName(MODULE)
+                .setTableNickName("文件管理")
+                .setLabels(FileDao.LABELS)
+                .setLabelsZh(FileDao.LABELS_CH)
+                .export();
+
         responseByJson(response, jsonObj);
     }
 

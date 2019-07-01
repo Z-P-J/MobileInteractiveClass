@@ -21,21 +21,6 @@ import java.util.List;
  */
 public final class UserDaoImpl implements UserDao {
 
-//    @Override
-//    public List<UserBean> getAllUsers(UserBean bean) {
-//        return findUsers("");
-//    }
-//
-//    @Override
-//    public List<UserBean> getAllStudents(UserBean bean) {
-//        return findUsers("");
-//    }
-//
-//    @Override
-//    public List<UserBean> getAllTeachers(UserBean bean) {
-//        return findUsers("");
-//    }
-
     @Override
     public JSONObject queryUsers(UserFilter filter) throws SQLException, JSONException {
         String resultMsg = "ok";
@@ -48,13 +33,11 @@ public final class UserDaoImpl implements UserDao {
             while (rs.next()) {
                 JSONObject jsonObj = new JSONObject();
                 for (String label : LABELS) {
-                    jsonObj.put(label, rs.getString(label));
+                    String value = rs.getString(label);
+                    jsonObj.put(label, value == null ? "" : value);
                 }
-                if (filter.getUserId() != null && filter.getUserId().equals(rs.getString("id"))) {
-                    jsonObj.put("isOwner", 1);
-                } else {
-                    jsonObj.put("isOwner", 0);
-                }
+                boolean isOwner = filter.getUserId() != null && filter.getUserId().equals(rs.getString("id"));
+                jsonObj.put("isOwner", isOwner ? 1 : 0);
                 jsonArray.put(jsonObj);
             }
             rs.close();
@@ -70,46 +53,6 @@ public final class UserDaoImpl implements UserDao {
         jsonObj.put("result_code", resultCode);
         return jsonObj;
     }
-
-//    @Override
-//    public JSONObject getRecord(UserBean query) throws SQLException, JSONException {
-//        String resultMsg = "ok";
-//        int resultCode = 0;
-//        List<List<String>> jsonList = new ArrayList<>();
-//        try {
-//            String sql = createGetRecordSql(query);
-//            //做上下记录导航用
-//            int count = 0;
-//            System.out.println("UserDao--getRecord--sql=" + sql);
-//            ResultSet rs = DatabaseHelper.executeQuery(sql);
-//            while (rs.next()) {
-//                List<String> list = new ArrayList<>();
-//                for (String label : LABELS) {
-//                    list.add(rs.getString(label));
-//                }
-//                if (query.getUserId() != null && query.getUserId().equals(rs.getString("user_id"))) {
-//                    list.add("1");
-//                } else {
-//                    list.add("0");
-//                }
-//                list.add(count + "");
-//                count = count + 1;
-//                jsonList.add(list);
-//            }
-//            rs.close();
-//
-//        } catch (SQLException sqlexception) {
-//            sqlexception.printStackTrace();
-//            resultCode = 10;
-//            resultMsg = "查询数据库出现错误！" + sqlexception.getMessage();
-//        }
-//        JSONObject jsonObj = new JSONObject();
-//        jsonObj.put("aaData", jsonList);
-//        DatabaseHelper.putTableColumnNames(LABELS_CH, jsonObj);
-//        jsonObj.put("result_msg", resultMsg);
-//        jsonObj.put("result_code", resultCode);
-//        return jsonObj;
-//    }
 
     @Override
     public UserBean getUserByUserName(String username) {
@@ -140,30 +83,20 @@ public final class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean deleteUserById(int id) {
-        return false;
-    }
-
-    @Override
     public boolean deleteUserByUserName(String userName) {
+        // ToDo
         return false;
     }
 
     @Override
-    public JSONObject deleteRecord(String action, String[] ids) throws JSONException, SQLException {
-        String resultMsg = "ok";
-        int resultCode = 0;
-        List jsonList = new ArrayList();
+    public JSONObject deleteUsers(String[] ids) throws JSONException {
         for (String id : ids) {
             String sql = "delete from " + TABLE_NAME + " where id=" + id;
             DatabaseHelper.executeUpdate(sql);
         }
-
         JSONObject jsonObj = new JSONObject();
-        jsonObj.put("aaData", jsonList);
-        jsonObj.put("action", action);
-        jsonObj.put("result_msg", resultMsg);
-        jsonObj.put("result_code", resultCode);
+        jsonObj.put("result_msg", "ok");
+        jsonObj.put("result_code", 0);
         return jsonObj;
     }
 
@@ -186,46 +119,6 @@ public final class UserDaoImpl implements UserDao {
         jsonObj.put("result_code", 0);
         return jsonObj;
     }
-
-
-//    public JSONObject modifyRecord(UserBean info) throws JSONException {
-//        String resultMsg = "ok";
-//        int resultCode = 0;
-//        List<List<String>> jsonList = new ArrayList<>();
-//        try {
-//            String sql = "update " + TABLE_NAME
-//                    + " set user_name='" + info.getUserName()
-//                    + "',sex='" + info.getSex()
-//                    + "',email='" + info.getEmail()
-//                    + "',phone='" + info.getPhone()
-//                    + "',wechat='" + info.getWeChat()
-//                    + "',grade='" + info.getGrade()
-//                    + "',student_num='" + info.getStudentNum()
-//                    + "',faculty='" + info.getFaculty()
-//                    + "' where name='" + info.getName() + "'";
-//            DatabaseHelper.executeUpdate(sql);
-//            sql = "select * from " + TABLE_NAME + " order by register_date desc";
-//            ResultSet rs = DatabaseHelper.executeQuery(sql);
-//            while (rs.next()) {
-//                List<String> list = new ArrayList<>();
-//                list.add(rs.getString("id"));
-//                list.add(rs.getString("content"));
-//                jsonList.add(list);
-//            }
-//            rs.close();
-//
-//        } catch (SQLException sqlexception) {
-//            sqlexception.printStackTrace();
-//            resultCode = 10;
-//            resultMsg = "查询数据库出现错误！" + sqlexception.getMessage();
-//        }
-//        JSONObject jsonObj = new JSONObject();
-//        jsonObj.put("aaData", jsonList);
-//        jsonObj.put("result_msg", resultMsg);
-//        jsonObj.put("result_code", resultCode);
-//        return jsonObj;
-//    }
-
 
     private List<UserBean> findUsers(String where) {
         List<UserBean> userList = new ArrayList<>();
@@ -266,53 +159,5 @@ public final class UserDaoImpl implements UserDao {
         }
         return null;
     }
-
-//    private String createGetRecordSql(UserBean query) {
-//        String sql = "select * from " + TABLE_NAME;
-//        String where = "";
-////        if (query.getId() != null && !query.getId().equals("null")) {
-////            where = "where id=" + query.getId();
-////        }
-//        if (query.getTitle() != null && !query.getTitle().equals("null") && !query.getTitle().isEmpty()) {
-//            if (!where.isEmpty()) {
-//                where = where + " and name like '%" + query.getTitle() + "%'";
-//            } else {
-//                where = "where name like '%" + query.getTitle() + "%'";
-//            }
-//        }
-//        if (query.getTimeFrom() != null && query.getTimeTo() != null && !query.getTimeFrom().isEmpty()) {
-//            if (!where.isEmpty()) {
-//                where = where + " and register_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
-//            } else {
-//                where = "where register_date between '" + query.getTimeFrom() + "' and '" + query.getTimeTo() + "'";
-//            }
-//        }
-//
-//
-//        String orderBy = "";
-//        if ((query.getSortIndex() != null) && (!query.getSortIndex().equals("null"))) {
-//            if (query.getOrderBy() != null) {
-//                orderBy = " order by " + query.getOrderBy();
-//                System.out.println("---------------------------------orderBy:" + orderBy);
-//            }
-//        }
-//
-//        if (query.getType() != null && query.getType().equals("all") && query.getUserType().equals("manager")) {
-//            sql = "select * from " + TABLE_NAME + " order by register_date desc";
-//        } else {
-//            if (query.getId() != null && !query.getId().equals("null")) {
-//                sql = "select * from " + TABLE_NAME + " where id=" + query.getId();
-//            } else {
-//                if (where.isEmpty()) {
-//                    sql = "select * from " + TABLE_NAME + " " + orderBy;
-////                    sql = "select * from " + query.getTableName() + " where user_id='" + query.getUserId() + "'" + orderBy;
-//                    System.out.println("---------------------------------orderBy:" + orderBy);
-//                } else {
-//                    sql = "select * from " + TABLE_NAME + " " + where + " " + orderBy;
-//                }
-//            }
-//        }
-//        return sql;
-//    }
 
 }

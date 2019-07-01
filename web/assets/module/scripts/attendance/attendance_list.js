@@ -37,22 +37,21 @@ var Record = function () {
         Metronic.startPageLoading({message: '正在查询中，请稍候...'});	//开始等待动画
         var id = $("#id").val();
         var existResultset = $("#exist_resultset").val();
-        var url = "../../attendance_servlet?action=get_attendances&type=all&id=" + id + "&exist_resultset=" + existResultset;
+        var url = "../../attendance_servlet?action=query_attendances&type=all&id=" + id + "&exist_resultset=" + existResultset;
         $.get(url, function (json) {
             if (json.result_code === 0) {
                 Record.userId = json.user_id;
                 Record.userName = json.user_name;
                 Record.userRole = json.user_role;
-                // if (json.user_role === "student") {
-                //     $("#publish_attendance").hide();
-                // }
+                if (json.user_role === "teacher" || json.user_role === "manage") {
+                    $("#publish_attendance").show();
+                }
                 Record.userAvatar = json.user_avatar;
                 Page.showResult(json);
             } else {
                 if (Page != null) {
                     Page.processError(json);
                 }
-                // $("#publish_attendance").hide();
             }
             Metronic.stopPageLoading();	//停止等待动画
         }).error(function (xhr, errorText, errorType) {

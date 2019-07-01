@@ -23,7 +23,7 @@ public interface FileDao {
     /**
      * 数据库中字段中文解释
      */
-    String[] LABELS_CH = {"ID", "作业ID", "文件ID", "上传者ID", "上传者", "文件名", "文件大小", "上传时间", "下载地址"};
+    String[] LABELS_CH = {"ID", "作业ID", "上传者ID", "上传者", "文件名", "文件大小", "上传时间", "下载地址"};
 
     /**
      *

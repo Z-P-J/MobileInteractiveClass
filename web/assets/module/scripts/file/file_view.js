@@ -19,7 +19,7 @@ var Record = function () {
     var getFiles = function () {
         var id = $("#id").val();
         var homeworkId = $("#homework_id").val();
-        var url = "../../file_core_servlet_action?action=get_file_detail&id=" + id + "&exist_resultset=1";
+        var url = "../../file_servlet?action=get_file_detail&id=" + id + "&exist_resultset=1";
         if (homeworkId !== "") {
             url += ("&homework_id=" + homeworkId);
         }

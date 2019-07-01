@@ -5,6 +5,7 @@ package com.interactive.classroom.servlets;
  */
 
 import com.interactive.classroom.bean.AttendanceBean;
+import com.interactive.classroom.constant.ActionType;
 import com.interactive.classroom.dao.AttendanceDao;
 import com.interactive.classroom.dao.CourseDao;
 import com.interactive.classroom.dao.DaoFactory;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -43,48 +45,62 @@ public class AttendanceServlet extends BaseHttpServlet {
     @Override
     protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
         try {
-            switch (action) {
-                //考勤管理
-                case "get_attendances":
-                    getAttendances(request, response);
-                    break;
-                case "check_attendance":
-                    checkAttendance(request, response);
-                    break;
-                case "query_attendances":
-                    queryAttendances(request, response);
-                    break;
-                case "publish_attendance":
-                    publishAttendance(request, response);
-                    break;
-                case "modify_record":
-                    updateHomeworkInfo(request, response);
-                    break;
-                case "delete_record":
-                    deleteRecord(request, response);
-                    break;
-                case "delete_file_record":
-                    deleteHomeworkFile(request, response);
-                    break;
-                case "export_attendances":
-                    AttendanceFilter filter = FilterFactory.getAttendanceFilter()
-                            .setUserId(userId)
-                            .setUserType(userType);
-                    JSONObject jsonObj = DaoFactory.getAttendanceDao().queryAttendances(filter);
-
-                    ExportUtil.with(jsonObj)
-                            .setModuleName(MODULE)
-                            .setTableNickName("考勤管理")
-                            .setLabels(AttendanceDao.LABELS)
-                            .setLabelsZh(AttendanceDao.LABELS_CH)
-                            .export();
-
-                    responseByJson(response, jsonObj);
-                    break;
-                default:
-                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-                    break;
+            if (ActionType.ACTION_GET_ATTENDANCES.equals(action)) {
+                queryAttendances(request, response);
+            } else if (ActionType.ACTION_CHECK_ATTENDANCE.equals(action)) {
+                checkAttendance(request, response);
+            } else if (ActionType.ACTION_QUERY_ATTENDANCES.equals(action)) {
+                queryAttendances(request, response);
+            } else if (ActionType.ACTION_PUBLISH_ATTENDANCE.equals(action)) {
+                publishAttendance(request, response);
+            } else if (ActionType.ACTION_EXPORT_ATTENDANCES.equals(action)) {
+                exportAttendances(response);
+            } else {
+                processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
             }
+
+//            switch (action) {
+//                //考勤管理
+//                case "get_attendances":
+//
+//                    break;
+//                case "check_attendance":
+//                    checkAttendance(request, response);
+//                    break;
+//                case "query_attendances":
+//                    queryAttendances(request, response);
+//                    break;
+//                case "publish_attendance":
+//                    publishAttendance(request, response);
+//                    break;
+//                case "modify_record":
+//                    updateHomeworkInfo(request, response);
+//                    break;
+//                case "delete_record":
+//                    deleteRecord(request, response);
+//                    break;
+//                case "delete_file_record":
+//                    deleteHomeworkFile(request, response);
+//                    break;
+//                case "export_attendances":
+//                    AttendanceFilter filter = FilterFactory.getAttendanceFilter()
+//                            .setUserId(userId)
+//                            .setUserType(userType);
+//                    JSONObject jsonObj = DaoFactory.getAttendanceDao().queryAttendances(filter);
+//
+//                    ExportUtil.with(jsonObj)
+//                            .setModuleName(MODULE)
+//                            .setTableNickName("考勤管理")
+//                            .setLabels(AttendanceDao.LABELS)
+//                            .setLabelsZh(AttendanceDao.LABELS_CH)
+//                            .export();
+//
+//                    responseByJson(response, jsonObj);
+//                    break;
+//                default:
+//                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+//                    break;
+//            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -132,7 +148,7 @@ public class AttendanceServlet extends BaseHttpServlet {
         AttendanceFilter filter = FilterFactory.getAttendanceFilter()
                 .setUserId(userId)
                 .setUserType(userType)
-//                .setOrder(orderBy)
+                .setOrder(orderBy)
                 .setKeyword(keyword)
                 .setPublishTimeFrom(timeFrom)
                 .setPublishTimeTo(timeTo);
@@ -247,4 +263,21 @@ public class AttendanceServlet extends BaseHttpServlet {
         }
         onEndDefault(request, response, jsonObj);
     }
+
+    private void exportAttendances(HttpServletResponse response) throws SQLException, JSONException {
+        AttendanceFilter filter = FilterFactory.getAttendanceFilter()
+                .setUserId(userId)
+                .setUserType(userType);
+        JSONObject jsonObj = DaoFactory.getAttendanceDao().queryAttendances(filter);
+
+        ExportUtil.with(jsonObj)
+                .setModuleName(MODULE)
+                .setTableNickName("考勤管理")
+                .setLabels(AttendanceDao.LABELS)
+                .setLabelsZh(AttendanceDao.LABELS_CH)
+                .export();
+
+        responseByJson(response, jsonObj);
+    }
+
 }
