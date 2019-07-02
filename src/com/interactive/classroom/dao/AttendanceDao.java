@@ -36,6 +36,16 @@ public interface AttendanceDao {
     JSONObject queryAttendances(AttendanceFilter filter) throws SQLException, JSONException;
 
     /**
+     * 查询学生考勤情况
+     * @param courseId 课程ID
+     * @param attendanceFlag 考勤flag（第几次考勤）
+     * @return JSONObject
+     * @throws SQLException SQLException
+     * @throws JSONException JSONException
+     */
+    JSONObject queryAttendanceUsers(String courseId, String attendanceFlag) throws SQLException, JSONException;
+
+    /**
      * 教师更新考勤信息
      * @param bean 带更新的AttendanceBean对象
      * @return org.json.JSONObject
@@ -62,7 +72,11 @@ public interface AttendanceDao {
 
     /**
      * 考勤
-     * @return 考勤是否成功
+     * @param userId 用户ID
+     * @param attendanceId 考勤ID
+     * @param courseId 课程ID
+     * @return 是否成功
+     * @throws SQLException SQLException
      */
     boolean checkAttendance(String userId, String attendanceId, String courseId) throws SQLException;
 

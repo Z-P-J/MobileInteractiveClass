@@ -10,19 +10,10 @@ import org.json.JSONObject;
 public interface StatisticDao {
 
     /**
-     *
-     * @param action
-     * @param statisticBean
-     * @return
-     * @throws JSONException
-     */
-    JSONObject statisticRecord(String action, StatisticBean statisticBean) throws JSONException;
-
-    /**
-     *
-     * @param sql
-     * @return
-     * @throws JSONException
+     * 统计信息
+     * @param sql sql语句
+     * @return JSONObject
+     * @throws JSONException JSONException
      */
     JSONObject statisticRecord(String sql) throws JSONException;
 

@@ -45,6 +45,10 @@ public interface CommentDao {
      */
     JSONArray getFileComments(String fileId) throws JSONException;
 
+    /**
+     * 发布评论
+     * @param comment CommentBean
+     */
     void submitComment(CommentBean comment);
 
 }

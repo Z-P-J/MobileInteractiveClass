@@ -35,7 +35,7 @@
                     <div class="portlet box blue ">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-gift"></i>学生信息
+                                <i class="fa fa-gift"></i>用户信息
                             </div>
                             <div class="tools">
                                 <a href="" class="reload"> </a>
@@ -74,7 +74,7 @@
                                         <label class="col-md-3 control-label">密码（必填）<font color="red">*</font></label>
                                         <div class="col-md-9">
                                             <input type="password" id="password" name="password" class="form-control"
-                                                   placeholder="请填写姓名" value=""/>
+                                                   placeholder="请填写密码" value=""/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -143,7 +143,7 @@
                                         查询记录
                                     </button>-->
                                     <button type="button" id="submit_button" class="btn green">
-                                        注册
+                                        添加用户
                                     </button>
                                     <button type="button" id="return_button" class="btn green">
                                         返回

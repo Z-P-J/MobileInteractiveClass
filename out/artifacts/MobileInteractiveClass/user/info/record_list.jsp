@@ -54,13 +54,13 @@
 										<div class="row">
 											<div class="col-md-12">
 												<div class="btn-group">
-													<a id="add_button" class="btn green" href="record_add_div.jsp" data-target="#ajax" data-toggle="modal">注册新学生 <i class="fa fa-plus"></i> </a>
+													<a id="add_button" class="btn green" href="record_add_div.jsp" data-target="#ajax" data-toggle="modal">注册新用户 <i class="fa fa-plus"></i> </a>
 												</div>
 												<div class="btn-group">
-													<a id="search_button" class="btn green">查询学生信息 <i class="fa fa-search"></i> </a>
+													<a id="search_button" class="btn green">查询用户信息 <i class="fa fa-search"></i> </a>
 												</div>
 												<div class="btn-group">
-													<a id="statistic_button" class="btn green">学生信息统计 <i class="fa fa-edit"></i> </a>
+													<a id="statistic_button" class="btn green">用户信息统计 <i class="fa fa-edit"></i> </a>
 												</div>
 												<button type="button" id="layout_button" class="btn green" title="布局切换">
 													<i class="fa fa-th"></i>

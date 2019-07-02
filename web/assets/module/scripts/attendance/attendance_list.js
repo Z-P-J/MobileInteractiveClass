@@ -44,7 +44,7 @@ var Record = function () {
                 Record.userName = json.user_name;
                 Record.userRole = json.user_role;
                 if (json.user_role === "teacher" || json.user_role === "manage") {
-                    $("#publish_attendance").show();
+                    $("#div_publish_attendance").show();
                 }
                 Record.userAvatar = json.user_avatar;
                 Page.showResult(json);
@@ -70,8 +70,10 @@ var Record = function () {
         });
 
     };
-    var viewAttendance = function (id, courseId) {
-        window.location.href = "attendance_detail.jsp?id=" + id + "&course_id=" + courseId;
+    var viewAttendance = function (position) {
+        Record.json = Record.aaData[position];
+        $("#attendance_detail").click();
+        // window.location.href = "attendance_detail.jsp?id=" + id + "&course_id=" + courseId;
     };
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
@@ -135,8 +137,8 @@ var Record = function () {
         checkAttendance: function (id, courseId) {
             checkAttendance(id, courseId);
         },
-        viewAttendance: function (id, courseId) {
-            viewAttendance(id, courseId);
+        viewAttendance: function (json) {
+            viewAttendance(json);
         },
         exportAttendances: function () {
             exportAttendances();
@@ -228,6 +230,7 @@ var Page = function () {
         if ($("#title_div")) $("#title_div").html(title);
         if (json != null) {
             var list = json.aaData;
+            Record.aaData = list;
             var tip = "当前查询到了 " + list.length + " 条记录";
             if ($("#tip_div")) $("#tip_div").html(tip);
             if ($("#record_list_tip")) $("#record_list_tip").html(tip);
@@ -237,6 +240,7 @@ var Page = function () {
     var showRecordList = function (list) {
         html = "													<div><span id=\"tip_div\"></span>";
         for (var i = 0; i < list.length; i++) {
+            list[i].position = i;
             html += showRecord(list[i]);
         }
         html = html + "													</div>";
@@ -270,10 +274,8 @@ var Page = function () {
 
             if (Record.userRole === "student") {
                 html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" " + (json.has_attendance ? "" : "onclick=\"Page.checkAttendance(" + json.id + "," + json.course_id + ");\"") + ">" + (json.has_attendance ? "已考勤" : "点击考勤") + "</button>";
-            } else if (Record.userRole === "teacher") {
-                html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" onclick=\"Page.viewAttendance(" + json.id + "," + json.course_id + ");\">详细信息</button>";
             } else {
-
+                html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" onclick=\"Page.deleteRecord(" + json.id + ");\">删除</button>";
             }
 
             var t = setInterval(function () {
@@ -290,7 +292,7 @@ var Page = function () {
             if (Record.userRole === "student") {
                 html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" disabled>" + (json.has_attendance ? "已考勤" : "未考勤") + "</button>";
             } else if (Record.userRole === "teacher") {
-                html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" onclick=\"Page.viewAttendance(" + json.id + "," + json.course_id + ");\">详细信息</button>";
+                html = html + "																<button id='attendance_btn_" + json.id + "' type=\"button\" class=\"btn-small\" onclick=\"Page.viewAttendance(" + json.position + ");\">详细信息</button>";
             } else {
 
             }
@@ -326,8 +328,8 @@ var Page = function () {
     var checkAttendance = function (id, courseId) {
         Record.checkAttendance(id, courseId);
     };
-    var viewAttendance = function (id, courseId) {
-        Record.viewAttendance(id, courseId);
+    var viewAttendance = function (json) {
+        Record.viewAttendance(json);
     };
     var modifyRecord = function (id) {
         window.location.href = "view.jsp?id=" + id;
@@ -399,8 +401,8 @@ var Page = function () {
         checkAttendance: function (id, courseId) {
             checkAttendance(id, courseId);
         },
-        viewAttendance: function (id, courseId) {
-            viewAttendance(id, courseId);
+        viewAttendance: function (json) {
+            viewAttendance(json);
         },
         searchRecord: function () {
             searchRecord();

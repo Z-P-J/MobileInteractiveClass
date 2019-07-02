@@ -7,6 +7,19 @@ jQuery(document).ready(function () {
     initHomeMenu();
     Page.init();
     console.log("执行js初始化结束");
+    $.get("https://www.tianqiapi.com/api/", function (json) {
+        // alert(JSON.stringify(json));
+        $("#city").html(json.city);
+        $("#today").html(json.data[0].date + " " + json.data[0].week);
+        $("#weather").html(json.data[0].wea);
+        $("#temp").html(json.data[0].tem2 + "-" + json.data[0].tem);
+        $("#min_temp").html("平均温度" + json.data[0].tem1);
+        $("#win").html(json.data[0].win);
+        $("#win_speed").html(json.data[0].win_speed);
+        $("#air_condition").html("空气指数" + json.data[0].air + " " + json.data[0].air_level);
+        $("#humidity").html("湿度：" + json.data[0].humidity);
+        $("#tip").html(json.data[0].air_tips);
+    });
 });
 
 function initHomeMenu() {
@@ -20,7 +33,8 @@ function delHomeMenu() {
 
 function addHomeMenu() {
     $.post("../../common_data_action?action=get_home_menu&table_name=interactive_classroom_main&where=fieldType_Tag=1", function (e) {
-        processHomeMenuResult(e)
+        processHomeMenuResult(e);
+        initLeftMenu(e);
     });
 }
 
@@ -29,6 +43,7 @@ function processHomeMenuResult(data) {
     var json = eval("(" + data + ")");
     if (json.result_code == 0) {
         var list = json.record_list;
+        var ul = document.getElementById("page_sidebar_menu");
         for (var i = 0; i < list.length; i++) {
             //逐项添加菜单
             var module = list[i].reason;
@@ -36,10 +51,41 @@ function processHomeMenuResult(data) {
             var title = list[i].value;
             var linkHref = "../../" + module + "/main";
             addMenuDiv(title, linkImage, linkHref);
+
+            var li = document.createElement("li");
+            // li.id = itemId;
+            li.class = "start active open";
+            // var itemId = "menu_" + json[topIndex].item_id;
+            // var itemName = json.value;
+            var html = "<a href=\"" + linkHref + "\"><i class=\"icon-home\"></i><span class=\"title\">" + title + "</span><span class=\"selected\"></span><span class=\"arrow open\"></span></a>";
+            li.innerHTML = html;
+            ul.appendChild(li);
         }
+        var menuDiv = document.getElementById("sidebar_menu_div");
+        menuDiv.appendChild(ul);
         Frame.init("home", "main");
     } else {
         Page.processError(json);
+    }
+}
+
+function initLeftMenu(data) {
+    var ul = document.getElementById("page_sidebar_menu");
+    if (ul != null) {
+        // json = json.record_list;
+        // var i = 0;
+        for (var json in data.record_list) {
+            var li = document.createElement("li");
+            // li.id = itemId;
+            li.class = "start active open";
+            // var itemId = "menu_" + json[topIndex].item_id;
+            var itemName = json.value;
+            var html = "<a href=\"javascript:;\"><i class=\"icon-home\"></i><span class=\"title\">" + itemName + "</span><span class=\"selected\"></span><span class=\"arrow open\"></span></a>";
+            li.innerHTML = html;
+            ul.appendChild(li);
+        }
+        var menuDiv = document.getElementById("sidebar_menu_div");
+        menuDiv.appendChild(ul);
     }
 }
 

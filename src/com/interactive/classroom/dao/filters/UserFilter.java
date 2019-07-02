@@ -1,5 +1,6 @@
 package com.interactive.classroom.dao.filters;
 
+import com.iWen.survey.dto.User;
 import com.interactive.classroom.constant.UserType;
 import com.interactive.classroom.utils.TextUtil;
 
@@ -8,18 +9,28 @@ import com.interactive.classroom.utils.TextUtil;
  */
 public class UserFilter extends BaseFilter {
 
+    private String courseId;
+
     UserFilter() { }
 
     @Override
     public String getQuerySql(String tableName) {
-        String sql;
-        if (UserType.TEACHER.equals(tableName)) {
-            sql = "select user_manage.*,course_manage.*,course_student.*" +
-                    " from user_manage,course_manage,course_student" +
-                    " where course_manage.teacher_id=" + userId +
-                    " and course_manage.id=course_student.course_id" +
-                    " and course_student.student_id=user_manage.id";
-        } else {
+        String sql = "";
+        if (UserType.TEACHER.equals(userType)) {
+            if (TextUtil.isEmpty(courseId)) {
+                sql = "select user_manage.*,course_manage.*,course_student.*" +
+                        " from user_manage,course_manage,course_student" +
+                        " where course_manage.teacher_id=" + userId +
+                        " and course_manage.id=course_student.course_id" +
+                        " and course_student.student_id=user_manage.id";
+            } else {
+                sql = "select user_manage.*,course_student.*" +
+                        " from user_manage,course_student" +
+                        " where course_manage.teacher_id=" + userId +
+                        " and course_student.course_id=" + courseId +
+                        " and course_student.student_id=user_manage.id";
+            }
+        } else if (UserType.MANAGER.equals(userType)){
             sql = "select * from " + tableName;
         }
 
@@ -31,6 +42,7 @@ public class UserFilter extends BaseFilter {
             sql = checkWhere(sql);
             sql += "register_date between '" + timeFrom + "' and '" + timeTo + "'";
         }
+        sql = sql + " group by user_manage.id";
         sql += wrapOrder(order);
         return sql;
     }
@@ -100,4 +112,11 @@ public class UserFilter extends BaseFilter {
         return this;
     }
 
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
 }

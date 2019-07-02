@@ -37,7 +37,7 @@
 						<div class="portlet box blue ">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-gift"></i>学生信息
+									<i class="fa fa-gift"></i>用户信息
 								</div>
 								<div class="tools">
 									<a id="tools_menu_reload" href="" class="reload"> </a>
@@ -69,13 +69,13 @@
 												   data-toggle="modal">用户详情 <i class="fa fa-plus"></i> </a>
 											</div>
 											<div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
-												<button type="button" id="add_button" class="btn green" title="添加新的学生">
+												<button type="button" id="add_button" class="btn green" title="添加新的用户">
 													添加用户
 												</button>
-												<button type="button" id="print_button" class="btn green" title="打印学生信息">
+												<button type="button" id="print_button" class="btn green" title="打印用户信息">
 													打印
 												</button>
-												<button type="button" id="export_button" class="btn green" title="导出 学生信息">
+												<button type="button" id="export_button" class="btn green" title="导出 用户信息">
 													导出
 												</button>
 												<button type="button" id="return_button" class="btn green" title="返回到前一个页面">
@@ -115,7 +115,7 @@
 									<div class="form-body">
 										<div class="form-group">
 											<label id="record_list_tip" class="col-md-12">
-												学生信息列表
+												用户信息列表
 											</label>
 										</div>
 										<div class="form-group">

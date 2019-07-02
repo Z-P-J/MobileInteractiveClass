@@ -31,7 +31,7 @@ var Record = function () {
                 Record.userRole = json.user_role;
                 Record.userAvatar = json.user_avatar;
                 if (json.user_role !== "student") {
-                    $("#publish_attendance").show();
+                    $("#publish_homework").show();
                 }
                 Page.showResult(json);
             } else {
@@ -228,8 +228,11 @@ var Page = function () {
         html = html + "																<span>截止时间：" + json.deadline + "</span><p>";
         html = html + "																<span>状态：" + state + "</span><p>";
         // if (me == "1") {
+        if (json.isOwner) {
             html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.deleteHomework(" + json.id + ");\">删除</button>";
             html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.modifyRecord(" + json.id + ");\">修改</button>";
+        }
+
         // }
         html = html + "																<button  type=\"button\" class=\"btn-small\" onclick=\"Page.viewRecord(" + json.id + ");\">详细信息</button>";
         html = html + "															</div>";
@@ -264,7 +267,6 @@ var Page = function () {
     };
     var modifyRecord = function (id) {
         Record.homeworkId = id;
-        alert(id);
         $("#update_attendance").click();
         // window.location.href = "view.jsp?id=" + id;
     };

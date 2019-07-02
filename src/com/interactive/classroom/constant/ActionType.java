@@ -5,11 +5,6 @@ package com.interactive.classroom.constant;
  */
 public enum ActionType {
 
-    /**
-     *
-     */
-    ACTION_EXPORT("export"),
-
     //===================================================登录================================================
     ACTION_LOG_IN("log_in"),
 
@@ -20,31 +15,31 @@ public enum ActionType {
 
     //===================================================用户================================================
     /**
-     *
+     * 查询用户
      */
     ACTION_QUERY_USRES("query_users"),
 
     /**
-     *
+     * 获取某用户详细信息
      */
     ACTION_GET_USRE_DETAIL("get_user_detail"),
 
     /**
-     *
+     * 删除用户
      */
     ACTION_DELETE_USER("delete_user"),
 
     /**
-     *
+     * 更新用户信息
      */
     ACTION_UPDATE_USER("update_user"),
 
     /**
-     *
+     * 添加用户
      */
     ACTION_ADD_USER("add_user"),
     /**
-     *
+     * 导出用户数据
      */
     ACTION_EXPORT_USERS("export_users"),
 
@@ -96,6 +91,14 @@ public enum ActionType {
      * 考勤信息导出
      */
     ACTION_EXPORT_ATTENDANCES("export_attendances"),
+    /**
+     * 删除考勤信息
+     */
+    ACTION_DELETE_ATTENDANCES("delete_attendances"),
+    /**
+     * 获取考勤学生信息
+     */
+    ACTION_QUERY_ATTENDANCE_USERS("query_attendance_users"),
 
     //=========================================================作业=====================================================
     /**
@@ -107,7 +110,7 @@ public enum ActionType {
      */
     ACTION_PUBLISH_HOMEWORK("publish_homework"),
     /**
-     *
+     * 删除作业信息
      */
     ACTION_DELETE_HOMEWORK("delete_homework"),
     /**
@@ -115,16 +118,40 @@ public enum ActionType {
      */
     ACTION_EXPORT_HOMEWORKS("export_homeworks"),
     /**
-     *
+     * 更新作业信息
      */
     ACTION_UPDATE_HOMEWORK("update_homework"),
 
 
     //========================================================课程=====================================================
     /**
-     * 获取所有课程
+     * 查询课程
      */
-    ACTION_GET_COURSES("get_courses"),
+    ACTION_QUERY_COURSES("query_courses"),
+    /**
+     * 删除课程
+     */
+    ACTION_DELETE_COURSE("delete_course"),
+    /**
+     * 更新课程信息
+     */
+    ACTION_UPDATE_COURSE("update_course"),
+    /**
+     * 添加课程
+     */
+    ACTION_ADD_COURSE("add_course"),
+    /**
+     * 导出课程信息
+     */
+    ACTION_EXPORT_COURSES("export_courses"),
+    /**
+     * 加入课程
+     */
+    ACTION_JOIN_COURSE("join_course"),
+    /**
+     * 退出课程
+     */
+    ACTION_EXIT_COURSE("exit_course"),
 
 
 
@@ -137,14 +164,11 @@ public enum ActionType {
     ACTION_START_STATISTIC("start_statistic"),
 
 
-
     //======================================================打印========================================================
     /**
      * 获取待打印的数据
      */
     ACTION_GET_PRINT_DATA("get_print_data"),
-
-
 
     //=======================================================评论=======================================================
     /**

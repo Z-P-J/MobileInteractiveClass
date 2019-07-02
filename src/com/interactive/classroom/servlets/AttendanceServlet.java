@@ -35,12 +35,6 @@ import java.util.ArrayList;
 public class AttendanceServlet extends BaseHttpServlet {
 
     private static final String MODULE = "attendance";
-    private static final String SUB = "core";
-
-    private static final String RESULT_PATH = MODULE + "/" + SUB;
-    private static final String RESULT_PAGE = "result.jsp";
-    private static final String REDIRECT_PATH = MODULE + "/" + SUB;
-    private static final String REDIRECT_PAGE = "record_list.jsp";
 
     @Override
     protected void handleAction(HttpServletRequest request, HttpServletResponse response, String action) {
@@ -55,81 +49,26 @@ public class AttendanceServlet extends BaseHttpServlet {
                 publishAttendance(request, response);
             } else if (ActionType.ACTION_EXPORT_ATTENDANCES.equals(action)) {
                 exportAttendances(response);
+            } else if (ActionType.ACTION_DELETE_ATTENDANCES.equals(action)) {
+                deleteAttendance(request, response);
+            } else if (ActionType.ACTION_QUERY_ATTENDANCE_USERS.equals(action)) {
+                queryAttendanceUsers(request, response);
             } else {
-                processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
+                onError(response, "没有对应的action处理过程，请检查action是否正确！action=" + action);
             }
-
-//            switch (action) {
-//                //考勤管理
-//                case "get_attendances":
-//
-//                    break;
-//                case "check_attendance":
-//                    checkAttendance(request, response);
-//                    break;
-//                case "query_attendances":
-//                    queryAttendances(request, response);
-//                    break;
-//                case "publish_attendance":
-//                    publishAttendance(request, response);
-//                    break;
-//                case "modify_record":
-//                    updateHomeworkInfo(request, response);
-//                    break;
-//                case "delete_record":
-//                    deleteRecord(request, response);
-//                    break;
-//                case "delete_file_record":
-//                    deleteHomeworkFile(request, response);
-//                    break;
-//                case "export_attendances":
-//                    AttendanceFilter filter = FilterFactory.getAttendanceFilter()
-//                            .setUserId(userId)
-//                            .setUserType(userType);
-//                    JSONObject jsonObj = DaoFactory.getAttendanceDao().queryAttendances(filter);
-//
-//                    ExportUtil.with(jsonObj)
-//                            .setModuleName(MODULE)
-//                            .setTableNickName("考勤管理")
-//                            .setLabels(AttendanceDao.LABELS)
-//                            .setLabelsZh(AttendanceDao.LABELS_CH)
-//                            .export();
-//
-//                    responseByJson(response, jsonObj);
-//                    break;
-//                default:
-//                    processError(request, response, 2, "[" + MODULE + "/" + SUB + "/FileServlet]没有对应的action处理过程，请检查action是否正确！action=" + action, RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
-//                    break;
-//            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
 
-    private void getAttendances(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        JSONObject jsonObj;
-        String orderBy = request.getParameter("order_by");
-        AttendanceFilter filter = FilterFactory.getAttendanceFilter()
-                .setUserId(userId)
-                .setUserType(userType)
-                .setOrder(orderBy);
-        jsonObj = DaoFactory.getAttendanceDao().queryAttendances(filter);
-//        if (UserType.MANAGER.equals(userType)) {
-//            // 管理员
-//            // TODO 直接获取数据库所有作业
-//            HomeworkFilter filter = FilterFactory.getHomeworkFilter()
-//                    .setOrder(orderBy);
-//            jsonObj = DaoFactory.getHomeworkDao().queryAttendances(filter);
-//        } else {
-//            // TODO 弄个课程管理模块，根据课程获取作业
-//            jsonObj = DaoFactory.getHomeworkDao().getAllHomeworks(orderBy);
-//        }
-        session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-        String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
-        onEnd(request, response, jsonObj, url);
-    }
-
-    private void checkAttendance(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    /**
+     * 开始考勤
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
+    private void checkAttendance(HttpServletRequest request, HttpServletResponse response) throws JSONException, SQLException {
         String courseId = request.getParameter("course_id");
         String id = request.getParameter("id");
         boolean isSuccess = DaoFactory.getAttendanceDao().checkAttendance(userId, id, courseId);
@@ -139,6 +78,13 @@ public class AttendanceServlet extends BaseHttpServlet {
         responseByJson(response, jsonObj);
     }
 
+    /**
+     * 查询考勤信息
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
     private void queryAttendances(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String keyword = request.getParameter("keyword");
         String timeFrom = request.getParameter("time_from");
@@ -154,31 +100,15 @@ public class AttendanceServlet extends BaseHttpServlet {
                 .setPublishTimeTo(timeTo);
         JSONObject jsonObj = DaoFactory.getAttendanceDao().queryAttendances(filter);
         responseByJson(response, jsonObj);
-
-//        String existResultset = request.getParameter("exist_resultset");
-//        if ((existResultset == null) || ("null".equals(existResultset) || existResultset.isEmpty())) {
-//            existResultset = "0";
-//        }
-//        JSONObject jsonObj;
-//        if ("1".equals(existResultset)) {
-//            //要求提取之前查询结果，如果有就取出来，如果没有就重新查询一次，并且保存进session里
-//            if (session.getAttribute(MODULE + "_" + SUB + "_get_record_result") != null) {
-//                jsonObj = (JSONObject) session.getAttribute(MODULE + "_" + SUB + "_get_record_result");
-//            } else {
-//                //如果没有就报错
-//                jsonObj = new JSONObject();
-//                jsonObj.put("result_code", 10);
-//                jsonObj.put("result_msg", "exist_resultset参数不当，服务器当前没有结果数据！请重新设置！");
-//            }
-//        } else {
-//            //如果是新查询
-//
-//            session.setAttribute(MODULE + "_" + SUB + "_get_record_result", jsonObj);
-//        }
-//        String url = REDIRECT_PATH + "/" + REDIRECT_PAGE + "?exist_resultset=1";
-//        onEnd(request, response, jsonObj, url);
     }
 
+    /**
+     * 老师发布考勤
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
     private void publishAttendance(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String courseId = request.getParameter("course_id");
 
@@ -189,8 +119,6 @@ public class AttendanceServlet extends BaseHttpServlet {
                 .setUserId(userId);
         JSONArray jsonArray = dao.queryCourses(filter).getJSONArray("aaData");
         Log.d(getClass().getName(), jsonArray.toString());
-
-
         JSONObject jsonObject;
         if (jsonArray.length() <1) {
             jsonObject = new JSONObject();
@@ -211,59 +139,51 @@ public class AttendanceServlet extends BaseHttpServlet {
             bean.setCourseId(courseId);
 
             jsonObject = DaoFactory.getAttendanceDao().publishAttendance(bean);
-            log("用户 " + userName + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
+            log("用户 " + userName + " 于 " + createTime + " 添加了 [" + MODULE + "] 记录", "添加记录", MODULE);
 
-            dao.increaseAttendanceCount(courseId, flag);
+            boolean isSuccess = dao.increaseAttendanceCount(courseId, flag);
         }
         responseByJson(response, jsonObject);
     }
 
     /**
-     * 修改作业信息（仅发布者可以修改）
+     * 老师删除考勤
      * @param request HttpServletRequest
-	 * @param response HttpServletResponse
+     * @param response HttpServletResponse
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
      */
-    private void updateHomeworkInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String id = request.getParameter("id");
-        JSONObject jsonObj = null;
-        if (id != null) {
-            AttendanceBean bean = new AttendanceBean();
-            bean.setId(id);
-            bean.setPublisherName(userName);
-            bean.setAttendanceTitle(request.getParameter("homework_title"));
-            bean.setAttendanceRequirement(request.getParameter("homework_requirement"));
-            bean.setPublishTime(request.getParameter("publish_time"));
-            bean.setDeadline(request.getParameter("deadline"));
-            jsonObj = DaoFactory.getAttendanceDao().updateAttendanceInfo(bean);
-            log("用户 " + userName + " 于 " + TimeUtil.currentDate() + " 修改了 [" + MODULE + "][" + SUB + "] 记录", "修改记录", MODULE);
-        }
-        onEndDefault(request, response, jsonObj);
-    }
-
-    private void deleteRecord(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String action = request.getParameter("action");
+    private void deleteAttendance(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String[] ids = request.getParameterValues("id");
         JSONObject jsonObj = null;
         if (ids != null) {
             jsonObj = DaoFactory.getAttendanceDao().deleteAttendance(ids);
-            jsonObj.put("action", action);
-            log("用户 " + userName + " 于 " + TimeUtil.currentDate() + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
+            log("用户 " + userName + " 于 " + TimeUtil.currentDate() + " 删除了 [" + MODULE + "] 记录", "删除记录", MODULE);
         }
-        onEndDefault(request, response, jsonObj);
+        responseByJson(response, jsonObj);
     }
 
-    private void deleteHomeworkFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String[] ids = request.getParameterValues("id");
-        JSONObject jsonObj = null;
-        if (ids != null) {
-            String createTime = TimeUtil.currentDate();
-            jsonObj = DaoFactory.getFileDao().deleteFileById(ids, ServletUtil.getUploadPath(this));
-            jsonObj.put("action", request.getParameter("action"));
-            log("用户 " + userName + " 于 " + createTime + " 删除了 [" + MODULE + "][" + SUB + "] 记录", "删除记录", MODULE);
-        }
-        onEndDefault(request, response, jsonObj);
+    /**
+     * 查询考勤用户
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
+    private void queryAttendanceUsers(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String courseId = request.getParameter("course_id");
+        String attendanceFlag = request.getParameter("attendance_flag");
+        JSONObject jsonObj = DaoFactory.getAttendanceDao().queryAttendanceUsers(courseId, attendanceFlag);
+        Log.d(getClass().getName(), jsonObj.toString());
+        responseByJson(response, jsonObj);
     }
 
+    /**
+     * 导出考勤信息
+     * @param response HttpServletResponse
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
+     */
     private void exportAttendances(HttpServletResponse response) throws SQLException, JSONException {
         AttendanceFilter filter = FilterFactory.getAttendanceFilter()
                 .setUserId(userId)

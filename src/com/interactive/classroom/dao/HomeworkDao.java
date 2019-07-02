@@ -26,25 +26,6 @@ public interface HomeworkDao {
      */
     String[] LABELS_CH = {"ID", "发布人ID", "发布人名字", "作业标题", "作业要求", "发布时间", "截止时间", "文件命名格式", "课程ID"};
 
-//    /**
-//     * 获取数据库中所有作业（管理员）
-//     * @param order 排序
-//     * @return org.json.JSONObject
-//     * @throws JSONException JSONException
-//     * @throws SQLException SQLException
-//     */
-//    JSONObject getAllHomeworks(String order) throws SQLException, JSONException;
-
-//    /**
-//     * 根据课程id获取作业（管理员）
-//     * @param courseId 课程id
-//     * @param order 排序
-//     * @return org.json.JSONObject
-//     * @throws JSONException JSONException
-//     * @throws SQLException SQLException
-//     */
-//    JSONObject getHomeworksByCourse(String courseId, String order) throws SQLException, JSONException;
-
     /**
      * 过滤查询作业
      * @param filter HomeworkFilter
@@ -57,7 +38,8 @@ public interface HomeworkDao {
     /**
      * 更新作业信息
      * @param bean 带更新的HomeworkBean对象
-     * @return org.json.JSONObject
+     * @return JSONObject JSONObject
+     * @throws JSONException JSONException
      */
     JSONObject updateHomeworkInfo(HomeworkBean bean) throws JSONException;
 

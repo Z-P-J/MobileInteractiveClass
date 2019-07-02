@@ -26,6 +26,10 @@ public enum UserType {
         this.typeName = typeName;
     }
 
+    public String getTypeName() {
+        return typeName;
+    }
+
     /**
      *  判断用户类型
      * @param userType 用户类型

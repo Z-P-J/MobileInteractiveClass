@@ -26,27 +26,6 @@ public interface UserDao {
      */
     String[] LABELS_CH = {"ID", "用户名", "用户名", "性别", "Email", "手机", "用户类别", "微信", "年级", "班级", "学号", "学院", "注册时间"};
 
-//    /**
-//     * 获取所有用户
-//     * @param bean UserBean对象
-//     * @return List<UserBean>
-//     */
-//    List<UserBean> getAllUsers(UserBean bean);
-//
-//    /**
-//     * 根据老师用户获取所有学生
-//     * @param bean UserBean对象
-//     * @return List<UserBean>
-//     */
-//    List<UserBean> getAllStudents(UserBean bean);
-//
-//    /**
-//     * 根据学生用户获取所有老师
-//     * @param bean UserBean对象
-//     * @return List<UserBean>
-//     */
-//    List<UserBean> getAllTeachers(UserBean bean);
-
     /**
      * 查询用户
      * @param filter UserFilter
@@ -55,8 +34,6 @@ public interface UserDao {
      * @throws JSONException JSONException
      */
     JSONObject queryUsers(UserFilter filter) throws SQLException, JSONException;
-
-//    JSONObject getRecord(UserBean query) throws SQLException, JSONException;
 
     /**
      * 根据用户名获取用户（该系统中用户名必须为唯一值，不可重复）
@@ -89,14 +66,17 @@ public interface UserDao {
     /**
      * 根据ID删除用户
      * @param ids 用户id
-     * @return JSONObject
+     * @return JSONObject JSONObject
+     * @throws JSONException JSONException
+     * @throws SQLException SQLException
      * */
     JSONObject deleteUsers(String[] ids) throws JSONException, SQLException;
 
     /**
      * 更新用户信息
      * @param user UserBean对象
-     * @return JSONObject
+     * @return JSONObject JSONObject
+     * @throws JSONException JSONException
      */
     JSONObject updateUser(UserBean user) throws JSONException;
 

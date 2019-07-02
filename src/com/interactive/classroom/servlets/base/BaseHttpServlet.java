@@ -26,6 +26,7 @@ public abstract class BaseHttpServlet extends HttpServlet {
 
     protected String userId = null;
     protected String userName = null;
+    protected String name = null;
     protected String userType = null;
     protected String userAvatar = null;
 
@@ -46,7 +47,11 @@ public abstract class BaseHttpServlet extends HttpServlet {
         String action = req.getParameter("action");
         debug("收到的action是：" + action);
         if (action == null) {
-            //todo "传递过来的action是null！"
+            try {
+                onError(resp, "action is null!");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         } else {
             if (!LoginServlet.LoginActionName.LOG_IN.getName().equals(action)
                     && !LoginServlet.LoginActionName.SIGN_UP.getName().equals(action)
@@ -225,6 +230,7 @@ public abstract class BaseHttpServlet extends HttpServlet {
     private void initUserInfo() {
         userId = session.getAttribute("user_id") == null ? null : (String) session.getAttribute("user_id");
         userName = session.getAttribute("user_name") == null ? null : (String) session.getAttribute("user_name");
+        name = session.getAttribute("name") == null ? null : (String) session.getAttribute("name");
         userType = session.getAttribute("user_role") == null ? null : (String) session.getAttribute("user_role");
         userAvatar = session.getAttribute("user_avatar") == null ? null : (String) session.getAttribute("user_avatar");
     }

@@ -25,7 +25,7 @@ public class AttendanceFilter extends BaseFilter {
 
     AttendanceFilter() { }
 
-    //-----------------------------------override-----------------------------------
+    //========================================================override=========================================================
 
     @Override
     public String getQuerySql(String tableName) {
@@ -137,7 +137,7 @@ public class AttendanceFilter extends BaseFilter {
         return this;
     }
 
-    //-----------------------------------setter-----------------------------------
+    //==========================================================setter================================================
 
     public AttendanceFilter setCourseId(String courseId) {
         this.courseId = courseId;
@@ -174,7 +174,7 @@ public class AttendanceFilter extends BaseFilter {
         return this;
     }
 
-    //-----------------------------------getter-----------------------------------
+    //======================================================getter=====================================================
 
     public String getCourseId() {
         return courseId;

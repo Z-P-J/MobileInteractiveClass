@@ -60,9 +60,9 @@
 											</div>
 											<div class="btn-group"
 												 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
-												<a id="publish_attendance" class="btn green"
+												<a id="publish_homework" class="btn green"
 												   href="homework_publish_div.jsp" data-target="#ajax"
-												   data-toggle="modal">发布作业 <i class="fa fa-plus" style="display: none"></i> </a>
+												   data-toggle="modal" style="display: none">发布作业 <i class="fa fa-plus" style="display: none"></i> </a>
 											</div>
 
 											<div class="btn-group"

@@ -80,6 +80,12 @@
                                                href="../../base/statistic/statistic_div.jsp" data-target="#ajax"
                                                data-toggle="modal">考勤统计 <i class="fa fa-plus"></i> </a>
                                         </div>
+                                            <div class="btn-group"
+                                                 style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;display: none">
+                                                <a id="attendance_detail" class="btn green"
+                                                   href="attendance_detail_div.jsp" data-target="#ajax"
+                                                   data-toggle="modal">考勤详情 <i class="fa fa-plus"></i> </a>
+                                            </div>
                                         <div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
 <%--                                            <button type="button" id="statistic_button" class="btn green" title="统计记录">--%>
 <%--                                                统计报表--%>

@@ -121,13 +121,8 @@ public class UserServlet extends BaseHttpServlet {
         user.setFaculty(request.getParameter("faculty"));
 
         int id = infoDao.registerUser(user);
-        JSONObject jsonObj = new JSONObject();
-        jsonObj.put("aaData", new ArrayList());
-        jsonObj.put("result_msg", "ok");
-        jsonObj.put("result_code", 0);
         log("用户 " + userName + " 于 " + createTime + " 添加了 [" + MODULE + "][" + SUB + "] 记录", "添加记录", MODULE);
-
-        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
+        onSuccess(response);
     }
 
     private void updateUser(HttpServletRequest request, HttpServletResponse response) throws JSONException {

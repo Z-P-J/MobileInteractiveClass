@@ -9,7 +9,7 @@ function getPrintData() {
     alert(moduleName);
     var url = "../../print_servlet?action=get_print_data&module_name=" + moduleName;
     $.get(url, function (json) {
-        alert(JSON.stringify(json));
+        // alert(JSON.stringify(json));
         if (json.result_code === 0) {
             var html = "";
             var data = json.aaData;
@@ -28,6 +28,7 @@ function getPrintData() {
 }
 
 function initTop(columns) {
+    // alert(JSON.stringify(columns));
     var html = "<tr id=\"tr_columns\" style='mso-yfti-irow: 0; mso-yfti-firstrow: yes'>";
     for (var i = 0; i < columns.length; i++) {
         html += "<td width=95 valign=top style='width: 71.0pt; border: solid black 1.0pt; mso-border-themecolor: text1; mso-border-alt: solid black .5pt; mso-border-themecolor: text1; background: #BFBFBF; mso-shading: windowtext; mso-pattern: gray-25 auto; padding: 0cm 5.4pt 0cm 5.4pt'>\n" +

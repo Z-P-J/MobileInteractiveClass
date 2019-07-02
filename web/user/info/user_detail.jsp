@@ -38,7 +38,7 @@
 						<div class="portlet box blue ">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-gift"></i>学生信息
+									<i class="fa fa-gift"></i>用户信息
 								</div>
 								<div class="tools">
 									<a href="" class="reload"> </a>

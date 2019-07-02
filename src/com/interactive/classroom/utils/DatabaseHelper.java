@@ -68,6 +68,13 @@ public final class DatabaseHelper {
         return rowSet;
     }
 
+    public static ResultSet executeQueryWithoutCache(String s) throws SQLException {
+        Log.d(TAG, "[" + TimeUtil.currentDate() + "]" + " executeQuery:" + s);
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+        return statement.executeQuery(s);
+    }
+
     public static boolean executeUpdate(String s){
         Log.d(TAG, "[" + TimeUtil.currentDate() + "]" + " executeUpdate:" + s);
         Connection connection = null;

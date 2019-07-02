@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -146,7 +148,9 @@ public class data_action extends HttpServlet {
                 sql = "select * from project_tree a,project_view b where a.file_id=b.file_id and b.role_id='" + role + "'";
             }
         }
-        ResultSet rs = DatabaseHelper.executeQuery(sql);
+        Connection connection = DatabaseHelper.getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
         while (rs.next()) {
             Map<String, String> map = new HashMap<>();
             // ////////////////////////////////////////独有部分，要修改的是这里
@@ -173,7 +177,10 @@ public class data_action extends HttpServlet {
             // ////////////////////////////////////////独有部分修改完毕
             jsonList.add(map);
         }
+
         rs.close();
+        statement.close();
+        connection.close();
 
 
         JSONObject jsonObj = new JSONObject();

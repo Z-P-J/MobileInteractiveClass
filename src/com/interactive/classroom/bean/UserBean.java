@@ -1,5 +1,8 @@
 package com.interactive.classroom.bean;
 
+import com.interactive.classroom.constant.UserType;
+import com.interactive.classroom.utils.TextUtil;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -96,6 +99,9 @@ public class UserBean {
     }
 
     public String getUserType() {
+        if (TextUtil.isEmpty(userType)) {
+            return UserType.STUDENT.getTypeName();
+        }
         return userType;
     }
 

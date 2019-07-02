@@ -13,6 +13,7 @@
         session.removeAttribute("return_page");
         response.sendRedirect(redirectUrl);
     }
+    //http://wthrcdn.etouch.cn/weather_mini?city=%E6%88%90%E9%83%BD
 %>
 <!DOCTYPE html>
 <head>
@@ -36,6 +37,56 @@
             <%@include file="../../home/frame/frame_theme_color.jsp" %>
             <%@include file="../../home/frame/frame_page_header.jsp" %>
             <!-- BEGIN PAGE CONTENT-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tabbable-line boxless">
+                        <div class="tab-content" style="padding: 20px;">
+                            <span id="city"></span>&nbsp&nbsp
+                            <span id="today"></span>&nbsp&nbsp
+                            <span id="weather"></span>&nbsp&nbsp
+                            <div style="padding-top: 5px; padding-bottom: 5px">
+                                温度：
+                                <span id="temp"></span>&nbsp&nbsp
+                                <span id="min_temp"></span>&nbsp&nbsp
+                            </div>
+                            <div style="padding-top: 5px; padding-bottom: 5px">
+                                风力：
+                                <span id="win"></span>&nbsp&nbsp
+                                <span id="win_speed"></span>
+                            </div>
+                            <div style="padding-top: 5px; padding-bottom: 5px">
+                                空气：
+                                <span id="air_condition"></span>&nbsp&nbsp
+                                <span id="humidity"></span>&nbsp&nbsp
+                            </div>
+                            <div>
+                                Tips：
+                                <span id="tip"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+<%--            <div class="row">--%>
+<%--                <div class="col-md-12">--%>
+<%--                    <div class="tabbable-line boxless">--%>
+<%--                        <div class="tab-content" style="padding: 20px">--%>
+<%--                            <span id="tip"></span>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="row">--%>
+<%--                <div class="col-md-12">--%>
+<%--                    <div class="tabbable-line boxless">--%>
+<%--                        <div class="tab-content" style="padding: 20px">--%>
+<%--                            <span>无持续风向</span>--%>
+<%--                            <span><3级</span>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
             <div class="row">
                 <div class="col-md-12">
                     <div class="tabbable-line boxless">

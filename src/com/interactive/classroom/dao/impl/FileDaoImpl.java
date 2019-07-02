@@ -65,37 +65,12 @@ public class FileDaoImpl implements FileDao {
         return jsonObj;
     }
 
-//    @Override
-//    public JSONObject getHomeworkFilesById(String homeworkId, String userId) throws SQLException, JSONException {
-//        return queryFiles("select * from " + TABLE_NAME + " where homework_id=" + homeworkId, userId, false, false);
-//    }
-
-//    @Override
-//    public JSONObject getFilesById(String id, String userId) throws SQLException, JSONException {
-//        return queryFiles("select * from " + TABLE_NAME + " where id=" + id, null, false, false);
-//    }
-
-//    @Override
-//    public JSONObject getAllFiles() throws SQLException, JSONException {
-//        return queryFiles("select * from " + TABLE_NAME, null, false, true);
-//    }
-
-//    @Override
-//    public JSONObject getFilesWithComments(FileFilter filter) throws SQLException, JSONException {
-//        String sql = createQuerySql(filter);
-//        return queryFiles(sql, null, true, true);
-//    }
-
     @Override
-    public JSONObject addFile(FileBean bean) throws JSONException {
+    public boolean addFile(FileBean bean) {
         String sql = "insert into " + TABLE_NAME + "(homework_id,uploader_id,uploader_name,file_name,file_size,upload_time,download_link) values(" + bean.getHomeworkId() + ",'" + bean.getUploaderId() + "','" + bean.getUploaderName() + "','" + bean.getFileName() +
                 "'," + bean.getFileSize() + ",'" + bean.getUploadTime() + "','" + bean.getDownloadLink() + "')";
         Log.d(getClass().getName(), "sql=" + sql);
-        DatabaseHelper.executeUpdate(sql);
-        JSONObject jsonObj = new JSONObject();
-        jsonObj.put("result_msg", "ok");
-        jsonObj.put("result_code", 0);
-        return jsonObj;
+        return DatabaseHelper.executeUpdate(sql);
     }
 
     @Override

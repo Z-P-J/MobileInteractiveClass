@@ -83,9 +83,6 @@
                                                data-toggle="modal">文件统计 <i class="fa fa-plus"></i> </a>
                                         </div>
                                         <div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
-<%--                                            <button type="button" id="statistic_button" class="btn green" title="统计记录">--%>
-<%--                                                统计报表--%>
-<%--                                            </button>--%>
                                             <button type="button" id="print_button" class="btn green" title="打印记录">
                                                 打印
                                             </button>
@@ -93,17 +90,11 @@
                                                 导出
                                             </button>
                                         </div>
-                                        <div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
-                                            <button type="button" id="return_button" class="btn green" title="返回到前一个页面">
-                                                返回
-                                            </button>
-                                            <button type="button" id="layout_button" class="btn green" title="布局切换">
-                                                <i class="fa fa-th-list"></i>
-                                            </button>
-                                            <button type="button" id="help_button" class="btn green" title="在线帮助">
-                                                <i class="fa fa-question"></i>
-                                            </button>
-                                        </div>
+<%--                                        <div style="float: left; margin-bottom: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">--%>
+<%--                                            <button type="button" id="return_button" class="btn green" title="返回到前一个页面">--%>
+<%--                                                返回--%>
+<%--                                            </button>--%>
+<%--                                        </div>--%>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-2">排序</label>
@@ -116,22 +107,6 @@
                                                 <option value="file_size">按文件大小</option>
                                             </select>
                                         </div>
-                                        <%--											<div class="col-md-2">--%>
-                                        <%--												<select class="bs-select form-control" id="sort_02" onchange="Page.sortRecord(2);">--%>
-                                        <%--													<option>（请选择）</option>--%>
-                                        <%--													<option value="create_time">按日期</option>--%>
-                                        <%--													<option value="title">按标题</option>--%>
-                                        <%--													<option value="status">按状态</option>--%>
-                                        <%--												</select>--%>
-                                        <%--											</div>--%>
-                                        <%--											<div class="col-md-2">--%>
-                                        <%--												<select class="bs-select form-control" id="sort_03" onchange="Page.sortRecord(3);">--%>
-                                        <%--													<option>（请选择）</option>--%>
-                                        <%--													<option value="create_time">按日期</option>--%>
-                                        <%--													<option value="title">按标题</option>--%>
-                                        <%--													<option value="status">按状态</option>--%>
-                                        <%--												</select>--%>
-                                        <%--											</div>--%>
                                     </div>
                                 </div>
                                 <div class="form-body">

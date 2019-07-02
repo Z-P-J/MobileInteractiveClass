@@ -48,7 +48,9 @@ public final class UserDaoImpl implements UserDao {
         }
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("aaData", jsonArray);
+        Log.d(getClass().getName(), "jsonobj111=" + jsonObj.toString());
         DatabaseHelper.putTableColumnNames(LABELS, LABELS_CH, jsonObj);
+        Log.d(getClass().getName(), "jsonobj222=" + jsonObj.toString());
         jsonObj.put("result_msg", resultMsg);
         jsonObj.put("result_code", resultCode);
         return jsonObj;
@@ -90,13 +92,17 @@ public final class UserDaoImpl implements UserDao {
 
     @Override
     public JSONObject deleteUsers(String[] ids) throws JSONException {
+        boolean isSuccess = false;
         for (String id : ids) {
             String sql = "delete from " + TABLE_NAME + " where id=" + id;
-            DatabaseHelper.executeUpdate(sql);
+            isSuccess = DatabaseHelper.executeUpdate(sql);
+            if (!isSuccess) {
+                break;
+            }
         }
         JSONObject jsonObj = new JSONObject();
-        jsonObj.put("result_msg", "ok");
-        jsonObj.put("result_code", 0);
+        jsonObj.put("result_msg", isSuccess ? "ok" : "删除用户失败！");
+        jsonObj.put("result_code", isSuccess ? 0 : 10);
         return jsonObj;
     }
 
@@ -120,6 +126,11 @@ public final class UserDaoImpl implements UserDao {
         return jsonObj;
     }
 
+    /**
+     * 根据where查找符合条件的用户
+     * @param where sql where语句
+     * @return List<UserBean>
+     */
     private List<UserBean> findUsers(String where) {
         List<UserBean> userList = new ArrayList<>();
         String sql = "select * from " + TABLE_NAME;
@@ -152,6 +163,11 @@ public final class UserDaoImpl implements UserDao {
         return userList;
     }
 
+    /**
+     * 根据where查找符合条件的某个用户
+     * @param where sql where语句
+     * @return UserBean
+     */
     private UserBean findUser(String where) {
         List<UserBean> userBeans = findUsers(where);
         if (userBeans.size() > 0) {

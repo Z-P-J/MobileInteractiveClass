@@ -13,6 +13,8 @@ public class CourseFilter extends BaseFilter {
 
     private String studentId;
 
+    private String joined;
+
     CourseFilter() {
 
     }
@@ -25,10 +27,21 @@ public class CourseFilter extends BaseFilter {
         if (UserType.TEACHER.equals(userType)) {
             sql = "select * from " + tableName + " where teacher_id=" + userId;
         } else if (UserType.STUDENT.equals(userType)) {
-            sql = "select course_student.*,course_manage.*"
-                    + " from course_student,course_manage"
-                    + " where course_student.student_id=" + studentId
-                    + " and course_student.course_id=course.manage.id";
+            if ("0".equals(joined)) {
+//                sql = "select * from course_manage" +
+//                        " where (select count(1) as num from course_student" +
+//                        " where course_student.course_id = course_manage.id" +
+//                        " and course_student.student_id=" + userId + ") = 0";
+                sql = "select * from course_manage" +
+                        " where (select count(1) as num" +
+                        " from course_student" +
+                        " where course_student.course_id = course_manage.id) = 0";
+            } else {
+                sql = "select course_manage.*,course_student.*"
+                        + " from course_manage,course_student"
+                        + " where course_student.student_id=" + userId
+                        + " and course_student.course_id=course_manage.id";
+            }
         } else {
             sql = "select * from " + tableName;
         }
@@ -40,6 +53,7 @@ public class CourseFilter extends BaseFilter {
             sql = checkWhere(sql);
             sql += "(course_name like '%" + keyword + "%' or teacher_name like '%" + keyword + "%')";
         }
+        sql += " group by course_manage.id";
         sql += wrapOrder(order);
         return sql;
     }
@@ -51,7 +65,7 @@ public class CourseFilter extends BaseFilter {
 
     @Override
     public String getDefaultOrder() {
-        return "id";
+        return "course_manage.id";
     }
 
     @Override
@@ -109,6 +123,11 @@ public class CourseFilter extends BaseFilter {
         return this;
     }
 
+    public CourseFilter setJoined(String joined) {
+        this.joined = joined;
+        return this;
+    }
+
     //-----------------------------------------getter-------------------------------------------
 
 
@@ -119,4 +138,5 @@ public class CourseFilter extends BaseFilter {
     public String getStudentId() {
         return studentId;
     }
+
 }

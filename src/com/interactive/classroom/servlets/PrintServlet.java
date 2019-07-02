@@ -63,6 +63,12 @@ public class PrintServlet extends BaseHttpServlet {
                     .setUserType(userType)
                     .setUserId(userId);
             jsonObject = DaoFactory.getUserDao().queryUsers(filter);
+        } else if ("course".equals(moduleName)) {
+            CourseFilter filter = FilterFactory.getCourseFilter()
+                    .setUserId(userId)
+                    .setUserType(userType);
+            jsonObject = DaoFactory.getCourseDao().queryCourses(filter);
+            Log.d(getClass().getName(), "jsonobj=" + jsonObject.toString());
         } else {
             jsonObject = getErrorJsonObject("模块不存在！");
         }

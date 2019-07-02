@@ -1,21 +1,5 @@
 ﻿var module = "homework";
 var sub = "core";
-
-// var progressbar={
-//     init:function(){
-//         var fill=document.getElementById('fill');
-//         var count=0;
-//         //通过间隔定时器实现百分比文字效果,通过计算CSS动画持续时间进行间隔设置
-//         var timer=setInterval(function(e){
-//             count++;
-//             fill.innerHTML=count+'%';
-//             $("#pg").val(count);
-//             if(count===100) clearInterval(timer);
-//         },17);
-//     }
-// };
-// progressbar.init();
-
 function parseDate(date) {
     var t = Date.parse(date);
     if (!isNaN(t)) {
@@ -68,7 +52,7 @@ var Record = function () {
 
                 for (var i = 0; i < list.length; i++) {
                     var homework = list[i];
-                    alert(JSON.stringify(homework));
+                    // alert(JSON.stringify(homework));
                     var title =  homework.homework_title;
                     $("#homework_detail_title").html(title);
                     var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), homework.deadline);

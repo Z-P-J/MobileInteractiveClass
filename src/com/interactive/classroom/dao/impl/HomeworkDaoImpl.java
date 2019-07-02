@@ -109,15 +109,13 @@ public class HomeworkDaoImpl implements HomeworkDao {
 
     @Override
     public JSONObject deleteHomework(String[] ids) throws JSONException {
-        String resultMsg = "ok";
-        int resultCode = 0;
         for (String id : ids) {
             String sql = "delete from " + TABLE_NAME + " where id=" + id;
             DatabaseHelper.executeUpdate(sql);
         }
         JSONObject jsonObj = new JSONObject();
-        jsonObj.put("result_msg", resultMsg);
-        jsonObj.put("result_code", resultCode);
+        jsonObj.put("result_msg", "ok");
+        jsonObj.put("result_code", 0);
         return jsonObj;
     }
 

@@ -44,7 +44,7 @@ var Record = function () {
         window.location.href = "user_detail.jsp?id=" + id + "&exist_resultset=1";
     };
     var deleteRecord = function (id) {
-        if (confirm("您确定要删除这条学生信息吗？")) {
+        if (confirm("您确定要删除这条用户信息吗？")) {
             if (id > -1) {
                 $.post("../../user_servlet?action=delete_user&id=" + id, function (json) {
                     if (json.result_code === 0) {
@@ -189,11 +189,11 @@ var Page = function () {
         window.location.href = "user_add.jsp";
     }
     var showResult = function (json) {
-        var title = "学生信息显示";
+        var title = "用户信息显示";
         $("#title_div").html(title);
         if (json != null) {
             var list = json.aaData;
-            var tip = "当前查询到了 " + list.length + " 条学生信息";
+            var tip = "当前查询到了 " + list.length + " 条用户信息";
             html = "													<div><span id=\"tip_div\">" + tip + "</span>";
             for (var i = 0; i < list.length; i++) {
                 html += showRecord(list[i]);
