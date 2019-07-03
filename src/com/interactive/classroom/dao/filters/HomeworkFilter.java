@@ -65,11 +65,12 @@ public class HomeworkFilter extends BaseFilter {
         if (!TextUtil.isEmpty(publishTimeFrom) && !TextUtil.isEmpty(publishTimeTo)) {
             sql = checkWhere(sql);
             sql += "publish_time between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
+            sql += "or deadline between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
         }
-        if (!TextUtil.isEmpty(publishTimeFrom) && !TextUtil.isEmpty(publishTimeTo)) {
-            sql = checkWhere(sql);
-            sql += "deadline between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
-        }
+//        if (!TextUtil.isEmpty(publishTimeFrom) && !TextUtil.isEmpty(publishTimeTo)) {
+//            sql = checkWhere(sql);
+//            sql += "deadline between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
+//        }
         if (TextUtil.isEmpty(homeworkId)) {
             sql += wrapOrder(order);
         }

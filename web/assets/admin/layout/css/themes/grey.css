@@ -793,7 +793,7 @@ Page Footer
 
   /* Boxed Layout */
   .page-boxed {
-    background-color: #697380 !important;
+    background-color: #364150 !important;
     /* Page container */
     /* Page sidebar */
     /* Page footer */
@@ -824,7 +824,7 @@ Page Footer
     border-left: 0;
   }
   .page-boxed.page-sidebar-fixed.page-footer-fixed .page-footer {
-    background-color: #697380 !important;
+    background-color: #364150 !important;
   }
   .page-boxed.page-sidebar-fixed.page-footer-fixed .page-footer .page-footer-inner {
     color: #dfe2e5;

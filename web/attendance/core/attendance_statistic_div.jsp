@@ -390,10 +390,10 @@
 				+ "&time_from=" + timeFrom
 				+ "&time_to=" + timeTo
 				+ "&time_interval=" + timeInterval;
-		alert(url);
+		// alert(url);
 		$.get(url, function (jsonObj) {
 			if (jsonObj.result_code === 0) {
-				alert(JSON.stringify(jsonObj));
+				// alert(JSON.stringify(jsonObj));
 				ChartsFlotcharts.drawChart(change(jsonObj.aaData));
 			} else {
 				alert("查询失败！");

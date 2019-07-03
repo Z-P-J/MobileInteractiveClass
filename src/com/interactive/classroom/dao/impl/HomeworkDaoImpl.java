@@ -21,18 +21,6 @@ import java.sql.SQLException;
  */
 public class HomeworkDaoImpl implements HomeworkDao {
 
-//    @Override
-//    public JSONObject getAllHomeworks(String order) throws SQLException, JSONException {
-//        String sql = "select * from " + TABLE_NAME + wrapOrder(order);
-//        return findHomeworks(sql);
-//    }
-
-//    @Override
-//    public JSONObject getHomeworksByCourse(String courseId, String order) throws SQLException, JSONException {
-//        String sql = "select * from " + TABLE_NAME + "where course_id=" + courseId + wrapOrder(order);
-//        return findHomeworks(sql);
-//    }
-
     @Override
     public JSONObject queryHomeworks(HomeworkFilter filter) throws SQLException, JSONException {
         String sql = filter.getQuerySql(TABLE_NAME);
@@ -91,13 +79,14 @@ public class HomeworkDaoImpl implements HomeworkDao {
     public JSONObject publishHomework(HomeworkBean bean) throws JSONException {
         String resultMsg = "ok";
         int resultCode = 0;
-        String sql = "insert into " + TABLE_NAME + "(publisher_id,publisher_name,homework_title,homework_requirement,publish_time,deadline,file_name_format) values("
+        String sql = "insert into " + TABLE_NAME + "(publisher_id,publisher_name,homework_title,homework_requirement,publish_time,deadline,course_id,file_name_format) values("
                 + bean.getPublisherId() + ",'"
                 + bean.getPublisherName() + "','"
                 + bean.getHomeworkTitle() + "','"
                 + bean.getHomeworkRequirement() + "','"
                 + bean.getPublishTime() + "','"
-                + bean.getDeadline() + "','"
+                + bean.getDeadline() + "',"
+                + bean.getCourseId() + ",'"
                 + bean.getFileNameFormat() + "')";
         Log.d(getClass().getName(), "publishAttendance sql=" + sql);
         DatabaseHelper.executeUpdate(sql);

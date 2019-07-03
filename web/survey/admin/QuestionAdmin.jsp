@@ -92,8 +92,9 @@
         <input type="hidden" value=<%=request.getParameter("sid") %>  name="sid">
         <input type="hidden" value="" name="qBody" id="qBody">
         <input type="hidden" value="" name=qResult id="qResult">
+        <input type="hidden" value="<%=basePath%>>" name="basePath" id="basePath">
         <input name="base_path" id="base_path" type="hidden"
-               value="<%=basePath%>question/addQuestion.do?op=AddQuestion">
+               value="<%=basePath%>question/addQuestion.do?op=AddQuestion&type=<%=type%>">
         问题：<input name="qHead" type="text" size="40">
         <br/><br/>
         <div id="selector">
@@ -194,7 +195,7 @@
         //typecode: dx--单选 ;fx--复选;
         // document.getElementById("qEditor").innerHTML = document.getElementById(typecode).innerHTML;
         // var basePath = $("#base_path").val();
-        document.getElementById("form1").action = $("#form1").attr("action") + "&qType=" + type;
+        document.getElementById("form1").action = $("#base_path").val() + "&qType=" + type;
         // alert(document.getElementById("form1").action);
         if (type === 5) {
             // document.getElementById("selector").style.display = "none";

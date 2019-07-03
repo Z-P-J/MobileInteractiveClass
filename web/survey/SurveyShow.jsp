@@ -7,9 +7,10 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/survey/";
 %>
 <%
+    String type = request.getParameter("type");
     ConfigDAO cdao = DAOFactory.getConfigDAO();
     Config cfg = cdao.findConfig();
-    SurveyDAO sdao = DAOFactory.getSurveyDAO();
+    SurveyDAO sdao = DAOFactory.getSurveyDAO(type);
     Long sid = Long.valueOf(request.getParameter("sid"));
     Survey survey = sdao.findSurvey(sid);
     if (survey == null) {
@@ -41,6 +42,7 @@
             var request_url = "ajax_SurveyShow.jsp";       // 需要获取内容的url
             if (to == null)
                 to = 0;
+            // alert(obj + "  " + to);
             var request_pars = "to=" + to + "&sid=" + <%=sid%>;//请求参数
             var myAjax = new Ajax.Updater(obj, request_url, { // 将request_url返回内容绑定到id为result的HTML TAG中
                 method: 'post', //HTTP请求的方法,get or post
@@ -154,7 +156,7 @@
 <div id="surveyBox">
     <div class="center">
         <form id="form_survey" name="form1"
-              action="<%=basePath%>showSurvey/showSurvey.do?sid=<%=request.getParameter("sid") %>" method="post"
+              action="<%=basePath%>showSurvey/showSurvey.do?sid=<%=request.getParameter("sid") %>&type=<%=type%>>" method="post"
               onsubmit="return ChkForm()">
             <input type="hidden" id="gid" name="gid" value="<%=sid %>">
             <div class="name"><b><%=survey.getSName() %>

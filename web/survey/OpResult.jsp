@@ -28,16 +28,16 @@
   String result=request.getParameter("ret");
   boolean isOpen = cfg.getCIsOpen();
   
-  if(isOpen == false) {
+  if(!isOpen) {
 	  out.print("<script>window.location='result.jsp';</script>");
   }else {
-	  out.print("<script>window.location='index.jsp';</script>");
+//	  out.print("<script>window.history.back(-1);</script>");
   }
   
   if("ShowSurvey".equals(operation)){
   		if("true".equals(result)){
   			
-  			out.print("<script>alert('操作已成功！');window.location='index.jsp';</script>");
+  			out.print("<script>alert('操作已成功！');window.history.back(-1);</script>");
   			 
   			}
   		else

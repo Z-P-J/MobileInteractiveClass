@@ -32,10 +32,10 @@ public class CourseFilter extends BaseFilter {
 //                        " where (select count(1) as num from course_student" +
 //                        " where course_student.course_id = course_manage.id" +
 //                        " and course_student.student_id=" + userId + ") = 0";
-                sql = "select * from course_manage" +
-                        " where (select count(1) as num" +
-                        " from course_student" +
-                        " where course_student.course_id = course_manage.id) = 0";
+                sql = "select * from course_manage";
+//                        " where (select count(1) as num" +
+//                        " from course_student" +
+//                        " where course_student.course_id = course_manage.id) = 0";
             } else {
                 sql = "select course_manage.*,course_student.*"
                         + " from course_manage,course_student"

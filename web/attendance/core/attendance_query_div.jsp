@@ -153,7 +153,7 @@
 						html += Page.showRecord(json);
 					}
 					html = html + "													</div>";
-					alert(html);
+					// alert(html);
 					$("#record_list_div_2").html(html);
 				}
 			} else {

@@ -16,7 +16,7 @@ import java.util.List;
 
 
 public class QuestionDAOimpl implements QuestionDAO {
-    
+
     private static final String TABLE_NAME = "survey_question";
 
     private List<Question> list_question = null;

@@ -47,7 +47,6 @@
     <%
         int i = 1;
         for (Question q : qlist) {
-            String[] results = q.getQResult().split(",");
             if (q.getQType() == 5) {
                 out.print("<tr><td colspan=\"4\">" + i++ + "、" + q.getQHead() + "</td></tr>");
                 out.print("<tr><td><td>这是一道简答题<td><td><a href=ShowText.jsp?qid=" + q.getQId() + " target=_blank>查看具体</a>");
@@ -57,8 +56,17 @@
                     out.print("<tr><td><td><span>" + answersheet.getAsResult() + "</span><td><td>");
                 }
             } else {
-                String[] bodys = q.getQBody().split("&\\$\\$&");
+                String[] bodys;
+                String[] results;
+                if (q.getQBody() == null) {
+                    bodys = new String[0];
+                    results = new String[0];
+                } else {
+                    bodys = q.getQBody().split("&\\$\\$&");
+                    results = q.getQResult().split(",");
+                }
                 int total = 0;
+
                 for (String s : results) {
                     total = total + Integer.valueOf(s);
                 }

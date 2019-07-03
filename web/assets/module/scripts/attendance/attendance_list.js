@@ -78,7 +78,7 @@ var Record = function () {
     var deleteRecord = function (id) {
         if (confirm("您确定要删除这条记录吗？")) {
             if (id > -1) {
-                $.post("../../attendance_servlet?action=delete_record&id=" + id, function (json) {
+                $.post("../../attendance_servlet?action=delete_attendances&id=" + id, function (json) {
                     if (json.result_code === 0) {
                         var count = json.count;
                         var amount = json.amount;

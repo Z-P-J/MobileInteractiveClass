@@ -31,11 +31,12 @@ public class AttendanceFilter extends BaseFilter {
     public String getQuerySql(String tableName) {
         String sql;
         if (UserType.STUDENT.equals(userType)) {
-            sql = "select " + tableName + ".*,course_student.*,course_manage.*"
-                    + " from " + tableName + ",course_student,course_manage"
-                    + " where course_student.student_id = " + userId
-                    + " and course_student.course_id = " + tableName + ".course_id"
-                    + " and course_manage.id = course_student.course_id";
+            sql = "select " + tableName + ".*,course_student.*" // ,course_manage.*
+                    + " from " + tableName + ",course_student" //,course_manage
+                    + " where " + tableName + ".course_id = course_student.course_id"
+                    + " and course_student.student_id = " + userId;
+//                    + " and " + tableName + ".course_id = course_student.course_id";
+//                    + " and course_manage.id = course_student.course_id";
         } else if (UserType.TEACHER.equals(userType)) {
             sql = "select * from " + tableName + " where publisher_id=" + userId;
         } else {
@@ -55,12 +56,14 @@ public class AttendanceFilter extends BaseFilter {
         }
         if (!TextUtil.isEmpty(publishTimeFrom) && !TextUtil.isEmpty(publishTimeTo)) {
             sql = checkWhere(sql);
-            sql += "publish_time between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
+            sql += tableName + ".publish_time between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
+            sql += " or " + tableName + ".deadline between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
         }
-        if (!TextUtil.isEmpty(publishTimeFrom) && !TextUtil.isEmpty(publishTimeTo)) {
-            sql = checkWhere(sql);
-            sql += "deadline between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
-        }
+//        if (!TextUtil.isEmpty(publishTimeFrom) && !TextUtil.isEmpty(publishTimeTo)) {
+//            sql = checkWhere(sql);
+//            sql += "deadline between '" + publishTimeFrom + "' and '" + publishTimeTo + "'";
+//        }
+        sql += " group by attendance_manage.id";
         if (TextUtil.isEmpty(attendanceId)) {
             sql += wrapOrder(order);
         }

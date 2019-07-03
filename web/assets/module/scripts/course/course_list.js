@@ -66,7 +66,7 @@ var Record = function () {
     };
     var exitCourse = function (id) {
         if (confirm("您确定要退出该课程吗？")) {
-            alert(id);
+            // alert(id);
             if (id > -1) {
                 $.post("../../course_servlet?action=exit_course&course_id=" + id, function (json) {
                     if (json.result_code === 0) {

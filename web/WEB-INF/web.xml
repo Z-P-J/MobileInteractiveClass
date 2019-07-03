@@ -40,7 +40,7 @@
 
     <servlet>
         <servlet-name>common_data_action</servlet-name>
-        <servlet-class>com.interactive.classroom.common.data_action</servlet-class>
+        <servlet-class>com.interactive.classroom.servlets.MenuServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>common_data_action</servlet-name>

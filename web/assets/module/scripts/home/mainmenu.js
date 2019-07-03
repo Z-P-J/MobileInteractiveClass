@@ -8,7 +8,8 @@ function initLeftMenu(module) {
     //     });
     } else {
         $.post("../../common_data_action?action=get_main_menu&table_name=" + module + "_tree&module=" + module, function (e) {
-            processMenuItemResult(e, module)
+            // alert(JSON.stringify(e));
+            processMenuItemResult(e, module);
         });
     }
 }

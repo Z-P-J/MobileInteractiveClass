@@ -68,7 +68,7 @@
         </td>
         <td><%=survey.getSIsAudited() ? "<img src='images/on.gif'>" : "<img src='images/off.gif'>" %>
         </td>
-        <td><a href=../SurveyShow.jsp?user=<%=session.getAttribute("user_name")%>&sid=<%=survey.getSId() %>
+        <td><a href=../SurveyShow.jsp?user=<%=session.getAttribute("user_name")%>&sid=<%=survey.getSId() %>&type=<%=type%>
                target="_blank">预览</a>|<%=survey.getSIsAudited() ? "<span title='为了保证数据完整和准确性，已经通过审核的问卷不能再被编辑！'><font color=grey>编辑问卷</font></span>|<span title='为了保证数据完整和准确性，已经通过审核的问卷不能再被编辑！'><font color=grey>管理题目</font></span>" : "<a href=SurveyEdit.jsp?type=" + survey.getsType() + "&sid=" + survey.getSId() + ">编辑问卷</a>|<a href=QuestionAdmin.jsp?type=" + survey.getsType() + "&sid=" + survey.getSId() + ">管理题目</a>" %>
             |<a href='javascript:DelSurvey(<%=survey.getSId() %>)'>删除</a></td>
     </tr>

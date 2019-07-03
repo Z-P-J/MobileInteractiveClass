@@ -22,10 +22,10 @@
                             <label class="control-label col-md-3">
                                 请选择时间段
                             </label>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <span>从</span>
                                 <div class="input-group date form_datetime">
-                                    <input type="text" id="time_from" name="time_from" size="16" class="form-control">
+                                    <input type="text" id="time_from" name="time_from" size="16" class="form-control" readonly>
                                     <span class="input-group-btn">
 														<button class="btn default date-set" type="button">
 															<i class="fa fa-calendar"></i>
@@ -33,7 +33,7 @@
                                 </div>
                                 <span>到</span>
                                 <div class="input-group date form_datetime">
-                                    <input type="text" id="time_to" name="time_to" size="16" class="form-control">
+                                    <input type="text" id="time_to" name="time_to" size="16" class="form-control" readonly>
                                     <span class="input-group-btn">
 														<button class="btn default date-set" type="button">
 															<i class="fa fa-calendar"></i>

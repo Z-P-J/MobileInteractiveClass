@@ -1,4 +1,4 @@
-package com.interactive.classroom.common;
+package com.interactive.classroom.servlets;
 
 
 import com.interactive.classroom.utils.DatabaseHelper;
@@ -22,8 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@WebServlet(name = "data_action", urlPatterns = "/data_action")
-public class data_action extends HttpServlet {
+//@WebServlet(name = "MenuServlet", urlPatterns = "/MenuServlet")
+public class MenuServlet extends HttpServlet {
     String refreshCount = "";
 
     @Override
@@ -151,12 +151,13 @@ public class data_action extends HttpServlet {
         Connection connection = DatabaseHelper.getConnection();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
+        Log.d(getClass().getName(), "sql=" + sql);
         while (rs.next()) {
             Map<String, String> map = new HashMap<>();
             // ////////////////////////////////////////独有部分，要修改的是这里
             rs.getMetaData().getColumnCount();
             for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-                Log.d("data_action  ", rs.getMetaData().getColumnLabel(i + 1));
+                Log.d("MenuServlet  ", rs.getMetaData().getColumnLabel(i + 1));
             }
             map.put("module_name", rs.getString("module_name"));
             map.put("category_id", rs.getString("category_id"));

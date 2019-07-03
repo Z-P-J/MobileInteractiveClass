@@ -6,7 +6,7 @@ var spanStyle = "font-size: 14.0pt; font-family: 宋体; mso-ascii-font-family: 
                 "mso-hansi-theme-font: minor-latin";
 function getPrintData() {
     var moduleName = $("#module_name").val();
-    alert(moduleName);
+    // alert(moduleName);
     var url = "../../print_servlet?action=get_print_data&module_name=" + moduleName;
     $.get(url, function (json) {
         // alert(JSON.stringify(json));

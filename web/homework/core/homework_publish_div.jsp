@@ -73,7 +73,7 @@
 	});
 
 	function getAllCourse() {
-		$.get("../../course_servlet?action=get_courses", function (json) {
+		$.get("../../course_servlet?action=query_courses", function (json) {
 			console.log(JSON.stringify(json));
 			if (json.result_code === 0) {
 				var html = "";

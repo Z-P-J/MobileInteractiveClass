@@ -12,8 +12,8 @@ jQuery(document).ready(function () {
         $("#city").html(json.city);
         $("#today").html(json.data[0].date + " " + json.data[0].week);
         $("#weather").html(json.data[0].wea);
-        $("#temp").html(json.data[0].tem2 + "-" + json.data[0].tem);
-        $("#min_temp").html("平均温度" + json.data[0].tem1);
+        $("#temp").html("当前温度" + json.data[0].tem + "  白天温度" + json.data[0].tem1 + "  晚上温度" + json.data[0].tem2);
+        // $("#min_temp").html("平均温度" + json.data[0].tem);
         $("#win").html(json.data[0].win);
         $("#win_speed").html(json.data[0].win_speed);
         $("#air_condition").html("空气指数" + json.data[0].air + " " + json.data[0].air_level);

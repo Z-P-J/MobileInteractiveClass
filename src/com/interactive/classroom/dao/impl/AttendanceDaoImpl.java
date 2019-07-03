@@ -54,7 +54,7 @@ public class AttendanceDaoImpl implements AttendanceDao {
                         }
                         jsonObj.put("has_attendance", hasAttendanced);
                     }
-                    jsonObj.put("attendance_count", rs.getString("attendance_count"));
+//                    jsonObj.put("attendance_count", rs.getString("attendance_count"));
                 } else if (UserType.TEACHER.equals(filter.getUserType())) {
 
                 }

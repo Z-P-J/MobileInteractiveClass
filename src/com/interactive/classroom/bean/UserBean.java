@@ -156,4 +156,25 @@ public class UserBean {
     public void setStudentNum(String studentNum) {
         this.studentNum = studentNum;
     }
+
+
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", userType='" + userType + '\'' +
+                ", weChat='" + weChat + '\'' +
+                ", grade='" + grade + '\'' +
+                ", className='" + className + '\'' +
+                ", faculty='" + faculty + '\'' +
+                ", registerDate='" + registerDate + '\'' +
+                ", studentNum='" + studentNum + '\'' +
+                '}';
+    }
 }

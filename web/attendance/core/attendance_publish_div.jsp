@@ -88,7 +88,7 @@
 	// 发布考勤
 	function publishAttendance() {
 		var courseId = $("#attendance_course option:selected").val();
-		alert(courseId);
+		// alert(courseId);
 		var requirement = $("#attendance_requirement").val();
 		var deadline = $("#attendance_deadline").val();
 		var url = "../../attendance_servlet?action=publish_attendance"

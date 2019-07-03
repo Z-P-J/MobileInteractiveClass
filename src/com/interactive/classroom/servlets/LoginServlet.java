@@ -86,24 +86,24 @@ public class LoginServlet extends BaseHttpServlet {
         bean.setEmail(request.getParameter("register_email"));
         bean.setRegisterDate(TimeUtil.currentDate());
         bean.setUserType(request.getParameter("register_user_type"));
-        if (UserType.STUDENT.equals(userType)) {
+        if (UserType.STUDENT.equals(bean.getUserType())) {
             bean.setStudentNum(request.getParameter("register_student_num"));
         }
 
         try {
             int id = userDao.registerUser(bean);
-            debug("注册成功   id=" + id);
-            if (id != -1) {
-                bean.setId("" + id);
-                wrapSession(session, bean);
-            }
+            bean = userDao.getUserByUserName(bean.getUserName());
+            debug("注册成功   id=" + bean.getId());
+            wrapSession(session, bean);
+//            if (id != -1) {
+//                bean.setId("" + id);
+//                wrapSession(session, bean);
+//            }
             response.sendRedirect("index.jsp");
         } catch (Exception e) {
             e.printStackTrace();
 //            processError(request, response, 3, "session超时，请重新登录系统！", RESULT_PATH, RESULT_PAGE, REDIRECT_PATH, REDIRECT_PAGE);
         }
-
-//        onEnd(request, response, jsonObj, RESULT_URL, "操作已经执行，请按返回按钮返回列表页面！", 0, REDIRECT_PAGE);
     }
 
     private void wrapSession(HttpSession session, UserBean user) {

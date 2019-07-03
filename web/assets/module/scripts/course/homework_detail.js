@@ -68,7 +68,7 @@ var Record = function () {
 
                 for (var i = 0; i < list.length; i++) {
                     var homework = list[i];
-                    alert(JSON.stringify(homework));
+                    // alert(JSON.stringify(homework));
                     var title =  homework.homework_title;
                     $("#homework_detail_title").html(title);
                     var flag = compareDate(new Date().format("yyyy-MM-dd hh:mm:ss"), homework.deadline);

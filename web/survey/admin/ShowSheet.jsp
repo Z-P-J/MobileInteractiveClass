@@ -11,7 +11,7 @@
     Config cfg = cdao.findConfig();
 
     SurveyDAOimpl sdao = DAOFactory.getSurveyDAO(request.getParameter("type"));
-    sdao.setType(request.getParameter("type"));
+//    sdao.setType(request.getParameter("type"));
     Survey survey = sdao.findSurvey(Long.valueOf(sid));
 
 
@@ -23,9 +23,9 @@
 
     String results = sheet.getAsResult();
     String[] result = results.split("&@@&");
-    List<Long> qidlist = new ArrayList<Long>();
+    List<Long> qidlist = new ArrayList<>();
     for (String s : result) {
-        //System.out.println("s:"+s);
+        System.out.println("s:"+s);
         qidlist.add(Long.valueOf(s.substring(0, s.indexOf(":"))));
     }
 
@@ -72,31 +72,35 @@
 
 
                     <%
-                        qlist:
+//                        qlist:
                         for (Long qid : qidlist) {
                             Question q = qdao.findQuestion(qid);
 
                             out.println("<li> " + q.getQHead() + " </li>");
                             out.println("<ul type='1'>");
-                            String[] body = q.getQBody().split("&\\$\\$&");
 
                             switch (q.getQType().intValue()) {
                                 case 1:
+                                    String[] body = q.getQBody().split("&\\$\\$&");
                                     for (int i = 0; i < body.length; i++) {
-
                                         out.println("<li><input type='radio' name='answer" + q.getQId() + "' value='" + i + "' >" + body[i] + "</li>");
                                     }
-
                                     out.println("</ul><br/>");
                                     out.println("<div id=qbox" + q.getQId() + "></div>");
                                     break;
 
                                 case 2:
+                                    body = q.getQBody().split("&\\$\\$&");
                                     for (int i = 0; i < body.length; i++) {
                                         out.println("<li><input type='checkbox' name='answer" + q.getQId() + "' value='" + i + "'>" + body[i] + "</li>");
                                     }
                                     out.println("</ul><br/>");
                                     out.println("<div id=qbox" + q.getQId() + "></div>");
+                                    break;
+                                case 5:
+//                                    out.println("<textarea name='answer" + q.getQId() + "' rows=4 cols=40 onpropertychange='this.style.posHeight=this.scrollHeight' value=''></textarea>");
+//                                    out.println("</ul><br/>");
+//                                    out.println("<div id=qbox" + q.getQId() + "></div>");
                                     break;
 
                             }

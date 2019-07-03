@@ -117,10 +117,10 @@
 			+ "?action=query_attendance_users"
 			+ "&course_id=" + Record.json.course_id
 			+ "&attendance_flag=" + Record.json.attendance_flag;
-	alert(url);
+	// alert(url);
 	$.get(url, function (jsonObj) {
 		if (jsonObj.result_code === 0) {
-			alert(JSON.stringify(jsonObj));
+			// alert(JSON.stringify(jsonObj));
 			var list = jsonObj.aaData;
 			var tip = "该课程有 " + list.length + " 名学生";
 			var html = "													<div><span id=\"tip_div\" style='color: red'>" + tip + "</span>";
